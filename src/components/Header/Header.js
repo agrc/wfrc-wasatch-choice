@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import './Header.css';
-import logo from './agrc_logo.jpg';
+import logo from './logo.jpg';
 import config from '../../config';
 
 export default class Header extends PureComponent {
