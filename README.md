@@ -1,24 +1,7 @@
-# atlas
+# WFRC - Wasatch Choice Interactive Map
+[![Build Status](https://travis-ci.com/agrc/wfrc.svg?branch=master)](https://travis-ci.com/agrc/wfrc)
 
-## AGRC JavaScript Project Boilerplate
-
-[![Build Status](https://travis-ci.com/agrc/atlas.svg?branch=master)](https://travis-ci.com/agrc/atlas)
-
-## To Use
-
-### Step 1 - Boilerplate
-
-Checkout repository and install dependencies
-
-```bash
-git clone https://github.com/agrc/atlas.git
-cd atlas
-npm install
-```
-
-Duplicate the `.env` file and rename it as `.env.development.local` and update the properties with your data
-
-### Step 2 - Develop & Test
+### Develop & Test
 
 Execute `npm start` to start a web server and view the website
 
@@ -28,7 +11,7 @@ Build an awesome app.
 
 Execute `npm test` to run tests
 
-### Step 3 - Optimize
+### Optimize
 
 Execute `npm run build` to create an optimized production build
 
@@ -36,7 +19,7 @@ _The files will be placed in `/build`_
 
 Execute `serve -s build` to view the website
 
-### Step 4 - Deploy
+### Deploy
 
 One-time tasks:
 
