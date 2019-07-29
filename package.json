@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "1.2.20",
+    "@fortawesome/free-solid-svg-icons": "5.10.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
     "downshift": "^3.2.10",
-    "esri-loader": "^2.9.2",
+    "esri-loader": "2.10.0",
     "lodash.debounce": "^4.0.8",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.sortby": "^4.7.0",
@@ -17,7 +17,7 @@
     "react-dom": "^16.8.6",
     "react-fast-compare": "^2.0.4",
     "react-scripts": "3.0.1",
-    "reactstrap": "^8.0.0"
+    "reactstrap": "8.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
