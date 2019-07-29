@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+/deploy
+/dist
+
+# secrets
+secrets.json
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.odc
+*.pyc
+*.sde
+
+# misc
+.DS_Store
+.grunt/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
