@@ -43,38 +43,38 @@ class LayerSelector extends Component {
     const imageryAttributionJsonUrl = 'https://mapserv.utah.gov/cdn/attribution/imagery.json';
     this.applianceLayers = {
       Imagery: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/utah/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         hasAttributionData: true,
         attributionDataUrl: imageryAttributionJsonUrl
       },
       Topo: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/topo_basemap/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/topo_basemap/{level}/{col}/{row}`,
         copyright: 'AGRC'
       },
       Terrain: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/terrain_basemap/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/terrain_basemap/{level}/{col}/{row}`,
         copyright: 'AGRC'
       },
       Lite: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/lite_basemap/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/lite_basemap/{level}/{col}/{row}`,
         copyright: 'AGRC'
       },
       'Color IR': {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/naip_2011_nrg/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/naip_2011_nrg/{level}/{col}/{row}`,
         copyright: 'AGRC'
       },
       Hybrid: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/utah/\${level}/\${col}/\${row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         linked: ['Overlay'],
         hasAttributionData: true,
         attributionDataUrl: imageryAttributionJsonUrl
       },
       Overlay: {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/overlay_basemap/\${level}/\${col}/\${row}`
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/overlay_basemap/{level}/{col}/{row}`
         // no attribution for overlay layers since it just duplicates the base map attribution
       },
       'Address Points': {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/address_points_basemap/\${level}/\${col}/\${row}`
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/address_points_basemap/{level}/{col}/{row}`
       }
     }
     this.managedLayers = {};
