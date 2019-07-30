@@ -29,12 +29,10 @@ One-time tasks:
 
 Tasks to be completed for each release:
 
-- [ ] `npm run release` or `npm run release -- --prerelease`
 - [ ] Verify all tests are passing (`npm test`)
-- [ ] Run a build and test (`npm run build`)
-- [ ] Deploy website (`grunt deploy-prod`)
-- [ ] Create release commit (`git commit -m 'chore: Release vx.x.x`)
-- [ ] Create tag (`git tag vx.x.x`)
+- [ ] `npm run release` or `npm run release -- --prerelease`
+- [ ] Run a build and test (`npm run build` | `npm run build-stage`)
+- [ ] Deploy website (`grunt deploy-prod` | `npm run deploy-stage`)
 - [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
 
 ## Notes

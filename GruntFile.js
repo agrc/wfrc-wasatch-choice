@@ -98,4 +98,10 @@ module.exports = function configure(grunt) {
     'sftp:prod',
     'sshexec:prod'
   ]);
+  grunt.registerTask('deploy-stage', [
+    'clean:main',
+    'compress:main',
+    'sftp:stage',
+    'sshexec:stage'
+  ]);
 };

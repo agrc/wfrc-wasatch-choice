@@ -2,6 +2,7 @@
   "name": "wfrc",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://test2.mapserv.utah.gov/wfrc",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.20",
     "@fortawesome/free-solid-svg-icons": "5.10.0",
@@ -22,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-stage": "./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "standard-version"
@@ -37,6 +39,7 @@
   ],
   "devDependencies": {
     "cz-conventional-changelog": "3.0.2",
+    "env-cmd": "9.0.3",
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.5.0",
