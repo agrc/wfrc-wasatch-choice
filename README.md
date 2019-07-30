@@ -34,7 +34,3 @@ Tasks to be completed for each release:
 - [ ] Run a build and test (`npm run build` | `npm run build-stage`)
 - [ ] Deploy website (`grunt deploy-prod` | `npm run deploy-stage`)
 - [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
-
-## Notes
-
-A WASM MIME type that is used in the Esri JS API (geometry engine) is defined in [web.config](_src/web.config). This will cause a server error in IIS if you have the same type defined in a parent directory. If you experience this error you will need to remove one of the duplicate MIME type definitions.

@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* clicking on tabs shows the ssociated web map ([2ccba0e](https://github.com/agrc/wfrc/commit/2ccba0e)), closes [#6](https://github.com/agrc/wfrc/issues/6)
+* clicking on tabs shows the associated web map ([2ccba0e](https://github.com/agrc/wfrc/commit/2ccba0e)), closes [#6](https://github.com/agrc/wfrc/issues/6)
 * implement config.json for app/widgets ([2481ebe](https://github.com/agrc/wfrc/commit/2481ebe)), closes [#5](https://github.com/agrc/wfrc/issues/5)
 
 ## 0.1.0 (2019-07-30)
