@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { loadModules, loadCss } from 'esri-loader';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
-import cityExtents from './data/cityExtents.json';
 import config from '../../config';
 import TabsContext from '../Tabs/TabsContext';
 
@@ -53,13 +52,18 @@ export default class ReactMapView extends Component {
       });
     });
 
-    // get random city extent
-    const randomExtent = cityExtents[Math.round(Math.random() * (cityExtents.length - 1))];
-    const extent = new Polygon(randomExtent.geometry).extent;
-
     this.view = new MapView({
       container: this.mapViewDiv,
-      extent,
+      extent: {
+        // Weber -> Davis counties
+        spatialReference: {
+          wkid: 3857
+        },
+        xmin: -12677739.904493758,
+        ymin: 4833814.385353904,
+        xmax: -12261005.22628318,
+        ymax: 5093088.785297098
+      },
       ui: {
         components: ['zoom']
       }
