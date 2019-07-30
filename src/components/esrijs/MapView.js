@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import { loadModules, loadCss } from 'esri-loader';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
 import cityExtents from './data/cityExtents.json';
+import config from '../../config';
+import TabsContext from '../Tabs/TabsContext';
 
 
 export default class ReactMapView extends Component {
+  static contextType = TabsContext;
+
   zoomLevel = 5;
   displayedZoomGraphic = null;
   urls = {
@@ -25,9 +29,9 @@ export default class ReactMapView extends Component {
   }
 
   async componentDidMount() {
-    loadCss('https://js.arcgis.com/4.9/esri/css/main.css');
+    loadCss('https://js.arcgis.com/4.12/esri/css/main.css');
     const mapRequires = [
-      'esri/Map',
+      'esri/WebMap',
       'esri/views/MapView',
       'esri/layers/FeatureLayer',
       'esri/geometry/Polygon'
@@ -39,9 +43,15 @@ export default class ReactMapView extends Component {
       'esri/Basemap'
     ];
 
-    const [Map, MapView, FeatureLayer, Polygon, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
+    const [WebMap, MapView, FeatureLayer, Polygon, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
 
-    this.map = new Map();
+    this.maps = config.TABS.map(({ webMapId }) => {
+      return new WebMap({
+        portalItem: {
+          id: webMapId
+        }
+      });
+    });
 
     // get random city extent
     const randomExtent = cityExtents[Math.round(Math.random() * (cityExtents.length - 1))];
@@ -49,7 +59,6 @@ export default class ReactMapView extends Component {
 
     this.view = new MapView({
       container: this.mapViewDiv,
-      map: this.map,
       extent,
       ui: {
         components: ['zoom']
@@ -84,6 +93,11 @@ export default class ReactMapView extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (this.context.currentTabIndex !== this.currentTabIndex) {
+      this.view.map = this.maps[this.context.currentTabIndex];
+      this.currentTabIndex = this.context.currentTabIndex;
+    }
+
     const currentGraphic = (((this.props || false).zoomToGraphic || false).graphic || false);
     const previousGraphic = (((prevProps || false).zoomToGraphic || false).graphic || false);
 
