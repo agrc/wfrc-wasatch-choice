@@ -23,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "standard-version"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,10 +36,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "cz-conventional-changelog": "3.0.2",
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.5.0",
     "grunt-ssh": "^0.12.9",
-    "load-grunt-tasks": "^5.0.0"
+    "load-grunt-tasks": "^5.0.0",
+    "standard-version": "7.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

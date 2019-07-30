@@ -29,8 +29,7 @@ One-time tasks:
 
 Tasks to be completed for each release:
 
-- [ ] Semantically update `.env` property `REACT_APP_VERSION` and `package.json` version
-- [ ] Update `public/changelog.html`
+- [ ] `npm run release` or `npm run release -- --prerelease`
 - [ ] Verify all tests are passing (`npm test`)
 - [ ] Run a build and test (`npm run build`)
 - [ ] Deploy website (`grunt deploy-prod`)
