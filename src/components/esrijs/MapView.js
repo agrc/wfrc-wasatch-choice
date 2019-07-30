@@ -44,7 +44,7 @@ export default class ReactMapView extends Component {
 
     const [WebMap, MapView, FeatureLayer, Polygon, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
 
-    this.maps = config.TABS.map(({ webMapId }) => {
+    this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({
         portalItem: {
           id: webMapId

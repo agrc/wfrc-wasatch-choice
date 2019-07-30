@@ -11,7 +11,7 @@ export default props => {
 
   return (
     <Nav tabs className="tabs">
-      { config.TABS.map(({name}, index) => {
+      { config.tabs.map(({name}, index) => {
         index = index + '';
 
         return (
