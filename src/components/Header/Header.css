@@ -8,15 +8,13 @@
 
 .header__heading {
   font-family: Arial, sans-serif;
-  margin: 5px 0 0 5px;
-  font-size: 40px;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 .heading__img {
   position: absolute;
-  top: -3px;
-  right: 0;
+  top: 8px;
+  right: 8px;
 }
 
 @media screen and (max-width: 624px) {
@@ -29,6 +27,6 @@
   font-size: 10px;
   text-decoration: none;
   vertical-align: sub;
-  margin-left: -10px;
+  margin-left: -5px;
   letter-spacing: 0;
 }

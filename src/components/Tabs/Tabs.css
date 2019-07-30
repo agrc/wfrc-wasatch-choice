@@ -1,0 +1,9 @@
+.tabs .nav-link {
+  cursor: pointer;
+}
+.tabs.nav-tabs {
+  border-bottom: none;
+}
+.tabs .nav-link:hover {
+  border-bottom: none;
+}

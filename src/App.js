@@ -10,6 +10,8 @@ import { IdentifyInformation, IdentifyContainer } from './components/Identify';
 import { Collapse, Button, Card } from 'reactstrap';
 import config from './config';
 import './App.css';
+import TabsContext from './components/Tabs/TabsContext';
+
 
 export default class App extends Component {
   state = {
@@ -22,7 +24,8 @@ export default class App extends Component {
     mapClick: {},
     sideBarOpen: window.innerWidth >= config.MIN_DESKTOP_WIDTH,
     showIdentify: false,
-    showPrint: false
+    showPrint: false,
+    currentTabIndex: 0
   };
 
   onFindAddress = this.onFindAddress.bind(this);
@@ -83,44 +86,53 @@ export default class App extends Component {
       toggleSidebar: this.toggleSidebar
     }
 
+    const setCurrentTab = index => {
+      this.setState({ currentTabIndex: index });
+    };
+
     return (
       <div className="app">
-        <Header title="Wasatch Choice 2050" version={version} />
-        {this.state.showIdentify ?
-        <IdentifyContainer show={this.showIdentify}>
-          <IdentifyInformation apiKey={findAddressOptions.apiKey} location={this.state.mapClick} />
-        </IdentifyContainer>
-        : null}
-        <Sidebar>
-          <small>Data and services provided by <a href="https://gis.utah.gov/">Utah AGRC</a></small>
-          <p>Click a location on the map for more information</p>
+        <TabsContext.Provider value={{
+          currentTabIndex: this.state.currentTabIndex,
+          setCurrentTab
+        }}>
+          <Header title="Wasatch Choice 2050" version={version} />
+          {this.state.showIdentify ?
+          <IdentifyContainer show={this.showIdentify}>
+            <IdentifyInformation apiKey={findAddressOptions.apiKey} location={this.state.mapClick} />
+          </IdentifyContainer>
+          : null}
+          <Sidebar>
+            <small>Data and services provided by <a href="https://gis.utah.gov/">Utah AGRC</a></small>
+            <p>Click a location on the map for more information</p>
 
-          <h4>Find Address</h4>
-          <div id="geocodeNode">
-            <FindAddress
-              pointSymbol={findAddressOptions.symbol}
-              apiKey={findAddressOptions.apiKey}
-              onFindAddress={this.onFindAddress}
-              onFindAddressError={this.onFindAddressError} />
-          </div>
+            <h4>Find Address</h4>
+            <div id="geocodeNode">
+              <FindAddress
+                pointSymbol={findAddressOptions.symbol}
+                apiKey={findAddressOptions.apiKey}
+                onFindAddress={this.onFindAddress}
+                onFindAddressError={this.onFindAddressError} />
+            </div>
 
-          <Sherlock {...gnisSherlock}></Sherlock>
+            <Sherlock {...gnisSherlock}></Sherlock>
 
-          <Sherlock {...citySherlock}></Sherlock>
+            <Sherlock {...citySherlock}></Sherlock>
 
-          <Card>
-            <Button block onClick={this.togglePrint}>Export Map</Button>
-            <Collapse isOpen={this.state.showPrint}>
-              {this.state.showPrint ?
-                <Printer view={this.state.mapView}></Printer>
-                : null}
-            </Collapse>
-          </Card>
+            <Card>
+              <Button block onClick={this.togglePrint}>Export Map</Button>
+              <Collapse isOpen={this.state.showPrint}>
+                {this.state.showPrint ?
+                  <Printer view={this.state.mapView}></Printer>
+                  : null}
+              </Collapse>
+            </Card>
 
-        </Sidebar>
-        <MapLens {...sidebarOptions}>
-          <MapView {...mapOptions} />
-        </MapLens>
+          </Sidebar>
+          <MapLens {...sidebarOptions}>
+            <MapView {...mapOptions} />
+          </MapLens>
+        </TabsContext.Provider>
       </div>
     );
   }
