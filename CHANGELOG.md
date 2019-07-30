@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/agrc/wfrc/compare/v0.1.0...v0.1.1) (2019-07-30)
+
+
+### Bug Fixes
+
+* update default extent to be the wasatch front ([7372e15](https://github.com/agrc/wfrc/commit/7372e15)), closes [#11](https://github.com/agrc/wfrc/issues/11)
+
+
+### Features
+
+* clicking on tabs shows the ssociated web map ([2ccba0e](https://github.com/agrc/wfrc/commit/2ccba0e)), closes [#6](https://github.com/agrc/wfrc/issues/6)
+* implement config.json for app/widgets ([2481ebe](https://github.com/agrc/wfrc/commit/2481ebe)), closes [#5](https://github.com/agrc/wfrc/issues/5)
+
 ## 0.1.0 (2019-07-30)
 
 
