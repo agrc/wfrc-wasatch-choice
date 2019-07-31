@@ -9,8 +9,9 @@
 
 .side-bar__padder {
   padding: 10px;
-  width: 300px;
+  width: 330px;
   margin: -1px;
+  height: 100%;
 }
 
 .side-bar--with-border {
@@ -18,5 +19,5 @@
 }
 
 .side-bar--open {
-  width: 300px;
+  width: 330px;
 }

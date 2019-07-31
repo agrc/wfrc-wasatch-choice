@@ -6,6 +6,7 @@ import MapView from './components/esrijs/MapView';
 import config from './config';
 import './App.css';
 import TabsContext from './components/Tabs/TabsContext';
+import About from './components/About/About';
 
 
 export default class App extends Component {
@@ -53,7 +54,7 @@ export default class App extends Component {
         }}>
           <Header title="Wasatch Choice 2050" version={version} />
           <Sidebar>
-            <p>BetterAbout Content will go here.</p>
+            <About />
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
