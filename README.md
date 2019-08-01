@@ -2,7 +2,17 @@
 
 [mockups](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5750aa3557_0_0)
 
-### Develop & Test
+### Configuration
+
+The app is configured via a few JSON files located at the root of the deployed project. In development they are located in `./public`.
+
+#### `config.json`
+This is where all of the app configuration except the about widget is contained.
+
+#### `about.json`
+This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size.
+
+### Development & Testing
 
 Execute `npm start` to start a web server and view the website
 
@@ -12,7 +22,7 @@ Build an awesome app.
 
 Execute `npm test` to run tests
 
-### Optimize
+### Build
 
 Execute `npm run build` to create an optimized production build
 
