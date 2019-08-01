@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/agrc/wfrc/compare/v0.1.2...v0.1.3) (2019-08-01)
+
+
+### Bug Fixes
+
+* fix bug causing incorrect version number to be displayed ([615dd0a](https://github.com/agrc/wfrc/commit/615dd0a))
+
+
+### Features
+
+* add layout framework for panel widgets ([b94cfc6](https://github.com/agrc/wfrc/commit/b94cfc6)), closes [#3](https://github.com/agrc/wfrc/issues/3)
+
 ### [0.1.2](https://github.com/agrc/wfrc/compare/v0.1.1...v0.1.2) (2019-08-01)
 
 
