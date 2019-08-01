@@ -56,16 +56,6 @@ module.exports = function configure(grunt) {
           password: '<%= secrets.stage.password %>'
         }
       },
-      prod: {
-        files: {
-          './': 'deploy/deploy.zip'
-        },
-        options: {
-          host: '<%= secrets.prod.host %>',
-          username: '<%= secrets.prod.username %>',
-          password: '<%= secrets.prod.password %>'
-        }
-      },
       options: {
         path: './wwwroot/' + deployDir + '/',
         srcBasePath: 'deploy/',
@@ -80,23 +70,13 @@ module.exports = function configure(grunt) {
           username: '<%= secrets.stage.username %>',
           password: '<%= secrets.stage.password %>'
         }
-      },
-      prod: {
-        command: ['cd wwwroot/' + deployDir, 'unzip -oq deploy.zip', 'rm deploy.zip'].join(';'),
-        options: {
-          host: '<%= secrets.prod.host %>',
-          username: '<%= secrets.prod.username %>',
-          password: '<%= secrets.prod.password %>'
-        }
       }
     }
   });
 
   grunt.registerTask('deploy-prod', [
     'clean:main',
-    'compress:main',
-    'sftp:prod',
-    'sshexec:prod'
+    'compress:main'
   ]);
   grunt.registerTask('deploy-stage', [
     'clean:main',
