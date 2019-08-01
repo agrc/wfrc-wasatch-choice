@@ -26,15 +26,17 @@ module.exports = function configure(grunt) {
     };
   }
 
+  const packageConfig = grunt.file.readJSON('package.json');
+  const zipFileName = `deploy_${packageConfig.version}.zip`;
+
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     clean: {
       main: ['deploy']
     },
     compress: {
       main: {
         options: {
-          archive: 'deploy/deploy.zip'
+          archive: `deploy/${zipFileName}`
         },
         files: [{
           src: deployFiles,
@@ -48,7 +50,7 @@ module.exports = function configure(grunt) {
     sftp: {
       stage: {
         files: {
-          './': 'deploy/deploy.zip'
+          './': `deploy/${zipFileName}`
         },
         options: {
           host: '<%= secrets.stage.host %>',
@@ -64,7 +66,7 @@ module.exports = function configure(grunt) {
     },
     sshexec: {
       stage: {
-        command: ['cd wwwroot/' + deployDir, 'unzip -oq deploy.zip', 'rm deploy.zip'].join(';'),
+        command: ['cd wwwroot/' + deployDir, `unzip -oq ${zipFileName}`, `rm ${zipFileName}`].join(';'),
         options: {
           host: '<%= secrets.stage.host %>',
           username: '<%= secrets.stage.username %>',
