@@ -7,6 +7,9 @@ import config from './config';
 import './App.css';
 import TabsContext from './components/Tabs/TabsContext';
 import About from './components/About/About';
+import MapWidget from './components/MapWidget/MapWidget';
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 
 
 export default class App extends Component {
@@ -58,6 +61,8 @@ export default class App extends Component {
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
+            <MapWidget name='Project Information' icon={faHandPointer} position={0} />
+            <MapWidget name='Filter' icon={faList} position={1} />
           </MapLens>
         </TabsContext.Provider>
       </div>
@@ -104,12 +109,6 @@ export default class App extends Component {
         graphic: graphics,
         preserve: false
       }
-    });
-  }
-
-  togglePrint() {
-    this.setState({
-      showPrint: !this.state.showPrint
     });
   }
 

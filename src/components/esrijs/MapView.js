@@ -32,8 +32,7 @@ export default class ReactMapView extends Component {
     const mapRequires = [
       'esri/WebMap',
       'esri/views/MapView',
-      'esri/layers/FeatureLayer',
-      'esri/geometry/Polygon'
+      'esri/layers/FeatureLayer'
     ];
     const selectorRequires = [
       'esri/layers/support/LOD',
@@ -42,7 +41,7 @@ export default class ReactMapView extends Component {
       'esri/Basemap'
     ];
 
-    const [WebMap, MapView, FeatureLayer, Polygon, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
+    const [WebMap, MapView, FeatureLayer, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
 
     this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({

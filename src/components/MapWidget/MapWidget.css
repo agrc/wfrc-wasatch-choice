@@ -1,0 +1,15 @@
+.map-widget-button {
+  position: absolute;
+  left: 14px;
+}
+
+.map-widget-button button {
+  padding: 4px 0;
+  width: 33px;
+}
+
+.map-widget-card {
+  position: absolute;
+  right: 7px;
+  width: 300px;
+}
