@@ -1,3 +1,10 @@
+.sherlock {
+  position: absolute;
+  z-index: 3;
+  width: 260px;
+  left: 62px;
+  top: 7px;
+}
 .sherlock__match-dropdown {
   width: 280px;
   background-color: #fff;

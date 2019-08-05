@@ -10,6 +10,7 @@ import About from './components/About/About';
 import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
+import { Sherlock, MapServiceProvider } from './components/Sherlock';
 
 
 export default class App extends Component {
@@ -26,6 +27,7 @@ export default class App extends Component {
   };
 
   onMapClick = this.onMapClick.bind(this);
+  onSherlockMatch = this.onSherlockMatch.bind(this);
   toggleSidebar = this.toggleSidebar.bind(this);
   setView = this.setView.bind(this);
 
@@ -49,6 +51,13 @@ export default class App extends Component {
       this.setState({ currentTabIndex: index });
     };
 
+    const sherlockConfig = {
+      provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
+      placeHolder: config.sherlock.placeHolder,
+      onSherlockMatch: this.onSherlockMatch
+    };
+
+
     return (
       <div className="app">
         <TabsContext.Provider value={{
@@ -63,6 +72,7 @@ export default class App extends Component {
             <MapView {...mapOptions} />
             <MapWidget name='Project Information' icon={faHandPointer} position={0} />
             <MapWidget name='Filter' icon={faList} position={1} />
+            <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
         </TabsContext.Provider>
       </div>

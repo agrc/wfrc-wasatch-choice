@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'reactstrap';
 
+
 export default props => {
   return (
     <div id="centerContainer" className={'map-lens map-lens--with-border' + (props.sideBarOpen ? ' map-lens--side-bar-open' : '')}>

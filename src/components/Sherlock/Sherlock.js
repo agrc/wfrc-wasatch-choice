@@ -93,7 +93,7 @@ class Sherlock extends Component {
           inputValue,
           getMenuProps
         }) => (
-            <div>
+            <div className='sherlock'>
               <h4>{this.props.label}</h4>
               <div style={{ paddingBottom: '1em' }}>
                 <InputGroup>
@@ -310,6 +310,48 @@ class ProviderBase {
   }
 }
 
+class MapServiceProvider extends ProviderBase {
+  constructor(serviceUrl, searchField, options={}) {
+    console.log('sherlock.MapServiceProvider:constructor', arguments);
+    super();
+
+    this.searchField = searchField;
+    this.contextField = options.contextField;
+
+    this.setUpQueryTask(serviceUrl, options);
+  }
+
+  async setUpQueryTask(serviceUrl, options) {
+    const [ Query, QueryTask ] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask']);
+    const defaultWkid = 3857;
+    this.query = new Query();
+    this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
+    this.query.returnGeometry = false;
+    this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
+
+    this.queryTask = new QueryTask({ url: serviceUrl });
+  }
+
+  async search(searchString) {
+    console.log('sherlock.MapServiceProvider:search', arguments);
+
+    this.query.where = this.getSearchClause(searchString);
+    const featureSet = await this.queryTask.execute(this.query);
+
+    return { data: featureSet.features };
+  }
+
+  async getFeature(searchValue, contextValue) {
+    console.log('sherlock.MapServiceProvider', arguments);
+
+    this.query.where = this.getFeatureClause(searchValue, contextValue);
+    this.query.returnGeometry = true;
+    const featureSet = await this.queryTask.execute(this.query);
+
+    return { data: featureSet.features };
+  }
+}
+
 class WebApiProvider extends ProviderBase {
   constructor(apiKey, searchLayer, searchField, options) {
     super();
@@ -473,4 +515,4 @@ class WebApi {
   }
 }
 
-export { Sherlock, WebApiProvider }
+export { Sherlock, WebApiProvider, MapServiceProvider }

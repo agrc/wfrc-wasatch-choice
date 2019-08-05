@@ -20,5 +20,10 @@
       "name": "Amenities",
       "webMapId": "a2b0d5a08e2c42e4b36f76f816701c8c"
     }
-  ]
+  ],
+  "sherlock": {
+    "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/0",
+    "searchField": "NAME",
+    "placeHolder": "search for place name..."
+  }
 }
