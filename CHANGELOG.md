@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/agrc/wfrc/compare/v0.1.3...v0.2.0) (2019-08-05)
+
+
+### Features
+
+* add google analytics code for production ([15b9470](https://github.com/agrc/wfrc/commit/15b9470)), closes [#12](https://github.com/agrc/wfrc/issues/12)
+* implement sherlock widget and config ([4616b32](https://github.com/agrc/wfrc/commit/4616b32)), closes [#13](https://github.com/agrc/wfrc/issues/13)
+
 ### [0.1.3](https://github.com/agrc/wfrc/compare/v0.1.2...v0.1.3) (2019-08-01)
 
 
