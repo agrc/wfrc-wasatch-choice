@@ -1,27 +1,60 @@
+import { useEffect } from 'react';
 import queryString from 'query-string';
 
 
-export default ({ mapExtent, setInitialExtent }) => {
-  const getHash = () => {
-    return queryString.parse(new URL(document.location.href).hash.slice(1), { parseNumbers: true });
-  };
+const url = new URL(document.location.href);
+const getCurrentHash = () => {
+  return queryString.parse(url.hash.slice(1), {
+    parseNumbers: true,
+    parseBooleans: true
+  });
+};
+const mixinHashValues = values => {
+  url.hash = queryString.stringify({
+    ...getCurrentHash(),
+    ...values
+  });
+};
 
-  if (!mapExtent) {
-    const hash = getHash();
+export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
+  useEffect(() => {
+    console.log('URLParams setup');
+    const currentHash = getCurrentHash();
 
-    if (hash.x && hash.y && hash.scale) {
-      setInitialExtent(hash);
+    if (currentHash.x && currentHash.y && currentHash.scale) {
+      setInitialExtent(currentHash);
     }
-  } else {
-    const url = new URL(document.location.href);
-    url.hash = queryString.stringify({
+
+    if (currentHash.sideBarClosed) {
+      closeSidebar();
+    }
+  }, [setInitialExtent, closeSidebar]);
+
+  useEffect(() => {
+    console.log('URLParams update hash: mapExtent');
+
+    if (!mapExtent) {
+      return;
+    }
+
+    mixinHashValues({
       x: mapExtent.x,
       y: mapExtent.y,
       scale: mapExtent.scale
     });
 
     document.location.replace(url);
-  }
+  }, [mapExtent]);
+
+  useEffect(() => {
+    console.log('URLParams update hash: sideBarOpen');
+
+    mixinHashValues({
+      sideBarClosed: !sideBarOpen
+    });
+
+    document.location.replace(url);
+  }, [sideBarOpen]);
 
   return null;
 }

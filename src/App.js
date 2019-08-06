@@ -33,6 +33,7 @@ export default class App extends Component {
   onMapClick = this.onMapClick.bind(this);
   onSherlockMatch = this.onSherlockMatch.bind(this);
   toggleSidebar = this.toggleSidebar.bind(this);
+  closeSidebar = this.closeSidebar.bind(this);
   setView = this.setView.bind(this);
   onMapExtentChange = this.onMapExtentChange.bind(this);
   setInitialExtent = this.setInitialExtent.bind(this);
@@ -68,7 +69,8 @@ export default class App extends Component {
     return (
       <div className="app">
         { this.state.mapReady &&
-          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent} />
+          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
+            sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar}/>
         }
         <TabsContext.Provider value={{
           currentTabIndex: this.state.currentTabIndex,
@@ -149,9 +151,11 @@ export default class App extends Component {
   }
 
   toggleSidebar() {
-    this.setState(state => {
-      return { sideBarOpen: !state.sideBarOpen };
-    });
+    this.setState({sideBarOpen: !this.state.sideBarOpen });
+  }
+
+  closeSidebar() {
+    this.setState({ sideBarOpen: false });
   }
 
   setView(view) {
