@@ -54,5 +54,5 @@ Tasks to be completed for each release:
 - [ ] Verify all tests are passing (`npm test`)
 - [ ] `npm run release` or `npm run release -- --prerelease`
 - [ ] Run a build and test (`npm run build` | `npm run build-stage`)
-- [ ] Deploy website (`grunt deploy-prod` | `npm run deploy-stage`)
+- [ ] Deploy website (`grunt deploy-prod` | `grunt deploy-stage`)
 - [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
