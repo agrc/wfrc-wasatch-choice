@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/agrc/wfrc/compare/v0.2.0...v0.3.0) (2019-08-06)
+
+
+### Features
+
+* add currentTabIndex url param ([251ef8f](https://github.com/agrc/wfrc/commit/251ef8f)), closes [#9](https://github.com/agrc/wfrc/issues/9)
+* add url param for sidebar open state ([2f75487](https://github.com/agrc/wfrc/commit/2f75487)), closes [#9](https://github.com/agrc/wfrc/issues/9)
+* add x/y/scale URL parameters ([1171174](https://github.com/agrc/wfrc/commit/1171174)), closes [#9](https://github.com/agrc/wfrc/issues/9)
+
 ## [0.2.0](https://github.com/agrc/wfrc/compare/v0.1.3...v0.2.0) (2019-08-05)
 
 
