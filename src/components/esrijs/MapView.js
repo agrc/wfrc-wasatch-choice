@@ -4,6 +4,7 @@ import { loadModules, loadCss } from 'esri-loader';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
 import config from '../../config';
 import TabsContext from '../Tabs/TabsContext';
+import debounce from 'lodash.debounce';
 
 
 export default class ReactMapView extends Component {
@@ -69,6 +70,18 @@ export default class ReactMapView extends Component {
     });
 
     this.props.setView(this.view);
+
+    this.view.when(() => {
+      this.view.watch('extent', debounce(newExtent => {
+        if (newExtent) {
+          this.props.onExtentChange({
+            x: Math.round(newExtent.center.x),
+            y: Math.round(newExtent.center.y),
+            scale: Math.round(this.view.scale)
+          });
+        }
+      }, 100));
+    });
 
     const selectorNode = document.createElement('div');
     this.view.ui.add(selectorNode, 'top-right');

@@ -11,6 +11,7 @@ import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
+import URLParams from './URLParams';
 
 
 export default class App extends Component {
@@ -23,13 +24,18 @@ export default class App extends Component {
     },
     mapClick: {},
     sideBarOpen: window.innerWidth >= config.MIN_DESKTOP_WIDTH,
-    currentTabIndex: 0
+    currentTabIndex: 0,
+    mapExtent: null,
+    mapView: null,
+    mapReady: false
   };
 
   onMapClick = this.onMapClick.bind(this);
   onSherlockMatch = this.onSherlockMatch.bind(this);
   toggleSidebar = this.toggleSidebar.bind(this);
   setView = this.setView.bind(this);
+  onMapExtentChange = this.onMapExtentChange.bind(this);
+  setInitialExtent = this.setInitialExtent.bind(this);
 
   render() {
     const quadWord = process.env.REACT_APP_DISCOVER;
@@ -39,7 +45,8 @@ export default class App extends Component {
       discoverKey: quadWord,
       zoomToGraphic: this.state.zoomToGraphic,
       onClick: this.onMapClick,
-      setView: this.setView
+      setView: this.setView,
+      onExtentChange: this.onMapExtentChange
     }
 
     const sidebarOptions = {
@@ -60,6 +67,9 @@ export default class App extends Component {
 
     return (
       <div className="app">
+        { this.state.mapReady &&
+          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent} />
+        }
         <TabsContext.Provider value={{
           currentTabIndex: this.state.currentTabIndex,
           setCurrentTab
@@ -100,6 +110,22 @@ export default class App extends Component {
     });
   }
 
+  onMapExtentChange(newExtent) {
+    this.setState({ mapExtent: newExtent });
+  }
+
+  setInitialExtent(extent) {
+    console.log('setInitialExtent', JSON.stringify(arguments[0]));
+
+    const mapView = this.state.mapView;
+    mapView.center = {
+      x: extent.x,
+      y: extent.y,
+      spatialReference: { wkid: 3857 }
+    };
+    mapView.scale = extent.scale;
+  }
+
   showIdentify(value) {
     this.setState({ showIdentify: value });
   }
@@ -128,9 +154,13 @@ export default class App extends Component {
     });
   }
 
-  setView(value) {
-    this.setState({
-      mapView: value
+  setView(view) {
+    this.setState({ mapView: view });
+
+    view.when(() => {
+      this.setState({
+        mapReady: true
+      });
     });
   }
 }
