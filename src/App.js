@@ -37,6 +37,7 @@ export default class App extends Component {
   setView = this.setView.bind(this);
   onMapExtentChange = this.onMapExtentChange.bind(this);
   setInitialExtent = this.setInitialExtent.bind(this);
+  setCurrentTab = this.setCurrentTab.bind(this);
 
   render() {
     const quadWord = process.env.REACT_APP_DISCOVER;
@@ -55,10 +56,6 @@ export default class App extends Component {
       toggleSidebar: this.toggleSidebar
     }
 
-    const setCurrentTab = index => {
-      this.setState({ currentTabIndex: index });
-    };
-
     const sherlockConfig = {
       provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
       placeHolder: config.sherlock.placeHolder,
@@ -68,14 +65,14 @@ export default class App extends Component {
 
     return (
       <div className="app">
-        { this.state.mapReady &&
-          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
-            sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar}/>
-        }
         <TabsContext.Provider value={{
           currentTabIndex: this.state.currentTabIndex,
-          setCurrentTab
+          setCurrentTab: this.setCurrentTab
         }}>
+          { this.state.mapReady &&
+            <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
+              sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar} />
+          }
           <Header title="Wasatch Choice 2050" version={version} />
           <Sidebar>
             <About />
@@ -90,6 +87,10 @@ export default class App extends Component {
       </div>
     );
   }
+
+  setCurrentTab(index) {
+    this.setState({ currentTabIndex: index });
+  };
 
   onFindAddress(graphic) {
     this.setState({

@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import queryString from 'query-string';
+import TabsContext from './components/Tabs/TabsContext';
 
 
 const url = new URL(document.location.href);
@@ -17,6 +18,9 @@ const mixinHashValues = values => {
 };
 
 export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
+  const { currentTabIndex, setCurrentTab } = useContext(TabsContext);
+
+  // get initial state from URL params
   useEffect(() => {
     console.log('URLParams setup');
     const currentHash = getCurrentHash();
@@ -28,8 +32,20 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
     if (currentHash.sideBarClosed) {
       closeSidebar();
     }
-  }, [setInitialExtent, closeSidebar]);
 
+    if (currentHash.currentTabIndex && currentHash.currentTabIndex > 0) {
+      setCurrentTab(currentHash.currentTabIndex);
+    }
+  }, [setInitialExtent, closeSidebar, setCurrentTab]);
+
+  // currentTabIndex
+  useEffect(() => {
+    mixinHashValues({
+      currentTabIndex
+    });
+  }, [currentTabIndex]);
+
+  // map extent
   useEffect(() => {
     console.log('URLParams update hash: mapExtent');
 
@@ -46,6 +62,7 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
     document.location.replace(url);
   }, [mapExtent]);
 
+  // sideBarClosed
   useEffect(() => {
     console.log('URLParams update hash: sideBarOpen');
 
