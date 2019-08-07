@@ -83,8 +83,11 @@ export default class ReactMapView extends Component {
       }, 100));
     });
 
-    const selectorNode = document.createElement('div');
-    this.view.ui.add(selectorNode, 'top-right');
+    this.selectorNode = document.createElement('div');
+
+    if (!this.shouldHideLayerSelector()) {
+      this.view.ui.add(this.selectorNode, 'top-right');
+    }
 
     const layerSelectorOptions = {
       view: this.view,
@@ -103,14 +106,28 @@ export default class ReactMapView extends Component {
       <LayerSelectorContainer>
         <LayerSelector {...layerSelectorOptions}></LayerSelector>
       </LayerSelectorContainer>,
-      selectorNode);
+      this.selectorNode);
 
     this.view.on('click', this.props.onClick);
   }
 
+  shouldHideLayerSelector() {
+    return config.tabs[this.context.currentTabIndex.toString()].hideLayerSelector;
+  }
+
   componentDidUpdate(prevProps) {
     if (this.context.currentTabIndex !== this.currentTabIndex) {
+      // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
+
+      // update layer selector visibility
+      if (this.context.currentTabIndex && this.shouldHideLayerSelector() !==
+        config.tabs[this.currentTabIndex.toString()].hideLayerSelector) {
+        const method = (this.shouldHideLayerSelector()) ?
+          this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
+        method(this.selectorNode, 'top-right');
+      }
+
       this.currentTabIndex = this.context.currentTabIndex;
     }
 

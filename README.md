@@ -9,18 +9,54 @@ The app is configured via a few JSON files located at the root of the deployed p
 
 ### `config.json`
 This is where all of the app configuration except the about widget is contained.
-
-#### `sherlock`
-This is for configuring the place name widget.
-
-`serviceUrl`(required) - `[string]`  
-The URL to the service that you would like to search features on.
-
-`searchField`(required) - `[string]`  
-The name of the field that you would like the search to be applied to.
-
-`placeHolder` - `[string]`  
-The place holder text that shows up in the text box before a user starts typing.
+```json
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "tabs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the tab that shows up in the actual tab control",
+            "type": "string"
+          },
+          "webMapId": {
+            "description": "The id of the web map that you would like displayed in the tab",
+            "type": "string"
+          },
+          "hideLayerSelector": {
+            "description": "Determines whether the layer selector widget is displayed or not",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": ["name", "webMapId"]
+      }
+    },
+    "sherlock": {
+      "description": "Configuration options for the map search widget",
+      "type": "object",
+      "properties": {
+        "serviceUrl": {
+          "description": "The URL to the service that you would like to search features on.",
+          "type": "string"
+        },
+        "searchField": {
+          "description": "The name of the field that you would like the search to be applied to.",
+          "type": "string"
+        },
+        "placeHolder": {
+          "description": "The place holder text that shows up in the text box before a user starts typing.",
+          "type": "string"
+      },
+      "required": ["serviceUrl", "searchField"]
+    }
+  }
+}
+```
 
 ### `about.json`
 This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size.

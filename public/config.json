@@ -2,7 +2,8 @@
   "tabs": [
     {
       "name": "2050 Vision",
-      "webMapId": "688a277a54b34e9ebda0fb711ee22514"
+      "webMapId": "688a277a54b34e9ebda0fb711ee22514",
+      "hideLayerSelector": true
     },
     {
       "name": "2019-50 RTP Projects",
