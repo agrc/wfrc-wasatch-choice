@@ -1,6 +1,7 @@
 # WFRC - Wasatch Choice Interactive Map [![Build Status](https://travis-ci.com/agrc/wfrc.svg?branch=master)](https://travis-ci.com/agrc/wfrc)
 
-[mockups](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5750aa3557_0_0)
+[mockups](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5750aa3557_0_0)  
+[tab configurations](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5e23978382_4_165)  
 
 ## Configuration
 
@@ -23,6 +24,34 @@ The place holder text that shows up in the text box before a user starts typing.
 
 ### `about.json`
 This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size.
+```json
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "0": {
+      "description": "HTML content for the first (Vision) tab",
+      "type": "string"
+    },
+    "1": {
+      "description": "HTML content for the second (Transportation) tab",
+      "type": "string"
+    },
+    "2": {
+      "description": "HTML content for the third (Land Use) tab",
+      "type": "string"
+    },
+    "3": {
+      "description": "HTML content for the fourth (Economic Development) tab",
+      "type": "string"
+    },
+    "4": {
+      "description": "HTML content for the fifth (Amenities) tab",
+      "type": "string"
+    }
+  }
+}
+```
 
 ## Development & Testing
 

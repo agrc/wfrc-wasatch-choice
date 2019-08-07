@@ -1,8 +1,9 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, createRef, useContext } from 'react';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 import './About.css';
 import { Modal, ModalBody } from 'reactstrap';
+import TabsContext from '../Tabs/TabsContext';
 
 
 export default props => {
@@ -12,6 +13,7 @@ export default props => {
     content: null
   });
   const [ imagesHaveBeenProcessed, setImagesHaveBeenProcessed ] = useState(false);
+  const { currentTabIndex } = useContext(TabsContext);
 
   const dialogitizeImages = parentNode => {
     console.log('adding dialogs to images');
@@ -38,7 +40,7 @@ export default props => {
 
     fetch('about.json')
       .then(response => response.json())
-      .then(configJson => setContent(configJson.about.aboutContent))
+      .then(configJson => setContent(configJson))
     ;
   }, []);
 
@@ -57,7 +59,7 @@ export default props => {
 
   return (
     <>
-      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content}}></div> :
+      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabIndex]}}></div> :
         <Loader type='Oval' className='about__loader' /> }
       <Modal isOpen={modalState.isOpen} size='xl' toggle={toggleModal}>
         <ModalBody>
