@@ -10,6 +10,7 @@
     "bootstrap": "^4.3.1",
     "downshift": "^3.2.10",
     "esri-loader": "2.10.0",
+    "jsonschema": "1.2.4",
     "lodash.debounce": "^4.0.8",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.sortby": "^4.7.0",

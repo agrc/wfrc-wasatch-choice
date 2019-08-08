@@ -86,25 +86,19 @@ export default class ReactMapView extends Component {
 
   async setUpLayerSelector() {
     const selectorRequires = [
-      'esri/layers/FeatureLayer',
       'esri/layers/support/LOD',
       'esri/layers/support/TileInfo',
       'esri/layers/WebTileLayer',
-      'esri/Basemap'
+      'esri/Basemap',
+      'esri/layers/FeatureLayer',
     ];
-    const [FeatureLayer, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(selectorRequires);
+    const modules = await loadModules(selectorRequires);
 
     const layerSelectorOptions = {
       view: this.view,
       quadWord: this.props.discoverKey,
-      baseLayers: ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
-      overlays: ['Address Points', {
-        Factory: FeatureLayer,
-        url: this.urls.landownership,
-        id: 'Land Ownership',
-        opacity: 0.3
-      }],
-      modules: [LOD, TileInfo, WebTileLayer, Basemap]
+      modules,
+      ...config.layerSelector
     }
 
     ReactDOM.render(

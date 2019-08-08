@@ -26,5 +26,27 @@
     "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/0",
     "searchField": "NAME",
     "placeHolder": "search for place name..."
+  },
+  "layerSelector": {
+    "baseLayers": [
+      "Terrain",
+      "Imagery",
+      {
+        "id": "Imagery_BW",
+        "Factory": "WebTiledLayer",
+        "urlTemplate": "https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/utah/{level}/{col}/{row}"
+      },
+      "Lite"
+    ],
+    "overlays": [
+      "Overlay",
+      {
+        "id": "Land Ownership",
+        "Factory": "FeatureLayer",
+        "url": "https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0",
+        "opacity": 0.5
+      },
+      "Address Points"
+    ]
   }
 }

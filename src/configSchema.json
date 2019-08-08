@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "tabs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the tab that shows up in the actual tab control",
+            "type": "string"
+          },
+          "webMapId": {
+            "description": "The id of the web map that you would like displayed in the tab",
+            "type": "string"
+          },
+          "hideLayerSelector": {
+            "description": "Determines whether the layer selector widget is displayed or not",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "name",
+          "webMapId"
+        ]
+      }
+    },
+    "sherlock": {
+      "description": "Configuration options for the map search widget",
+      "type": "object",
+      "properties": {
+        "serviceUrl": {
+          "description": "The URL to the service that you would like to search features on.",
+          "type": "string"
+        },
+        "searchField": {
+          "description": "The name of the field that you would like the search to be applied to.",
+          "type": "string"
+        },
+        "placeHolder": {
+          "description": "The place holder text that shows up in the text box before a user starts typing.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "serviceUrl",
+        "searchField"
+      ]
+    },
+    "layerSelector": {
+      "description": "Configuration options for the base map selector widget",
+      "type": "object",
+      "properties": {
+        "baseLayers": {
+          "type": "array",
+          "items": {
+            "type": ["object", "string"],
+            "properties": {
+              "id": {
+                "description": "The name of the layer",
+                "type": "string"
+              },
+              "Factory": {
+                "description": "The name of the esrijs module associated with the layer type",
+                "type": "string"
+              },
+              "urlTemplate": {
+                "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "Factory",
+              "urlTemplate"
+            ]
+          }
+        },
+        "overlays": {
+          "type": "array",
+          "items": {
+            "type": ["object", "string"],
+            "properties": {
+              "id": {
+                "description": "The name of the layer",
+                "type": "string"
+              },
+              "Factory": {
+                "description": "The name of the esrijs module associated with the layer type",
+                "type": "string"
+              },
+              "url": {
+                "description": "The url for the layer",
+                "type": "string"
+              },
+              "opacity": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "id",
+              "Factory",
+              "url"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

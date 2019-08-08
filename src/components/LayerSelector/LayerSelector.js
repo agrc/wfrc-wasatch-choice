@@ -78,10 +78,12 @@ class LayerSelector extends Component {
       }
     }
     this.managedLayers = {};
-    const LOD = this.props.modules[0];
-    const TileInfo = this.props.modules[1];
-    const WebTiledLayer = this.props.modules[2];
-    const Basemap = this.props.modules[3];
+    const [ LOD, TileInfo, WebTiledLayer, Basemap, FeatureLayer ] = this.props.modules;
+
+    this.factoryLookup = {
+      WebTiledLayer,
+      FeatureLayer
+    };
 
     this.props.view.map.basemap = new Basemap();
 
@@ -144,9 +146,9 @@ class LayerSelector extends Component {
     quadWord: PropTypes.string,
     modules: PropTypes.arrayOf(PropTypes.func).isRequired,
     baseLayers: PropTypes.arrayOf(PropTypes.oneOfType([
-      PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay']),
+      PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay', 'Imagery']),
       PropTypes.shape({
-        Factory: PropTypes.func.isRequired,
+        Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
         urlTemplate: PropTypes.string,
         url: PropTypes.string,
         id: PropTypes.string.isRequired,
@@ -162,7 +164,7 @@ class LayerSelector extends Component {
     overlays: PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.oneOf(['Address Points', 'Overlay']),
       PropTypes.shape({
-        Factory: PropTypes.func.isRequired,
+        Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
         urlTemplate: PropTypes.string,
         url: PropTypes.string,
         id: PropTypes.string.isRequired,
@@ -447,6 +449,9 @@ class LayerSelector extends Component {
       this.managedLayers = managedLayers;
 
       if (!managedLayers[layerItem.id].layer) {
+        if (typeof layerItem.Factory === 'string') {
+          layerItem.Factory = this.factoryLookup[layerItem.Factory];
+        }
         managedLayers[layerItem.id].layer = new layerItem.Factory(layerItem);
       }
 
