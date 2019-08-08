@@ -32,17 +32,9 @@ export default class ReactMapView extends Component {
     loadCss('https://js.arcgis.com/4.12/esri/css/main.css');
     const mapRequires = [
       'esri/WebMap',
-      'esri/views/MapView',
-      'esri/layers/FeatureLayer'
+      'esri/views/MapView'
     ];
-    const selectorRequires = [
-      'esri/layers/support/LOD',
-      'esri/layers/support/TileInfo',
-      'esri/layers/WebTileLayer',
-      'esri/Basemap'
-    ];
-
-    const [WebMap, MapView, FeatureLayer, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(mapRequires.concat(selectorRequires));
+    const [WebMap, MapView] = await loadModules(mapRequires);
 
     this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({
@@ -87,7 +79,20 @@ export default class ReactMapView extends Component {
 
     if (!this.shouldHideLayerSelector()) {
       this.view.ui.add(this.selectorNode, 'top-right');
+
+      this.setUpLayerSelector();
     }
+  }
+
+  async setUpLayerSelector() {
+    const selectorRequires = [
+      'esri/layers/FeatureLayer',
+      'esri/layers/support/LOD',
+      'esri/layers/support/TileInfo',
+      'esri/layers/WebTileLayer',
+      'esri/Basemap'
+    ];
+    const [FeatureLayer, LOD, TileInfo, WebTileLayer, Basemap] = await loadModules(selectorRequires);
 
     const layerSelectorOptions = {
       view: this.view,
@@ -104,7 +109,7 @@ export default class ReactMapView extends Component {
 
     ReactDOM.render(
       <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions}></LayerSelector>
+        <LayerSelector {...layerSelectorOptions} ref={ref => this.layerSelector = ref}></LayerSelector>
       </LayerSelectorContainer>,
       this.selectorNode);
 
@@ -115,7 +120,7 @@ export default class ReactMapView extends Component {
     return config.tabs[this.context.currentTabIndex.toString()].hideLayerSelector;
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     if (this.context.currentTabIndex !== this.currentTabIndex) {
       // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
@@ -126,6 +131,14 @@ export default class ReactMapView extends Component {
         const method = (this.shouldHideLayerSelector()) ?
           this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
         method(this.selectorNode, 'top-right');
+      }
+
+      if (!this.shouldHideLayerSelector()) {
+        if (!this.layerSelector) {
+          await this.setUpLayerSelector();
+        }
+
+        this.layerSelector.forceMapUpdate();
       }
 
       this.currentTabIndex = this.context.currentTabIndex;

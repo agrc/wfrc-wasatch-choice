@@ -344,16 +344,16 @@ class LayerSelector extends Component {
   }
 
   componentDidMount() {
-    this.updateMap([].concat(this.state.baseLayers).concat(this.state.overlays))
+    this.forceMapUpdate();
   }
 
   onItemChanged(event, props) {
     console.log('onItemChanged', props);
-    let overlays = this.state.overlays;
-    let baseLayers = this.state.baseLayers;
+    const overlays = this.state.overlays;
+    const baseLayers = this.state.baseLayers;
 
     if (props.layerType === 'baselayer') {
-      baseLayers = baseLayers.map(item => {
+      baseLayers.forEach(item => {
         item.selected = item.id === props.id ? event.target.checked : false;
 
         return item;
@@ -362,7 +362,7 @@ class LayerSelector extends Component {
       const selectedItem = baseLayers.filter((layer) => layer.selected)[0];
 
       if (selectedItem.linked && selectedItem.linked.length > 0) {
-        overlays = overlays.map((item) => {
+        overlays.forEach((item) => {
           if (selectedItem.linked.includes(item.id)) {
             item.selected = true;
           }
@@ -370,7 +370,7 @@ class LayerSelector extends Component {
           return item;
         });
       } else {
-        overlays.map((item) => {
+        overlays.forEach((item) => {
           if (this.linkedLayers.includes(item.id)) {
             item.selected = false;
           }
@@ -379,7 +379,7 @@ class LayerSelector extends Component {
         });
       }
     } else if (props.layerType === 'overlay') {
-      overlays.map((item) => {
+      overlays.forEach((item) => {
         if (item.id === props.id) {
           item.selected = event.target.checked;
         }
@@ -393,10 +393,21 @@ class LayerSelector extends Component {
       baseLayers
     });
 
-    this.updateMap([].concat(baseLayers).concat(overlays))
+    this.updateMap(baseLayers.concat(overlays))
+  }
+
+  forceMapUpdate() {
+    console.log('LayerSelector:forceMapUpdate');
+
+    // make sure that the map is loaded before we try and update layers
+    this.props.view.map.when(() => {
+      this.updateMap(this.state.baseLayers.concat(this.state.overlays));
+    });
   }
 
   updateMap(layerItems) {
+    console.log('LayerSelector:updateMap', arguments);
+
     let managedLayers = this.managedLayers;
 
     layerItems.forEach(layerItem => {
