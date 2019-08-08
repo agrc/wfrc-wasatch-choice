@@ -31,11 +31,6 @@
     "baseLayers": [
       "Terrain",
       "Imagery",
-      {
-        "id": "Imagery_BW",
-        "Factory": "WebTiledLayer",
-        "urlTemplate": "https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/utah/{level}/{col}/{row}"
-      },
       "Lite"
     ],
     "overlays": [
