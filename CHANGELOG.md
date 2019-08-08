@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/agrc/wfrc/compare/v0.3.0...v0.4.0) (2019-08-08)
+
+
+### Bug Fixes
+
+* fix production deploy path ([149c79e](https://github.com/agrc/wfrc/commit/149c79e))
+* make layer-selector state consistent between maps ([4b367b2](https://github.com/agrc/wfrc/commit/4b367b2))
+* update discover quad word for wfrc prod server ([a9b50cb](https://github.com/agrc/wfrc/commit/a9b50cb))
+* update tab names and web map ids ([f05c7b3](https://github.com/agrc/wfrc/commit/f05c7b3))
+
+
+### Features
+
+* add tab config for base map selector visibility ([6cea413](https://github.com/agrc/wfrc/commit/6cea413)), closes [#14](https://github.com/agrc/wfrc/issues/14)
+* allow for different about content values per tab ([a4a917e](https://github.com/agrc/wfrc/commit/a4a917e)), closes [#14](https://github.com/agrc/wfrc/issues/14)
+* implement layerSelector configs & config validation ([13931a2](https://github.com/agrc/wfrc/commit/13931a2))
+
 ## [0.3.0](https://github.com/agrc/wfrc/compare/v0.2.0...v0.3.0) (2019-08-06)
 
 
