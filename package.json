@@ -2,7 +2,7 @@
   "name": "wfrc",
   "version": "0.3.0",
   "private": true,
-  "homepage": "https://test2.mapserv.utah.gov/wfrc",
+  "homepage": ".",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.20",
     "@fortawesome/free-solid-svg-icons": "5.10.0",
