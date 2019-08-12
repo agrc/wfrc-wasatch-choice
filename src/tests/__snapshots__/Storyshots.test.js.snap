@@ -1,0 +1,748 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Filter Amenities 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Community Centers
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Trails
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Parks
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Federal Lands
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Golf Courses
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Ski Areas
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Economic Development 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Existing Transit
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Opportunity Zones
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Centers
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      General Land Use
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+       
+      Economic Clusters
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Land Uses 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        2050 Data
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Employment Projections
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Population Projections
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Workplace Accessibility - Auto
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Workplace Accessibility - Transit
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Land Use
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Centers
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          General Land Use
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Transportation 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Project Modes
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Roads
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Transit
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Bike/Ped
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Phasing (colors)
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Phase 1 (2019-30)
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Phase 2 (2031-40)
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Phase 3 (2041-50)
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Unfunded Needs
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Land Use (filter by phasing)
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Centers
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          General Land Use
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Other
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Existing Bike/Ped
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Existing Transit
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Vision 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Transportation
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Roads
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Transit
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Bike/Ped
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Land Use
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          Centers
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+           
+          General Land Use
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

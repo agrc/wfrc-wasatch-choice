@@ -29,7 +29,9 @@
     "build-stage": "./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "standard-version"
+    "release": "standard-version",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +43,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@storybook/addon-actions": "5.1.10",
+    "@storybook/addon-links": "5.1.10",
+    "@storybook/addon-storyshots": "5.1.10",
+    "@storybook/addons": "5.1.10",
+    "@storybook/react": "5.1.10",
     "cz-conventional-changelog": "3.0.2",
     "env-cmd": "9.0.3",
     "grunt": "^1.0.4",
@@ -49,6 +56,7 @@
     "grunt-ssh": "^0.12.9",
     "load-grunt-tasks": "^5.0.0",
     "node-sass": "4.12.0",
+    "react-test-renderer": "16.8.5",
     "standard-version": "7.0.0"
   },
   "config": {
