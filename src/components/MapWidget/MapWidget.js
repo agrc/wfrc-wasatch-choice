@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, ButtonToolbar, ButtonGroup, Card, CardHeader, CardBody } from 'reactstrap';
-import './MapWidget.css';
+import './MapWidget.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
