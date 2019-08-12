@@ -19,6 +19,87 @@
             "description": "Determines whether the layer selector widget is displayed or not",
             "type": "boolean",
             "default": false
+          },
+          "filter": {
+            "description": "Contains configs for the filter widget.",
+            "type": "object",
+            "properties": {
+              "layerNames": {
+                "description": "Defines all of the layer names as they show up in the web map",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "checkboxes": {
+                "description": "Defines checkboxes for toggling visibility of one to many layers.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "layers": {
+                      "description": "Defines the layer(s) that you want to toggle. Values must match the property names of `layerNames` above.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "phase": {
+                      "description": "Defines the zero-based index of the phase that this checkbox is associated with.",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "oneOf": [
+                    {
+                      "required": [ "layers" ]
+                    },
+                    {
+                      "required": [ "phase" ]
+                    }
+                  ]
+                },
+                "phases": {
+                  "description": "Defines the field name and values that correspond to each of the phases (1, 2, 3 & unfunded) for the appropriate layers.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "description": "The first value is the field name and subsequent values correspond to the phases. The unfunded phase value is optional.",
+                      "type": ["string", "number"]
+                    }
+                  }
+                }
+              },
+              "groups": {
+                "description": "Defines the checkbox groups.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "checkboxes": {
+                      "description": "Checkboxes to be included in the group. Values must match the property names for `checkboxes` above.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "checkboxes"
+                  ]
+                }
+              }
+            }
           }
         },
         "required": [
@@ -56,7 +137,10 @@
         "baseLayers": {
           "type": "array",
           "items": {
-            "type": ["object", "string"],
+            "type": [
+              "object",
+              "string"
+            ],
             "properties": {
               "id": {
                 "description": "The name of the layer",
@@ -81,7 +165,10 @@
         "overlays": {
           "type": "array",
           "items": {
-            "type": ["object", "string"],
+            "type": [
+              "object",
+              "string"
+            ],
             "properties": {
               "id": {
                 "description": "The name of the layer",

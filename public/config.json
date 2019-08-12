@@ -3,23 +3,473 @@
     {
       "name": "Vision",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
-      "hideLayerSelector": true
+      "hideLayerSelector": true,
+      "filter": {
+        "layerNames": {
+          "majorTransitStations": "Major Transit Stations",
+          "majorTransit": "Major Transit",
+          "interchanges": "Interchanges",
+          "majorRoads": "Major Roads",
+          "majorTrails": "Major Trails",
+          "centers": "Centers",
+          "generalLandUse": "General Land Use"
+        },
+        "checkboxes": {
+          "roads": {
+            "label": "Roads",
+            "layers": [
+              "interchanges",
+              "majorRoads"
+            ]
+          },
+          "transit": {
+            "label": "Transit",
+            "layers": [
+              "majorTransitStations",
+              "majorTransit"
+            ]
+          },
+          "bikePed": {
+            "label": "Bike/Ped",
+            "layers": [
+              "majorTrails"
+            ]
+          },
+          "centers": {
+            "label": "Centers",
+            "layers": [
+              "centers"
+            ]
+          },
+          "generalLandUse": {
+            "label": "General Land Use",
+            "layers": [
+              "generalLandUse"
+            ]
+          }
+        },
+        "groups": [
+          {
+            "label": "Transportation",
+            "checkboxes": [
+              "roads",
+              "transit",
+              "bikePed"
+            ]
+          },
+          {
+            "label": "Land Use",
+            "checkboxes": [
+              "centers",
+              "generalLandUse"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Transportation",
-      "webMapId": "cd2c6f87147a472ea46f617c5dac80ee"
+      "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
+      "filter": {
+        "layerNames": {
+          "activeTransPoint": "Active Transportation Point Projects",
+          "magActiveTransPoint": "MAG Active Transportation Point Projects",
+          "transitPoint": "Transit Point Projects",
+          "magTransitPoint": "MAG Transit Point Projects",
+          "existingTransitPoint": "Existing Transit Stations",
+          "roadwayPoint": "Roadway Point Projects",
+          "magRoadwayPoint": "MAG Roadway Point Projects",
+          "activeTransLine": "Active Transportation Line Projects",
+          "magActiveTransLine": "MAG Active Transportation Line Projects",
+          "existingBike": "Existing Bike Network",
+          "transitLine": "Transit Line Projects",
+          "magTransitLine": "MAG Transit Line Projects",
+          "existingTransitLine": "Existing Transit Lines",
+          "roadwayLine": "Roadway Line Projects",
+          "magRoadwayLine": "MAG Roadway Line Projects",
+          "centers": "Centers",
+          "magCenters": "MAG Centers",
+          "generalLandUse": "General Land Use",
+          "magGeneralLandUse": "MAG General Land Use"
+        },
+        "phases": {
+          "activeTransPoint": [
+            "Proj_Phase",
+            1,
+            2,
+            3
+          ],
+          "magActiveTransPoint": [
+            "phase",
+            1,
+            2,
+            3
+          ],
+          "transitPoint": [
+            "FCPhase",
+            1,
+            2,
+            3,
+            0
+          ],
+          "magTransitPoint": [
+            "Phase",
+            1,
+            2,
+            3
+          ],
+          "roadwayPoint": [
+            "FCPhase",
+            1,
+            2,
+            3,
+            4
+          ],
+          "magPoint": [
+            "Phase",
+            1,
+            2,
+            3,
+            4
+          ],
+          "activeTransLine": [
+            "Phase",
+            1,
+            2,
+            3
+          ],
+          "magActiveTransLine": [
+            "phase",
+            1,
+            2,
+            3
+          ],
+          "transitLine": [
+            "FC_Phase",
+            1,
+            2,
+            3,
+            0
+          ],
+          "magTransitLine": [
+            "Phase",
+            1,
+            2,
+            3,
+            4
+          ],
+          "roadwayLine": [
+            "FCPhase",
+            1,
+            2,
+            3,
+            4
+          ],
+          "magRoadwayLine": [
+            "Phase",
+            1,
+            2,
+            3,
+            4
+          ],
+          "centers": [
+            "DraftPhase",
+            1,
+            "1, 12",
+            "1, 12, 123"
+          ],
+          "generalLandUse": [
+            "DraftPhase",
+            1,
+            "1, 12",
+            "1, 12, 123"
+          ]
+        },
+        "checkboxes": {
+          "roads": {
+            "label": "Roads",
+            "layers": [
+              "roadwayPoint",
+              "magRoadwayPoint",
+              "roadwayLine",
+              "magRoadwayLine"
+            ]
+          },
+          "transit": {
+            "label": "Transit",
+            "layers": [
+              "transitPoint",
+              "magTransitPoint",
+              "transitLine",
+              "magTransitLine"
+            ]
+          },
+          "bikePed": {
+            "label": "Bike/Ped",
+            "layers": [
+              "activeTransPoint",
+              "magActiveTransPoint",
+              "activeTransLine",
+              "magActiveTransLine"
+            ]
+          },
+          "phase1": {
+            "label": "Phase 1 (2019-30)",
+            "phase": 0
+          },
+          "phase2": {
+            "label": "Phase 2 (2031-40)",
+            "phase": 1
+          },
+          "phase3": {
+            "label": "Phase 3 (2041-50)",
+            "phase": 2
+          },
+          "unfunded": {
+            "label": "Unfunded Needs",
+            "phase": 3
+          },
+          "centers": {
+            "label": "Centers",
+            "layers": [
+              "centers",
+              "magCenters"
+            ]
+          },
+          "generalLandUse": {
+            "label": "General Land Use",
+            "layers": [
+              "generalLandUse",
+              "magGeneralLandUse"
+            ]
+          },
+          "existingBikePed": {
+            "label": "Existing Bike/Ped",
+            "layers": [
+              "existingBike"
+            ]
+          },
+          "existingTransit": {
+            "label": "Existing Transit",
+            "layers": [
+              "existingTransitPoint",
+              "existingTransitLines"
+            ]
+          }
+        },
+        "groups": [
+          {
+            "label": "Project Modes",
+            "checkboxes": [
+              "roads",
+              "transit",
+              "bikePed"
+            ]
+          },
+          {
+            "label": "Phasing (colors)",
+            "checkboxes": [
+              "phase1",
+              "phase2",
+              "phase3",
+              "unfunded"
+            ]
+          },
+          {
+            "label": "Land Use (filter by phasing)",
+            "checkboxes": [
+              "centers",
+              "generalLandUse"
+            ]
+          },
+          {
+            "label": "Other",
+            "checkboxes": [
+              "existingBikePed",
+              "existingTransit"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Land Uses",
-      "webMapId": "3eb707055b2148b6967e793de770395c"
+      "webMapId": "3eb707055b2148b6967e793de770395c",
+      "filter": {
+        "layerNames": {
+          "employment": "Employment Projections (2050)",
+          "population": "Population Projections (2050)",
+          "workplaceAccessibilityAuto": "Workplace Accessibility - Auto",
+          "workplaceAccessibilityTransit": "Workplace Accessibility - Transit",
+          "centers": "Centers",
+          "magCenters": "MAG Centers",
+          "generalLandUse": "General Land Use",
+          "magGeneralLandUse": "MAG General Land Use",
+          "greenSpace": "Green Space"
+        },
+        "checkboxes": {
+          "employment": {
+            "label": "Employment Projections",
+            "layers": [
+              "employment"
+            ]
+          },
+          "population": {
+            "label": "Population Projections",
+            "layers": [
+              "population"
+            ]
+          },
+          "workplaceAccessibilityAuto": {
+            "label": "Workplace Accessibility - Auto",
+            "layers": [
+              "workplaceAccessibilityAuto"
+            ]
+          },
+          "workplaceAccessibilityTransit": {
+            "label": "Workplace Accessibility - Transit",
+            "layers": [
+              "workplaceAccessibilityTransit"
+            ]
+          },
+          "centers": {
+            "label": "Centers",
+            "layers": [
+              "centers"
+            ]
+          },
+          "generalLandUse": {
+            "label": "General Land Use",
+            "layers": [
+              "generalLandUse"
+            ]
+          }
+        },
+        "groups": [
+          {
+            "label": "2050 Data",
+            "checkboxes": [
+              "employment",
+              "population",
+              "workplaceAccessibilityAuto",
+              "workplaceAccessibilityTransit"
+            ]
+          },
+          {
+            "label": "Land Use",
+            "checkboxes": [
+              "centers",
+              "generalLandUse"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Economic Development",
-      "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc"
+      "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
+      "filter": {
+        "layerNames": {
+          "existingTransitPoint": "Existing Transit Stations",
+          "existingTransitLine": "Existing Transit Lines",
+          "opportunityZones": "Opportunity Zones",
+          "centers": "Centers",
+          "magCenters": "MAG Centers",
+          "generalLandUse": "General Land Use",
+          "magGeneralLandUser": "MAG General Land Use",
+          "economicClusters": "Economic Clusters"
+        },
+        "checkboxes": {
+          "existingTransit": {
+            "label": "Existing Transit",
+            "layers": [
+              "existingTransitPoint",
+              "existingTransitLine"
+            ]
+          },
+          "opportunityZones": {
+            "label": "Opportunity Zones",
+            "layers": [
+              "opportunityZones"
+            ]
+          },
+          "centers": {
+            "label": "Centers",
+            "layers": [
+              "centers"
+            ]
+          },
+          "generalLandUse": {
+            "label": "General Land Use",
+            "layers": [
+              "generalLandUse",
+              "magGeneralLandUse"
+            ]
+          },
+          "economicClusters": {
+            "label": "Economic Clusters",
+            "layers": [
+              "economicClusters"
+            ]
+          }
+        }
+      }
     },
     {
       "name": "Amenities",
-      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80",
+      "filter": {
+        "layerNames": {
+          "communityCenters": "Community Centers",
+          "trailheads": "Trailheads",
+          "trails": "Trails",
+          "parks": "Parks",
+          "stateParks": "State Parks",
+          "federalLands": "Federal Lands",
+          "golfCourses": "Golf Courses",
+          "skiAreas": "Ski Areas"
+        },
+        "checkboxes": {
+          "communityCenters": {
+            "label": "Community Centers",
+            "layers": [
+              "communityCenters"
+            ]
+          },
+          "trails": {
+            "label": "Trails",
+            "layers": [
+              "trailheads",
+              "trails"
+            ]
+          },
+          "parks": {
+            "label": "Parks",
+            "layers": [
+              "parks",
+              "stateParks"
+            ]
+          },
+          "federalLands": {
+            "label": "Federal Lands",
+            "layers": [
+              "federalLands"
+            ]
+          },
+          "golfCourses": {
+            "label": "Golf Courses",
+            "layers": [
+              "golfCourses"
+            ]
+          },
+          "skiAreas": {
+            "label": "Ski Areas",
+            "layers": [
+              "Ski Areas"
+            ]
+          }
+        }
+      }
     }
   ],
   "sherlock": {

@@ -8,7 +8,7 @@ export default props => {
   const baseTop = 93;
   const buttonHeight = 41;
   const top = baseTop + (props.position * buttonHeight);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(props.defaultOpen);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -35,7 +35,7 @@ export default props => {
           <Button close onClick={toggle} />
         </CardHeader>
         <CardBody>
-          body content
+          {props.children}
         </CardBody>
       </Card>
     </>

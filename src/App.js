@@ -12,6 +12,7 @@ import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
 import URLParams from './URLParams';
+import Filter from './components/Filter/Filter';
 
 
 export default class App extends Component {
@@ -79,8 +80,11 @@ export default class App extends Component {
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
-            <MapWidget name='Project Information' icon={faHandPointer} position={0} />
-            <MapWidget name='Filter' icon={faList} position={1} />
+            <MapWidget name="Project Information" defaultOpen={true} icon={faHandPointer} position={0}>
+              <Filter {...config.tabs[this.state.currentTabIndex].filter}
+                mapView={this.state.mapView} />
+            </MapWidget>
+            <MapWidget name="Filter" icon={faList} position={1} />
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
         </TabsContext.Provider>
