@@ -78,7 +78,7 @@ export default class ReactMapView extends Component {
     this.selectorNode = document.createElement('div');
 
     if (!this.shouldHideLayerSelector()) {
-      this.view.ui.add(this.selectorNode, 'top-right');
+      this.view.ui.add(this.selectorNode, 'top-left');
 
       this.setUpLayerSelector();
     }
@@ -124,7 +124,7 @@ export default class ReactMapView extends Component {
         config.tabs[this.currentTabIndex.toString()].hideLayerSelector) {
         const method = (this.shouldHideLayerSelector()) ?
           this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
-        method(this.selectorNode, 'top-right');
+        method(this.selectorNode, 'top-left');
       }
 
       if (!this.shouldHideLayerSelector()) {

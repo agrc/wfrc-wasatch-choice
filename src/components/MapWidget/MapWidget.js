@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { Button, ButtonToolbar, ButtonGroup, Card, CardHeader, CardBody } from 'reactstrap';
+import React, { useState, useRef, useEffect } from 'react';
+import { Button, ButtonGroup, Card, CardHeader, CardBody } from 'reactstrap';
 import './MapWidget.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default props => {
-  const baseTop = 93;
-  const buttonHeight = 41;
-  const top = baseTop + (props.position * buttonHeight);
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
 
   const toggle = () => {
@@ -19,17 +16,23 @@ export default props => {
     top: props.position === 0 ? padding : `calc(50% - ${padding})`,
     bottom: props.position === 0 ? `calc(50% + 2 * ${padding})` : padding
   };
+  const buttonDiv = useRef();
+  useEffect(() => {
+    if (props.mapView && buttonDiv.current) {
+      props.mapView.ui.add(buttonDiv.current, 'top-left');
+    }
+  }, [buttonDiv, props.mapView]);
 
   return (
     <>
-      <ButtonToolbar className='map-widget-button' style={{ top: `${top}px` }}>
+      <div className="map-widget-button btn-toolbar" role="toolbar" ref={buttonDiv}>
         <ButtonGroup>
           <Button onClick={toggle} title={props.name}>
             <FontAwesomeIcon icon={props.icon} />
           </Button>
         </ButtonGroup>
-      </ButtonToolbar>
-      <Card style={cardStyle} className='map-widget-card'>
+      </div>
+      <Card style={cardStyle} className="map-widget-card">
         <CardHeader>
           {props.name}
           <Button close onClick={toggle} />

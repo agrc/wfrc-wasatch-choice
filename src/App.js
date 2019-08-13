@@ -80,12 +80,21 @@ export default class App extends Component {
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
-            <MapWidget name="Project Information" defaultOpen={true} icon={faHandPointer} position={0}>
+            <MapWidget
+              name="Filter"
+              icon={faList}
+              position={0}
+              mapView={this.state.mapView}>
               <Filter {...config.tabs[this.state.currentTabIndex].filter}
                 mapView={this.state.mapView}
                 webMapId={config.tabs[this.state.currentTabIndex].webMapId} />
             </MapWidget>
-            <MapWidget name="Filter" icon={faList} position={1} />
+            <MapWidget
+              name="Project Information"
+              icon={faHandPointer}
+              position={1}
+              mapView={this.state.mapView}>
+            </MapWidget>
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
         </TabsContext.Provider>
