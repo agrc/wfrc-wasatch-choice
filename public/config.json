@@ -94,10 +94,10 @@
         },
         "phases": {
           "activeTransPoint": [
-            "Proj_Phase",
-            1,
-            2,
-            3
+            "CostPhased",
+            "1",
+            "2",
+            "3"
           ],
           "magActiveTransPoint": [
             "phase",
@@ -106,11 +106,11 @@
             3
           ],
           "transitPoint": [
-            "FCPhase",
-            1,
-            2,
-            3,
-            0
+            "PhaseFC",
+            "1",
+            "2",
+            "3",
+            "0"
           ],
           "magTransitPoint": [
             "Phase",
@@ -119,11 +119,11 @@
             3
           ],
           "roadwayPoint": [
-            "FCPhase",
-            1,
-            2,
-            3,
-            4
+            "PhaseFC",
+            "1",
+            "2",
+            "3",
+            "4"
           ],
           "magPoint": [
             "Phase",
@@ -133,7 +133,7 @@
             4
           ],
           "activeTransLine": [
-            "Phase",
+            "PhaseNeed",
             1,
             2,
             3
@@ -145,11 +145,11 @@
             3
           ],
           "transitLine": [
-            "FC_Phase",
-            1,
-            2,
-            3,
-            0
+            "PhaseFC",
+            "1",
+            "2",
+            "3",
+            "Unfunded"
           ],
           "magTransitLine": [
             "Phase",
@@ -159,11 +159,11 @@
             4
           ],
           "roadwayLine": [
-            "FCPhase",
-            1,
-            2,
-            3,
-            4
+            "PhaseFC",
+            "1",
+            "2",
+            "3",
+            "4"
           ],
           "magRoadwayLine": [
             "Phase",
@@ -173,16 +173,16 @@
             4
           ],
           "centers": [
-            "DraftPhase",
+            "Phase",
             1,
-            "1, 12",
-            "1, 12, 123"
+            2,
+            3
           ],
           "generalLandUse": [
-            "DraftPhase",
+            "Phase",
             1,
-            "1, 12",
-            "1, 12, 123"
+            2,
+            3
           ]
         },
         "checkboxes": {

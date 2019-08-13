@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
 
@@ -28,10 +28,48 @@ export const getLayers = (layerNames, map) => {
   return layers;
 }
 
+export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
+  // translate the phase info into a definition query taking into account the selected phases
+  console.log('Filter.getPhaseQuery');
+
+  const showNoneQuery = '1 = 2';
+  if (checkedPhaseIndexes.length === 0) {
+    return showNoneQuery;
+  } else if (checkedPhaseIndexes.length === 4) {
+    return null;
+  }
+
+  const filterPhase = (_, i) => {
+    return checkedPhaseIndexes.includes(i);
+  };
+  const removeDuplicates = inStatement => {
+    return [...new Set(inStatement.split(joinTxt))].join(joinTxt);
+  };
+  const wrapWithQuotes = text => {
+    return `'${text}'`;
+  };
+  const isStringQuery = typeof phaseInfo[1] === 'string';
+
+  let joinTxt = ', ';
+  if (isStringQuery) {
+    joinTxt = wrapWithQuotes(joinTxt);
+  }
+  let queryValues = removeDuplicates(phaseInfo.slice(1).filter(filterPhase).join(joinTxt));
+  if (queryValues.length === 0) {
+    return showNoneQuery;
+  }
+  if (isStringQuery) {
+    queryValues = wrapWithQuotes(queryValues);
+  }
+
+  return `${phaseInfo[0]} IN (${queryValues})`;
+};
+
 export default props => {
   console.log(props);
   // TODO:
   // add symbols
+  // build radio buttons on LandUses tab
 
   let layers;
   // only get new layers if after the map has been updated to match the current tab
@@ -59,7 +97,9 @@ export default props => {
           <div className="group-container" key={groupConfig.label}>
             <Parent {...groupConfig}
               checkboxConfigs={props.checkboxes}
-              setLayersVisibility={setLayersVisibility} />
+              setLayersVisibility={setLayersVisibility}
+              layers={layers}
+              phases={props.phases} />
           </div>)
       }
       { !props.groups && Object.keys(props.checkboxes).map(checkboxName => {
@@ -98,6 +138,26 @@ const Parent = props => {
   };
   const indeterminate = checkedChildren.length > 0 && checkedChildren.length < props.checkboxes.length;
 
+  useEffect(() => {
+    const isPhaseGroup = () => {
+      return props.checkboxes.some(checkboxName =>
+        props.checkboxConfigs[checkboxName].phase !== undefined);
+    }
+
+    if (props.phases && props.layers && isPhaseGroup()) {
+      console.log('update phase queries');
+      const newCheckedPhases = checkedChildren.map(checkboxName => props.checkboxConfigs[checkboxName].phase);
+
+      Object.keys(props.phases).forEach(layerName => {
+        const phaseInfo = props.phases[layerName];
+        const layer = props.layers[layerName];
+        if (layer) {
+          layer.definitionExpression = getPhaseQuery(phaseInfo, newCheckedPhases);
+        }
+      });
+    }
+  }, [checkedChildren, props.phases, props.layers, props.checkboxes, props.checkboxConfigs]);
+
   return (
     <>
       <FormGroup check>
@@ -110,13 +170,16 @@ const Parent = props => {
         </Label>
       </FormGroup>
       <div className="child-checkbox-container">
-        { props.checkboxes.map(checkboxName =>
-          <Child key={checkboxName}
+        { props.checkboxes.map(checkboxName => {
+          const checkboxConfig = props.checkboxConfigs[checkboxName];
+
+          return <Child key={checkboxName}
             name={checkboxName}
-            {...props.checkboxConfigs[checkboxName]}
+            {...checkboxConfig}
             onChange={onChildChanged}
             setLayersVisibility={props.setLayersVisibility}
-            checked={checkedChildren.indexOf(checkboxName) > -1} />) }
+            checked={checkedChildren.indexOf(checkboxName) > -1} />
+        }) }
       </div>
     </>
   );
@@ -133,7 +196,10 @@ const Child = props => {
   };
 
   let checked = (props.checked !== undefined) ? props.checked : internalIsChecked;
-  props.setLayersVisibility(props.layers, checked);
+
+  if (props.layers) {
+    props.setLayersVisibility(props.layers, checked);
+  }
 
   return (
     <FormGroup check>
