@@ -224,10 +224,10 @@ exports[`Storyshots Filter Land Uses 1`] = `
           <input
             checked={true}
             className="form-check-input"
+            name="props.label"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
           />
-           
           Employment Projections
         </label>
       </div>
@@ -238,12 +238,12 @@ exports[`Storyshots Filter Land Uses 1`] = `
           className="form-check-label"
         >
           <input
-            checked={true}
+            checked={false}
             className="form-check-input"
+            name="props.label"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
           />
-           
           Population Projections
         </label>
       </div>
@@ -254,12 +254,12 @@ exports[`Storyshots Filter Land Uses 1`] = `
           className="form-check-label"
         >
           <input
-            checked={true}
+            checked={false}
             className="form-check-input"
+            name="props.label"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
           />
-           
           Workplace Accessibility - Auto
         </label>
       </div>
@@ -270,12 +270,12 @@ exports[`Storyshots Filter Land Uses 1`] = `
           className="form-check-label"
         >
           <input
-            checked={true}
+            checked={false}
             className="form-check-input"
+            name="props.label"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
           />
-           
           Workplace Accessibility - Transit
         </label>
       </div>

@@ -353,7 +353,8 @@
               "population",
               "workplaceAccessibilityAuto",
               "workplaceAccessibilityTransit"
-            ]
+            ],
+            "radio": true
           },
           {
             "label": "Land Use",

@@ -69,7 +69,6 @@ export default props => {
   console.log(props);
   // TODO:
   // add symbols
-  // build radio buttons on LandUses tab
 
   let layers;
   // only get new layers if after the map has been updated to match the current tab
@@ -95,11 +94,15 @@ export default props => {
     <div className="filter">
       { props.groups && props.groups.map(groupConfig =>
           <div className="group-container" key={groupConfig.label}>
-            <Parent {...groupConfig}
-              checkboxConfigs={props.checkboxes}
-              setLayersVisibility={setLayersVisibility}
-              layers={layers}
-              phases={props.phases} />
+            { (groupConfig.radio) ?
+              <RadioGroup {...groupConfig}
+                checkboxConfigs={props.checkboxes}
+                setLayersVisibility={setLayersVisibility} /> :
+              <Parent {...groupConfig}
+                checkboxConfigs={props.checkboxes}
+                setLayersVisibility={setLayersVisibility}
+                layers={layers}
+                phases={props.phases} /> }
           </div>)
       }
       { !props.groups && Object.keys(props.checkboxes).map(checkboxName => {
@@ -113,6 +116,51 @@ export default props => {
         );
       }) }
     </div>
+  );
+};
+
+const RadioGroup = props => {
+  const [ visible, setVisible ] = useState(true);
+  const [ selectedRadioButton, setSelectedRadioButton ] = useState(props.checkboxes[0]);
+  const onRadioChange = checkboxName => {
+    setSelectedRadioButton(checkboxName);
+  };
+  const allLayerKeys = props.checkboxes
+    .reduce((layers, checkboxName) => layers.concat(props.checkboxConfigs[checkboxName].layers), []);
+  const visibleLayerKeys = (visible) ? props.checkboxConfigs[selectedRadioButton].layers : [];
+  const hiddenLayersKeys = allLayerKeys.filter(key => visibleLayerKeys.indexOf(key) === -1);
+  props.setLayersVisibility(hiddenLayersKeys, false);
+  props.setLayersVisibility(visibleLayerKeys, true);
+
+  return (
+    <>
+      <FormGroup check>
+        <Label check>
+          <Input type="checkbox"
+            checked={visible}
+            onChange={() => setVisible(!visible)} />
+          {props.label}
+        </Label>
+      </FormGroup>
+      <div className="child-checkbox-container">
+        {props.checkboxes.map(checkboxName => {
+          const checkboxConfig = props.checkboxConfigs[checkboxName];
+
+          return (
+            <FormGroup check key={checkboxName}>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="props.label"
+                  checked={selectedRadioButton === checkboxName}
+                  onChange={() => onRadioChange(checkboxName)} />
+                  {checkboxConfig.label}
+              </Label>
+            </FormGroup>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

@@ -91,6 +91,10 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "radio": {
+                      "description": "Controls whether the children are checkboxes or radio buttons.",
+                      "type": "boolean"
                     }
                   },
                   "required": [
