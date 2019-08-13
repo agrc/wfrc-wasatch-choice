@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/agrc/wfrc/compare/v0.4.0...v0.5.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* allow for scrolling within the mapwidget panes ([bd0c2b3](https://github.com/agrc/wfrc/commit/bd0c2b3))
+* better spacing for version number ([53acecb](https://github.com/agrc/wfrc/commit/53acecb))
+* move layer-selector to the top-left of map ([9b9acbf](https://github.com/agrc/wfrc/commit/9b9acbf))
+* remove Imagery_BW base map from layer-selector ([b696a16](https://github.com/agrc/wfrc/commit/b696a16))
+
+
+### Features
+
+* implement radio button option for Land Uses tab ([aed245e](https://github.com/agrc/wfrc/commit/aed245e)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* implement storybook & storyshots ([48a869f](https://github.com/agrc/wfrc/commit/48a869f))
+* Implement the beginnings of the filter widget ([c111342](https://github.com/agrc/wfrc/commit/c111342)), closes [#14](https://github.com/agrc/wfrc/issues/14) [#10](https://github.com/agrc/wfrc/issues/10)
+* wire up layer visibility toggling ([72ff2be](https://github.com/agrc/wfrc/commit/72ff2be)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* wire up phase checkboxes ([0947c2b](https://github.com/agrc/wfrc/commit/0947c2b)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+
 ## [0.4.0](https://github.com/agrc/wfrc/compare/v0.3.0...v0.4.0) (2019-08-08)
 
 
