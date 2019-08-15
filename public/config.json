@@ -42,13 +42,15 @@
             "label": "Centers",
             "layers": [
               "centers"
-            ]
+            ],
+            "symbol": "polygonClasses"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layers": [
               "generalLandUse"
-            ]
+            ],
+            "symbol": "polygonClasses"
           }
         },
         "groups": [
@@ -237,14 +239,16 @@
             "layers": [
               "centers",
               "magCenters"
-            ]
+            ],
+            "symbol": "polygonClasses"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layers": [
               "generalLandUse",
               "magGeneralLandUse"
-            ]
+            ],
+            "symbol": "polygonClasses"
           },
           "existingBikePed": {
             "label": "Existing Bike/Ped",
@@ -339,13 +343,15 @@
             "label": "Centers",
             "layers": [
               "centers"
-            ]
+            ],
+            "symbol": "polygonClasses"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layers": [
               "generalLandUse"
-            ]
+            ],
+            "symbol": "polygonClasses"
           }
         },
         "groups": [
@@ -380,7 +386,7 @@
           "centers": "Centers",
           "magCenters": "MAG Centers",
           "generalLandUse": "General Land Use",
-          "magGeneralLandUser": "MAG General Land Use",
+          "magGeneralLandUse": "MAG General Land Use",
           "economicClusters": "Economic Clusters"
         },
         "checkboxes": {
@@ -395,20 +401,24 @@
             "label": "Opportunity Zones",
             "layers": [
               "opportunityZones"
-            ]
+            ],
+            "symbol": "simple"
           },
           "centers": {
             "label": "Centers",
             "layers": [
-              "centers"
-            ]
+              "centers",
+              "magCenters"
+            ],
+            "symbol": "polygonClasses"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layers": [
               "generalLandUse",
               "magGeneralLandUse"
-            ]
+            ],
+            "symbol": "polygonClasses"
           },
           "economicClusters": {
             "label": "Economic Clusters",

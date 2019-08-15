@@ -55,7 +55,8 @@
                       "description": "Defines the type of symbol component to be displayed.",
                       "type": "string",
                       "enum": [
-                        "simple"
+                        "simple",
+                        "polygonClasses"
                       ]
                     }
                   },

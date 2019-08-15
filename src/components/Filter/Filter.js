@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
-import { Simple } from './Symbols';
+import { Simple, PolygonClasses } from './Symbols';
 
 
 const SYMBOLS = {
-  simple: Simple
+  simple: Simple,
+  polygonClasses: PolygonClasses
 };
 
 export const getLayers = (layerNames, map) => {
