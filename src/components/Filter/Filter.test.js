@@ -1,4 +1,4 @@
-import { getPhaseQuery, getLayers } from '../components/Filter/Filter';
+import { getPhaseQuery, getLayers } from './Filter';
 
 
 describe('getPhaseQuery', () => {

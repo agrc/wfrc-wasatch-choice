@@ -1,16 +1,10 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
-import Filter from '../components/Filter/Filter';
-import '../setupTests';
-import config from '../config';
-import '../index.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import Filter from './Filter';
+import config from '../../config';
 
 
-const mapViewMock = {
-
-};
+const mapViewMock = {};
 
 const stories = storiesOf('Filter', module);
 config.tabs.forEach(tabConfig => {
