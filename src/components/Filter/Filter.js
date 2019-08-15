@@ -71,11 +71,25 @@ export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
   return `${phaseInfo[0]} IN (${queryValues})`;
 };
 
+export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
+  const layerKeys = Object.keys(layerNames);
+  Object.keys(checkboxes).forEach(checkboxKey => {
+    checkboxes[checkboxKey].layers.forEach(layerKey => {
+      if (layerKeys.indexOf(layerKey) === -1) {
+        console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey})`);
+      }
+    })
+  });
+};
+
 export default props => {
   console.log(props);
   // TODO:
   // add symbols
   // add reset filters button
+  useEffect(() => {
+    validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
+  }, [props.layerNames, props.checkboxes]);
 
   let layers;
   // only get new layers if after the map has been updated to match the current tab

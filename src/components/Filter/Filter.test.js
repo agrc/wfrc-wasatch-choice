@@ -1,4 +1,4 @@
-import { getPhaseQuery, getLayers } from './Filter';
+import { getPhaseQuery, getLayers, validateCheckboxLayerKeys } from './Filter';
 
 
 describe('getPhaseQuery', () => {
@@ -47,7 +47,7 @@ describe('getLayers', () => {
     expect(result.centers).toBe(centersLayer);
   });
 
-  it('throws error if there is no matching layer in web map', () => {
+  it('logs an error if there is no matching layer in web map', () => {
     console.error = jest.fn();
     const config = {
       layerNames: {
@@ -59,5 +59,50 @@ describe('getLayers', () => {
     getLayers(config.layerNames, mockMap);
 
     expect(console.error).toHaveBeenCalledWith('Layer: BadLayerName not found in web map!');
+  });
+});
+
+describe('validateCheckboxLayerKeys', () => {
+  beforeEach(() => {
+    console.error = jest.fn();
+  });
+
+  it('logs no errors if there are no issues', () => {
+    const layerNames = {
+      one: 'One',
+      two: 'Two',
+      three: 'Three'
+    };
+    const checkboxes = {
+      boxOne: {
+        layers: ['one', 'two']
+      },
+      boxTwo: {
+        layers: ['three']
+      }
+    };
+
+    validateCheckboxLayerKeys(layerNames, checkboxes);
+
+    expect(console.error).not.toHaveBeenCalled();
+  });
+  it('logs an error if there is a mis-matching key', () => {
+    const layerNames = {
+      one: 'One',
+      two: 'Two',
+      three: 'Three'
+    };
+    const checkboxes = {
+      boxOne: {
+        layers: ['one', 'two']
+      },
+      boxTwo: {
+        layers: ['three', 'badName']
+      }
+    };
+
+    validateCheckboxLayerKeys(layerNames, checkboxes);
+
+    expect(console.error).toHaveBeenCalled();
   });
 });
