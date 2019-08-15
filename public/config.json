@@ -18,22 +18,25 @@
           "roads": {
             "label": "Roads",
             "layers": [
-              "interchanges",
-              "majorRoads"
-            ]
+              "majorRoads",
+              "interchanges"
+            ],
+            "symbol": "simple"
           },
           "transit": {
             "label": "Transit",
             "layers": [
-              "majorTransitStations",
-              "majorTransit"
-            ]
+              "majorTransit",
+              "majorTransitStations"
+            ],
+            "symbol": "simple"
           },
           "bikePed": {
             "label": "Bike/Ped",
             "layers": [
               "majorTrails"
-            ]
+            ],
+            "symbol": "simple"
           },
           "centers": {
             "label": "Centers",
@@ -435,39 +438,45 @@
             "label": "Community Centers",
             "layers": [
               "communityCenters"
-            ]
+            ],
+            "symbol": "simple"
           },
           "trails": {
             "label": "Trails",
             "layers": [
               "trailheads",
               "trails"
-            ]
+            ],
+            "symbol": "simple"
           },
           "parks": {
             "label": "Parks",
             "layers": [
               "parks",
               "stateParks"
-            ]
+            ],
+            "symbol": "simple"
           },
           "federalLands": {
             "label": "Federal Lands",
             "layers": [
               "federalLands"
-            ]
+            ],
+            "symbol": "simple"
           },
           "golfCourses": {
             "label": "Golf Courses",
             "layers": [
               "golfCourses"
-            ]
+            ],
+            "symbol": "simple"
           },
           "skiAreas": {
             "label": "Ski Areas",
             "layers": [
-              "Ski Areas"
-            ]
+              "skiAreas"
+            ],
+            "symbol": "simple"
           }
         }
       }

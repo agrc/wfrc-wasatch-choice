@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
+import { Simple } from './Symbols';
 
+
+const SYMBOLS = {
+  simple: Simple
+};
 
 export const getLayers = (layerNames, map) => {
   console.log('Filter.getLayers');
@@ -69,6 +74,7 @@ export default props => {
   console.log(props);
   // TODO:
   // add symbols
+  // add reset filters button
 
   let layers;
   // only get new layers if after the map has been updated to match the current tab
@@ -112,6 +118,7 @@ export default props => {
           <Child key={checkboxName}
               name={checkboxConfig.label}
               {...checkboxConfig}
+              layersLookup={layers}
               setLayersVisibility={setLayersVisibility} />
         );
       }) }
@@ -225,6 +232,7 @@ const Parent = props => {
             name={checkboxName}
             {...checkboxConfig}
             onChange={onChildChanged}
+            layersLookup={props.layers}
             setLayersVisibility={props.setLayersVisibility}
             checked={checkedChildren.indexOf(checkboxName) > -1} />
         }) }
@@ -249,14 +257,22 @@ const Child = props => {
     props.setLayersVisibility(props.layers, checked);
   }
 
+  let Symbol;
+  if (props.symbol) {
+    Symbol = SYMBOLS[props.symbol];
+  }
+
   return (
     <FormGroup check>
       <Label check>
         <Input
           type="checkbox"
           checked={checked}
-          onChange={onChange}/> {props.label}
+          onChange={onChange}/>
+          {props.label}
       </Label>
+      { props.symbol && props.layersLookup &&
+      <Symbol layerNames={props.layers} layersLookup={props.layersLookup} /> }
     </FormGroup>
   );
 };

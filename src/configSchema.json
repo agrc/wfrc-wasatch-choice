@@ -50,6 +50,13 @@
                     "phase": {
                       "description": "Defines the zero-based index of the phase that this checkbox is associated with.",
                       "type": "number"
+                    },
+                    "symbol": {
+                      "description": "Defines the type of symbol component to be displayed.",
+                      "type": "string",
+                      "enum": [
+                        "simple"
+                      ]
                     }
                   },
                   "required": [

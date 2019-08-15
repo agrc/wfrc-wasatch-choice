@@ -1,0 +1,13 @@
+.symbol-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+  margin-left: 10px;
+  .symbol {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -2,4 +2,9 @@
   .child-checkbox-container {
     margin-left: 20px;
   }
+  .form-check {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
 }
