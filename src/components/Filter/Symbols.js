@@ -33,7 +33,7 @@ export const Simple = props => {
   }, [props.layerNames, props.layersLookup]);
 
   return (
-    <div className="symbol-container">
+    <div className="simple-symbol-container symbol-container">
       { symbols.map((symbol, index) =>
         <div key={index} className="symbol" dangerouslySetInnerHTML={{__html: symbol.outerHTML}}></div>
       )}
@@ -64,7 +64,7 @@ export const PolygonClasses = props => {
 
   return (
     <>
-      <div className="polygon-symbol-container" ref={popoverTarget}>
+      <div className="polygon-symbol-container symbol-container" ref={popoverTarget}>
         <div className="polygon-class-container">
           { colors.map((color, index) =>
             <div key={index}
@@ -92,3 +92,44 @@ export const PolygonClasses = props => {
     </>
   );
 };
+
+export const LinePoint = props => {
+  const [symbols, setSymbols] = useState({ point: null, polyline: null });
+
+  useEffect(() => {
+    let mounted = true;
+    const getSymbols = async () => {
+      console.log('LinePoint:getSymbols');
+
+      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils']);
+
+      const newSymbols = {};
+
+      props.layerNames.forEach(layerName => {
+        const layer = props.layersLookup[layerName];
+        if (!newSymbols[layer.geometryType]) {
+          newSymbols[layer.geometryType] = layer.renderer.uniqueValueInfos[0].symbol;
+        }
+      });
+
+      newSymbols.polyline = await symbolUtils.renderPreviewHTML(newSymbols.polyline);
+      newSymbols.point = await symbolUtils.renderPreviewHTML(newSymbols.point);
+
+      // prevent this from being called after the component has been unmounted
+      if (mounted) {
+        setSymbols(newSymbols);
+      }
+    };
+    getSymbols();
+
+    return () => mounted = false;
+  }, [props.layerNames, props.layersLookup]);
+
+  return (
+    <div className="line-point-symbol-container symbol-container">
+      {symbols.polyline && symbols.point && Object.entries(symbols).map(([geometryType, symbol]) =>
+        <div key={geometryType} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.innerHTML }}></div>
+      )}
+    </div>
+  );
+}

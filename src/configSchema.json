@@ -56,7 +56,8 @@
                       "type": "string",
                       "enum": [
                         "simple",
-                        "polygonClasses"
+                        "polygonClasses",
+                        "linePoint"
                       ]
                     }
                   },

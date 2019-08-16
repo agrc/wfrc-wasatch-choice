@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
-import { Simple, PolygonClasses } from './Symbols';
+import { Simple, PolygonClasses, LinePoint } from './Symbols';
 
 
 const SYMBOLS = {
   simple: Simple,
-  polygonClasses: PolygonClasses
+  polygonClasses: PolygonClasses,
+  linePoint: LinePoint
 };
 
 export const getLayers = (layerNames, map) => {
@@ -77,7 +78,7 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
     if (checkboxes[checkboxKey].layers) {
       checkboxes[checkboxKey].layers.forEach(layerKey => {
         if (layerKeys.indexOf(layerKey) === -1) {
-          console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey})`);
+          console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey}`);
         }
       });
     }

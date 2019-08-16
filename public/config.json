@@ -198,7 +198,8 @@
               "magRoadwayPoint",
               "roadwayLine",
               "magRoadwayLine"
-            ]
+            ],
+            "symbol": "linePoint"
           },
           "transit": {
             "label": "Transit",
@@ -207,7 +208,8 @@
               "magTransitPoint",
               "transitLine",
               "magTransitLine"
-            ]
+            ],
+            "symbol": "linePoint"
           },
           "bikePed": {
             "label": "Bike/Ped",
@@ -216,7 +218,8 @@
               "magActiveTransPoint",
               "activeTransLine",
               "magActiveTransLine"
-            ]
+            ],
+            "symbol": "linePoint"
           },
           "phase1": {
             "label": "Phase 1 (2019-30)",
@@ -260,7 +263,7 @@
             "label": "Existing Transit",
             "layers": [
               "existingTransitPoint",
-              "existingTransitLines"
+              "existingTransitLine"
             ]
           }
         },

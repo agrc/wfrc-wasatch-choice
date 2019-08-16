@@ -161,6 +161,21 @@ exports[`Storyshots Filter Economic Development 1`] = `
       Economic Clusters
     </label>
   </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      CDAs and RDAs
+    </label>
+  </div>
 </div>
 `;
 
@@ -705,7 +720,7 @@ exports[`Storyshots Filter Vision 1`] = `
 
 exports[`Storyshots Symbols PolygonClasses 1`] = `
 <div
-  className="polygon-symbol-container"
+  className="polygon-symbol-container symbol-container"
 >
   <div
     className="polygon-class-container"

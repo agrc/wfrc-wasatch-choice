@@ -1,8 +1,13 @@
+$symbolWidth: 41px;
+
 .symbol-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 41px;
+}
+
+.simple-symbol-container {
+  width: $symbolWidth;
   margin-left: 10px;
   .symbol {
     position: absolute;
@@ -13,8 +18,6 @@
 }
 
 .polygon-symbol-container {
-  display: flex;
-  align-items: center;
   .polygon-class-container {
     margin-left: 10px;
     width: 60px;
@@ -38,5 +41,16 @@
     height: 1.5em;
     width: 40px;
     margin-right: 5px;
+  }
+}
+
+.line-point-symbol-container {
+  .symbol {
+    width: $symbolWidth;
+    filter: grayscale(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
   }
 }
