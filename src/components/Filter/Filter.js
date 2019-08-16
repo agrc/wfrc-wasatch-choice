@@ -74,11 +74,13 @@ export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
 export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
   const layerKeys = Object.keys(layerNames);
   Object.keys(checkboxes).forEach(checkboxKey => {
-    checkboxes[checkboxKey].layers.forEach(layerKey => {
-      if (layerKeys.indexOf(layerKey) === -1) {
-        console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey})`);
-      }
-    })
+    if (checkboxes[checkboxKey].layers) {
+      checkboxes[checkboxKey].layers.forEach(layerKey => {
+        if (layerKeys.indexOf(layerKey) === -1) {
+          console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey})`);
+        }
+      });
+    }
   });
 };
 
