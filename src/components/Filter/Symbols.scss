@@ -12,14 +12,31 @@
   }
 }
 
-.polygon-class-container {
-  margin-left: 10px;
-  width: 60px;
-  height: 1.5em;
+.polygon-symbol-container {
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  .polygon-class {
-    flex: 1;
+  align-items: center;
+  .polygon-class-container {
+    margin-left: 10px;
+    width: 60px;
+    height: 1.5em;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    .polygon-class {
+      flex: 1;
+    }
+  }
+  svg {
+    margin-left: 5px;
+  }
+}
+
+.popover-legend-row {
+  display: flex;
+  flex-direction: row;
+  .legend-swatch {
+    height: 1.5em;
+    width: 40px;
+    margin-right: 5px;
   }
 }

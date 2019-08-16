@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { loadModules } from 'esri-loader';
 import './Symbols.scss';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Popover, PopoverBody } from 'reactstrap';
 
 
 export const Simple = props => {
@@ -40,24 +43,52 @@ export const Simple = props => {
 
 export const PolygonClasses = props => {
   const [ colors, setColors ] = useState([]);
+  const popoverTarget = useRef();
+  const [ showPopover, setShowPopover ] = useState(false);
 
   useEffect(() => {
     console.log('PolygonClasses:getColors');
 
     const colors = props.layersLookup[props.layerNames[0]]
-      .renderer.uniqueValueInfos.map(info => info.symbol.color);
+      .renderer.uniqueValueInfos.map(info => {
+        return {...info.symbol.color, label: info.label};
+      });
 
     // prevent this from being called after the component has been unmounted
     setColors(colors);
   }, [props.layerNames, props.layersLookup]);
 
+  const getBackgroundColor = color => {
+    return `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+  };
+
   return (
-    <div className="polygon-class-container">
-      { colors.map((color, index) =>
-        <div key={index}
-          className="polygon-class"
-          style={{backgroundColor: `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`}}></div>
-      )}
-    </div>
+    <>
+      <div className="polygon-symbol-container" ref={popoverTarget}>
+        <div className="polygon-class-container">
+          { colors.map((color, index) =>
+            <div key={index}
+              className="polygon-class"
+              style={{backgroundColor: getBackgroundColor(color)}}></div>
+          )}
+        </div>
+        <FontAwesomeIcon icon={faQuestionCircle} />
+      </div>
+      <Popover
+        placement="bottom-start"
+        target={popoverTarget}
+        isOpen={showPopover}
+        trigger="hover"
+        toggle={() => setShowPopover(!showPopover)}>
+        <PopoverBody>
+          { colors.map((color, index) =>
+            <div key={index} className="popover-legend-row">
+              <div style={{backgroundColor: getBackgroundColor(color)}} className="legend-swatch"></div>
+              <div>{color.label}</div>
+            </div>
+          )}
+        </PopoverBody>
+      </Popover>
+    </>
   );
 };
