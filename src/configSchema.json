@@ -57,7 +57,8 @@
                       "enum": [
                         "simple",
                         "polygonClasses",
-                        "linePoint"
+                        "linePoint",
+                        "phase"
                       ]
                     }
                   },

@@ -223,19 +223,27 @@
           },
           "phase1": {
             "label": "Phase 1 (2019-30)",
-            "phase": 0
+            "phase": 0,
+            "symbol": "phase",
+            "color": "rgb(137, 4, 5)"
           },
           "phase2": {
             "label": "Phase 2 (2031-40)",
-            "phase": 1
+            "phase": 1,
+            "symbol": "phase",
+            "color": "rgb(5, 75, 164)"
           },
           "phase3": {
             "label": "Phase 3 (2041-50)",
-            "phase": 2
+            "phase": 2,
+            "symbol": "phase",
+            "color": "rgb(65, 159, 21)"
           },
           "unfunded": {
             "label": "Unfunded Needs",
-            "phase": 3
+            "phase": 3,
+            "symbol": "phase",
+            "color": "rgb(252, 250, 147)"
           },
           "centers": {
             "label": "Centers",

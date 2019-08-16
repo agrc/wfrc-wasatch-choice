@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover, PopoverBody } from 'reactstrap';
 
 
+const getBackgroundColor = color => {
+  return `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+};
+
 export const Simple = props => {
   const [ symbols, setSymbols ] = useState([]);
 
@@ -57,10 +61,6 @@ export const PolygonClasses = props => {
     // prevent this from being called after the component has been unmounted
     setColors(colors);
   }, [props.layerNames, props.layersLookup]);
-
-  const getBackgroundColor = color => {
-    return `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
-  };
 
   return (
     <>
@@ -132,4 +132,12 @@ export const LinePoint = props => {
       )}
     </div>
   );
-}
+};
+
+export const Phase = props => {
+  return (
+    <div className="phase-symbol-container symbol-container">
+      <div className="symbol" style={{backgroundColor: props.color}}></div>
+    </div>
+  );
+};
