@@ -265,14 +265,16 @@
             "label": "Existing Bike/Ped",
             "layers": [
               "existingBike"
-            ]
+            ],
+            "symbol": "simple"
           },
           "existingTransit": {
             "label": "Existing Transit",
             "layers": [
-              "existingTransitPoint",
-              "existingTransitLine"
-            ]
+              "existingTransitLine",
+              "existingTransitPoint"
+            ],
+            "symbol": "simple"
           }
         },
         "groups": [

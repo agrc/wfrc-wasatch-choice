@@ -23,7 +23,9 @@ export const Simple = props => {
       const newSymbols = await Promise.all(props.layerNames.map(layerName => {
         const layer = props.layersLookup[layerName];
 
-        return symbolUtils.renderPreviewHTML(layer.renderer.symbol, { opacity: layer.opacity });
+        const symbol = layer.renderer.symbol || layer.renderer.uniqueValueInfos[0].symbol;
+
+        return symbolUtils.renderPreviewHTML(symbol, { opacity: layer.opacity });
       }));
 
       // prevent this from being called after the component has been unmounted
