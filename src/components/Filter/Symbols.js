@@ -19,7 +19,7 @@ export const Simple = props => {
       const newSymbols = await Promise.all(props.layerNames.map(layerName => {
         const layer = props.layersLookup[layerName];
 
-        return symbolUtils.renderPreviewHTML(layer.renderer.symbol);
+        return symbolUtils.renderPreviewHTML(layer.renderer.symbol, { opacity: layer.opacity });
       }));
 
       // prevent this from being called after the component has been unmounted
@@ -35,7 +35,7 @@ export const Simple = props => {
   return (
     <div className="symbol-container">
       { symbols.map((symbol, index) =>
-        <div key={index} className="symbol" dangerouslySetInnerHTML={{__html: symbol.innerHTML}}></div>
+        <div key={index} className="symbol" dangerouslySetInnerHTML={{__html: symbol.outerHTML}}></div>
       )}
     </div>
   );
