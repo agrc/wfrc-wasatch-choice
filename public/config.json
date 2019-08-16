@@ -385,7 +385,8 @@
           "magCenters": "MAG Centers",
           "generalLandUse": "General Land Use",
           "magGeneralLandUse": "MAG General Land Use",
-          "economicClusters": "Economic Clusters"
+          "economicClusters": "Economic Clusters",
+          "cdasRdas": "CDAs and RDAs"
         },
         "checkboxes": {
           "opportunityZones": {
@@ -416,6 +417,13 @@
             "layers": [
               "economicClusters"
             ]
+          },
+          "cdasRdas": {
+            "label": "CDAs and RDAs",
+            "layers": [
+              "cdasRdas"
+            ],
+            "symbol": "simple"
           }
         }
       }
