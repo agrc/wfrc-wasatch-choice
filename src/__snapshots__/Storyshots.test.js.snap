@@ -113,21 +113,6 @@ exports[`Storyshots Filter Economic Development 1`] = `
         onChange={[Function]}
         type="checkbox"
       />
-      Existing Transit
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
       Opportunity Zones
     </label>
   </div>

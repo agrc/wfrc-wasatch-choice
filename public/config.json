@@ -380,8 +380,6 @@
       "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
       "filter": {
         "layerNames": {
-          "existingTransitPoint": "Existing Transit Stations",
-          "existingTransitLine": "Existing Transit Lines",
           "opportunityZones": "Opportunity Zones",
           "centers": "Centers",
           "magCenters": "MAG Centers",
@@ -390,13 +388,6 @@
           "economicClusters": "Economic Clusters"
         },
         "checkboxes": {
-          "existingTransit": {
-            "label": "Existing Transit",
-            "layers": [
-              "existingTransitPoint",
-              "existingTransitLine"
-            ]
-          },
           "opportunityZones": {
             "label": "Opportunity Zones",
             "layers": [
