@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/agrc/wfrc/compare/v0.5.0...v0.6.0) (2019-08-19)
+
+
+### Bug Fixes
+
+* **Filter:** make legend swatches match map layer opacity ([4b6653a](https://github.com/agrc/wfrc/commit/4b6653a)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* header style updates ([b516082](https://github.com/agrc/wfrc/commit/b516082)), closes [#19](https://github.com/agrc/wfrc/issues/19)
+* only validate checkbox layers if the property exists ([3dbcb6e](https://github.com/agrc/wfrc/commit/3dbcb6e))
+
+
+### Features
+
+* **Filter:** add "?" and popover to polygon classes legends ([531d28a](https://github.com/agrc/wfrc/commit/531d28a)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** add `polygonClasses` symbol ([986ee37](https://github.com/agrc/wfrc/commit/986ee37)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** existing bike/ped & transit symbols ([decb9b8](https://github.com/agrc/wfrc/commit/decb9b8)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** implement "filter by phasing" checkbox ([1d202c0](https://github.com/agrc/wfrc/commit/1d202c0))
+* **Filter:** implement linePoint symbol ([c42ea73](https://github.com/agrc/wfrc/commit/c42ea73)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** implement phase symbols ([a516571](https://github.com/agrc/wfrc/commit/a516571)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** implement simple symbol type ([b4fe882](https://github.com/agrc/wfrc/commit/b4fe882)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **Filter:** validate checkbox layer names and print error if one is bad ([219d85c](https://github.com/agrc/wfrc/commit/219d85c)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+
 ## [0.5.0](https://github.com/agrc/wfrc/compare/v0.4.0...v0.5.0) (2019-08-13)
 
 
