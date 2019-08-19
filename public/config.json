@@ -296,11 +296,12 @@
             ]
           },
           {
-            "label": "Land Use (filter by phasing)",
+            "label": "Land Use",
             "checkboxes": [
               "centers",
               "generalLandUse"
-            ]
+            ],
+            "showFilterByPhasing": true
           },
           {
             "label": "Other",

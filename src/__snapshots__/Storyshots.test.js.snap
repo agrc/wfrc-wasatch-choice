@@ -496,7 +496,20 @@ exports[`Storyshots Filter Transportation 1`] = `
           onChange={[Function]}
           type="checkbox"
         />
-        Land Use (filter by phasing)
+        Land Use
+      </label>
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={false}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <small>
+          (filter by phasing)
+        </small>
       </label>
     </div>
     <div

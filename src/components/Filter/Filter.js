@@ -38,7 +38,6 @@ export const getLayers = (layerNames, map) => {
 
 export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
   // translate the phase info into a definition query taking into account the selected phases
-  console.log('Filter.getPhaseQuery');
 
   const showNoneQuery = '1 = 2';
   if (checkedPhaseIndexes.length === 0) {
@@ -87,9 +86,9 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
 };
 
 export default props => {
-  console.log(props);
+  const [ filterByPhasing, setFilterByPhasing ] = useState(false);
+
   // TODO:
-  // add symbols
   // add reset filters button
   useEffect(() => {
     validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
@@ -126,8 +125,11 @@ export default props => {
               <Parent {...groupConfig}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility}
+                filterByPhasing={filterByPhasing}
+                setFilterByPhasing={setFilterByPhasing}
                 layers={layers}
-                phases={props.phases} /> }
+                phases={props.phases}
+                allGroupConfigs={props.groups} /> }
           </div>)
       }
       { !props.groups && Object.keys(props.checkboxes).map(checkboxName => {
@@ -192,6 +194,7 @@ const RadioGroup = props => {
 
 const Parent = props => {
   const [ checkedChildren, setCheckedChildren ] = useState(props.checkboxes.map(name => name));
+
   const onChildChanged = name => {
     // create new copy because you shouldn't mutate state objects
     const newCheckedChildren = Array.from(checkedChildren);
@@ -221,16 +224,37 @@ const Parent = props => {
     if (props.phases && props.layers && isPhaseGroup()) {
       console.log('update phase queries');
       const newCheckedPhases = checkedChildren.map(checkboxName => props.checkboxConfigs[checkboxName].phase);
+      const shouldBeFiltered = layerName => {
+        if (!props.filterByPhasing) {
+          // return false for any layerName that shows up in a checkbox that
+          // is marked showFilterByPhasing = true
+          return Object.values(props.allGroupConfigs).every(groupConfig => {
+            if (!groupConfig.showFilterByPhasing) {
+              return true;
+            }
+
+            return groupConfig.checkboxes.every(checkboxName => {
+              return props.checkboxConfigs[checkboxName].layers.indexOf(layerName) === -1;
+            });
+          });
+        }
+
+        return true;
+      }
 
       Object.keys(props.phases).forEach(layerName => {
         const phaseInfo = props.phases[layerName];
         const layer = props.layers[layerName];
         if (layer) {
-          layer.definitionExpression = getPhaseQuery(phaseInfo, newCheckedPhases);
+          if (shouldBeFiltered(layerName)) {
+            layer.definitionExpression = getPhaseQuery(phaseInfo, newCheckedPhases);
+          } else {
+            layer.definitionExpression = null;
+          }
         }
       });
     }
-  }, [checkedChildren, props.phases, props.layers, props.checkboxes, props.checkboxConfigs]);
+  }, [checkedChildren, props.phases, props.layers, props.checkboxes, props.checkboxConfigs, props.filterByPhasing, props.allGroupConfigs]);
 
   return (
     <>
@@ -242,6 +266,15 @@ const Parent = props => {
             ref={ref => ref && (ref.indeterminate = indeterminate)} />
             {props.label}
         </Label>
+        { props.showFilterByPhasing &&
+          <Label check>
+            <Input type="checkbox"
+              checked={props.filterByPhasing}
+              // TODO: trigger a redraw on change
+              onChange={() => props.setFilterByPhasing(!props.filterByPhasing)} />
+            <small>(filter by phasing)</small>
+          </Label>
+        }
       </FormGroup>
       <div className="child-checkbox-container">
         { props.checkboxes.map(checkboxName => {

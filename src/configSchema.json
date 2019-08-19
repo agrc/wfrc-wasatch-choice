@@ -105,6 +105,10 @@
                     "radio": {
                       "description": "Controls whether the children are checkboxes or radio buttons.",
                       "type": "boolean"
+                    },
+                    "showFilterByPhasing": {
+                      "description": "Controls whether the \"(filter by phasing)\" checkbox is displayed",
+                      "type": "boolean"
                     }
                   },
                   "required": [
