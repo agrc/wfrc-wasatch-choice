@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/agrc/wfrc/compare/v0.6.0...v0.6.1) (2019-08-19)
+
+
+### Bug Fixes
+
+* **Filter:** don't get symbol until layer is fully loaded ([f44b0ea](https://github.com/agrc/wfrc/commit/f44b0ea))
+
 ## [0.6.0](https://github.com/agrc/wfrc/compare/v0.5.0...v0.6.0) (2019-08-19)
 
 
