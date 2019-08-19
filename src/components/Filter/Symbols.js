@@ -110,7 +110,10 @@ export const LinePoint = props => {
       props.layerNames.forEach(layerName => {
         const layer = props.layersLookup[layerName];
         if (!newSymbols[layer.geometryType]) {
-          newSymbols[layer.geometryType] = layer.renderer.uniqueValueInfos[0].symbol;
+          newSymbols[layer.geometryType] = true;
+          layer.when(() => {
+            newSymbols[layer.geometryType] = layer.renderer.uniqueValueInfos[0].symbol;
+          });
         }
       });
 
