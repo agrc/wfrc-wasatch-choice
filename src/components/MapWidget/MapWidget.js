@@ -35,7 +35,17 @@ export default props => {
       <Card style={cardStyle} className="map-widget-card">
         <CardHeader>
           {props.name}
-          <Button close onClick={toggle} />
+          <div className="buttons-container">
+            { props.showReset &&
+              <Button
+                className="reset-button"
+                color="link"
+                onClick={props.onReset}>
+                <small>reset</small>
+              </Button>
+            }
+            <Button close onClick={toggle} />
+          </div>
         </CardHeader>
         <CardBody>
           {props.children}

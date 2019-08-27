@@ -28,7 +28,8 @@ export default class App extends Component {
     currentTabIndex: 0,
     mapExtent: null,
     mapView: null,
-    mapReady: false
+    mapReady: false,
+    resetFilter: false
   };
 
   onMapClick = this.onMapClick.bind(this);
@@ -63,6 +64,13 @@ export default class App extends Component {
       onSherlockMatch: this.onSherlockMatch
     };
 
+    const resetFilter = () => {
+      console.log('resetFilter');
+
+      this.setState({ resetFilter: true }, () => {
+        this.setState({ resetFilter: false });
+      });
+    };
 
     return (
       <div className="app">
@@ -84,10 +92,15 @@ export default class App extends Component {
               name="Filter"
               icon={faList}
               position={0}
+              showReset={true}
+              onReset={resetFilter}
+              defaultOpen={true}
               mapView={this.state.mapView}>
               <Filter {...config.tabs[this.state.currentTabIndex].filter}
+                reset={this.state.resetFilter}
                 mapView={this.state.mapView}
-                webMapId={config.tabs[this.state.currentTabIndex].webMapId} />
+                webMapId={config.tabs[this.state.currentTabIndex].webMapId}
+                />
             </MapWidget>
             <MapWidget
               name="Project Information"

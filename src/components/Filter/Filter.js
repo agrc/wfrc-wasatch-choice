@@ -88,14 +88,12 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
 export default props => {
   const [ filterByPhasing, setFilterByPhasing ] = useState(false);
 
-  // TODO:
-  // add reset filters button
   useEffect(() => {
     validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
   }, [props.layerNames, props.checkboxes]);
 
   let layers;
-  // only get new layers if after the map has been updated to match the current tab
+  // only get new layers after the map has been updated to match the current tab
   if (props.mapView && props.mapView.map && props.webMapId === props.mapView.map.portalItem.id) {
     console.log(props.mapView.map.portalItem.id, props.mapView.map.loaded);
     props.mapView.map.when(() => {
@@ -120,9 +118,11 @@ export default props => {
           <div className="group-container" key={groupConfig.label}>
             { (groupConfig.radio) ?
               <RadioGroup {...groupConfig}
+                reset={props.reset}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility} /> :
               <Parent {...groupConfig}
+                reset={props.reset}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility}
                 filterByPhasing={filterByPhasing}
@@ -138,6 +138,7 @@ export default props => {
         return (
           <Child key={checkboxName}
               name={checkboxConfig.label}
+              reset={props.reset}
               {...checkboxConfig}
               layersLookup={layers}
               setLayersVisibility={setLayersVisibility} />
@@ -149,7 +150,8 @@ export default props => {
 
 const RadioGroup = props => {
   const [ visible, setVisible ] = useState(true);
-  const [ selectedRadioButton, setSelectedRadioButton ] = useState(props.checkboxes[0]);
+  const defaultRadioButton = props.checkboxes[0];
+  const [ selectedRadioButton, setSelectedRadioButton ] = useState(defaultRadioButton);
   const onRadioChange = checkboxName => {
     setSelectedRadioButton(checkboxName);
   };
@@ -159,6 +161,13 @@ const RadioGroup = props => {
   const hiddenLayersKeys = allLayerKeys.filter(key => visibleLayerKeys.indexOf(key) === -1);
   props.setLayersVisibility(hiddenLayersKeys, false);
   props.setLayersVisibility(visibleLayerKeys, true);
+
+  useEffect(() => {
+    if (props.reset) {
+      setVisible(true);
+      setSelectedRadioButton(defaultRadioButton);
+    }
+  }, [props.reset, defaultRadioButton]);
 
   return (
     <>
@@ -193,7 +202,8 @@ const RadioGroup = props => {
 };
 
 const Parent = props => {
-  const [ checkedChildren, setCheckedChildren ] = useState(props.checkboxes.map(name => name));
+  const defaultCheckedChildren = props.checkboxes.map(name => name);
+  const [ checkedChildren, setCheckedChildren ] = useState(defaultCheckedChildren);
 
   const onChildChanged = name => {
     // create new copy because you shouldn't mutate state objects
@@ -214,6 +224,12 @@ const Parent = props => {
     }
   };
   const indeterminate = checkedChildren.length > 0 && checkedChildren.length < props.checkboxes.length;
+
+  useEffect(() => {
+    if (props.reset) {
+      setCheckedChildren(defaultCheckedChildren);
+    }
+  }, [props.reset, defaultCheckedChildren]);
 
   useEffect(() => {
     const isPhaseGroup = () => {
@@ -313,6 +329,12 @@ const Child = props => {
   if (props.symbol) {
     Symbol = SYMBOLS[props.symbol];
   }
+
+  useEffect(() => {
+    if (props.reset) {
+      setInternalIsChecked(true);
+    }
+  }, [props.reset]);
 
   return (
     <FormGroup check>
