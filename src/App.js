@@ -94,7 +94,6 @@ export default class App extends Component {
               position={0}
               showReset={true}
               onReset={resetFilter}
-              defaultOpen={true}
               mapView={this.state.mapView}>
               <Filter {...config.tabs[this.state.currentTabIndex].filter}
                 reset={this.state.resetFilter}
