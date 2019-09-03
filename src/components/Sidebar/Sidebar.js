@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './Sidebar.css';
+import './Sidebar.scss';
 
 export default class Sidebar extends PureComponent {
   render() {

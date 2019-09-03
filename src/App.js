@@ -84,9 +84,9 @@ export default class App extends Component {
             <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
               sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar} />
           }
-          <Header title="Wasatch Choice Map" version={version} />
+          <Header title="Wasatch Choice Map" />
           <Sidebar>
-            <About />
+            <About version={version} />
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
