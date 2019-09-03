@@ -1,0 +1,88 @@
+[
+  {
+    "name": "OBJECTID",
+    "type": "esriFieldTypeOID",
+    "alias": "OBJECTID",
+    "editable": false,
+    "nullable": false,
+    "domain": null
+  },
+  {
+    "name": "Likes",
+    "type": "esriFieldTypeSmallInteger",
+    "alias": "Likes",
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "GlobalID",
+    "type": "esriFieldTypeGlobalID",
+    "alias": "GlobalID",
+    "length": 38,
+    "editable": false,
+    "nullable": false,
+    "domain": null
+  },
+  {
+    "name": "ProjName",
+    "type": "esriFieldTypeString",
+    "alias": "Project Name",
+    "length": 100,
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "ProjFrom",
+    "type": "esriFieldTypeString",
+    "alias": "Project From",
+    "length": 100,
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "ProjTo",
+    "type": "esriFieldTypeString",
+    "alias": "Project To",
+    "length": 100,
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "ProjType",
+    "type": "esriFieldTypeString",
+    "alias": "Type",
+    "length": 50,
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "Phase",
+    "type": "esriFieldTypeSmallInteger",
+    "alias": "Phase",
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "ProjMode",
+    "type": "esriFieldTypeString",
+    "alias": "Mode",
+    "length": 25,
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  },
+  {
+    "name": "Sort",
+    "type": "esriFieldTypeSmallInteger",
+    "alias": "Sort",
+    "editable": true,
+    "nullable": true,
+    "domain": null
+  }
+]

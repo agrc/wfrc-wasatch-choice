@@ -73,6 +73,10 @@ export default class ReactMapView extends Component {
           });
         }
       }, 100));
+
+      this.view.on('click', this.props.onClick);
+
+      this.view.popup = null;
     });
 
     this.selectorNode = document.createElement('div');
@@ -106,8 +110,6 @@ export default class ReactMapView extends Component {
         <LayerSelector {...layerSelectorOptions} ref={ref => this.layerSelector = ref}></LayerSelector>
       </LayerSelectorContainer>,
       this.selectorNode);
-
-    this.view.on('click', this.props.onClick);
   }
 
   shouldHideLayerSelector() {

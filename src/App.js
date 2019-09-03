@@ -13,6 +13,7 @@ import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
 import URLParams from './URLParams';
 import Filter from './components/Filter/Filter';
+import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 
 
 export default class App extends Component {
@@ -23,13 +24,14 @@ export default class App extends Component {
         level: 0
       }
     },
-    mapClick: {},
+    mapClick: null,
     sideBarOpen: window.innerWidth >= config.MIN_DESKTOP_WIDTH,
     currentTabIndex: 0,
     mapExtent: null,
     mapView: null,
     mapReady: false,
-    resetFilter: false
+    resetFilter: false,
+    selectedGraphics: []
   };
 
   onMapClick = this.onMapClick.bind(this);
@@ -106,6 +108,7 @@ export default class App extends Component {
               icon={faHandPointer}
               position={1}
               mapView={this.state.mapView}>
+              <ProjectInformation graphics={this.state.selectedGraphics} />
             </MapWidget>
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
@@ -131,12 +134,16 @@ export default class App extends Component {
     console.error(e);
   };
 
-  onMapClick(event) {
-    this.setState({
-      showIdentify: true,
-      sideBarOpen: true,
-      mapClick: event.mapPoint
-    });
+  async onMapClick(event) {
+    console.log('onMapClick', event);
+
+    const hitTest = await this.state.mapView.hitTest(event);
+
+    const selectedGraphics = hitTest.results.map(result => result.graphic);
+
+    console.log('selectedGraphics', selectedGraphics);
+
+    this.setState({ selectedGraphics });
   }
 
   onMapExtentChange(newExtent) {
