@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Button, ButtonGroup, Card, CardHeader, CardBody } from 'reactstrap';
+import { Button, Card, CardHeader, CardBody } from 'reactstrap';
 import './MapWidget.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -25,12 +25,9 @@ export default props => {
 
   return (
     <>
-      <div className="map-widget-button btn-toolbar" role="toolbar" ref={buttonDiv}>
-        <ButtonGroup>
-          <Button onClick={toggle} title={props.name}>
-            <FontAwesomeIcon icon={props.icon} />
-          </Button>
-        </ButtonGroup>
+      <div className="map-widget-button esri-widget--button" ref={buttonDiv}
+        onClick={toggle} title={props.name}>
+        <FontAwesomeIcon icon={props.icon} />
       </div>
       <Card style={cardStyle} className="map-widget-card">
         <CardHeader>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Sherlock.css'
+import './Sherlock.scss'
 import { Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MapLens.css';
+import './MapLens.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'reactstrap';

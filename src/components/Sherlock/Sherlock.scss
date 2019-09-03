@@ -1,9 +1,18 @@
+@import '../../variables.scss';
+
 .sherlock {
   position: absolute;
   z-index: 3;
   width: 260px;
   left: 62px;
   top: 7px;
+  input[type="text"], button.disabled {
+    border-radius: 0;
+  }
+  button.disabled {
+    opacity: 1;
+    background-color: $highlightColor;
+  }
 }
 .sherlock__match-dropdown {
   width: 280px;

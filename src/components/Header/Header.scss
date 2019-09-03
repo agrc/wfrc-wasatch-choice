@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .app__header {
   position: absolute;
   top: 5px;
@@ -5,7 +7,7 @@
   right: 5px;
   padding: 8px;
   .header__heading {
-    color: #42738D;
+    color: $highlightColor;
     font-family: Montserrat, Arial, sans-serif;
     letter-spacing: 0px;
   }
