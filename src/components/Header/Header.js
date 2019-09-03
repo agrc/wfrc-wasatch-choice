@@ -3,6 +3,8 @@ import './Header.scss';
 import logo from './logo.jpg';
 import config from '../../config';
 import Tabs from '../Tabs/Tabs';
+import 'typeface-montserrat';
+
 
 export default class Header extends PureComponent {
   render() {
