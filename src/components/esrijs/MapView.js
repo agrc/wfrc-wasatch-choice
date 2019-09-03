@@ -32,9 +32,10 @@ export default class ReactMapView extends Component {
     loadCss('https://js.arcgis.com/4.12/esri/css/main.css');
     const mapRequires = [
       'esri/WebMap',
-      'esri/views/MapView'
+      'esri/views/MapView',
+      'esri/widgets/Home'
     ];
-    const [WebMap, MapView] = await loadModules(mapRequires);
+    const [WebMap, MapView, Home] = await loadModules(mapRequires);
 
     this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({
@@ -78,6 +79,8 @@ export default class ReactMapView extends Component {
 
       this.view.popup = null;
     });
+
+    this.view.ui.add(new Home({ view: this.view }), 'top-left');
 
     this.selectorNode = document.createElement('div');
 
