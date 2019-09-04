@@ -16,8 +16,19 @@ export const getLayers = (layerNames, map) => {
 
   const layerNameLookup = {};
 
+  const getSublayers = layer => {
+    layer.sublayers.forEach(subLayer => {
+      layerNameLookup[subLayer.title] = subLayer;
+
+      if (subLayer.sublayers) {
+        getSublayers(subLayer);
+      }
+    });
+  }
+
   map.layers.forEach(layer => {
     layerNameLookup[layer.title] = layer;
+    getSublayers(layer);
   });
   console.log('layerNameLookup', layerNameLookup);
 
