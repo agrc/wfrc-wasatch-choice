@@ -188,7 +188,8 @@
               "interchangesFuture14",
               "interchangesFuture15"
             ],
-            "symbol": "simple"
+            "symbol": "dynamic",
+            "symbolLayerIds": ["61,22", "103", "119"]
           },
           "transit": {
             "label": "Transit",
@@ -260,7 +261,8 @@
               "busRapidTransitStations14",
               "busRapidTransitStations15"
             ],
-            "symbol": "simple"
+            "symbol": "dynamic",
+            "symbolLayerIds": ["36,2", "45,9", "53,16"]
           },
           "bikePed": {
             "label": "Bike/Ped",
@@ -272,7 +274,8 @@
               "majorTrails14",
               "majorTrails15"
             ],
-            "symbol": "simple"
+            "symbol": "dynamic",
+            "symbolLayerIds": ["69-0", "69-1", "69-2"]
           },
           "centers": {
             "label": "Centers",

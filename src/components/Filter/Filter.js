@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
-import { Simple, PolygonClasses, LinePoint, Phase } from './Symbols';
+import { Simple, PolygonClasses, LinePoint, Phase, Dynamic } from './Symbols';
 
 
 const SYMBOLS = {
   simple: Simple,
   polygonClasses: PolygonClasses,
   linePoint: LinePoint,
-  phase: Phase
+  phase: Phase,
+  dynamic: Dynamic
 };
 
 export const getLayers = (layerNames, map) => {
@@ -361,7 +362,8 @@ const Child = props => {
         layerNames={props.layers}
         layersLookup={props.layersLookup}
         phaseIndex={props.phase}
-        color={props.color} /> }
+        color={props.color}
+        symbolLayerIds={props.symbolLayerIds} /> }
     </FormGroup>
   );
 };

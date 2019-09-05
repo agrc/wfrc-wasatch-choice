@@ -58,8 +58,16 @@
                         "simple",
                         "polygonClasses",
                         "linePoint",
-                        "phase"
+                        "phase",
+                        "dynamic"
                       ]
+                    },
+                    "symbolLayerIds": {
+                      "description": "Defines the layer ids (as strings) for which you would like to show symbols. Up to three values may be specified. If you would like multiple symbols overlayed, separate them with a \",\" (e.g. \"23,45\"). If you would like to define a specific symbol class within a layer you can use \"-<class index>\" (e.g. \"69-1\"",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": [

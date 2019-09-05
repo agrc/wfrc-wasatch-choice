@@ -146,3 +146,61 @@ export const Phase = props => {
     </div>
   );
 };
+
+export const Dynamic = props => {
+  // this assumes that all layers are part of the same map service
+  const [ legendInfoSets, setLegendInfoSets ] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    const getLegend = async () => {
+      console.log('Dynamic:getLegend');
+
+      // get legend for entire map service
+      const url = `${props.layersLookup[props.layerNames[0]].url.match(/^.*\//)[0]}legend?f=json`;
+      const legendResponse = await fetch(url);
+      const legendJson = await legendResponse.json();
+
+      const legendLayerLookup = {};
+      legendJson.layers.forEach(layer => {
+        legendLayerLookup[layer.layerId] = layer.legend;
+      });
+
+      const newInfoSets = props.symbolLayerIds.map(layerIds =>
+        layerIds.split(',').map(id => {
+          let classIndex = 0;
+          if (id.indexOf('-') > -1) {
+            const [ splitId, splitIndex ] = id.split('-');
+            id = splitId;
+            classIndex = splitIndex;
+          }
+
+          return legendLayerLookup[id][classIndex];
+        })
+      );
+
+      // prevent this from being called after the component has been unmounted
+      if (mounted) {
+        setLegendInfoSets(newInfoSets);
+      }
+    };
+    getLegend();
+
+    return () => mounted = false;
+  }, [props.layerNames, props.layersLookup, props.symbolLayerIds]);
+
+  return (
+    <div className="dynamic-symbol-container">
+      { legendInfoSets.map((set, index) =>
+        <div key={index} className="symbol-container">
+          { set.map((info, imgIndex) =>
+            <img key={imgIndex}
+              className='symbol'
+              src={`data:${info.contentType};base64,${info.imageData}`}
+              alt='swatch' />
+          ) }
+        </div>
+      ) }
+    </div>
+  );
+};

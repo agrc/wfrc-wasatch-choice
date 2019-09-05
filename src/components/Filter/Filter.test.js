@@ -25,12 +25,22 @@ describe('getPhaseQuery', () => {
 describe('getLayers', () => {
   const centersTitle = 'Centers';
   const centersLayer = {
-    title: centersTitle
+    title: centersTitle,
+    sublayers: []
+  };
+  const nestedSubLayer = {
+    title: 'Nested Sub Layer',
+    sublayers: []
+  };
+  const subLayer = {
+    title: 'Sub Layer',
+    sublayers: [nestedSubLayer]
   };
   const mockMap = {
     layers: [centersLayer, {
       title: 'Boundaries',
-      layerObject: {}
+      layerObject: {},
+      sublayers: [subLayer]
     }]
   };
   it('returns the correct layer objects', () => {
@@ -59,6 +69,21 @@ describe('getLayers', () => {
     getLayers(config.layerNames, mockMap);
 
     expect(console.error).toHaveBeenCalledWith('Layer: BadLayerName not found in web map!');
+  });
+
+  it('searches sublayers', () => {
+    const config = {
+      layerNames: {
+        subLayer: 'Sub Layer',
+        nestedSubLayer: 'Nested Sub Layer'
+      }
+    };
+
+    const result = getLayers(config.layerNames, mockMap);
+
+    expect(Object.keys(result).length).toBe(2);
+    expect(result.subLayer).toBe(subLayer);
+    expect(result.nestedSubLayer).toBe(nestedSubLayer);
   });
 });
 
