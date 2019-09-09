@@ -20,6 +20,9 @@
             "type": "boolean",
             "default": false
           },
+          "useDefaultAGOLPopup": {
+            "type": "boolean"
+          },
           "filter": {
             "description": "Contains configs for the filter widget.",
             "type": "object",

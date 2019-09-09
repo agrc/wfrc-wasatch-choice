@@ -77,7 +77,9 @@ export default class ReactMapView extends Component {
 
       this.view.on('click', this.props.onClick);
 
-      this.view.popup = null;
+      if (!this.props.useDefaultAGOLPopup) {
+        this.view.popup = null;
+      }
     });
 
     this.view.ui.add(new Home({ view: this.view }), 'top-left');

@@ -4,6 +4,7 @@
       "name": "Vision",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
+      "useDefaultAGOLPopup": true,
       "filter": {
         "layerNames": {
           "commuterRailStation10": "Commuter Rail Stations - 10",
@@ -376,6 +377,7 @@
     {
       "name": "Transportation",
       "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
+      "useDefaultAGOLPopup": true,
       "filter": {
         "layerNames": {
           "activeTransPoint": "Active Transportation Point Projects",
@@ -617,6 +619,7 @@
     {
       "name": "Land Uses",
       "webMapId": "3eb707055b2148b6967e793de770395c",
+      "useDefaultAGOLPopup": true,
       "filter": {
         "layerNames": {
           "employment": "Employment Projections (2050)",
@@ -693,6 +696,7 @@
     {
       "name": "Economic Development",
       "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
+      "useDefaultAGOLPopup": true,
       "filter": {
         "layerNames": {
           "opportunityZones": "Opportunity Zones",
@@ -746,6 +750,7 @@
     {
       "name": "Amenities",
       "webMapId": "dfb321a9fec3435f8e7398ee8b123f80",
+      "useDefaultAGOLPopup": true,
       "filter": {
         "layerNames": {
           "communityCenters": "Community Centers",
