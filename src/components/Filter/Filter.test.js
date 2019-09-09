@@ -24,26 +24,35 @@ describe('getPhaseQuery', () => {
 
 describe('getLayers', () => {
   const centersTitle = 'Centers';
+  const whenMock = () => {
+    return new Promise(resolve => {
+      resolve();
+    });
+  };
   const centersLayer = {
     title: centersTitle,
-    sublayers: []
+    when: whenMock
   };
   const nestedSubLayer = {
-    title: 'Nested Sub Layer',
-    sublayers: []
+    title: 'Nested Sub Layer'
   };
   const subLayer = {
     title: 'Sub Layer',
     sublayers: [nestedSubLayer]
   };
   const mockMap = {
-    layers: [centersLayer, {
-      title: 'Boundaries',
-      layerObject: {},
-      sublayers: [subLayer]
-    }]
+    layers: {
+      items: [
+        centersLayer,
+        {
+          title: 'Boundaries',
+          sublayers: [subLayer],
+          when: whenMock
+        }
+      ]
+    }
   };
-  it('returns the correct layer objects', () => {
+  it('returns the correct layer objects', async () => {
     const config = {
       layerNames: {
         boundaries: 'Boundaries',
@@ -51,13 +60,13 @@ describe('getLayers', () => {
       }
     };
 
-    const result = getLayers(config.layerNames, mockMap);
+    const result = await getLayers(config.layerNames, mockMap);
 
     expect(Object.keys(result).length).toBe(2);
     expect(result.centers).toBe(centersLayer);
   });
 
-  it('logs an error if there is no matching layer in web map', () => {
+  it('logs an error if there is no matching layer in web map', async () => {
     console.error = jest.fn();
     const config = {
       layerNames: {
@@ -66,12 +75,12 @@ describe('getLayers', () => {
       }
     };
 
-    getLayers(config.layerNames, mockMap);
+    await getLayers(config.layerNames, mockMap);
 
     expect(console.error).toHaveBeenCalledWith('Layer: BadLayerName not found in web map!');
   });
 
-  it('searches sublayers', () => {
+  it('searches sublayers', async () => {
     const config = {
       layerNames: {
         subLayer: 'Sub Layer',
@@ -79,7 +88,7 @@ describe('getLayers', () => {
       }
     };
 
-    const result = getLayers(config.layerNames, mockMap);
+    const result = await getLayers(config.layerNames, mockMap);
 
     expect(Object.keys(result).length).toBe(2);
     expect(result.subLayer).toBe(subLayer);

@@ -12,7 +12,7 @@ const SYMBOLS = {
   dynamic: Dynamic
 };
 
-export const getLayers = (layerNames, map) => {
+export const getLayers = async (layerNames, map) => {
   console.log('Filter.getLayers');
 
   const layerNameLookup = {};
@@ -27,10 +27,13 @@ export const getLayers = (layerNames, map) => {
     });
   }
 
-  map.layers.forEach(layer => {
+  for (const layer of map.layers.items) {
     layerNameLookup[layer.title] = layer;
-    getSublayers(layer);
-  });
+
+    await layer.when();
+    layer.sublayers && getSublayers(layer);
+  };
+
   console.log('layerNameLookup', layerNameLookup);
 
   const layers = {};
@@ -99,17 +102,18 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
 
 export default props => {
   const [ filterByPhasing, setFilterByPhasing ] = useState(false);
+  const [ layers, setLayers ] = useState();
 
   useEffect(() => {
     validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
   }, [props.layerNames, props.checkboxes]);
 
-  let layers;
   // only get new layers after the map has been updated to match the current tab
-  if (props.mapView && props.mapView.map && props.webMapId === props.mapView.map.portalItem.id) {
+  if (props.mapView && props.mapView.map &&
+      props.webMapId === props.mapView.map.portalItem.id && !layers) {
     console.log(props.mapView.map.portalItem.id, props.mapView.map.loaded);
-    props.mapView.map.when(() => {
-      layers = getLayers(props.layerNames, props.mapView.map);
+    props.mapView.map.when(async () => {
+      setLayers(await getLayers(props.layerNames, props.mapView.map));
     });
   }
 
