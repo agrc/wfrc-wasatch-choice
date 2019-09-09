@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2-0](https://github.com/agrc/wfrc/compare/v0.6.1...v0.6.2-0) (2019-09-09)
+
+
+### Bug Fixes
+
+* change title font to Montserrat (Google Fonts) ([d6f984e](https://github.com/agrc/wfrc/commit/d6f984e)), closes [#22](https://github.com/agrc/wfrc/issues/22)
+* fix bug preventing some sublayers from being found ([08a9acb](https://github.com/agrc/wfrc/commit/08a9acb))
+* handle bug caused by switching to async getLayers ([744ce20](https://github.com/agrc/wfrc/commit/744ce20)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* move app version to About widget ([9684919](https://github.com/agrc/wfrc/commit/9684919)), closes [#24](https://github.com/agrc/wfrc/issues/24)
+* revert default to open on filter ([d45eadf](https://github.com/agrc/wfrc/commit/d45eadf))
+* standardize map controls ([f20ac70](https://github.com/agrc/wfrc/commit/f20ac70)), closes [#15](https://github.com/agrc/wfrc/issues/15)
+
+
+### Features
+
+* **Filter:** implement reset button ([5a105ab](https://github.com/agrc/wfrc/commit/5a105ab)), closes [#10](https://github.com/agrc/wfrc/issues/10)
+* **ProjectInfo:** flesh out ProjectInformation and Details components ([6b2063d](https://github.com/agrc/wfrc/commit/6b2063d)), closes [#8](https://github.com/agrc/wfrc/issues/8)
+* add home button ([7c31027](https://github.com/agrc/wfrc/commit/7c31027)), closes [#16](https://github.com/agrc/wfrc/issues/16)
+* add tab config for toggling default AGOL popups ([83d0295](https://github.com/agrc/wfrc/commit/83d0295))
+
 ### [0.6.1](https://github.com/agrc/wfrc/compare/v0.6.0...v0.6.1) (2019-08-19)
 
 
