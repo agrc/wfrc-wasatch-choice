@@ -833,5 +833,9 @@
       "OBJECTID",
       "GlobalID"
     ]
+  },
+  "minimumLegendSizes": {
+    "pointSize": 6,
+    "polylineWidth": 2
   }
 }

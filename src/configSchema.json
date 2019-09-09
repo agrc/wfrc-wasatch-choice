@@ -235,6 +235,21 @@
           }
         }
       }
+    },
+    "minimumLegendSizes": {
+      "type": "object",
+      "properties": {
+        "pointSize": {
+          "type": "number"
+        },
+        "polylineWidth": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "pointSize",
+        "polylineWidth"
+      ]
     }
   }
 }

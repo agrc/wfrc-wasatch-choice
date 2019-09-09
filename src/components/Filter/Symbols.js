@@ -4,11 +4,32 @@ import './Symbols.scss';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover, PopoverBody } from 'reactstrap';
+import config from '../../config';
 
 
 const getBackgroundColor = color => {
   // handle colors defined as rgb objects as well as hsa strings
   return color.hsa || `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+};
+
+export const getSymbolFromInfos = (symbolInfos, minimums) => {
+  let symbol;
+
+  symbolInfos.some(info => {
+    if (info.symbol.size >= minimums.pointSize ||
+      info.symbol.width >= minimums.polylineWidth) {
+      symbol = info.symbol;
+
+      return true;
+    }
+
+    return false;
+  });
+
+  if (!symbol) {
+    console.error(`No symbol larger than the minimum size was found in: ${symbolInfos}. Miniums: ${minimums}`);
+  }
+  return symbol;
 };
 
 export const Simple = props => {
@@ -24,7 +45,7 @@ export const Simple = props => {
       const newSymbols = await Promise.all(props.layerNames.map(layerName => {
         const layer = props.layersLookup[layerName];
 
-        const symbol = layer.renderer.symbol || layer.renderer.uniqueValueInfos[0].symbol;
+        const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
 
         return symbolUtils.renderPreviewHTML(symbol, { opacity: layer.opacity });
       }));
@@ -121,7 +142,7 @@ export const LinePoint = props => {
         if (!newSymbols[layer.geometryType]) {
           newSymbols[layer.geometryType] = true;
           layer.when(() => {
-            newSymbols[layer.geometryType] = layer.renderer.uniqueValueInfos[0].symbol;
+            newSymbols[layer.geometryType] = getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
           });
         }
       });
