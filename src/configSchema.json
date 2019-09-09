@@ -68,6 +68,21 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "staticColors": {
+                      "description": "Used to define colors for the `staticColors` symbol type.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "hsa": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
                   },
                   "required": [

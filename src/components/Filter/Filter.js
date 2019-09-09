@@ -363,7 +363,8 @@ const Child = props => {
         layersLookup={props.layersLookup}
         phaseIndex={props.phase}
         color={props.color}
-        symbolLayerIds={props.symbolLayerIds} /> }
+        symbolLayerIds={props.symbolLayerIds}
+        staticColors={props.staticColors} /> }
     </FormGroup>
   );
 };

@@ -7,7 +7,8 @@ import { Popover, PopoverBody } from 'reactstrap';
 
 
 const getBackgroundColor = color => {
-  return `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+  // handle colors defined as rgb objects as well as hsa strings
+  return color.hsa || `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 };
 
 export const Simple = props => {
@@ -52,7 +53,15 @@ export const PolygonClasses = props => {
   const popoverTarget = useRef();
   const [ showPopover, setShowPopover ] = useState(false);
 
+  if (props.staticColors && colors.length === 0) {
+    setColors(props.staticColors);
+  }
+
   useEffect(() => {
+    if (props.staticColors) {
+      return;
+    }
+
     console.log('PolygonClasses:getColors');
 
     const colors = props.layersLookup[props.layerNames[0]]
@@ -62,7 +71,7 @@ export const PolygonClasses = props => {
 
     // prevent this from being called after the component has been unmounted
     setColors(colors);
-  }, [props.layerNames, props.layersLookup]);
+  }, [props.layerNames, props.layersLookup, props.staticColors]);
 
   return (
     <>

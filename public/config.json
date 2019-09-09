@@ -2,7 +2,7 @@
   "tabs": [
     {
       "name": "Vision",
-      "webMapId": "84620c7d45854edf9d1fa7859af71500",
+      "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
       "filter": {
         "layerNames": {
@@ -189,7 +189,11 @@
               "interchangesFuture15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": ["61,22", "103", "119"]
+            "symbolLayerIds": [
+              "61,22",
+              "103",
+              "119"
+            ]
           },
           "transit": {
             "label": "Transit",
@@ -262,7 +266,11 @@
               "busRapidTransitStations15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": ["36,2", "45,9", "53,16"]
+            "symbolLayerIds": [
+              "36,2",
+              "45,9",
+              "53,16"
+            ]
           },
           "bikePed": {
             "label": "Bike/Ped",
@@ -275,7 +283,11 @@
               "majorTrails15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": ["69-0", "69-1", "69-2"]
+            "symbolLayerIds": [
+              "69-0",
+              "69-1",
+              "69-2"
+            ]
           },
           "centers": {
             "label": "Centers",
@@ -289,7 +301,25 @@
               "centers14",
               "centers15"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "polygonClasses",
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "#EB6421"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "#E6902E"
+              },
+              {
+                "label": "City Center",
+                "hsa": "#FFB726"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "#FFFF00"
+              }
+            ]
           },
           "generalLandUse": {
             "label": "General Land Use",
@@ -303,7 +333,25 @@
               "generalLandUse14",
               "generalLandUse15"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "polygonClasses",
+            "staticColors": [
+              {
+                "label": "Educational Center",
+                "hsa": "#F7B0B0"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "#D79E9E"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "#C500FF"
+              },
+              {
+                "label": "Special District",
+                "hsa": "#4E4E4E"
+              }
+            ]
           }
         },
         "groups": [
@@ -781,6 +829,9 @@
     ]
   },
   "projectInformation": {
-    "excludeFields": ["OBJECTID", "GlobalID"]
+    "excludeFields": [
+      "OBJECTID",
+      "GlobalID"
+    ]
   }
 }
