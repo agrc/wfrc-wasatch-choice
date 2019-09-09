@@ -1,5 +1,4 @@
 .side-bar {
-  overflow-y: auto;
   overflow-x: hidden;
   position: absolute;
   left: 5px;
@@ -15,6 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
 }
 
 .side-bar--with-border {
