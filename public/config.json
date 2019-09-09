@@ -142,7 +142,7 @@
         "checkboxes": {
           "roads": {
             "label": "Roads",
-            "layers": [
+            "layerNames": [
               "udotLRSOutliers8",
               "udotLRSOutliers9",
               "udotLRSOutliers10",
@@ -197,7 +197,7 @@
           },
           "transit": {
             "label": "Transit",
-            "layers": [
+            "layerNames": [
               "pcCoreBus8",
               "pcCoreBus9",
               "pcCoreBus10",
@@ -274,7 +274,7 @@
           },
           "bikePed": {
             "label": "Bike/Ped",
-            "layers": [
+            "layerNames": [
               "majorTrails10",
               "majorTrails11",
               "majorTrails12",
@@ -291,7 +291,7 @@
           },
           "centers": {
             "label": "Centers",
-            "layers": [
+            "layerNames": [
               "centers8",
               "centers9",
               "centers10",
@@ -323,7 +323,7 @@
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layers": [
+            "layerNames": [
               "generalLandUse8",
               "generalLandUse9",
               "generalLandUse10",
@@ -494,7 +494,7 @@
         "checkboxes": {
           "roads": {
             "label": "Roads",
-            "layers": [
+            "layerNames": [
               "roadwayPoint",
               "magRoadwayPoint",
               "roadwayLine",
@@ -504,7 +504,7 @@
           },
           "transit": {
             "label": "Transit",
-            "layers": [
+            "layerNames": [
               "transitPoint",
               "magTransitPoint",
               "transitLine",
@@ -514,7 +514,7 @@
           },
           "bikePed": {
             "label": "Bike/Ped",
-            "layers": [
+            "layerNames": [
               "activeTransPoint",
               "magActiveTransPoint",
               "activeTransLine",
@@ -548,7 +548,7 @@
           },
           "centers": {
             "label": "Centers",
-            "layers": [
+            "layerNames": [
               "centers",
               "magCenters"
             ],
@@ -556,7 +556,7 @@
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layers": [
+            "layerNames": [
               "generalLandUse",
               "magGeneralLandUse"
             ],
@@ -564,14 +564,14 @@
           },
           "existingBikePed": {
             "label": "Existing Bike/Ped",
-            "layers": [
+            "layerNames": [
               "existingBike"
             ],
             "symbol": "simple"
           },
           "existingTransit": {
             "label": "Existing Transit",
-            "layers": [
+            "layerNames": [
               "existingTransitLine",
               "existingTransitPoint"
             ],
@@ -632,38 +632,38 @@
         "checkboxes": {
           "employment": {
             "label": "Employment Projections",
-            "layers": [
+            "layerNames": [
               "employment"
             ]
           },
           "population": {
             "label": "Population Projections",
-            "layers": [
+            "layerNames": [
               "population"
             ]
           },
           "workplaceAccessibilityAuto": {
             "label": "Workplace Accessibility - Auto",
-            "layers": [
+            "layerNames": [
               "workplaceAccessibilityAuto"
             ]
           },
           "workplaceAccessibilityTransit": {
             "label": "Workplace Accessibility - Transit",
-            "layers": [
+            "layerNames": [
               "workplaceAccessibilityTransit"
             ]
           },
           "centers": {
             "label": "Centers",
-            "layers": [
+            "layerNames": [
               "centers"
             ],
             "symbol": "polygonClasses"
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layers": [
+            "layerNames": [
               "generalLandUse"
             ],
             "symbol": "polygonClasses"
@@ -706,14 +706,14 @@
         "checkboxes": {
           "opportunityZones": {
             "label": "Opportunity Zones",
-            "layers": [
+            "layerNames": [
               "opportunityZones"
             ],
             "symbol": "simple"
           },
           "centers": {
             "label": "Centers",
-            "layers": [
+            "layerNames": [
               "centers",
               "magCenters"
             ],
@@ -721,7 +721,7 @@
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layers": [
+            "layerNames": [
               "generalLandUse",
               "magGeneralLandUse"
             ],
@@ -729,13 +729,13 @@
           },
           "economicClusters": {
             "label": "Economic Clusters",
-            "layers": [
+            "layerNames": [
               "economicClusters"
             ]
           },
           "cdasRdas": {
             "label": "CDAs and RDAs",
-            "layers": [
+            "layerNames": [
               "cdasRdas"
             ],
             "symbol": "simple"
@@ -760,14 +760,14 @@
         "checkboxes": {
           "communityCenters": {
             "label": "Community Centers",
-            "layers": [
+            "layerNames": [
               "communityCenters"
             ],
             "symbol": "simple"
           },
           "trails": {
             "label": "Trails",
-            "layers": [
+            "layerNames": [
               "trailheads",
               "trails"
             ],
@@ -775,7 +775,7 @@
           },
           "parks": {
             "label": "Parks",
-            "layers": [
+            "layerNames": [
               "parks",
               "stateParks"
             ],
@@ -783,21 +783,21 @@
           },
           "federalLands": {
             "label": "Federal Lands",
-            "layers": [
+            "layerNames": [
               "federalLands"
             ],
             "symbol": "simple"
           },
           "golfCourses": {
             "label": "Golf Courses",
-            "layers": [
+            "layerNames": [
               "golfCourses"
             ],
             "symbol": "simple"
           },
           "skiAreas": {
             "label": "Ski Areas",
-            "layers": [
+            "layerNames": [
               "skiAreas"
             ],
             "symbol": "simple"

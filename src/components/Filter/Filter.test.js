@@ -109,10 +109,10 @@ describe('validateCheckboxLayerKeys', () => {
     };
     const checkboxes = {
       boxOne: {
-        layers: ['one', 'two']
+        layerNames: ['one', 'two']
       },
       boxTwo: {
-        layers: ['three']
+        layerNames: ['three']
       }
     };
 
@@ -128,10 +128,10 @@ describe('validateCheckboxLayerKeys', () => {
     };
     const checkboxes = {
       boxOne: {
-        layers: ['one', 'two']
+        layerNames: ['one', 'two']
       },
       boxTwo: {
-        layers: ['three', 'badName']
+        layerNames: ['three', 'badName']
       }
     };
 

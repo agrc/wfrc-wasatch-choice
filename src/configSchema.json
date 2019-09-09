@@ -40,7 +40,7 @@
                     "label": {
                       "type": "string"
                     },
-                    "layers": {
+                    "layerNames": {
                       "description": "Defines the layer(s) that you want to toggle. Values must match the property names of `layerNames` above.",
                       "type": "array",
                       "items": {
@@ -90,7 +90,7 @@
                   ],
                   "oneOf": [
                     {
-                      "required": [ "layers" ]
+                      "required": [ "layerNames" ]
                     },
                     {
                       "required": [ "phase" ]

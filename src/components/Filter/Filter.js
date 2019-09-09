@@ -88,10 +88,12 @@ export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
 };
 
 export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
+  console.log('Filter.validateCheckboxLayerKeys');
+
   const layerKeys = Object.keys(layerNames);
   Object.keys(checkboxes).forEach(checkboxKey => {
-    if (checkboxes[checkboxKey].layers) {
-      checkboxes[checkboxKey].layers.forEach(layerKey => {
+    if (checkboxes[checkboxKey].layerNames) {
+      checkboxes[checkboxKey].layerNames.forEach(layerKey => {
         if (layerKeys.indexOf(layerKey) === -1) {
           console.error(`Cannot find layer: ${layerKey} from checkbox: ${checkboxKey}`);
         }
@@ -104,22 +106,30 @@ export default props => {
   const [ filterByPhasing, setFilterByPhasing ] = useState(false);
   const [ layers, setLayers ] = useState();
 
+  // reset layer lookup when the web map is changed
+  useEffect(() => {
+    setLayers(null);
+  }, [props.layerNames]);
+
   useEffect(() => {
     validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
   }, [props.layerNames, props.checkboxes]);
 
+  const mapIsLoaded = () => {
+    return props.mapView && props.mapView.map && props.mapView.map.loaded && props.mapView.map.portalItem.id === props.webMapId;
+  };
   // only get new layers after the map has been updated to match the current tab
-  if (props.mapView && props.mapView.map &&
-      props.webMapId === props.mapView.map.portalItem.id && !layers) {
+  if (mapIsLoaded() && !layers) {
     console.log(props.mapView.map.portalItem.id, props.mapView.map.loaded);
+
     props.mapView.map.when(async () => {
       setLayers(await getLayers(props.layerNames, props.mapView.map));
     });
   }
 
-  const setLayersVisibility = (layerKeys, visible) => {
+  const setLayersVisibility = (layerNames, visible) => {
     if (layers) {
-      layerKeys.forEach(key => {
+      layerNames.forEach(key => {
         const layer = layers[key];
         if (layer) {
           layer.visible = visible;
@@ -143,7 +153,7 @@ export default props => {
                 setLayersVisibility={setLayersVisibility}
                 filterByPhasing={filterByPhasing}
                 setFilterByPhasing={setFilterByPhasing}
-                layers={layers}
+                layers={mapIsLoaded() ? layers : null}
                 phases={props.phases}
                 allGroupConfigs={props.groups} /> }
           </div>)
@@ -156,7 +166,7 @@ export default props => {
               name={checkboxConfig.label}
               reset={props.reset}
               {...checkboxConfig}
-              layersLookup={layers}
+              layersLookup={mapIsLoaded() ? layers : null}
               setLayersVisibility={setLayersVisibility} />
         );
       }) }
@@ -172,8 +182,8 @@ const RadioGroup = props => {
     setSelectedRadioButton(checkboxName);
   };
   const allLayerKeys = props.checkboxes
-    .reduce((layers, checkboxName) => layers.concat(props.checkboxConfigs[checkboxName].layers), []);
-  const visibleLayerKeys = (visible) ? props.checkboxConfigs[selectedRadioButton].layers : [];
+    .reduce((layerNames, checkboxName) => layerNames.concat(props.checkboxConfigs[checkboxName].layerNames), []);
+  const visibleLayerKeys = (visible) ? props.checkboxConfigs[selectedRadioButton].layerNames : [];
   const hiddenLayersKeys = allLayerKeys.filter(key => visibleLayerKeys.indexOf(key) === -1);
   props.setLayersVisibility(hiddenLayersKeys, false);
   props.setLayersVisibility(visibleLayerKeys, true);
@@ -266,7 +276,7 @@ const Parent = props => {
             }
 
             return groupConfig.checkboxes.every(checkboxName => {
-              return props.checkboxConfigs[checkboxName].layers.indexOf(layerName) === -1;
+              return props.checkboxConfigs[checkboxName].layerNames.indexOf(layerName) === -1;
             });
           });
         }
@@ -327,6 +337,7 @@ const Parent = props => {
 
 const Child = props => {
   const [ internalIsChecked, setInternalIsChecked ] = useState(true);
+
   const onChange = event => {
     if (props.onChange) {
       props.onChange(props.name);
@@ -337,8 +348,8 @@ const Child = props => {
 
   let checked = (props.checked !== undefined) ? props.checked : internalIsChecked;
 
-  if (props.layers) {
-    props.setLayersVisibility(props.layers, checked);
+  if (props.layerNames) {
+    props.setLayersVisibility(props.layerNames, checked);
   }
 
   let Symbol;
@@ -363,7 +374,7 @@ const Child = props => {
       </Label>
       { props.symbol && props.layersLookup &&
       <Symbol
-        layerNames={props.layers}
+        layerNames={props.layerNames}
         layersLookup={props.layersLookup}
         phaseIndex={props.phase}
         color={props.color}
