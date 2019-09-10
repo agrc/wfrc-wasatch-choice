@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/agrc/wfrc/compare/v0.6.4...v1.0.0) (2019-09-10)
+
+
+### Bug Fixes
+
+* better loading of esri js api ([23893c7](https://github.com/agrc/wfrc/commit/23893c7))
+* remove default open ([cf0b7ba](https://github.com/agrc/wfrc/commit/cf0b7ba))
+
+
+### Features
+
+* Eco Dev Tab: reorder layers and add "TOD Sites" layer ([7c16a7d](https://github.com/agrc/wfrc/commit/7c16a7d))
+* radio button group parent checkboxes now default to off ([6ebaab3](https://github.com/agrc/wfrc/commit/6ebaab3))
+
 ### [0.6.4](https://github.com/agrc/wfrc/compare/v0.6.3...v0.6.4) (2019-09-10)
 
 ### [0.6.3](https://github.com/agrc/wfrc/compare/v0.6.1...v0.6.3) (2019-09-09)
