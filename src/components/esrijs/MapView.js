@@ -122,6 +122,15 @@ export default class ReactMapView extends Component {
     if (this.context.currentTabIndex !== this.currentTabIndex) {
       // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
+      if (this.view.center && this.view.map.layers.some(layer => layer.type === 'map-image')) {
+        setTimeout(() => {
+          console.log('bumping extent to force refresh');
+          const screenPoint = this.view.toScreen(this.view.center);
+          screenPoint.x++;
+          screenPoint.y++;
+          this.view.center = this.view.toMap(screenPoint);
+        }, 700);
+      }
 
       if (!this.props.useDefaultAGOLPopup) {
         this.view.popup = null;
