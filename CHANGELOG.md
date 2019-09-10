@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/agrc/wfrc/compare/v1.0.0...v1.0.1) (2019-09-10)
+
+
+### Bug Fixes
+
+* bump extent on tabs with map image layers to force refresh ([775defe](https://github.com/agrc/wfrc/commit/775defe)), closes [#27](https://github.com/agrc/wfrc/issues/27)
+* support different popup settings for tabs ([492f42d](https://github.com/agrc/wfrc/commit/492f42d))
+
 ## [1.0.0](https://github.com/agrc/wfrc/compare/v0.6.4...v1.0.0) (2019-09-10)
 
 
