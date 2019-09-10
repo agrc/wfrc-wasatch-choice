@@ -166,6 +166,51 @@ exports[`Storyshots Filter Economic Development 1`] = `
         onChange={[Function]}
         type="checkbox"
       />
+      Economic Clusters
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      TOD Sites
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      CDAs and RDAs
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
       Opportunity Zones
     </label>
   </div>
@@ -199,36 +244,6 @@ exports[`Storyshots Filter Economic Development 1`] = `
       General Land Use
     </label>
   </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Economic Clusters
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      CDAs and RDAs
-    </label>
-  </div>
 </div>
 `;
 
@@ -246,7 +261,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
         className="form-check-label"
       >
         <input
-          checked={true}
+          checked={false}
           className="form-check-input"
           onChange={[Function]}
           type="checkbox"
