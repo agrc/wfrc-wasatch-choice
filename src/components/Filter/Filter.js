@@ -175,7 +175,7 @@ export default props => {
 };
 
 const RadioGroup = props => {
-  const [ visible, setVisible ] = useState(true);
+  const [ visible, setVisible ] = useState(false);
   const defaultRadioButton = props.checkboxes[0];
   const [ selectedRadioButton, setSelectedRadioButton ] = useState(defaultRadioButton);
   const onRadioChange = checkboxName => {
