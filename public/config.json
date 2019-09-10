@@ -705,9 +705,30 @@
           "generalLandUse": "General Land Use",
           "magGeneralLandUse": "MAG General Land Use",
           "economicClusters": "Economic Clusters",
-          "cdasRdas": "CDAs and RDAs"
+          "cdasRdas": "CDAs and RDAs",
+          "todSites": "TOD Sites"
         },
         "checkboxes": {
+          "economicClusters": {
+            "label": "Economic Clusters",
+            "layerNames": [
+              "economicClusters"
+            ]
+          },
+          "todSites": {
+            "label": "TOD Sites",
+            "layerNames": [
+              "todSites"
+            ],
+            "symbol": "simple"
+          },
+          "cdasRdas": {
+            "label": "CDAs and RDAs",
+            "layerNames": [
+              "cdasRdas"
+            ],
+            "symbol": "simple"
+          },
           "opportunityZones": {
             "label": "Opportunity Zones",
             "layerNames": [
@@ -730,19 +751,6 @@
               "magGeneralLandUse"
             ],
             "symbol": "polygonClasses"
-          },
-          "economicClusters": {
-            "label": "Economic Clusters",
-            "layerNames": [
-              "economicClusters"
-            ]
-          },
-          "cdasRdas": {
-            "label": "CDAs and RDAs",
-            "layerNames": [
-              "cdasRdas"
-            ],
-            "symbol": "simple"
           }
         }
       }
