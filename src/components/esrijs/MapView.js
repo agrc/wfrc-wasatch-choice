@@ -76,9 +76,7 @@ export default class ReactMapView extends Component {
 
       this.view.on('click', this.props.onClick);
 
-      if (!this.props.useDefaultAGOLPopup) {
-        this.view.popup = null;
-      }
+      this.defaultPopup = this.view.popup;
     });
 
     this.view.ui.add(new Home({ view: this.view }), 'top-left');
@@ -124,6 +122,12 @@ export default class ReactMapView extends Component {
     if (this.context.currentTabIndex !== this.currentTabIndex) {
       // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
+
+      if (!this.props.useDefaultAGOLPopup) {
+        this.view.popup = null;
+      } else {
+        this.view.popup = this.defaultPopup;
+      }
 
       // update layer selector visibility
       if (this.context.currentTabIndex && this.shouldHideLayerSelector() !==
