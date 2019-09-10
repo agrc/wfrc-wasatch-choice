@@ -11,6 +11,8 @@ import uniqWith from 'lodash.uniqwith';
 import { loadModules } from 'esri-loader';
 import Downshift from 'downshift';
 import isEqual from "react-fast-compare";
+import config from '../../config';
+
 
 class Sherlock extends Component {
 
@@ -54,7 +56,7 @@ class Sherlock extends Component {
 
     const response = await provider.getFeature(searchValue, contextValue);
 
-    const [Graphic] = await loadModules(['esri/Graphic']);
+    const [Graphic] = await loadModules(['esri/Graphic'], config.ESRI_LOADER_CONFIG);
 
     const results = response.data;
 
@@ -322,7 +324,7 @@ class MapServiceProvider extends ProviderBase {
   }
 
   async setUpQueryTask(serviceUrl, options) {
-    const [ Query, QueryTask ] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask']);
+    const [ Query, QueryTask ] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask'], config.ESRI_LOADER_CONFIG);
     const defaultWkid = 3857;
     this.query = new Query();
     this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);

@@ -40,7 +40,7 @@ export const Simple = props => {
     const getSymbol = async () => {
       console.log('Simple:getSymbol');
 
-      const [ symbolUtils ] = await loadModules(['esri/symbols/support/symbolUtils']);
+      const [ symbolUtils ] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
       const newSymbols = await Promise.all(props.layerNames.map(layerName => {
         const layer = props.layersLookup[layerName];
@@ -133,7 +133,7 @@ export const LinePoint = props => {
     const getSymbols = async () => {
       console.log('LinePoint:getSymbols');
 
-      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils']);
+      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
       const newSymbols = {};
 

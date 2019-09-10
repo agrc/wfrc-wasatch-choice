@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { loadModules, loadCss } from 'esri-loader';
+import { loadModules } from 'esri-loader';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
 import config from '../../config';
 import TabsContext from '../Tabs/TabsContext';
@@ -29,13 +29,12 @@ export default class ReactMapView extends Component {
   }
 
   async componentDidMount() {
-    loadCss('https://js.arcgis.com/4.12/esri/css/main.css');
     const mapRequires = [
       'esri/WebMap',
       'esri/views/MapView',
       'esri/widgets/Home'
     ];
-    const [WebMap, MapView, Home] = await loadModules(mapRequires);
+    const [WebMap, MapView, Home] = await loadModules(mapRequires, config.ESRI_LOADER_CONFIG);
 
     this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({
@@ -101,7 +100,7 @@ export default class ReactMapView extends Component {
       'esri/Basemap',
       'esri/layers/FeatureLayer',
     ];
-    const modules = await loadModules(selectorRequires);
+    const modules = await loadModules(selectorRequires, config.ESRI_LOADER_CONFIG);
 
     const layerSelectorOptions = {
       view: this.view,
@@ -189,7 +188,7 @@ export default class ReactMapView extends Component {
 
     this.view.graphics.addMany(zoomObj.target);
 
-    const [watchUtils] = await loadModules(['esri/core/watchUtils']);
+    const [watchUtils] = await loadModules(['esri/core/watchUtils'], config.ESRI_LOADER_CONFIG);
 
     if (!zoomObj.preserve) {
       watchUtils.once(this.view, 'extent', () => {
