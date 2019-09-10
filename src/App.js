@@ -92,7 +92,7 @@ export default class App extends Component {
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
             <MapWidget
-              defaultOpen={true}
+              // defaultOpen={true}
               name="Filter"
               icon={faList}
               position={0}
