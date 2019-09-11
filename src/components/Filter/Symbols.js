@@ -42,6 +42,13 @@ export const Simple = props => {
 
       const [ symbolUtils ] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
+      const layer = props.layersLookup[props.layerNames[0]];
+      if (!layer) {
+        // most likely layersLookup has layers from the last map and needs to update
+        console.log('returning early: simple', props.layersLookup, props.layerNames);
+
+        return;
+      }
       const newSymbols = await Promise.all(props.layerNames.map(layerName => {
         const layer = props.layersLookup[layerName];
 
@@ -85,10 +92,15 @@ export const PolygonClasses = props => {
 
     console.log('PolygonClasses:getColors');
 
-    const colors = props.layersLookup[props.layerNames[0]]
-      .renderer.uniqueValueInfos.map(info => {
-        return {...info.symbol.color, label: info.label};
-      });
+    const layer = props.layersLookup[props.layerNames[0]];
+    if (!layer) {
+      // most likely layersLookup has layers from the last map and needs to update
+      return;
+    }
+
+    const colors = layer.renderer.uniqueValueInfos.map(info => {
+      return {...info.symbol.color, label: info.label};
+    });
 
     // prevent this from being called after the component has been unmounted
     setColors(colors);
@@ -136,6 +148,11 @@ export const LinePoint = props => {
       const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
       const newSymbols = {};
+
+      if (!props.layersLookup[props.layerNames[0]]) {
+        // most likely layersLookup has layers from the last map and needs to update
+        return;
+      }
 
       props.layerNames.forEach(layerName => {
         const layer = props.layersLookup[layerName];

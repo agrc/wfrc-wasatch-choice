@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
 import { Simple, PolygonClasses, LinePoint, Phase, Dynamic } from './Symbols';
+import { loadModules} from 'esri-loader';
+import config from '../../config';
 
 
 const SYMBOLS = {
@@ -108,24 +110,28 @@ export default props => {
 
   // reset layer lookup when the web map is changed
   useEffect(() => {
-    setLayers(null);
-  }, [props.layerNames]);
+    const getLayersForNewMap = async () => {
+      const [ watchUtils ] = await loadModules(['esri/core/watchUtils'], config.ESRI_LOADER_CONFIG);
+      await watchUtils.whenOnce(props.mapView, "ready");
+      await props.mapView.map.when();
 
-  useEffect(() => {
-    validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
-  }, [props.layerNames, props.checkboxes]);
+      const layers = await getLayers(props.layerNames, props.mapView.map);
+      setLayers(layers);
+    };
+
+    if (props.mapView) {
+      setLayers();
+      getLayersForNewMap();
+    }
+  }, [props.layerNames, props.mapView]);
 
   const mapIsLoaded = () => {
     return props.mapView && props.mapView.map && props.mapView.map.loaded && props.mapView.map.portalItem.id === props.webMapId;
   };
-  // only get new layers after the map has been updated to match the current tab
-  if (mapIsLoaded() && !layers) {
-    console.log(props.mapView.map.portalItem.id, props.mapView.map.loaded);
 
-    props.mapView.map.when(async () => {
-      setLayers(await getLayers(props.layerNames, props.mapView.map));
-    });
-  }
+  useEffect(() => {
+    validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
+  }, [props.layerNames, props.checkboxes]);
 
   const setLayersVisibility = (layerNames, visible) => {
     if (layers) {
