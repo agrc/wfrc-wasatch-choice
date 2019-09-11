@@ -850,5 +850,10 @@
   "minimumLegendSizes": {
     "pointSize": 6,
     "polylineWidth": 2
+  },
+  "defaultExtent": {
+    "zoomLevel": 11,
+    "x": -12457000,
+    "y": 4977000
   }
 }

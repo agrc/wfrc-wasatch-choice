@@ -253,6 +253,32 @@
         "pointSize",
         "polylineWidth"
       ]
+    },
+    "defaultExtent": {
+      "type": "object",
+      "properties": {
+        "zoomLevel": {
+          "type": "number"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "zoomLevel",
+        "x",
+        "y"
+      ]
     }
-  }
+  },
+  "required": [
+    "tabs",
+    "sherlock",
+    "layerSelector",
+    "minimumLegendSizes",
+    "defaultExtent"
+  ]
 }
