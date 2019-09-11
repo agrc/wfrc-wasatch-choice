@@ -302,7 +302,7 @@
               "centers14",
               "centers15"
             ],
-            "symbol": "polygonClasses",
+            "symbol": "classes",
             "staticColors": [
               {
                 "label": "Metropolitan Center",
@@ -334,7 +334,7 @@
               "generalLandUse14",
               "generalLandUse15"
             ],
-            "symbol": "polygonClasses",
+            "symbol": "classes",
             "staticColors": [
               {
                 "label": "Educational Center",
@@ -554,7 +554,7 @@
               "centers",
               "magCenters"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
@@ -562,7 +562,7 @@
               "generalLandUse",
               "magGeneralLandUse"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           },
           "existingBikePed": {
             "label": "Existing Bike/Ped",
@@ -637,39 +637,43 @@
             "label": "Employment Projections",
             "layerNames": [
               "employment"
-            ]
+            ],
+            "symbol": "classes"
           },
           "population": {
             "label": "Population Projections",
             "layerNames": [
               "population"
-            ]
+            ],
+            "symbol": "classes"
           },
           "workplaceAccessibilityAuto": {
             "label": "Workplace Accessibility - Auto",
             "layerNames": [
               "workplaceAccessibilityAuto"
-            ]
+            ],
+            "symbol": "classes"
           },
           "workplaceAccessibilityTransit": {
             "label": "Workplace Accessibility - Transit",
             "layerNames": [
               "workplaceAccessibilityTransit"
-            ]
+            ],
+            "symbol": "classes"
           },
           "centers": {
             "label": "Centers",
             "layerNames": [
               "centers"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layerNames": [
               "generalLandUse"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           }
         },
         "groups": [
@@ -713,7 +717,8 @@
             "label": "Economic Clusters",
             "layerNames": [
               "economicClusters"
-            ]
+            ],
+            "symbol": "classes"
           },
           "todSites": {
             "label": "TOD Sites",
@@ -742,7 +747,7 @@
               "centers",
               "magCenters"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
@@ -750,7 +755,7 @@
               "generalLandUse",
               "magGeneralLandUse"
             ],
-            "symbol": "polygonClasses"
+            "symbol": "classes"
           }
         }
       }

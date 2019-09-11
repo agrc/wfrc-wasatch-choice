@@ -4,6 +4,17 @@ $symbolWidth: 41px;
   display: flex;
   align-items: center;
   justify-content: center;
+  .swatch-class-container {
+    margin-left: 10px;
+    width: 60px;
+    height: 1.5em;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    .swatch {
+      flex: 1;
+    }
+  }
 }
 
 .simple-symbol-container {
@@ -18,17 +29,6 @@ $symbolWidth: 41px;
 }
 
 .polygon-symbol-container {
-  .polygon-class-container {
-    margin-left: 10px;
-    width: 60px;
-    height: 1.5em;
-    display: flex;
-    align-items: stretch;
-    justify-content: stretch;
-    .polygon-class {
-      flex: 1;
-    }
-  }
   svg {
     margin-left: 5px;
   }
@@ -41,6 +41,9 @@ $symbolWidth: 41px;
     height: 1.5em;
     width: 40px;
     margin-right: 5px;
+  }
+  .legend-label {
+    flex: 1
   }
 }
 

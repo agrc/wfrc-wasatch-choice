@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
-import { Simple, PolygonClasses, LinePoint, Phase, Dynamic } from './Symbols';
 import { loadModules} from 'esri-loader';
 import config from '../../config';
+import { Simple, Classes, LinePoint, Phase, Dynamic } from './Symbols';
 
 
 const SYMBOLS = {
   simple: Simple,
-  polygonClasses: PolygonClasses,
+  classes: Classes,
   linePoint: LinePoint,
   phase: Phase,
   dynamic: Dynamic
@@ -152,7 +152,8 @@ export default props => {
               <RadioGroup {...groupConfig}
                 reset={props.reset}
                 checkboxConfigs={props.checkboxes}
-                setLayersVisibility={setLayersVisibility} /> :
+                setLayersVisibility={setLayersVisibility}
+                layers={mapIsLoaded() ? layers : null} /> :
               <Parent {...groupConfig}
                 reset={props.reset}
                 checkboxConfigs={props.checkboxes}
@@ -214,6 +215,7 @@ const RadioGroup = props => {
       <div className="child-checkbox-container">
         {props.checkboxes.map(checkboxName => {
           const checkboxConfig = props.checkboxConfigs[checkboxName];
+          const Symbol = (checkboxConfig.symbol) ? SYMBOLS[checkboxConfig.symbol] : null;
 
           return (
             <FormGroup check key={checkboxName}>
@@ -225,6 +227,10 @@ const RadioGroup = props => {
                   onChange={() => onRadioChange(checkboxName)} />
                   {checkboxConfig.label}
               </Label>
+              { checkboxConfig.symbol && props.layers &&
+                <Symbol
+                  layerNames={checkboxConfig.layerNames}
+                  layersLookup={props.layers} /> }
             </FormGroup>
           );
         })}
@@ -318,7 +324,6 @@ const Parent = props => {
           <Label check>
             <Input type="checkbox"
               checked={props.filterByPhasing}
-              // TODO: trigger a redraw on change
               onChange={() => props.setFilterByPhasing(!props.filterByPhasing)} />
             <small>(filter by phasing)</small>
           </Label>
@@ -358,10 +363,7 @@ const Child = props => {
     props.setLayersVisibility(props.layerNames, checked);
   }
 
-  let Symbol;
-  if (props.symbol) {
-    Symbol = SYMBOLS[props.symbol];
-  }
+  const Symbol = (props.symbol) ? SYMBOLS[props.symbol] : null;
 
   useEffect(() => {
     if (props.reset) {

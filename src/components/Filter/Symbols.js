@@ -3,7 +3,7 @@ import { loadModules } from 'esri-loader';
 import './Symbols.scss';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Popover, PopoverBody } from 'reactstrap';
+import { Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 import config from '../../config';
 
 
@@ -76,13 +76,18 @@ export const Simple = props => {
   );
 };
 
-export const PolygonClasses = props => {
-  const [ colors, setColors ] = useState([]);
-  const popoverTarget = useRef();
+export const Classes = props => {
+  const [ data, setData ] = useState({
+    colors: [],
+    title: null
+  });
   const [ showPopover, setShowPopover ] = useState(false);
 
-  if (props.staticColors && colors.length === 0) {
-    setColors(props.staticColors);
+  if (props.staticColors && data.colors.length === 0) {
+    setData({
+      colors: props.staticColors,
+      title: null
+    });
   }
 
   useEffect(() => {
@@ -90,7 +95,7 @@ export const PolygonClasses = props => {
       return;
     }
 
-    console.log('PolygonClasses:getColors');
+    console.log('Classes:getColors');
 
     const layer = props.layersLookup[props.layerNames[0]];
     if (!layer) {
@@ -98,37 +103,46 @@ export const PolygonClasses = props => {
       return;
     }
 
-    const colors = layer.renderer.uniqueValueInfos.map(info => {
+    const infos = layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
+    if (!infos) {
+      new Error(`Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`);
+    }
+    const colors = infos.map(info => {
       return {...info.symbol.color, label: info.label};
     });
 
-    // prevent this from being called after the component has been unmounted
-    setColors(colors);
+    setData({
+      colors,
+      title: layer.renderer.valueExpressionTitle
+    });
   }, [props.layerNames, props.layersLookup, props.staticColors]);
+
+  const targetRef = useRef();
 
   return (
     <>
-      <div className="polygon-symbol-container symbol-container" ref={popoverTarget}>
-        <div className="polygon-class-container">
-          { colors.map((color, index) =>
+      <div className="polygon-symbol-container symbol-container" ref={targetRef}>
+        <div className="swatch-class-container">
+          { data.colors.map((color, index) =>
             <div key={index}
-              className="polygon-class"
+              className="swatch"
               style={{backgroundColor: getBackgroundColor(color)}}></div>
           )}
         </div>
         <FontAwesomeIcon icon={faQuestionCircle} />
       </div>
       <Popover
-        placement="bottom-start"
-        target={popoverTarget}
+        target={() => targetRef.current}
         isOpen={showPopover}
         trigger="hover"
+        boundariesElement="viewport"
         toggle={() => setShowPopover(!showPopover)}>
+        { data.title && <PopoverHeader>{data.title}</PopoverHeader> }
         <PopoverBody>
-          { colors.map((color, index) =>
+          { data.colors.map((color, index) =>
             <div key={index} className="popover-legend-row">
               <div style={{backgroundColor: getBackgroundColor(color)}} className="legend-swatch"></div>
-              <div>{color.label}</div>
+              <div className="legend-label">{color.label}</div>
             </div>
           )}
         </PopoverBody>
