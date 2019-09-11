@@ -52,8 +52,7 @@ export default class App extends Component {
       zoomToGraphic: this.state.zoomToGraphic,
       onClick: this.onMapClick,
       setView: this.setView,
-      onExtentChange: this.onMapExtentChange,
-      useDefaultAGOLPopup: config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup
+      onExtentChange: this.onMapExtentChange
     }
 
     const sidebarOptions = {

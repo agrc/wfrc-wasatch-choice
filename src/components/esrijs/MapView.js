@@ -132,10 +132,11 @@ export default class ReactMapView extends Component {
         }, 700);
       }
 
-      if (!this.props.useDefaultAGOLPopup) {
+      if (!config.tabs[this.context.currentTabIndex].useDefaultAGOLPopup) {
         this.view.popup = null;
       } else {
-        this.view.popup = this.defaultPopup;
+        const [ Popup ] = await loadModules(['esri/widgets/Popup'], config.ESRI_LOADER_CONFIG);
+        this.view.popup = new Popup();
       }
 
       // update layer selector visibility
