@@ -14,6 +14,9 @@ const SYMBOLS = {
   dynamic: Dynamic
 };
 
+// used to preserve control state between tabs
+const CACHE = {};
+
 export const getLayers = async (layerNames, map) => {
   console.log('Filter.getLayers');
 
@@ -144,22 +147,37 @@ export default props => {
     }
   };
 
+  const filterByPhasingCacheProperty = `${props.webMapId}_filterByPhasing`;
+  const setFilterByPhasingWrapper = (value, skipCache) => {
+    if (!skipCache) {
+      CACHE[filterByPhasingCacheProperty] = value;
+    }
+
+    setFilterByPhasing(value);
+  }
+  const filterByPhasingCachedValue = CACHE[filterByPhasingCacheProperty];
+  if (filterByPhasingCachedValue !== undefined && filterByPhasingCachedValue !== filterByPhasing) {
+    setFilterByPhasingWrapper(!filterByPhasing, true);
+  }
+
   return (
     <div className="filter">
       { props.groups && props.groups.map(groupConfig =>
           <div className="group-container" key={groupConfig.label}>
             { (groupConfig.radio) ?
               <RadioGroup {...groupConfig}
+                webMapId={props.webMapId}
                 reset={props.reset}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility}
                 layers={mapIsLoaded() ? layers : null} /> :
               <Parent {...groupConfig}
                 reset={props.reset}
+                webMapId={props.webMapId}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility}
                 filterByPhasing={filterByPhasing}
-                setFilterByPhasing={setFilterByPhasing}
+                setFilterByPhasing={setFilterByPhasingWrapper}
                 layers={mapIsLoaded() ? layers : null}
                 phases={props.phases}
                 allGroupConfigs={props.groups} /> }
@@ -170,6 +188,7 @@ export default props => {
 
         return (
           <Child key={checkboxName}
+              globalKey={`${props.webMapId}_${checkboxName}`}
               name={checkboxConfig.label}
               reset={props.reset}
               {...checkboxConfig}
@@ -185,9 +204,21 @@ const RadioGroup = props => {
   const [ visible, setVisible ] = useState(false);
   const defaultRadioButton = props.checkboxes[0];
   const [ selectedRadioButton, setSelectedRadioButton ] = useState(defaultRadioButton);
-  const onRadioChange = checkboxName => {
+
+  const selectedRadioButtonCachedProperty = `${props.webMapId}_${props.label}_selectedRadioButton`;
+  const onRadioChange = (checkboxName, skipCache) => {
+    if (!skipCache) {
+      CACHE[selectedRadioButtonCachedProperty] = checkboxName;
+    }
+
     setSelectedRadioButton(checkboxName);
   };
+
+  const selectedRadioButtonCachedValue = CACHE[selectedRadioButtonCachedProperty];
+  if (selectedRadioButtonCachedValue !== undefined && selectedRadioButtonCachedValue !== selectedRadioButton) {
+    onRadioChange(selectedRadioButtonCachedValue, true);
+  }
+
   const allLayerKeys = props.checkboxes
     .reduce((layerNames, checkboxName) => layerNames.concat(props.checkboxConfigs[checkboxName].layerNames), []);
   const visibleLayerKeys = (visible) ? props.checkboxConfigs[selectedRadioButton].layerNames : [];
@@ -202,13 +233,27 @@ const RadioGroup = props => {
     }
   }, [props.reset, defaultRadioButton]);
 
+  const visibleCacheProperty = `${props.webMapId}_${props.label}_visible`;
+  const onToggleVisible = ({ skipCache }) => {
+    if (!skipCache) {
+      CACHE[visibleCacheProperty] = !visible;
+    }
+
+    setVisible(!visible);
+  };
+
+  const visibleCacheValue = CACHE[visibleCacheProperty];
+  if (visibleCacheValue !== undefined && visibleCacheValue !== visible) {
+    onToggleVisible({ skipCache: true });
+  }
+
   return (
     <>
       <FormGroup check>
         <Label check>
           <Input type="checkbox"
             checked={visible}
-            onChange={() => setVisible(!visible)} />
+            onChange={onToggleVisible} />
           {props.label}
         </Label>
       </FormGroup>
@@ -242,32 +287,38 @@ const RadioGroup = props => {
 const Parent = props => {
   const defaultCheckedChildren = props.checkboxes.map(name => name);
   const [ checkedChildren, setCheckedChildren ] = useState(defaultCheckedChildren);
+  const globalKey = `${props.webMapId}_${props.label}`;
 
   const onChildChanged = name => {
     // create new copy because you shouldn't mutate state objects
     const newCheckedChildren = Array.from(checkedChildren);
+
     if (newCheckedChildren.indexOf(name) === -1) {
       newCheckedChildren.push(name);
     } else {
       newCheckedChildren.splice(newCheckedChildren.indexOf(name), 1);
     }
 
+    CACHE[globalKey] = newCheckedChildren;
+
     setCheckedChildren(newCheckedChildren);
   };
   const onParentChange = event => {
-    if (checkedChildren.length === 0) {
-      setCheckedChildren(props.checkboxes.map(name => name));
-    } else {
-      setCheckedChildren([]);
-    }
+    const newCheckedChildren = (checkedChildren.length === 0) ? props.checkboxes.map(name => name) : [];
+
+    CACHE[globalKey] = newCheckedChildren;
+
+    setCheckedChildren(newCheckedChildren);
   };
   const indeterminate = checkedChildren.length > 0 && checkedChildren.length < props.checkboxes.length;
 
   useEffect(() => {
     if (props.reset) {
+      delete CACHE[globalKey];
+
       setCheckedChildren(defaultCheckedChildren);
     }
-  }, [props.reset, defaultCheckedChildren]);
+  }, [props.reset, defaultCheckedChildren, globalKey]);
 
   useEffect(() => {
     const isPhaseGroup = () => {
@@ -310,6 +361,12 @@ const Parent = props => {
     }
   }, [checkedChildren, props.phases, props.layers, props.checkboxes, props.checkboxConfigs, props.filterByPhasing, props.allGroupConfigs]);
 
+  const cachedCheckedChildren = CACHE[globalKey];
+  if (cachedCheckedChildren !== undefined &&
+    JSON.stringify(cachedCheckedChildren) !== JSON.stringify(checkedChildren)) {
+    setCheckedChildren(cachedCheckedChildren);
+  }
+
   return (
     <>
       <FormGroup check>
@@ -349,7 +406,11 @@ const Parent = props => {
 const Child = props => {
   const [ internalIsChecked, setInternalIsChecked ] = useState(true);
 
-  const onChange = event => {
+  const onChange = ({ skipCache }) => {
+    if (!skipCache && props.globalKey) {
+      CACHE[props.globalKey] = (props.checked !== undefined) ? !props.checked : !internalIsChecked;
+    }
+
     if (props.onChange) {
       props.onChange(props.name);
     } else {
@@ -358,6 +419,14 @@ const Child = props => {
   };
 
   let checked = (props.checked !== undefined) ? props.checked : internalIsChecked;
+
+  // we only cache at the child level for stand-alone checkboxes
+  if (props.globalKey) {
+    const cachedValue = CACHE[props.globalKey];
+    if (cachedValue !== undefined && cachedValue !== checked) {
+      onChange({ skipCache: true });
+    }
+  }
 
   if (props.layerNames) {
     props.setLayersVisibility(props.layerNames, checked);
