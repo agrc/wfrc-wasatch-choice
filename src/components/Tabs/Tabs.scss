@@ -1,0 +1,15 @@
+.tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  .nav-tabs {
+    border-bottom: none;
+    flex-wrap: nowrap;
+  }
+  .nav-link {
+    &:hover {
+      border-bottom: none;
+    }
+    cursor: pointer;
+    white-space: nowrap;
+  }
+}
