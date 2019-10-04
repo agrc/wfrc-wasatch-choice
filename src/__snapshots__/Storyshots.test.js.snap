@@ -53,103 +53,6 @@ exports[`Storyshots Details default 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter Amenities 1`] = `
-<div
-  className="filter"
->
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Community Centers
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Trails
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Parks
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Federal Lands
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Golf Courses
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Ski Areas
-    </label>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Filter Economic Development 1`] = `
 <div
   className="filter"
@@ -247,7 +150,7 @@ exports[`Storyshots Filter Economic Development 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter Land Uses 1`] = `
+exports[`Storyshots Filter Land Use 1`] = `
 <div
   className="filter"
 >
@@ -266,7 +169,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
           onChange={[Function]}
           type="checkbox"
         />
-        2050 Data
+        Jobs and Households
       </label>
     </div>
     <div
@@ -285,7 +188,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
             onChange={[Function]}
             type="radio"
           />
-          Employment Projections
+          Employment Projections (2050)
         </label>
       </div>
       <div
@@ -301,7 +204,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
             onChange={[Function]}
             type="radio"
           />
-          Population Projections
+          Population Projections (2050)
         </label>
       </div>
       <div
@@ -317,7 +220,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
             onChange={[Function]}
             type="radio"
           />
-          Workplace Accessibility - Auto
+          Workplace Accessibility - Auto (2019)
         </label>
       </div>
       <div
@@ -333,7 +236,7 @@ exports[`Storyshots Filter Land Uses 1`] = `
             onChange={[Function]}
             type="radio"
           />
-          Workplace Accessibility - Transit
+          Workplace Accessibility - Transit (2019)
         </label>
       </div>
     </div>
@@ -390,6 +293,103 @@ exports[`Storyshots Filter Land Uses 1`] = `
         </label>
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Recreation 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Community Centers
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Trails
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Parks
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Federal Lands
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Golf Courses
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Ski Areas
+    </label>
   </div>
 </div>
 `;
