@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1-1](https://github.com/agrc/wfrc/compare/v1.2.1-0...v1.2.1-1) (2019-10-07)
+
+
+### Bug Fixes
+
+* filter/project info widget layout improvements for smaller devices ([ebfa135](https://github.com/agrc/wfrc/commit/ebfa135)), closes [#20](https://github.com/agrc/wfrc/issues/20)
+* make tabs scroll horizontally on smaller screens ([b421f23](https://github.com/agrc/wfrc/commit/b421f23)), closes [#20](https://github.com/agrc/wfrc/issues/20)
+* remove default to open for filter ([1e64411](https://github.com/agrc/wfrc/commit/1e64411))
+
 ### [1.2.1-0](https://github.com/agrc/wfrc/compare/v1.2.0...v1.2.1-0) (2019-10-04)
 
 
