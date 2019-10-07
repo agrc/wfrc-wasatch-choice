@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-0](https://github.com/agrc/wfrc/compare/v1.2.1-1...v1.3.0-0) (2019-10-07)
+
+
+### Bug Fixes
+
+* fix bug causing land ownership filter controls to be linked between tabs ([38ed051](https://github.com/agrc/wfrc/commit/38ed051)), closes [#23](https://github.com/agrc/wfrc/issues/23)
+* hide logo before it overlaps the tabs ([ab4c004](https://github.com/agrc/wfrc/commit/ab4c004)), closes [#20](https://github.com/agrc/wfrc/issues/20)
+
+
+### Features
+
+* finish porting ProjectInfo widget for feature layers only ([9883a5e](https://github.com/agrc/wfrc/commit/9883a5e)), closes [#8](https://github.com/agrc/wfrc/issues/8)
+
 ### [1.2.1-1](https://github.com/agrc/wfrc/compare/v1.2.1-0...v1.2.1-1) (2019-10-07)
 
 
