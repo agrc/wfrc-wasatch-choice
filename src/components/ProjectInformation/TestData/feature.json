@@ -211,7 +211,8 @@
     "ProjType": "Operational",
     "Phase": 1,
     "ProjMode": "Roadway",
-    "Sort": 61
+    "Sort": 61,
+    "SHAPE__Length": 1
   },
   "symbol": {
     "color": [

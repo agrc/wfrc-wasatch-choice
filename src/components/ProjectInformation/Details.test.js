@@ -3,7 +3,7 @@ import feature from './TestData/feature.json';
 import fields from './TestData/fields.json';
 
 
-const excludeFields = ["OBJECTID", "GlobalID"];
+const excludeFields = ['OBJECTID', 'GlobalID', 'Shape__Length'];
 describe('Details', () => {
   describe('getAliasValueParis', () => {
     it('returns the appropriate aliases and values', () => {

@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import MapLens from './components/MapLens';
 import MapView from './components/esrijs/MapView';
 import config from './config';
-import './App.css';
+import './App.scss';
 import TabsContext from './components/Tabs/TabsContext';
 import About from './components/About/About';
 import MapWidget from './components/MapWidget/MapWidget';
