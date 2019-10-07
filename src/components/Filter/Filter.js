@@ -162,16 +162,22 @@ export default props => {
 
   return (
     <div className="filter">
-      { props.groups && props.groups.map(groupConfig =>
-          <div className="group-container" key={groupConfig.label}>
+      { props.groups && props.groups.map(groupConfig => {
+          const globalKey = `${props.webMapId}_${groupConfig.label}`;
+
+          return <div className="group-container" key={groupConfig.label}>
             { (groupConfig.radio) ?
               <RadioGroup {...groupConfig}
+                key={globalKey}
+                globalKey={globalKey}
                 webMapId={props.webMapId}
                 reset={props.reset}
                 checkboxConfigs={props.checkboxes}
                 setLayersVisibility={setLayersVisibility}
                 layers={mapIsLoaded() ? layers : null} /> :
               <Parent {...groupConfig}
+                key={globalKey}
+                globalKey={globalKey}
                 reset={props.reset}
                 webMapId={props.webMapId}
                 checkboxConfigs={props.checkboxes}
@@ -181,7 +187,8 @@ export default props => {
                 layers={mapIsLoaded() ? layers : null}
                 phases={props.phases}
                 allGroupConfigs={props.groups} /> }
-          </div>)
+          </div>
+        })
       }
       { !props.groups && Object.keys(props.checkboxes).map(checkboxName => {
         const checkboxConfig = props.checkboxes[checkboxName];
@@ -205,7 +212,7 @@ const RadioGroup = props => {
   const defaultRadioButton = props.checkboxes[0];
   const [ selectedRadioButton, setSelectedRadioButton ] = useState(defaultRadioButton);
 
-  const selectedRadioButtonCachedProperty = `${props.webMapId}_${props.label}_selectedRadioButton`;
+  const selectedRadioButtonCachedProperty = `${props.globalKey}_selectedRadioButton`;
   const onRadioChange = (checkboxName, skipCache) => {
     if (!skipCache) {
       CACHE[selectedRadioButtonCachedProperty] = checkboxName;
@@ -233,7 +240,7 @@ const RadioGroup = props => {
     }
   }, [props.reset, defaultRadioButton]);
 
-  const visibleCacheProperty = `${props.webMapId}_${props.label}_visible`;
+  const visibleCacheProperty = `${props.globalKey}_visible`;
   const onToggleVisible = ({ skipCache }) => {
     if (!skipCache) {
       CACHE[visibleCacheProperty] = !visible;
@@ -287,7 +294,6 @@ const RadioGroup = props => {
 const Parent = props => {
   const defaultCheckedChildren = props.checkboxes.map(name => name);
   const [ checkedChildren, setCheckedChildren ] = useState(defaultCheckedChildren);
-  const globalKey = `${props.webMapId}_${props.label}`;
 
   const onChildChanged = name => {
     // create new copy because you shouldn't mutate state objects
@@ -299,14 +305,14 @@ const Parent = props => {
       newCheckedChildren.splice(newCheckedChildren.indexOf(name), 1);
     }
 
-    CACHE[globalKey] = newCheckedChildren;
+    CACHE[props.globalKey] = newCheckedChildren;
 
     setCheckedChildren(newCheckedChildren);
   };
   const onParentChange = event => {
     const newCheckedChildren = (checkedChildren.length === 0) ? props.checkboxes.map(name => name) : [];
 
-    CACHE[globalKey] = newCheckedChildren;
+    CACHE[props.globalKey] = newCheckedChildren;
 
     setCheckedChildren(newCheckedChildren);
   };
@@ -314,11 +320,11 @@ const Parent = props => {
 
   useEffect(() => {
     if (props.reset) {
-      delete CACHE[globalKey];
+      delete CACHE[props.globalKey];
 
       setCheckedChildren(defaultCheckedChildren);
     }
-  }, [props.reset, defaultCheckedChildren, globalKey]);
+  }, [props.reset, defaultCheckedChildren, props.globalKey]);
 
   useEffect(() => {
     const isPhaseGroup = () => {
@@ -361,7 +367,7 @@ const Parent = props => {
     }
   }, [checkedChildren, props.phases, props.layers, props.checkboxes, props.checkboxConfigs, props.filterByPhasing, props.allGroupConfigs]);
 
-  const cachedCheckedChildren = CACHE[globalKey];
+  const cachedCheckedChildren = CACHE[props.globalKey];
   if (cachedCheckedChildren !== undefined &&
     JSON.stringify(cachedCheckedChildren) !== JSON.stringify(checkedChildren)) {
     setCheckedChildren(cachedCheckedChildren);

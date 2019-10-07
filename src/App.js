@@ -105,6 +105,7 @@ export default class App extends Component {
                 />
             </MapWidget>
             <MapWidget
+              // defaultOpen={true}
               name="Project Information"
               icon={faHandPointer}
               position={1}
