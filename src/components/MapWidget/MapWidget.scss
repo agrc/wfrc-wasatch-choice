@@ -12,6 +12,13 @@
 .map-widget-card {
   position: absolute;
   right: 7px;
+  z-index: 5;
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+    right: 0;
+    height: 65%;
+    top: 0;
+  }
   .card-header {
     display: flex;
     justify-content: space-between;
