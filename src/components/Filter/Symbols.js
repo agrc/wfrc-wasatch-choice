@@ -227,8 +227,8 @@ export const Dynamic = props => {
         legendLayerLookup[layer.layerId] = layer.legend;
       });
 
-      const newInfoSets = props.symbolLayerIds.map(layerIds =>
-        layerIds.split(',').map(id => {
+      const newInfoSets = props.symbolLayerIds.map(layerIds => {
+        return layerIds.split(',').map(id => {
           let classIndex = 0;
           if (id.indexOf('-') > -1) {
             const [ splitId, splitIndex ] = id.split('-');
@@ -238,7 +238,7 @@ export const Dynamic = props => {
 
           return legendLayerLookup[id][classIndex];
         })
-      );
+      });
 
       // prevent this from being called after the component has been unmounted
       if (mounted) {
@@ -253,15 +253,34 @@ export const Dynamic = props => {
   return (
     <div className="dynamic-symbol-container">
       { legendInfoSets.map((set, index) =>
-        <div key={index} className="symbol-container">
-          { set.map((info, imgIndex) =>
-            <img key={imgIndex}
-              className='symbol'
-              src={`data:${info.contentType};base64,${info.imageData}`}
-              alt='swatch' />
-          ) }
-        </div>
+        <DynamicSymbolContainer key={index} set={set} label={props.symbolLabels[index]} />
       ) }
     </div>
+  );
+};
+
+const DynamicSymbolContainer = ({ set, label }) => {
+  const [ showPopover, setShowPopover ] = useState(false);
+  const containerRef = useRef();
+
+  return (
+    <>
+      <div className="symbol-container" ref={containerRef}>
+        { set.map((info, imgIndex) =>
+          <img key={imgIndex}
+            className='symbol'
+            src={`data:${info.contentType};base64,${info.imageData}`}
+            alt='swatch' />
+        ) }
+      </div>
+      <Popover
+        isOpen={showPopover}
+        target={() => containerRef.current}
+        toggle={() => setShowPopover(!showPopover)}
+        boundariesElement="viewport"
+        trigger="hover">
+        <PopoverBody>{label}</PopoverBody>
+      </Popover>
+    </>
   );
 };

@@ -194,6 +194,11 @@
               "57-0,19",
               "57-1",
               "95"
+            ],
+            "symbolLabels": [
+              "label one",
+              "label two",
+              "label three"
             ]
           },
           "transit": {
@@ -271,6 +276,11 @@
               "33,1",
               "41,7",
               "49,13"
+            ],
+            "symbolLabels": [
+              "label one",
+              "label two",
+              "label three"
             ]
           },
           "bikePed": {
@@ -288,6 +298,11 @@
               "64-0",
               "64-1",
               "64-2"
+            ],
+            "symbolLabels": [
+              "label one",
+              "label two",
+              "label three"
             ]
           },
           "centers": {

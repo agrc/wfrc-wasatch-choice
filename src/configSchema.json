@@ -72,6 +72,13 @@
                         "type": "string"
                       }
                     },
+                    "symbolLabels": {
+                      "description": "Optionally define text that will show in a popover when hovering over the associated symbol. Note that the order of this property should match the order of `symbolLayerIds`.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "staticColors": {
                       "description": "Used to define colors for the `staticColors` symbol type.",
                       "type": "array",

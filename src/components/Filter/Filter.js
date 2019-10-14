@@ -462,6 +462,7 @@ const Child = props => {
         phaseIndex={props.phase}
         color={props.color}
         symbolLayerIds={props.symbolLayerIds}
+        symbolLabels={props.symbolLabels}
         staticColors={props.staticColors} /> }
     </FormGroup>
   );
