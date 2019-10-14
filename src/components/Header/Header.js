@@ -14,7 +14,10 @@ export default class Header extends PureComponent {
           <span>{this.props.title}</span>
         </h4>
         <Tabs />
-        {window.innerWidth >= config.MIN_DESKTOP_WIDTH && <img src={logo} className="heading__img" alt="agrc logo" />}
+        { window.innerWidth >= config.MIN_DESKTOP_WIDTH &&
+          <a href={config.links.landingPage}>
+            <img src={logo} className="heading__img" alt="agrc logo" />
+          </a> }
       </div>
     )
   }

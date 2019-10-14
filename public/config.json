@@ -862,5 +862,8 @@
     "zoomLevel": 11,
     "x": -12457000,
     "y": 4977000
+  },
+  "links": {
+    "landingPage": "https://wfrc.org/vision-plans/wasatch-choice-2050/"
   }
 }

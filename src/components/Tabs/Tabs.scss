@@ -12,4 +12,10 @@
     cursor: pointer;
     white-space: nowrap;
   }
+  .landing-page-link {
+    white-space: nowrap;
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+  }
 }

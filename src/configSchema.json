@@ -272,6 +272,15 @@
         "x",
         "y"
       ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "landingPage": {
+          "description": "This is the URL for the links on the logo (larger screens) and \"Wasatch Choice\" tab link (smaller screens)",
+          "type": "string"
+        }
+      }
     }
   },
   "required": [
@@ -279,6 +288,7 @@
     "sherlock",
     "layerSelector",
     "minimumLegendSizes",
-    "defaultExtent"
+    "defaultExtent",
+    "links"
   ]
 }
