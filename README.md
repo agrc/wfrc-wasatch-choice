@@ -12,7 +12,7 @@ The app is configured via a few JSON files located at the root of the deployed p
 ### `config.json`
 This is where all of the app configuration except the about widget is contained.
 
-See [src/configSchema.json](src/configSchema.json) for details on configuring this file. At runtime, the app validates `config.json` against this schema file and prints any errors to the console.
+See [docs/configSchema.md](docs/configSchema.md) for details on configuring this file. At runtime, the app validates `config.json` against this schema file and prints any errors to the console.
 
 ### `about.json`
 This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size.
