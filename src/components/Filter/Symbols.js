@@ -108,7 +108,7 @@ export const Classes = props => {
       new Error(`Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`);
     }
     const colors = infos.map(info => {
-      return {...info.symbol.color, label: info.label};
+      return {...info.symbol.color, label: info.label, a: layer.opacity};
     });
 
     setData({
