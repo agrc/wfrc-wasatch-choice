@@ -2,6 +2,8 @@
 
 [mockups](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5750aa3557_0_0)  
 [tab configurations](https://docs.google.com/spreadsheets/u/1/d/1BFA3-PcDI07CYR7JloeXjB78NNtnTDieRBY-ELnzsjI/edit#gid=0)  
+[production](https://wfrc.org/wasatch-choice-map)  
+[staging](https://test.mapserv.utah.gov/wfrc/)  
 
 ## Configuration
 
