@@ -689,6 +689,13 @@
               "generalLandUse"
             ],
             "symbol": "classes"
+          },
+          "greenSpace": {
+            "label": "Green Space",
+            "layerNames": [
+              "greenSpace"
+            ],
+            "symbol": "classes"
           }
         },
         "groups": [
@@ -706,7 +713,8 @@
             "label": "Land Use",
             "checkboxes": [
               "centers",
-              "generalLandUse"
+              "generalLandUse",
+              "greenSpace"
             ]
           }
         ]
@@ -788,7 +796,8 @@
           "stateParks": "State Parks",
           "federalLands": "Federal Lands",
           "golfCourses": "Golf Courses",
-          "skiAreas": "Ski Areas"
+          "skiAreas": "Ski Areas",
+          "greenSpace": "Green Space"
         },
         "checkboxes": {
           "communityCenters": {
@@ -834,6 +843,13 @@
               "skiAreas"
             ],
             "symbol": "simple"
+          },
+          "greenSpace": {
+            "label": "Green Space",
+            "layerNames": [
+              "greenSpace"
+            ],
+            "symbol": "classes"
           }
         }
       }

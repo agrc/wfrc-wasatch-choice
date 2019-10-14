@@ -292,6 +292,21 @@ exports[`Storyshots Filter Land Use 1`] = `
           General Land Use
         </label>
       </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Green Space
+        </label>
+      </div>
     </div>
   </div>
 </div>
@@ -389,6 +404,21 @@ exports[`Storyshots Filter Recreation 1`] = `
         type="checkbox"
       />
       Ski Areas
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Green Space
     </label>
   </div>
 </div>
