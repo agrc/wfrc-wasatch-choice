@@ -1,0 +1,308 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "tabs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "The name of the tab that shows up in the actual tab control",
+                        "type": "string"
+                    },
+                    "webMapId": {
+                        "description": "The id of the web map that you would like displayed in the tab",
+                        "type": "string"
+                    },
+                    "hideLayerSelector": {
+                        "description": "Determines whether the layer selector widget is displayed or not",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "useDefaultAGOLPopup": {
+                        "type": "boolean"
+                    },
+                    "filter": {
+                        "description": "Contains configs for the filter widget.",
+                        "type": "object",
+                        "properties": {
+                            "layerNames": {
+                                "description": "Defines all of the layer names as they show up in the web map",
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            },
+                            "checkboxes": {
+                                "description": "Defines checkboxes for toggling visibility of one to many layers.",
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "layerNames": {
+                                            "description": "Defines the layer(s) that you want to toggle. Values must match the property names of `layerNames` above.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "phase": {
+                                            "description": "Defines the zero-based index of the phase that this checkbox is associated with.",
+                                            "type": "number"
+                                        },
+                                        "symbol": {
+                                            "description": "Defines the type of symbol component to be displayed.",
+                                            "type": "string",
+                                            "enum": [
+                                                "simple",
+                                                "classes",
+                                                "linePoint",
+                                                "phase",
+                                                "dynamic"
+                                            ]
+                                        },
+                                        "symbolLayerIds": {
+                                            "description": "Defines the layer ids (as strings) for which you would like to show symbols. Up to three values may be specified. If you would like multiple symbols overlayed, separate them with a \",\" (e.g. \"23,45\"). If you would like to define a specific symbol class within a layer you can use \"-<class index>\" (e.g. \"69-1\"",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "symbolLabels": {
+                                            "description": "Optionally define text that will show in a popover when hovering over the associated symbol. Note that the order of this property should match the order of `symbolLayerIds`.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "staticColors": {
+                                            "description": "Used to define colors for the `staticColors` symbol type.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "label": {
+                                                        "type": "string"
+                                                    },
+                                                    "hsa": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "label"
+                                    ],
+                                    "oneOf": [
+                                        {
+                                            "required": [
+                                                "layerNames"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "phase"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "phases": {
+                                    "description": "Defines the field name and values that correspond to each of the phases (1, 2, 3 & unfunded) for the appropriate layers.",
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "The first value is the field name and subsequent values correspond to the phases. The unfunded phase value is optional.",
+                                            "type": [
+                                                "string",
+                                                "number"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "groups": {
+                                "description": "Defines the checkbox groups.",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "checkboxes": {
+                                            "description": "Checkboxes to be included in the group. Values must match the property names for `checkboxes` above.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "radio": {
+                                            "description": "Controls whether the children are checkboxes or radio buttons.",
+                                            "type": "boolean"
+                                        },
+                                        "showFilterByPhasing": {
+                                            "description": "Controls whether the \"(filter by phasing)\" checkbox is displayed",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "label",
+                                        "checkboxes"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "webMapId"
+                ]
+            }
+        },
+        "sherlock": {
+            "description": "Configuration options for the map search widget",
+            "type": "object",
+            "properties": {
+                "serviceUrl": {
+                    "description": "The URL to the service that you would like to search features on.",
+                    "type": "string"
+                },
+                "searchField": {
+                    "description": "The name of the field that you would like the search to be applied to.",
+                    "type": "string"
+                },
+                "placeHolder": {
+                    "description": "The place holder text that shows up in the text box before a user starts typing.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "serviceUrl",
+                "searchField"
+            ]
+        },
+        "layerSelector": {
+            "description": "Configuration options for the base map selector widget",
+            "type": "object",
+            "properties": {
+                "baseLayers": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "object",
+                            "string"
+                        ],
+                        "properties": {
+                            "id": {
+                                "description": "The name of the layer",
+                                "type": "string"
+                            },
+                            "Factory": {
+                                "description": "The name of the esrijs module associated with the layer type",
+                                "type": "string"
+                            },
+                            "urlTemplate": {
+                                "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "Factory",
+                            "urlTemplate"
+                        ]
+                    }
+                },
+                "overlays": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "object",
+                            "string"
+                        ],
+                        "properties": {
+                            "id": {
+                                "description": "The name of the layer",
+                                "type": "string"
+                            },
+                            "Factory": {
+                                "description": "The name of the esrijs module associated with the layer type",
+                                "type": "string"
+                            },
+                            "url": {
+                                "description": "The url for the layer",
+                                "type": "string"
+                            },
+                            "opacity": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "Factory",
+                            "url"
+                        ]
+                    }
+                }
+            }
+        },
+        "minimumLegendSizes": {
+            "type": "object",
+            "properties": {
+                "pointSize": {
+                    "type": "number"
+                },
+                "polylineWidth": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "pointSize",
+                "polylineWidth"
+            ]
+        },
+        "defaultExtent": {
+            "type": "object",
+            "properties": {
+                "zoomLevel": {
+                    "type": "number"
+                },
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "zoomLevel",
+                "x",
+                "y"
+            ]
+        },
+        "links": {
+            "type": "object",
+            "properties": {
+                "landingPage": {
+                    "description": "This is the URL for the links on the logo (larger screens) and \"Wasatch Choice\" tab link (smaller screens)",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "tabs",
+        "sherlock",
+        "layerSelector",
+        "minimumLegendSizes",
+        "defaultExtent",
+        "links"
+    ]
+}
