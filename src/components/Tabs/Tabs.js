@@ -23,11 +23,6 @@ export default props => {
             </NavItem>
           );
         }) }
-        { window.innerWidth < config.MIN_DESKTOP_WIDTH &&
-          <NavItem key={'99'}>
-            <a className="landing-page-link" href={config.links.landingPage}>Wasatch Choice</a>
-          </NavItem>
-        }
       </Nav>
     </div>
   );
