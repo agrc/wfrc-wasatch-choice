@@ -62,8 +62,13 @@
                                                 "classes",
                                                 "linePoint",
                                                 "phase",
-                                                "dynamic"
+                                                "dynamic",
+                                                "static"
                                             ]
+                                        },
+                                        "symbolImageFile": {
+                                            "description": "Defines the filename for the image that should be used with the static legend symbol. Note that the file needs to be placed in the root of the application.",
+                                            "type": "string"
                                         },
                                         "symbolLayerIds": {
                                             "description": "Defines the layer ids (as strings) for which you would like to show symbols. Up to three values may be specified. If you would like multiple symbols overlayed, separate them with a \",\" (e.g. \"23,45\"). If you would like to define a specific symbol class within a layer you can use \"-<class index>\" (e.g. \"69-1\"",
