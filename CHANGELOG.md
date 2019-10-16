@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0-1](https://github.com/agrc/wfrc/compare/v1.4.0-0...v1.4.0-1) (2019-10-16)
+
+
+### Bug Fixes
+
+* update snapshot test ([c0f99fa](https://github.com/agrc/wfrc/commit/c0f99fa))
+
+
+### Features
+
+* add static symbol option to allow for static image in legend popup ([ec2a6c3](https://github.com/agrc/wfrc/commit/ec2a6c3)), closes [#32](https://github.com/agrc/wfrc/issues/32)
+
 ## [1.4.0-0](https://github.com/agrc/wfrc/compare/v1.3.0...v1.4.0-0) (2019-10-16)
 
 
