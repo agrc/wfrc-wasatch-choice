@@ -830,7 +830,7 @@ exports[`Storyshots Filter Vision 1`] = `
 `;
 
 exports[`Storyshots MapWidget Filter 1`] = `
-Array [
+<div>
   <div
     className="map-widget-button esri-widget--button"
     onClick={[Function]}
@@ -853,7 +853,7 @@ Array [
         style={Object {}}
       />
     </svg>
-  </div>,
+  </div>
   <div
     className="map-widget-card card"
     style={
@@ -899,12 +899,12 @@ Array [
     >
       child widget content
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`Storyshots MapWidget Project Information 1`] = `
-Array [
+<div>
   <div
     className="map-widget-button esri-widget--button"
     onClick={[Function]}
@@ -927,7 +927,7 @@ Array [
         style={Object {}}
       />
     </svg>
-  </div>,
+  </div>
   <div
     className="map-widget-card card"
     style={
@@ -964,8 +964,8 @@ Array [
     >
       child widget content
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`Storyshots Symbols Classes - Breaks 1`] = `
