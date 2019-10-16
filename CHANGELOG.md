@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0-2](https://github.com/agrc/wfrc/compare/v1.4.0-1...v1.4.0-2) (2019-10-16)
+
+
+### Bug Fixes
+
+* better resolution for smaller logo image ([ae59d77](https://github.com/agrc/wfrc/commit/ae59d77)), closes [#30](https://github.com/agrc/wfrc/issues/30)
+* clean up layout, remove gutters ([bc6d81c](https://github.com/agrc/wfrc/commit/bc6d81c))
+
 ## [1.4.0-1](https://github.com/agrc/wfrc/compare/v1.4.0-0...v1.4.0-1) (2019-10-16)
 
 
