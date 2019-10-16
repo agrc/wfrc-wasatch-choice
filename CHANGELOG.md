@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0-0](https://github.com/agrc/wfrc/compare/v1.3.0...v1.4.0-0) (2019-10-16)
+
+
+### Bug Fixes
+
+* hide project info widget for tabs where agol popups are enabled ([ed382c8](https://github.com/agrc/wfrc/commit/ed382c8))
+* make class symbol colors match the symbology of the layer ([d5b8371](https://github.com/agrc/wfrc/commit/d5b8371))
+* move mobile landing page link to smaller icon rather than tab link ([e0758c7](https://github.com/agrc/wfrc/commit/e0758c7)), closes [#30](https://github.com/agrc/wfrc/issues/30)
+
+
+### Features
+
+* add "Green Space" layers to "Land Use" & "Recreation" tabs ([8f5b303](https://github.com/agrc/wfrc/commit/8f5b303)), closes [#28](https://github.com/agrc/wfrc/issues/28)
+* add auto-generated markdown doc for config.json schema ([b188628](https://github.com/agrc/wfrc/commit/b188628))
+* add link back to landing page ([3f83aaf](https://github.com/agrc/wfrc/commit/3f83aaf)), closes [#30](https://github.com/agrc/wfrc/issues/30)
+* add the ability to add popover labels to dynamic symbols ([1d449ca](https://github.com/agrc/wfrc/commit/1d449ca)), closes [#29](https://github.com/agrc/wfrc/issues/29)
+
 ## [1.3.0](https://github.com/agrc/wfrc/compare/v1.3.0-0...v1.3.0) (2019-10-08)
 
 ## [1.3.0-0](https://github.com/agrc/wfrc/compare/v1.2.1-1...v1.3.0-0) (2019-10-07)
