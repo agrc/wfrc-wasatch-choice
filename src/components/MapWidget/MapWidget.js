@@ -21,10 +21,16 @@ export default props => {
     if (props.mapView && buttonDiv.current) {
       props.mapView.ui.add(buttonDiv.current, 'top-left');
     }
+
+    const buttonDivRef = buttonDiv.current;
+
+    return () => {
+      props.mapView && props.mapView.ui.remove(buttonDivRef);
+    }
   }, [buttonDiv, props.mapView]);
 
   return (
-    <>
+    <div>
       <div className="map-widget-button esri-widget--button" ref={buttonDiv}
         onClick={toggle} title={props.name}>
         <FontAwesomeIcon icon={props.icon} />
@@ -48,6 +54,6 @@ export default props => {
           {props.children}
         </CardBody>
       </Card>
-    </>
+    </div>
   );
 };
