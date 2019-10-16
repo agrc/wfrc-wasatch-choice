@@ -3,7 +3,7 @@ import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
 import { loadModules} from 'esri-loader';
 import config from '../../config';
-import { Simple, Classes, LinePoint, Phase, Dynamic } from './Symbols';
+import { Simple, Classes, LinePoint, Phase, Dynamic, Static } from './Symbols';
 
 
 const SYMBOLS = {
@@ -11,7 +11,8 @@ const SYMBOLS = {
   classes: Classes,
   linePoint: LinePoint,
   phase: Phase,
-  dynamic: Dynamic
+  dynamic: Dynamic,
+  static: Static
 };
 
 // used to preserve control state between tabs
@@ -282,7 +283,8 @@ const RadioGroup = props => {
               { checkboxConfig.symbol && props.layers &&
                 <Symbol
                   layerNames={checkboxConfig.layerNames}
-                  layersLookup={props.layers} /> }
+                  layersLookup={props.layers}
+                  imageFileName={checkboxConfig.symbolImageFile} /> }
             </FormGroup>
           );
         })}
@@ -463,6 +465,7 @@ const Child = props => {
         color={props.color}
         symbolLayerIds={props.symbolLayerIds}
         symbolLabels={props.symbolLabels}
+        imageFileName={props.symbolImageFile}
         staticColors={props.staticColors} /> }
     </FormGroup>
   );

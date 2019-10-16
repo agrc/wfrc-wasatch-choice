@@ -284,3 +284,27 @@ const DynamicSymbolContainer = ({ set, label }) => {
     </>
   );
 };
+
+export const Static = props => {
+  const [ showPopover, setShowPopover ] = useState(false);
+  const targetRef = useRef();
+
+  return (
+    <>
+      <div ref={targetRef}>
+        <FontAwesomeIcon icon={faQuestionCircle} />
+      </div>
+      <Popover
+        target={() => targetRef.current}
+        isOpen={showPopover}
+        trigger="hover"
+        boundariesElement="viewport"
+        toggle={() => setShowPopover(!showPopover)}>
+        <PopoverBody>
+          <img src={`${process.env.PUBLIC_URL}/${props.imageFileName}`}
+            alt="static legend" style={{ width: '250px' }} />
+        </PopoverBody>
+      </Popover>
+    </>
+  );
+};

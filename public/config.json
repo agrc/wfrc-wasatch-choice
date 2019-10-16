@@ -741,7 +741,8 @@
             "layerNames": [
               "economicClusters"
             ],
-            "symbol": "classes"
+            "symbol": "static",
+            "symbolImageFile": "StaticLegend.png"
           },
           "todSites": {
             "label": "TOD Sites",
