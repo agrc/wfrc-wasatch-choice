@@ -1,9 +1,9 @@
 .side-bar {
   overflow-x: hidden;
   position: absolute;
-  left: 5px;
-  top: 93px;
-  bottom: 5px;
+  left: 0;
+  top: 91px;
+  bottom: 0;
 }
 
 .side-bar__padder {
@@ -18,7 +18,7 @@
 }
 
 .side-bar--with-border {
-  border: 1px solid #b5bcc7;
+  border-top: 1px solid #b5bcc7;
 }
 
 .side-bar--open {
