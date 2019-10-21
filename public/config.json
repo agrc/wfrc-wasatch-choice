@@ -742,7 +742,21 @@
               "economicClusters"
             ],
             "symbol": "static",
-            "symbolImageFile": "StaticLegend.png"
+            "symbolImageFile": "StaticLegend.png",
+            "staticColors": [
+              {
+                "hsa": "#EB6421"
+              },
+              {
+                "hsa": "#E6902E"
+              },
+              {
+                "hsa": "#FFB726"
+              },
+              {
+                "hsa": "#FFFF00"
+              }
+            ]
           },
           "todSites": {
             "label": "TOD Sites",

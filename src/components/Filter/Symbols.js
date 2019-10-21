@@ -121,7 +121,7 @@ export const Classes = props => {
 
   return (
     <>
-      <div className="polygon-symbol-container symbol-container" ref={targetRef}>
+      <div className="symbol-container" ref={targetRef}>
         <div className="swatch-class-container">
           { data.colors.map((color, index) =>
             <div key={index}
@@ -291,7 +291,14 @@ export const Static = props => {
 
   return (
     <>
-      <div ref={targetRef}>
+      <div className="symbol-container" ref={targetRef}>
+        <div className="swatch-class-container">
+          {props.staticColors && props.staticColors.map((color, index) =>
+            <div key={index}
+              className="swatch"
+              style={{ backgroundColor: getBackgroundColor(color) }}></div>
+          )}
+        </div>
         <FontAwesomeIcon icon={faQuestionCircle} />
       </div>
       <Popover

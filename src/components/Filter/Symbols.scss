@@ -15,6 +15,9 @@ $symbolWidth: 41px;
       flex: 1;
     }
   }
+  svg {
+    margin-left: 5px;
+  }
 }
 
 .simple-symbol-container {
@@ -25,12 +28,6 @@ $symbolWidth: 41px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-.polygon-symbol-container {
-  svg {
-    margin-left: 5px;
   }
 }
 
