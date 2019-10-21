@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Header.scss';
 import logo from './logo.jpg';
 import logoSmall from './logo-small.jpg';
 import config from '../../config';
 import Tabs from '../Tabs/Tabs';
 import 'typeface-montserrat';
+import { useWindowWidth } from '../../hooks';
 
-
-// writing this as a custom hook just to learn about how to do it
-// this could just be done within the component otherwise
-const useWindowWidth = () => {
-  const [ width, setWidth ] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const onResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', onResize);
-
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  return width;
-};
 
 export default props => {
   const windowWidth = useWindowWidth();

@@ -85,7 +85,7 @@ export default class App extends Component {
               sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar} />
           }
           <Header title="Wasatch Choice Map" />
-          <Sidebar>
+          <Sidebar toggleSidebar={this.toggleSidebar}>
             <About version={version} />
           </Sidebar>
           <MapLens {...sidebarOptions}>
@@ -187,6 +187,8 @@ export default class App extends Component {
   }
 
   toggleSidebar() {
+    console.log('toggleSidebar');
+
     this.setState({sideBarOpen: !this.state.sideBarOpen });
   }
 

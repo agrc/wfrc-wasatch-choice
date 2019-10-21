@@ -1,14 +1,23 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import './Sidebar.scss';
+import { Button } from 'reactstrap';
+import { useWindowWidth } from '../../hooks';
+import config from '../../config';
 
-export default class Sidebar extends PureComponent {
-  render() {
-    return (
-      <div id="sideBar" className="side-bar side-bar--with-border side-bar--open">
-        <div className="side-bar__padder">
-          {this.props.children}
-        </div>
+
+export default props => {
+  const windowWidth = useWindowWidth();
+
+  return (
+    <div id="sideBar" className="side-bar side-bar--with-border side-bar--open">
+      <div className="side-bar__padder">
+        { windowWidth <= config.MAX_SMALL_SCREEN_WIDTH &&
+          <div>
+            <Button close onClick={props.toggleSidebar} />
+          </div>
+        }
+        {props.children}
       </div>
-    )
-  }
-}
+    </div>
+  )
+};

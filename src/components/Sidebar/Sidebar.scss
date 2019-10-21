@@ -1,3 +1,5 @@
+$sideBarWidth: 330px;
+
 .side-bar {
   overflow-x: hidden;
   position: absolute;
@@ -8,7 +10,7 @@
 
 .side-bar__padder {
   padding: 10px;
-  width: 330px;
+  max-width: $sideBarWidth;
   margin: -1px;
   height: 100%;
   display: flex;
@@ -22,5 +24,6 @@
 }
 
 .side-bar--open {
-  width: 330px;
+  max-width: $sideBarWidth;
+  width: 100%;
 }

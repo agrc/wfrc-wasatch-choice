@@ -4,6 +4,7 @@ import configSchema from './configSchema.json';
 
 let config = {
   MIN_DESKTOP_WIDTH: 860,
+  MAX_SMALL_SCREEN_WIDTH: 350,
   WEB_MERCATOR_WKID: 3857,
   MARKER_FILL_COLOR: [130, 65, 47, 0.5],
   MARKER_OUTLINE_COLOR: [230, 126, 21, 0.7],
