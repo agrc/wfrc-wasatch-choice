@@ -4,14 +4,15 @@ import './ProjectInformation.scss';
 import Loader from 'react-loader-spinner';
 
 
-export default ({ graphics, showLoader, mapView }) => {
+export default props => {
   console.log('ProjectInformation');
 
   return (
     <div className="project-information">
-      { graphics.length === 0 && <p>Click on a feature for more information</p> }
-      { showLoader && <Loader type="Oval" className="loader" /> }
-      { graphics.map((graphic, index) => <Details key={index} graphic={graphic} />) }
+      { props.graphics.length === 0 && <p>Click on a feature for more information</p> }
+      { props.showLoader && <Loader type="Oval" className="loader" /> }
+      { props.graphics.map((graphic, index) =>
+        <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />) }
     </div>
   );
 };

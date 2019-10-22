@@ -42,6 +42,8 @@ export default class App extends Component {
   onMapExtentChange = this.onMapExtentChange.bind(this);
   setInitialExtent = this.setInitialExtent.bind(this);
   setCurrentTab = this.setCurrentTab.bind(this);
+  highlightGraphic = this.highlightGraphic.bind(this);
+  highlight = null;
 
   render() {
     const quadWord = process.env.REACT_APP_DISCOVER;
@@ -112,6 +114,7 @@ export default class App extends Component {
               mapView={this.state.mapView}>
               <ProjectInformation
                 graphics={this.state.selectedGraphics}
+                highlightGraphic={this.highlightGraphic}
                 showLoader={false} />
             </MapWidget> }
             <Sherlock {...sherlockConfig}></Sherlock>
@@ -119,6 +122,20 @@ export default class App extends Component {
         </TabsContext.Provider>
       </div>
     );
+  }
+
+  async highlightGraphic(graphic) {
+    console.log('App:highlightGraphic', graphic);
+
+    if (this.highlight) {
+      this.highlight.remove();
+      this.highlight = null;
+    }
+
+    if (graphic) {
+      const layerView = await this.state.mapView.whenLayerView(graphic.layer);
+      this.highlight = layerView.highlight(graphic);
+    }
   }
 
   setCurrentTab(index) {

@@ -47,7 +47,9 @@ export default props => {
   }, [props.graphic]);
 
   return (
-    <div className="details">
+    <div className="details"
+      onMouseEnter={() => props.highlightGraphic(props.graphic)}
+      onMouseLeave={() => props.highlightGraphic()}>
       <div className="title" onClick={toggle}>{title}</div>
       <Collapse isOpen={!collapsed}>
         <div ref={containerRef}></div>
