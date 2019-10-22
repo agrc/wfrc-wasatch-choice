@@ -3,6 +3,8 @@
 exports[`Storyshots Details default 1`] = `
 <div
   className="details"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="title"
