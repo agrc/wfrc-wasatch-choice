@@ -37,6 +37,13 @@
                   "type": "string"
                 }
               },
+              "phases": {
+                "description": "Defines the values associated with each phase for each layer. The property name should match a properties name from layerName and the value should be an array of strings with the first value being the field name and the next up to four values defining phases 1, 2, 3 & unfunded (in that order).",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array"
+                }
+              },
               "checkboxes": {
                 "description": "Defines checkboxes for toggling visibility of one to many layers.",
                 "type": "object",
@@ -103,6 +110,10 @@
                           }
                         }
                       }
+                    },
+                    "color": {
+                      "description": "Used for the phase checkboxes. Defines the color as an rgb value. HSA may also work.",
+                      "type": "string"
                     }
                   },
                   "required": [

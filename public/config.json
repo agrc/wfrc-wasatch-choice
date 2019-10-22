@@ -892,14 +892,6 @@
       "Address Points"
     ]
   },
-  "projectInformation": {
-    "excludeFields": [
-      "OBJECTID",
-      "GlobalID",
-      "Shape__Length",
-      "Shape__Area"
-    ]
-  },
   "minimumLegendSizes": {
     "pointSize": 6,
     "polylineWidth": 2
