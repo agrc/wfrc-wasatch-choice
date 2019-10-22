@@ -6,19 +6,19 @@
 
 | Abstract            | Extensible | Status       | Identifiable | Custom Properties | Additional Properties | Defined In |
 | ------------------- | ---------- | ------------ | ------------ | ----------------- | --------------------- | ---------- |
-| Can be instantiated | No         | Experimental | No           | Forbidden         | Permitted             |            |
+| Can be instantiated | No         | Experimental | No           | Forbidden         | Forbidden             |            |
 
 # Properties
 
-| Property                                  | Type       | Required     | Nullable | Defined by                                 |
-| ----------------------------------------- | ---------- | ------------ | -------- | ------------------------------------------ |
-| [defaultExtent](#defaultextent)           | `object`   | **Required** | No       | (this schema)                              |
-| [layerSelector](#layerselector)           | `object`   | **Required** | No       | (this schema)                              |
-| [links](#links)                           | `object`   | **Required** | No       | (this schema)                              |
-| [minimumLegendSizes](#minimumlegendsizes) | `object`   | **Required** | No       | (this schema)                              |
-| [sherlock](#sherlock)                     | `object`   | **Required** | No       | (this schema)                              |
-| [tabs](#tabs)                             | `object[]` | **Required** | No       | (this schema)                              |
-| `*`                                       | any        | Additional   | Yes      | this schema _allows_ additional properties |
+| Property                                  | Type       | Required     | Nullable | Defined by    |
+| ----------------------------------------- | ---------- | ------------ | -------- | ------------- |
+| [defaultExtent](#defaultextent)           | `object`   | **Required** | No       | (this schema) |
+| [layerSelector](#layerselector)           | `object`   | **Required** | No       | (this schema) |
+| [links](#links)                           | `object`   | **Required** | No       | (this schema) |
+| [minimumLegendSizes](#minimumlegendsizes) | `object`   | **Required** | No       | (this schema) |
+| [sherlock](#sherlock)                     | `object`   | **Required** | No       | (this schema) |
+| [tabs](#tabs)                             | `object[]` | **Required** | No       | (this schema) |
+| [tagLine](#tagline)                       | `string`   | Optional     | No       | (this schema) |
 
 ## defaultExtent
 
@@ -95,81 +95,148 @@ Configuration options for the base map selector widget
 `baseLayers`
 
 - is optional
-- type: multiple
+- type: `array`
 
 ##### baseLayers Type
 
-Array type: multiple
+Array type: `array`
 
-All items must be of the type: Unknown type `object,string`.
+All items must be of the type:
 
-```json
-{
-  "type": "array",
-  "items": {
-    "type": ["object", "string"],
-    "properties": {
-      "id": {
-        "description": "The name of the layer",
-        "type": "string"
-      },
-      "Factory": {
-        "description": "The name of the esrijs module associated with the layer type",
-        "type": "string"
-      },
-      "urlTemplate": {
-        "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
-        "type": "string"
-      }
-    },
-    "required": ["id", "Factory", "urlTemplate"],
-    "simpletype": "multiple"
-  },
-  "simpletype": "multiple"
-}
-```
+**Any** following _options_ needs to be fulfilled.
+
+#### Option 1
+
+`string`
+
+#### Option 2
+
+`object` with following properties:
+
+| Property      | Type   | Required     |
+| ------------- | ------ | ------------ |
+| `Factory`     | string | **Required** |
+| `id`          | string | **Required** |
+| `urlTemplate` | string | **Required** |
+
+#### Factory
+
+The name of the esrijs module associated with the layer type
+
+`Factory`
+
+- is **required**
+- type: `string`
+
+##### Factory Type
+
+`string`
+
+#### id
+
+The name of the layer
+
+`id`
+
+- is **required**
+- type: `string`
+
+##### id Type
+
+`string`
+
+#### urlTemplate
+
+The urlTemplate for the layer. "{quadWord}" will be automatically replaced with the appropriate value at runtime.
+
+`urlTemplate`
+
+- is **required**
+- type: `string`
+
+##### urlTemplate Type
+
+`string`
 
 #### overlays
 
 `overlays`
 
 - is optional
-- type: multiple
+- type: `array`
 
 ##### overlays Type
 
-Array type: multiple
+Array type: `array`
 
-All items must be of the type: Unknown type `object,string`.
+All items must be of the type:
 
-```json
-{
-  "type": "array",
-  "items": {
-    "type": ["object", "string"],
-    "properties": {
-      "id": {
-        "description": "The name of the layer",
-        "type": "string"
-      },
-      "Factory": {
-        "description": "The name of the esrijs module associated with the layer type",
-        "type": "string"
-      },
-      "url": {
-        "description": "The url for the layer",
-        "type": "string"
-      },
-      "opacity": {
-        "type": "number"
-      }
-    },
-    "required": ["id", "Factory", "url"],
-    "simpletype": "multiple"
-  },
-  "simpletype": "multiple"
-}
-```
+**Any** following _options_ needs to be fulfilled.
+
+#### Option 1
+
+`string`
+
+#### Option 2
+
+`object` with following properties:
+
+| Property  | Type   | Required     |
+| --------- | ------ | ------------ |
+| `Factory` | string | **Required** |
+| `id`      | string | **Required** |
+| `opacity` | number | Optional     |
+| `url`     | string | **Required** |
+
+#### Factory
+
+The name of the esrijs module associated with the layer type
+
+`Factory`
+
+- is **required**
+- type: `string`
+
+##### Factory Type
+
+`string`
+
+#### id
+
+The name of the layer
+
+`id`
+
+- is **required**
+- type: `string`
+
+##### id Type
+
+`string`
+
+#### opacity
+
+`opacity`
+
+- is optional
+- type: `number`
+
+##### opacity Type
+
+`number`
+
+#### url
+
+The url for the layer
+
+`url`
+
+- is **required**
+- type: `string`
+
+##### url Type
+
+`string`
 
 ## links
 
@@ -186,6 +253,7 @@ All items must be of the type: Unknown type `object,string`.
 | Property      | Type   | Required |
 | ------------- | ------ | -------- |
 | `landingPage` | string | Optional |
+| `tagLine`     | string | Optional |
 
 #### landingPage
 
@@ -197,6 +265,20 @@ This is the URL for the links on the logo (larger screens) and "Wasatch Choice" 
 - type: `string`
 
 ##### landingPage Type
+
+`string`
+
+#### tagLine
+
+This is the URL for the tag line link. If there the value is an empty string, then the link becomes just a span that is
+not clickable.
+
+`tagLine`
+
+- is optional
+- type: `string`
+
+##### tagLine Type
 
 `string`
 
@@ -338,6 +420,7 @@ Contains configs for the filter widget.
 | `checkboxes` | object | Optional |
 | `groups`     | array  | Optional |
 | `layerNames` | object | Optional |
+| `phases`     | object | Optional |
 
 #### checkboxes
 
@@ -447,6 +530,25 @@ Defines all of the layer names as they show up in the web map
 | -------- | ---- | -------- |
 
 
+#### phases
+
+Defines the values associated with each phase for each layer. The property name should match a properties name from
+layerName and the value should be an array of strings with the first value being the field name and the next up to four
+values defining phases 1, 2, 3 & unfunded (in that order).
+
+`phases`
+
+- is optional
+- type: `object`
+
+##### phases Type
+
+`object` with following properties:
+
+| Property | Type | Required |
+| -------- | ---- | -------- |
+
+
 #### hideLayerSelector
 
 Determines whether the layer selector widget is displayed or not
@@ -495,5 +597,19 @@ The id of the web map that you would like displayed in the tab
 - type: `string`
 
 ##### webMapId Type
+
+`string`
+
+## tagLine
+
+The text for the tag line element
+
+`tagLine`
+
+- is optional
+- type: `string`
+- defined in this schema
+
+### tagLine Type
 
 `string`

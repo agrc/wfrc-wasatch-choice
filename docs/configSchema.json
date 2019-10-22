@@ -1,11 +1,13 @@
 {
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "tabs": {
             "type": "array",
             "items": {
                 "type": "object",
+                "additionalProperties": false,
                 "properties": {
                     "name": {
                         "description": "The name of the tab that shows up in the actual tab control",
@@ -26,6 +28,7 @@
                     "filter": {
                         "description": "Contains configs for the filter widget.",
                         "type": "object",
+                        "additionalProperties": false,
                         "properties": {
                             "layerNames": {
                                 "description": "Defines all of the layer names as they show up in the web map",
@@ -34,11 +37,19 @@
                                     "type": "string"
                                 }
                             },
+                            "phases": {
+                                "description": "Defines the values associated with each phase for each layer. The property name should match a properties name from layerName and the value should be an array of strings with the first value being the field name and the next up to four values defining phases 1, 2, 3 & unfunded (in that order).",
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "array"
+                                }
+                            },
                             "checkboxes": {
                                 "description": "Defines checkboxes for toggling visibility of one to many layers.",
                                 "type": "object",
                                 "additionalProperties": {
                                     "type": "object",
+                                    "additionalProperties": false,
                                     "properties": {
                                         "label": {
                                             "type": "string"
@@ -89,6 +100,7 @@
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
+                                                "additionalProperties": false,
                                                 "properties": {
                                                     "label": {
                                                         "type": "string"
@@ -98,6 +110,10 @@
                                                     }
                                                 }
                                             }
+                                        },
+                                        "color": {
+                                            "description": "Used for the phase checkboxes. Defines the color as an rgb value. HSA may also work.",
+                                            "type": "string"
                                         }
                                     },
                                     "required": [
@@ -136,6 +152,7 @@
                                 "type": "array",
                                 "items": {
                                     "type": "object",
+                                    "additionalProperties": false,
                                     "properties": {
                                         "label": {
                                             "type": "string"
@@ -174,6 +191,7 @@
         "sherlock": {
             "description": "Configuration options for the map search widget",
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "serviceUrl": {
                     "description": "The URL to the service that you would like to search features on.",
@@ -196,63 +214,74 @@
         "layerSelector": {
             "description": "Configuration options for the base map selector widget",
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "baseLayers": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "object",
-                            "string"
-                        ],
-                        "properties": {
-                            "id": {
-                                "description": "The name of the layer",
+                        "anyOf": [
+                            {
                                 "type": "string"
                             },
-                            "Factory": {
-                                "description": "The name of the esrijs module associated with the layer type",
-                                "type": "string"
-                            },
-                            "urlTemplate": {
-                                "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
-                                "type": "string"
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "id": {
+                                        "description": "The name of the layer",
+                                        "type": "string"
+                                    },
+                                    "Factory": {
+                                        "description": "The name of the esrijs module associated with the layer type",
+                                        "type": "string"
+                                    },
+                                    "urlTemplate": {
+                                        "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "Factory",
+                                    "urlTemplate"
+                                ]
                             }
-                        },
-                        "required": [
-                            "id",
-                            "Factory",
-                            "urlTemplate"
                         ]
                     }
                 },
                 "overlays": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "object",
-                            "string"
-                        ],
-                        "properties": {
-                            "id": {
-                                "description": "The name of the layer",
+                        "anyOf": [
+                            {
                                 "type": "string"
                             },
-                            "Factory": {
-                                "description": "The name of the esrijs module associated with the layer type",
-                                "type": "string"
-                            },
-                            "url": {
-                                "description": "The url for the layer",
-                                "type": "string"
-                            },
-                            "opacity": {
-                                "type": "number"
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "id": {
+                                        "description": "The name of the layer",
+                                        "type": "string"
+                                    },
+                                    "Factory": {
+                                        "description": "The name of the esrijs module associated with the layer type",
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "description": "The url for the layer",
+                                        "type": "string"
+                                    },
+                                    "opacity": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "Factory",
+                                    "url"
+                                ]
                             }
-                        },
-                        "required": [
-                            "id",
-                            "Factory",
-                            "url"
                         ]
                     }
                 }
@@ -260,6 +289,7 @@
         },
         "minimumLegendSizes": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "pointSize": {
                     "type": "number"
@@ -275,6 +305,7 @@
         },
         "defaultExtent": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "zoomLevel": {
                     "type": "number"
@@ -294,12 +325,21 @@
         },
         "links": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "landingPage": {
                     "description": "This is the URL for the links on the logo (larger screens) and \"Wasatch Choice\" tab link (smaller screens)",
                     "type": "string"
+                },
+                "tagLine": {
+                    "description": "This is the URL for the tag line link. If there the value is an empty string, then the link becomes just a span that is not clickable.",
+                    "type": "string"
                 }
             }
+        },
+        "tagLine": {
+            "description": "The text for the tag line element",
+            "type": "string"
         }
     },
     "required": [
