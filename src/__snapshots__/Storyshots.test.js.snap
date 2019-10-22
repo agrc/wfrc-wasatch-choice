@@ -7,48 +7,12 @@ exports[`Storyshots Details default 1`] = `
   <div
     className="title"
     onClick={[Function]}
-  >
-    display field value
-  </div>
+  />
   <div
-    className="body collapse"
+    className="collapse"
     style={Object {}}
   >
-    <div
-      className="padder"
-    >
-      <table
-        cellPadding="0px"
-        cellSpacing="0px"
-      >
-        <tbody>
-          <tr>
-            <td
-              className="alias"
-            >
-              Field Two
-            </td>
-            <td
-              className="value"
-            >
-              hello
-            </td>
-          </tr>
-          <tr>
-            <td
-              className="alias"
-            >
-              Field Three
-            </td>
-            <td
-              className="value"
-            >
-              world
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div />
   </div>
 </div>
 `;

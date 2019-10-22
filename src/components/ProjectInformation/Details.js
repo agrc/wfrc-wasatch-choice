@@ -1,50 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import config from '../../config';
+import React, { useState, useEffect, useRef } from 'react';
 import './Details.scss';
 import { Collapse } from 'reactstrap';
+import { loadModules } from 'esri-loader';
 
 
-export const getAliasValuePairs = (attributes, fields, excludeFields, displayField) => {
-  const aliasLookup = {};
-  fields.forEach(field => {
-    aliasLookup[field.name] = field.alias;
-  });
+export default props => {
+  console.log('Details', props);
 
-  return Object.keys(attributes)
-    .filter(fieldName => {
-      return excludeFields.concat([displayField])
-        .every(testField => testField.toLowerCase() !== fieldName.toLowerCase());
-    })
-    .map(fieldName => [aliasLookup[fieldName], attributes[fieldName]]);
-};
-export default ({ feature }) => {
   const [ collapsed, setCollapsed ] = useState(true);
-  const toggle = () => setCollapsed(!collapsed);
-  console.log('Details feature', feature);
+  const containerRef = useRef();
+  const [ title, setTitle ] = useState();
 
-  const aliasValuePairs = getAliasValuePairs(feature.attributes,
-    feature.layer.fields, config.projectInformation.excludeFields, feature.layer.displayField);
+  const toggle = () => setCollapsed(!collapsed);
 
   useEffect(() => {
-    setCollapsed(true);
-  }, [feature]);
+    let feature;
+    const buildContent = async () => {
+      const [ Feature, watchUtils ] = await loadModules(['esri/widgets/Feature', 'esri/core/watchUtils']);
+
+      feature = new Feature({
+        container: document.createElement('div'),
+        graphic: props.graphic,
+        visibleElements: {
+          title: false
+        },
+        defaultPopupTemplateEnabled: true
+      });
+
+      await watchUtils.once(feature, 'title');
+
+      setTitle(feature.title);
+
+      containerRef.current.appendChild(feature.container);
+    };
+
+    if (props.graphic) {
+      buildContent();
+    }
+
+    return () => {
+      if (feature) {
+        feature.destroy();
+        console.log('destroyed');
+      }
+    };
+  }, [props.graphic]);
 
   return (
     <div className="details">
-      <div className="title" onClick={toggle}>{feature.attributes[feature.layer.displayField]}</div>
-      <Collapse isOpen={!collapsed} className="body">
-        <div className="padder">
-          <table cellPadding="0px" cellSpacing="0px">
-            <tbody>
-              { aliasValuePairs.map(([alias, value], index) =>
-                <tr key={index}>
-                  <td className="alias">{alias}</td>
-                  <td className="value">{value}</td>
-                </tr>)
-              }
-            </tbody>
-          </table>
-        </div>
+      <div className="title" onClick={toggle}>{title}</div>
+      <Collapse isOpen={!collapsed}>
+        <div ref={containerRef}></div>
       </Collapse>
     </div>
   );

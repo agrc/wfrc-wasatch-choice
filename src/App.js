@@ -105,12 +105,14 @@ export default class App extends Component {
                 />
             </MapWidget>
             { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
-              // defaultOpen={true}
+              defaultOpen={true}
               name="Project Information"
               icon={faHandPointer}
               position={1}
               mapView={this.state.mapView}>
-              <ProjectInformation graphics={this.state.selectedGraphics} />
+              <ProjectInformation
+                graphics={this.state.selectedGraphics}
+                showLoader={false} />
             </MapWidget> }
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
