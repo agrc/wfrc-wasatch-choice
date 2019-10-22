@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0-3](https://github.com/agrc/wfrc/compare/v1.4.0-2...v1.4.0-3) (2019-10-22)
+
+
+### Bug Fixes
+
+* clean up unused config and add missing schema definitions ([1b888dc](https://github.com/agrc/wfrc/commit/1b888dc))
+* standardize project info & filter widget widths ([da3e754](https://github.com/agrc/wfrc/commit/da3e754)), closes [#36](https://github.com/agrc/wfrc/issues/36)
+* update snapshot tests ([f89b3f8](https://github.com/agrc/wfrc/commit/f89b3f8))
+* workaround for config schema generation tool bug ([e42799c](https://github.com/agrc/wfrc/commit/e42799c))
+
+
+### Features
+
+* add close button to the top of the sidebar for very small devices ([6760758](https://github.com/agrc/wfrc/commit/6760758)), closes [#37](https://github.com/agrc/wfrc/issues/37)
+* **ProjectInformation:** highlight selected graphics on hover ([748e4b9](https://github.com/agrc/wfrc/commit/748e4b9))
+* **ProjectInformation:** use AGOL popup content ([ffc7ce8](https://github.com/agrc/wfrc/commit/ffc7ce8)), closes [#34](https://github.com/agrc/wfrc/issues/34)
+* add configurable tab line element ([22cbfc5](https://github.com/agrc/wfrc/commit/22cbfc5)), closes [#25](https://github.com/agrc/wfrc/issues/25)
+* add the ability to define static colors with a symbol image file ([0ee9b5b](https://github.com/agrc/wfrc/commit/0ee9b5b)), closes [#32](https://github.com/agrc/wfrc/issues/32)
+
 ## [1.4.0-2](https://github.com/agrc/wfrc/compare/v1.4.0-1...v1.4.0-2) (2019-10-16)
 
 
