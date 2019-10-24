@@ -18,9 +18,7 @@ const SYMBOLS = {
 // used to preserve control state between tabs
 const CACHE = {};
 
-export const getLayers = async (layerNames, map) => {
-  console.log('Filter.getLayers');
-
+export const getLayersInMap = async map => {
   const layerNameLookup = {};
 
   const getSublayers = layer => {
@@ -40,7 +38,13 @@ export const getLayers = async (layerNames, map) => {
     layer.sublayers && getSublayers(layer);
   };
 
-  console.log('layerNameLookup', layerNameLookup);
+  return layerNameLookup;
+};
+
+export const getLayers = async (layerNames, map) => {
+  console.log('Filter.getLayers');
+
+  const layerNameLookup = await getLayersInMap(map);
 
   const layers = {};
 

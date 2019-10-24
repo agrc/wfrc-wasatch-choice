@@ -4,7 +4,7 @@
       "name": "Vision",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
-      "useDefaultAGOLPopup": true,
+      "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
           "commuterRailStation10": "Commuter Rail Stations - 10",

@@ -14,6 +14,8 @@ import { Sherlock, MapServiceProvider } from './components/Sherlock';
 import URLParams from './URLParams';
 import Filter from './components/Filter/Filter';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
+import esriModules from './esriModules';
+import { getLayersInMap } from './components/Filter/Filter';
 
 
 export default class App extends Component {
@@ -132,9 +134,25 @@ export default class App extends Component {
       this.highlight = null;
     }
 
+    if (this.graphic) {
+      this.state.mapView.graphics.remove(this.graphic);
+      this.graphic = null;
+    }
+
     if (graphic) {
-      const layerView = await this.state.mapView.whenLayerView(graphic.layer);
-      this.highlight = layerView.highlight(graphic);
+      try {
+        const layerView = await this.state.mapView.whenLayerView(graphic.layer);
+        this.highlight = layerView.highlight(graphic);
+      } catch {
+        const { Graphic } = await esriModules();
+        const newGraphic = new Graphic({
+          ...graphic,
+          symbol: config.SELECTION_SYMBOLS[graphic.geometry.type]
+        });
+
+        this.state.mapView.graphics.add(newGraphic);
+        this.graphic = newGraphic;
+      }
     }
   }
 
@@ -158,9 +176,48 @@ export default class App extends Component {
   async onMapClick(event) {
     console.log('onMapClick', event);
 
+    const mapView = this.state.mapView;
+    const layers = mapView.map.layers;
+
+    const mapImageLayers = layers.filter(layer => layer.type === 'map-image');
+
+    const { IdentifyParameters, IdentifyTask } = await esriModules();
+    const identifyPromises = mapImageLayers.map(layer => {
+      const task = new IdentifyTask({
+        url: layer.url
+      });
+      const parameters = new IdentifyParameters({
+        geometry: event.mapPoint,
+        height: mapView.height,
+        layerIds: layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray(),
+        layerOption: 'visible',
+        mapExtent: mapView.extent,
+        returnFieldName: true,
+        returnGeometry: true,
+        tolerance: 5,
+        width: mapView.width
+      });
+
+      return task.execute(parameters);
+    });
+    console.log('identifyPromises', identifyPromises);
+
+    const identifyResponses = await Promise.all(identifyPromises.toArray());
+
+    const layerNameLookup = await getLayersInMap(mapView.map);
+    const identifyFeatures = identifyResponses.reduce((previous, current) => {
+      return previous.concat(current.results.map(result => {
+        return {
+          geometry: result.feature.geometry,
+          attributes: result.feature.attributes,
+          popupTemplate: layerNameLookup[result.layerName].popupTemplate
+        };
+      }));
+    }, []);
+
     const hitTest = await this.state.mapView.hitTest(event);
 
-    const selectedGraphics = hitTest.results.map(result => result.graphic);
+    const selectedGraphics = hitTest.results.map(result => result.graphic).concat(identifyFeatures);
 
     console.log('selectedGraphics', selectedGraphics);
 

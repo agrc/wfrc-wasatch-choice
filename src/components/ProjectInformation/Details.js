@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Details.scss';
 import { Collapse } from 'reactstrap';
-import { loadModules } from 'esri-loader';
+import esriModules from '../../esriModules';
 
 
 export default props => {
@@ -16,7 +16,7 @@ export default props => {
   useEffect(() => {
     let feature;
     const buildContent = async () => {
-      const [ Feature, watchUtils ] = await loadModules(['esri/widgets/Feature', 'esri/core/watchUtils']);
+      const { Feature, watchUtils } = await esriModules();
 
       feature = new Feature({
         container: document.createElement('div'),
