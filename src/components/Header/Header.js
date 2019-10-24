@@ -16,8 +16,8 @@ export default props => {
       <h4 className="header__heading">
         <span>{props.title}</span>
         { windowWidth >= 410 && ((config.links.tagLine.length > 0) ?
-          <a className="heading__version" href={config.links.tagLine}>{config.tagLine}</a> :
-          <span className="heading__version">{config.tagLine}</span>) }
+          <a className="heading__tag-line" href={config.links.tagLine}>{config.tagLine}</a> :
+          <span className="heading__tag-line">{config.tagLine}</span>) }
       </h4>
       <Tabs />
       <a href={config.links.landingPage} className="heading__img">

@@ -11,10 +11,12 @@
     font-family: Montserrat, Arial, sans-serif;
     letter-spacing: 0px;
   }
-  .heading__version {
+  .heading__tag-line {
     font-size: 10px;
     text-decoration: none;
     vertical-align: sub;
+    margin-left: 5px;
+    font-style: italic;
   }
   .heading__img {
     position: absolute;
