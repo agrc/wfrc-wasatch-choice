@@ -275,7 +275,7 @@ const RadioGroup = props => {
               <Label check>
                 <Input
                   type="radio"
-                  name="props.label"
+                  name={props.label}
                   checked={selectedRadioButton === checkboxName}
                   onChange={() => onRadioChange(checkboxName)} />
                   {checkboxConfig.label}
