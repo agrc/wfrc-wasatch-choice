@@ -107,7 +107,7 @@ export default class App extends Component {
                 />
             </MapWidget>
             { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
-              defaultOpen={true}
+              // defaultOpen={true}
               name="Project Information"
               icon={faHandPointer}
               position={1}
