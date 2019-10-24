@@ -119,17 +119,6 @@ export default class ReactMapView extends Component {
       // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
 
-      // hacky work around to a bug in Esri JS API 4.12. The bug is fixed in 4.13. Waiting for production release.
-      if (this.view.center && this.view.map.layers.some(layer => layer.type === 'map-image')) {
-        setTimeout(() => {
-          console.log('bumping extent to force refresh');
-          const screenPoint = this.view.toScreen(this.view.center);
-          screenPoint.x++;
-          screenPoint.y++;
-          this.view.center = this.view.toMap(screenPoint);
-        }, 700);
-      }
-
       if (!config.tabs[this.context.currentTabIndex].useDefaultAGOLPopup) {
         this.view.popup = null;
       } else {

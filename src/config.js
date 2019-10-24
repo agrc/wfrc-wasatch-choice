@@ -11,7 +11,7 @@ let config = {
   MARKER_FILL_COLOR: [130, 65, 47, 0.5],
   MARKER_OUTLINE_COLOR: [230, 126, 21, 0.7],
   ESRI_LOADER_CONFIG: {
-    version: '4.12',
+    version: '4.13',
     css: true
   },
   SELECTION_SYMBOLS: {
