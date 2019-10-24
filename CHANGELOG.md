@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/agrc/wfrc/compare/v1.4.0-3...v1.4.0) (2019-10-24)
+
+
+### Bug Fixes
+
+* fix bug causing duplicate radio group names ([3b3e77b](https://github.com/agrc/wfrc/commit/3b3e77b))
+* fix tab layout issue with sidebar ([887ecce](https://github.com/agrc/wfrc/commit/887ecce))
+* hide tag line on smaller screens to prevent layout issues ([7e7ec18](https://github.com/agrc/wfrc/commit/7e7ec18)), closes [#2](https://github.com/agrc/wfrc/issues/2)
+* remove test code for defaulting project information widget to open ([b85bdae](https://github.com/agrc/wfrc/commit/b85bdae))
+* shrink map widget width from 400px -> 330px ([d4ae8be](https://github.com/agrc/wfrc/commit/d4ae8be)), closes [#31](https://github.com/agrc/wfrc/issues/31) [#36](https://github.com/agrc/wfrc/issues/36)
+* update snapshots ([12509d1](https://github.com/agrc/wfrc/commit/12509d1))
+
+
+### Features
+
+* add margin and italics to tag line ([d21aa4e](https://github.com/agrc/wfrc/commit/d21aa4e)), closes [#25](https://github.com/agrc/wfrc/issues/25)
+* split projections and workplace accessibility into separate groups ([fba5393](https://github.com/agrc/wfrc/commit/fba5393)), closes [#31](https://github.com/agrc/wfrc/issues/31)
+
 ## [1.4.0-3](https://github.com/agrc/wfrc/compare/v1.4.0-2...v1.4.0-3) (2019-10-22)
 
 
