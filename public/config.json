@@ -649,28 +649,28 @@
         },
         "checkboxes": {
           "employment": {
-            "label": "Employment Projections (2050)",
+            "label": "Employment",
             "layerNames": [
               "employment"
             ],
             "symbol": "classes"
           },
           "population": {
-            "label": "Population Projections (2050)",
+            "label": "Population",
             "layerNames": [
               "population"
             ],
             "symbol": "classes"
           },
           "workplaceAccessibilityAuto": {
-            "label": "Workplace Accessibility - Auto (2019)",
+            "label": "Auto",
             "layerNames": [
               "workplaceAccessibilityAuto"
             ],
             "symbol": "classes"
           },
           "workplaceAccessibilityTransit": {
-            "label": "Workplace Accessibility - Transit (2019)",
+            "label": "Transit",
             "layerNames": [
               "workplaceAccessibilityTransit"
             ],
@@ -700,10 +700,16 @@
         },
         "groups": [
           {
-            "label": "Jobs and Households",
+            "label": "Projections (2050)",
             "checkboxes": [
               "employment",
-              "population",
+              "population"
+            ],
+            "radio": true
+          },
+          {
+            "label": "Workplace Accessibility (2019)",
+            "checkboxes": [
               "workplaceAccessibilityAuto",
               "workplaceAccessibilityTransit"
             ],
