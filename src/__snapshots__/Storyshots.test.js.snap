@@ -135,7 +135,7 @@ exports[`Storyshots Filter Land Use 1`] = `
           onChange={[Function]}
           type="checkbox"
         />
-        Jobs and Households
+        Projections (2050)
       </label>
     </div>
     <div
@@ -150,11 +150,11 @@ exports[`Storyshots Filter Land Use 1`] = `
           <input
             checked={true}
             className="form-check-input"
-            name="props.label"
+            name="Projections (2050)"
             onChange={[Function]}
             type="radio"
           />
-          Employment Projections (2050)
+          Employment
         </label>
       </div>
       <div
@@ -166,11 +166,50 @@ exports[`Storyshots Filter Land Use 1`] = `
           <input
             checked={false}
             className="form-check-input"
-            name="props.label"
+            name="Projections (2050)"
             onChange={[Function]}
             type="radio"
           />
-          Population Projections (2050)
+          Population
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={false}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Workplace Accessibility (2019)
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            name="Workplace Accessibility (2019)"
+            onChange={[Function]}
+            type="radio"
+          />
+          Auto
         </label>
       </div>
       <div
@@ -182,27 +221,11 @@ exports[`Storyshots Filter Land Use 1`] = `
           <input
             checked={false}
             className="form-check-input"
-            name="props.label"
+            name="Workplace Accessibility (2019)"
             onChange={[Function]}
             type="radio"
           />
-          Workplace Accessibility - Auto (2019)
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={false}
-            className="form-check-input"
-            name="props.label"
-            onChange={[Function]}
-            type="radio"
-          />
-          Workplace Accessibility - Transit (2019)
+          Transit
         </label>
       </div>
     </div>
