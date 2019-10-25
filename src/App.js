@@ -158,20 +158,14 @@ export default class App extends Component {
   }
 
   setCurrentTab(index) {
-    this.setState({ currentTabIndex: index });
-  };
+    console.log('App:setCurrentTab');
 
-  onFindAddress(graphic) {
-    this.setState({
-      zoomToGraphic: {
-        graphic: graphic,
-        level: 18
-      }
-    });
-  };
-
-  onFindAddressError(e) {
-    console.error(e);
+    if (index !== this.state.currentTabIndex) {
+      this.setState({
+        currentTabIndex: index,
+        selectedGraphics: []
+      });
+    }
   };
 
   async onMapClick(event) {
