@@ -96,7 +96,7 @@ export default class App extends Component {
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
             <MapWidget
-              // defaultOpen={true}
+              defaultOpen={config.openOnLoad.filter}
               name="Filter"
               icon={faList}
               position={0}
@@ -110,7 +110,7 @@ export default class App extends Component {
                 />
             </MapWidget>
             { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
-              // defaultOpen={true}
+              defaultOpen={config.openOnLoad.projectInfo}
               name="Project Information"
               icon={faHandPointer}
               position={1}

@@ -911,5 +911,9 @@
     "landingPage": "https://wfrc.org/vision-plans/wasatch-choice-2050/",
     "tagLine": ""
   },
-  "tagLine": "#wherematters"
+  "tagLine": "#wherematters",
+  "openOnLoad": {
+    "projectInfo": true,
+    "filter": true
+  }
 }
