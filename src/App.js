@@ -28,13 +28,14 @@ export default class App extends Component {
     },
     mapClick: null,
     sideBarOpen: window.innerWidth >= config.MIN_DESKTOP_WIDTH,
-    currentTabIndex: 0,
+    currentTabIndex: null,
     mapExtent: null,
     mapView: null,
     mapReady: false,
     resetFilter: false,
     selectedGraphics: [],
-    showIdentifyLoader: false
+    showIdentifyLoader: false,
+    initialExtent: null
   };
 
   onMapClick = this.onMapClick.bind(this);
@@ -57,7 +58,8 @@ export default class App extends Component {
       zoomToGraphic: this.state.zoomToGraphic,
       onClick: this.onMapClick,
       setView: this.setView,
-      onExtentChange: this.onMapExtentChange
+      onExtentChange: this.onMapExtentChange,
+      initialExtent: this.state.initialExtent
     }
 
     const sidebarOptions = {
@@ -85,43 +87,44 @@ export default class App extends Component {
           currentTabIndex: this.state.currentTabIndex,
           setCurrentTab: this.setCurrentTab
         }}>
-          { this.state.mapReady &&
-            <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
-              sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar} />
-          }
+          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
+            sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar}
+            mapReady={this.state.mapReady} />
           <Header title="Wasatch Choice Map" />
           <Sidebar toggleSidebar={this.toggleSidebar}>
             <About version={version} />
           </Sidebar>
-          <MapLens {...sidebarOptions}>
-            <MapView {...mapOptions} />
-            <MapWidget
-              defaultOpen={config.openOnLoad.filter}
-              name="Filter"
-              icon={faList}
-              position={0}
-              showReset={true}
-              onReset={resetFilter}
-              mapView={this.state.mapView}>
-              <Filter {...config.tabs[this.state.currentTabIndex].filter}
-                reset={this.state.resetFilter}
-                mapView={this.state.mapView}
-                webMapId={config.tabs[this.state.currentTabIndex].webMapId}
-                />
-            </MapWidget>
-            { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
-              defaultOpen={config.openOnLoad.projectInfo}
-              name="Project Information"
-              icon={faHandPointer}
-              position={1}
-              mapView={this.state.mapView}>
-              <ProjectInformation
-                graphics={this.state.selectedGraphics}
-                highlightGraphic={this.highlightGraphic}
-                showLoader={this.state.showIdentifyLoader} />
-            </MapWidget> }
-            <Sherlock {...sherlockConfig}></Sherlock>
-          </MapLens>
+          { (this.state.currentTabIndex !== null) &&
+            <MapLens {...sidebarOptions}>
+              <MapView {...mapOptions} />
+              <MapWidget
+                defaultOpen={config.openOnLoad.filter}
+                name="Filter"
+                icon={faList}
+                position={0}
+                showReset={true}
+                onReset={resetFilter}
+                mapView={this.state.mapView}>
+                <Filter {...config.tabs[this.state.currentTabIndex].filter}
+                  reset={this.state.resetFilter}
+                  mapView={this.state.mapView}
+                  webMapId={config.tabs[this.state.currentTabIndex].webMapId}
+                  />
+              </MapWidget>
+              { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
+                defaultOpen={config.openOnLoad.projectInfo}
+                name="Project Information"
+                icon={faHandPointer}
+                position={1}
+                mapView={this.state.mapView}>
+                <ProjectInformation
+                  graphics={this.state.selectedGraphics}
+                  highlightGraphic={this.highlightGraphic}
+                  showLoader={this.state.showIdentifyLoader} />
+              </MapWidget> }
+              <Sherlock {...sherlockConfig}></Sherlock>
+            </MapLens>
+          }
         </TabsContext.Provider>
       </div>
     );
@@ -158,7 +161,7 @@ export default class App extends Component {
   }
 
   setCurrentTab(index) {
-    console.log('App:setCurrentTab');
+    console.log('App:setCurrentTab', index);
 
     if (index !== this.state.currentTabIndex) {
       this.setState({
@@ -241,13 +244,13 @@ export default class App extends Component {
   setInitialExtent(extent) {
     console.log('setInitialExtent', JSON.stringify(arguments[0]));
 
-    const mapView = this.state.mapView;
-    mapView.center = {
-      x: extent.x,
-      y: extent.y,
-      spatialReference: { wkid: 3857 }
-    };
-    mapView.scale = extent.scale;
+    this.setState({
+      initialExtent: {
+        x: extent.x,
+        y: extent.y,
+        scale: extent.scale
+      }
+    });
   }
 
   showIdentify(value) {
@@ -273,7 +276,7 @@ export default class App extends Component {
   }
 
   toggleSidebar() {
-    console.log('toggleSidebar');
+    console.log('App:toggleSidebar');
 
     this.setState({sideBarOpen: !this.state.sideBarOpen });
   }
@@ -283,6 +286,8 @@ export default class App extends Component {
   }
 
   setView(view) {
+    console.log('App:setView');
+
     this.setState({ mapView: view });
 
     view.when(() => {

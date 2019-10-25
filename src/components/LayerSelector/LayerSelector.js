@@ -78,10 +78,10 @@ class LayerSelector extends Component {
       }
     }
     this.managedLayers = {};
-    const [ LOD, TileInfo, WebTiledLayer, Basemap, FeatureLayer ] = this.props.modules;
+    const { LOD, TileInfo, WebTileLayer, Basemap, FeatureLayer } = this.props.modules;
 
     this.factoryLookup = {
-      WebTiledLayer,
+      WebTileLayer,
       FeatureLayer
     };
 
@@ -92,7 +92,7 @@ class LayerSelector extends Component {
 
     this.onItemChanged = this.onItemChanged.bind(this);
 
-    const baseLayers = this.createLayerFactories('baselayer', this.props.baseLayers, WebTiledLayer) || [];
+    const baseLayers = this.createLayerFactories('baselayer', this.props.baseLayers, WebTileLayer) || [];
 
     let hasDefaultSelection = false;
     let defaultSelection = null;
@@ -123,7 +123,7 @@ class LayerSelector extends Component {
       overlays.splice(0, 0, 'Overlay');
     }
 
-    overlays = this.createLayerFactories('overlay', overlays, WebTiledLayer) || [];
+    overlays = this.createLayerFactories('overlay', overlays, WebTileLayer) || [];
 
     if (defaultSelection.linked && defaultSelection.linked.length > 0) {
       overlays.map(layer => {
@@ -144,7 +144,7 @@ class LayerSelector extends Component {
   static propTypes = {
     view: PropTypes.object.isRequired,
     quadWord: PropTypes.string,
-    modules: PropTypes.arrayOf(PropTypes.func).isRequired,
+    modules: PropTypes.object.isRequired,
     baseLayers: PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay', 'Imagery']),
       PropTypes.shape({

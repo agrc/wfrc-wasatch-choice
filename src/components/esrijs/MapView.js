@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { loadModules } from 'esri-loader';
+import esriModules from '../../esriModules';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
 import config from '../../config';
 import TabsContext from '../Tabs/TabsContext';
@@ -12,10 +12,6 @@ export default class ReactMapView extends Component {
 
   zoomLevel = 5;
   displayedZoomGraphic = null;
-  urls = {
-    landownership: 'https://gis.trustlands.utah.gov/server/' +
-      '/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0'
-  };
 
   render() {
     return (
@@ -29,12 +25,9 @@ export default class ReactMapView extends Component {
   }
 
   async componentDidMount() {
-    const mapRequires = [
-      'esri/WebMap',
-      'esri/views/MapView',
-      'esri/widgets/Home'
-    ];
-    const [WebMap, MapView, Home] = await loadModules(mapRequires, config.ESRI_LOADER_CONFIG);
+    console.log('MapView:componentDidMount');
+
+    const { WebMap, MapView, Home } = await esriModules();
 
     this.maps = config.tabs.map(({ webMapId }) => {
       return new WebMap({
@@ -44,14 +37,25 @@ export default class ReactMapView extends Component {
       });
     });
 
+    let center;
+    let zoom;
+    let scale;
+    if (this.props.initialExtent) {
+      center = this.props.initialExtent;
+      scale = this.props.initialExtent.scale;
+    } else {
+      center = config.defaultExtent;
+      zoom = config.defaultExtent.zoomLevel
+    }
+
     this.view = new MapView({
       container: this.mapViewDiv,
       center: {
-        spatialReference: 3857,
-        x: config.defaultExtent.x,
-        y: config.defaultExtent.y
+        ...center,
+        spatialReference: 3857
       },
-      zoom: config.defaultExtent.zoomLevel,
+      zoom,
+      scale,
       ui: {
         components: ['zoom']
       }
@@ -60,6 +64,8 @@ export default class ReactMapView extends Component {
     this.props.setView(this.view);
 
     this.view.when(() => {
+      console.log('view loaded');
+
       this.view.watch('extent', debounce(newExtent => {
         if (newExtent) {
           this.props.onExtentChange({
@@ -87,14 +93,7 @@ export default class ReactMapView extends Component {
   }
 
   async setUpLayerSelector() {
-    const selectorRequires = [
-      'esri/layers/support/LOD',
-      'esri/layers/support/TileInfo',
-      'esri/layers/WebTileLayer',
-      'esri/Basemap',
-      'esri/layers/FeatureLayer',
-    ];
-    const modules = await loadModules(selectorRequires, config.ESRI_LOADER_CONFIG);
+    const modules = await esriModules();
 
     const layerSelectorOptions = {
       view: this.view,
@@ -105,7 +104,7 @@ export default class ReactMapView extends Component {
 
     ReactDOM.render(
       <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions} ref={ref => this.layerSelector = ref}></LayerSelector>
+        <LayerSelector {...layerSelectorOptions} ref={ref => this.layerSelector = ref} />
       </LayerSelectorContainer>,
       this.selectorNode);
   }
@@ -115,19 +114,21 @@ export default class ReactMapView extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if (this.context.currentTabIndex !== this.currentTabIndex) {
+    console.log('MapView:componentDidUpdate');
+
+    if (this.maps && this.context.currentTabIndex !== this.currentTabIndex) {
       // update web map
       this.view.map = this.maps[this.context.currentTabIndex];
 
       if (!config.tabs[this.context.currentTabIndex].useDefaultAGOLPopup) {
         this.view.popup = null;
       } else {
-        const [ Popup ] = await loadModules(['esri/widgets/Popup'], config.ESRI_LOADER_CONFIG);
+        const { Popup } = await esriModules();
         this.view.popup = new Popup();
       }
 
       // update layer selector visibility
-      if (this.context.currentTabIndex && this.shouldHideLayerSelector() !==
+      if (this.currentTabIndex && this.context.currentTabIndex && this.shouldHideLayerSelector() !==
         config.tabs[this.currentTabIndex.toString()].hideLayerSelector) {
         const method = (this.shouldHideLayerSelector()) ?
           this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
@@ -189,7 +190,7 @@ export default class ReactMapView extends Component {
 
     this.view.graphics.addMany(zoomObj.target);
 
-    const [watchUtils] = await loadModules(['esri/core/watchUtils'], config.ESRI_LOADER_CONFIG);
+    const { watchUtils } = await esriModules();
 
     if (!zoomObj.preserve) {
       watchUtils.once(this.view, 'extent', () => {

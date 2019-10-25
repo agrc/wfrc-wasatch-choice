@@ -11,6 +11,8 @@ const getCurrentHash = () => {
   });
 };
 const mixinHashValues = values => {
+  console.log('mixinHashValues', values);
+
   url.hash = queryString.stringify({
     ...getCurrentHash(),
     ...values
@@ -33,16 +35,18 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
       closeSidebar();
     }
 
-    if (currentHash.currentTabIndex && currentHash.currentTabIndex > 0) {
-      setCurrentTab(currentHash.currentTabIndex);
-    }
+    setCurrentTab(currentHash.currentTabIndex || 0);
   }, [setInitialExtent, closeSidebar, setCurrentTab]);
 
   // currentTabIndex
   useEffect(() => {
-    mixinHashValues({
-      currentTabIndex
-    });
+    console.log('URLParams update hash: ', currentTabIndex);
+
+    if (currentTabIndex) {
+      mixinHashValues({
+        currentTabIndex
+      });
+    }
   }, [currentTabIndex]);
 
   // map extent
