@@ -9,7 +9,8 @@ export default props => {
 
   return (
     <div className="project-information">
-      { props.graphics.length === 0 && <p>Click on a feature for more information</p> }
+      { props.graphics.length === 0 && !props.showLoader &&
+        <p>Click on a feature for more information</p> }
       { props.showLoader && <Loader type="Oval" className="loader" /> }
       { props.graphics.map((graphic, index) =>
         <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />) }

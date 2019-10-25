@@ -34,7 +34,8 @@ let config = {
         color: SELECTION_COLOR
       }
     }
-  }
+  },
+  LOADER_DELAY: 250
 };
 
 export const setConfigs = appConfigs => {

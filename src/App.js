@@ -33,7 +33,8 @@ export default class App extends Component {
     mapView: null,
     mapReady: false,
     resetFilter: false,
-    selectedGraphics: []
+    selectedGraphics: [],
+    showIdentifyLoader: false
   };
 
   onMapClick = this.onMapClick.bind(this);
@@ -117,7 +118,7 @@ export default class App extends Component {
               <ProjectInformation
                 graphics={this.state.selectedGraphics}
                 highlightGraphic={this.highlightGraphic}
-                showLoader={false} />
+                showLoader={this.state.showIdentifyLoader} />
             </MapWidget> }
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
@@ -176,6 +177,16 @@ export default class App extends Component {
   async onMapClick(event) {
     console.log('onMapClick', event);
 
+    this.setState({ selectedGraphics: [] });
+
+    let finished = false;
+
+    setTimeout(() => {
+      if (!finished) {
+        this.setState({ showIdentifyLoader: true });
+      }
+    }, config.LOADER_DELAY);
+
     const mapView = this.state.mapView;
     const layers = mapView.map.layers;
 
@@ -221,7 +232,12 @@ export default class App extends Component {
 
     console.log('selectedGraphics', selectedGraphics);
 
-    this.setState({ selectedGraphics });
+    finished = true;
+
+    this.setState({
+      selectedGraphics,
+      showIdentifyLoader: false
+    });
   }
 
   onMapExtentChange(newExtent) {
