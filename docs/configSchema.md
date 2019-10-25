@@ -16,6 +16,7 @@
 | [layerSelector](#layerselector)           | `object`   | **Required** | No       | (this schema) |
 | [links](#links)                           | `object`   | **Required** | No       | (this schema) |
 | [minimumLegendSizes](#minimumlegendsizes) | `object`   | **Required** | No       | (this schema) |
+| [openOnLoad](#openonload)                 | `object`   | **Required** | No       | (this schema) |
 | [sherlock](#sherlock)                     | `object`   | **Required** | No       | (this schema) |
 | [tabs](#tabs)                             | `object[]` | **Required** | No       | (this schema) |
 | [tagLine](#tagline)                       | `string`   | Optional     | No       | (this schema) |
@@ -320,6 +321,47 @@ not clickable.
 ##### polylineWidth Type
 
 `number`
+
+## openOnLoad
+
+Controls whether specific map widgets default to be open on page load
+
+`openOnLoad`
+
+- is **required**
+- type: `object`
+- defined in this schema
+
+### openOnLoad Type
+
+`object` with following properties:
+
+| Property      | Type    | Required |
+| ------------- | ------- | -------- |
+| `filter`      | boolean | Optional |
+| `projectInfo` | boolean | Optional |
+
+#### filter
+
+`filter`
+
+- is optional
+- type: `boolean`
+
+##### filter Type
+
+`boolean`
+
+#### projectInfo
+
+`projectInfo`
+
+- is optional
+- type: `boolean`
+
+##### projectInfo Type
+
+`boolean`
 
 ## sherlock
 
