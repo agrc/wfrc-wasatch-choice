@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0-0](https://github.com/agrc/wfrc/compare/v1.4.0...v1.5.0-0) (2019-10-25)
+
+
+### Bug Fixes
+
+* **ProjectInfo:** clear selection when switching between tabs ([d937e3b](https://github.com/agrc/wfrc/commit/d937e3b))
+* layout tweaks to tag line ([6717211](https://github.com/agrc/wfrc/commit/6717211))
+* upgrade esri js to 4.13 and remove bump extent hack ([e947998](https://github.com/agrc/wfrc/commit/e947998))
+
+
+### Features
+
+* **ProjectInfo:** add support for map image layers ([ca9d476](https://github.com/agrc/wfrc/commit/ca9d476)), closes [#35](https://github.com/agrc/wfrc/issues/35)
+* **ProjectInfo:** show loader for longer load times ([bdf906f](https://github.com/agrc/wfrc/commit/bdf906f))
+* add config values for map widget default to open on load ([0dc0793](https://github.com/agrc/wfrc/commit/0dc0793)), closes [#39](https://github.com/agrc/wfrc/issues/39)
+
 ## [1.4.0](https://github.com/agrc/wfrc/compare/v1.4.0-3...v1.4.0) (2019-10-24)
 
 
