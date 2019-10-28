@@ -196,9 +196,9 @@
               "95"
             ],
             "symbolLabels": [
-              "label one",
-              "label two",
-              "label three"
+              "Interstates",
+              "State Freeways",
+              "Arterials"
             ]
           },
           "transit": {
@@ -278,9 +278,9 @@
               "49,13"
             ],
             "symbolLabels": [
-              "label one",
-              "label two",
-              "label three"
+              "Commuter Rail",
+              "Light Rail",
+              "Bus Rapid Transit"
             ]
           },
           "bikePed": {
@@ -295,14 +295,14 @@
             ],
             "symbol": "dynamic",
             "symbolLayerIds": [
-              "64-0",
+              "64-2",
               "64-1",
-              "64-2"
+              "64-0"
             ],
             "symbolLabels": [
-              "label one",
-              "label two",
-              "label three"
+              "On Street",
+              "Off Street",
+              "Bonneville Shoreline Trail"
             ]
           },
           "centers": {
@@ -321,19 +321,19 @@
             "staticColors": [
               {
                 "label": "Metropolitan Center",
-                "hsa": "#EB6421"
+                "hsa": "rgba(235, 100, 33, 0.75)"
               },
               {
                 "label": "Urban Center",
-                "hsa": "#E6902E"
+                "hsa": "rgba(230, 144, 46, 0.75)"
               },
               {
                 "label": "City Center",
-                "hsa": "#FFB726"
+                "hsa": "rgba(255, 183, 38, 0.75)"
               },
               {
                 "label": "Neighborhood Center",
-                "hsa": "#FFFF00"
+                "hsa": "rgba(255, 255, 0, 0.75)"
               }
             ]
           },
@@ -353,19 +353,19 @@
             "staticColors": [
               {
                 "label": "Educational Center",
-                "hsa": "#F7B0B0"
+                "hsa": "rgba(247, 176, 176, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "#D79E9E"
+                "hsa": "rgba(215, 158, 158, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "#C500FF"
+                "hsa": "rgba(197, 0, 255, 0.25)"
               },
               {
                 "label": "Special District",
-                "hsa": "#4E4E4E"
+                "hsa": "rgba(78, 78, 78, 0.25)"
               }
             ]
           }
@@ -751,16 +751,22 @@
             "symbolImageFile": "StaticLegend.png",
             "staticColors": [
               {
-                "hsa": "#EB6421"
+                "hsa": "rgba(0, 112, 255, 0.5)"
               },
               {
-                "hsa": "#E6902E"
+                "hsa": "rgba(255, 0, 0, 0.5)"
               },
               {
-                "hsa": "#FFB726"
+                "hsa": "rgba(197, 0, 255, 0.5)"
               },
               {
-                "hsa": "#FFFF00"
+                "hsa": "rgba(85, 255, 0, 0.5)"
+              },
+              {
+                "hsa": "rgba(255, 170, 0, 0.5)"
+              },
+              {
+                "hsa": "rgba(255, 255, 0, 0.5)"
               }
             ]
           },

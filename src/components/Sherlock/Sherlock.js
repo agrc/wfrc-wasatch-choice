@@ -20,10 +20,11 @@ class Sherlock extends Component {
     symbols: {
       polygon: {
         type: 'simple-fill',
+        color: [240, 240, 240, .5],
         outline: {
-          style: 'dash-dot',
-          color: [255, 255, 0],
-          width: 1.5
+          style: 'solid',
+          color: [255, 255, 0, .5],
+          width: 2.5
         }
       },
       line: {
@@ -75,7 +76,7 @@ class Sherlock extends Component {
     console.log('Clue:itemToString', arguments);
     const { searchField } = this.props.provider;
 
-    return item ? item.attributes[searchField]: '';
+    return item ? item.attributes[searchField] : '';
   }
 
   render() {
@@ -129,7 +130,7 @@ class Sherlock extends Component {
                           }
 
                           let items = data.map((item, index) => (
-                          <li {...getItemProps({
+                            <li {...getItemProps({
                               key: index,
                               className: 'sherlock__match-item' + (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
                               item,
@@ -313,7 +314,7 @@ class ProviderBase {
 }
 
 class MapServiceProvider extends ProviderBase {
-  constructor(serviceUrl, searchField, options={}) {
+  constructor(serviceUrl, searchField, options = {}) {
     console.log('sherlock.MapServiceProvider:constructor', arguments);
     super();
 
@@ -324,7 +325,7 @@ class MapServiceProvider extends ProviderBase {
   }
 
   async setUpQueryTask(serviceUrl, options) {
-    const [ Query, QueryTask ] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask'], config.ESRI_LOADER_CONFIG);
+    const [Query, QueryTask] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask'], config.ESRI_LOADER_CONFIG);
     const defaultWkid = 3857;
     this.query = new Query();
     this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
