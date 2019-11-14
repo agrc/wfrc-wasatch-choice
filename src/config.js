@@ -36,7 +36,7 @@ let config = {
     }
   },
   LOADER_DELAY: 250,
-  IDENTIFY_PIXEL_TOLERANCE: 5
+  IDENTIFY_PIXEL_TOLERANCE: 7
 };
 
 export const setConfigs = appConfigs => {
