@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/agrc/wfrc/compare/v1.5.0...v1.5.1) (2019-11-14)
+
+
+### Bug Fixes
+
+* **ProjectInfo:** Fix bug preventing all features from displaying ([05d90de](https://github.com/agrc/wfrc/commit/05d90de))
+
 ## [1.5.0](https://github.com/agrc/wfrc/compare/v1.5.0-0...v1.5.0) (2019-10-25)
 
 ## [1.5.0-0](https://github.com/agrc/wfrc/compare/v1.4.0...v1.5.0-0) (2019-10-25)
