@@ -187,7 +187,7 @@ export default class App extends Component {
     const mapView = this.state.mapView;
     const layers = mapView.map.layers;
 
-    const mapImageLayers = layers.filter(layer => layer.type === 'map-image');
+    const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
 
     const { IdentifyParameters, IdentifyTask } = await esriModules();
     const identifyPromises = mapImageLayers.map(layer => {
@@ -202,7 +202,7 @@ export default class App extends Component {
         mapExtent: mapView.extent,
         returnFieldName: true,
         returnGeometry: true,
-        tolerance: 5,
+        tolerance: config.IDENTIFY_PIXEL_TOLERANCE,
         width: mapView.width
       });
 
@@ -223,9 +223,27 @@ export default class App extends Component {
       }));
     }, []);
 
-    const hitTest = await this.state.mapView.hitTest(event);
+    // the manual querying of feature layer view below can be replaced with MapView.hitTest
+    // once Esri adds support for returning all of the features in a layer rather than just the topmost
+    const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
+    console.log('featureLayers', featureLayers.map(l => l.title));
+    const queryFeatureLayerView = async layer => {
+      const layerView = await this.state.mapView.whenLayerView(layer);
+      const results = await layerView.queryFeatures({
+        geometry: event.mapPoint,
+        returnGeometry: true,
+        distance: config.IDENTIFY_PIXEL_TOLERANCE * this.state.mapView.resolution,
+        units: 'feet'
+      });
 
-    const selectedGraphics = hitTest.results.map(result => result.graphic).concat(identifyFeatures);
+      return results.features;
+    };
+    const queryFeaturePromises = featureLayers.map(queryFeatureLayerView);
+    const queryFeatureSets = await Promise.all(queryFeaturePromises.toArray());
+    const queryFeatures = queryFeatureSets.reduce((previous, current) => {
+      return previous.concat(current);
+    }, []);
+    const selectedGraphics = queryFeatures.concat(identifyFeatures);
 
     console.log('selectedGraphics', selectedGraphics);
 
