@@ -226,20 +226,20 @@ export default class App extends Component {
     // the manual querying of feature layer view below can be replaced with MapView.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
     const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
-    console.log('featureLayers', featureLayers.map(l => l.title));
     const queryFeatureLayerView = async layer => {
       const layerView = await this.state.mapView.whenLayerView(layer);
       const results = await layerView.queryFeatures({
         geometry: event.mapPoint,
         returnGeometry: true,
         distance: config.IDENTIFY_PIXEL_TOLERANCE * this.state.mapView.resolution,
-        units: 'feet'
+        units: 'feet',
+        where: layer.definitionExpression
       });
 
       return results.features;
     };
-    const queryFeaturePromises = featureLayers.map(queryFeatureLayerView);
-    const queryFeatureSets = await Promise.all(queryFeaturePromises.toArray());
+    const queryFeaturePromises = featureLayers.toArray().map(queryFeatureLayerView);
+    const queryFeatureSets = await Promise.all(queryFeaturePromises);
     const queryFeatures = queryFeatureSets.reduce((previous, current) => {
       return previous.concat(current);
     }, []);

@@ -38,6 +38,11 @@ export const getLayersInMap = async map => {
     layer.sublayers && getSublayers(layer);
   };
 
+  Object.keys(layerNameLookup).forEach(layerName => {
+    const layer = layerNameLookup[layerName];
+    layer.defaultDefinitionExpression = layer.definitionExpression || '1 = 1';
+  });
+
   return layerNameLookup;
 };
 
@@ -363,11 +368,15 @@ const Parent = props => {
         const phaseInfo = props.phases[layerName];
         const layer = props.layers[layerName];
         if (layer) {
+          let definitionExpression = layer.defaultDefinitionExpression;
           if (shouldBeFiltered(layerName)) {
-            layer.definitionExpression = getPhaseQuery(phaseInfo, newCheckedPhases);
-          } else {
-            layer.definitionExpression = null;
+            const phaseQuery = getPhaseQuery(phaseInfo, newCheckedPhases);
+            if (phaseQuery) {
+              definitionExpression = `(${definitionExpression}) AND (${phaseQuery})`;
+            }
           }
+
+          layer.definitionExpression = definitionExpression;
         }
       });
     }
