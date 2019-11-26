@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/agrc/wfrc/compare/v1.5.2...v1.5.3) (2019-11-26)
+
+
+### Bug Fixes
+
+* **ProjectInfo:** fix bug causing duplicate features to be returned on map click ([0a21d2f](https://github.com/agrc/wfrc/commit/0a21d2f))
+
 ### [1.5.2](https://github.com/agrc/wfrc/compare/v1.5.1...v1.5.2) (2019-11-14)
 
 
