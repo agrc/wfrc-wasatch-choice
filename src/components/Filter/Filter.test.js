@@ -41,6 +41,9 @@ describe('getLayers', () => {
     sublayers: [nestedSubLayer]
   };
   const mockMap = {
+    portalItem: {
+      id: 'unique id'
+    },
     layers: {
       items: [
         centersLayer,

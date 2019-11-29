@@ -18,7 +18,16 @@ const SYMBOLS = {
 // used to preserve control state between tabs
 const CACHE = {};
 
+// Cache layer lookup objects so that we don't have the crawl
+// the same map multiple times and also to prevent any cached
+// filters to become the defaultDefinitionExpression value for a layer.
+const MAP_LAYERS = {};
 export const getLayersInMap = async map => {
+  const mapId = map.portalItem.id;
+  if (MAP_LAYERS[mapId]) {
+    return MAP_LAYERS[mapId];
+  }
+
   const layerNameLookup = {};
 
   const getSublayers = layer => {
@@ -42,6 +51,8 @@ export const getLayersInMap = async map => {
     const layer = layerNameLookup[layerName];
     layer.defaultDefinitionExpression = layer.definitionExpression || '1 = 1';
   });
+
+  MAP_LAYERS[mapId] = layerNameLookup;
 
   return layerNameLookup;
 };
