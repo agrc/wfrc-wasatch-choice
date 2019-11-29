@@ -405,6 +405,7 @@
           "activeTransLine": "Active Transportation Line Projects",
           "magActiveTransLine": "MAG Active Transportation Line Projects",
           "existingBike": "Existing Bike Network",
+          "magExistingBike": "MAG Existing Bike Network",
           "transitLine": "Transit Line Projects",
           "magTransitLine": "MAG Transit Line Projects",
           "existingTransitLine": "Existing Transit Lines",
@@ -433,7 +434,7 @@
             "1",
             "2",
             "3",
-            "0"
+            "Unfunded"
           ],
           "magTransitPoint": [
             "Phase",
@@ -446,9 +447,9 @@
             "1",
             "2",
             "3",
-            "4"
+            "Unfunded"
           ],
-          "magPoint": [
+          "magRoadwayPoint": [
             "Phase",
             1,
             2,
@@ -486,7 +487,7 @@
             "1",
             "2",
             "3",
-            "4"
+            "Unfunded"
           ],
           "magRoadwayLine": [
             "Phase",
@@ -582,7 +583,8 @@
           "existingBikePed": {
             "label": "Existing Bike/Ped",
             "layerNames": [
-              "existingBike"
+              "existingBike",
+              "magExistingBike"
             ],
             "symbol": "simple"
           },
