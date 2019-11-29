@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/agrc/wfrc/compare/v1.5.3...v1.5.4) (2019-11-29)
+
+
+### Bug Fixes
+
+* fix bug causing cached filter state to become the default state between tabs ([cabd386](https://github.com/agrc/wfrc/commit/cabd386))
+
 ### [1.5.3](https://github.com/agrc/wfrc/compare/v1.5.2...v1.5.3) (2019-11-26)
 
 
