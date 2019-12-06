@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/agrc/wfrc/compare/v1.5.4...v1.5.5) (2019-12-06)
+
+
+### Bug Fixes
+
+* fix bug causing the layer selector to be hidden when it shouldn't have been ([a0dc79c](https://github.com/agrc/wfrc/commit/a0dc79c))
+
 ### [1.5.4](https://github.com/agrc/wfrc/compare/v1.5.3...v1.5.4) (2019-11-29)
 
 
