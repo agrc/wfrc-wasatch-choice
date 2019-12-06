@@ -128,8 +128,10 @@ export default class ReactMapView extends Component {
       }
 
       // update layer selector visibility
-      if (this.currentTabIndex && this.context.currentTabIndex && this.shouldHideLayerSelector() !==
-        config.tabs[this.currentTabIndex.toString()].hideLayerSelector) {
+      if (this.currentTabIndex !== undefined && // could be 0 which is falsy
+        this.context.currentTabIndex !== undefined && // could be 0 which is falsy
+        this.shouldHideLayerSelector() !== config.tabs[this.currentTabIndex.toString()].hideLayerSelector
+        ) {
         const method = (this.shouldHideLayerSelector()) ?
           this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
         method(this.selectorNode, 'top-left');
