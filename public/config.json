@@ -61,6 +61,14 @@
           "busRapidTransit13": "Bus Rapid Transit - 13",
           "busRapidTransit14": "Bus Rapid Transit - 14",
           "busRapidTransit15": "Bus Rapid Transit - 15",
+          "utahLakeBridge8": "Utah Lake Bridge - 8",
+          "utahLakeBridge9": "Utah Lake Bridge - 9",
+          "utahLakeBridge10": "Utah Lake Bridge - 10",
+          "utahLakeBridge11": "Utah Lake Bridge - 11",
+          "utahLakeBridge12": "Utah Lake Bridge - 12",
+          "utahLakeBridge13": "Utah Lake Bridge - 13",
+          "utahLakeBridge14": "Utah Lake Bridge - 14",
+          "utahLakeBridge15": "Utah Lake Bridge - 15",
           "freeways8": "Freeways - 8",
           "freeways9": "Freeways - 9",
           "freeways10": "Freeways - 10",
@@ -168,6 +176,14 @@
               "rtpExpPANew13",
               "rtpExpPANew14",
               "rtpExpPANew15",
+              "utahLakeBridge8",
+              "utahLakeBridge9",
+              "utahLakeBridge10",
+              "utahLakeBridge11",
+              "utahLakeBridge12",
+              "utahLakeBridge13",
+              "utahLakeBridge14",
+              "utahLakeBridge15",
               "freeways8",
               "freeways9",
               "freeways10",
@@ -191,9 +207,9 @@
             ],
             "symbol": "dynamic",
             "symbolLayerIds": [
-              "57-0,19",
-              "57-1",
-              "95"
+              "65-0,19",
+              "65-1",
+              "103"
             ],
             "symbolLabels": [
               "Interstates",
@@ -295,9 +311,9 @@
             ],
             "symbol": "dynamic",
             "symbolLayerIds": [
-              "64-2",
-              "64-1",
-              "64-0"
+              "72-2",
+              "72-1",
+              "72-0"
             ],
             "symbolLabels": [
               "On Street",
@@ -681,14 +697,16 @@
           "centers": {
             "label": "Centers",
             "layerNames": [
-              "centers"
+              "centers",
+              "magCenters"
             ],
             "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
             "layerNames": [
-              "generalLandUse"
+              "generalLandUse",
+              "magGeneralLandUse"
             ],
             "symbol": "classes"
           },
@@ -885,7 +903,7 @@
     }
   ],
   "sherlock": {
-    "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/0",
+    "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/1",
     "searchField": "NAME",
     "placeHolder": "Search ..."
   },
