@@ -1,6 +1,6 @@
 {
-  "tabs": [
-    {
+  "tabInfos": {
+    "vision": {
       "name": "Vision",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
@@ -405,7 +405,7 @@
         ]
       }
     },
-    {
+    "transportation": {
       "name": "Transportation",
       "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
       "useDefaultAGOLPopup": false,
@@ -649,7 +649,7 @@
         ]
       }
     },
-    {
+    "land-use": {
       "name": "Land Use",
       "webMapId": "3eb707055b2148b6967e793de770395c",
       "useDefaultAGOLPopup": false,
@@ -746,7 +746,7 @@
         ]
       }
     },
-    {
+    "economic-development": {
       "name": "Economic Development",
       "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
       "useDefaultAGOLPopup": false,
@@ -830,7 +830,7 @@
         }
       }
     },
-    {
+    "recreation": {
       "name": "Recreation",
       "webMapId": "dfb321a9fec3435f8e7398ee8b123f80",
       "useDefaultAGOLPopup": false,
@@ -900,8 +900,20 @@
           }
         }
       }
+    },
+    "ato": {
+      "name": "ATO",
+      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+    },
+    "open-space": {
+      "name": "Open Space",
+      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+    },
+    "city-projections": {
+      "name": "City Projections",
+      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
     }
-  ],
+  },
   "sherlock": {
     "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/1",
     "searchField": "NAME",

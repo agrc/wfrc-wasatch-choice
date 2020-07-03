@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MapLens from './components/MapLens';
 import MapView from './components/esrijs/MapView';
 import config from './config';
 import './App.scss';
-import TabsContext from './components/Tabs/TabsContext';
+import { useCurrentTabConfig } from './components/Tabs/TabsContext';
 import About from './components/About/About';
 import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
@@ -18,174 +18,40 @@ import esriModules from './esriModules';
 import { getLayersInMap } from './components/Filter/Filter';
 
 
-export default class App extends Component {
-  state = {
-    zoomToPoint: {
-      zoomToGraphic: {
-        graphic: {},
-        level: 0
-      }
-    },
-    mapClick: null,
-    sideBarOpen: window.innerWidth >= config.MIN_DESKTOP_WIDTH,
-    currentTabIndex: null,
-    mapExtent: null,
-    mapView: null,
-    mapReady: false,
-    resetFilter: false,
-    selectedGraphics: [],
-    showIdentifyLoader: false,
-    initialExtent: null
-  };
+const App = (props) => {
+  const [zoomToGraphic, setZoomToGraphic] = React.useState({
+    graphic: null,
+    level: 0
+  });
+  const [sideBarOpen, setSideBarOpen] = React.useState(window.innerWidth >= config.MIN_DESKTOP_WIDTH);
+  const [mapExtent, setMapExtent] = React.useState(null);
+  const mapView = React.useRef();
+  const [mapReady, setMapReady] = React.useState(false);
+  const [resetFilter, setResetFilter] = React.useState(false);
+  const [selectedGraphics, setSelectedGraphics] = React.useState([]);
+  const [showIdentifyLoader, setShowIdentifyLoader] = React.useState(false);
+  const [initialExtent, setInitialExtent] = React.useState(null);
+  const [graphic, setGraphic] = React.useState(null);
+  const [highlight, setHighlight] = React.useState(null);
+  const currentTabConfig = useCurrentTabConfig()[0];
 
-  onMapClick = this.onMapClick.bind(this);
-  onSherlockMatch = this.onSherlockMatch.bind(this);
-  toggleSidebar = this.toggleSidebar.bind(this);
-  closeSidebar = this.closeSidebar.bind(this);
-  setView = this.setView.bind(this);
-  onMapExtentChange = this.onMapExtentChange.bind(this);
-  setInitialExtent = this.setInitialExtent.bind(this);
-  setCurrentTab = this.setCurrentTab.bind(this);
-  highlightGraphic = this.highlightGraphic.bind(this);
-  highlight = null;
+  const quadWord = process.env.REACT_APP_DISCOVER;
+  const version = process.env.REACT_APP_VERSION;
 
-  render() {
-    const quadWord = process.env.REACT_APP_DISCOVER;
-    const version = process.env.REACT_APP_VERSION;
-
-    const mapOptions = {
-      discoverKey: quadWord,
-      zoomToGraphic: this.state.zoomToGraphic,
-      onClick: this.onMapClick,
-      setView: this.setView,
-      onExtentChange: this.onMapExtentChange,
-      initialExtent: this.state.initialExtent
-    }
-
-    const sidebarOptions = {
-      sideBarOpen: this.state.sideBarOpen,
-      toggleSidebar: this.toggleSidebar
-    }
-
-    const sherlockConfig = {
-      provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
-      placeHolder: config.sherlock.placeHolder,
-      onSherlockMatch: this.onSherlockMatch
-    };
-
-    const resetFilter = () => {
-      console.log('resetFilter');
-
-      this.setState({ resetFilter: true }, () => {
-        this.setState({ resetFilter: false });
-      });
-    };
-
-    return (
-      <div className="app">
-        <TabsContext.Provider value={{
-          currentTabIndex: this.state.currentTabIndex,
-          setCurrentTab: this.setCurrentTab
-        }}>
-          <URLParams mapExtent={this.state.mapExtent} setInitialExtent={this.setInitialExtent}
-            sideBarOpen={this.state.sideBarOpen} closeSidebar={this.closeSidebar}
-            mapReady={this.state.mapReady} />
-          <Header title="Wasatch Choice Map" />
-          <Sidebar toggleSidebar={this.toggleSidebar}>
-            <About version={version} />
-          </Sidebar>
-          { (this.state.currentTabIndex !== null) &&
-            <MapLens {...sidebarOptions}>
-              <MapView {...mapOptions} />
-              <MapWidget
-                defaultOpen={config.openOnLoad.filter}
-                name="Filter"
-                icon={faList}
-                position={0}
-                showReset={true}
-                onReset={resetFilter}
-                mapView={this.state.mapView}>
-                <Filter {...config.tabs[this.state.currentTabIndex].filter}
-                  reset={this.state.resetFilter}
-                  mapView={this.state.mapView}
-                  webMapId={config.tabs[this.state.currentTabIndex].webMapId}
-                  />
-              </MapWidget>
-              { !config.tabs[this.state.currentTabIndex].useDefaultAGOLPopup && <MapWidget
-                defaultOpen={config.openOnLoad.projectInfo}
-                name="Project Information"
-                icon={faHandPointer}
-                position={1}
-                mapView={this.state.mapView}>
-                <ProjectInformation
-                  graphics={this.state.selectedGraphics}
-                  highlightGraphic={this.highlightGraphic}
-                  showLoader={this.state.showIdentifyLoader} />
-              </MapWidget> }
-              <Sherlock {...sherlockConfig}></Sherlock>
-            </MapLens>
-          }
-        </TabsContext.Provider>
-      </div>
-    );
-  }
-
-  async highlightGraphic(graphic) {
-    console.log('App:highlightGraphic', graphic);
-
-    if (this.highlight) {
-      this.highlight.remove();
-      this.highlight = null;
-    }
-
-    if (this.graphic) {
-      this.state.mapView.graphics.remove(this.graphic);
-      this.graphic = null;
-    }
-
-    if (graphic) {
-      try {
-        const layerView = await this.state.mapView.whenLayerView(graphic.layer);
-        this.highlight = layerView.highlight(graphic);
-      } catch {
-        const { Graphic } = await esriModules();
-        const newGraphic = new Graphic({
-          ...graphic,
-          symbol: config.SELECTION_SYMBOLS[graphic.geometry.type]
-        });
-
-        this.state.mapView.graphics.add(newGraphic);
-        this.graphic = newGraphic;
-      }
-    }
-  }
-
-  setCurrentTab(index) {
-    console.log('App:setCurrentTab', index);
-
-    if (index !== this.state.currentTabIndex) {
-      this.setState({
-        currentTabIndex: index,
-        selectedGraphics: []
-      });
-    }
-  };
-
-  async onMapClick(event) {
+  const onMapClick = React.useCallback(async (event) => {
     console.log('onMapClick', event);
 
-    this.setState({ selectedGraphics: [] });
+    setSelectedGraphics([]);
 
     let finished = false;
 
     setTimeout(() => {
       if (!finished) {
-        this.setState({ showIdentifyLoader: true });
+        setShowIdentifyLoader(true);
       }
     }, config.LOADER_DELAY);
 
-    const mapView = this.state.mapView;
-    const layers = mapView.map.layers;
+    const layers = mapView.current.map.layers;
 
     const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
 
@@ -196,14 +62,14 @@ export default class App extends Component {
       });
       const parameters = new IdentifyParameters({
         geometry: event.mapPoint,
-        height: mapView.height,
+        height: mapView.current.height,
         layerIds: layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray(),
         layerOption: 'visible',
-        mapExtent: mapView.extent,
+        mapExtent: mapView.current.extent,
         returnFieldName: true,
         returnGeometry: true,
         tolerance: config.IDENTIFY_PIXEL_TOLERANCE,
-        width: mapView.width
+        width: mapView.current.width
       });
 
       return task.execute(parameters);
@@ -212,7 +78,7 @@ export default class App extends Component {
 
     const identifyResponses = await Promise.all(identifyPromises.toArray());
 
-    const layerNameLookup = await getLayersInMap(mapView.map);
+    const layerNameLookup = await getLayersInMap(mapView.current.map);
     const identifyFeatures = identifyResponses.reduce((previous, current) => {
       return previous.concat(current.results.map(result => {
         return {
@@ -221,17 +87,17 @@ export default class App extends Component {
           popupTemplate: layerNameLookup[result.layerName].popupTemplate
         };
       }));
-    }, []);
+    });
 
-    // the manual querying of feature layer view below can be replaced with MapView.hitTest
+    // the manual querying of feature layer view below can be replaced with MapView.current.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
     const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
     const queryFeatureLayerView = async layer => {
-      const layerView = await this.state.mapView.whenLayerView(layer);
+      const layerView = await mapView.current.whenLayerView(layer);
       const results = await layerView.queryFeatures({
         geometry: event.mapPoint,
         returnGeometry: true,
-        distance: config.IDENTIFY_PIXEL_TOLERANCE * this.state.mapView.resolution,
+        distance: config.IDENTIFY_PIXEL_TOLERANCE * mapView.current.resolution,
         units: 'feet',
         where: layer.definitionExpression
       });
@@ -249,69 +115,151 @@ export default class App extends Component {
 
     finished = true;
 
-    this.setState({
-      selectedGraphics,
-      showIdentifyLoader: false
+    setSelectedGraphics(selectedGraphics);
+    setShowIdentifyLoader(false);
+  }, [mapView]);
+
+  const setView = React.useCallback((view) => {
+    console.log('App:setView');
+
+    mapView.current = view;
+
+    view.when(() => {
+      setMapReady(true);
     });
-  }
+  }, []);
 
-  onMapExtentChange(newExtent) {
-    this.setState({ mapExtent: newExtent });
-  }
+  const mapOptions = {
+    discoverKey: quadWord,
+    zoomToGraphic: zoomToGraphic,
+    onClick: onMapClick,
+    setView,
+    onExtentChange: setMapExtent,
+    initialExtent
+  };
 
-  setInitialExtent(extent) {
-    console.log('setInitialExtent', JSON.stringify(arguments[0]));
+  const toggleSidebar = () => {
+    console.log('App:toggleSidebar');
 
-    this.setState({
-      initialExtent: {
-        x: extent.x,
-        y: extent.y,
-        scale: extent.scale
-      }
-    });
-  }
+    setSideBarOpen(!sideBarOpen);
+  };
 
-  showIdentify(value) {
-    this.setState({ showIdentify: value });
-  }
+  const sidebarOptions = {
+    sideBarOpen: sideBarOpen,
+    toggleSidebar
+  };
 
-  onSherlockMatch(graphics) {
+  const onSherlockMatch = (graphics) => {
     // summary:
     //      Zooms to the passed in graphic(s).
     // graphics: esri.Graphic[]
     //      The esri.Graphic(s) that you want to zoom to.
     // tags:
     //      private
-    console.log('sherlock:zoom', arguments);
+    console.log('App:onSherlockMatch');
 
-    // check for point feature
-    this.setState({
-      zoomToGraphic: {
-        graphic: graphics,
-        preserve: false
+    setZoomToGraphic({
+      graphic: graphics,
+      preserve: false
+    });
+  };
+
+  const sherlockConfig = {
+    provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
+    placeHolder: config.sherlock.placeHolder,
+    onSherlockMatch
+  };
+
+  React.useEffect(() => {
+    console.log('toggleFilter');
+
+    if (resetFilter) {
+      return () => {
+        setResetFilter(false);
       }
-    });
+    }
+  }, [resetFilter]);
+
+  const highlightGraphic = async (newGraphic) => {
+    console.log('App:highlightGraphic', newGraphic);
+
+    if (highlight) {
+      highlight.remove();
+      setHighlight(null);
+    }
+
+    if (graphic) {
+      mapView.current.graphics.remove(graphic);
+    }
+
+    if (newGraphic) {
+      try {
+        const layerView = await mapView.current.whenLayerView(newGraphic.layer);
+        setHighlight(layerView.highlight(newGraphic));
+      } catch {
+        const { Graphic } = await esriModules();
+        const symbolizedGraphic = new Graphic({
+          ...newGraphic,
+          symbol: config.SELECTION_SYMBOLS[newGraphic.geometry.type]
+        });
+
+        mapView.current.graphics.add(symbolizedGraphic);
+        setGraphic(symbolizedGraphic);
+      }
+    } else {
+      setGraphic(null);
+    }
   }
 
-  toggleSidebar() {
-    console.log('App:toggleSidebar');
+  React.useEffect(() => {
+    // reset graphics on tab change
+    setSelectedGraphics([]);
+  }, [currentTabConfig, setSelectedGraphics])
 
-    this.setState({sideBarOpen: !this.state.sideBarOpen });
-  }
+  return (
+    <div className="app">
+      <URLParams mapExtent={mapExtent} setInitialExtent={setInitialExtent}
+        sideBarOpen={sideBarOpen} setSideBarOpen={setSideBarOpen}
+        mapReady={mapReady} />
+      { (currentTabConfig !== null) &&
+        <>
+          <Header title="Wasatch Choice Map" />
+          <Sidebar toggleSidebar={toggleSidebar}>
+            <About version={version} />
+          </Sidebar>
+          <MapLens {...sidebarOptions}>
+            <MapView {...mapOptions} />
+            <MapWidget
+              defaultOpen={config.openOnLoad.filter}
+              name="Filter"
+              icon={faList}
+              position={0}
+              showReset={true}
+              onReset={setResetFilter.bind(this, [true])}
+              mapView={mapView.current}>
+              <Filter {...currentTabConfig.filter}
+                reset={resetFilter}
+                mapView={mapView.current}
+                webMapId={currentTabConfig.webMapId}
+                />
+            </MapWidget>
+            { !currentTabConfig.useDefaultAGOLPopup && <MapWidget
+              defaultOpen={config.openOnLoad.projectInfo}
+              name="Project Information"
+              icon={faHandPointer}
+              position={1}
+              mapView={mapView.current}>
+              <ProjectInformation
+                graphics={selectedGraphics}
+                highlightGraphic={highlightGraphic}
+                showLoader={showIdentifyLoader} />
+            </MapWidget> }
+            <Sherlock {...sherlockConfig}></Sherlock>
+          </MapLens>
+        </>
+      }
+    </div>
+  );
+};
 
-  closeSidebar() {
-    this.setState({ sideBarOpen: false });
-  }
-
-  setView(view) {
-    console.log('App:setView');
-
-    this.setState({ mapView: view });
-
-    view.when(() => {
-      this.setState({
-        mapReady: true
-      });
-    });
-  }
-}
+export default App;
