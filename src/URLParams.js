@@ -1,6 +1,7 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import queryString from 'query-string';
-import TabsContext from './components/Tabs/TabsContext';
+import { useCurrentTabConfig } from './components/Tabs/TabsContext';
+import config, { getCurrentTabIds } from './config';
 
 
 const url = new URL(document.location.href);
@@ -19,8 +20,8 @@ const mixinHashValues = values => {
   });
 };
 
-export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
-  const { currentTabIndex, setCurrentTab } = useContext(TabsContext);
+export default ({ mapExtent, setInitialExtent, sideBarOpen, setSideBarOpen }) => {
+  const [ currentTabConfig, setCurrentTabConfig ] = useCurrentTabConfig();
 
   // get initial state from URL params
   useEffect(() => {
@@ -32,22 +33,23 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, closeSidebar }) => {
     }
 
     if (currentHash.sideBarClosed) {
-      closeSidebar();
+      setSideBarOpen(false);
     }
 
-    setCurrentTab(currentHash.currentTabIndex || 0);
-  }, [setInitialExtent, closeSidebar, setCurrentTab]);
+    const id = currentHash.currentTabId || getCurrentTabIds()[0];
+    setCurrentTabConfig({id, ...config.tabInfos[id]});
+  }, [setInitialExtent, setSideBarOpen, setCurrentTabConfig]);
 
-  // currentTabIndex
+  // currentTabId
   useEffect(() => {
-    console.log('URLParams update hash: ', currentTabIndex);
+    console.log('URLParams update hash: ', currentTabConfig);
 
-    if (currentTabIndex) {
+    if (currentTabConfig) {
       mixinHashValues({
-        currentTabIndex
+        currentTab: currentTabConfig.id
       });
     }
-  }, [currentTabIndex]);
+  }, [currentTabConfig]);
 
   // map extent
   useEffect(() => {

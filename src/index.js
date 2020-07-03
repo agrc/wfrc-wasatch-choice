@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { setConfigs } from './config';
+import { CurrentTabProvider } from './components/Tabs/TabsContext';
 
 
 fetch('config.json')
@@ -12,7 +13,8 @@ fetch('config.json')
   .then(appConfig => {
     setConfigs(appConfig);
 
-    ReactDOM.render(<App />, document.getElementById('root'))
+    ReactDOM.render(
+      <CurrentTabProvider><App /></CurrentTabProvider>, document.getElementById('root'))
   });
 
 // If you want your app to work offline and load faster, you can change
