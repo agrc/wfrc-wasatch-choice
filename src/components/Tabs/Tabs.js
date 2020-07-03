@@ -1,24 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import './Tabs.scss';
-import TabsContext from './TabsContext';
-import config from '../../config';
+import { useCurrentTabConfig } from './TabsContext';
+import config, { getCurrentTabIds } from '../../config';
 
 
 export default props => {
-  const { currentTabIndex, setCurrentTab } = useContext(TabsContext);
-  const onClick = index => setCurrentTab(index);
+  const [ currentTabConfig, setCurrentTabConfig ] = useCurrentTabConfig();
+  const onClick = id => setCurrentTabConfig({id, ...config.tabInfos[id]});
 
   return (
     <div className="tabs">
       <Nav tabs>
-        { config.tabs.map(({name}, index) => {
-          index = index + '';
+        { getCurrentTabIds().map(id => {
+          const tabInfo = config.tabInfos[id];
 
           return (
-            <NavItem key={index}>
-              <NavLink className={(currentTabIndex + '' === index) ? 'active' : null} onClick={onClick.bind(this, index)}>
-                {name}
+            <NavItem key={id}>
+              <NavLink className={(currentTabConfig.id === id) ? 'active' : null} onClick={onClick.bind(null, id)}>
+                {tabInfo.name}
               </NavLink>
             </NavItem>
           );

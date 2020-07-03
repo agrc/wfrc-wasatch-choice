@@ -1,169 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import esriModules from '../../esriModules';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
-import config from '../../config';
-import TabsContext from '../Tabs/TabsContext';
+import config, { getCurrentTabIds } from '../../config';
+import { useCurrentTabConfig } from '../Tabs/TabsContext';
 import debounce from 'lodash.debounce';
 
 
-export default class ReactMapView extends Component {
-  static contextType = TabsContext;
+const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onExtentChange, onClick}) => {
+  const currentTabConfig = useCurrentTabConfig()[0];
+  const zoomInLevels = 5;
+  const [displayedZoomGraphic, setDisplayedZoomGraphic] = React.useState(null);
+  const maps = React.useRef();
+  const view = React.useRef();
+  const mapViewDiv = React.useRef();
+  const defaultPopup = React.useRef();
+  const selectorNode = React.useRef();
+  const layerSelector = React.useRef();
 
-  zoomLevel = 5;
-  displayedZoomGraphic = null;
+  const shouldHideLayerSelector = React.useCallback(() => {
+    return currentTabConfig.hideLayerSelector;
+  }, [currentTabConfig]);
 
-  render() {
-    return (
-      <div
-        style={{ height: '100%', width: '100%' }}
-        ref={mapViewDiv => {
-          this.mapViewDiv = mapViewDiv;
-        }}
-      />
-    );
-  }
-
-  async componentDidMount() {
-    console.log('MapView:componentDidMount');
-
-    const { WebMap, MapView, Home } = await esriModules();
-
-    this.maps = config.tabs.map(({ webMapId }) => {
-      return new WebMap({
-        portalItem: {
-          id: webMapId
-        }
-      });
-    });
-
-    let center;
-    let zoom;
-    let scale;
-    if (this.props.initialExtent) {
-      center = this.props.initialExtent;
-      scale = this.props.initialExtent.scale;
-    } else {
-      center = config.defaultExtent;
-      zoom = config.defaultExtent.zoomLevel
-    }
-
-    this.view = new MapView({
-      container: this.mapViewDiv,
-      center: {
-        ...center,
-        spatialReference: 3857
-      },
-      zoom,
-      scale,
-      ui: {
-        components: ['zoom']
-      }
-    });
-
-    this.props.setView(this.view);
-
-    this.view.when(() => {
-      console.log('view loaded');
-
-      this.view.watch('extent', debounce(newExtent => {
-        if (newExtent) {
-          this.props.onExtentChange({
-            x: Math.round(newExtent.center.x),
-            y: Math.round(newExtent.center.y),
-            scale: Math.round(this.view.scale)
-          });
-        }
-      }, 100));
-
-      this.view.on('click', this.props.onClick);
-
-      this.defaultPopup = this.view.popup;
-    });
-
-    this.view.ui.add(new Home({ view: this.view }), 'top-left');
-
-    this.selectorNode = document.createElement('div');
-
-    if (!this.shouldHideLayerSelector()) {
-      this.view.ui.add(this.selectorNode, 'top-left');
-
-      this.setUpLayerSelector();
-    }
-  }
-
-  async setUpLayerSelector() {
-    const modules = await esriModules();
-
-    const layerSelectorOptions = {
-      view: this.view,
-      quadWord: this.props.discoverKey,
-      modules,
-      ...config.layerSelector
-    }
-
-    ReactDOM.render(
-      <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions} ref={ref => this.layerSelector = ref} />
-      </LayerSelectorContainer>,
-      this.selectorNode);
-  }
-
-  shouldHideLayerSelector() {
-    return config.tabs[this.context.currentTabIndex.toString()].hideLayerSelector;
-  }
-
-  async componentDidUpdate(prevProps) {
-    console.log('MapView:componentDidUpdate');
-
-    if (this.maps && this.context.currentTabIndex !== this.currentTabIndex) {
-      // update web map
-      this.view.map = this.maps[this.context.currentTabIndex];
-
-      if (!config.tabs[this.context.currentTabIndex].useDefaultAGOLPopup) {
-        this.view.popup = null;
-      } else {
-        const { Popup } = await esriModules();
-        this.view.popup = new Popup();
-      }
-
-      // update layer selector visibility
-      if (this.currentTabIndex !== undefined && // could be 0 which is falsy
-        this.context.currentTabIndex !== undefined && // could be 0 which is falsy
-        this.shouldHideLayerSelector() !== config.tabs[this.currentTabIndex.toString()].hideLayerSelector
-        ) {
-        const method = (this.shouldHideLayerSelector()) ?
-          this.view.ui.remove.bind(this.view.ui) : this.view.ui.add.bind(this.view.ui);
-        method(this.selectorNode, 'top-left');
-      }
-
-      if (!this.shouldHideLayerSelector()) {
-        if (!this.layerSelector) {
-          await this.setUpLayerSelector();
-        }
-
-        this.layerSelector.forceMapUpdate();
-      }
-
-      this.currentTabIndex = this.context.currentTabIndex;
-    }
-
-    const currentGraphic = (((this.props || false).zoomToGraphic || false).graphic || false);
-    const previousGraphic = (((prevProps || false).zoomToGraphic || false).graphic || false);
-
-    if (currentGraphic !== previousGraphic && currentGraphic !== false) {
-      const { graphic, level, preserve } = this.props.zoomToGraphic;
-
-      this.zoomTo({
-        target: graphic,
-        zoom: level,
-        preserve: preserve
-      });
-    }
-  }
-
-  async zoomTo(zoomObj) {
-    console.log('app.zoomTo', arguments);
+  const zoomTo = React.useCallback(async (zoomObj) => {
+    console.log('app.zoomTo');
 
     if (!Array.isArray(zoomObj.target)) {
       zoomObj.target = [zoomObj.target];
@@ -173,7 +33,7 @@ export default class ReactMapView extends Component {
       if (zoomObj.target.every(graphic => graphic.geometry.type === 'point')) {
         zoomObj = {
           target: zoomObj.target,
-          zoom: this.view.map.basemap.baseLayers.items[0].tileInfo.lods.length - this.zoomLevel
+          zoom: view.current.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels
         };
       } else {
         zoomObj = {
@@ -182,26 +42,173 @@ export default class ReactMapView extends Component {
       }
     }
 
-    await this.view.goTo(zoomObj);
+    await view.current.goTo(zoomObj);
 
-    if (this.displayedZoomGraphic) {
-      this.view.graphics.removeMany(this.displayedZoomGraphic);
+    if (displayedZoomGraphic) {
+      view.current.graphics.removeMany(displayedZoomGraphic);
     }
 
-    this.displayedZoomGraphic = zoomObj.target;
+    setDisplayedZoomGraphic(zoomObj.target);
 
-    this.view.graphics.addMany(zoomObj.target);
+    view.current.graphics.addMany(zoomObj.target);
 
     const { watchUtils } = await esriModules();
 
     if (!zoomObj.preserve) {
-      watchUtils.once(this.view, 'extent', () => {
-        this.view.graphics.removeAll();
+      watchUtils.once(view.current, 'extent', () => {
+        view.current.graphics.removeAll();
       });
     }
-  }
+  }, [displayedZoomGraphic]);
 
-  getView() {
-    return this.view;
-  }
-}
+  React.useEffect(() => {
+    console.log('MapView: zoom to graphic');
+
+    if (zoomToGraphic) {
+      const { graphic, level, preserve } = zoomToGraphic;
+
+      graphic && zoomTo({
+       target: graphic,
+        zoom: level,
+        preserve: preserve
+      });
+    }
+  }, [zoomToGraphic, zoomTo]);
+
+  const setUpLayerSelector = React.useCallback(async () => {
+    const modules = await esriModules();
+
+    const layerSelectorOptions = {
+      view: view.current,
+      quadWord: discoverKey,
+      modules,
+      ...config.layerSelector
+    }
+
+    ReactDOM.render(
+      <LayerSelectorContainer>
+        <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
+      </LayerSelectorContainer>,
+      selectorNode.current);
+  }, [discoverKey]);
+
+  const changeMap = React.useCallback(async () => {
+    console.log('MapView: changeMap', maps.current);
+
+    if (maps.current) {
+      // update web map
+      view.current.map = maps.current[currentTabConfig.id];
+
+      if (!currentTabConfig.useDefaultAGOLPopup) {
+        view.current.popup = null;
+      } else {
+        const { Popup } = await esriModules();
+        view.current.popup = new Popup();
+      }
+
+      // update layer selector visibility
+      if (shouldHideLayerSelector() !== currentTabConfig.hideLayerSelector) {
+        const method = (shouldHideLayerSelector()) ?
+          view.current.ui.remove.bind(view.current.ui) : view.current.ui.add.bind(view.current.ui);
+        method(selectorNode.current, 'top-left');
+      }
+
+      if (!shouldHideLayerSelector()) {
+        if (!layerSelector.current) {
+          await setUpLayerSelector();
+        }
+
+        layerSelector.current.forceMapUpdate();
+      }
+    }
+  }, [currentTabConfig, shouldHideLayerSelector, setUpLayerSelector]);
+
+  React.useEffect(() => {
+    console.log('MapView:initMap');
+
+    const initMap = async () => {
+      const { WebMap, MapView, Home } = await esriModules();
+
+      maps.current = {};
+
+      getCurrentTabIds().forEach(id => {
+        maps.current[id] = new WebMap({
+          portalItem: {
+            id: config.tabInfos[id].webMapId
+          }
+        });
+      });
+
+      let center;
+      let zoom;
+      let scale;
+      if (initialExtent) {
+        center = initialExtent;
+        scale = initialExtent.scale;
+      } else {
+        center = config.defaultExtent;
+        zoom = config.defaultExtent.zoomLevel
+      }
+
+      view.current = new MapView({
+        container: mapViewDiv.current,
+        center: {
+          ...center,
+          spatialReference: 3857
+        },
+        zoom,
+        scale,
+        ui: {
+          components: ['zoom']
+        }
+      });
+
+      setView(view.current);
+
+      changeMap();
+
+      view.current.when(() => {
+        console.log('view loaded');
+
+        view.current.watch('extent', debounce(newExtent => {
+          if (newExtent) {
+            onExtentChange({
+              x: Math.round(newExtent.center.x),
+              y: Math.round(newExtent.center.y),
+              scale: Math.round(view.current.scale)
+            });
+          }
+        }, 100));
+
+        view.current.on('click', onClick);
+
+        defaultPopup.current = view.current.popup;
+      });
+
+      view.current.ui.add(new Home({ view: view.current}), 'top-left');
+
+      selectorNode.current = document.createElement('div');
+
+      if (!shouldHideLayerSelector()) {
+        view.current.ui.add(selectorNode.current, 'top-left');
+
+        setUpLayerSelector();
+      }
+    };
+
+    initMap();
+  }, [initialExtent, discoverKey, onClick, onExtentChange, setView, shouldHideLayerSelector, changeMap, setUpLayerSelector]);
+
+  React.useEffect(() => {
+    changeMap();
+  }, [changeMap]);
+
+  return (
+    <div
+      style={{ height: '100%', width: '100%' }}
+      ref={mapViewDiv}
+    />
+  );
+};
+
+export default ReactMapView;

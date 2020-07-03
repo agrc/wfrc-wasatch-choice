@@ -51,6 +51,10 @@ export const setConfigs = appConfigs => {
 
   // apply quad word from env
   Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', process.env.REACT_APP_DISCOVER)));
-}
+};
+
+export const getCurrentTabIds = () => {
+  return Object.keys(config.tabInfos).slice(0, 5);
+};
 
 export default config;

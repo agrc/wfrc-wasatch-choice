@@ -1,9 +1,9 @@
-import React, { useState, useEffect, createRef, useContext } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 import './About.scss';
 import { Modal, ModalBody } from 'reactstrap';
-import TabsContext from '../Tabs/TabsContext';
+import { useCurrentTabConfig } from '../Tabs/TabsContext';
 
 
 export default props => {
@@ -13,7 +13,7 @@ export default props => {
     content: null
   });
   const [ imagesHaveBeenProcessed, setImagesHaveBeenProcessed ] = useState(false);
-  const { currentTabIndex } = useContext(TabsContext);
+  const currentTabConfig = useCurrentTabConfig()[0];
 
   const dialogitizeImages = parentNode => {
     console.log('adding dialogs to images');
@@ -59,7 +59,7 @@ export default props => {
 
   return (
     <>
-      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabIndex]}}></div> :
+      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabConfig.id]}}></div> :
         <Loader type='Oval' className='about__loader' /> }
       <a className="about__version"
         href="https://github.com/agrc/wfrc/blob/master/CHANGELOG.md"
