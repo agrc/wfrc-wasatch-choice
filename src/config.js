@@ -1,5 +1,4 @@
 import { Validator } from 'jsonschema';
-import configSchema from './configSchema.json';
 
 
 const SELECTION_COLOR = [75, 255, 217];
@@ -39,7 +38,12 @@ let config = {
   IDENTIFY_PIXEL_TOLERANCE: 7
 };
 
-export const setConfigs = appConfigs => {
+export const setConfigs = async appConfigs => {
+  // we are fetching this rather than importing it so that it can be hosted publicly and available
+  // for WFRC to reference it in their config files
+  const response = await fetch(`${process.env.PUBLIC_URL}/configSchema.json`);
+  const configSchema = await response.json();
+
   // validate json format
   const validator = new Validator();
 

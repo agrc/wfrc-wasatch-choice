@@ -1,4 +1,5 @@
 {
+  "$schema": "./configSchema.json",
   "tabInfos": {
     "vision": {
       "name": "Vision",
