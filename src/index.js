@@ -10,8 +10,8 @@ import { CurrentTabProvider } from './components/Tabs/TabsContext';
 
 fetch('config.json')
   .then(response => response.json())
-  .then(appConfig => {
-    setConfigs(appConfig);
+  .then(async appConfig => {
+    await setConfigs(appConfig);
 
     ReactDOM.render(
       <CurrentTabProvider><App /></CurrentTabProvider>, document.getElementById('root'))
