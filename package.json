@@ -35,10 +35,13 @@
     "release": "standard-version",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "update-config-docs": "./node_modules/.bin/jsonschema2md -d src/configSchema.json -o docs -h false"
+    "update-config-docs": "./node_modules/.bin/jsonschema2md -d public/configSchema.json -o docs -h false"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "globals": {
+      "fetchMock": true
+    }
   },
   "browserslist": [
     ">0.2%",
@@ -64,6 +67,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.6.0",
     "grunt-ssh": "^0.12.9",
+    "jest-fetch-mock": "^3.0.3",
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^4.14.1",
     "react-test-renderer": "^16.13.1",
