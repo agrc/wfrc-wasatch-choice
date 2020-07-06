@@ -29,6 +29,8 @@
     "build": "npm run update-config-docs && react-scripts build",
     "build-stage": "npm run update-config-docs && ./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
     "test": "react-scripts test",
+    "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
+    "cypress:open": "cypress open",
     "eject": "react-scripts eject",
     "release": "standard-version",
     "storybook": "start-storybook -p 9009 -s public",
@@ -51,7 +53,11 @@
     "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@testing-library/cypress": "^6.0.0",
+    "@testing-library/dom": "^7.20.0",
+    "@testing-library/react": "^10.4.4",
     "babel-plugin-require-context-hook": "1.0.0",
+    "cypress": "^4.9.0",
     "cz-conventional-changelog": "^3.2.0",
     "env-cmd": "^10.1.0",
     "grunt": "^1.1.0",
@@ -61,7 +67,8 @@
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^4.14.1",
     "react-test-renderer": "^16.13.1",
-    "standard-version": "^8.0.0"
+    "standard-version": "^8.0.0",
+    "start-server-and-test": "^1.11.0"
   },
   "config": {
     "commitizen": {

@@ -163,6 +163,11 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
         }
       });
 
+      // for testing
+      window.getMapExtent = () => {
+        return JSON.stringify(view.current.extent.toJSON());
+      };
+
       setView(view.current);
 
       changeMap();

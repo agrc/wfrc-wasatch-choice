@@ -17,7 +17,7 @@ export default props => {
 
           return (
             <NavItem key={id}>
-              <NavLink className={(currentTabConfig.id === id) ? 'active' : null} onClick={onClick.bind(null, id)}>
+              <NavLink className={(currentTabConfig.id === id) ? 'active' : null} onClick={onClick.bind(null, id)} aria-label={`${tabInfo.name} Tab`}>
                 {tabInfo.name}
               </NavLink>
             </NavItem>
