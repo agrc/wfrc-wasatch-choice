@@ -38,11 +38,15 @@ let config = {
   IDENTIFY_PIXEL_TOLERANCE: 7
 };
 
-export const setConfigs = async appConfigs => {
+// optional configSchema is for jest and storybook since they are clumsy when it comes to
+// async setup
+export const setConfigs = async (appConfigs, configSchema=null) => {
   // we are fetching this rather than importing it so that it can be hosted publicly and available
   // for WFRC to reference it in their config files
-  const response = await fetch(`${process.env.PUBLIC_URL}/configSchema.json`);
-  const configSchema = await response.json();
+  if (!configSchema) {
+    const response = await fetch(`${process.env.PUBLIC_URL}/configSchema.json`);
+    configSchema = await response.json();
+  }
 
   // validate json format
   const validator = new Validator();
