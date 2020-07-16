@@ -94,6 +94,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
   const changeMap = React.useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
+    window.mapLoaded = false;
 
     if (maps.current) {
       // update web map
@@ -163,9 +164,19 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
         }
       });
 
-      // for testing
+      // these global methods are for cypress integration tests
       window.getMapExtent = () => {
         return JSON.stringify(view.current.extent.toJSON());
+      };
+      window.getVisibleLayers = () => {
+        return view.current.layerViews.items
+            .filter(view => view.visible)
+            .map(view => view.layer.allSublayers.items
+              .filter(subLayer => subLayer.visible)
+              .map(subLayer => `${subLayer.title}-${subLayer.definitionExpression}`)
+            )
+            .flat()
+        ;
       };
 
       setView(view.current);
@@ -174,6 +185,8 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
       view.current.when(() => {
         console.log('view loaded');
+
+        window.mapLoaded = true;
 
         view.current.watch('extent', debounce(newExtent => {
           if (newExtent) {
