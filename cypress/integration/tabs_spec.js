@@ -17,6 +17,8 @@ describe('tabs', () => {
     zoomInButton.click({ force: true });
     zoomInButton.click({ force: true });
 
+    waitForMapLoaded();
+
     let getExtent;
     let originalExtent;
     cy.window()
@@ -24,6 +26,7 @@ describe('tabs', () => {
         getExtent = win.getMapExtent;
       })
       .then(() => {
+        console.log('getting originalExtent...');
         originalExtent = getExtent();
       });
 
