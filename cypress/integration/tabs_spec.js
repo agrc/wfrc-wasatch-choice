@@ -48,7 +48,9 @@ describe('tabs', () => {
 
     // turn off roads layers
     let originalVisibleLayers;
-    cy.findByRole('checkbox', { name: /transportation/i }).click({ force: true }).then(() => {
+    cy.findByRole('checkbox', { name: /transportation/i }).click({ force: true });
+
+    waitForMapLoaded().then(() => {
       originalVisibleLayers = getVisibleLayers();
       console.log('originalVisibleLayers', originalVisibleLayers);
     });
@@ -60,7 +62,7 @@ describe('tabs', () => {
     cy.findByLabelText('Vision Tab').click();
 
     waitForMapLoaded().then(() => {
-      expect(getVisibleLayers()).to.equal(originalVisibleLayers);
+      expect(getVisibleLayers()).to.eql(originalVisibleLayers);
     });
   });
 });
