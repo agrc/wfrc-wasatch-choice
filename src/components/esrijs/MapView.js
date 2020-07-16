@@ -83,7 +83,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
       quadWord: discoverKey,
       modules,
       ...config.layerSelector
-    }
+    };
 
     ReactDOM.render(
       <LayerSelectorContainer>
@@ -94,7 +94,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
   const changeMap = React.useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
-    window.mapLoaded = false;
 
     if (maps.current) {
       // update web map
@@ -125,9 +124,9 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   }, [currentTabConfig, shouldHideLayerSelector, setUpLayerSelector]);
 
   React.useEffect(() => {
-    console.log('MapView:initMap');
-
     const initMap = async () => {
+      console.log('MapView:initMap');
+
       const { WebMap, MapView, Home } = await esriModules();
 
       maps.current = {};
@@ -164,30 +163,10 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
         }
       });
 
-      // these global methods are for cypress integration tests
-      window.getMapExtent = () => {
-        return JSON.stringify(view.current.extent.toJSON());
-      };
-      window.getVisibleLayers = () => {
-        return view.current.layerViews.items
-            .filter(view => view.visible)
-            .map(view => view.layer.allSublayers.items
-              .filter(subLayer => subLayer.visible)
-              .map(subLayer => `${subLayer.title}-${subLayer.definitionExpression}`)
-            )
-            .flat()
-        ;
-      };
+      view.current.ui.add(new Home({ view: view.current}), 'top-left');
 
-      setView(view.current);
-
-      changeMap();
-
+      // one time setup once the view has loaded
       view.current.when(() => {
-        console.log('view loaded');
-
-        window.mapLoaded = true;
-
         view.current.watch('extent', debounce(newExtent => {
           if (newExtent) {
             onExtentChange({
@@ -203,8 +182,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
         defaultPopup.current = view.current.popup;
       });
 
-      view.current.ui.add(new Home({ view: view.current}), 'top-left');
-
       selectorNode.current = document.createElement('div');
 
       if (!shouldHideLayerSelector()) {
@@ -212,9 +189,36 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
         setUpLayerSelector();
       }
+
+      if (window.Cypress) {
+        // help Cypress know when the map has loaded
+        view.current.watch('updating', updating => {
+          console.log('updating state changed', updating);
+          window.mapLoaded = view.current.ready && !updating;
+        });
+
+        // these global methods are for cypress integration tests
+        window.getMapExtent = () => {
+          return JSON.stringify(view.current.extent.toJSON());
+        };
+        window.getVisibleLayers = () => {
+          return view.current.layerViews.items
+              .filter(view => view.visible)
+              .map(view => view.layer.allSublayers.items
+                .filter(subLayer => subLayer.visible)
+                .map(subLayer => `${subLayer.title}-${subLayer.definitionExpression}`)
+              )
+              .flat()
+          ;
+        };
+      }
+
+      setView(view.current);
+
+      changeMap();
     };
 
-    initMap();
+    !maps.current && initMap();
   }, [initialExtent, discoverKey, onClick, onExtentChange, setView, shouldHideLayerSelector, changeMap, setUpLayerSelector]);
 
   React.useEffect(() => {
