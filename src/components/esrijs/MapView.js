@@ -95,6 +95,10 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   const changeMap = React.useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
 
+    if (window.Cypress) {
+      window.currentMapName = currentTabConfig.name;
+    }
+
     if (maps.current) {
       // update web map
       view.current.map = maps.current[currentTabConfig.id];
