@@ -1,5 +1,5 @@
 describe('tabs', () => {
-  it('switching tabs preserves map extent', () => {
+  xit('switching tabs preserves map extent', () => {
     cy.loadApp();
 
     const zoomInButton = cy.findByRole('button', { name: /zoom in/i });
@@ -17,7 +17,7 @@ describe('tabs', () => {
       expect(extent).to.equal(originalExtent);
     });
   });
-  it('map layer visibility is preserved when switching back and forward between tabs', () => {
+  xit('map layer visibility is preserved when switching back and forward between tabs', () => {
     cy.loadApp();
 
     let getVisibleLayers;
@@ -45,5 +45,18 @@ describe('tabs', () => {
     cy.waitForMapLoaded().then(() => {
       expect(getVisibleLayers()).to.eql(originalVisibleLayers);
     });
+  });
+  it('layer selector is hidden and shown appropriately', () => {
+    cy.loadApp();
+
+    cy.findByRole('button', { name: /layers/i }).should('not.exist');
+
+    cy.findByLabelText('Transportation Tab').click();
+
+    cy.findByRole('button', { name: /layers/i }).should('exist');
+
+    cy.findByLabelText('Vision Tab').click();
+
+    cy.findByRole('button', { name: /layers/i }).should('not.exist');
   });
 });
