@@ -46,7 +46,7 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, setSideBarOpen }) =>
 
     if (currentTabConfig) {
       mixinHashValues({
-        currentTab: currentTabConfig.id
+        currentTabId: currentTabConfig.id
       });
     }
   }, [currentTabConfig]);
