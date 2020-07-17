@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import esriModules from '../../esriModules';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
-import config, { getCurrentTabIds } from '../../config';
+import config from '../../config';
 import { useCurrentTabConfig } from '../Tabs/TabsContext';
 import debounce from 'lodash.debounce';
 

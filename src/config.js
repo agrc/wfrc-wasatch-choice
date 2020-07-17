@@ -61,7 +61,7 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
   Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', process.env.REACT_APP_DISCOVER)));
 };
 
-export const getCurrentTabIds = () => {
+export const getDefaultCurrentTabIds = () => {
   return Object.keys(config.tabInfos).slice(0, 5);
 };
 

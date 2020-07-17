@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import queryString from 'query-string';
 import { useCurrentTabConfig } from './components/Tabs/TabsContext';
-import config, { getCurrentTabIds } from './config';
+import config from './config';
 
 
 const url = new URL(document.location.href);
@@ -36,8 +36,10 @@ export default ({ mapExtent, setInitialExtent, sideBarOpen, setSideBarOpen }) =>
       setSideBarOpen(false);
     }
 
-    const id = currentHash.currentTabId || getCurrentTabIds()[0];
-    setCurrentTabConfig({id, ...config.tabInfos[id]});
+    if (currentHash.currentTabId) {
+      const id = currentHash.currentTabId;
+      setCurrentTabConfig({id, ...config.tabInfos[id]});
+    }
   }, [setInitialExtent, setSideBarOpen, setCurrentTabConfig]);
 
   // currentTabId
