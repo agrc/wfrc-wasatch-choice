@@ -87,7 +87,7 @@ const App = (props) => {
           popupTemplate: layerNameLookup[result.layerName].popupTemplate
         };
       }));
-    });
+    }, []);
 
     // the manual querying of feature layer view below can be replaced with MapView.current.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
