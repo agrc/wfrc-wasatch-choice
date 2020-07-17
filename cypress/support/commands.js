@@ -24,3 +24,15 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands';
+
+const BASE_URL = 'http://localhost:3000/';
+Cypress.Commands.add('waitForMapLoaded', () => {
+  return cy.window().should('have.property', 'mapLoaded', true);
+});
+Cypress.Commands.add('loadApp', url => {
+  console.log('loadApp');
+
+  cy.visit(url || BASE_URL);
+
+  cy.waitForMapLoaded();
+});
