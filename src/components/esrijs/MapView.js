@@ -98,6 +98,15 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
     }
 
     if (maps.current) {
+      if (!maps.current[currentTabConfig.id]) {
+        const { WebMap } = await esriModules();
+        maps.current[currentTabConfig.id] = new WebMap({
+          portalItem: {
+            id: currentTabConfig.webMapId
+          }
+        });
+      }
+
       // update web map
       view.current.map = maps.current[currentTabConfig.id];
 
@@ -134,17 +143,9 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
     const initMap = async () => {
       console.log('MapView:initMap');
 
-      const { WebMap, MapView, Home } = await esriModules();
+      const { MapView, Home } = await esriModules();
 
       maps.current = {};
-
-      getCurrentTabIds().forEach(id => {
-        maps.current[id] = new WebMap({
-          portalItem: {
-            id: config.tabInfos[id].webMapId
-          }
-        });
-      });
 
       let center;
       let zoom;
