@@ -36,3 +36,18 @@ Cypress.Commands.add('loadApp', url => {
 
   cy.waitForMapLoaded();
 });
+Cypress.Commands.add('getMapExtent', () => {
+  cy.waitForMapLoaded();
+
+  let getExtent;
+
+  return cy.window()
+    .then((win) => {
+      getExtent = win.getMapExtent;
+    })
+    .then(() => {
+      console.log('getting extent...');
+
+      return getExtent();
+    });
+});
