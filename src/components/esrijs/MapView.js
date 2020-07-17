@@ -17,7 +17,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   const defaultPopup = React.useRef();
   const selectorNode = React.useRef();
   const layerSelector = React.useRef();
-  const isLayerSelectorVisible = React.useRef();
+  const isLayerSelectorVisible = React.useRef(false);
 
   const zoomTo = React.useCallback(async (zoomObj) => {
     console.log('app.zoomTo');
@@ -73,8 +73,10 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   }, [zoomToGraphic, zoomTo]);
 
   const setUpLayerSelector = React.useCallback(async () => {
-    console.log('debug: setUpLayerSelector');
+    console.log('setUpLayerSelector');
     const modules = await esriModules();
+
+    selectorNode.current = document.createElement('div');
 
     const layerSelectorOptions = {
       view: view.current,
@@ -131,8 +133,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
       if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
         const method = (currentTabConfig.hideLayerSelector) ?
           view.current.ui.remove.bind(view.current.ui) : view.current.ui.add.bind(view.current.ui);
-        console.log('debug: add or removing');
-        method(selectorNode.current, 'top-left');
+        method(selectorNode.current, { position: 'top-left', index: 2 });
       }
 
       isLayerSelectorVisible.current = currentTabConfig.hideLayerSelector;
@@ -189,14 +190,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
         defaultPopup.current = view.current.popup;
       });
-
-      selectorNode.current = document.createElement('div');
-
-      if (!currentTabConfig.hideLayerSelector) {
-        view.current.ui.add(selectorNode.current, 'top-left');
-
-        setUpLayerSelector();
-      }
 
       if (window.Cypress) {
         // help Cypress know when the map has loaded
