@@ -1,5 +1,5 @@
 describe('tabs', () => {
-  xit('switching tabs preserves map extent', () => {
+  it('switching tabs preserves map extent', () => {
     cy.loadApp();
 
     const zoomInButton = cy.findByRole('button', { name: /zoom in/i });
@@ -17,7 +17,7 @@ describe('tabs', () => {
       expect(extent).to.equal(originalExtent);
     });
   });
-  xit('map layer visibility is preserved when switching back and forward between tabs', () => {
+  it('map layer visibility is preserved when switching back and forward between tabs', () => {
     cy.loadApp();
 
     let getVisibleLayers;
