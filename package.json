@@ -29,6 +29,7 @@
     "build": "npm run update-config-docs && react-scripts build",
     "build-stage": "npm run update-config-docs && ./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
     "test": "react-scripts test",
+    "lint": "eslint src",
     "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
     "eject": "react-scripts eject",
