@@ -17,10 +17,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   const defaultPopup = React.useRef();
   const selectorNode = React.useRef();
   const layerSelector = React.useRef();
-
-  const shouldHideLayerSelector = React.useCallback(() => {
-    return currentTabConfig.hideLayerSelector;
-  }, [currentTabConfig]);
+  const isLayerSelectorVisible = React.useRef();
 
   const zoomTo = React.useCallback(async (zoomObj) => {
     console.log('app.zoomTo');
@@ -76,6 +73,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
   }, [zoomToGraphic, zoomTo]);
 
   const setUpLayerSelector = React.useCallback(async () => {
+    console.log('debug: setUpLayerSelector');
     const modules = await esriModules();
 
     const layerSelectorOptions = {
@@ -111,21 +109,26 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
       }
 
       // update layer selector visibility
-      if (shouldHideLayerSelector() !== currentTabConfig.hideLayerSelector) {
-        const method = (shouldHideLayerSelector()) ?
-          view.current.ui.remove.bind(view.current.ui) : view.current.ui.add.bind(view.current.ui);
-        method(selectorNode.current, 'top-left');
-      }
-
-      if (!shouldHideLayerSelector()) {
+      if (!currentTabConfig.hideLayerSelector) {
+        // init layer selector if needed
         if (!layerSelector.current) {
           await setUpLayerSelector();
         }
 
+        // make sure that layer selector is wired to the new map
         layerSelector.current.forceMapUpdate();
       }
+
+      if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
+        const method = (currentTabConfig.hideLayerSelector) ?
+          view.current.ui.remove.bind(view.current.ui) : view.current.ui.add.bind(view.current.ui);
+        console.log('debug: add or removing');
+        method(selectorNode.current, 'top-left');
+      }
+
+      isLayerSelectorVisible.current = currentTabConfig.hideLayerSelector;
     }
-  }, [currentTabConfig, shouldHideLayerSelector, setUpLayerSelector]);
+  }, [currentTabConfig, setUpLayerSelector]);
 
   React.useEffect(() => {
     const initMap = async () => {
@@ -188,7 +191,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
 
       selectorNode.current = document.createElement('div');
 
-      if (!shouldHideLayerSelector()) {
+      if (!currentTabConfig.hideLayerSelector) {
         view.current.ui.add(selectorNode.current, 'top-left');
 
         setUpLayerSelector();
@@ -223,7 +226,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
     };
 
     !maps.current && initMap();
-  }, [initialExtent, discoverKey, onClick, onExtentChange, setView, shouldHideLayerSelector, changeMap, setUpLayerSelector]);
+  }, [initialExtent, discoverKey, onClick, onExtentChange, setView, changeMap, setUpLayerSelector, currentTabConfig]);
 
   React.useEffect(() => {
     changeMap();
