@@ -14,13 +14,22 @@ export default props => {
     payload: id
   });
   const [ modalIsOpen, setModalIsOpen ] = React.useState(false);
+  const [ maxReached, setMaxReached ] = React.useState(false);
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
-  const setCurrentTabIds = ids => dispatchURLParams({
-    type: ACTION_TYPES.AVAILABLE_TAB_IDS,
-    payload: ids
-  });
+  const setCurrentTabIds = ids => {
+    if (ids.length > config.MAX_TABS_ALLOWED) {
+      setMaxReached(true);
+    } else {
+      setMaxReached(false);
+
+      dispatchURLParams({
+        type: ACTION_TYPES.AVAILABLE_TAB_IDS,
+        payload: ids
+      });
+    }
+  };
 
   return (
     <div className="tabs">
@@ -48,7 +57,12 @@ export default props => {
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Configure Tabs</ModalHeader>
         <ModalBody>
-          <TabPicker tabInfos={config.tabInfos} selectedIds={availableTabIds} setSelectedIds={setCurrentTabIds} />
+          <TabPicker
+            tabInfos={config.tabInfos}
+            selectedIds={availableTabIds}
+            setSelectedIds={setCurrentTabIds}
+            maxReached={maxReached}
+          />
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggleModal}>Finish</Button>

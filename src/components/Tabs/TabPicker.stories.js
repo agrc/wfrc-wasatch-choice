@@ -14,12 +14,17 @@ const TAB_INFOS = {
   'seven': { name: 'Seventh One' },
   'eight': { name: 'Eighth One' },
 };
-export const NoneSelected = () => {
-  const [selectedIds, setSelectedIds] = React.useState([]);
+const TestFixture = ({ initialSelectedIds, maxReached }) => {
+  const [selectedIds, setSelectedIds] = React.useState(initialSelectedIds);
 
   return (
     <>
-      <TabPicker tabInfos={TAB_INFOS} selectedIds={selectedIds} setSelectedIds={setSelectedIds} />
+      <TabPicker
+        tabInfos={TAB_INFOS}
+        selectedIds={selectedIds}
+        setSelectedIds={setSelectedIds}
+        maxReached={maxReached}
+      />
       Selected Ids:
       <ol>
         {selectedIds.map(id => <li key={id}>{id}</li>)}
@@ -28,16 +33,12 @@ export const NoneSelected = () => {
   );
 };
 
-export const Selected = () => {
-  const [selectedIds, setSelectedIds] = React.useState(['two', 'one', 'five']);
+export const NoneSelected = () => <TestFixture initialSelectedIds={[]} />;
 
-  return (
-    <>
-      <TabPicker tabInfos={TAB_INFOS} selectedIds={selectedIds} setSelectedIds={setSelectedIds} />
-      Selected Ids:
-      <ol>
-        {selectedIds.map(id => <li key={id}>{id}</li>)}
-      </ol>
-    </>
-  );
-};
+export const Selected = () => <TestFixture initialSelectedIds={['two', 'one', 'five']} />;
+
+export const MaxReached = () =>
+  <TestFixture
+    initialSelectedIds={['two', 'one', 'five', 'six', 'seven']}
+    maxReached={true}
+  />;

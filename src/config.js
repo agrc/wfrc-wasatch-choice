@@ -37,7 +37,8 @@ let config = {
     }
   },
   LOADER_DELAY: 250,
-  IDENTIFY_PIXEL_TOLERANCE: 7
+  IDENTIFY_PIXEL_TOLERANCE: 7,
+  MAX_TABS_ALLOWED: 5
 };
 
 // optional configSchema is for jest and storybook since they are clumsy when it comes to
