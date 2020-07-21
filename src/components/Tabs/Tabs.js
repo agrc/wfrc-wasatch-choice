@@ -49,7 +49,7 @@ export default props => {
           );
         }) }
         <NavItem key="settings">
-          <NavLink onClick={toggleModal} className='settings'>
+          <NavLink onClick={toggleModal} className="settings" data-testid="tab-configuration">
             <i className="fas fa-cog"></i>
           </NavLink>
         </NavItem>
