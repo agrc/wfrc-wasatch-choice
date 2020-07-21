@@ -11,6 +11,9 @@
     }
     cursor: pointer;
     white-space: nowrap;
+    &.settings {
+      padding: .5rem .5rem;
+    }
   }
   .landing-page-link {
     white-space: nowrap;

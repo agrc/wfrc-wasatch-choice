@@ -3,7 +3,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 import './About.scss';
 import { Modal, ModalBody } from 'reactstrap';
-import { useCurrentTabConfig } from '../Tabs/TabsContext';
+import { useCurrentTabConfig } from '../../config';
 
 
 export default props => {
@@ -13,7 +13,7 @@ export default props => {
     content: null
   });
   const [ imagesHaveBeenProcessed, setImagesHaveBeenProcessed ] = useState(false);
-  const currentTabConfig = useCurrentTabConfig()[0];
+  const currentTabConfig = useCurrentTabConfig();
 
   const dialogitizeImages = parentNode => {
     console.log('adding dialogs to images');

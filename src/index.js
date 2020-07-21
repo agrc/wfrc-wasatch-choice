@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { setConfigs } from './config';
-import { CurrentTabProvider } from './components/Tabs/TabsContext';
+import URLParams from './URLParams';
 
 
 fetch('config.json')
@@ -14,7 +15,7 @@ fetch('config.json')
     await setConfigs(appConfig);
 
     ReactDOM.render(
-      <CurrentTabProvider><App /></CurrentTabProvider>, document.getElementById('root'))
+      <URLParams><App /></URLParams>, document.getElementById('root'))
   });
 
 // If you want your app to work offline and load faster, you can change

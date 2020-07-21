@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import esriModules from '../../esriModules';
 import { LayerSelectorContainer, LayerSelector } from '../../components/LayerSelector/LayerSelector';
 import config from '../../config';
-import { useCurrentTabConfig } from '../Tabs/TabsContext';
+import { useCurrentTabConfig } from '../../config';
 import debounce from 'lodash.debounce';
+import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
 
 
-const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onExtentChange, onClick}) => {
-  const currentTabConfig = useCurrentTabConfig()[0];
+const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onClick}) => {
+  const dispatchURLParams = React.useContext(URLParamsContext)[1];
+  const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
   const [displayedZoomGraphic, setDisplayedZoomGraphic] = React.useState(null);
   const maps = React.useRef();
@@ -140,6 +142,15 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
     }
   }, [currentTabConfig, setUpLayerSelector]);
 
+  // this looks a little funny...
+  // We need to keep change map as a callable function so that it can be called
+  // at the end of the initMap function.
+  // But we also want it called each time currentTabConfig changes. So we use useCallback
+  // on it and then use this useEffect to kick it off.
+  React.useEffect(() => {
+    changeMap();
+  }, [changeMap]);
+
   React.useEffect(() => {
     const initMap = async () => {
       console.log('MapView:initMap');
@@ -178,10 +189,13 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
       view.current.when(() => {
         view.current.watch('extent', debounce(newExtent => {
           if (newExtent) {
-            onExtentChange({
-              x: Math.round(newExtent.center.x),
-              y: Math.round(newExtent.center.y),
-              scale: Math.round(view.current.scale)
+            dispatchURLParams({
+              type: ACTION_TYPES.MAP_EXTENT,
+              payload: {
+                x: Math.round(newExtent.center.x),
+                y: Math.round(newExtent.center.y),
+                scale: Math.round(view.current.scale)
+              }
             });
           }
         }, 100));
@@ -220,11 +234,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onEx
     };
 
     !maps.current && initMap();
-  }, [initialExtent, discoverKey, onClick, onExtentChange, setView, changeMap, setUpLayerSelector, currentTabConfig]);
-
-  React.useEffect(() => {
-    changeMap();
-  }, [changeMap]);
+  }, [initialExtent, discoverKey, onClick, setView, changeMap, setUpLayerSelector, currentTabConfig, dispatchURLParams]);
 
   return (
     <div
