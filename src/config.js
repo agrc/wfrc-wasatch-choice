@@ -1,4 +1,6 @@
+import React from 'react';
 import { Validator } from 'jsonschema';
+import { URLParamsContext } from './URLParams';
 
 
 const SELECTION_COLOR = [75, 255, 217];
@@ -63,6 +65,15 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
 
 export const getDefaultCurrentTabIds = () => {
   return Object.keys(config.tabInfos).slice(0, 5);
+};
+
+export const useCurrentTabConfig = () => {
+  const urlParams = React.useContext(URLParamsContext)[0];
+
+  // make sure that this object doesn't change on each re-render...
+  return React.useMemo(() => {
+    return { id: urlParams.currentTabId, ...config.tabInfos[urlParams.currentTabId] };
+  }, [urlParams.currentTabId]);
 };
 
 export default config;

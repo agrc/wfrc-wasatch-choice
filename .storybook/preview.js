@@ -1,7 +1,11 @@
 import '../src/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import appConfig from '../public/config.json';
-import configSchema from '../public/configSchema.json';
+import '@fortawesome/fontawesome-free/css/all.css';
 import { setConfigs } from '../src/config';
 
-setConfigs(appConfig, configSchema);
+fetch(`${process.env.PUBLIC_URL}/config.json`)
+  .then(response => response.json())
+  .then(async appConfig => {
+    await setConfigs(appConfig);
+  })
+;

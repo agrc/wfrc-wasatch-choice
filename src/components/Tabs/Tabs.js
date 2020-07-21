@@ -1,37 +1,59 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Nav, NavItem, NavLink } from 'reactstrap';
 import './Tabs.scss';
-import { useCurrentTabConfig } from './TabsContext';
-import config, { getDefaultCurrentTabIds } from '../../config';
+import config, { useCurrentTabConfig } from '../../config';
+import TabPicker from './TabPicker';
+import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
 
-
-const LOCAL_STORAGE_ITEM_NAME = 'currentTabIds';
 
 export default props => {
-  const [ currentTabConfig, setCurrentTabConfig ] = useCurrentTabConfig();
-  const initialTabIds = localStorage.getItem(LOCAL_STORAGE_ITEM_NAME) || getDefaultCurrentTabIds();
-  const [ currentTabIds, setCurrentTabIds ] = React.useState(initialTabIds);
-  const onClick = id => setCurrentTabConfig({id, ...config.tabInfos[id]});
+  const currentTabConfig = useCurrentTabConfig();
+  const [ { availableTabIds }, dispatchURLParams ] = React.useContext(URLParamsContext);
+  const onClick = id => dispatchURLParams({
+    type: ACTION_TYPES.CURRENT_TAB_ID,
+    payload: id
+  });
+  const [ modalIsOpen, setModalIsOpen ] = React.useState(false);
 
-  React.useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_ITEM_NAME, currentTabIds);
-  }, [currentTabIds]);
+  const toggleModal = () => setModalIsOpen(!modalIsOpen);
+
+  const setCurrentTabIds = ids => dispatchURLParams({
+    type: ACTION_TYPES.AVAILABLE_TAB_IDS,
+    payload: ids
+  });
 
   return (
     <div className="tabs">
       <Nav tabs>
-        { currentTabIds.map(id => {
+        { availableTabIds.map(id => {
           const tabInfo = config.tabInfos[id];
 
           return (
             <NavItem key={id}>
-              <NavLink className={(currentTabConfig.id === id) ? 'active' : null} onClick={onClick.bind(null, id)} aria-label={`${tabInfo.name} Tab`}>
+              <NavLink
+                className={(currentTabConfig.id === id) ? "active" : null}
+                onClick={onClick.bind(null, id)} aria-label={`${tabInfo.name} Tab`}
+              >
                 {tabInfo.name}
               </NavLink>
             </NavItem>
           );
         }) }
+        <NavItem key="settings">
+          <NavLink onClick={toggleModal} className='settings'>
+            <i className="fas fa-cog"></i>
+          </NavLink>
+        </NavItem>
       </Nav>
+      <Modal isOpen={modalIsOpen} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>Configure Tabs</ModalHeader>
+        <ModalBody>
+          <TabPicker tabInfos={config.tabInfos} selectedIds={availableTabIds} setSelectedIds={setCurrentTabIds} />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggleModal}>Finish</Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { CurrentTabProvider } from './components/Tabs/TabsContext';
+import URLParams from './URLParams';
 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<CurrentTabProvider><App /></CurrentTabProvider>, div);
+  ReactDOM.render(<URLParams><App /></URLParams>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

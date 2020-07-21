@@ -3,37 +3,33 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MapLens from './components/MapLens';
 import MapView from './components/esrijs/MapView';
-import config from './config';
+import config, { useCurrentTabConfig } from './config';
 import './App.scss';
-import { useCurrentTabConfig } from './components/Tabs/TabsContext';
 import About from './components/About/About';
 import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
-import URLParams from './URLParams';
 import Filter from './components/Filter/Filter';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import esriModules from './esriModules';
 import { getLayersInMap } from './components/Filter/Filter';
+import { URLParamsContext, ACTION_TYPES } from './URLParams';
 
 
-const App = (props) => {
+const App = () => {
   const [zoomToGraphic, setZoomToGraphic] = React.useState({
     graphic: null,
     level: 0
   });
-  const [sideBarOpen, setSideBarOpen] = React.useState(window.innerWidth >= config.MIN_DESKTOP_WIDTH);
-  const [mapExtent, setMapExtent] = React.useState(null);
   const mapView = React.useRef();
-  const [mapReady, setMapReady] = React.useState(false);
   const [resetFilter, setResetFilter] = React.useState(false);
   const [selectedGraphics, setSelectedGraphics] = React.useState([]);
   const [showIdentifyLoader, setShowIdentifyLoader] = React.useState(false);
-  const [initialExtent, setInitialExtent] = React.useState(null);
   const [graphic, setGraphic] = React.useState(null);
   const [highlight, setHighlight] = React.useState(null);
-  const currentTabConfig = useCurrentTabConfig()[0];
+  const currentTabConfig = useCurrentTabConfig();
+  const [urlParams, dispatchURLParams] = React.useContext(URLParamsContext);
 
   const quadWord = process.env.REACT_APP_DISCOVER;
   const version = process.env.REACT_APP_VERSION;
@@ -123,10 +119,6 @@ const App = (props) => {
     console.log('App:setView');
 
     mapView.current = view;
-
-    view.when(() => {
-      setMapReady(true);
-    });
   }, []);
 
   const mapOptions = {
@@ -134,18 +126,21 @@ const App = (props) => {
     zoomToGraphic: zoomToGraphic,
     onClick: onMapClick,
     setView,
-    onExtentChange: setMapExtent,
-    initialExtent
+    initialExtent: (urlParams.scale) ? {
+      x: urlParams.x,
+      y: urlParams.y,
+      scale: urlParams.scale
+    } : null
   };
 
   const toggleSidebar = () => {
     console.log('App:toggleSidebar');
 
-    setSideBarOpen(!sideBarOpen);
+    dispatchURLParams({ type: ACTION_TYPES.TOGGLE_SIDE_BAR });
   };
 
   const sidebarOptions = {
-    sideBarOpen: sideBarOpen,
+    sideBarOpen: !urlParams.sideBarClosed,
     toggleSidebar
   };
 
@@ -218,10 +213,7 @@ const App = (props) => {
 
   return (
     <div className="app">
-      <URLParams mapExtent={mapExtent} setInitialExtent={setInitialExtent}
-        sideBarOpen={sideBarOpen} setSideBarOpen={setSideBarOpen}
-        mapReady={mapReady} />
-      { (currentTabConfig !== null) &&
+      { currentTabConfig &&
         <>
           <Header title="Wasatch Choice Map" />
           <Sidebar toggleSidebar={toggleSidebar}>
@@ -229,7 +221,7 @@ const App = (props) => {
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
-            <MapWidget
+            { currentTabConfig.filter && <MapWidget
               defaultOpen={config.openOnLoad.filter}
               name="Filter"
               icon={faList}
@@ -242,7 +234,7 @@ const App = (props) => {
                 mapView={mapView.current}
                 webMapId={currentTabConfig.webMapId}
                 />
-            </MapWidget>
+            </MapWidget> }
             { !currentTabConfig.useDefaultAGOLPopup && <MapWidget
               defaultOpen={config.openOnLoad.projectInfo}
               name="Project Information"
