@@ -1010,3 +1010,463 @@ exports[`Storyshots Symbols Classes - Unique Values 1`] = `
   </svg>
 </div>
 `;
+
+exports[`Storyshots TabPicker None Selected 1`] = `
+Array [
+  <div
+    className="react-dual-listbox"
+    id="tab-picker"
+  >
+    <div
+      className="rdl-list-box rdl-available"
+    >
+      <label
+        className="rdl-control-label rdl-sr-only"
+        htmlFor="tab-picker-available"
+      >
+        Available
+      </label>
+      <div
+        className="rdl-control-container"
+      >
+        <select
+          className="rdl-control"
+          disabled={false}
+          id="tab-picker-available"
+          multiple={true}
+          onChange={[Function]}
+          onDoubleClick={[Function]}
+          onKeyUp={[Function]}
+          value={Array []}
+        >
+          <option
+            data-real-value="\\"one\\""
+            id="tab-picker-option-one"
+            value="one"
+          >
+            First One
+          </option>
+          <option
+            data-real-value="\\"two\\""
+            id="tab-picker-option-two"
+            value="two"
+          >
+            Second One
+          </option>
+          <option
+            data-real-value="\\"three\\""
+            id="tab-picker-option-three"
+            value="three"
+          >
+            Third One
+          </option>
+          <option
+            data-real-value="\\"four\\""
+            id="tab-picker-option-four"
+            value="four"
+          >
+            Fourth One
+          </option>
+          <option
+            data-real-value="\\"five\\""
+            id="tab-picker-option-five"
+            value="five"
+          >
+            Fifth One
+          </option>
+          <option
+            data-real-value="\\"six\\""
+            id="tab-picker-option-six"
+            value="six"
+          >
+            Sixth One
+          </option>
+          <option
+            data-real-value="\\"seven\\""
+            id="tab-picker-option-seven"
+            value="seven"
+          >
+            Seventh One
+          </option>
+          <option
+            data-real-value="\\"eight\\""
+            id="tab-picker-option-eight"
+            value="eight"
+          >
+            Eighth One
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="rdl-actions"
+    >
+      <div
+        className="rdl-actions-right"
+      >
+        <button
+          aria-label="Move all right"
+          className="rdl-move rdl-move-all rdl-move-right"
+          disabled={false}
+          id="tab-picker-move-all-right"
+          onClick={[Function]}
+          title="Move all right"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-right"
+          />
+          <span
+            className="fa fa-chevron-right"
+          />
+        </button>
+        <button
+          aria-label="Move right"
+          className="rdl-move rdl-move-right"
+          disabled={false}
+          id="tab-picker-move-right"
+          onClick={[Function]}
+          title="Move right"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-right"
+          />
+        </button>
+      </div>
+      <div
+        className="rdl-actions-left"
+      >
+        <button
+          aria-label="Move left"
+          className="rdl-move rdl-move-left"
+          disabled={false}
+          id="tab-picker-move-left"
+          onClick={[Function]}
+          title="Move left"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-left"
+          />
+        </button>
+        <button
+          aria-label="Move all left"
+          className="rdl-move rdl-move-all rdl-move-left"
+          disabled={false}
+          id="tab-picker-move-all-left"
+          onClick={[Function]}
+          title="Move all left"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-left"
+          />
+          <span
+            className="fa fa-chevron-left"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="rdl-list-box rdl-selected"
+    >
+      <label
+        className="rdl-control-label rdl-sr-only"
+        htmlFor="tab-picker-selected"
+      >
+        Selected
+      </label>
+      <div
+        className="rdl-control-container"
+      >
+        <select
+          className="rdl-control"
+          disabled={false}
+          id="tab-picker-selected"
+          multiple={true}
+          onChange={[Function]}
+          onDoubleClick={[Function]}
+          onKeyUp={[Function]}
+          value={Array []}
+        />
+      </div>
+    </div>
+    <div
+      className="rdl-actions"
+    >
+      <button
+        aria-label="Move item up"
+        className="rdl-move rdl-move-up"
+        disabled={false}
+        id="tab-picker-move-up"
+        onClick={[Function]}
+        title="Move item up"
+        type="button"
+      >
+        <span
+          className="fa fa-chevron-up"
+        />
+      </button>
+      <button
+        aria-label="Move item down"
+        className="rdl-move rdl-move-down"
+        disabled={false}
+        id="tab-picker-move-down"
+        onClick={[Function]}
+        title="Move item down"
+        type="button"
+      >
+        <span
+          className="fa fa-chevron-down"
+        />
+      </button>
+    </div>
+    <input
+      disabled={false}
+      name={null}
+      type="hidden"
+      value=""
+    />
+  </div>,
+  "Selected Ids:",
+  <ol />,
+]
+`;
+
+exports[`Storyshots TabPicker Selected 1`] = `
+Array [
+  <div
+    className="react-dual-listbox"
+    id="tab-picker"
+  >
+    <div
+      className="rdl-list-box rdl-available"
+    >
+      <label
+        className="rdl-control-label rdl-sr-only"
+        htmlFor="tab-picker-available"
+      >
+        Available
+      </label>
+      <div
+        className="rdl-control-container"
+      >
+        <select
+          className="rdl-control"
+          disabled={false}
+          id="tab-picker-available"
+          multiple={true}
+          onChange={[Function]}
+          onDoubleClick={[Function]}
+          onKeyUp={[Function]}
+          value={Array []}
+        >
+          <option
+            data-real-value="\\"three\\""
+            id="tab-picker-option-three"
+            value="three"
+          >
+            Third One
+          </option>
+          <option
+            data-real-value="\\"four\\""
+            id="tab-picker-option-four"
+            value="four"
+          >
+            Fourth One
+          </option>
+          <option
+            data-real-value="\\"six\\""
+            id="tab-picker-option-six"
+            value="six"
+          >
+            Sixth One
+          </option>
+          <option
+            data-real-value="\\"seven\\""
+            id="tab-picker-option-seven"
+            value="seven"
+          >
+            Seventh One
+          </option>
+          <option
+            data-real-value="\\"eight\\""
+            id="tab-picker-option-eight"
+            value="eight"
+          >
+            Eighth One
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="rdl-actions"
+    >
+      <div
+        className="rdl-actions-right"
+      >
+        <button
+          aria-label="Move all right"
+          className="rdl-move rdl-move-all rdl-move-right"
+          disabled={false}
+          id="tab-picker-move-all-right"
+          onClick={[Function]}
+          title="Move all right"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-right"
+          />
+          <span
+            className="fa fa-chevron-right"
+          />
+        </button>
+        <button
+          aria-label="Move right"
+          className="rdl-move rdl-move-right"
+          disabled={false}
+          id="tab-picker-move-right"
+          onClick={[Function]}
+          title="Move right"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-right"
+          />
+        </button>
+      </div>
+      <div
+        className="rdl-actions-left"
+      >
+        <button
+          aria-label="Move left"
+          className="rdl-move rdl-move-left"
+          disabled={false}
+          id="tab-picker-move-left"
+          onClick={[Function]}
+          title="Move left"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-left"
+          />
+        </button>
+        <button
+          aria-label="Move all left"
+          className="rdl-move rdl-move-all rdl-move-left"
+          disabled={false}
+          id="tab-picker-move-all-left"
+          onClick={[Function]}
+          title="Move all left"
+          type="button"
+        >
+          <span
+            className="fa fa-chevron-left"
+          />
+          <span
+            className="fa fa-chevron-left"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="rdl-list-box rdl-selected"
+    >
+      <label
+        className="rdl-control-label rdl-sr-only"
+        htmlFor="tab-picker-selected"
+      >
+        Selected
+      </label>
+      <div
+        className="rdl-control-container"
+      >
+        <select
+          className="rdl-control"
+          disabled={false}
+          id="tab-picker-selected"
+          multiple={true}
+          onChange={[Function]}
+          onDoubleClick={[Function]}
+          onKeyUp={[Function]}
+          value={Array []}
+        >
+          <option
+            data-index={0}
+            data-real-value="\\"two\\""
+            id="tab-picker-option-two"
+            value="two"
+          >
+            Second One
+          </option>
+          <option
+            data-index={1}
+            data-real-value="\\"one\\""
+            id="tab-picker-option-one"
+            value="one"
+          >
+            First One
+          </option>
+          <option
+            data-index={2}
+            data-real-value="\\"five\\""
+            id="tab-picker-option-five"
+            value="five"
+          >
+            Fifth One
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="rdl-actions"
+    >
+      <button
+        aria-label="Move item up"
+        className="rdl-move rdl-move-up"
+        disabled={false}
+        id="tab-picker-move-up"
+        onClick={[Function]}
+        title="Move item up"
+        type="button"
+      >
+        <span
+          className="fa fa-chevron-up"
+        />
+      </button>
+      <button
+        aria-label="Move item down"
+        className="rdl-move rdl-move-down"
+        disabled={false}
+        id="tab-picker-move-down"
+        onClick={[Function]}
+        title="Move item down"
+        type="button"
+      >
+        <span
+          className="fa fa-chevron-down"
+        />
+      </button>
+    </div>
+    <input
+      disabled={false}
+      name={null}
+      type="hidden"
+      value="two,one,five"
+    />
+  </div>,
+  "Selected Ids:",
+  <ol>
+    <li>
+      two
+    </li>
+    <li>
+      one
+    </li>
+    <li>
+      five
+    </li>
+  </ol>,
+]
+`;
