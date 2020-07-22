@@ -38,7 +38,7 @@ export default props => {
   useEffect(() => {
     console.log('fetching about config json');
 
-    fetch('about.json')
+    fetch(`about.json?rel=${process.env.REACT_APP_VERSION}`)
       .then(response => response.json())
       .then(configJson => setContent(configJson))
     ;
