@@ -76,7 +76,7 @@ One-time tasks:
 
 Tasks to be completed for each release:
 
-- [ ] Verify all tests are passing (`npm test`)
+- [ ] Verify all tests are passing (`npm run test:once`)
 - [ ] `npm run release` or `npm run release -- --prerelease`
 - [ ] Run a build and test (`npm run build` | `npm run build-stage`)
 - [ ] Deploy website (`grunt deploy-prod` | `grunt deploy-stage`)
