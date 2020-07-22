@@ -99,6 +99,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
 
     if (window.Cypress) {
       window.currentMapName = currentTabConfig.name;
+      window.mapLoaded = false;
     }
 
     if (maps.current) {
