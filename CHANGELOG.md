@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-0](https://github.com/agrc/wfrc/compare/v1.5.5...v2.0.0-0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* The `currentTabIndex` has been replaced with `currentTab`.
+* The about.json file keys are now the tab ids rather than numeric indexes.
+* The `tabs` config property has been renamed to `tabInfos`. The structure has also been changed from an array to an object.
+
+### Features
+
+* add a few url param tests ([b8553b7](https://github.com/agrc/wfrc/commit/b8553b7836712d1cc85e4280792b6d7b0912d60a))
+* add linting script and step to travis ([81b420d](https://github.com/agrc/wfrc/commit/81b420d84cbf71a470a43548cced2464a872f88c)), closes [#53](https://github.com/agrc/wfrc/issues/53)
+* add npm start to cypress:open command ([57262a6](https://github.com/agrc/wfrc/commit/57262a68cdb031504388b8ef1cddb28dc56d9b44))
+* add support for n number of maps in the config ([5a668d8](https://github.com/agrc/wfrc/commit/5a668d86d47ae624d59411e4233667a1926d47be)), closes [#43](https://github.com/agrc/wfrc/issues/43)
+* add tab picker integration tests ([8c5a952](https://github.com/agrc/wfrc/commit/8c5a9523ac6a44739bbb2eee382026c9a3c18b74))
+* add url param tests for extent ([e8be2df](https://github.com/agrc/wfrc/commit/e8be2dfdf44b453aa5cfec0f8fb89828d6a4bfc8))
+* implement cypress and a simple test ([98abb19](https://github.com/agrc/wfrc/commit/98abb19190766bbfd1074a04c1a88519d9eae4b1))
+* implement TapPicker component ([d6084f9](https://github.com/agrc/wfrc/commit/d6084f9d37c54f68a9bbe516b042295d45c1b46c)), closes [#45](https://github.com/agrc/wfrc/issues/45)
+* limit the number of tabs that can be selected ([c4971f6](https://github.com/agrc/wfrc/commit/c4971f6ba6087f1ab3e4384ff402394cb480efeb))
+* manage current tab ids as state in tabs component ([1c1a02a](https://github.com/agrc/wfrc/commit/1c1a02a4cc2f20e1ec56ff0f1e7a19ae087ee862))
+* map changes to current tab ids to local storage ([e2a9fe6](https://github.com/agrc/wfrc/commit/e2a9fe630a96b935357672389182b1733b0315b7)), closes [#44](https://github.com/agrc/wfrc/issues/44)
+* move configSchema.json to public folder ([e71de80](https://github.com/agrc/wfrc/commit/e71de80b318cd159f049d3fcd2ab72aa359710fb))
+
+
+### Bug Fixes
+
+* fix bug causing layer selector to be hidden ([3230049](https://github.com/agrc/wfrc/commit/3230049366378a39d61a0773f64386609050efbd))
+* fix bug causing the project info click to fail ([6abad5a](https://github.com/agrc/wfrc/commit/6abad5aa60ecc8a55c5c8909bcb21666a988b62f))
+* fix bug preventing from current tab url from working ([2522f6a](https://github.com/agrc/wfrc/commit/2522f6a68aacd96cbd778b4d16817d051f2d11e3))
+* fix bug preventing map extent from being preserved between tabs ([4adef7b](https://github.com/agrc/wfrc/commit/4adef7b104d306516716647f78d54bcea6f7bd27))
+* fix cypress tab tests to be true failures ([da4d549](https://github.com/agrc/wfrc/commit/da4d54919c870c7790cbd59031a19626012e1ea5))
+* make mapView stateful to make sure related components update on changes ([b9421c4](https://github.com/agrc/wfrc/commit/b9421c48abdaaa91225dd3a664f3e923fc832812))
+* make test more reliable ([d255d53](https://github.com/agrc/wfrc/commit/d255d5335b18208ac43f2b0e96ebccdef717a415))
+* more stable positioning of layer selector button between tabs ([57be50c](https://github.com/agrc/wfrc/commit/57be50c3b34f7e4ee21bd5acafdfe3d2961ada27))
+* move helpers to custom cypress commands ([e9fa618](https://github.com/agrc/wfrc/commit/e9fa61865cfda5a8dcb2476cef578d131de84d46))
+* update storybook and fix storyshots tests ([d20b3cc](https://github.com/agrc/wfrc/commit/d20b3cc98baf9ffa1ec497efe9cfba000973983b))
+
 ### [1.5.5](https://github.com/agrc/wfrc/compare/v1.5.4...v1.5.5) (2019-12-06)
 
 
