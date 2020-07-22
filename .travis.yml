@@ -2,9 +2,7 @@ language: node_js
 node_js:
     - "lts/*"
 script:
-    - npm lint
-    - npm test
-    - npm run cypress:run
+    - npm run test:once
     - npm run build
 notifications:
     email:
