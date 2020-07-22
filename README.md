@@ -18,30 +18,30 @@ See [docs/configSchema.md](docs/configSchema.md) for details on configuring this
 
 ### `about.json`
 
-This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size.
+This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size. The property names of the root object correspond to the tab ids in `config.json`.
 
 ```json
 {
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
-    "0": {
+    "vision": {
       "description": "HTML content for the first (Vision) tab",
       "type": "string"
     },
-    "1": {
+    "transportation": {
       "description": "HTML content for the second (Transportation) tab",
       "type": "string"
     },
-    "2": {
+    "land-use": {
       "description": "HTML content for the third (Land Use) tab",
       "type": "string"
     },
-    "3": {
+    "economic-development": {
       "description": "HTML content for the fourth (Economic Development) tab",
       "type": "string"
     },
-    "4": {
+    "another-tab-id": {
       "description": "HTML content for the fifth (Amenities) tab",
       "type": "string"
     }
