@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-1](https://github.com/agrc/wfrc/compare/v2.0.0-0...v2.0.0-1) (2020-07-22)
+
+
+### Bug Fixes
+
+* cache bust config file requests on new version ([2fad070](https://github.com/agrc/wfrc/commit/2fad0702cdcc9855ea05149150f87eab6ef12730))
+
 ## [2.0.0-0](https://github.com/agrc/wfrc/compare/v1.5.5...v2.0.0-0) (2020-07-22)
 
 
