@@ -12,7 +12,7 @@ https://wfrc.org/wasatch-choice-map/configSchema.json
 
 | Property                                  | Type     | Required     | Nullable | Defined by    |
 | ----------------------------------------- | -------- | ------------ | -------- | ------------- |
-| [\$schema](#schema)                       | `string` | Optional     | No       | (this schema) |
+| [\$schema](#schema)                       | `enum`   | Optional     | No       | (this schema) |
 | [defaultExtent](#defaultextent)           | `object` | **Required** | No       | (this schema) |
 | [layerSelector](#layerselector)           | `object` | **Required** | No       | (this schema) |
 | [links](#links)                           | `object` | **Required** | No       | (this schema) |
@@ -24,15 +24,22 @@ https://wfrc.org/wasatch-choice-map/configSchema.json
 
 ## \$schema
 
+This should be set to https://wfrc.org/wasatch-choice-map/configSchema.json
+
 `$schema`
 
 - is optional
-- type: `string`
+- type: `enum`
 - defined in this schema
 
-### \$schema Type
+The value of this property **must** be equal to one of the [known values below](#schema-known-values).
 
-`string`
+### \$schema Known Values
+
+| Value                                                   | Description |
+| ------------------------------------------------------- | ----------- |
+| `https://wfrc.org/wasatch-choice-map/configSchema.json` |             |
+| `./configSchema.json`                                   |             |
 
 ## defaultExtent
 
