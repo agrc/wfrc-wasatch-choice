@@ -360,7 +360,12 @@
             }
         },
         "$schema": {
-            "type": "string"
+            "description": "This should be set to https://wfrc.org/wasatch-choice-map/configSchema.json",
+            "type": "string",
+            "enum": [
+                "https://wfrc.org/wasatch-choice-map/configSchema.json",
+                "./configSchema.json"
+            ]
         }
     },
     "required": [
