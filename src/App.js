@@ -10,10 +10,9 @@ import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
-import Filter from './components/Filter/Filter';
+import Filter, { getLayersInMap } from './components/Filter/Filter';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import esriModules from './esriModules';
-import { getLayersInMap } from './components/Filter/Filter';
 import { URLParamsContext, ACTION_TYPES } from './URLParams';
 
 
@@ -22,7 +21,7 @@ const App = () => {
     graphic: null,
     level: 0
   });
-  const mapView = React.useRef();
+  const [mapView, setView] = React.useState();
   const [resetFilter, setResetFilter] = React.useState(false);
   const [selectedGraphics, setSelectedGraphics] = React.useState([]);
   const [showIdentifyLoader, setShowIdentifyLoader] = React.useState(false);
@@ -47,7 +46,7 @@ const App = () => {
       }
     }, config.LOADER_DELAY);
 
-    const layers = mapView.current.map.layers;
+    const layers = mapView.map.layers;
 
     const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
 
@@ -58,14 +57,14 @@ const App = () => {
       });
       const parameters = new IdentifyParameters({
         geometry: event.mapPoint,
-        height: mapView.current.height,
+        height: mapView.height,
         layerIds: layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray(),
         layerOption: 'visible',
-        mapExtent: mapView.current.extent,
+        mapExtent: mapView.extent,
         returnFieldName: true,
         returnGeometry: true,
         tolerance: config.IDENTIFY_PIXEL_TOLERANCE,
-        width: mapView.current.width
+        width: mapView.width
       });
 
       return task.execute(parameters);
@@ -74,7 +73,7 @@ const App = () => {
 
     const identifyResponses = await Promise.all(identifyPromises.toArray());
 
-    const layerNameLookup = await getLayersInMap(mapView.current.map);
+    const layerNameLookup = await getLayersInMap(mapView.map);
     const identifyFeatures = identifyResponses.reduce((previous, current) => {
       return previous.concat(current.results.map(result => {
         return {
@@ -85,15 +84,15 @@ const App = () => {
       }));
     }, []);
 
-    // the manual querying of feature layer view below can be replaced with MapView.current.hitTest
+    // the manual querying of feature layer view below can be replaced with mapView.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
     const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
     const queryFeatureLayerView = async layer => {
-      const layerView = await mapView.current.whenLayerView(layer);
+      const layerView = await mapView.whenLayerView(layer);
       const results = await layerView.queryFeatures({
         geometry: event.mapPoint,
         returnGeometry: true,
-        distance: config.IDENTIFY_PIXEL_TOLERANCE * mapView.current.resolution,
+        distance: config.IDENTIFY_PIXEL_TOLERANCE * mapView.resolution,
         units: 'feet',
         where: layer.definitionExpression
       });
@@ -114,12 +113,6 @@ const App = () => {
     setSelectedGraphics(selectedGraphics);
     setShowIdentifyLoader(false);
   }, [mapView]);
-
-  const setView = React.useCallback((view) => {
-    console.log('App:setView');
-
-    mapView.current = view;
-  }, []);
 
   const mapOptions = {
     discoverKey: quadWord,
@@ -184,12 +177,12 @@ const App = () => {
     }
 
     if (graphic) {
-      mapView.current.graphics.remove(graphic);
+      mapView.graphics.remove(graphic);
     }
 
     if (newGraphic) {
       try {
-        const layerView = await mapView.current.whenLayerView(newGraphic.layer);
+        const layerView = await mapView.whenLayerView(newGraphic.layer);
         setHighlight(layerView.highlight(newGraphic));
       } catch {
         const { Graphic } = await esriModules();
@@ -198,7 +191,7 @@ const App = () => {
           symbol: config.SELECTION_SYMBOLS[newGraphic.geometry.type]
         });
 
-        mapView.current.graphics.add(symbolizedGraphic);
+        mapView.graphics.add(symbolizedGraphic);
         setGraphic(symbolizedGraphic);
       }
     } else {
@@ -228,10 +221,10 @@ const App = () => {
               position={0}
               showReset={true}
               onReset={setResetFilter.bind(this, [true])}
-              mapView={mapView.current}>
+              mapView={mapView}>
               <Filter {...currentTabConfig.filter}
                 reset={resetFilter}
-                mapView={mapView.current}
+                mapView={mapView}
                 webMapId={currentTabConfig.webMapId}
                 />
             </MapWidget> }
@@ -240,7 +233,7 @@ const App = () => {
               name="Project Information"
               icon={faHandPointer}
               position={1}
-              mapView={mapView.current}>
+              mapView={mapView}>
               <ProjectInformation
                 graphics={selectedGraphics}
                 highlightGraphic={highlightGraphic}
