@@ -22,3 +22,7 @@
     border: 2px solid transparent;
   }
 }
+// this is a direct child of body...
+.modal-dialog {
+  max-width: 600px;
+}

@@ -6,7 +6,7 @@ describe('tab-picker', () => {
 
     cy.findByTestId('tab-configuration').click();
 
-    cy.findByRole('listbox', { name: /selected/i }).select('transportation');
+    cy.findByRole('listbox', { name: /maps displayed/i }).select('transportation');
     cy.findByRole('option', { name: /transportation/i }).dblclick();
 
     cy.findByRole('button', { name: /finish/i }).click();
@@ -18,7 +18,7 @@ describe('tab-picker', () => {
 
     cy.findByTestId('tab-configuration').click();
 
-    cy.findByRole('listbox', { name: /selected/i }).select('transportation');
+    cy.findByRole('listbox', { name: /maps displayed/i }).select('transportation');
 
     cy.findByRole('option', { name: /transportation/i }).dblclick();
 
