@@ -55,7 +55,7 @@ export default props => {
         </NavItem>
       </Nav>
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Configure Tabs</ModalHeader>
+        <ModalHeader toggle={toggleModal}>Configure Map Tabs</ModalHeader>
         <ModalBody>
           <TabPicker
             tabInfos={config.tabInfos}
