@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-2](https://github.com/agrc/wfrc/compare/v2.0.0-1...v2.0.0-2) (2020-07-29)
+
+
+### Bug Fixes
+
+* make url param names consistent with configure tabs controls ([87bc385](https://github.com/agrc/wfrc/commit/87bc385cfcfb957f38c80035f57a5fbc90e0c4d0)), closes [#54](https://github.com/agrc/wfrc/issues/54)
+* update tab config dialog title and labels ([eda1aad](https://github.com/agrc/wfrc/commit/eda1aad25282fb10c6aa0ab09b3e81830114bd91)), closes [#45](https://github.com/agrc/wfrc/issues/45)
+
 ## [2.0.0-1](https://github.com/agrc/wfrc/compare/v2.0.0-0...v2.0.0-1) (2020-07-22)
 
 
