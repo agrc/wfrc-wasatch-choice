@@ -73,8 +73,8 @@ export const useCurrentTabConfig = () => {
 
   // make sure that this object doesn't change on each re-render...
   return React.useMemo(() => {
-    return { id: urlParams.currentTabId, ...config.tabInfos[urlParams.currentTabId] };
-  }, [urlParams.currentTabId]);
+    return { id: urlParams.selectedMap, ...config.tabInfos[urlParams.selectedMap] };
+  }, [urlParams.selectedMap]);
 };
 
 export default config;

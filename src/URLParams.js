@@ -30,12 +30,12 @@ const urlParamsReducer = (previousParams, action) => {
     case ACTION_TYPES.CURRENT_TAB_ID:
       return {
         ...previousParams,
-        currentTabId: action.payload
+        selectedMap: action.payload
       };
     case ACTION_TYPES.AVAILABLE_TAB_IDS:
       return {
         ...previousParams,
-        availableTabIds: action.payload
+        mapList: action.payload
       };
     default:
       throw Error(`unsupported dispatch action type: ${action.type}`);
@@ -49,15 +49,15 @@ const getInitialHash = () => {
     parseBooleans: true
   });
 
-  if (initialURLParams.availableTabIds) {
-    initialURLParams.availableTabIds = initialURLParams.availableTabIds.split(LIST_SEPARATOR);
+  if (initialURLParams.mapList) {
+    initialURLParams.mapList = initialURLParams.mapList.split(LIST_SEPARATOR);
   }
 
   const defaultCurrentTabIds = getDefaultCurrentTabIds();
 
   return {
-    availableTabIds: defaultCurrentTabIds,
-    currentTabId: defaultCurrentTabIds[0],
+    mapList: defaultCurrentTabIds,
+    selectedMap: defaultCurrentTabIds[0],
     sideBarClosed: window.innerWidth <= config.MIN_DESKTOP_WIDTH,
     ...initialURLParams
   };
@@ -72,7 +72,7 @@ export default ({ children }) => {
     const url = new URL(document.location.href);
     url.hash = queryString.stringify({
       ...urlParams,
-      availableTabIds: urlParams.availableTabIds.join(LIST_SEPARATOR)
+      mapList: urlParams.mapList.join(LIST_SEPARATOR)
     });
 
     document.location.replace(url);
