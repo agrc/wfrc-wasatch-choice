@@ -1024,7 +1024,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-available"
       >
-        Available
+        Other Available Maps
       </label>
       <div
         className="rdl-control-container"
@@ -1070,12 +1070,10 @@ Array [
         className="rdl-actions-right"
       >
         <button
-          aria-label="Move all right"
           className="rdl-move rdl-move-all rdl-move-right"
           disabled={false}
           id="tab-picker-move-all-right"
           onClick={[Function]}
-          title="Move all right"
           type="button"
         >
           <span
@@ -1086,12 +1084,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move right"
           className="rdl-move rdl-move-right"
           disabled={false}
           id="tab-picker-move-right"
           onClick={[Function]}
-          title="Move right"
           type="button"
         >
           <span
@@ -1103,12 +1099,10 @@ Array [
         className="rdl-actions-left"
       >
         <button
-          aria-label="Move left"
           className="rdl-move rdl-move-left"
           disabled={false}
           id="tab-picker-move-left"
           onClick={[Function]}
-          title="Move left"
           type="button"
         >
           <span
@@ -1116,12 +1110,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move all left"
           className="rdl-move rdl-move-all rdl-move-left"
           disabled={false}
           id="tab-picker-move-all-left"
           onClick={[Function]}
-          title="Move all left"
           type="button"
         >
           <span
@@ -1140,7 +1132,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Selected
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"
@@ -1202,12 +1194,10 @@ Array [
       className="rdl-actions"
     >
       <button
-        aria-label="Move item up"
         className="rdl-move rdl-move-up"
         disabled={false}
         id="tab-picker-move-up"
         onClick={[Function]}
-        title="Move item up"
         type="button"
       >
         <span
@@ -1215,12 +1205,10 @@ Array [
         />
       </button>
       <button
-        aria-label="Move item down"
         className="rdl-move rdl-move-down"
         disabled={false}
         id="tab-picker-move-down"
         onClick={[Function]}
-        title="Move item down"
         type="button"
       >
         <span
@@ -1276,7 +1264,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-available"
       >
-        Available
+        Other Available Maps
       </label>
       <div
         className="rdl-control-container"
@@ -1357,12 +1345,10 @@ Array [
         className="rdl-actions-right"
       >
         <button
-          aria-label="Move all right"
           className="rdl-move rdl-move-all rdl-move-right"
           disabled={false}
           id="tab-picker-move-all-right"
           onClick={[Function]}
-          title="Move all right"
           type="button"
         >
           <span
@@ -1373,12 +1359,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move right"
           className="rdl-move rdl-move-right"
           disabled={false}
           id="tab-picker-move-right"
           onClick={[Function]}
-          title="Move right"
           type="button"
         >
           <span
@@ -1390,12 +1374,10 @@ Array [
         className="rdl-actions-left"
       >
         <button
-          aria-label="Move left"
           className="rdl-move rdl-move-left"
           disabled={false}
           id="tab-picker-move-left"
           onClick={[Function]}
-          title="Move left"
           type="button"
         >
           <span
@@ -1403,12 +1385,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move all left"
           className="rdl-move rdl-move-all rdl-move-left"
           disabled={false}
           id="tab-picker-move-all-left"
           onClick={[Function]}
-          title="Move all left"
           type="button"
         >
           <span
@@ -1427,7 +1407,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Selected
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"
@@ -1448,12 +1428,10 @@ Array [
       className="rdl-actions"
     >
       <button
-        aria-label="Move item up"
         className="rdl-move rdl-move-up"
         disabled={false}
         id="tab-picker-move-up"
         onClick={[Function]}
-        title="Move item up"
         type="button"
       >
         <span
@@ -1461,12 +1439,10 @@ Array [
         />
       </button>
       <button
-        aria-label="Move item down"
         className="rdl-move rdl-move-down"
         disabled={false}
         id="tab-picker-move-down"
         onClick={[Function]}
-        title="Move item down"
         type="button"
       >
         <span
@@ -1500,7 +1476,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-available"
       >
-        Available
+        Other Available Maps
       </label>
       <div
         className="rdl-control-container"
@@ -1560,12 +1536,10 @@ Array [
         className="rdl-actions-right"
       >
         <button
-          aria-label="Move all right"
           className="rdl-move rdl-move-all rdl-move-right"
           disabled={false}
           id="tab-picker-move-all-right"
           onClick={[Function]}
-          title="Move all right"
           type="button"
         >
           <span
@@ -1576,12 +1550,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move right"
           className="rdl-move rdl-move-right"
           disabled={false}
           id="tab-picker-move-right"
           onClick={[Function]}
-          title="Move right"
           type="button"
         >
           <span
@@ -1593,12 +1565,10 @@ Array [
         className="rdl-actions-left"
       >
         <button
-          aria-label="Move left"
           className="rdl-move rdl-move-left"
           disabled={false}
           id="tab-picker-move-left"
           onClick={[Function]}
-          title="Move left"
           type="button"
         >
           <span
@@ -1606,12 +1576,10 @@ Array [
           />
         </button>
         <button
-          aria-label="Move all left"
           className="rdl-move rdl-move-all rdl-move-left"
           disabled={false}
           id="tab-picker-move-all-left"
           onClick={[Function]}
-          title="Move all left"
           type="button"
         >
           <span
@@ -1630,7 +1598,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Selected
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"
@@ -1676,12 +1644,10 @@ Array [
       className="rdl-actions"
     >
       <button
-        aria-label="Move item up"
         className="rdl-move rdl-move-up"
         disabled={false}
         id="tab-picker-move-up"
         onClick={[Function]}
-        title="Move item up"
         type="button"
       >
         <span
@@ -1689,12 +1655,10 @@ Array [
         />
       </button>
       <button
-        aria-label="Move item down"
         className="rdl-move rdl-move-down"
         disabled={false}
         id="tab-picker-move-down"
         onClick={[Function]}
-        title="Move item down"
         type="button"
       >
         <span
