@@ -8,7 +8,7 @@ import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
 
 export default props => {
   const currentTabConfig = useCurrentTabConfig();
-  const [ { availableTabIds }, dispatchURLParams ] = React.useContext(URLParamsContext);
+  const [ { mapList }, dispatchURLParams ] = React.useContext(URLParamsContext);
   const onClick = id => dispatchURLParams({
     type: ACTION_TYPES.CURRENT_TAB_ID,
     payload: id
@@ -34,7 +34,7 @@ export default props => {
   return (
     <div className="tabs">
       <Nav tabs>
-        { availableTabIds.map(id => {
+        { mapList.map(id => {
           const tabInfo = config.tabInfos[id];
 
           return (
@@ -59,7 +59,7 @@ export default props => {
         <ModalBody>
           <TabPicker
             tabInfos={config.tabInfos}
-            selectedIds={availableTabIds}
+            selectedIds={mapList}
             setSelectedIds={setCurrentTabIds}
             maxReached={maxReached}
           />
