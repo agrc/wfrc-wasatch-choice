@@ -1,0 +1,3 @@
+## showFilterByPhasing Type
+
+`boolean`
