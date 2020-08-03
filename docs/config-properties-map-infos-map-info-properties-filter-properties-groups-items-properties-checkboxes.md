@@ -1,0 +1,3 @@
+## checkboxes Type
+
+`string[]`

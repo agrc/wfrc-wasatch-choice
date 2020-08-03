@@ -1,0 +1,3 @@
+## hideLayerSelector Type
+
+`boolean`
