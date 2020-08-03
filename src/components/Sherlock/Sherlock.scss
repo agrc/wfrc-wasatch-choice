@@ -32,6 +32,9 @@
   padding: 2px 12px;
   display: flex;
   justify-content: space-between;
+  mark {
+    padding: 0;
+  }
 }
 .sherlock__match-item:hover,
 .sherlock__match-item--selected {
