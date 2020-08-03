@@ -16,6 +16,27 @@ This is where all of the app configuration except the about widget is contained.
 
 See [docs/configSchema.md](docs/configSchema.md) for details on configuring this file. At runtime, the app validates `config.json` against this schema file and prints any errors to the console.
 
+#### Adding new maps
+
+To add a new map to the application, a new property needs to be added to the `mapInfos` object. The required schema for this object is found [here](docs/config-properties-map-infos-map-info.md). Any web map should work. If you want to be able to use the Layer Selector widget (`"hideLayerSelector": false`), the web map needs to have a base map that is fully transparent. It's kind of a hack, but it's the only way to allow the Layer Selector widget to switch out base maps.
+
+Sample Config
+
+```json
+"mapInfos": {
+  "vision": {
+    "name": "Vision",
+    "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
+    "hideLayerSelector": true,
+    "useDefaultAGOLPopup": false,
+    "filter": ...
+  },
+  ...
+}
+```
+
+The first five maps in `mapInfos` will be the default tabs in the order that they are defined.
+
 ### `about.json`
 
 This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
