@@ -5,9 +5,9 @@ import { Alert } from 'reactstrap';
 import config from '../../config';
 
 
-const TabPicker = ({ tabInfos, selectedIds, setSelectedIds, maxReached }) => {
-  const options = Object.keys(tabInfos).map(id => {
-    return { value: id, label: tabInfos[id].name };
+const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
+  const options = Object.keys(mapInfos).map(id => {
+    return { value: id, label: mapInfos[id].name };
   });
 
   return (

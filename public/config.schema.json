@@ -5,12 +5,12 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "tabInfos": {
-      "title": "Tab Infos",
-      "description": "An object that describes each tab available in the application. The property name is the id for the tab and should not change since it's used as a URL parameter.",
+    "mapInfos": {
+      "title": "Map Infos",
+      "description": "An object that describes each map available in the application. The property name is the id for the map and should not change since it's used as a URL parameter.",
       "type": "object",
       "additionalProperties": {
-        "title": "Tab Info",
+        "title": "Map Info",
         "type": "object",
         "additionalProperties": false,
         "required": [
@@ -19,11 +19,11 @@
         ],
         "properties": {
           "name": {
-            "description": "The name of the tab that shows up in the actual tab control",
+            "description": "The name of the map that shows up in the tab control",
             "type": "string"
           },
           "webMapId": {
-            "description": "The id of the web map that you would like displayed in the tab",
+            "description": "The id of the web map that you would like displayed",
             "type": "string"
           },
           "hideLayerSelector": {
@@ -367,7 +367,7 @@
     }
   },
   "required": [
-    "tabInfos",
+    "mapInfos",
     "sherlock",
     "layerSelector",
     "minimumLegendSizes",

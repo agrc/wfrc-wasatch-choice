@@ -65,7 +65,7 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
 };
 
 export const getDefaultCurrentTabIds = () => {
-  return Object.keys(config.tabInfos).slice(0, 5);
+  return Object.keys(config.mapInfos).slice(0, 5);
 };
 
 export const useCurrentTabConfig = () => {
@@ -73,7 +73,7 @@ export const useCurrentTabConfig = () => {
 
   // make sure that this object doesn't change on each re-render...
   return React.useMemo(() => {
-    return { id: urlParams.selectedMap, ...config.tabInfos[urlParams.selectedMap] };
+    return { id: urlParams.selectedMap, ...config.mapInfos[urlParams.selectedMap] };
   }, [urlParams.selectedMap]);
 };
 
