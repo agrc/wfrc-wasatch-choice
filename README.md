@@ -18,7 +18,7 @@ See [docs/configSchema.md](docs/configSchema.md) for details on configuring this
 
 ### `about.json`
 
-This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size. The property names of the root object correspond to the tab ids in `config.json`.
+This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
 
 ```json
 {

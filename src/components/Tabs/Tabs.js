@@ -35,7 +35,7 @@ export default props => {
     <div className="tabs">
       <Nav tabs>
         { mapList.map(id => {
-          const tabInfo = config.tabInfos[id];
+          const tabInfo = config.mapInfos[id];
 
           return (
             <NavItem key={id}>
@@ -58,7 +58,7 @@ export default props => {
         <ModalHeader toggle={toggleModal}>Configure Map Tabs</ModalHeader>
         <ModalBody>
           <TabPicker
-            tabInfos={config.tabInfos}
+            mapInfos={config.mapInfos}
             selectedIds={mapList}
             setSelectedIds={setCurrentTabIds}
             maxReached={maxReached}
