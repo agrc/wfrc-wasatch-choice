@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-3](https://github.com/agrc/wfrc/compare/v2.0.0-2...v2.0.0-3) (2020-08-03)
+
+
+### Bug Fixes
+
+* change config.tabInfos -> config.mapInfos ([97d58ac](https://github.com/agrc/wfrc/commit/97d58acb062ebdc0d6eb6802ca8f9e6c52d3d2c4)), closes [#54](https://github.com/agrc/wfrc/issues/54)
+* fix alignment issue with sherlock result ([d04790f](https://github.com/agrc/wfrc/commit/d04790ff6f4b3c2676b474c43a5a4e566284ec63))
+* increase cypress default timeout ([9c9879e](https://github.com/agrc/wfrc/commit/9c9879e84f54a2ae1a4d7d9a16e8524bc81e313c))
+* update config schema docs and fix typo ([f28c9a3](https://github.com/agrc/wfrc/commit/f28c9a349f4527320386132dd6a9b3cae8292cc5))
+
 ## [2.0.0-2](https://github.com/agrc/wfrc/compare/v2.0.0-1...v2.0.0-2) (2020-07-29)
 
 
