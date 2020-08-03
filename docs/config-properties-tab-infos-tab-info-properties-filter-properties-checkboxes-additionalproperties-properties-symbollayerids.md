@@ -1,0 +1,3 @@
+## symbolLayerIds Type
+
+`string[]`

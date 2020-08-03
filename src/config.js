@@ -47,7 +47,7 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
   // we are fetching this rather than importing it so that it can be hosted publicly and available
   // for WFRC to reference it in their config files
   if (!configSchema) {
-    const response = await fetch(`${process.env.PUBLIC_URL}/configSchema.json?rel=${process.env.REACT_APP_VERSION}`);
+    const response = await fetch(`${process.env.PUBLIC_URL}/config.schema.json?rel=${process.env.REACT_APP_VERSION}`);
     configSchema = await response.json();
   }
 

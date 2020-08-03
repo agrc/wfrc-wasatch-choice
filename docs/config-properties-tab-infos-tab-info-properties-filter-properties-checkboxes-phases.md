@@ -1,0 +1,25 @@
+## phases Type
+
+`object` ([Details](config-properties-tab-infos-tab-info-properties-filter-properties-checkboxes-phases.md))
+
+# undefined Properties
+
+| Property              | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                          |
+| :-------------------- | ------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Additional Properties | `array` | Optional | cannot be null | [WFRC App](config-properties-tab-infos-tab-info-properties-filter-properties-checkboxes-phases-additionalproperties.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tabInfos/additionalProperties/properties/filter/properties/checkboxes/phases/additionalProperties") |
+
+## Additional Properties
+
+Additional properties are allowed, as long as they follow this schema:
+
+
+
+
+-   is optional
+-   Type: an array of the following:`string` or `number` ([Details](config-properties-tab-infos-tab-info-properties-filter-properties-checkboxes-phases-additionalproperties-items.md))
+-   cannot be null
+-   defined in: [WFRC App](config-properties-tab-infos-tab-info-properties-filter-properties-checkboxes-phases-additionalproperties.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tabInfos/additionalProperties/properties/filter/properties/checkboxes/phases/additionalProperties")
+
+### additionalProperties Type
+
+an array of the following:`string` or `number` ([Details](config-properties-tab-infos-tab-info-properties-filter-properties-checkboxes-phases-additionalproperties-items.md))

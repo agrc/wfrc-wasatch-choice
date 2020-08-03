@@ -1,0 +1,3 @@
+## searchField Type
+
+`string`
