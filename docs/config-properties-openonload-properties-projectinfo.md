@@ -1,0 +1,3 @@
+## projectInfo Type
+
+`boolean`

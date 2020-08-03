@@ -1,0 +1,3 @@
+## hsa Type
+
+`string`

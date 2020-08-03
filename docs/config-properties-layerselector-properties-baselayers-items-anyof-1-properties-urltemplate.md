@@ -1,0 +1,3 @@
+## urlTemplate Type
+
+`string`

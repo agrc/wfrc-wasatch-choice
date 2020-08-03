@@ -39,7 +39,7 @@
     "release": "standard-version",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "update-config-docs": "./node_modules/.bin/jsonschema2md -d public/configSchema.json -o docs -h false"
+    "update-config-docs": "./node_modules/.bin/jsonschema2md -d public -o docs -h false -x - -n"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -55,7 +55,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@adobe/jsonschema2md": "3.3.1",
+    "@adobe/jsonschema2md": "^4.1.6",
     "@storybook/addon-actions": "^6.0.0-rc.13",
     "@storybook/addon-links": "^6.0.0-rc.13",
     "@storybook/addon-storyshots": "^6.0.0-rc.13",

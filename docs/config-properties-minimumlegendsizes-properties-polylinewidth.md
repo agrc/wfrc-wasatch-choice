@@ -1,0 +1,3 @@
+## polylineWidth Type
+
+`number`

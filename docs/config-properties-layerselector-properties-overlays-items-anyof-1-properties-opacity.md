@@ -1,0 +1,3 @@
+## opacity Type
+
+`number`

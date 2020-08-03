@@ -1,0 +1,3 @@
+## symbolLabels Type
+
+`string[]`

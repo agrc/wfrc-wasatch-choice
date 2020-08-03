@@ -1,0 +1,3 @@
+## tagLine Type
+
+`string`

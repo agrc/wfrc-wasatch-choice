@@ -1,0 +1,3 @@
+## zoomLevel Type
+
+`number`
