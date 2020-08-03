@@ -1,0 +1,3 @@
+## layerNames Type
+
+`string[]`

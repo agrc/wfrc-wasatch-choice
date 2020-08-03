@@ -6,7 +6,7 @@
 
 | Property                                  | Type     | Required | Nullable       | Defined by                                                                                                                                       |
 | :---------------------------------------- | -------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
-| [tabInfos](#tabInfos)                     | `object` | Required | cannot be null | [WFRC App](config-properties-tab-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tabInfos")                    |
+| [mapInfos](#mapInfos)                     | `object` | Required | cannot be null | [WFRC App](config-properties-map-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")                    |
 | [sherlock](#sherlock)                     | `object` | Required | cannot be null | [WFRC App](config-properties-sherlock.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock")                     |
 | [layerSelector](#layerSelector)           | `object` | Required | cannot be null | [WFRC App](config-properties-layerselector.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector")           |
 | [minimumLegendSizes](#minimumLegendSizes) | `object` | Required | cannot be null | [WFRC App](config-properties-minimumlegendsizes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/minimumLegendSizes") |
@@ -16,21 +16,21 @@
 | [openOnLoad](#openOnLoad)                 | `object` | Required | cannot be null | [WFRC App](config-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")                 |
 | [$schema](#$schema)                       | `string` | Optional | cannot be null | [WFRC App](config-properties-schema.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")                        |
 
-## tabInfos
+## mapInfos
 
-An object that describes each tab available in the application. The property name is the id for the tab and should not change since it's used as a URL parameter.
+An object that describes each map available in the application. The property name is the id for the map and should not change since it's used as a URL parameter.
 
 
-`tabInfos`
+`mapInfos`
 
 -   is required
--   Type: `object` ([Tab Infos](config-properties-tab-infos.md))
+-   Type: `object` ([Map Infos](config-properties-map-infos.md))
 -   cannot be null
--   defined in: [WFRC App](config-properties-tab-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tabInfos")
+-   defined in: [WFRC App](config-properties-map-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")
 
-### tabInfos Type
+### mapInfos Type
 
-`object` ([Tab Infos](config-properties-tab-infos.md))
+`object` ([Map Infos](config-properties-map-infos.md))
 
 ## sherlock
 
