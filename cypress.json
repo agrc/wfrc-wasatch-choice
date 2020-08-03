@@ -1,5 +1,5 @@
 {
   "experimentalFetchPolyfill": true,
   "video": false,
-  "defaultCommandTimeout": 15000
+  "defaultCommandTimeout": 20000
 }
