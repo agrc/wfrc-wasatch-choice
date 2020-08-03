@@ -1,6 +1,6 @@
 {
   "$schema": "./config.schema.json",
-  "tabInfos": {
+  "mapInfos": {
     "vision": {
       "name": "Vision",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",

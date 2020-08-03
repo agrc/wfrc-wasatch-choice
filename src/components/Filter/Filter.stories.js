@@ -7,7 +7,7 @@ import config from '../../config';
 const mapViewMock = {};
 
 const stories = storiesOf('Filter', module);
-Object.keys(config.tabInfos).slice(0, 5).forEach(tabId => {
-  const tabConfig = config.tabInfos[tabId];
+Object.keys(config.mapInfos).slice(0, 5).forEach(tabId => {
+  const tabConfig = config.mapInfos[tabId];
   stories.add(tabConfig.name, () => <Filter {...tabConfig.filter} mapView={mapViewMock} />)
 });

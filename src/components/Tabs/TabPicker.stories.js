@@ -4,7 +4,7 @@ import TabPicker from './TabPicker';
 
 export default { title: 'TabPicker' };
 
-const TAB_INFOS = {
+const MAP_INFOS = {
   'one': { name: 'First One' },
   'two': { name: 'Second One' },
   'three': { name: 'Third One' },
@@ -20,7 +20,7 @@ const TestFixture = ({ initialSelectedIds, maxReached }) => {
   return (
     <>
       <TabPicker
-        tabInfos={TAB_INFOS}
+        mapInfos={MAP_INFOS}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
         maxReached={maxReached}
