@@ -109,8 +109,8 @@ class Sherlock extends Component {
                 </InputGroup>
                 <div className="sherlock__match-dropdown" {...getMenuProps()}>
                   <ul className="sherlock__matches">
-                    {!isOpen ?
-                      null :
+                    {/* {!isOpen ?
+                      null : */}
                       <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
                         {({ short, hasmore, loading, error, data = [] }) => {
                           if (short) {
@@ -150,7 +150,7 @@ class Sherlock extends Component {
                           return items;
                         }}
                       </Clue>
-                    }
+                    {/* } */}
                   </ul>
                 </div>
               </div>
