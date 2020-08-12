@@ -101,4 +101,6 @@ Tasks to be completed for each release:
 - [ ] `npm run release` or `npm run release -- --prerelease`
 - [ ] Run a build and test (`npm run build` | `npm run build-stage`)
 - [ ] Deploy website (`grunt deploy-prod` | `grunt deploy-stage`)
+  - `-prod` builds a .zip file that can be manually attached to the release on GitHub for the client to download.
+  - `-stage` pushes the app to [test.mapserv.utah.gov/wfrc](https://htest.mapserv.utah.gov/wfrc/)
 - [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
