@@ -8,13 +8,12 @@ import debounce from 'lodash.debounce';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
 
 
-const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onClick}) => {
+const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick}) => {
   const dispatchURLParams = React.useContext(URLParamsContext)[1];
   const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
   const [displayedZoomGraphic, setDisplayedZoomGraphic] = React.useState(null);
   const maps = React.useRef();
-  const view = React.useRef();
   const mapViewDiv = React.useRef();
   const defaultPopup = React.useRef();
   const selectorNode = React.useRef();
@@ -32,7 +31,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
       if (zoomObj.target.every(graphic => graphic.geometry.type === 'point')) {
         zoomObj = {
           target: zoomObj.target,
-          zoom: view.current.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels
+          zoom: mapView.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels
         };
       } else {
         zoomObj = {
@@ -41,24 +40,24 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
       }
     }
 
-    await view.current.goTo(zoomObj);
+    await mapView.goTo(zoomObj);
 
     if (displayedZoomGraphic) {
-      view.current.graphics.removeMany(displayedZoomGraphic);
+      mapView.graphics.removeMany(displayedZoomGraphic);
     }
 
     setDisplayedZoomGraphic(zoomObj.target);
 
-    view.current.graphics.addMany(zoomObj.target);
+    mapView.graphics.addMany(zoomObj.target);
 
     const { watchUtils } = await esriModules();
 
     if (!zoomObj.preserve) {
-      watchUtils.once(view.current, 'extent', () => {
-        view.current.graphics.removeAll();
+      watchUtils.once(mapView, 'extent', () => {
+        mapView.graphics.removeAll();
       });
     }
-  }, [displayedZoomGraphic]);
+  }, [displayedZoomGraphic, mapView]);
 
   React.useEffect(() => {
     console.log('MapView: zoom to graphic');
@@ -81,7 +80,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
     selectorNode.current = document.createElement('div');
 
     const layerSelectorOptions = {
-      view: view.current,
+      view: mapView,
       quadWord: discoverKey,
       modules,
       ...config.layerSelector
@@ -92,7 +91,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
         <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
       </LayerSelectorContainer>,
       selectorNode.current);
-  }, [discoverKey]);
+  }, [discoverKey, mapView]);
 
   const changeMap = React.useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
@@ -102,7 +101,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
       window.mapLoaded = false;
     }
 
-    if (maps.current) {
+    if (maps.current && mapView) {
       if (!maps.current[currentTabConfig.id]) {
         const { WebMap } = await esriModules();
         maps.current[currentTabConfig.id] = new WebMap({
@@ -113,13 +112,13 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
       }
 
       // update web map
-      view.current.map = maps.current[currentTabConfig.id];
+      mapView.map = maps.current[currentTabConfig.id];
 
       if (!currentTabConfig.useDefaultAGOLPopup) {
-        view.current.popup = null;
+        mapView.popup = null;
       } else {
         const { Popup } = await esriModules();
-        view.current.popup = new Popup();
+        mapView.popup = new Popup();
       }
 
       // update layer selector visibility
@@ -135,13 +134,13 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
 
       if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
         const method = (currentTabConfig.hideLayerSelector) ?
-          view.current.ui.remove.bind(view.current.ui) : view.current.ui.add.bind(view.current.ui);
+          mapView.ui.remove.bind(mapView.ui) : mapView.ui.add.bind(mapView.ui);
         method(selectorNode.current, { position: 'top-left', index: 2 });
       }
 
       isLayerSelectorVisible.current = currentTabConfig.hideLayerSelector;
     }
-  }, [currentTabConfig, setUpLayerSelector]);
+  }, [currentTabConfig, setUpLayerSelector, mapView]);
 
   // this looks a little funny...
   // We need to keep change map as a callable function so that it can be called
@@ -171,7 +170,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
         zoom = config.defaultExtent.zoomLevel
       }
 
-      view.current = new MapView({
+      const view = new MapView({
         container: mapViewDiv.current,
         center: {
           ...center,
@@ -184,41 +183,41 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
         }
       });
 
-      view.current.ui.add(new Home({ view: view.current}), 'top-left');
+      view.ui.add(new Home({ view }), 'top-left');
 
       // one time setup once the view has loaded
-      view.current.when(() => {
-        view.current.watch('extent', debounce(newExtent => {
+      view.when(() => {
+        view.watch('extent', debounce(newExtent => {
           if (newExtent) {
             dispatchURLParams({
               type: ACTION_TYPES.MAP_EXTENT,
               payload: {
                 x: Math.round(newExtent.center.x),
                 y: Math.round(newExtent.center.y),
-                scale: Math.round(view.current.scale)
+                scale: Math.round(view.scale)
               }
             });
           }
         }, 100));
 
-        view.current.on('click', onClick);
+        view.on('click', event => onClick(event, view));
 
-        defaultPopup.current = view.current.popup;
+        defaultPopup.current = view.popup;
       });
 
       if (window.Cypress) {
         // help Cypress know when the map has loaded
-        view.current.watch('updating', updating => {
+        view.watch('updating', updating => {
           console.log('updating state changed', updating);
-          window.mapLoaded = view.current.ready && !updating;
+          window.mapLoaded = view.ready && !updating;
         });
 
         // these global methods are for cypress integration tests
         window.getMapExtent = () => {
-          return JSON.stringify(view.current.extent.toJSON());
+          return JSON.stringify(view.extent.toJSON());
         };
         window.getVisibleLayers = () => {
-          return view.current.layerViews.items
+          return view.layerViews.items
               .filter(view => view.visible)
               .map(view => view.layer.allSublayers.items
                 .filter(subLayer => subLayer.visible)
@@ -229,7 +228,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, onCl
         };
       }
 
-      setView(view.current);
+      setView(view);
 
       changeMap();
     };

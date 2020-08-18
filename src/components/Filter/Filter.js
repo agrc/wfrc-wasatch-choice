@@ -135,6 +135,7 @@ export default props => {
   // reset layer lookup when the web map is changed
   useEffect(() => {
     const getLayersForNewMap = async () => {
+      console.log('getLayersForNewMap');
       const [ watchUtils ] = await loadModules(['esri/core/watchUtils'], config.ESRI_LOADER_CONFIG);
       await watchUtils.whenOnce(props.mapView, "ready");
       await props.mapView.map.when();

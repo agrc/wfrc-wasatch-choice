@@ -17,6 +17,7 @@ import { URLParamsContext, ACTION_TYPES } from './URLParams';
 
 
 const App = () => {
+  console.log('app render');
   const [zoomToGraphic, setZoomToGraphic] = React.useState({
     graphic: null,
     level: 0
@@ -33,8 +34,8 @@ const App = () => {
   const quadWord = process.env.REACT_APP_DISCOVER;
   const version = process.env.REACT_APP_VERSION;
 
-  const onMapClick = React.useCallback(async (event) => {
-    console.log('onMapClick', event);
+  const onMapClick = React.useCallback(async (clickEvent, view) => {
+    console.log('onMapClick', clickEvent);
 
     setSelectedGraphics([]);
 
@@ -46,7 +47,7 @@ const App = () => {
       }
     }, config.LOADER_DELAY);
 
-    const layers = mapView.map.layers;
+    const layers = view.map.layers;
 
     const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
 
@@ -56,15 +57,15 @@ const App = () => {
         url: layer.url
       });
       const parameters = new IdentifyParameters({
-        geometry: event.mapPoint,
-        height: mapView.height,
+        geometry: clickEvent.mapPoint,
+        height: view.height,
         layerIds: layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray(),
         layerOption: 'visible',
-        mapExtent: mapView.extent,
+        mapExtent: view.extent,
         returnFieldName: true,
         returnGeometry: true,
         tolerance: config.IDENTIFY_PIXEL_TOLERANCE,
-        width: mapView.width
+        width: view.width
       });
 
       return task.execute(parameters);
@@ -73,7 +74,7 @@ const App = () => {
 
     const identifyResponses = await Promise.all(identifyPromises.toArray());
 
-    const layerNameLookup = await getLayersInMap(mapView.map);
+    const layerNameLookup = await getLayersInMap(view.map);
     const identifyFeatures = identifyResponses.reduce((previous, current) => {
       return previous.concat(current.results.map(result => {
         return {
@@ -88,11 +89,11 @@ const App = () => {
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
     const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
     const queryFeatureLayerView = async layer => {
-      const layerView = await mapView.whenLayerView(layer);
+      const layerView = await view.whenLayerView(layer);
       const results = await layerView.queryFeatures({
-        geometry: event.mapPoint,
+        geometry: clickEvent.mapPoint,
         returnGeometry: true,
-        distance: config.IDENTIFY_PIXEL_TOLERANCE * mapView.resolution,
+        distance: config.IDENTIFY_PIXEL_TOLERANCE * view.resolution,
         units: 'feet',
         where: layer.definitionExpression
       });
@@ -112,18 +113,21 @@ const App = () => {
 
     setSelectedGraphics(selectedGraphics);
     setShowIdentifyLoader(false);
-  }, [mapView]);
+  }, []);
 
   const mapOptions = {
     discoverKey: quadWord,
     zoomToGraphic: zoomToGraphic,
     onClick: onMapClick,
     setView,
-    initialExtent: (urlParams.scale) ? {
-      x: urlParams.x,
-      y: urlParams.y,
-      scale: urlParams.scale
-    } : null
+    mapView,
+    initialExtent: React.useMemo(() => {
+      return (urlParams.scale) ? {
+        x: urlParams.x,
+        y: urlParams.y,
+        scale: urlParams.scale
+      } : null;
+    }, [urlParams])
   };
 
   const toggleSidebar = () => {
