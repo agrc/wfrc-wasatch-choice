@@ -166,9 +166,7 @@ const App = () => {
     console.log('toggleFilter');
 
     if (resetFilter) {
-      return () => {
-        setResetFilter(false);
-      }
+      setResetFilter(false);
     }
   }, [resetFilter]);
 
@@ -224,7 +222,7 @@ const App = () => {
               icon={faList}
               position={0}
               showReset={true}
-              onReset={setResetFilter.bind(this, [true])}
+              onReset={() => setResetFilter(true)}
               mapView={mapView}>
               <Filter {...currentTabConfig.filter}
                 reset={resetFilter}
