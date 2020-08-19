@@ -3,8 +3,8 @@ describe('tabs', () => {
     cy.loadApp();
 
     const zoomInButton = cy.findByRole('button', { name: /zoom in/i });
-    zoomInButton.click({ force: true });
-    zoomInButton.click({ force: true });
+    zoomInButton.click();
+    zoomInButton.click();
 
     cy.waitForMapLoaded();
 
@@ -29,7 +29,7 @@ describe('tabs', () => {
 
     // turn off roads layers
     let originalVisibleLayers;
-    cy.findByRole('checkbox', { name: /transportation/i }).click({ force: true });
+    cy.findByRole('checkbox', { name: /transportation/i }).click();
 
     cy.waitForMapLoaded().then(() => {
       originalVisibleLayers = getVisibleLayers();
