@@ -8,6 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "array-move": "^3.0.1",
     "bootstrap": "^4.5.0",
     "downshift": "^5.4.5",
     "esri-loader": "^2.14.0",
@@ -23,6 +24,7 @@
     "react-fast-compare": "^3.2.0",
     "react-loader-spinner": "^3.1.14",
     "react-scripts": "^3.4.1",
+    "react-sortable-hoc": "^1.11.0",
     "reactstrap": "^8.5.1",
     "typeface-montserrat": "0.0.75"
   },

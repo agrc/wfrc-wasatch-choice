@@ -4,6 +4,8 @@ import './Tabs.scss';
 import config, { useCurrentTabConfig } from '../../config';
 import TabPicker from './TabPicker';
 import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
 
 export default props => {
@@ -31,21 +33,29 @@ export default props => {
     }
   };
 
-  return (
-    <div className="tabs">
-      <Nav tabs>
-        { mapList.map(id => {
+  const SortableNavItem = SortableElement(({ value }) => {
+    return (
+      <NavItem>
+        <NavLink
+          className={(currentTabConfig.id === value.id) ? "active" : null}
+          onClick={onClick.bind(null, value.id)} aria-label={`${value.name} Tab`}
+        >
+          {value.name}
+        </NavLink>
+      </NavItem>
+    );
+  });
+
+  const containerRef = React.useRef();
+
+  const SortableNav = SortableContainer(({ items }) => {
+    return (
+      <div className="nav nav-tabs" ref={containerRef}>
+        { items.map((id, index) => {
           const tabInfo = config.mapInfos[id];
 
           return (
-            <NavItem key={id}>
-              <NavLink
-                className={(currentTabConfig.id === id) ? "active" : null}
-                onClick={onClick.bind(null, id)} aria-label={`${tabInfo.name} Tab`}
-              >
-                {tabInfo.name}
-              </NavLink>
-            </NavItem>
+            <SortableNavItem key={`item-${id}`} index={index} value={{ id, ...tabInfo}}/>
           );
         }) }
         <NavItem key="settings">
@@ -53,7 +63,23 @@ export default props => {
             <i className="fas fa-cog"></i>
           </NavLink>
         </NavItem>
-      </Nav>
+      </div>
+    );
+  });
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setCurrentTabIds(arrayMove(mapList, oldIndex, newIndex));
+  };
+
+  return (
+    <div className="tabs">
+      <SortableNav
+        items={mapList}
+        onSortEnd={onSortEnd}
+        distance={5}
+        helperContainer={() => containerRef.current}
+        axis="x"
+      />
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Configure Map Tabs</ModalHeader>
         <ModalBody>

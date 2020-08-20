@@ -59,4 +59,25 @@ describe('tabs', () => {
 
     cy.findByRole('button', { name: /layers/i }).should('not.exist');
   });
+  it('drag and drop to rearrange tabs', () => {
+    cy.loadApp();
+
+    cy.findByLabelText('Transportation Tab')
+      .trigger('mouseover')
+      .trigger('mousedown', { button: 0 })
+      .trigger('mousemove', 0, 0, { force: true })
+    ;
+    cy.findByLabelText('Recreation Tab')
+      .trigger('mouseover')
+      .trigger('mousemove', 0, 0, { force: true })
+      .trigger('mouseup')
+    ;
+
+    // assert that tab nodes actually moved
+    cy.get(':nth-child(4) > .nav-link').should('have.text', 'Recreation');
+    cy.get(':nth-child(5) > .nav-link').should('have.text', 'Transportation');
+
+    // assert that URL was updated
+    cy.hash().should('contain', 'mapList=vision.land-use.economic-development.recreation.transportation');
+  });
 });
