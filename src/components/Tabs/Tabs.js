@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, NavItem, NavLink } from 'reactstrap';
 import './Tabs.scss';
 import config, { useCurrentTabConfig } from '../../config';
 import TabPicker from './TabPicker';
@@ -50,6 +50,7 @@ export default props => {
 
   const SortableNav = SortableContainer(({ items }) => {
     return (
+      // use generic div node over reactstrap Nav so that we can get a ref
       <div className="nav nav-tabs" ref={containerRef}>
         { items.map((id, index) => {
           const tabInfo = config.mapInfos[id];
