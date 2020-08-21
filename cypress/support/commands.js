@@ -42,7 +42,7 @@ Cypress.Commands.add('getMapExtent', () => {
     .then((win) => {
       getExtent = win.getMapExtent;
     })
-    .then(() => {
+    .pipe(() => {
       console.log('getting extent...');
 
       return getExtent();

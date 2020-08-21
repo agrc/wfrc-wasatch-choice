@@ -70,6 +70,7 @@
     "babel-preset-react-app": "^9.1.2",
     "concurrently": "^5.2.0",
     "cypress": "^4.12.1",
+    "cypress-pipe": "^2.0.0",
     "cz-conventional-changelog": "^3.2.0",
     "env-cmd": "^10.1.0",
     "grunt": "^1.1.0",
