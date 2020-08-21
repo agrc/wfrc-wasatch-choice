@@ -8,13 +8,12 @@ describe('tabs', () => {
 
     cy.waitForMapLoaded();
 
-    let originalExtent;
-    cy.getMapExtent().then(extent => originalExtent = extent);
+    cy.getMapExtent().should('ok').as('originalExtent');
 
     cy.findByLabelText('Land Use Tab').click();
 
-    cy.getMapExtent().then(extent => {
-      expect(extent).to.equal(originalExtent);
+    cy.get('@originalExtent').then(originalExtent => {
+      cy.getMapExtent().should('equal', originalExtent);
     });
   });
   it('map layer visibility is preserved when switching back and forward between tabs', () => {
