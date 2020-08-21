@@ -207,9 +207,9 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
 
       if (window.Cypress) {
         // help Cypress know when the map has loaded
-        view.watch('updating', updating => {
+        view.watch(['updating', 'navigating'], updating => {
           console.log('updating state changed', updating);
-          window.mapLoaded = view.ready && !updating;
+          window.mapLoaded = view.ready && !updating && !view.navigating;
         });
 
         // these global methods are for cypress integration tests
