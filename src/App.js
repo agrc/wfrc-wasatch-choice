@@ -211,7 +211,7 @@ const App = () => {
       { currentTabConfig &&
         <>
           <Header title="Wasatch Choice Map" />
-          <Sidebar toggleSidebar={toggleSidebar}>
+          <Sidebar toggleSidebar={toggleSidebar} isOpen={!urlParams.sideBarClosed}>
             <About version={version} />
           </Sidebar>
           <MapLens {...sidebarOptions}>
