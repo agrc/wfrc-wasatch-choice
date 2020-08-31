@@ -22,9 +22,9 @@ describe('tab-picker', () => {
 
     cy.findByRole('option', { name: /transportation/i }).dblclick();
 
-    cy.findByRole('listbox', { name: /available/i }).select('ato');
+    cy.findByRole('listbox', { name: /available/i }).select('open-space');
 
-    cy.findByRole('option', { name: /ato/i }).dblclick();
+    cy.findByRole('option', { name: /open space/i }).dblclick();
 
     cy.findByRole('button', { name: /finish/i }).click();
 
@@ -35,9 +35,9 @@ describe('tab-picker', () => {
 
     cy.findByTestId('tab-configuration').click();
 
-    cy.findByRole('listbox', { name: /available/i }).select('ato');
+    cy.findByRole('listbox', { name: /available/i }).select('open-space');
 
-    cy.findByRole('option', { name: /ato/i }).dblclick();
+    cy.findByRole('option', { name: /open space/i }).dblclick();
 
     cy.findByRole('alert', { text: /maximum/i }).should('be.visible');
   });
