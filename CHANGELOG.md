@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-5](https://github.com/agrc/wfrc/compare/v2.0.0-4...v2.0.0-5) (2020-08-31)
+
+
+### Bug Fixes
+
+* better lineheight for details title ([b53d5f2](https://github.com/agrc/wfrc/commit/b53d5f2303ca8a3e75a0f789e72a9e35b30750cc)), closes [#62](https://github.com/agrc/wfrc/issues/62)
+
 ## [2.0.0-4](https://github.com/agrc/wfrc/compare/v1.5.5...v2.0.0-4) (2020-08-21)
 
 
