@@ -3,13 +3,17 @@ import './Sidebar.scss';
 import { Button } from 'reactstrap';
 import { useWindowWidth } from '../../hooks';
 import config from '../../config';
+import classNames from 'classnames'
 
 
 export default props => {
   const windowWidth = useWindowWidth();
+  const names = classNames('side-bar side-bar--with-border', {
+    'side-bar--hidden': !props.isOpen
+  });
 
   return (
-    <div id="sideBar" className="side-bar side-bar--with-border side-bar--open">
+    <div id="sideBar" className={names}>
       <div className="side-bar__padder">
         { windowWidth <= config.MAX_SMALL_SCREEN_WIDTH &&
           <div>

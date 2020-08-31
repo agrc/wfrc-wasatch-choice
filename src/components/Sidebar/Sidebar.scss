@@ -24,7 +24,7 @@ $sideBarWidth: 330px;
   border-top: 1px solid #b5bcc7;
 }
 
-.side-bar--open {
-  max-width: $sideBarWidth;
-  width: 100%;
+.side-bar--hidden {
+  visibility: hidden;
+  display: none;
 }
