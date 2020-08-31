@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-6](https://github.com/agrc/wfrc/compare/v2.0.0-5...v2.0.0-6) (2020-08-31)
+
+
+### Bug Fixes
+
+* fix sidebar layout regression bug ([c434323](https://github.com/agrc/wfrc/commit/c434323dfb0ac00d9327fa8e40d57ec13a910173))
+
 ## [2.0.0-5](https://github.com/agrc/wfrc/compare/v2.0.0-4...v2.0.0-5) (2020-08-31)
 
 
