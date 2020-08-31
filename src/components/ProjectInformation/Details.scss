@@ -6,11 +6,11 @@ $padding: 14px;
   border-bottom: $border;
   .title {
     cursor: pointer;
-    line-height: 40px;
+    line-height: 1.6;
     font-weight: bold;
     font-size: 14px;
     background-color: #f0f0f0;
-    padding: 0 $padding;
+    padding: $padding/2 $padding;
     border-bottom: $border;
     &:hover {
       background-color: white;
