@@ -38,7 +38,7 @@ let config = {
   },
   LOADER_DELAY: 250,
   IDENTIFY_PIXEL_TOLERANCE: 7,
-  MAX_TABS_ALLOWED: 5
+  MAX_TABS_ALLOWED: 6
 };
 
 // optional configSchema is for jest and storybook since they are clumsy when it comes to
@@ -65,7 +65,7 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
 };
 
 export const getDefaultCurrentTabIds = () => {
-  return Object.keys(config.mapInfos).slice(0, 5);
+  return Object.keys(config.mapInfos).slice(0, config.MAX_TABS_ALLOWED);
 };
 
 export const useCurrentTabConfig = () => {
