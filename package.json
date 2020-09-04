@@ -59,7 +59,7 @@
     "grunt-contrib-compress": "^1.5.0",
     "grunt-ssh": "^0.12.9",
     "load-grunt-tasks": "^5.0.0",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.1",
     "react-test-renderer": "16.8.5",
     "standard-version": "7.0.0"
   },
