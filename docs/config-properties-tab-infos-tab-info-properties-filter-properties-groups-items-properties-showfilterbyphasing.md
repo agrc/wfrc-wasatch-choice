@@ -1,3 +1,0 @@
-## showFilterByPhasing Type
-
-`boolean`

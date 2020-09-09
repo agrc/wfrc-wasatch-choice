@@ -41,7 +41,7 @@
             "additionalProperties": false,
             "properties": {
               "layerNames": {
-                "description": "Defines all of the layer names as they show up in the web map",
+                "description": "Defines all of the layer names as they show up in the web map. The key is a unique id (whatever you want) for the layer. This key is used elsewhere in the filter config. The value is the name of the layer as defined in the web map.",
                 "type": "object",
                 "additionalProperties": {
                   "type": "string"
@@ -58,6 +58,7 @@
                 "description": "Defines checkboxes for toggling visibility of one to many layers.",
                 "type": "object",
                 "additionalProperties": {
+                  "title": "Checkbox",
                   "type": "object",
                   "additionalProperties": false,
                   "properties": {
@@ -109,6 +110,7 @@
                       "description": "Used to define colors for the `staticColors` symbol type.",
                       "type": "array",
                       "items": {
+                        "title": "Static Color",
                         "type": "object",
                         "additionalProperties": false,
                         "properties": {
@@ -161,6 +163,7 @@
                 "description": "Defines the checkbox groups.",
                 "type": "array",
                 "items": {
+                  "title": "Group",
                   "type": "object",
                   "additionalProperties": false,
                   "properties": {

@@ -1,3 +1,0 @@
-## layerNames Type
-
-`string[]`

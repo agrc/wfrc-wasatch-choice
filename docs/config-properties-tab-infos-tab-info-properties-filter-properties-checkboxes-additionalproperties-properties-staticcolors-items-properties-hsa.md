@@ -1,3 +1,0 @@
-## hsa Type
-
-`string`

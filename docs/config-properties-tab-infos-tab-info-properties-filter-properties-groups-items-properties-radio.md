@@ -1,3 +1,0 @@
-## radio Type
-
-`boolean`

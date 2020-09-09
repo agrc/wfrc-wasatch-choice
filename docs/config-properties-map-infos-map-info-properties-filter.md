@@ -13,7 +13,7 @@
 
 ## layerNames
 
-Defines all of the layer names as they show up in the web map
+Defines all of the layer names as they show up in the web map. The key is a unique id (whatever you want) for the layer. This key is used elsewhere in the filter config. The value is the name of the layer as defined in the web map.
 
 
 `layerNames`
@@ -67,10 +67,10 @@ Defines the checkbox groups.
 `groups`
 
 -   is optional
--   Type: `object[]` ([Details](config-properties-map-infos-map-info-properties-filter-properties-groups-items.md))
+-   Type: `object[]` ([Group](config-properties-map-infos-map-info-properties-filter-properties-groups-group.md))
 -   cannot be null
 -   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups")
 
 ### groups Type
 
-`object[]` ([Details](config-properties-map-infos-map-info-properties-filter-properties-groups-items.md))
+`object[]` ([Group](config-properties-map-infos-map-info-properties-filter-properties-groups-group.md))

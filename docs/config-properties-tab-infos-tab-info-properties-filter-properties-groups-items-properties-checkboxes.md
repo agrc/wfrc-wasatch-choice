@@ -1,3 +1,0 @@
-## checkboxes Type
-
-`string[]`
