@@ -41,7 +41,7 @@
     "release": "standard-version",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "update-config-docs": "./node_modules/.bin/jsonschema2md -d public -o docs -h false -x - -n"
+    "update-config-docs": "del ./docs/** && jsonschema2md -d public -o docs -h false -x - -n"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -72,6 +72,7 @@
     "cypress": "^4.12.1",
     "cypress-pipe": "^2.0.0",
     "cz-conventional-changelog": "^3.2.0",
+    "del-cli": "^3.0.1",
     "env-cmd": "^10.1.0",
     "grunt": "^1.1.0",
     "grunt-contrib-clean": "^2.0.0",
