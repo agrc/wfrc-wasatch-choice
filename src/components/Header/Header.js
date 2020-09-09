@@ -21,7 +21,7 @@ export default props => {
       </h4>
       <Tabs />
       <a href={config.links.landingPage} className="heading__img">
-        <img src={(windowWidth >= config.MIN_DESKTOP_WIDTH) ? logo : logoSmall}
+        <img src={(windowWidth >= 1000) ? logo : logoSmall}
           alt="agrc logo" />
       </a>
     </div>
