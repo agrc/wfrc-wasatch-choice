@@ -1,3 +1,0 @@
-## useDefaultAGOLPopup Type
-
-`boolean`

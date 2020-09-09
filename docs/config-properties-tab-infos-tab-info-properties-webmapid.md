@@ -1,3 +1,0 @@
-## webMapId Type
-
-`string`

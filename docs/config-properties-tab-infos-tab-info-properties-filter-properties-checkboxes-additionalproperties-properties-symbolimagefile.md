@@ -1,3 +1,0 @@
-## symbolImageFile Type
-
-`string`

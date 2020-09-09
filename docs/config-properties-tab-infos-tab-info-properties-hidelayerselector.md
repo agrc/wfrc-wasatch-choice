@@ -1,3 +1,0 @@
-## hideLayerSelector Type
-
-`boolean`

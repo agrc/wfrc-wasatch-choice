@@ -1,3 +1,0 @@
-## symbolLabels Type
-
-`string[]`

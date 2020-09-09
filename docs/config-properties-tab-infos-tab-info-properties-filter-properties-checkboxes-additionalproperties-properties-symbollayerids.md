@@ -1,3 +1,0 @@
-## symbolLayerIds Type
-
-`string[]`
