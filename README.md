@@ -15,7 +15,7 @@ The app is configured via a few JSON files located at the root of the deployed p
 
 This is where all of the app configuration except the about widget is contained.
 
-See [docs/configSchema.md](docs/configSchema.md) for details on configuring this file. At runtime, the app validates `config.json` against this schema file and prints any errors to the console.
+See [docs/config.md](docs/config.md) for details on configuring this file. At runtime, the app validates `config.json` against this schema file and prints any errors to the console.
 
 #### Adding new maps
 
@@ -103,5 +103,5 @@ Tasks to be completed for each release:
 - [ ] Run a build and test (`npm run build` | `npm run build-stage`)
 - [ ] Deploy website (`grunt deploy-prod` | `grunt deploy-stage`)
   - `-prod` builds a .zip file that can be manually attached to the release on GitHub for the client to download.
-  - `-stage` pushes the app to [test.mapserv.utah.gov/wfrc](https://htest.mapserv.utah.gov/wfrc/)
+  - `-stage` pushes the app to [test.mapserv.utah.gov/wfrc](https://test.mapserv.utah.gov/wfrc/)
 - [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
