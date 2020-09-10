@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
 import './Filter.scss';
-import { loadModules} from 'esri-loader';
-import config from '../../config';
 import { Simple, Classes, LinePoint, Phase, Dynamic, Static } from './Symbols';
+import { useMapLayers } from './utils';
 
 
 const SYMBOLS = {
@@ -17,65 +16,6 @@ const SYMBOLS = {
 
 // used to preserve control state between tabs
 const CACHE = {};
-
-// Cache layer lookup objects so that we don't have the crawl
-// the same map multiple times and also to prevent any cached
-// filters to become the defaultDefinitionExpression value for a layer.
-const MAP_LAYERS = {};
-export const getLayersInMap = async map => {
-  const mapId = map.portalItem.id;
-  if (MAP_LAYERS[mapId]) {
-    return MAP_LAYERS[mapId];
-  }
-
-  const layerNameLookup = {};
-
-  const getSublayers = layer => {
-    layer.sublayers.forEach(subLayer => {
-      layerNameLookup[subLayer.title] = subLayer;
-
-      if (subLayer.sublayers) {
-        getSublayers(subLayer);
-      }
-    });
-  }
-
-  for (const layer of map.layers.items) {
-    layerNameLookup[layer.title] = layer;
-
-    await layer.when();
-    layer.sublayers && getSublayers(layer);
-  };
-
-  Object.keys(layerNameLookup).forEach(layerName => {
-    const layer = layerNameLookup[layerName];
-    layer.defaultDefinitionExpression = layer.definitionExpression || '1 = 1';
-  });
-
-  MAP_LAYERS[mapId] = layerNameLookup;
-
-  return layerNameLookup;
-};
-
-export const getLayers = async (layerNames, map) => {
-  console.log('Filter.getLayers');
-
-  const layerNameLookup = await getLayersInMap(map);
-
-  const layers = {};
-
-  Object.keys(layerNames).forEach(name => {
-    const layer = layerNameLookup[layerNames[name]];
-
-    if (!layer) {
-      console.error(`Layer: ${layerNames[name]} not found in web map!`);
-    }
-
-    layers[name] = layer;
-  });
-
-  return layers;
-}
 
 export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
   // translate the phase info into a definition query taking into account the selected phases
@@ -130,25 +70,7 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
 
 export default props => {
   const [ filterByPhasing, setFilterByPhasing ] = useState(false);
-  const [ layers, setLayers ] = useState();
-
-  // reset layer lookup when the web map is changed
-  useEffect(() => {
-    const getLayersForNewMap = async () => {
-      console.log('getLayersForNewMap');
-      const [ watchUtils ] = await loadModules(['esri/core/watchUtils'], config.ESRI_LOADER_CONFIG);
-      await watchUtils.whenOnce(props.mapView, "ready");
-      await props.mapView.map.when();
-
-      const layers = await getLayers(props.layerNames, props.mapView.map);
-      setLayers(layers);
-    };
-
-    if (props.mapView) {
-      setLayers();
-      getLayersForNewMap();
-    }
-  }, [props.layerNames, props.mapView]);
+  const layers = useMapLayers(props.mapView, props.layerNames);
 
   const mapIsLoaded = () => {
     return props.mapView && props.mapView.map && props.mapView.map.loaded && props.mapView.map.portalItem.id === props.webMapId;
