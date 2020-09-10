@@ -10,7 +10,9 @@ import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { Sherlock, MapServiceProvider } from './components/Sherlock';
-import Filter, { getLayersInMap } from './components/Filter/Filter';
+import Filter from './components/Filter/Filter';
+import QueryFilter from './components/Filter/QueryFilter';
+import { getLayersInMap } from './components/Filter/utils';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import esriModules from './esriModules';
 import { URLParamsContext, ACTION_TYPES } from './URLParams';
@@ -225,6 +227,20 @@ const App = () => {
               onReset={() => setResetFilter(true)}
               mapView={mapView}>
               <Filter {...currentTabConfig.filter}
+                reset={resetFilter}
+                mapView={mapView}
+                webMapId={currentTabConfig.webMapId}
+                />
+            </MapWidget> }
+            { currentTabConfig.queryFilter && <MapWidget
+              defaultOpen={config.openOnLoad.queryFilter}
+              name="Query Filter"
+              icon={faList}
+              position={0}
+              showReset={true}
+              onReset={() => setResetFilter(true)}
+              mapView={mapView}>
+              <QueryFilter {...currentTabConfig.queryFilter}
                 reset={resetFilter}
                 mapView={mapView}
                 webMapId={currentTabConfig.webMapId}

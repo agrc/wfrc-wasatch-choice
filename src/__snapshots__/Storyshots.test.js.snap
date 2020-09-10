@@ -957,6 +957,189 @@ exports[`Storyshots MapWidget Project Information 1`] = `
 </div>
 `;
 
+exports[`Storyshots QueryFilterField Default 1`] = `
+<div
+  className="query-filter"
+>
+  <div>
+    <b>
+      Funding Program
+    </b>
+    <br />
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      CMAQ
+       
+      <div
+        className="swatch"
+        style={
+          Object {
+            "backgroundColor": "rgb(255, 128, 0)",
+          }
+        }
+      />
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      STP
+       
+      <div
+        className="swatch"
+        style={
+          Object {
+            "backgroundColor": "rgb(20, 178, 179)",
+          }
+        }
+      />
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      TAP
+       
+      <div
+        className="swatch"
+        style={
+          Object {
+            "backgroundColor": "rgb(56, 168, 0)",
+          }
+        }
+      />
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Other
+       
+      <div
+        className="swatch"
+        style={
+          Object {
+            "backgroundColor": "rgb(255, 100, 155)",
+          }
+        }
+      />
+    </label>
+  </div>
+  <div>
+    <b>
+      Year
+    </b>
+    <br />
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Before 2020
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2020
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2021
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2022
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2023
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2024
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2025
+       
+    </label>
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      2026
+       
+    </label>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Symbols Classes - Breaks 1`] = `
 <div
   className="symbol-container"

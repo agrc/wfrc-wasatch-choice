@@ -1,4 +1,5 @@
-import { getPhaseQuery, getLayers, validateCheckboxLayerKeys } from './Filter';
+import { getPhaseQuery, validateCheckboxLayerKeys } from './Filter';
+import { getLayers } from './utils';
 
 
 describe('getPhaseQuery', () => {
