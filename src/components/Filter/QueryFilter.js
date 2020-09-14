@@ -107,7 +107,7 @@ export const QueryFilterField = ({
   }, [reset, initialState])
 
   return (
-    <div>
+    <div className="query-filter-field">
       <b>{label}</b>
       <br />
       {checkboxes.map(({ label, values, other, color }, index) => (
