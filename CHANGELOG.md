@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-7](https://github.com/agrc/wfrc/compare/v2.0.0-6...v2.0.0-7) (2020-09-14)
+
+
+### Features
+
+* implement reset for QueryFilter widget ([246d904](https://github.com/agrc/wfrc/commit/246d904d7d020277d0aa6743372c7ae4edd60d97)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* rough implementation of QueryFilter widget ([ddb02a0](https://github.com/agrc/wfrc/commit/ddb02a06ed86e5dcd4382ff8e39f4eab6d5d02f8)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+
+
+### Bug Fixes
+
+* create more separation between fields ([8a17cf4](https://github.com/agrc/wfrc/commit/8a17cf41691391041c4554f6a996b634d5782192))
+* don't update parent state within state change of child ([7c678ab](https://github.com/agrc/wfrc/commit/7c678ab50f24ed685f8c310570e2101750073510))
+* **build:** delete docs folder before generation ([de89f07](https://github.com/agrc/wfrc/commit/de89f07113bf2a7e73a30cec9956914c62ced947))
+* switch to smaller header logo sooner ([4ee5cb1](https://github.com/agrc/wfrc/commit/4ee5cb159b21162b56a436ae7878fe8bda9609a2))
+
 ## [2.0.0-6](https://github.com/agrc/wfrc/compare/v2.0.0-5...v2.0.0-6) (2020-08-31)
 
 
