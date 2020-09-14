@@ -36,7 +36,7 @@
           },
           "filter": {
             "title": "Filter",
-            "description": "Contains configs for the filter widget.",
+            "description": "Contains configs for the Filter widget.",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -190,6 +190,73 @@
                     "label",
                     "checkboxes"
                   ]
+                }
+              }
+            }
+          },
+          "queryFilter": {
+            "title": "QueryFilter",
+            "description": "Contains configs for the Query Filter widget.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "layerName": {
+                "description": "Defines the layer name that this widget is wired up to as it is defined in the web map",
+                "type": "string"
+              },
+              "fields": {
+                "description": "Contains a list of field objects that are associated with this widget.",
+                "type": "array",
+                "items": {
+                  "title": "Query Filter Field",
+                  "description": "Defines a field and associated data",
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "description": "The heading label for the field. Shows up in the app as a bold heading above the checkboxes.",
+                      "type": "string"
+                    },
+                    "fieldName": {
+                      "description": "The name of the field as it is defined in the layer.",
+                      "type": "string"
+                    },
+                    "fieldType": {
+                      "description": "Defines the field as either text or number. This is required for making valid SQL queries.",
+                      "type": "string",
+                      "enum": ["text", "number"]
+                    },
+                    "checkboxes": {
+                      "description": "The list of checkboxes and associated values.",
+                      "type": "array",
+                      "items": {
+                        "title": "Query Filter Checkbox",
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "values": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "color": {
+                            "description": "The rgb color of the legend swatch (e.g. rbg(255, 128, 0).",
+                            "type": "string"
+                          },
+                          "other": {
+                            "description": "Mark this as true to make this checkbox represent all other values that are not defined by the other checkboxes",
+                            "type": "boolean"
+                          }
+                        },
+                        "requiredProperties": ["label", "values"],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "requiredProperties": ["label", "fieldName", "fieldType", "checkboxes"],
+                  "additionalProperties": false
                 }
               }
             }
@@ -359,6 +426,9 @@
           "type": "boolean"
         },
         "filter": {
+          "type": "boolean"
+        },
+        "queryFilter": {
           "type": "boolean"
         }
       }
