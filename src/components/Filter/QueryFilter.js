@@ -40,6 +40,11 @@ export const getFieldQuery = (
     .filter(([_, checked]) => checked)
     .map(([label, _]) => label);
 
+  // return null if all checkboxes are checked (the default state)
+  if (checkedLabels.length === Object.entries(newState).length) {
+    return null;
+  }
+
   const checkedValues = getValuesFromLabels(checkedLabels);
   const isOtherChecked = checkedLabels.some(
     (label) => checkboxLookup[label].other
@@ -70,6 +75,7 @@ export const QueryFilterField = ({
   fieldType,
   checkboxes,
   onChange,
+  reset
 }) => {
   const initialState = Object.fromEntries(
     checkboxes.map(({ label }) => [label, true])
@@ -91,6 +97,13 @@ export const QueryFilterField = ({
       return newState;
     });
   };
+
+
+  React.useEffect(() => {
+    if (reset) {
+      setState(initialState);
+    }
+  }, [reset, initialState])
 
   return (
     <div>
@@ -117,33 +130,37 @@ const QueryFilter = ({ mapView, layerName, fields, reset }) => {
   const layersInput = React.useRef({ layerKey: layerName });
   const layers = useMapLayers(mapView, layersInput.current);
   const initialState = Object.fromEntries(fields.map(field => [field.label, null]));
-  const [ state, setState ] = React.useState(initialState);
+  const state = React.useRef(initialState);
 
   const mapLayer = layers ? layers.layerKey : null;
   const onChange = (label, newFieldQuery) => {
-    console.log("newFieldQuery", newFieldQuery);
-
-    setState(currentState => {
-      return {
-        ...currentState,
+    state.current = {
+      ...state.current,
         [label]: newFieldQuery
       };
-    });
+
+    updateLayerQuery(state.current);
   };
 
-  React.useEffect(() => {
-    const query = getLayerQuery(state);
+  const updateLayerQuery = React.useCallback(newState => {
+    const query = getLayerQuery(newState);
 
-    if (query) {
+    if (mapLayer && mapLayer.loaded) {
       console.log('query', query);
       mapLayer.definitionExpression = query;
     }
-  }, [state, mapLayer]);
+  }, [mapLayer]);
+
+  React.useEffect(() => {
+    if (reset) {
+      updateLayerQuery(initialState);
+    }
+  }, [reset, initialState, updateLayerQuery])
 
   return (
     <div className="query-filter">
       {fields.map((field, index) => (
-        <QueryFilterField key={index} {...field} onChange={onChange} />
+        <QueryFilterField key={index} {...field} reset={reset} onChange={onChange} />
       ))}
     </div>
   );
