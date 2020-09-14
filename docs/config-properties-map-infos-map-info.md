@@ -11,6 +11,7 @@
 | [hideLayerSelector](#hideLayerSelector)     | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")     |
 | [useDefaultAGOLPopup](#useDefaultAGOLPopup) | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup") |
 | [filter](#filter)                           | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter")                           |
+| [queryFilter](#queryFilter)                 | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")                 |
 
 ## name
 
@@ -78,7 +79,7 @@ Determines whether the layer selector widget is displayed or not
 
 ## filter
 
-Contains configs for the filter widget.
+Contains configs for the Filter widget.
 
 
 `filter`
@@ -91,3 +92,19 @@ Contains configs for the filter widget.
 ### filter Type
 
 `object` ([Filter](config-properties-map-infos-map-info-properties-filter.md))
+
+## queryFilter
+
+Contains configs for the Query Filter widget.
+
+
+`queryFilter`
+
+-   is optional
+-   Type: `object` ([QueryFilter](config-properties-map-infos-map-info-properties-queryfilter.md))
+-   cannot be null
+-   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")
+
+### queryFilter Type
+
+`object` ([QueryFilter](config-properties-map-infos-map-info-properties-queryfilter.md))
