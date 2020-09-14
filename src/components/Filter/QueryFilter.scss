@@ -1,16 +1,19 @@
 .query-filter {
-  label {
-    margin-right: 1rem;
-    display: inline-flex;
-    align-items: center;
-    input {
-      margin-right: .25rem;
-    }
-    .swatch {
-      height: 1rem;
-      width: 1rem;
-      display: inline-block;
-      margin-left: .25rem;
+  .query-filter-field {
+    margin-bottom: .5rem;
+    label {
+      margin-right: 1rem;
+      display: inline-flex;
+      align-items: center;
+      input {
+        margin-right: .25rem;
+      }
+      .swatch {
+        height: 1rem;
+        width: 1rem;
+        display: inline-block;
+        margin-left: .25rem;
+      }
     }
   }
 }
