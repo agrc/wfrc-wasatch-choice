@@ -58,6 +58,20 @@ describe('getFieldQuery', () => {
       )
     ).toEqual('(FieldName NOT IN (\'1\', \'2\', \'3\'))');
   });
+  it('returns null if all are checked', () => {
+    expect(
+      getFieldQuery(
+        'FieldName',
+        TEXT,
+        { label: true, label2: true, label3: true },
+        {
+          label: { values: ['1', '2'] },
+          label2: { values: ['3'] },
+          label3: { other: true },
+        }
+      )
+    ).toBeNull();
+  });
 });
 
 describe('getLayerQuery', () => {
