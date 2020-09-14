@@ -92,12 +92,13 @@ export const QueryFilterField = ({
 
       newState[label] = !newState[label];
 
-      onChange(label, getFieldQuery(fieldName, fieldType, newState, checkboxLookup));
-
       return newState;
     });
   };
 
+  React.useEffect(() => {
+    onChange(label, getFieldQuery(fieldName, fieldType, state, checkboxLookup));
+  }, [state, onChange, label, fieldName, fieldType, checkboxLookup]);
 
   React.useEffect(() => {
     if (reset) {
@@ -136,8 +137,8 @@ const QueryFilter = ({ mapView, layerName, fields, reset }) => {
   const onChange = (label, newFieldQuery) => {
     state.current = {
       ...state.current,
-        [label]: newFieldQuery
-      };
+      [label]: newFieldQuery
+    };
 
     updateLayerQuery(state.current);
   };
