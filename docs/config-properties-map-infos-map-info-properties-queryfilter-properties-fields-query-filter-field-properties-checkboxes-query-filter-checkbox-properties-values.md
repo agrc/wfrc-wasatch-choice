@@ -1,0 +1,3 @@
+## values Type
+
+`string[]`
