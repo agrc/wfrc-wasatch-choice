@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-8](https://github.com/agrc/wfrc/compare/v2.0.0-7...v2.0.0-8) (2020-09-15)
+
+
+### Features
+
+* force-show scrollbars in map widgets when overflowed ([95cf553](https://github.com/agrc/wfrc/commit/95cf5532172edfa4e3cec97c35db01602cec4ae1)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* make query filter sections foldable ([578a835](https://github.com/agrc/wfrc/commit/578a83553e6d0b70cd16264baddd4df933cd6626)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* use map name in query filter panel name ([e5df563](https://github.com/agrc/wfrc/commit/e5df56366b8e1a6e11c5f44fe2a276f50f36e0ba)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+
+
+### Bug Fixes
+
+* switch to vertical layout for checkboxes ([6e61976](https://github.com/agrc/wfrc/commit/6e6197689d7a56dd61e8569cc634b7f5081f5981))
+
 ## [2.0.0-7](https://github.com/agrc/wfrc/compare/v2.0.0-6...v2.0.0-7) (2020-09-14)
 
 
