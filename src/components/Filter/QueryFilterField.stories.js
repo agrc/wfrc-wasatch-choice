@@ -1,5 +1,6 @@
 import React from "react";
 import { QueryFilterField } from "./QueryFilter";
+import { MapWidgetContext } from '../MapWidget/MapWidget';
 
 export default {
   title: "QueryFilterField",
@@ -78,8 +79,12 @@ const fields = [
 ];
 
 export const Default = () => (
-  <div className="query-filter">
-    <QueryFilterField onChange={() => {}} {...fields[0]}></QueryFilterField>
-    <QueryFilterField onChange={() => {}} {...fields[1]}></QueryFilterField>
+  <div>
+    <MapWidgetContext.Provider value={{ updateScrollbar: () => {} }}>
+      <div className="query-filter">
+        <QueryFilterField onChange={() => {}} {...fields[0]}></QueryFilterField>
+        <QueryFilterField onChange={() => {}} {...fields[1]}></QueryFilterField>
+      </div>
+    </MapWidgetContext.Provider>
   </div>
 );
