@@ -6,9 +6,7 @@ describe('tabs', () => {
     zoomInButton.click();
     zoomInButton.click();
 
-    cy.waitForMapLoaded();
-
-    cy.getMapExtent().should('ok').as('originalExtent');
+    cy.getMapExtent().as('originalExtent');
 
     cy.findByLabelText('Land Use Tab').click();
 
