@@ -20,7 +20,7 @@ describe('sherlock', () => {
 
     cy.findByPlaceholderText(/Search/i).type('san');
 
-    cy.findByRole('option', { name: /san dy/i }).click();
+    cy.findByRole('option', { name: /sandy/i }).click();
 
     cy.getMapExtent().should('equal', SANDY_EXTENT);
   });
