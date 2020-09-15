@@ -1,11 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Button, Card, CardHeader, CardBody } from 'reactstrap';
+import React, { useState, useRef, useEffect, createContext } from 'react';
+import { Button, Card, CardHeader } from 'reactstrap';
 import './MapWidget.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PerfectScrollbar from 'perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
+
+
+export const MapWidgetContext = createContext();
 
 
 export default props => {
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
+  const scrollBar = useRef();
+  const scrollBarContainer = useRef();
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -29,31 +36,47 @@ export default props => {
     }
   }, [buttonDiv, props.mapView]);
 
+  const updateScrollbar = () => scrollBar.current.update();
+
+  React.useEffect(() => {
+    if (scrollBarContainer.current) {
+      scrollBar.current = new PerfectScrollbar(scrollBarContainer.current, { suppressScrollX: true });
+    }
+
+    return () => {
+      if (scrollBar.current) {
+        scrollBar.current.destroy();
+      }
+    };
+  }, []);
+
   return (
     <div>
-      <div className="map-widget-button esri-widget--button" ref={buttonDiv}
-        onClick={toggle} title={props.name}>
-        <FontAwesomeIcon icon={props.icon} />
-      </div>
-      <Card style={cardStyle} className="map-widget-card">
-        <CardHeader>
-          {props.name}
-          <div className="buttons-container">
-            { props.showReset &&
-              <Button
-                className="reset-button"
-                color="link"
-                onClick={props.onReset}>
-                <small>reset</small>
-              </Button>
-            }
-            <Button close onClick={toggle} />
+      <MapWidgetContext.Provider value={{ updateScrollbar }}>
+        <div className="map-widget-button esri-widget--button" ref={buttonDiv}
+          onClick={toggle} title={props.name}>
+          <FontAwesomeIcon icon={props.icon} />
+        </div>
+        <Card style={cardStyle} className="map-widget-card">
+          <CardHeader>
+            {props.name}
+            <div className="buttons-container">
+              { props.showReset &&
+                <Button
+                  className="reset-button"
+                  color="link"
+                  onClick={props.onReset}>
+                  <small>reset</small>
+                </Button>
+              }
+              <Button close onClick={toggle} />
+            </div>
+          </CardHeader>
+          <div ref={scrollBarContainer} className="card-body">
+            {props.children}
           </div>
-        </CardHeader>
-        <CardBody>
-          {props.children}
-        </CardBody>
-      </Card>
+        </Card>
+      </MapWidgetContext.Provider>
     </div>
   );
 };

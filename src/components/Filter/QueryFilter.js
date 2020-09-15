@@ -4,6 +4,7 @@ import { Button, Collapse, Label } from "reactstrap";
 import "./QueryFilter.scss";
 import { faChevronRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MapWidgetContext } from '../MapWidget/MapWidget';
 
 export const NUMBER = 'number';
 export const TEXT = 'text';
@@ -88,6 +89,7 @@ export const QueryFilterField = ({
   );
   const [ isOpen, setIsOpen ] = React.useState(openOnLoad);
   const [state, setState] = React.useState(initialState);
+  const { updateScrollbar } = React.useContext(MapWidgetContext);
 
   const onCheckboxChange = (label) => {
     setState((currentState) => {
@@ -117,7 +119,7 @@ export const QueryFilterField = ({
           <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />{label}
       </Button>
       <br />
-      <Collapse isOpen={isOpen}>
+      <Collapse isOpen={isOpen} onEntered={updateScrollbar} onExited={updateScrollbar}>
         {checkboxes.map(({ label, values, other, color }, index) => (
           <Label key={index} check>
             <input
