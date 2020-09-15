@@ -4,12 +4,13 @@
 
 # Query Filter Field Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                         |
-| :------------------------ | -------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [label](#label)           | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-label.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/label")           |
-| [fieldName](#fieldName)   | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldname.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldName")   |
-| [fieldType](#fieldType)   | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldtype.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldType")   |
-| [checkboxes](#checkboxes) | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes") |
+| Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                         |
+| :------------------------ | --------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [label](#label)           | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-label.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/label")           |
+| [openOnLoad](#openOnLoad) | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/openOnLoad") |
+| [fieldName](#fieldName)   | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldname.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldName")   |
+| [fieldType](#fieldType)   | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldtype.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldType")   |
+| [checkboxes](#checkboxes) | `array`   | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes") |
 
 ## label
 
@@ -26,6 +27,22 @@ The heading label for the field. Shows up in the app as a bold heading above the
 ### label Type
 
 `string`
+
+## openOnLoad
+
+Controls whether or not the field section is open or closed by default
+
+
+`openOnLoad`
+
+-   is optional
+-   Type: `boolean`
+-   cannot be null
+-   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/openOnLoad")
+
+### openOnLoad Type
+
+`boolean`
 
 ## fieldName
 

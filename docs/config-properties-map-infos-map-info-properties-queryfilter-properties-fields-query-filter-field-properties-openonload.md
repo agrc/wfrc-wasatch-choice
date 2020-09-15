@@ -1,0 +1,3 @@
+## openOnLoad Type
+
+`boolean`
