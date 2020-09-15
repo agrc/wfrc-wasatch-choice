@@ -922,6 +922,7 @@
         "fields": [
           {
             "label": "Funding Program",
+            "openOnLoad": true,
             "fieldName": "MSTR_PIN_D",
             "fieldType": "text",
             "checkboxes": [
@@ -958,6 +959,7 @@
           },
           {
             "label": "Year",
+            "openOnLoad": false,
             "fieldName": "FORECAST_S",
             "fieldType": "number",
             "checkboxes": [
@@ -1011,6 +1013,7 @@
           },
           {
             "label": "Status",
+            "openOnLoad": false,
             "fieldName": "PIN_STAT_N",
             "fieldType": "text",
             "checkboxes": [
@@ -1051,6 +1054,7 @@
           },
           {
             "label": "Type",
+            "openOnLoad": false,
             "fieldName": "PROJ_TYP_N",
             "fieldType": "text",
             "checkboxes": [

@@ -1,7 +1,9 @@
 import React from "react";
 import { useMapLayers } from "./utils";
-import { Label } from "reactstrap";
+import { Button, Collapse, Label } from "reactstrap";
 import "./QueryFilter.scss";
+import { faChevronRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const NUMBER = 'number';
 export const TEXT = 'text';
@@ -71,6 +73,7 @@ export const getFieldQuery = (
 
 export const QueryFilterField = ({
   label,
+  openOnLoad,
   fieldName,
   fieldType,
   checkboxes,
@@ -83,7 +86,7 @@ export const QueryFilterField = ({
   const checkboxLookup = Object.fromEntries(
     checkboxes.map((checkbox) => [checkbox.label, checkbox])
   );
-
+  const [ isOpen, setIsOpen ] = React.useState(openOnLoad);
   const [state, setState] = React.useState(initialState);
 
   const onCheckboxChange = (label) => {
@@ -108,21 +111,27 @@ export const QueryFilterField = ({
 
   return (
     <div className="query-filter-field">
-      <b>{label}</b>
+      <Button
+        color="link"
+        onClick={() => setIsOpen(current => !current)}>
+          <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />{label}
+      </Button>
       <br />
-      {checkboxes.map(({ label, values, other, color }, index) => (
-        <Label key={index} check>
-          <input
-            type="checkbox"
-            checked={state[label]}
-            onChange={() => onCheckboxChange(label)}
-          />
-          {label}{" "}
-          {color ? (
-            <div className="swatch" style={{ backgroundColor: color }}></div>
-          ) : null}
-        </Label>
-      ))}
+      <Collapse isOpen={isOpen}>
+        {checkboxes.map(({ label, values, other, color }, index) => (
+          <Label key={index} check>
+            <input
+              type="checkbox"
+              checked={state[label]}
+              onChange={() => onCheckboxChange(label)}
+            />
+            {label}{" "}
+            {color ? (
+              <div className="swatch" style={{ backgroundColor: color }}></div>
+            ) : null}
+          </Label>
+        ))}
+      </Collapse>
     </div>
   );
 };
