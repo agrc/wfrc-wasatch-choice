@@ -9,6 +9,7 @@ export default {
 const fields = [
   {
     label: "Funding Program",
+    openOnLoad: true,
     fieldName: "MSTR_PIN",
     fieldType: "text",
     checkboxes: [
@@ -36,6 +37,7 @@ const fields = [
   },
   {
     label: "Year",
+    openOnLoad: false,
     fieldName: "FORECAST",
     fieldType: "number",
     checkboxes: [

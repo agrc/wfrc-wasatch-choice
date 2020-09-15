@@ -216,6 +216,10 @@
                       "description": "The heading label for the field. Shows up in the app as a bold heading above the checkboxes.",
                       "type": "string"
                     },
+                    "openOnLoad": {
+                      "description": "Controls whether or not the field section is open or closed by default",
+                      "type": "boolean"
+                    },
                     "fieldName": {
                       "description": "The name of the field as it is defined in the layer.",
                       "type": "string"
@@ -255,7 +259,7 @@
                       }
                     }
                   },
-                  "requiredProperties": ["label", "fieldName", "fieldType", "checkboxes"],
+                  "requiredProperties": ["label", "openOnLoad", "fieldName", "fieldType", "checkboxes"],
                   "additionalProperties": false
                 }
               }
