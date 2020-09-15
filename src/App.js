@@ -234,7 +234,7 @@ const App = () => {
             </MapWidget> }
             { currentTabConfig.queryFilter && <MapWidget
               defaultOpen={config.openOnLoad.queryFilter}
-              name="Query Filter"
+              name={`${currentTabConfig.name} Filter`}
               icon={faList}
               position={0}
               showReset={true}
