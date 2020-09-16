@@ -1,6 +1,9 @@
 import React from 'react';
 import { Validator } from 'jsonschema';
 import { URLParamsContext } from './URLParams';
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 
 
 const SELECTION_COLOR = [75, 255, 217];
@@ -59,6 +62,21 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
   } catch (error) {
     console.error('There is an error in config.json!', error);
   }
+
+  i18n
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+      detection: {
+        order: ['navigator'], // only look at the navigator object to determine locale
+        caches: [] // disable locale caching
+      },
+      resources: appConfigs.translations,
+      interpolation: {
+        escapeValue: false
+      },
+      fallbackLng: 'en'
+    });
 
   // apply quad word from env
   Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', process.env.REACT_APP_DISCOVER)));
