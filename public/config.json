@@ -1175,13 +1175,27 @@
       "translation": {
         "visionMapTitle": "Vision",
         "appTitle": "Wasatch Choice Map",
-        "tagLine": "#wherematters"
+        "tagLine": "#wherematters",
+        "mapTabsDialog": {
+          "title": "Configure Map Tabs",
+          "availableHeader": "Other Available Maps",
+          "selectedHeader": "Maps Displayed",
+          "finishButton": "Finish",
+          "maxMessage": "A maximum of five tabs may be selected."
+        }
       }
     },
     "es": {
       "translation": {
         "visionMapTitle": "Visión",
-        "appTitle": "Visión regional de Wasatch Choice"
+        "appTitle": "Visión regional de Wasatch Choice",
+        "mapTabsDialog": {
+          "title": "Configurar Pestañas de Mapa",
+          "availableHeader": "Otros Mapas Disponibles",
+          "selectedHeader": "Mapas Mostrados",
+          "finishButton": "Terminar",
+          "maxMessage": "Se puede seleccionar un máximo de cinco pestañas."
+        }
       }
     }
   }

@@ -18,8 +18,8 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         // add a static id so that a random one doesn't break snapshot tests
         id="tab-picker"
         lang={{
-          availableHeader: 'Other Available Maps',
-          selectedHeader: `Maps Displayed (max=${config.MAX_TABS_ALLOWED})`
+          availableHeader: t('trans:mapTabsDialog.availableHeader'),
+          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.MAX_TABS_ALLOWED})`
         }}
         onChange={setSelectedIds}
         options={options}
@@ -29,7 +29,7 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         showOrderButtons={true}
       />
       <br></br>
-      { maxReached && <Alert color="warning">A maximum of five tabs may be selected.</Alert> }
+      { maxReached && <Alert color="warning">{t('trans:mapTabsDialog.maxMessage')}</Alert> }
     </>
   );
 };
