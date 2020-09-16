@@ -2,7 +2,7 @@
   "$schema": "./config.schema.json",
   "mapInfos": {
     "vision": {
-      "name": "Vision",
+      "name": "trans:visionMapTitle",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
@@ -1165,10 +1165,24 @@
     "landingPage": "https://wfrc.org/vision-plans/wasatch-choice-2050/",
     "tagLine": ""
   },
-  "tagLine": "#wherematters",
   "openOnLoad": {
     "projectInfo": true,
     "filter": true,
     "queryFilter": true
+  },
+  "translations": {
+    "en": {
+      "translation": {
+        "visionMapTitle": "Vision",
+        "appTitle": "Wasatch Choice Map",
+        "tagLine": "#wherematters"
+      }
+    },
+    "es": {
+      "translation": {
+        "visionMapTitle": "Visión",
+        "appTitle": "Visión regional de Wasatch Choice"
+      }
+    }
   }
 }

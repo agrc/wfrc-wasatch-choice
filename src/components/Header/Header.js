@@ -6,18 +6,21 @@ import config from '../../config';
 import Tabs from '../Tabs/Tabs';
 import 'typeface-montserrat';
 import { useWindowWidth } from '../../hooks';
+import { useSpecialTranslation } from '../../i18n';
 
 
 export default props => {
+  const t = useSpecialTranslation();
+
   const windowWidth = useWindowWidth();
 
   return (
     <div className="app__header">
       <h4 className="header__heading">
-        <span>{props.title}</span>
+        <span>{t(props.title)}</span>
         { windowWidth >= 410 && ((config.links.tagLine.length > 0) ?
-          <a className="heading__tag-line" href={config.links.tagLine}>{config.tagLine}</a> :
-          <span className="heading__tag-line">{config.tagLine}</span>) }
+          <a className="heading__tag-line" href={config.links.tagLine}>{t('trans:tagLine')}</a> :
+          <span className="heading__tag-line">{t('trans:tagLine')}</span>) }
       </h4>
       <Tabs />
       <a href={config.links.landingPage} className="heading__img">

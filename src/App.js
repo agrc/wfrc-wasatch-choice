@@ -16,6 +16,7 @@ import { getLayersInMap } from './components/Filter/utils';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
 import esriModules from './esriModules';
 import { URLParamsContext, ACTION_TYPES } from './URLParams';
+import { useSpecialTranslation } from './i18n';
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
   const [highlight, setHighlight] = React.useState(null);
   const currentTabConfig = useCurrentTabConfig();
   const [urlParams, dispatchURLParams] = React.useContext(URLParamsContext);
+  const t = useSpecialTranslation();
 
   const quadWord = process.env.REACT_APP_DISCOVER;
   const version = process.env.REACT_APP_VERSION;
@@ -206,13 +208,13 @@ const App = () => {
   React.useEffect(() => {
     // reset graphics on tab change
     setSelectedGraphics([]);
-  }, [currentTabConfig, setSelectedGraphics])
+  }, [currentTabConfig, setSelectedGraphics]);
 
   return (
     <div className="app">
       { currentTabConfig &&
         <>
-          <Header title="Wasatch Choice Map" />
+          <Header title={t('trans:appTitle')} />
           <Sidebar toggleSidebar={toggleSidebar} isOpen={!urlParams.sideBarClosed}>
             <About version={version} />
           </Sidebar>

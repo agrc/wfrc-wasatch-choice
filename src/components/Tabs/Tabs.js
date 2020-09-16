@@ -6,6 +6,7 @@ import TabPicker from './TabPicker';
 import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
+import { useSpecialTranslation } from '../../i18n';
 
 
 export default props => {
@@ -17,6 +18,7 @@ export default props => {
   });
   const [ modalIsOpen, setModalIsOpen ] = React.useState(false);
   const [ maxReached, setMaxReached ] = React.useState(false);
+  const t = useSpecialTranslation();
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
@@ -38,9 +40,9 @@ export default props => {
       <NavItem>
         <NavLink
           className={(currentTabConfig.id === value.id) ? "active" : null}
-          onClick={onClick.bind(null, value.id)} aria-label={`${value.name} Tab`}
+          onClick={onClick.bind(null, value.id)} aria-label={`${t(value.name)} Tab`}
         >
-          {value.name}
+          {t(value.name)}
         </NavLink>
       </NavItem>
     );

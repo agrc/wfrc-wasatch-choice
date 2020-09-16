@@ -1,6 +1,21 @@
 {
   "$id": "https://wfrc.org/wasatch-choice-map/config.schema.json",
   "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "definitions": {
+    "translation": {
+      "type": "object",
+      "properties": {
+        "translation": {
+          "title": "Translation",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "required": ["appTitle"]
+        }
+      }
+    }
+  },
   "title": "WFRC App",
   "type": "object",
   "additionalProperties": false,
@@ -417,10 +432,6 @@
         }
       }
     },
-    "tagLine": {
-      "description": "The text for the tag line element",
-      "type": "string"
-    },
     "openOnLoad": {
       "description": "Controls whether specific map widgets default to be open on page load",
       "type": "object",
@@ -437,6 +448,20 @@
         }
       }
     },
+    "translations": {
+      "description": "Contains the translated strings used in the app. Falls back to `en` if there is no other translation. Most strings in the other configs can be translated by using this format: `trans:<key>`. For example: `trans:visionMapTitle`.",
+      "title": "Translations",
+      "type": "object",
+      "properties": {
+        "en": {
+          "$ref": "#/definitions/translation"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/translation"
+      },
+      "required": ["en"]
+    },
     "$schema": {
       "description": "This should be set to https://wfrc.org/wasatch-choice-map/config.schema.json",
       "type": "string",
@@ -450,6 +475,7 @@
     "minimumLegendSizes",
     "defaultExtent",
     "links",
-    "openOnLoad"
+    "openOnLoad",
+    "translations"
   ]
 }

@@ -3,11 +3,13 @@ import DualListBox from 'react-dual-listbox';
 import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
 import { Alert } from 'reactstrap';
 import config from '../../config';
+import { useSpecialTranslation } from '../../i18n';
 
 
 const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
+  const t = useSpecialTranslation();
   const options = Object.keys(mapInfos).map(id => {
-    return { value: id, label: mapInfos[id].name };
+    return { value: id, label: t(mapInfos[id].name) };
   });
 
   return (
