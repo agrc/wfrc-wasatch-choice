@@ -11,8 +11,10 @@
     "downarrow",
     "fontawesome",
     "fortawesome",
+    "languagedetector",
     "listbox",
     "reactstrap",
+    "scrollbar",
     "testid",
     "wherematters"
   ]
