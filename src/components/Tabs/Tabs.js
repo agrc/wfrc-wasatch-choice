@@ -84,7 +84,7 @@ export default props => {
         axis="x"
       />
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Configure Map Tabs</ModalHeader>
+        <ModalHeader toggle={toggleModal}>{t('trans:mapTabsDialog.title')}</ModalHeader>
         <ModalBody>
           <TabPicker
             mapInfos={config.mapInfos}
@@ -94,7 +94,7 @@ export default props => {
           />
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggleModal}>Finish</Button>
+          <Button color="primary" onClick={toggleModal}>{t('trans:mapTabsDialog.finishButton')}</Button>
         </ModalFooter>
       </Modal>
     </div>

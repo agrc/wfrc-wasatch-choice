@@ -3,16 +3,19 @@
   "$schema": "http://json-schema.org/draft/2019-09/schema#",
   "definitions": {
     "translation": {
+      "title": "Translation",
       "type": "object",
       "properties": {
-        "translation": {
-          "title": "Translation",
+        "mapTabsDialog": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "required": ["appTitle"]
+          "required": ["title", "availableHeader", "selectedHeader", "maxMessage"]
         }
+      },
+      "additionalProperties": {
+        "type": "string"
       }
     }
   },
@@ -454,11 +457,30 @@
       "type": "object",
       "properties": {
         "en": {
-          "$ref": "#/definitions/translation"
+          "type": "object",
+          "properties": {
+            "translation": {
+              "$ref": "#/definitions/translation",
+              "required": [
+                "appTitle",
+                "tagLine",
+                "mapTabsDialog"
+              ]
+            }
+          },
+          "required": ["translation"],
+          "additionalProperties": false
         }
       },
       "additionalProperties": {
-        "$ref": "#/definitions/translation"
+        "type": "object",
+        "properties": {
+          "translation": {
+            "$ref": "#/definitions/translation"
+          }
+        },
+        "required": ["translation"],
+        "additionalProperties": false
       },
       "required": ["en"]
     },

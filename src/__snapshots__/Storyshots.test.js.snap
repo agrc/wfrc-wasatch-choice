@@ -690,7 +690,7 @@ exports[`Storyshots Filter Transportation 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter Vision 1`] = `
+exports[`Storyshots Filter trans:visionMapTitle 1`] = `
 <div
   className="filter"
 >
