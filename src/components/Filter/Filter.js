@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
+import { useSpecialTranslation } from '../../i18n';
 import './Filter.scss';
 import { Simple, Classes, LinePoint, Phase, Dynamic, Static } from './Symbols';
 import { useMapLayers } from './utils';
@@ -155,6 +156,7 @@ const RadioGroup = props => {
   const [ visible, setVisible ] = useState(false);
   const defaultRadioButton = props.checkboxes[0];
   const [ selectedRadioButton, setSelectedRadioButton ] = useState(defaultRadioButton);
+  const t = useSpecialTranslation();
 
   const selectedRadioButtonCachedProperty = `${props.globalKey}_selectedRadioButton`;
   const onRadioChange = (checkboxName, skipCache) => {
@@ -205,7 +207,7 @@ const RadioGroup = props => {
           <Input type="checkbox"
             checked={visible}
             onChange={onToggleVisible} />
-          {props.label}
+          {t(props.label)}
         </Label>
       </FormGroup>
       <div className="child-checkbox-container">
@@ -221,7 +223,7 @@ const RadioGroup = props => {
                   name={props.label}
                   checked={selectedRadioButton === checkboxName}
                   onChange={() => onRadioChange(checkboxName)} />
-                  {checkboxConfig.label}
+                  {t(checkboxConfig.label)}
               </Label>
               { checkboxConfig.symbol && props.layers &&
                 <Symbol
@@ -239,6 +241,7 @@ const RadioGroup = props => {
 const Parent = props => {
   const defaultCheckedChildren = props.checkboxes.map(name => name);
   const [ checkedChildren, setCheckedChildren ] = useState(defaultCheckedChildren);
+  const t = useSpecialTranslation();
 
   const onChildChanged = name => {
     // create new copy because you shouldn't mutate state objects
@@ -330,14 +333,14 @@ const Parent = props => {
             checked={checkedChildren.length === props.checkboxes.length}
             onChange={onParentChange}
             ref={ref => ref && (ref.indeterminate = indeterminate)} />
-            {props.label}
+            {t(props.label)}
         </Label>
         { props.showFilterByPhasing &&
           <Label check>
             <Input type="checkbox"
               checked={props.filterByPhasing}
               onChange={() => props.setFilterByPhasing(!props.filterByPhasing)} />
-            <small>(filter by phasing)</small>
+            <small>{`(${t('trans:filterByPhasing')})`}</small>
           </Label>
         }
       </FormGroup>
@@ -360,6 +363,7 @@ const Parent = props => {
 
 const Child = props => {
   const [ internalIsChecked, setInternalIsChecked ] = useState(true);
+  const t = useSpecialTranslation();
 
   const onChange = ({ skipCache }) => {
     if (!skipCache && props.globalKey) {
@@ -402,7 +406,7 @@ const Child = props => {
           type="checkbox"
           checked={checked}
           onChange={onChange}/>
-          {props.label}
+          {t(props.label)}
       </Label>
       { props.symbol && props.layersLookup &&
       <Symbol

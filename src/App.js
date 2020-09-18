@@ -162,7 +162,7 @@ const App = () => {
 
   const sherlockConfig = {
     provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
-    placeHolder: config.sherlock.placeHolder,
+    placeHolder: t(config.sherlock.placeHolder),
     onSherlockMatch
   };
 
@@ -222,7 +222,7 @@ const App = () => {
             <MapView {...mapOptions} />
             { currentTabConfig.filter && <MapWidget
               defaultOpen={config.openOnLoad.filter}
-              name="Filter"
+              name={t('trans:filter')}
               icon={faList}
               position={0}
               showReset={true}
@@ -236,7 +236,7 @@ const App = () => {
             </MapWidget> }
             { currentTabConfig.queryFilter && <MapWidget
               defaultOpen={config.openOnLoad.queryFilter}
-              name={`${currentTabConfig.name} Filter`}
+              name={`${t(currentTabConfig.name)} ${t('trans:filter')}`}
               icon={faList}
               position={0}
               showReset={true}

@@ -4,6 +4,7 @@ import './MapWidget.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import { useSpecialTranslation } from '../../i18n';
 
 
 export const MapWidgetContext = createContext();
@@ -13,6 +14,7 @@ export default props => {
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
   const scrollBar = useRef();
   const scrollBarContainer = useRef();
+  const t = useSpecialTranslation();
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -66,7 +68,7 @@ export default props => {
                   className="reset-button"
                   color="link"
                   onClick={props.onReset}>
-                  <small>reset</small>
+                  <small>{t('trans:reset')}</small>
                 </Button>
               }
               <Button close onClick={toggle} />

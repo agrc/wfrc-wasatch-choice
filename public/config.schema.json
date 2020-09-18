@@ -15,7 +15,14 @@
         }
       },
       "additionalProperties": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object"
+          }
+        ]
       }
     }
   },
@@ -464,7 +471,11 @@
               "required": [
                 "appTitle",
                 "tagLine",
-                "mapTabsDialog"
+                "mapTabsDialog",
+                "searchPlaceholder",
+                "filter",
+                "filterByPhasing",
+                "reset"
               ]
             }
           },
