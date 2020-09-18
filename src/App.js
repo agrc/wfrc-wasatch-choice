@@ -250,7 +250,7 @@ const App = () => {
             </MapWidget> }
             { !currentTabConfig.useDefaultAGOLPopup && <MapWidget
               defaultOpen={config.openOnLoad.projectInfo}
-              name="Project Information"
+              name={t('trans:projectInformation')}
               icon={faHandPointer}
               position={1}
               mapView={mapView}>

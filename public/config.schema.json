@@ -475,7 +475,9 @@
                 "searchPlaceholder",
                 "filter",
                 "filterByPhasing",
-                "reset"
+                "reset",
+                "projectInformation",
+                "projectInformationPrompt"
               ]
             }
           },
