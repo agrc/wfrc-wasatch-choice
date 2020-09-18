@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-9](https://github.com/agrc/wfrc/compare/v2.0.0-8...v2.0.0-9) (2020-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* `config.tagLine` was moved to `config.translations.en.translation.tagLine`
+
+### Features
+
+* add i18n for filter widget and search placeholder ([23e0b56](https://github.com/agrc/wfrc/commit/23e0b566f705c3c1581e64bb6ca49daba1d19e9e))
+* i18n about widget ([454a6c5](https://github.com/agrc/wfrc/commit/454a6c57accb120fe4b9d226facb50149107a9b8)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* i18n for map config dialog ([a731ea8](https://github.com/agrc/wfrc/commit/a731ea85d67b6eae9e6008789fbe880e3610cb93)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* i18n for project info widget ([bb24fba](https://github.com/agrc/wfrc/commit/bb24fba4bd3bd348f4d5ea01f1367dca08084cb3)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* **tooling:** add spanish language checker dictionary ([5d800be](https://github.com/agrc/wfrc/commit/5d800be1225a541a99588f1ca5b1b4b37b9c7156))
+* implement i18n framework ([d952813](https://github.com/agrc/wfrc/commit/d9528136e248df9555ea014e2a47af34a9518d5e)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+
+
+### Bug Fixes
+
+* move i18n init to better spot for tests ([b6ad0fc](https://github.com/agrc/wfrc/commit/b6ad0fc2002aea2c304bf771f4f4cb00602f3467))
+
 ## [2.0.0-8](https://github.com/agrc/wfrc/compare/v2.0.0-7...v2.0.0-8) (2020-09-15)
 
 
