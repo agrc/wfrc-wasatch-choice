@@ -1190,7 +1190,9 @@
         "transFilter": {
           "transportation": "Transportation",
           "roads": "Roads"
-        }
+        },
+        "projectInformation": "Project Information",
+        "projectInformationPrompt": "Click on a feature for more information"
       }
     },
     "es": {
@@ -1211,7 +1213,9 @@
         "transFilter": {
           "transportation": "Transporte",
           "roads": "Carreteras"
-        }
+        },
+        "projectInformation": "Información del Proyecto",
+        "projectInformationPrompt": "Haga clic en una función para obtener más información"
       }
     }
   }
