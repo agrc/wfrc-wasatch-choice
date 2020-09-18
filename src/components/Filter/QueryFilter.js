@@ -120,19 +120,21 @@ export const QueryFilterField = ({
       </Button>
       <br />
       <Collapse isOpen={isOpen} onEntered={updateScrollbar} onExited={updateScrollbar}>
-        {checkboxes.map(({ label, values, other, color }, index) => (
-          <Label key={index} check>
-            <input
-              type="checkbox"
-              checked={state[label]}
-              onChange={() => onCheckboxChange(label)}
-            />
-            {label}{" "}
-            {color ? (
-              <div className="swatch" style={{ backgroundColor: color }}></div>
-            ) : null}
-          </Label>
-        ))}
+        <div className="field-container">
+          {checkboxes.map(({ label, values, other, color }, index) => (
+            <Label key={index} check>
+              <input
+                type="checkbox"
+                checked={state[label]}
+                onChange={() => onCheckboxChange(label)}
+              />
+              <span className="checkbox-label">{label}</span>
+              {color ? (
+                <div className="swatch" style={{ backgroundColor: color }}></div>
+              ) : null}
+            </Label>
+          ))}
+        </div>
       </Collapse>
     </div>
   );
