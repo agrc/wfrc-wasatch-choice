@@ -38,9 +38,9 @@ Sample Config
 
 The first five maps in `mapInfos` will be the default tabs in the order that they are defined.
 
-### `about.json`
+### `about-en.json` & `about-es.json`
 
-This file contains the content that will show up in the about widget (left side panel). It is loaded separately due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
+These files contain the content that will show up in the about widget (left side panel). One of them (depending on the current language) is loaded separately from `config.json` due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
 
 ```json
 {
@@ -70,6 +70,40 @@ This file contains the content that will show up in the about widget (left side 
   }
 }
 ```
+
+### Internationalization
+
+This application is fulling translatable using the `translations` property of `config.json`. Each language has it's own property of that object (e.g. `en`=english, `es`=spanish). Translations default to english if no other value is provided. If you want to provide a translation for any values in the other configs you add a new value to the `translations` object and then use it in the configs with a special prefix, `trans:` (e.g. `trans:newKey`). For example, if I wanted to make the vision map label translatable:
+
+```json
+{
+  "mapInfos": {
+    "vision": {
+      "name": "trans:visionMapTitle"
+      ...
+    }
+  },
+  ...
+  "translations": {
+    "en": {
+      "translation": {
+        "visionMapTitle": "Vision",
+        ...
+      }
+    },
+    "es": {
+      "translation": {
+        "visionMapTitle": "Visión",
+        ...
+      }
+    }
+  }
+}
+```
+
+The current language should be automatically detected from the user's browser. If you want to force the app into a certain language, use the `lng` URL parameter. For example:
+
+`<app URL>/#lng=es`
 
 ## Development & Testing
 
