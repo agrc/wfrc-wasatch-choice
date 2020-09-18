@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 import './About.scss';
 import { Modal, ModalBody } from 'reactstrap';
 import { useCurrentTabConfig } from '../../config';
+import { useTranslation } from 'react-i18next';
 
 
 export default props => {
@@ -14,6 +15,9 @@ export default props => {
   });
   const [ imagesHaveBeenProcessed, setImagesHaveBeenProcessed ] = useState(false);
   const currentTabConfig = useCurrentTabConfig();
+  const { i18n } = useTranslation();
+
+  const language = i18n.language.split('-')[0];
 
   const dialogitizeImages = parentNode => {
     console.log('adding dialogs to images');
@@ -38,11 +42,11 @@ export default props => {
   useEffect(() => {
     console.log('fetching about config json');
 
-    fetch(`about.json?rel=${process.env.REACT_APP_VERSION}`)
+    fetch(`about-${language}.json?rel=${process.env.REACT_APP_VERSION}`)
       .then(response => response.json())
       .then(configJson => setContent(configJson))
     ;
-  }, []);
+  }, [language]);
 
   let containerRef = createRef();
   useEffect(() => {
