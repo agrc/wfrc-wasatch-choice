@@ -2,6 +2,77 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/agrc/wfrc/compare/v1.5.5...v2.0.0) (2020-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* `config.tagLine` was moved to `config.translations.en.translation.tagLine`
+* The `currentTabIndex` has been replaced with `currentTab`.
+* The about.json file keys are now the tab ids rather than numeric indexes.
+* The `tabs` config property has been renamed to `tabInfos`. The structure has also been changed from an array to an object.
+
+### Features
+
+* add a few url param tests ([289d337](https://github.com/agrc/wfrc/commit/289d3377c872ec99f599be9404067ff4830d689e))
+* add i18n for filter widget and search placeholder ([33e5f91](https://github.com/agrc/wfrc/commit/33e5f91bb8d99a48313d8a2d3c77eb4f10b69ba0))
+* add linting script and step to travis ([21916cb](https://github.com/agrc/wfrc/commit/21916cbbd336f839806d8c0437a9036061905ff7)), closes [#53](https://github.com/agrc/wfrc/issues/53)
+* add npm start to cypress:open command ([88f1574](https://github.com/agrc/wfrc/commit/88f157490350dc9dfcbf769d56f3636c0c5e2cd2))
+* add support for n number of maps in the config ([20556b4](https://github.com/agrc/wfrc/commit/20556b4f2d5f2490c2d8870c0c2abcb80195688e)), closes [#43](https://github.com/agrc/wfrc/issues/43)
+* add tab picker integration tests ([d0a3f06](https://github.com/agrc/wfrc/commit/d0a3f06452e89880c68bbe68f8c6d63d2ac92752))
+* add url param tests for extent ([dbd8c78](https://github.com/agrc/wfrc/commit/dbd8c78d0b3a60a4ffce64469ab08872b238d119))
+* force-show scrollbars in map widgets when overflowed ([8f12010](https://github.com/agrc/wfrc/commit/8f120107ab4af9d665fa8eacf0c55fca0c1165c8)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* i18n about widget ([31e29ac](https://github.com/agrc/wfrc/commit/31e29ac6e0d25ff4e5573bce2d0103b22e771baa)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* i18n for map config dialog ([06f0aa2](https://github.com/agrc/wfrc/commit/06f0aa2fffc802dfe2626224f03e2b0b5c75bcf3)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* i18n for project info widget ([90937c3](https://github.com/agrc/wfrc/commit/90937c382e67ebaba1c0d8adab7fe62ec203276d)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* **tooling:** add spanish language checker dictionary ([e33ea0b](https://github.com/agrc/wfrc/commit/e33ea0b606fdf891778e745c5953d57895f120d5))
+* implement cypress and a simple test ([673eaae](https://github.com/agrc/wfrc/commit/673eaaeec20408ac5d25f8000bdbaf57dd7a6412))
+* implement i18n framework ([cc15e95](https://github.com/agrc/wfrc/commit/cc15e9567e4729ecccc8372d522776ffe25708e3)), closes [#51](https://github.com/agrc/wfrc/issues/51)
+* implement reset for QueryFilter widget ([09fd2f3](https://github.com/agrc/wfrc/commit/09fd2f30117a0ae090232012ee4d100637a1a1e9)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* implement TapPicker component ([e14ea11](https://github.com/agrc/wfrc/commit/e14ea11884edd88fa47d265ec0f6f9931bc664df)), closes [#45](https://github.com/agrc/wfrc/issues/45)
+* limit the number of tabs that can be selected ([cf2f7a6](https://github.com/agrc/wfrc/commit/cf2f7a6ba73200321b139860a93989ec3f1834e5))
+* make query filter sections foldable ([fd0d133](https://github.com/agrc/wfrc/commit/fd0d13364d294d8240d9ec103ef1b096e571a7ea)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* make tabs drag-and-droppable ([458e1ae](https://github.com/agrc/wfrc/commit/458e1ae4fa2412fcd60f20dd6727ca44c97b5812)), closes [#59](https://github.com/agrc/wfrc/issues/59)
+* manage current tab ids as state in tabs component ([ccb7aa7](https://github.com/agrc/wfrc/commit/ccb7aa77fd6adbf272e71df467101cff26aef613))
+* map changes to current tab ids to local storage ([2aad0c1](https://github.com/agrc/wfrc/commit/2aad0c1ea84b2b196d070d05aa360923c4e296a0)), closes [#44](https://github.com/agrc/wfrc/issues/44)
+* move configSchema.json to public folder ([8c6806b](https://github.com/agrc/wfrc/commit/8c6806b2492c7dae24f8d4338d5933ab20611215))
+* rough implementation of QueryFilter widget ([1c0bf8b](https://github.com/agrc/wfrc/commit/1c0bf8bca0fd2b9adb9548124a4eef1669734e78)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+* use map name in query filter panel name ([5dd79f6](https://github.com/agrc/wfrc/commit/5dd79f6a4346b4d1825e2fd0ea86a6072caa37a0)), closes [#65](https://github.com/agrc/wfrc/issues/65)
+
+
+### Bug Fixes
+
+* better alignment of query filter swatches ([1f1f27e](https://github.com/agrc/wfrc/commit/1f1f27e400efe18ce17f380d22a9492b6469e5fe))
+* better lineheight for details title ([ece201a](https://github.com/agrc/wfrc/commit/ece201a5517110c021bd512d1a143e2064a0d8a9)), closes [#62](https://github.com/agrc/wfrc/issues/62)
+* better passing of map view back to click handler ([e8023df](https://github.com/agrc/wfrc/commit/e8023df572bb16cebbd02579cc3093f3d63d0e48)), closes [#57](https://github.com/agrc/wfrc/issues/57)
+* cache bust config file requests on new version ([a2a73a0](https://github.com/agrc/wfrc/commit/a2a73a0a11d2f971c429d331377a0cf7c42f6576))
+* change config.tabInfos -> config.mapInfos ([8a0918d](https://github.com/agrc/wfrc/commit/8a0918d67398c9fb00e6afe47b260b3711429d99)), closes [#54](https://github.com/agrc/wfrc/issues/54)
+* create more separation between fields ([e7ab81e](https://github.com/agrc/wfrc/commit/e7ab81e9aba166e4cd956bfc8b3169fd678dcb87))
+* don't update parent state within state change of child ([6dbee5e](https://github.com/agrc/wfrc/commit/6dbee5eaec2057c0cbe1050f38b20de3181ea92c))
+* fix alignment issue with sherlock result ([6ac9a0e](https://github.com/agrc/wfrc/commit/6ac9a0edf76a81785fbd6e652e26d9298763ec8d))
+* fix bug causing layer selector to be hidden ([021a8cb](https://github.com/agrc/wfrc/commit/021a8cbfeb63ac807cb650b21ab161fcbbd43f32))
+* fix bug causing the project info click to fail ([6df4256](https://github.com/agrc/wfrc/commit/6df42561b6265edd682a51fd9ddf996a22a4aec2))
+* fix bug preventing from current tab url from working ([53e63b6](https://github.com/agrc/wfrc/commit/53e63b6886a7b6cb054b0681b0a42b9820307777))
+* fix bug preventing map extent from being preserved between tabs ([53e9ddd](https://github.com/agrc/wfrc/commit/53e9ddd4b2f33cafa0065457c297b426ff486230))
+* fix cypress tab tests to be true failures ([8ef837b](https://github.com/agrc/wfrc/commit/8ef837b57eda07839588e4ae8bc59bd76a19c5a3))
+* fix sidebar layout regression bug ([937ef16](https://github.com/agrc/wfrc/commit/937ef16991698d240ce6e48370e4cf5a7022dc95))
+* hide sherlock match list by default ([d8d1366](https://github.com/agrc/wfrc/commit/d8d13668e2ca789e7848e54b9ba65bf6b992dc40))
+* increase cypress default timeout ([ae881b0](https://github.com/agrc/wfrc/commit/ae881b016d66fa71c76ba8aef2e6fb365b624973))
+* move i18n init to better spot for tests ([04ddb88](https://github.com/agrc/wfrc/commit/04ddb889877092acb130f2f85ae821e524109162))
+* switch to vertical layout for checkboxes ([a682ca0](https://github.com/agrc/wfrc/commit/a682ca0733e17cb3877072521fe3131148f8fdbc))
+* **build:** delete docs folder before generation ([535d8a4](https://github.com/agrc/wfrc/commit/535d8a45c845d58e3c516d3b6dcaf2f374e40d48))
+* linting and add explaination ([b926a4a](https://github.com/agrc/wfrc/commit/b926a4a9bf123b48b2bc0cc768a0e2809f299a23))
+* make mapView stateful to make sure related components update on changes ([4dc6a11](https://github.com/agrc/wfrc/commit/4dc6a11abc491e75cdbeb826560c8bea4e857c0a))
+* make test more reliable ([d8a31b2](https://github.com/agrc/wfrc/commit/d8a31b20a982f12a4d62070e9ac7b9f768aa17eb))
+* make url param names consistent with configure tabs controls ([90ef4c8](https://github.com/agrc/wfrc/commit/90ef4c843235184f1bb02ab4b9858e4af3323945)), closes [#54](https://github.com/agrc/wfrc/issues/54)
+* more stable positioning of layer selector button between tabs ([2a8fb67](https://github.com/agrc/wfrc/commit/2a8fb673ae7091decac7094cc976237826203e75))
+* move helpers to custom cypress commands ([4a2ba1c](https://github.com/agrc/wfrc/commit/4a2ba1cc1246281c97b38a74950c6b82b7b92c83))
+* prevent update overflow on reset filter ([6275753](https://github.com/agrc/wfrc/commit/6275753ee68a3b9b07e52852dab44580513a3d49)), closes [#60](https://github.com/agrc/wfrc/issues/60)
+* switch to smaller header logo sooner ([d8ad1e3](https://github.com/agrc/wfrc/commit/d8ad1e317f13f400f4e3741e66241f02997c029f))
+* update config schema docs and fix typo ([c4ef2be](https://github.com/agrc/wfrc/commit/c4ef2be5390ca999a2217d7a68577ad21c64b90c))
+* update storybook and fix storyshots tests ([e6b2420](https://github.com/agrc/wfrc/commit/e6b2420b8862cf146e1e635dfe689d2af35b6fd0))
+* update tab config dialog title and labels ([838ef46](https://github.com/agrc/wfrc/commit/838ef461d8d42106e1b6319504c58ed9c7fc4274)), closes [#45](https://github.com/agrc/wfrc/issues/45)
+
 ## [2.0.0-10](https://github.com/agrc/wfrc/compare/v2.0.0-9...v2.0.0-10) (2020-09-18)
 
 
