@@ -995,82 +995,98 @@ exports[`Storyshots QueryFilterField Default 1`] = `
         className="collapse show"
         style={Object {}}
       >
-        <label
-          className="form-check-label"
+        <div
+          className="field-container"
         >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          CMAQ
-           
-          <div
-            className="swatch"
-            style={
-              Object {
-                "backgroundColor": "rgb(255, 128, 0)",
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              CMAQ
+            </span>
+            <div
+              className="swatch"
+              style={
+                Object {
+                  "backgroundColor": "rgb(255, 128, 0)",
+                }
               }
-            }
-          />
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          STP
-           
-          <div
-            className="swatch"
-            style={
-              Object {
-                "backgroundColor": "rgb(20, 178, 179)",
+            />
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              STP
+            </span>
+            <div
+              className="swatch"
+              style={
+                Object {
+                  "backgroundColor": "rgb(20, 178, 179)",
+                }
               }
-            }
-          />
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          TAP
-           
-          <div
-            className="swatch"
-            style={
-              Object {
-                "backgroundColor": "rgb(56, 168, 0)",
+            />
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              TAP
+            </span>
+            <div
+              className="swatch"
+              style={
+                Object {
+                  "backgroundColor": "rgb(56, 168, 0)",
+                }
               }
-            }
-          />
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Other
-           
-          <div
-            className="swatch"
-            style={
-              Object {
-                "backgroundColor": "rgb(255, 100, 155)",
+            />
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              Other
+            </span>
+            <div
+              className="swatch"
+              style={
+                Object {
+                  "backgroundColor": "rgb(255, 100, 155)",
+                }
               }
-            }
-          />
-        </label>
+            />
+          </label>
+        </div>
       </div>
     </div>
     <div
@@ -1106,94 +1122,122 @@ exports[`Storyshots QueryFilterField Default 1`] = `
         className="collapse"
         style={Object {}}
       >
-        <label
-          className="form-check-label"
+        <div
+          className="field-container"
         >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Before 2020
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2020
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2021
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2022
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2023
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2024
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2025
-           
-        </label>
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            onChange={[Function]}
-            type="checkbox"
-          />
-          2026
-           
-        </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              Before 2020
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2020
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2021
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2022
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2023
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2024
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2025
+            </span>
+          </label>
+          <label
+            className="form-check-label"
+          >
+            <input
+              checked={true}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkbox-label"
+            >
+              2026
+            </span>
+          </label>
+        </div>
       </div>
     </div>
   </div>
