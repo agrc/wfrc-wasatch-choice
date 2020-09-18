@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-10](https://github.com/agrc/wfrc/compare/v2.0.0-9...v2.0.0-10) (2020-09-18)
+
+
+### Bug Fixes
+
+* better alignment of query filter swatches ([939dc1e](https://github.com/agrc/wfrc/commit/939dc1e70f6128aa33c9b338a57e32cf75a9bec9))
+
 ## [2.0.0-9](https://github.com/agrc/wfrc/compare/v2.0.0-8...v2.0.0-9) (2020-09-18)
 
 
