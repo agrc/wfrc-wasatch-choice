@@ -12,8 +12,8 @@
 | [minimumLegendSizes](#minimumLegendSizes) | `object` | Required | cannot be null | [WFRC App](config-properties-minimumlegendsizes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/minimumLegendSizes") |
 | [defaultExtent](#defaultExtent)           | `object` | Required | cannot be null | [WFRC App](config-properties-defaultextent.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent")           |
 | [links](#links)                           | `object` | Required | cannot be null | [WFRC App](config-properties-links.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/links")                           |
-| [tagLine](#tagLine)                       | `string` | Optional | cannot be null | [WFRC App](config-properties-tagline.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tagLine")                       |
 | [openOnLoad](#openOnLoad)                 | `object` | Required | cannot be null | [WFRC App](config-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")                 |
+| [translations](#translations)             | `object` | Required | cannot be null | [WFRC App](config-properties-translations.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")             |
 | [$schema](#$schema)                       | `string` | Optional | cannot be null | [WFRC App](config-properties-schema.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")                        |
 
 ## mapInfos
@@ -112,22 +112,6 @@ Configuration options for the base map selector widget
 
 `object` ([Details](config-properties-links.md))
 
-## tagLine
-
-The text for the tag line element
-
-
-`tagLine`
-
--   is optional
--   Type: `string`
--   cannot be null
--   defined in: [WFRC App](config-properties-tagline.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/tagLine")
-
-### tagLine Type
-
-`string`
-
 ## openOnLoad
 
 Controls whether specific map widgets default to be open on page load
@@ -143,6 +127,22 @@ Controls whether specific map widgets default to be open on page load
 ### openOnLoad Type
 
 `object` ([Details](config-properties-openonload.md))
+
+## translations
+
+Contains the translated strings used in the app. Falls back to `en` if there is no other translation. Most strings in the other configs can be translated by using this format: `trans:<key>`. For example: `trans:visionMapTitle`.
+
+
+`translations`
+
+-   is required
+-   Type: `object` ([Translations](config-properties-translations.md))
+-   cannot be null
+-   defined in: [WFRC App](config-properties-translations.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")
+
+### translations Type
+
+`object` ([Translations](config-properties-translations.md))
 
 ## $schema
 
@@ -168,3 +168,55 @@ This should be set to <https://wfrc.org/wasatch-choice-map/config.schema.json>
 | :--------------------------------------------------------- | ----------- |
 | `"https://wfrc.org/wasatch-choice-map/config.schema.json"` |             |
 | `"./config.schema.json"`                                   |             |
+
+# WFRC App Definitions
+
+## Definitions group translation
+
+Reference this group by using
+
+```json
+{"$ref":"https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation"}
+```
+
+| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                             |
+| :------------------------------ | -------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [mapTabsDialog](#mapTabsDialog) | `object` | Optional | cannot be null | [WFRC App](config-definitions-translation-properties-maptabsdialog.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog") |
+| Additional Properties           | Merged   | Optional | cannot be null | [WFRC App](config-definitions-translation-additionalproperties.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/additionalProperties")         |
+
+### mapTabsDialog
+
+
+
+
+`mapTabsDialog`
+
+-   is optional
+-   Type: `object` ([Details](config-definitions-translation-properties-maptabsdialog.md))
+-   cannot be null
+-   defined in: [WFRC App](config-definitions-translation-properties-maptabsdialog.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog")
+
+#### mapTabsDialog Type
+
+`object` ([Details](config-definitions-translation-properties-maptabsdialog.md))
+
+### Additional Properties
+
+Additional properties are allowed, as long as they follow this schema:
+
+
+
+
+-   is optional
+-   Type: merged type ([Details](config-definitions-translation-additionalproperties.md))
+-   cannot be null
+-   defined in: [WFRC App](config-definitions-translation-additionalproperties.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/additionalProperties")
+
+#### additionalProperties Type
+
+merged type ([Details](config-definitions-translation-additionalproperties.md))
+
+one (and only one) of
+
+-   [Untitled string in WFRC App](config-definitions-translation-additionalproperties-oneof-0.md "check type definition")
+-   [Untitled object in WFRC App](config-definitions-translation-additionalproperties-oneof-1.md "check type definition")
