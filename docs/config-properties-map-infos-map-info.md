@@ -7,6 +7,7 @@
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                |
 | :------------------------------------------ | --------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [name](#name)                               | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-name.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")                               |
+| [category](#category)                       | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-category.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")                       |
 | [webMapId](#webMapId)                       | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-webmapid.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/webMapId")                       |
 | [hideLayerSelector](#hideLayerSelector)     | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")     |
 | [useDefaultAGOLPopup](#useDefaultAGOLPopup) | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup") |
@@ -26,6 +27,22 @@ The name of the map that shows up in the tab control
 -   defined in: [WFRC App](config-properties-map-infos-map-info-properties-name.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")
 
 ### name Type
+
+`string`
+
+## category
+
+The category that this map should be under in the configure maps dialog box. This is optional and translatable
+
+
+`category`
+
+-   is optional
+-   Type: `string`
+-   cannot be null
+-   defined in: [WFRC App](config-properties-map-infos-map-info-properties-category.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")
+
+### category Type
 
 `string`
 
