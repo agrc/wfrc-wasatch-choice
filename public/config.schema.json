@@ -47,6 +47,10 @@
             "description": "The name of the map that shows up in the tab control",
             "type": "string"
           },
+          "category": {
+            "description": "The category that this map should be under in the configure maps dialog box. This is optional and translatable",
+            "type": "string"
+          },
           "webMapId": {
             "description": "The id of the web map that you would like displayed",
             "type": "string"

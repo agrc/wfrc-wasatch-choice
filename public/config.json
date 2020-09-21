@@ -3,6 +3,7 @@
   "mapInfos": {
     "vision": {
       "name": "trans:visionMapTitle",
+      "category": "trans:transportation",
       "webMapId": "7a4843b43cf84f00bbe7b2c2d3985236",
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
@@ -408,6 +409,7 @@
     },
     "transportation": {
       "name": "Transportation",
+      "category": "trans:transportation",
       "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
       "useDefaultAGOLPopup": false,
       "filter": {
@@ -1192,7 +1194,8 @@
           "roads": "Roads"
         },
         "projectInformation": "Project Information",
-        "projectInformationPrompt": "Click on a feature for more information"
+        "projectInformationPrompt": "Click on a feature for more information",
+        "transportation": "Transportation"
       }
     },
     "es": {
@@ -1215,7 +1218,8 @@
           "roads": "Carreteras"
         },
         "projectInformation": "Información del Proyecto",
-        "projectInformationPrompt": "Haga clic en una función para obtener más información"
+        "projectInformationPrompt": "Haga clic en una función para obtener más información",
+        "transportation": "Transporte"
       }
     }
   }

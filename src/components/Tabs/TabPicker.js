@@ -6,11 +6,40 @@ import config from '../../config';
 import { useSpecialTranslation } from '../../i18n';
 
 
+export const getOptions = (mapInfos, t) => {
+  const categories = {};
+  const options = [];
+
+  Object.keys(mapInfos).forEach(id => {
+    const info = mapInfos[id];
+    const label = t(info.name);
+    const value = { value: id, label };
+    const category = info.category && t(info.category);
+
+    if (category) {
+      if (categories[category]) {
+        categories[category].push(value);
+      } else {
+        categories[category] = [value];
+      }
+    } else {
+      options.push(value);
+    }
+  });
+
+  if (Object.keys(categories).length > 0) {
+    Object.entries(categories).forEach(([label, values]) => {
+      options.push({ label, options: values });
+    });
+  }
+
+  return options;
+};
+
+
 const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
   const t = useSpecialTranslation();
-  const options = Object.keys(mapInfos).map(id => {
-    return { value: id, label: t(mapInfos[id].name) };
-  });
+  const options = React.useMemo(() => getOptions(mapInfos, t), [mapInfos, t]);
 
   return (
     <>
