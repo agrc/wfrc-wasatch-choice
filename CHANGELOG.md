@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-0](https://github.com/agrc/wfrc/compare/v2.0.0...v2.1.0-0) (2020-09-21)
+
+
+### Features
+
+* add optional category to map config ([b96e059](https://github.com/agrc/wfrc/commit/b96e059d2bd393d4be8bcfc41d1b74936d72c58d)), closes [#58](https://github.com/agrc/wfrc/issues/58)
+
 ## [2.0.0](https://github.com/agrc/wfrc/compare/v1.5.5...v2.0.0) (2020-09-18)
 
 
