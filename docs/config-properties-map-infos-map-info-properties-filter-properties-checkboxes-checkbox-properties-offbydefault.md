@@ -1,0 +1,3 @@
+## offByDefault Type
+
+`boolean`

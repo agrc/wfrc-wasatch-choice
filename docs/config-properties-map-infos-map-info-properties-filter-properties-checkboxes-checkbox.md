@@ -9,17 +9,18 @@ one (and only one) of
 
 # Checkbox Properties
 
-| Property                            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                      |
-| :---------------------------------- | -------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [label](#label)                     | `string` | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-label.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/label")                     |
-| [layerNames](#layerNames)           | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-layernames.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/layerNames")           |
-| [phase](#phase)                     | `number` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-phase.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/phase")                     |
-| [symbol](#symbol)                   | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbol.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbol")                   |
-| [symbolImageFile](#symbolImageFile) | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbolimagefile.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolImageFile") |
-| [symbolLayerIds](#symbolLayerIds)   | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollayerids.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLayerIds")   |
-| [symbolLabels](#symbolLabels)       | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollabels.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLabels")       |
-| [staticColors](#staticColors)       | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors")       |
-| [color](#color)                     | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-color.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/color")                     |
+| Property                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                      |
+| :---------------------------------- | --------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [label](#label)                     | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-label.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/label")                     |
+| [layerNames](#layerNames)           | `array`   | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-layernames.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/layerNames")           |
+| [offByDefault](#offByDefault)       | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-offbydefault.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/offByDefault")       |
+| [phase](#phase)                     | `number`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-phase.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/phase")                     |
+| [symbol](#symbol)                   | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbol.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbol")                   |
+| [symbolImageFile](#symbolImageFile) | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbolimagefile.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolImageFile") |
+| [symbolLayerIds](#symbolLayerIds)   | `array`   | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollayerids.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLayerIds")   |
+| [symbolLabels](#symbolLabels)       | `array`   | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollabels.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLabels")       |
+| [staticColors](#staticColors)       | `array`   | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors")       |
+| [color](#color)                     | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-color.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/color")                     |
 
 ## label
 
@@ -52,6 +53,22 @@ Defines the layer(s) that you want to toggle. Values must match the property nam
 ### layerNames Type
 
 `string[]`
+
+## offByDefault
+
+Set this to true to make the checkbox unchecked on load.
+
+
+`offByDefault`
+
+-   is optional
+-   Type: `boolean`
+-   cannot be null
+-   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-offbydefault.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/offByDefault")
+
+### offByDefault Type
+
+`boolean`
 
 ## phase
 
