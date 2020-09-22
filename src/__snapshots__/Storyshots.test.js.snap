@@ -312,7 +312,7 @@ exports[`Storyshots Filter Recreation 1`] = `
       className="form-check-label"
     >
       <input
-        checked={true}
+        checked={false}
         className="form-check-input"
         onChange={[Function]}
         type="checkbox"
@@ -427,7 +427,7 @@ exports[`Storyshots Filter Transportation 1`] = `
         className="form-check-label"
       >
         <input
-          checked={true}
+          checked={false}
           className="form-check-input"
           onChange={[Function]}
           type="checkbox"
@@ -445,7 +445,7 @@ exports[`Storyshots Filter Transportation 1`] = `
           className="form-check-label"
         >
           <input
-            checked={true}
+            checked={false}
             className="form-check-input"
             onChange={[Function]}
             type="checkbox"
@@ -704,7 +704,7 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
         className="form-check-label"
       >
         <input
-          checked={true}
+          checked={false}
           className="form-check-input"
           onChange={[Function]}
           type="checkbox"
@@ -722,7 +722,7 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
           className="form-check-label"
         >
           <input
-            checked={true}
+            checked={false}
             className="form-check-input"
             onChange={[Function]}
             type="checkbox"

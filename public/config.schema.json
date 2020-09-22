@@ -101,6 +101,10 @@
                         "type": "string"
                       }
                     },
+                    "offByDefault": {
+                      "description": "Set this to true to make the checkbox unchecked on load.",
+                      "type": "boolean"
+                    },
                     "phase": {
                       "description": "Defines the zero-based index of the phase that this checkbox is associated with.",
                       "type": "number"

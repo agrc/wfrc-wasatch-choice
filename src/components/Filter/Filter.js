@@ -239,7 +239,7 @@ const RadioGroup = props => {
 };
 
 const Parent = props => {
-  const defaultCheckedChildren = props.checkboxes.map(name => name);
+  const defaultCheckedChildren = props.checkboxes.filter(name => !props.checkboxConfigs[name].offByDefault);
   const [ checkedChildren, setCheckedChildren ] = useState(defaultCheckedChildren);
   const t = useSpecialTranslation();
 
@@ -362,7 +362,7 @@ const Parent = props => {
 };
 
 const Child = props => {
-  const [ internalIsChecked, setInternalIsChecked ] = useState(true);
+  const [ internalIsChecked, setInternalIsChecked ] = useState(!props.offByDefault);
   const t = useSpecialTranslation();
 
   const onChange = ({ skipCache }) => {
@@ -395,9 +395,9 @@ const Child = props => {
 
   useEffect(() => {
     if (props.reset) {
-      setInternalIsChecked(true);
+      setInternalIsChecked(!props.offByDefault);
     }
-  }, [props.reset]);
+  }, [props.reset, props.offByDefault]);
 
   return (
     <FormGroup check>

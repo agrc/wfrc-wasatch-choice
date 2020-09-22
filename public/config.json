@@ -217,7 +217,8 @@
               "Interstates",
               "State Freeways",
               "Arterials"
-            ]
+            ],
+            "offByDefault": true
           },
           "transit": {
             "label": "Transit",
@@ -537,7 +538,8 @@
               "roadwayLine",
               "magRoadwayLine"
             ],
-            "symbol": "linePoint"
+            "symbol": "linePoint",
+            "offByDefault": true
           },
           "transit": {
             "label": "Transit",
@@ -855,7 +857,8 @@
             "layerNames": [
               "communityCenters"
             ],
-            "symbol": "simple"
+            "symbol": "simple",
+            "offByDefault": true
           },
           "trails": {
             "label": "Trails",
