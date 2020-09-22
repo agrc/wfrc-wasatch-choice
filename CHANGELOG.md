@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-1](https://github.com/agrc/wfrc/compare/v2.1.0-0...v2.1.0-1) (2020-09-22)
+
+
+### Features
+
+* add `offByDefault` optional config prop to checkboxes ([d17d85a](https://github.com/agrc/wfrc/commit/d17d85a903184a5e275b43ea25a5f46817d4153f)), closes [#67](https://github.com/agrc/wfrc/issues/67)
+
 ## [2.1.0-0](https://github.com/agrc/wfrc/compare/v2.0.0...v2.1.0-0) (2020-09-21)
 
 
