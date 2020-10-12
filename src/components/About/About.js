@@ -44,7 +44,16 @@ export default ({ version, testTabId }) => {
     console.log('fetching about config json');
 
     fetch(`${process.env.PUBLIC_URL}/about/${language}/${currentTabId}.html?rel=${process.env.REACT_APP_VERSION}`)
-      .then(response => response.text())
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+
+        const errorMessage = `Unable to find about content for tab: ${currentTabId}. Current locale: ${language}`;
+        setContent(errorMessage);
+
+        throw errorMessage;
+      })
       .then(contentText => {
         setContent(contentText.replace(/%PUBLIC_URL%/g, process.env.PUBLIC_URL))
       })
