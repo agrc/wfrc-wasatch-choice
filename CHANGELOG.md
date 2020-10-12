@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-0](https://github.com/agrc/wfrc/compare/v2.1.0...v3.0.0-0) (2020-10-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* `about-<locale>.json` has been broken into separate html files. See README.md for more details.
+
+### Features
+
+* add `/about-tests` page ([20005c7](https://github.com/agrc/wfrc/commit/20005c715c06c565dab7be1a1971f43bc6a8ef2e)), closes [#69](https://github.com/agrc/wfrc/issues/69)
+* add header and first sub-section ([0953480](https://github.com/agrc/wfrc/commit/0953480b16ac3dca8c43cc3dfcd8e3f49cd65f47))
+* add support for using `%PUBLIC_URL%` token in about content image paths ([b18248d](https://github.com/agrc/wfrc/commit/b18248dde805f5780356dabd7637f320fbac46dc))
+* add the remaining content to vision about ([53ac899](https://github.com/agrc/wfrc/commit/53ac899fb9f4d145790b11de30b3c2298ef7dfdb))
+* **temporary:** add vision-new tab to about tests ([0bc4213](https://github.com/agrc/wfrc/commit/0bc42136b731cceb65403b77e46211578f9b6fce)), closes [#69](https://github.com/agrc/wfrc/issues/69)
+* move about content into separate html files ([54e6975](https://github.com/agrc/wfrc/commit/54e69756322dea3c6130de4820179c22cf897584))
+
+
+### Bug Fixes
+
+* float layout to top of about tests page ([1f18cf0](https://github.com/agrc/wfrc/commit/1f18cf04da1abb5fd4355daee6848b2c04777fb3))
+
 ## [2.1.0](https://github.com/agrc/wfrc/compare/v2.1.0-1...v2.1.0) (2020-09-22)
 
 ## [2.1.0-1](https://github.com/agrc/wfrc/compare/v2.1.0-0...v2.1.0-1) (2020-09-22)
