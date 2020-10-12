@@ -1,1 +1,72 @@
-test
+<style>
+  .vision-about-content .centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  .vision-about-content h1 {
+    border-bottom: 2px solid;
+  }
+  .vision-about-content .blue {
+    color: #3F738D;
+  }
+  .vision-about-content .green {
+    color: #7a9d49;
+  }
+  .vision-about-content .sub-item-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .vision-about-content .strategy-sub-item {
+    flex: 50%;
+    display: flex;
+    align-items: start;
+  }
+  .vision-about-content small {
+    display: block;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+  }
+  .vision-about-content .strategy-sub-item small {
+    margin-left: 0.5em;
+  }
+</style>
+<div class="vision-about-content">
+  <div class="centered-container">
+    <img
+      alt="wasatch choice logo"
+      width="100%"
+      src="%PUBLIC_URL%/about/images/WCLogo_WithText.png" />
+      <h5 class="blue">VISION FOR OUR FUTURE</h5>
+      <p class="blue text-center">Utah is growing... and we have a plan. Our future quality of life depends on the choices we make today. Wasatch Choice 2050 is our communities' chared vision for transportation investments, development patterns, and economic opportunities. The Vision map and key strategies show how advancing the Vision can enhance quality of life even as we grow.</p>
+  </div>
+  <h1 class="green">Key Strategies</h1>
+  <small>The Wasatch Choice 2050 Vision is built on four key strategies:</small>
+  <div class="sub-item-container">
+    <div class="strategy-sub-item">
+      <img alt="item one"
+        width="30"
+        src="%PUBLIC_URL%/about/images/Key1.png" />
+      <small class="green">Provide transportation choices</small>
+    </div>
+    <div class="strategy-sub-item">
+      <img alt="item two"
+        width="30"
+        src="%PUBLIC_URL%/about/images/Key2.png" />
+      <small class="green">Support housing options</small>
+    </div>
+    <div class="strategy-sub-item">
+      <img alt="item three"
+        width="30"
+        src="%PUBLIC_URL%/about/images/Key3.png" />
+      <small class="green">Preserve open space</small>
+    </div>
+    <div class="strategy-sub-item">
+      <img alt="item four"
+        width="30"
+        src="%PUBLIC_URL%/about/images/Key4.png" />
+      <small class="green">Link economic development with transportation and housing decisions</small>
+    </div>
+  </div>
+</div>
