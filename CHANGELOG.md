@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-1](https://github.com/agrc/wfrc/compare/v3.0.0-0...v3.0.0-1) (2020-10-12)
+
+
+### Bug Fixes
+
+* remove react-router dependency ([309f2fc](https://github.com/agrc/wfrc/commit/309f2fc62c7c01ad6f2ee4ee3480ecdd393e8ecd))
+
 ## [3.0.0-0](https://github.com/agrc/wfrc/compare/v2.1.0...v3.0.0-0) (2020-10-12)
 
 
