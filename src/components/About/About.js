@@ -43,11 +43,11 @@ export default ({ version, testTabId }) => {
   useEffect(() => {
     console.log('fetching about config json');
 
-    fetch(`about-${language}.json?rel=${process.env.REACT_APP_VERSION}`)
-      .then(response => response.json())
+    fetch(`${process.env.PUBLIC_URL}/about/${language}/${currentTabId}.html?rel=${process.env.REACT_APP_VERSION}`)
+      .then(response => response.text())
       .then(configJson => setContent(configJson))
     ;
-  }, [language]);
+  }, [language, currentTabId]);
 
   let containerRef = createRef();
   useEffect(() => {
@@ -64,7 +64,7 @@ export default ({ version, testTabId }) => {
 
   return (
     <>
-      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabId]}}></div> :
+      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content}}></div> :
         <Loader type='Oval' className='about__loader' /> }
       <a className="about__version"
         href="https://github.com/agrc/wfrc/blob/master/CHANGELOG.md"

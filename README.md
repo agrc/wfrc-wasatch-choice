@@ -38,40 +38,13 @@ Sample Config
 
 The first five maps in `mapInfos` will be the default tabs in the order that they are defined.
 
-### `about-en.json` & `about-es.json`
+### About Widget Content
 
-These files contain the content that will show up in the about widget (left side panel). One of them (depending on the current language) is loaded separately from `config.json` due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
+`public/about/<locale>/<mapId>.html`
+
+These files contain the content that will show up in the about widget (left side panel). The file names correspond to the `mapInfos` keys in `config.json`.
 
 The `/about-tests` page displays all of the about widget content in a single page. This can be helpful during development of the content.
-
-```json
-{
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "properties": {
-    "vision": {
-      "description": "HTML content for the first (Vision) tab",
-      "type": "string"
-    },
-    "transportation": {
-      "description": "HTML content for the second (Transportation) tab",
-      "type": "string"
-    },
-    "land-use": {
-      "description": "HTML content for the third (Land Use) tab",
-      "type": "string"
-    },
-    "economic-development": {
-      "description": "HTML content for the fourth (Economic Development) tab",
-      "type": "string"
-    },
-    "another-tab-id": {
-      "description": "HTML content for the fifth (Amenities) tab",
-      "type": "string"
-    }
-  }
-}
-```
 
 ### Internationalization
 
