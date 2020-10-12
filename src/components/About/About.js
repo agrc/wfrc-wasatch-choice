@@ -7,7 +7,7 @@ import { useCurrentTabConfig } from '../../config';
 import { useTranslation } from 'react-i18next';
 
 
-export default props => {
+export default ({ version, testTabId }) => {
   const [ content, setContent ] = useState();
   const [ modalState, setModalState ] = useState({
     isOpen: false,
@@ -15,6 +15,7 @@ export default props => {
   });
   const [ imagesHaveBeenProcessed, setImagesHaveBeenProcessed ] = useState(false);
   const currentTabConfig = useCurrentTabConfig();
+  const currentTabId = (currentTabConfig) ? currentTabConfig.id : testTabId;
   const { i18n } = useTranslation();
 
   const language = i18n.language.split('-')[0];
@@ -63,14 +64,14 @@ export default props => {
 
   return (
     <>
-      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabConfig.id]}}></div> :
+      { (content) ? <div ref={containerRef} dangerouslySetInnerHTML={{__html: content[currentTabId]}}></div> :
         <Loader type='Oval' className='about__loader' /> }
       <a className="about__version"
         href="https://github.com/agrc/wfrc/blob/master/CHANGELOG.md"
         target="_blank"
         rel="noopener noreferrer">
         <small>
-          App Version: {props.version}
+          App Version: {version}
         </small>
       </a>
       <Modal isOpen={modalState.isOpen} size='xl' toggle={toggleModal}>

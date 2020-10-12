@@ -1,0 +1,16 @@
+body, html, #root, .about-tests {
+  overflow-x: auto;
+}
+
+.about-tests {
+  white-space: nowrap;
+  height: 100%;
+  .side-bar {
+    position: relative;
+    top: 0;
+    height: 100%;
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top;
+  }
+}

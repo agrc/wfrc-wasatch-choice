@@ -87,12 +87,20 @@ export const getDefaultCurrentTabIds = () => {
 };
 
 export const useCurrentTabConfig = () => {
-  const urlParams = React.useContext(URLParamsContext)[0];
+  const context = React.useContext(URLParamsContext);
+
+  // return null for the AboutTests component
+  let returnValue = () => null;
+  if (context) {
+    const urlParams = context[0];
+
+    returnValue = () => {
+      return { id: urlParams.selectedMap, ...config.mapInfos[urlParams.selectedMap] };
+    };
+  }
 
   // make sure that this object doesn't change on each re-render...
-  return React.useMemo(() => {
-    return { id: urlParams.selectedMap, ...config.mapInfos[urlParams.selectedMap] };
-  }, [urlParams.selectedMap]);
+  return React.useMemo(returnValue, [context]);
 };
 
 export default config;

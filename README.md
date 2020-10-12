@@ -42,6 +42,8 @@ The first five maps in `mapInfos` will be the default tabs in the order that the
 
 These files contain the content that will show up in the about widget (left side panel). One of them (depending on the current language) is loaded separately from `config.json` due to it's large size. The property names of the root object correspond to the `mapInfos` keys in `config.json`.
 
+The `/about-tests` page displays all of the about widget content in a single page. This can be helpful during development of the content.
+
 ```json
 {
   "$schema": "http://json-schema.org/schema#",
