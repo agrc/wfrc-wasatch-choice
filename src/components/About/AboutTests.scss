@@ -12,5 +12,8 @@ body, html, #root, .about-tests {
     display: inline-block;
     white-space: normal;
     vertical-align: top;
+    .side-bar__padder > div {
+      flex: 1
+    }
   }
 }
