@@ -45,7 +45,9 @@ export default ({ version, testTabId }) => {
 
     fetch(`${process.env.PUBLIC_URL}/about/${language}/${currentTabId}.html?rel=${process.env.REACT_APP_VERSION}`)
       .then(response => response.text())
-      .then(configJson => setContent(configJson))
+      .then(contentText => {
+        setContent(contentText.replace(/%PUBLIC_URL%/g, process.env.PUBLIC_URL))
+      })
     ;
   }, [language, currentTabId]);
 
