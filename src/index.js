@@ -7,7 +7,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { setConfigs } from './config';
 import URLParams from './URLParams';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AboutTests from './components/About/AboutTests';
 
 
@@ -16,18 +15,14 @@ fetch('config.json')
   .then(async appConfig => {
     await setConfigs(appConfig);
 
-    ReactDOM.render(
-      <Router>
-        <Switch>
-          <Route path="/about-tests">
-            <AboutTests />
-          </Route>
-          <Route path="/">
-            <URLParams><App /></URLParams>
-          </Route>
-        </Switch>
-      </Router>, document.getElementById('root')
-    );
+    let page;
+    if (document.location.hash === '#about-tests') {
+      page = <AboutTests />;
+    } else {
+      page = <URLParams><App /></URLParams>;
+    }
+
+    ReactDOM.render(page, document.getElementById('root'));
   });
 
 // If you want your app to work offline and load faster, you can change
