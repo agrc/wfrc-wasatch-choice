@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-4](https://github.com/agrc/wfrc/compare/v3.0.0-3...v3.0.0-4) (2020-10-13)
+
+
+### Bug Fixes
+
+* fix benefits sub items spacing ([59244d6](https://github.com/agrc/wfrc/commit/59244d6afb173968d06bc8f55bba45185e6e5555))
+
 ## [3.0.0-3](https://github.com/agrc/wfrc/compare/v3.0.0-2...v3.0.0-3) (2020-10-13)
 
 
