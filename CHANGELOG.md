@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-3](https://github.com/agrc/wfrc/compare/v3.0.0-2...v3.0.0-3) (2020-10-13)
+
+
+### Bug Fixes
+
+* a little more breathing room for small text ([d916005](https://github.com/agrc/wfrc/commit/d916005df1857232cacc7b65537de9141acb0980))
+* add App component css to help replicate ([0eef309](https://github.com/agrc/wfrc/commit/0eef30998488b15c80d2d7a4cefa6b9d8e831f82))
+* align text of benefits sub-items ([6592be8](https://github.com/agrc/wfrc/commit/6592be8085004352867d7681e81eeef77d3f3133))
+* consistent top margin for section headers ([cfd7bb6](https://github.com/agrc/wfrc/commit/cfd7bb636a3d82a66fa48c2f00167b3115248a87))
+* replace vision with new content and remove temporary container ([11c8278](https://github.com/agrc/wfrc/commit/11c827858fb9e07819b37785ae583d23678f266e))
+
 ## [3.0.0-2](https://github.com/agrc/wfrc/compare/v3.0.0-1...v3.0.0-2) (2020-10-12)
 
 
