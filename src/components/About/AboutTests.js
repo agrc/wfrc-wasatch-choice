@@ -3,6 +3,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import About from './About';
 import config from '../../config';
 import './AboutTests.scss';
+import '../../App.scss';
 
 
 const AboutTests = () => {
