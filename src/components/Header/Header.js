@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import logo from './logo.jpg';
+import logo from './logo.png';
 import logoSmall from './logo-small.jpg';
 import config from '../../config';
 import Tabs from '../Tabs/Tabs';
@@ -13,6 +13,7 @@ export default props => {
   const t = useSpecialTranslation();
 
   const windowWidth = useWindowWidth();
+  const largeLogoScreenWidth = 1000;
 
   return (
     <div className="app__header">
@@ -24,7 +25,8 @@ export default props => {
       </h4>
       <Tabs />
       <a href={config.links.landingPage} className="heading__img">
-        <img src={(windowWidth >= 1000) ? logo : logoSmall}
+        <img src={(windowWidth >= largeLogoScreenWidth) ? logo : logoSmall}
+          className={(windowWidth >= largeLogoScreenWidth) ? 'heading__img__large' : null }
           alt="agrc logo" />
       </a>
     </div>

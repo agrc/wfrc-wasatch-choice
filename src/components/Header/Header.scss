@@ -19,8 +19,11 @@
   }
   .heading__img {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 0;
+    right: 0;
+    img.heading__img__large {
+      width: 200px;
+    }
   }
   @media screen and (max-width: 1000px) {
     .heading__img {
