@@ -17,6 +17,7 @@ import ProjectInformation from './components/ProjectInformation/ProjectInformati
 import esriModules from './esriModules';
 import { URLParamsContext, ACTION_TYPES } from './URLParams';
 import { useSpecialTranslation } from './i18n';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 
 const App = () => {

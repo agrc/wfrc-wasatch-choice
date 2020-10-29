@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import { useWindowWidth } from '../../hooks';
 import config from '../../config';
 import classNames from 'classnames'
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 
 export default props => {
@@ -14,14 +15,14 @@ export default props => {
 
   return (
     <div id="sideBar" className={names}>
-      <div className="side-bar__padder">
+      <PerfectScrollbar className="side-bar__padder">
         { windowWidth <= config.MAX_SMALL_SCREEN_WIDTH &&
           <div>
             <Button close onClick={props.toggleSidebar} />
           </div>
         }
         {props.children}
-      </div>
+      </PerfectScrollbar>
     </div>
   )
 };

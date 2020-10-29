@@ -7,6 +7,7 @@ import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { useSpecialTranslation } from '../../i18n';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 
 export default ({ innerRef }) => {
@@ -51,22 +52,28 @@ export default ({ innerRef }) => {
   const containerRef = React.useRef();
 
   const SortableNav = SortableContainer(({ items }) => {
+    const perfectOptions = {
+      suppressScrollY: true
+    };
+
     return (
       // use generic div node over reactstrap Nav so that we can get a ref
-      <div className="nav nav-tabs" ref={containerRef}>
-        { items.map((id, index) => {
-          const tabInfo = config.mapInfos[id];
+      <PerfectScrollbar options={perfectOptions}>
+        <div className="nav nav-tabs" ref={containerRef}>
+          { items.map((id, index) => {
+            const tabInfo = config.mapInfos[id];
 
-          return (
-            <SortableNavItem key={`item-${id}`} index={index} value={{ id, ...tabInfo}}/>
-          );
-        }) }
-        <NavItem key="settings">
-          <NavLink onClick={toggleModal} className="settings" data-testid="tab-configuration">
-            <i className="fas fa-cog"></i>
-          </NavLink>
-        </NavItem>
-      </div>
+            return (
+              <SortableNavItem key={`item-${id}`} index={index} value={{ id, ...tabInfo}}/>
+            );
+          }) }
+          <NavItem key="settings">
+            <NavLink onClick={toggleModal} className="settings" data-testid="tab-configuration">
+              <i className="fas fa-cog"></i>
+            </NavLink>
+          </NavItem>
+        </div>
+      </PerfectScrollbar>
     );
   });
 
