@@ -505,6 +505,11 @@
       },
       "required": ["en"]
     },
+    "maxTabsAllowed": {
+      "title": "Max Tabs Allowed",
+      "description": "Restricts the number of tabs that a user is allowed to add.",
+      "type": "integer"
+    },
     "$schema": {
       "description": "This should be set to https://wfrc.org/wasatch-choice-map/config.schema.json",
       "type": "string",
@@ -519,6 +524,7 @@
     "defaultExtent",
     "links",
     "openOnLoad",
-    "translations"
+    "translations",
+    "maxTabsAllowed"
   ]
 }

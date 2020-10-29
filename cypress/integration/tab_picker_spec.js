@@ -28,7 +28,7 @@ describe('tab-picker', () => {
 
     cy.findByRole('button', { name: /finish/i }).click();
 
-    cy.findByLabelText('ATO Tab').should('be.visible');
+    cy.findByLabelText('Open Space Tab').should('be.visible');
   });
   it('shows too many tabs alert', () => {
     cy.loadApp();

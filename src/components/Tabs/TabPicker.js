@@ -48,7 +48,7 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         id="tab-picker"
         lang={{
           availableHeader: t('trans:mapTabsDialog.availableHeader'),
-          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.MAX_TABS_ALLOWED})`
+          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.maxTabsAllowed})`
         }}
         onChange={setSelectedIds}
         options={options}

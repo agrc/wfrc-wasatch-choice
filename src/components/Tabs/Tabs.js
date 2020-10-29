@@ -24,7 +24,7 @@ export default ({ innerRef }) => {
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
   const setCurrentTabIds = ids => {
-    if (ids.length > config.MAX_TABS_ALLOWED) {
+    if (ids.length > config.maxTabsAllowed) {
       setMaxReached(true);
     } else {
       setMaxReached(false);

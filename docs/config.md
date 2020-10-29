@@ -4,17 +4,18 @@
 
 # WFRC App Properties
 
-| Property                                  | Type     | Required | Nullable       | Defined by                                                                                                                                       |
-| :---------------------------------------- | -------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
-| [mapInfos](#mapInfos)                     | `object` | Required | cannot be null | [WFRC App](config-properties-map-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")                    |
-| [sherlock](#sherlock)                     | `object` | Required | cannot be null | [WFRC App](config-properties-sherlock.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock")                     |
-| [layerSelector](#layerSelector)           | `object` | Required | cannot be null | [WFRC App](config-properties-layerselector.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector")           |
-| [minimumLegendSizes](#minimumLegendSizes) | `object` | Required | cannot be null | [WFRC App](config-properties-minimumlegendsizes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/minimumLegendSizes") |
-| [defaultExtent](#defaultExtent)           | `object` | Required | cannot be null | [WFRC App](config-properties-defaultextent.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent")           |
-| [links](#links)                           | `object` | Required | cannot be null | [WFRC App](config-properties-links.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/links")                           |
-| [openOnLoad](#openOnLoad)                 | `object` | Required | cannot be null | [WFRC App](config-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")                 |
-| [translations](#translations)             | `object` | Required | cannot be null | [WFRC App](config-properties-translations.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")             |
-| [$schema](#$schema)                       | `string` | Optional | cannot be null | [WFRC App](config-properties-schema.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")                        |
+| Property                                  | Type      | Required | Nullable       | Defined by                                                                                                                                       |
+| :---------------------------------------- | --------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| [mapInfos](#mapInfos)                     | `object`  | Required | cannot be null | [WFRC App](config-properties-map-infos.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")                    |
+| [sherlock](#sherlock)                     | `object`  | Required | cannot be null | [WFRC App](config-properties-sherlock.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock")                     |
+| [layerSelector](#layerSelector)           | `object`  | Required | cannot be null | [WFRC App](config-properties-layerselector.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector")           |
+| [minimumLegendSizes](#minimumLegendSizes) | `object`  | Required | cannot be null | [WFRC App](config-properties-minimumlegendsizes.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/minimumLegendSizes") |
+| [defaultExtent](#defaultExtent)           | `object`  | Required | cannot be null | [WFRC App](config-properties-defaultextent.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent")           |
+| [links](#links)                           | `object`  | Required | cannot be null | [WFRC App](config-properties-links.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/links")                           |
+| [openOnLoad](#openOnLoad)                 | `object`  | Required | cannot be null | [WFRC App](config-properties-openonload.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")                 |
+| [translations](#translations)             | `object`  | Required | cannot be null | [WFRC App](config-properties-translations.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")             |
+| [maxTabsAllowed](#maxTabsAllowed)         | `integer` | Required | cannot be null | [WFRC App](config-properties-max-tabs-allowed.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/maxTabsAllowed")       |
+| [$schema](#$schema)                       | `string`  | Optional | cannot be null | [WFRC App](config-properties-schema.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")                        |
 
 ## mapInfos
 
@@ -143,6 +144,22 @@ Contains the translated strings used in the app. Falls back to `en` if there is 
 ### translations Type
 
 `object` ([Translations](config-properties-translations.md))
+
+## maxTabsAllowed
+
+Restricts the number of tabs that a user is allowed to add.
+
+
+`maxTabsAllowed`
+
+-   is required
+-   Type: `integer` ([Max Tabs Allowed](config-properties-max-tabs-allowed.md))
+-   cannot be null
+-   defined in: [WFRC App](config-properties-max-tabs-allowed.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/maxTabsAllowed")
+
+### maxTabsAllowed Type
+
+`integer` ([Max Tabs Allowed](config-properties-max-tabs-allowed.md))
 
 ## $schema
 
