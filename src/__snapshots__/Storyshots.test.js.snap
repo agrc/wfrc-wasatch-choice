@@ -1419,7 +1419,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Maps Displayed (max=6)
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"
@@ -1694,7 +1694,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Maps Displayed (max=6)
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"
@@ -1885,7 +1885,7 @@ Array [
         className="rdl-control-label"
         htmlFor="tab-picker-selected"
       >
-        Maps Displayed (max=6)
+        Maps Displayed (max=5)
       </label>
       <div
         className="rdl-control-container"

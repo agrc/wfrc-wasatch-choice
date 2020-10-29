@@ -1225,5 +1225,6 @@
         "transportation": "Transporte"
       }
     }
-  }
+  },
+  "maxTabsAllowed": 5
 }
