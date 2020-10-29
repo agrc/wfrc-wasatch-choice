@@ -1,7 +1,9 @@
 .tabs {
+  max-width: fit-content;
   overflow-x: auto;
   overflow-y: hidden;
   .nav-tabs {
+    display: inline-flex;
     border-bottom: none;
     flex-wrap: nowrap;
   }
