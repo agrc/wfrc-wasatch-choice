@@ -9,7 +9,7 @@ import arrayMove from 'array-move';
 import { useSpecialTranslation } from '../../i18n';
 
 
-export default props => {
+export default ({ innerRef }) => {
   const currentTabConfig = useCurrentTabConfig();
   const [ { mapList }, dispatchURLParams ] = React.useContext(URLParamsContext);
   const onClick = id => dispatchURLParams({
@@ -75,7 +75,7 @@ export default props => {
   };
 
   return (
-    <div className="tabs">
+    <div className="tabs" ref={innerRef}>
       <SortableNav
         items={mapList}
         onSortEnd={onSortEnd}

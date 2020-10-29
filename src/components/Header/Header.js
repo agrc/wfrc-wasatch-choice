@@ -10,10 +10,13 @@ import { useSpecialTranslation } from '../../i18n';
 
 
 export default props => {
+  const tabsContainer = React.useRef();
+  const logoContainer = React.useRef();
   const t = useSpecialTranslation();
+  const largeLogoWidth = 200;
 
   const windowWidth = useWindowWidth();
-  const largeLogoScreenWidth = 1000;
+  const useLargeLogo = (tabsContainer.current) ? windowWidth - tabsContainer.current.offsetWidth >= largeLogoWidth : true;
 
   return (
     <div className="app__header">
@@ -23,10 +26,10 @@ export default props => {
           <a className="heading__tag-line" href={config.links.tagLine}>{t('trans:tagLine')}</a> :
           <span className="heading__tag-line">{t('trans:tagLine')}</span>) }
       </h4>
-      <Tabs />
-      <a href={config.links.landingPage} className="heading__img">
-        <img src={(windowWidth >= largeLogoScreenWidth) ? logo : logoSmall}
-          className={(windowWidth >= largeLogoScreenWidth) ? 'heading__img__large' : null }
+      <Tabs innerRef={tabsContainer} />
+      <a href={config.links.landingPage} className="heading__img" ref={logoContainer}>
+        <img src={(useLargeLogo) ? logo : logoSmall}
+          className={(useLargeLogo) ? null : 'heading__img__small'}
           alt="agrc logo" />
       </a>
     </div>

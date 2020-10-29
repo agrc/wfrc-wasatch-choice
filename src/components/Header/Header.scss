@@ -3,13 +3,14 @@
 .app__header {
   position: absolute;
   top: 5px;
-  left: 5px;
-  right: 5px;
-  padding: 8px;
+  left: 0;
+  right: 0;
+  padding: 8px 0;
   .header__heading {
     color: $highlightColor;
     font-family: Montserrat, Arial, sans-serif;
     letter-spacing: 0px;
+    margin-left: 8px;
   }
   .heading__tag-line {
     font-size: 11px;
@@ -21,15 +22,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    img.heading__img__large {
+    padding-right: 5px;
+    img {
       width: 200px;
-    }
-  }
-  @media screen and (max-width: 1000px) {
-    .heading__img {
-      top: 4px;
-      img {
-        height: 35px;
+      &.heading__img__small {
+        width: 35px;
       }
     }
   }
