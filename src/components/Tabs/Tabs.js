@@ -8,6 +8,7 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { useSpecialTranslation } from '../../i18n';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { isMobile } from 'react-device-detect';
 
 
 export default ({ innerRef }) => {
@@ -64,7 +65,7 @@ export default ({ innerRef }) => {
             const tabInfo = config.mapInfos[id];
 
             return (
-              <SortableNavItem key={`item-${id}`} index={index} value={{ id, ...tabInfo}}/>
+              <SortableNavItem key={`item-${id}`} index={index} value={{ id, ...tabInfo}} disabled={isMobile} />
             );
           }) }
           <NavItem key="settings">
