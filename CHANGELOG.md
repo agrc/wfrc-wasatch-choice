@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-1](https://github.com/agrc/wfrc/compare/v4.0.0-0...v4.0.0-1) (2020-10-30)
+
+
+### Bug Fixes
+
+* disable drag and drop on mobile ([aceda15](https://github.com/agrc/wfrc/commit/aceda15662f0471907c6cf19928a10b5b1eade13))
+
 ## [4.0.0-0](https://github.com/agrc/wfrc/compare/v3.0.0...v4.0.0-0) (2020-10-29)
 
 
