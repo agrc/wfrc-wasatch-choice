@@ -60,10 +60,16 @@ const App = () => {
       const task = new IdentifyTask({
         url: layer.url
       });
+      const layerIds = layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray();
+
+      if (layerIds.length === 0) {
+        return new Promise(resolve => resolve({ results: [] }));
+      }
+
       const parameters = new IdentifyParameters({
         geometry: clickEvent.mapPoint,
         height: view.height,
-        layerIds: layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray(),
+        layerIds,
         layerOption: 'visible',
         mapExtent: view.extent,
         returnFieldName: true,
@@ -99,7 +105,8 @@ const App = () => {
         returnGeometry: true,
         distance: config.IDENTIFY_PIXEL_TOLERANCE * view.resolution,
         units: 'feet',
-        where: layer.definitionExpression
+        where: layer.definitionExpression,
+        outFields: '*'
       });
 
       return results.features;
