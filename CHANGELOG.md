@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/agrc/wfrc/compare/v3.0.0...v3.0.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* prevent identify requests when no layers are visible ([2e35f9b](https://github.com/agrc/wfrc/commit/2e35f9b2ffab6d024ef81aa56fa146b17093630f)), closes [#74](https://github.com/agrc/wfrc/issues/74)
+* update header logo ([21ba989](https://github.com/agrc/wfrc/commit/21ba989525ed0b8087f99329d86815eb222135aa)), closes [#71](https://github.com/agrc/wfrc/issues/71)
+
 ## [3.0.0](https://github.com/agrc/wfrc/compare/v3.0.0-4...v3.0.0) (2020-10-14)
 
 ## [3.0.0-4](https://github.com/agrc/wfrc/compare/v3.0.0-3...v3.0.0-4) (2020-10-13)
