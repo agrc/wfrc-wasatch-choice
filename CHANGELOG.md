@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/agrc/wfrc/compare/v3.0.1...v4.0.0) (2020-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* added new required config prop: `maxTabsAllowed`
+
+### Features
+
+* added new required config prop: `maxTabsAllowed` ([54e5d63](https://github.com/agrc/wfrc/commit/54e5d63384ea0035296f913b64de1e6110d9ce8c)), closes [#73](https://github.com/agrc/wfrc/issues/73)
+* better logo large/small switching ([38f498a](https://github.com/agrc/wfrc/commit/38f498aed3dd8cc0456194921d698ac7081de793)), closes [#73](https://github.com/agrc/wfrc/issues/73)
+
+
+### Bug Fixes
+
+* disable drag and drop on mobile ([8150130](https://github.com/agrc/wfrc/commit/8150130d1f481a5005c015f886c866bf9ba308f4))
+* make scrolling more consistent and usable on windows ([cf6715e](https://github.com/agrc/wfrc/commit/cf6715eacc34c657320dc09fdcdc8bc4cf881fdc)), closes [#73](https://github.com/agrc/wfrc/issues/73)
+* remove expandable images from about content ([912cfdc](https://github.com/agrc/wfrc/commit/912cfdc120392bbd446a14ae69e0f7340e419834)), closes [#72](https://github.com/agrc/wfrc/issues/72)
+* use larger version of logo ([8a2aa81](https://github.com/agrc/wfrc/commit/8a2aa81e54e3ed432cdea6bd3dbb21b44009886c)), closes [#71](https://github.com/agrc/wfrc/issues/71)
+
 ## [4.0.0-1](https://github.com/agrc/wfrc/compare/v4.0.0-0...v4.0.0-1) (2020-10-30)
 
 
