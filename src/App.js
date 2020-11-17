@@ -60,6 +60,8 @@ const App = () => {
     const { IdentifyParameters, IdentifyTask } = await esriModules();
     const layerNameLookup = await getLayersInMap(view.map);
 
+    // this is a work-around/hack until WFRC is able to upgrade their ArcGIS Server
+    // ref: https://github.com/agrc/wfrc/issues/75
     const fieldAliasesToNames = (response) => {
       return Promise.all(response.results.map(async (result) => {
         const url = layerNameLookup[result.layerName]?.url;
