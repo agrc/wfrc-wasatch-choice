@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1-0](https://github.com/agrc/wfrc/compare/v4.0.0...v4.0.1-0) (2020-11-17)
+
+
+### Bug Fixes
+
+* implement work around for empty values bug ([16f8064](https://github.com/agrc/wfrc/commit/16f80645e89174d30689f2bd8a0740ac774d5766)), closes [#75](https://github.com/agrc/wfrc/issues/75)
+
 ## [4.0.0](https://github.com/agrc/wfrc/compare/v3.0.1...v4.0.0) (2020-11-06)
 
 
