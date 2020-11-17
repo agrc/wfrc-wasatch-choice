@@ -18,6 +18,7 @@ import esriModules from './esriModules';
 import { URLParamsContext, ACTION_TYPES } from './URLParams';
 import { useSpecialTranslation } from './i18n';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import { replaceAliasesWithFieldNames } from './Helpers';
 
 
 const App = () => {
@@ -57,6 +58,23 @@ const App = () => {
     const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
 
     const { IdentifyParameters, IdentifyTask } = await esriModules();
+    const layerNameLookup = await getLayersInMap(view.map);
+
+    const fieldAliasesToNames = (response) => {
+      return Promise.all(response.results.map(async (result) => {
+        const url = layerNameLookup[result.layerName]?.url;
+
+        if (url) {
+          const response = await fetch(`${url}?f=json`);
+          const responseJson = await response.json();
+
+          result.feature.attributes = replaceAliasesWithFieldNames(result.feature.attributes, responseJson.fields);
+        }
+
+        return result;
+      }));
+    };
+
     const identifyPromises = mapImageLayers.map(layer => {
       const task = new IdentifyTask({
         url: layer.url
@@ -79,15 +97,14 @@ const App = () => {
         width: view.width
       });
 
-      return task.execute(parameters);
+      return task.execute(parameters).then(fieldAliasesToNames);
     });
     console.log('identifyPromises', identifyPromises);
 
     const identifyResponses = await Promise.all(identifyPromises.toArray());
 
-    const layerNameLookup = await getLayersInMap(view.map);
     const identifyFeatures = identifyResponses.reduce((previous, current) => {
-      return previous.concat(current.results.map(result => {
+      return previous.concat(current.map(result => {
         return {
           geometry: result.feature.geometry,
           attributes: result.feature.attributes,
