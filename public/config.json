@@ -1147,14 +1147,12 @@
       "Imagery"
     ],
     "overlays": [
-      "Overlay",
       {
-        "id": "Land Ownership",
+        "id": "Cities",
         "Factory": "FeatureLayer",
-        "url": "https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0",
-        "opacity": 0.5
-      },
-      "Address Points"
+        "url": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/2",
+        "opacity": 1
+      }
     ]
   },
   "minimumLegendSizes": {
