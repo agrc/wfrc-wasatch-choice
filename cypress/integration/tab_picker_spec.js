@@ -11,7 +11,7 @@ describe('tab-picker', () => {
 
     cy.findByRole('button', { name: /finish/i }).click();
 
-    cy.findByLabelText('Transportation Tab').should('not.be.visible');
+    cy.findByLabelText('Transportation Tab').should('not.exist');
   });
   it('replaces a tab', () => {
     cy.loadApp();
