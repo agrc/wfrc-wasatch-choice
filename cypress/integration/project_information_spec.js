@@ -15,4 +15,11 @@ describe('project-information', () => {
 
     cy.findByRole('columnheader', { name: /name/i });
   });
+  it('resets the scroll between map clicks', () => {
+    cy.loadApp('#scale=577791&sideBarClosed=true&x=-12458002&y=4976716');
+    cy.get('.esri-view-root canvas').click();
+    cy.get(':nth-child(23) > .title').click();
+    cy.get('.esri-view-root canvas').click(400, 300);
+    cy.get(':nth-child(1) > .title').should('be.visible');
+  });
 });

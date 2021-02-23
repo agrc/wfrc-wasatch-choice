@@ -38,7 +38,7 @@ export default props => {
     }
   }, [buttonDiv, props.mapView]);
 
-  const updateScrollbar = () => scrollBar.current.update();
+  const updateScrollbar = () => scrollBar.current?.update();
 
   React.useEffect(() => {
     if (scrollBarContainer.current) {
