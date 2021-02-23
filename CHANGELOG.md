@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2-0](https://github.com/agrc/wfrc/compare/v4.0.1...v4.0.2-0) (2021-02-23)
+
+
+### Bug Fixes
+
+* prevent scrollbar from resetting on each scroll ([34610a0](https://github.com/agrc/wfrc/commit/34610a0b98654525391b2292e23f5b09f13cde6d))
+* **project-information:** reset scroll between map clicks ([a21792e](https://github.com/agrc/wfrc/commit/a21792e4a5685cf1df1781ccf56a89cd5d78952b)), closes [#76](https://github.com/agrc/wfrc/issues/76)
+
 ### [4.0.1](https://github.com/agrc/wfrc/compare/v4.0.1-0...v4.0.1) (2020-11-17)
 
 ### [4.0.1-0](https://github.com/agrc/wfrc/compare/v4.0.0...v4.0.1-0) (2020-11-17)
