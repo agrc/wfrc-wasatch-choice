@@ -3,7 +3,7 @@ import './Sherlock.scss'
 import { Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { toQueryString } from '../../Helpers'
+import Helpers from '../../Helpers'
 import escapeRegExp from 'lodash.escaperegexp';
 import debounce from "lodash.debounce";
 import sortBy from 'lodash.sortby';
@@ -491,7 +491,7 @@ class WebApi {
       options.attributeStyle = this.defaultAttributeStyle;
     }
 
-    const querystring = toQueryString(options);
+    const querystring = Helpers.toQueryString(options);
 
     const response = await fetch(url + querystring, { signal: this.signal });
 
