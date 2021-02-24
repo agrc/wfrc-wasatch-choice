@@ -15,11 +15,13 @@ export default props => {
 
   React.useEffect(() => {
     if (updateScrollbar) {
+      console.log('updating scrollbar');
       updateScrollbar();
     }
 
     // this if statement helps with tests
-    if (typeof containerRef.current.scrollIntoView === 'function') {
+    if (typeof containerRef.current.scrollIntoView === 'function' && props.graphics.length > 0) {
+      console.log('scrolling into view');
       containerRef.current.scrollIntoView();
     }
   }, [props.graphics, updateScrollbar]);
