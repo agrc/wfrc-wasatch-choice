@@ -510,6 +510,18 @@
       "description": "Restricts the number of tabs that a user is allowed to add.",
       "type": "integer"
     },
+    "projectInformation": {
+      "title": "Project Information widget configuration",
+      "type": "object",
+      "properties": {
+        "excludedLayers": {
+          "description": "Layer titles that will be excluded from the click results",
+          "type": "array"
+        }
+      },
+      "required": ["excludedLayers"],
+      "additionalProperties": false
+    },
     "$schema": {
       "description": "This should be set to https://wfrc.org/wasatch-choice-map/config.schema.json",
       "type": "string",
@@ -525,6 +537,7 @@
     "links",
     "openOnLoad",
     "translations",
-    "maxTabsAllowed"
+    "maxTabsAllowed",
+    "projectInformation"
   ]
 }

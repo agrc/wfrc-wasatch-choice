@@ -1,0 +1,3 @@
+## excludedLayers Type
+
+`array`

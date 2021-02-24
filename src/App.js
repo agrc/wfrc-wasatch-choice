@@ -54,7 +54,8 @@ const App = () => {
 
     const layers = view.map.layers;
 
-    const mapImageLayers = layers.filter(layer => layer.type === 'map-image' && layer.visible);
+    const mapImageLayers = layers.filter(layer =>
+      layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title));
 
     const { IdentifyParameters, IdentifyTask } = await esriModules();
     const identifyPromises = mapImageLayers.map(layer => {
@@ -98,7 +99,8 @@ const App = () => {
 
     // the manual querying of feature layer view below can be replaced with mapView.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
-    const featureLayers = layers.filter(layer => layer.type === 'feature' && layer.visible);
+    const featureLayers = layers.filter(layer =>
+      layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title));
     const queryFeatureLayerView = async layer => {
       const layerView = await view.whenLayerView(layer);
       const results = await layerView.queryFeatures({

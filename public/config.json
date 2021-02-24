@@ -1224,5 +1224,8 @@
       }
     }
   },
-  "maxTabsAllowed": 5
+  "maxTabsAllowed": 5,
+  "projectInformation": {
+    "excludedLayers": ["ZoomToPlaceNames - Outlines"]
+  }
 }
