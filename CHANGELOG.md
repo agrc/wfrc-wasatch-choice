@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0-0](https://github.com/agrc/wfrc/compare/v4.0.2-0...v4.1.0-0) (2021-02-24)
+
+
+### Features
+
+* **project-information:** add new config prop for excluding layers ([6699e5a](https://github.com/agrc/wfrc/commit/6699e5abc79d1fcf65d7c40dc79a37803bff6b97)), closes [#77](https://github.com/agrc/wfrc/issues/77)
+
+
+### Bug Fixes
+
+* **project-information:** reset scroll only if there is new data ([ec3717f](https://github.com/agrc/wfrc/commit/ec3717fcd0c413bf5cd597ea89729778b39023c0)), closes [#76](https://github.com/agrc/wfrc/issues/76)
+
 ### [4.0.2-0](https://github.com/agrc/wfrc/compare/v4.0.1...v4.0.2-0) (2021-02-23)
 
 
