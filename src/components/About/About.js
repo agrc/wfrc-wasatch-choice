@@ -39,7 +39,7 @@ export default ({ version, testTabId }) => {
       { (content) ? <div dangerouslySetInnerHTML={{__html: content}}></div> :
         <Loader type='Oval' className='about__loader' /> }
       <a className="about__version"
-        href="https://github.com/agrc/wfrc/blob/master/CHANGELOG.md"
+        href="https://github.com/agrc/wfrc/blob/main/CHANGELOG.md"
         target="_blank"
         rel="noopener noreferrer">
         <small>
