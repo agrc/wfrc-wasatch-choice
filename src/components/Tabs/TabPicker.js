@@ -58,7 +58,7 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         showOrderButtons={true}
       />
       <br></br>
-      { maxReached && <Alert color="warning">{t('trans:mapTabsDialog.maxMessage')}</Alert> }
+      { maxReached ? <Alert fade={false} color="warning">{t('trans:mapTabsDialog.maxMessage')}</Alert> : null }
     </>
   );
 };

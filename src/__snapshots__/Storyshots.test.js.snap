@@ -19,289 +19,7 @@ exports[`Storyshots Details default 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter Economic Development 1`] = `
-<div
-  className="filter"
->
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Economic Clusters
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      TOD Sites
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      CDAs and RDAs
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Opportunity Zones
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      Centers
-    </label>
-  </div>
-  <div
-    className="form-check"
-  >
-    <label
-      className="form-check-label"
-    >
-      <input
-        checked={true}
-        className="form-check-input"
-        onChange={[Function]}
-        type="checkbox"
-      />
-      General Land Use
-    </label>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Filter Land Use 1`] = `
-<div
-  className="filter"
->
-  <div
-    className="group-container"
-  >
-    <div
-      className="form-check"
-    >
-      <label
-        className="form-check-label"
-      >
-        <input
-          checked={false}
-          className="form-check-input"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        Projections (2050)
-      </label>
-    </div>
-    <div
-      className="child-checkbox-container"
-    >
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            name="Projections (2050)"
-            onChange={[Function]}
-            type="radio"
-          />
-          Employment
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={false}
-            className="form-check-input"
-            name="Projections (2050)"
-            onChange={[Function]}
-            type="radio"
-          />
-          Population
-        </label>
-      </div>
-    </div>
-  </div>
-  <div
-    className="group-container"
-  >
-    <div
-      className="form-check"
-    >
-      <label
-        className="form-check-label"
-      >
-        <input
-          checked={false}
-          className="form-check-input"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        Workplace Accessibility (2019)
-      </label>
-    </div>
-    <div
-      className="child-checkbox-container"
-    >
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            name="Workplace Accessibility (2019)"
-            onChange={[Function]}
-            type="radio"
-          />
-          Auto
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={false}
-            className="form-check-input"
-            name="Workplace Accessibility (2019)"
-            onChange={[Function]}
-            type="radio"
-          />
-          Transit
-        </label>
-      </div>
-    </div>
-  </div>
-  <div
-    className="group-container"
-  >
-    <div
-      className="form-check"
-    >
-      <label
-        className="form-check-label"
-      >
-        <input
-          checked={true}
-          className="form-check-input"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        Land Use
-      </label>
-    </div>
-    <div
-      className="child-checkbox-container"
-    >
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Centers
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          General Land Use
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Green Space
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Filter Recreation 1`] = `
+exports[`Storyshots Filter Fifth Map 1`] = `
 <div
   className="filter"
 >
@@ -413,7 +131,232 @@ exports[`Storyshots Filter Recreation 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter Transportation 1`] = `
+exports[`Storyshots Filter First Map 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={false}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Transportation
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Roads
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Transit
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Bike/Ped
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={true}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Land Use
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Centers
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          General Land Use
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Fourth Map 1`] = `
+<div
+  className="filter"
+>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Economic Clusters
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      TOD Sites
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      CDAs and RDAs
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Opportunity Zones
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      Centers
+    </label>
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="form-check-label"
+    >
+      <input
+        checked={true}
+        className="form-check-input"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      General Land Use
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Filter Second Map 1`] = `
 <div
   className="filter"
 >
@@ -690,7 +633,7 @@ exports[`Storyshots Filter Transportation 1`] = `
 </div>
 `;
 
-exports[`Storyshots Filter trans:visionMapTitle 1`] = `
+exports[`Storyshots Filter Third Map 1`] = `
 <div
   className="filter"
 >
@@ -709,7 +652,7 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
           onChange={[Function]}
           type="checkbox"
         />
-        Transportation
+        Projections (2050)
       </label>
     </div>
     <div
@@ -722,14 +665,54 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
           className="form-check-label"
         >
           <input
+            checked={true}
+            className="form-check-input"
+            name="Projections (2050)"
+            onChange={[Function]}
+            type="radio"
+          />
+          Employment
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
             checked={false}
             className="form-check-input"
+            name="Projections (2050)"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
           />
-          Roads
+          Population
         </label>
       </div>
+    </div>
+  </div>
+  <div
+    className="group-container"
+  >
+    <div
+      className="form-check"
+    >
+      <label
+        className="form-check-label"
+      >
+        <input
+          checked={false}
+          className="form-check-input"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Workplace Accessibility (2019)
+      </label>
+    </div>
+    <div
+      className="child-checkbox-container"
+    >
       <div
         className="form-check"
       >
@@ -739,25 +722,27 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
           <input
             checked={true}
             className="form-check-input"
+            name="Workplace Accessibility (2019)"
             onChange={[Function]}
-            type="checkbox"
+            type="radio"
+          />
+          Auto
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            name="Workplace Accessibility (2019)"
+            onChange={[Function]}
+            type="radio"
           />
           Transit
-        </label>
-      </div>
-      <div
-        className="form-check"
-      >
-        <label
-          className="form-check-label"
-        >
-          <input
-            checked={true}
-            className="form-check-input"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          Bike/Ped
         </label>
       </div>
     </div>
@@ -811,6 +796,21 @@ exports[`Storyshots Filter trans:visionMapTitle 1`] = `
             type="checkbox"
           />
           General Land Use
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <label
+          className="form-check-label"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          Green Space
         </label>
       </div>
     </div>
@@ -1298,246 +1298,6 @@ exports[`Storyshots Symbols Classes - Unique Values 1`] = `
 </div>
 `;
 
-exports[`Storyshots TabPicker Max Reached 1`] = `
-Array [
-  <div
-    className="react-dual-listbox rdl-has-header"
-    id="tab-picker"
-  >
-    <div
-      className="rdl-list-box rdl-available"
-    >
-      <label
-        className="rdl-control-label"
-        htmlFor="tab-picker-available"
-      >
-        Other Available Maps
-      </label>
-      <div
-        className="rdl-control-container"
-      >
-        <select
-          className="rdl-control"
-          disabled={false}
-          id="tab-picker-available"
-          multiple={true}
-          onChange={[Function]}
-          onDoubleClick={[Function]}
-          onKeyUp={[Function]}
-          value={Array []}
-        >
-          <option
-            data-real-value="\\"three\\""
-            id="tab-picker-option-three"
-            value="three"
-          >
-            Third One
-          </option>
-          <option
-            data-real-value="\\"four\\""
-            id="tab-picker-option-four"
-            value="four"
-          >
-            Fourth One
-          </option>
-          <option
-            data-real-value="\\"eight\\""
-            id="tab-picker-option-eight"
-            value="eight"
-          >
-            Eighth One
-          </option>
-        </select>
-      </div>
-    </div>
-    <div
-      className="rdl-actions"
-    >
-      <div
-        className="rdl-actions-right"
-      >
-        <button
-          className="rdl-move rdl-move-all rdl-move-right"
-          disabled={false}
-          id="tab-picker-move-all-right"
-          onClick={[Function]}
-          type="button"
-        >
-          <span
-            className="fa fa-chevron-right"
-          />
-          <span
-            className="fa fa-chevron-right"
-          />
-        </button>
-        <button
-          className="rdl-move rdl-move-right"
-          disabled={false}
-          id="tab-picker-move-right"
-          onClick={[Function]}
-          type="button"
-        >
-          <span
-            className="fa fa-chevron-right"
-          />
-        </button>
-      </div>
-      <div
-        className="rdl-actions-left"
-      >
-        <button
-          className="rdl-move rdl-move-left"
-          disabled={false}
-          id="tab-picker-move-left"
-          onClick={[Function]}
-          type="button"
-        >
-          <span
-            className="fa fa-chevron-left"
-          />
-        </button>
-        <button
-          className="rdl-move rdl-move-all rdl-move-left"
-          disabled={false}
-          id="tab-picker-move-all-left"
-          onClick={[Function]}
-          type="button"
-        >
-          <span
-            className="fa fa-chevron-left"
-          />
-          <span
-            className="fa fa-chevron-left"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="rdl-list-box rdl-selected"
-    >
-      <label
-        className="rdl-control-label"
-        htmlFor="tab-picker-selected"
-      >
-        Maps Displayed (max=5)
-      </label>
-      <div
-        className="rdl-control-container"
-      >
-        <select
-          className="rdl-control"
-          disabled={false}
-          id="tab-picker-selected"
-          multiple={true}
-          onChange={[Function]}
-          onDoubleClick={[Function]}
-          onKeyUp={[Function]}
-          value={Array []}
-        >
-          <option
-            data-index={0}
-            data-real-value="\\"two\\""
-            id="tab-picker-option-two"
-            value="two"
-          >
-            Second One
-          </option>
-          <option
-            data-index={1}
-            data-real-value="\\"one\\""
-            id="tab-picker-option-one"
-            value="one"
-          >
-            First One
-          </option>
-          <option
-            data-index={2}
-            data-real-value="\\"five\\""
-            id="tab-picker-option-five"
-            value="five"
-          >
-            Fifth One
-          </option>
-          <option
-            data-index={3}
-            data-real-value="\\"six\\""
-            id="tab-picker-option-six"
-            value="six"
-          >
-            Sixth One
-          </option>
-          <option
-            data-index={4}
-            data-real-value="\\"seven\\""
-            id="tab-picker-option-seven"
-            value="seven"
-          >
-            Seventh One
-          </option>
-        </select>
-      </div>
-    </div>
-    <div
-      className="rdl-actions"
-    >
-      <button
-        className="rdl-move rdl-move-up"
-        disabled={false}
-        id="tab-picker-move-up"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          className="fa fa-chevron-up"
-        />
-      </button>
-      <button
-        className="rdl-move rdl-move-down"
-        disabled={false}
-        id="tab-picker-move-down"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          className="fa fa-chevron-down"
-        />
-      </button>
-    </div>
-    <input
-      disabled={false}
-      name={null}
-      type="hidden"
-      value="two,one,five,six,seven"
-    />
-  </div>,
-  <br />,
-  <div
-    className="alert alert-warning fade"
-    role="alert"
-  >
-    A maximum of five tabs may be selected.
-  </div>,
-  "Selected Ids:",
-  <ol>
-    <li>
-      two
-    </li>
-    <li>
-      one
-    </li>
-    <li>
-      five
-    </li>
-    <li>
-      six
-    </li>
-    <li>
-      seven
-    </li>
-  </ol>,
-]
-`;
-
 exports[`Storyshots TabPicker None Selected 1`] = `
 Array [
   <div
@@ -1715,6 +1475,17 @@ Array [
       className="rdl-actions"
     >
       <button
+        className="rdl-move rdl-move-top"
+        disabled={false}
+        id="tab-picker-move-top"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="fa fa-angle-double-up"
+        />
+      </button>
+      <button
         className="rdl-move rdl-move-up"
         disabled={false}
         id="tab-picker-move-up"
@@ -1734,6 +1505,17 @@ Array [
       >
         <span
           className="fa fa-chevron-down"
+        />
+      </button>
+      <button
+        className="rdl-move rdl-move-bottom"
+        disabled={false}
+        id="tab-picker-move-bottom"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="fa fa-angle-double-down"
         />
       </button>
     </div>
@@ -1931,6 +1713,17 @@ Array [
       className="rdl-actions"
     >
       <button
+        className="rdl-move rdl-move-top"
+        disabled={false}
+        id="tab-picker-move-top"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="fa fa-angle-double-up"
+        />
+      </button>
+      <button
         className="rdl-move rdl-move-up"
         disabled={false}
         id="tab-picker-move-up"
@@ -1950,6 +1743,17 @@ Array [
       >
         <span
           className="fa fa-chevron-down"
+        />
+      </button>
+      <button
+        className="rdl-move rdl-move-bottom"
+        disabled={false}
+        id="tab-picker-move-bottom"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="fa fa-angle-double-down"
         />
       </button>
     </div>

@@ -42,3 +42,6 @@ export const MaxReached = () =>
     initialSelectedIds={['two', 'one', 'five', 'six', 'seven']}
     maxReached={true}
   />;
+MaxReached.parameters = {
+  storyshots: { disable: true }
+}
