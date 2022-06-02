@@ -69,7 +69,7 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
   });
 };
 
-export default props => {
+export default function Filter(props) {
   const [ filterByPhasing, setFilterByPhasing ] = useState(false);
   const layers = useMapLayers(props.mapView, props.layerNames);
 
