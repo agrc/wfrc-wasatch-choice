@@ -7,32 +7,32 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "array-move": "^3.0.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "array-move": "^4.0.0",
     "bootstrap": "^4.5.0",
     "downshift": "^5.4.5",
     "esri-loader": "^2.14.0",
     "i18next": "^19.7.0",
-    "i18next-browser-languagedetector": "^6.0.1",
-    "jsonschema": "^1.2.6",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "jsonschema": "^1.4.1",
     "lodash.debounce": "^4.0.8",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.sortby": "^4.7.0",
     "lodash.uniqwith": "^4.5.0",
-    "perfect-scrollbar": "^1.5.0",
+    "perfect-scrollbar": "^1.5.5",
     "query-string": "^6.13.1",
-    "react": "^16.13.1",
-    "react-device-detect": "^1.14.0",
-    "react-dom": "^16.13.1",
-    "react-dual-listbox": "^2.0.0",
+    "react": "^17.0.2",
+    "react-device-detect": "^2.1.2",
+    "react-dom": "^17.0.2",
+    "react-dual-listbox": "^2.2.0",
     "react-fast-compare": "^3.2.0",
-    "react-i18next": "^11.7.2",
-    "react-loader-spinner": "^3.1.14",
+    "react-i18next": "^11.16.9",
+    "react-loader-spinner": "^5.1.4",
     "react-perfect-scrollbar": "^1.5.8",
-    "react-scripts": "^3.4.1",
-    "react-sortable-hoc": "^1.11.0",
-    "reactstrap": "^8.5.1",
-    "typeface-montserrat": "0.0.75"
+    "react-scripts": "^5.0.1",
+    "react-sortable-hoc": "^2.0.0",
+    "reactstrap": "^8.10.1",
+    "typeface-montserrat": "^1.1.13"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -84,6 +84,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^1.6.0",
     "grunt-ssh": "^0.12.9",
+    "identity-obj-proxy": "^3.0.0",
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^7.0.0",
     "react-test-renderer": "^16.13.1",
@@ -93,6 +94,15 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(array-move)/)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "typeface-montserrat": "identity-obj-proxy"
     }
   }
 }

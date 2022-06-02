@@ -5,7 +5,7 @@ import config, { useCurrentTabConfig } from '../../config';
 import TabPicker from './TabPicker';
 import { URLParamsContext, ACTION_TYPES } from '../../URLParams';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
+import { arrayMoveImmutable } from 'array-move';
 import { useSpecialTranslation } from '../../i18n';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { isMobile } from 'react-device-detect';
@@ -79,7 +79,7 @@ export default ({ innerRef }) => {
   });
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    setCurrentTabIds(arrayMove(mapList, oldIndex, newIndex));
+    setCurrentTabIds(arrayMoveImmutable(mapList, oldIndex, newIndex));
   };
 
   return (
