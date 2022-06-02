@@ -20,7 +20,7 @@ import { useSpecialTranslation } from './i18n';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 
-const App = () => {
+export default function App() {
   console.log('app render');
   const [zoomToGraphic, setZoomToGraphic] = React.useState({
     graphic: null,
@@ -276,5 +276,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

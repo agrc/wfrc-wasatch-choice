@@ -1,12 +1,8 @@
 {
   "cSpell.words": [
+    "baselayer",
     "CDAs",
     "CMAQ",
-    "MSTR",
-    "Mountainland",
-    "RDAs",
-    "STIP",
-    "baselayer",
     "columnheader",
     "compl",
     "dialogitize",
@@ -15,8 +11,13 @@
     "fortawesome",
     "languagedetector",
     "listbox",
+    "montserrat",
+    "Mountainland",
+    "MSTR",
+    "RDAs",
     "reactstrap",
     "scrollbar",
+    "STIP",
     "testid",
     "wherematters"
   ],

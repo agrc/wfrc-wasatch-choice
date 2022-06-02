@@ -1,7 +1,7 @@
 import React from 'react';
 import Details from './Details';
 import './ProjectInformation.scss';
-import Loader from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { useSpecialTranslation } from '../../i18n';
 import { MapWidgetContext } from '../MapWidget/MapWidget';
 
@@ -32,7 +32,7 @@ export default props => {
     <div className="project-information" ref={containerRef}>
       { props.graphics.length === 0 && !props.showLoader &&
         <p>{t('trans:projectInformationPrompt')}</p> }
-      { props.showLoader && <Loader type="Oval" className="loader" /> }
+      { props.showLoader && <div className="loader"><Oval /></div> }
       { props.graphics.map((graphic, index) =>
         <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />) }
     </div>
