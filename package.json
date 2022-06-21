@@ -2,7 +2,7 @@
   "name": "wfrc",
   "version": "4.1.0",
   "private": true,
-  "homepage": ".",
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
@@ -35,22 +35,36 @@
     "typeface-montserrat": "^1.1.13"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run update-config-docs && react-scripts build",
-    "build-stage": "npm run update-config-docs && ./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
-    "test": "react-scripts test",
-    "test:once": "npm run lint && npm test -- --watchAll=false && npm run cypress:run",
-    "lint": "eslint src",
-    "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
+    "build:stage": "npm run update-config-docs && vite build --mode stage",
+    "build": "npm run update-config-docs && vite build",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
-    "eject": "react-scripts eject",
+    "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
+    "lint": "eslint src",
+    "preview": "vite preview",
     "release": "standard-version",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "start": "vite",
+    "storybook": "start-storybook -p 9009",
+    "test": "vitest",
     "update-config-docs": "del ./docs/** && jsonschema2md -d public -o docs -h false -x - -n"
   },
   "eslintConfig": {
-    "extends": "react-app",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime",
+      "plugin:react-hooks/recommended"
+    ],
+    "ignorePatterns": [
+      "dist/**"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "globals": {
       "cy": true,
       "Cypress": true
@@ -64,48 +78,39 @@
   ],
   "devDependencies": {
     "@adobe/jsonschema2md": "^4.1.6",
-    "@storybook/addon-actions": "^6.5.6",
-    "@storybook/addon-links": "^6.5.6",
-    "@storybook/addon-storyshots": "^6.5.6",
-    "@storybook/addons": "^6.5.6",
-    "@storybook/builder-webpack5": "^6.5.6",
-    "@storybook/manager-webpack5": "^6.5.6",
-    "@storybook/preset-create-react-app": "^4.1.2",
-    "@storybook/react": "^6.5.6",
-    "@testing-library/cypress": "^7.0.0",
-    "@testing-library/dom": "^8.13.0",
-    "@testing-library/react": "^12.1.5",
-    "babel-preset-react-app": "^10.0.1",
+    "@rollup/pluginutils": "^4.2.1",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-vite": "^0.1.36",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@vitejs/plugin-react": "^1.3.2",
     "concurrently": "^5.2.0",
+    "core-js": "^3.23.2",
     "cypress": "^6.5.0",
     "cypress-pipe": "^2.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^3.0.1",
-    "env-cmd": "^10.1.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "grunt": "^1.5.3",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-compress": "^1.6.0",
     "grunt-ssh": "^0.12.9",
     "identity-obj-proxy": "^3.0.0",
     "load-grunt-tasks": "^5.1.0",
-    "node-sass": "^7.0.1",
     "react-test-renderer": "^16.13.1",
+    "sass": "^1.52.3",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^1.14.0",
-    "webpack": "^5.73.0"
+    "vite": "^2.9.12",
+    "vitest": "^0.15.2"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(array-move)/)"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "typeface-montserrat": "identity-obj-proxy"
     }
   }
 }

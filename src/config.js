@@ -44,13 +44,13 @@ let config = {
   DEFAULT_NUM_TABS: 5
 };
 
-// optional configSchema is for jest and storybook since they are clumsy when it comes to
+// optional configSchema is for testing and storybook since they are clumsy when it comes to
 // async setup
 export const setConfigs = async (appConfigs, configSchema=null) => {
   // we are fetching this rather than importing it so that it can be hosted publicly and available
   // for WFRC to reference it in their config files
   if (!configSchema) {
-    const response = await fetch(`${process.env.PUBLIC_URL}/config.schema.json?rel=${process.env.REACT_APP_VERSION}`);
+    const response = await fetch('/config.schema.json');
     configSchema = await response.json();
   }
 
@@ -79,7 +79,7 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
     });
 
   // apply quad word from env
-  Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', process.env.REACT_APP_DISCOVER)));
+  Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', import.meta.env.VITE_DISCOVER)));
 };
 
 export const getDefaultCurrentTabIds = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import MapLens from './components/MapLens';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import MapLens from './components/MapLens/MapLens';
 import MapView from './components/esrijs/MapView';
 import config, { useCurrentTabConfig } from './config';
 import './App.scss';
@@ -9,7 +9,7 @@ import About from './components/About/About';
 import MapWidget from './components/MapWidget/MapWidget';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
-import { Sherlock, MapServiceProvider } from './components/Sherlock';
+import { Sherlock, MapServiceProvider } from './components/Sherlock/Sherlock';
 import Filter from './components/Filter/Filter';
 import QueryFilter from './components/Filter/QueryFilter';
 import { getLayersInMap } from './components/Filter/utils';
@@ -36,8 +36,8 @@ export default function App() {
   const [urlParams, dispatchURLParams] = React.useContext(URLParamsContext);
   const t = useSpecialTranslation();
 
-  const quadWord = process.env.REACT_APP_DISCOVER;
-  const version = process.env.REACT_APP_VERSION;
+  const quadWord = import.meta.env.VITE_DISCOVER;
+  const version = import.meta.env.VITE_VERSION;
 
   const onMapClick = React.useCallback(async (clickEvent, view) => {
     console.log('onMapClick', clickEvent);

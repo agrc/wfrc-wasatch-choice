@@ -1,7 +1,11 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import Details from './Details';
 
+
+export default {
+  title: 'Details',
+  component: Details,
+}
 
 const feature = {
   attributes: {
@@ -24,6 +28,4 @@ const feature = {
   }
 };
 
-storiesOf('Details', module)
-  .add('default', () => <Details feature={feature} />)
-;
+export const Default = () => <Details feature={feature} />;

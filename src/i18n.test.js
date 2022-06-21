@@ -1,4 +1,5 @@
 import { generateTranslatorFunction } from './i18n';
+import { describe, it, expect } from 'vitest';
 
 
 describe('translate', () => {

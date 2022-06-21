@@ -17,7 +17,7 @@ export default ({ version, testTabId }) => {
   useEffect(() => {
     console.log('fetching about config json');
 
-    fetch(`${process.env.PUBLIC_URL}/about/${language}/${currentTabId}.html?rel=${process.env.REACT_APP_VERSION}`)
+    fetch(`/about/${language}/${currentTabId}.html`)
       .then(response => {
         if (response.ok) {
           return response.text();
@@ -29,7 +29,7 @@ export default ({ version, testTabId }) => {
         throw errorMessage;
       })
       .then(contentText => {
-        setContent(contentText.replace(/%PUBLIC_URL%/g, process.env.PUBLIC_URL))
+        setContent(contentText)
       })
     ;
   }, [language, currentTabId]);

@@ -1,4 +1,5 @@
 import { getOptions } from './TabPicker';
+import { describe, it, expect } from 'vitest';
 
 describe('getOptions', () => {
   const t = value => value;

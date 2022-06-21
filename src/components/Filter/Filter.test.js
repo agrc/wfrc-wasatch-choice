@@ -1,4 +1,5 @@
 import { getPhaseQuery, validateCheckboxLayerKeys } from './Filter';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { getLayers } from './utils';
 
 
@@ -71,7 +72,7 @@ describe('getLayers', () => {
   });
 
   it('logs an error if there is no matching layer in web map', async () => {
-    console.error = jest.fn();
+    console.error = vi.fn();
     const config = {
       layerNames: {
         boundaries: 'BadLayerName',
@@ -102,7 +103,7 @@ describe('getLayers', () => {
 
 describe('validateCheckboxLayerKeys', () => {
   beforeEach(() => {
-    console.error = jest.fn();
+    console.error = vi.fn();
   });
 
   it('logs no errors if there are no issues', () => {

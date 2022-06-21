@@ -308,7 +308,7 @@ export const Static = props => {
         boundariesElement="viewport"
         toggle={() => setShowPopover(!showPopover)}>
         <PopoverBody>
-          <img src={`${process.env.PUBLIC_URL}/${props.imageFileName}`}
+          <img src={`/${props.imageFileName}`}
             alt="static legend" style={{ width: '250px' }} />
         </PopoverBody>
       </Popover>
