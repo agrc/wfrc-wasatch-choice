@@ -1,4 +1,5 @@
 import { getFieldQuery, TEXT, NUMBER, getLayerQuery } from './QueryFilter';
+import { describe, it, expect } from 'vitest';
 
 describe('getFieldQuery', () => {
   it('number', () => {

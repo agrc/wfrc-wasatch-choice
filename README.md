@@ -82,11 +82,9 @@ The current language should be automatically detected from the user's browser. I
 
 ## Development & Testing
 
+Create and populate `.env.local` based on `.env`
+
 Execute `npm start` to start a web server and view the website
-
-Open [`src/App.js`](src/App.js) to view the development version of the app.
-
-Build an awesome app.
 
 Execute `npm test` to run tests
 
@@ -94,23 +92,18 @@ Execute `npm test` to run tests
 
 Execute `npm run build` to create an optimized production build
 
-_The files will be placed in `/build`_
+_The files will be placed in `/dist`_
 
-Execute `serve -s build` to view the website
+Execute `npm run preview` to view the website
 
 ## Deploy
 
 One-time tasks:
 
 - [ ] Update the analytics code in `public/index.html`
-- [ ] Create and populate `secrets.json` based on `secrets.sample.json`
 
 Tasks to be completed for each release:
 
-- [ ] Verify all tests are passing (`npm run test:once`)
+- [ ] Verify all tests are passing (`npm run test`)
 - [ ] `npm run release` or `npm run release -- --prerelease`
-- [ ] Run a build and test (`npm run build` | `npm run build-stage`)
-- [ ] Deploy website (`grunt deploy-prod` | `grunt deploy-stage`)
-  - `-prod` builds a .zip file that can be manually attached to the release on GitHub for the client to download.
-  - `-stage` pushes the app to [test.mapserv.utah.gov/wfrc](https://test.mapserv.utah.gov/wfrc/)
-- [ ] Push commits and tag to github (`git push origin && git push origin --tags`)
+- [ ] Push commits and tag to github (`git push --follow-tags`)

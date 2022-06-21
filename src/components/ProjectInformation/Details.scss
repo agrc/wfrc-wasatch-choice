@@ -10,7 +10,7 @@ $padding: 14px;
     font-weight: bold;
     font-size: 14px;
     background-color: #f0f0f0;
-    padding: $padding/2 $padding;
+    padding: calc($padding/2) $padding;
     border-bottom: $border;
     &:hover {
       background-color: white;
