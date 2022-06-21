@@ -16,13 +16,13 @@ module.exports = function configure(grunt) {
       stage: {
         host: '',
         username: '',
-        password: ''
+        password: '',
       },
       prod: {
         host: '',
         username: '',
-        password: ''
-      }
+        password: '',
+      },
     };
   }
 
@@ -31,38 +31,40 @@ module.exports = function configure(grunt) {
 
   grunt.initConfig({
     clean: {
-      main: ['deploy']
+      main: ['deploy'],
     },
     compress: {
       main: {
         options: {
-          archive: `deploy/${zipFileName}`
+          archive: `deploy/${zipFileName}`,
         },
-        files: [{
-          src: deployFiles,
-          dest: './',
-          cwd: 'build/',
-          expand: true
-        }]
-      }
+        files: [
+          {
+            src: deployFiles,
+            dest: './',
+            cwd: 'build/',
+            expand: true,
+          },
+        ],
+      },
     },
     secrets: secrets,
     sftp: {
       stage: {
         files: {
-          './': `deploy/${zipFileName}`
+          './': `deploy/${zipFileName}`,
         },
         options: {
           host: '<%= secrets.stage.host %>',
           username: '<%= secrets.stage.username %>',
-          password: '<%= secrets.stage.password %>'
-        }
+          password: '<%= secrets.stage.password %>',
+        },
       },
       options: {
         path: './wwwroot/' + deployDir + '/',
         srcBasePath: 'deploy/',
-        showProgress: true
-      }
+        showProgress: true,
+      },
     },
     sshexec: {
       stage: {
@@ -70,20 +72,12 @@ module.exports = function configure(grunt) {
         options: {
           host: '<%= secrets.stage.host %>',
           username: '<%= secrets.stage.username %>',
-          password: '<%= secrets.stage.password %>'
-        }
-      }
-    }
+          password: '<%= secrets.stage.password %>',
+        },
+      },
+    },
   });
 
-  grunt.registerTask('deploy-prod', [
-    'clean:main',
-    'compress:main'
-  ]);
-  grunt.registerTask('deploy-stage', [
-    'clean:main',
-    'compress:main',
-    'sftp:stage',
-    'sshexec:stage'
-  ]);
+  grunt.registerTask('deploy-prod', ['clean:main', 'compress:main']);
+  grunt.registerTask('deploy-stage', ['clean:main', 'compress:main', 'sftp:stage', 'sshexec:stage']);
 };

@@ -15,7 +15,7 @@ describe('filter', () => {
 
     let getVisibleLayers;
     let originalVisibleLayers;
-    cy.window().then(win => {
+    cy.window().then((win) => {
       getVisibleLayers = win.getVisibleLayers;
 
       originalVisibleLayers = getVisibleLayers();

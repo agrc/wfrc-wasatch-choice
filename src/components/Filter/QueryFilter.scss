@@ -1,13 +1,13 @@
 .query-filter {
   .query-filter-field {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     .btn {
       padding: 0;
       &:focus {
         box-shadow: none;
       }
       svg {
-        margin-right: .25rem;
+        margin-right: 0.25rem;
       }
     }
     .field-container {
@@ -18,10 +18,10 @@
         align-items: center;
         justify-content: flex-start;
         input {
-          margin-right: .25rem;
+          margin-right: 0.25rem;
         }
         .checkbox-label {
-          margin-right: .25rem;
+          margin-right: 0.25rem;
         }
         .swatch {
           height: 1rem;

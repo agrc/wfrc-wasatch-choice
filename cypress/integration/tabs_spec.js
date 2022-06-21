@@ -10,7 +10,7 @@ describe('tabs', () => {
 
     cy.findByLabelText('Land Use Tab').click();
 
-    cy.get('@originalExtent').then(originalExtent => {
+    cy.get('@originalExtent').then((originalExtent) => {
       cy.getMapExtent().should('equal', originalExtent);
     });
   });
@@ -18,7 +18,7 @@ describe('tabs', () => {
     cy.loadApp();
 
     let getVisibleLayers;
-    cy.window().then(win => {
+    cy.window().then((win) => {
       getVisibleLayers = win.getVisibleLayers;
     });
 
@@ -62,13 +62,11 @@ describe('tabs', () => {
     cy.findByLabelText('Transportation Tab')
       .trigger('mouseover')
       .trigger('mousedown', { button: 0 })
-      .trigger('mousemove', 0, 0, { force: true })
-    ;
+      .trigger('mousemove', 0, 0, { force: true });
     cy.findByLabelText('Recreation Tab')
       .trigger('mouseover')
       .trigger('mousemove', 0, 0, { force: true })
-      .trigger('mouseup')
-    ;
+      .trigger('mouseup');
 
     // assert that tab nodes actually moved
     cy.get(':nth-child(4) > .nav-link').should('have.text', 'Recreation');

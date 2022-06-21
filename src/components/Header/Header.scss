@@ -34,8 +34,8 @@
   /* For all tabs */
   .nav-link {
     border: 2px solid white;
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
 
   /* For non-active tabs */
@@ -48,6 +48,6 @@
   a.active.nav-link {
     color: white;
     font-weight: bold;
-    background-color: #42738D;
+    background-color: #42738d;
   }
 }

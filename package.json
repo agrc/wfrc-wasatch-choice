@@ -39,6 +39,7 @@
     "build": "npm run update-config-docs && vite build",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
     "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
+    "format": "prettier . -w",
     "lint": "eslint src",
     "preview": "vite preview",
     "release": "standard-version",
@@ -53,6 +54,7 @@
       "sourceType": "module"
     },
     "extends": [
+      "prettier",
       "plugin:react/recommended",
       "plugin:react/jsx-runtime",
       "plugin:react-hooks/recommended"
@@ -76,6 +78,10 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
+  },
   "devDependencies": {
     "@adobe/jsonschema2md": "^4.1.6",
     "@rollup/pluginutils": "^4.2.1",
@@ -93,6 +99,8 @@
     "cypress-pipe": "^2.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^3.0.1",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "grunt": "^1.5.3",
@@ -101,6 +109,8 @@
     "grunt-ssh": "^0.12.9",
     "identity-obj-proxy": "^3.0.0",
     "load-grunt-tasks": "^5.1.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
     "react-test-renderer": "^16.13.1",
     "sass": "^1.52.3",
     "standard-version": "^9.5.0",

@@ -23,5 +23,6 @@
     "testid",
     "wherematters"
   ],
-  "cSpell.language": "en,es"
+  "cSpell.language": "en,es",
+  "editor.formatOnSave": true
 }

@@ -1,6 +1,5 @@
+import { describe, expect, it } from 'vitest';
 import { generateTranslatorFunction } from './i18n';
-import { describe, it, expect } from 'vitest';
-
 
 describe('translate', () => {
   const mockedTranslatedValue = 'hello';

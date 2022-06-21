@@ -1,45 +1,43 @@
-import React, { Component } from 'react'
-import './Sherlock.scss'
-import { Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Helpers from '../../Helpers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Downshift from 'downshift';
+import { loadModules } from 'esri-loader';
+import debounce from 'lodash.debounce';
 import escapeRegExp from 'lodash.escaperegexp';
-import debounce from "lodash.debounce";
 import sortBy from 'lodash.sortby';
 import uniqWith from 'lodash.uniqwith';
-import { loadModules } from 'esri-loader';
-import Downshift from 'downshift';
-import isEqual from "react-fast-compare";
+import { Component } from 'react';
+import isEqual from 'react-fast-compare';
+import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import config from '../../config';
-
+import Helpers from '../../Helpers';
+import './Sherlock.scss';
 
 class Sherlock extends Component {
-
   static defaultProps = {
     symbols: {
       polygon: {
         type: 'simple-fill',
-        color: [240, 240, 240, .5],
+        color: [240, 240, 240, 0.5],
         outline: {
           style: 'solid',
-          color: [255, 255, 0, .5],
-          width: 2.5
-        }
+          color: [255, 255, 0, 0.5],
+          width: 2.5,
+        },
       },
       line: {
         type: 'simple-line',
         style: 'solid',
         color: [255, 255, 0],
-        width: 5
+        width: 5,
       },
       point: {
         type: 'simple-marker',
         style: 'circle',
         color: [255, 255, 0, 0.5],
-        size: 10
-      }
-    }
+        size: 10,
+      },
+    },
   };
 
   itemToString = this.itemToString.bind(this);
@@ -61,16 +59,17 @@ class Sherlock extends Component {
 
     const results = response.data;
 
-    const graphics = results.map(feature =>
-      (new Graphic({
-        geometry: feature.geometry,
-        attributes: feature.attributes,
-        symbol: symbols[feature.geometry.type]
-      }))
+    const graphics = results.map(
+      (feature) =>
+        new Graphic({
+          geometry: feature.geometry,
+          attributes: feature.attributes,
+          symbol: symbols[feature.geometry.type],
+        })
     );
 
     onSherlockMatch(graphics);
-  };
+  }
 
   itemToString(item) {
     console.log('Clue:itemToString', arguments);
@@ -83,81 +82,94 @@ class Sherlock extends Component {
     console.log('SherlockDownshift:render', arguments);
     const props = {
       itemToString: this.itemToString,
-      onChange: this.handleStateChange
+      onChange: this.handleStateChange,
     };
 
     return (
       <Downshift {...props}>
-        {({
-          getInputProps,
-          getItemProps,
-          highlightedIndex,
-          isOpen,
-          inputValue,
-          getMenuProps
-        }) => (
-            <div className='sherlock'>
-              <h4>{this.props.label}</h4>
-              <div style={{ paddingBottom: '1em' }}>
-                <InputGroup>
-                  <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="nope"></Input>
-                  <InputGroupAddon addonType="append">
-                    <Button size="sm" color="secondary" disabled>
-                      <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
-                    </Button>
-                  </InputGroupAddon>
-                </InputGroup>
-                <div className="sherlock__match-dropdown" {...getMenuProps()}>
-                  <ul className="sherlock__matches">
-                    {!isOpen ?
-                      null :
-                      <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
-                        {({ short, hasmore, loading, error, data = [] }) => {
-                          if (short) {
-                            return <li className="sherlock__match-item alert-primary" disabled>Type more than 2 letters.</li>;
-                          }
-
-                          // if (loading) {
-                          //   return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
-                          // }
-
-                          if (error) {
-                            return <li className="sherlock__match-item alert-danger" disabled>Error! ${error}</li>;
-                          }
-
-                          if (!data.length) {
-                            return <li className="sherlock__match-item alert-warning" disabled>No items found.</li>;
-                          }
-
-                          let items = data.map((item, index) => (
-                            <li {...getItemProps({
-                              key: index,
-                              className: 'sherlock__match-item' + (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
-                              item,
-                              index
-                            })}>
-                              <Highlighted text={item.attributes[this.props.provider.searchField]} highlight={inputValue}></Highlighted>
-                              <div>{item.attributes[this.props.provider.contextField] || ''}</div>
+        {({ getInputProps, getItemProps, highlightedIndex, isOpen, inputValue, getMenuProps }) => (
+          <div className="sherlock">
+            <h4>{this.props.label}</h4>
+            <div style={{ paddingBottom: '1em' }}>
+              <InputGroup>
+                <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="nope"></Input>
+                <InputGroupAddon addonType="append">
+                  <Button size="sm" color="secondary" disabled>
+                    <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
+                  </Button>
+                </InputGroupAddon>
+              </InputGroup>
+              <div className="sherlock__match-dropdown" {...getMenuProps()}>
+                <ul className="sherlock__matches">
+                  {!isOpen ? null : (
+                    <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
+                      {({ short, hasmore, loading, error, data = [] }) => {
+                        if (short) {
+                          return (
+                            <li className="sherlock__match-item alert-primary" disabled>
+                              Type more than 2 letters.
                             </li>
-                          ));
+                          );
+                        }
 
-                          if (hasmore) {
-                            items.push(
-                              <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>More than {this.props.maxResultsToDisplay} items found.</li>
-                            );
-                          }
+                        // if (loading) {
+                        //   return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
+                        // }
 
-                          return items;
-                        }}
-                      </Clue>
-                    }
-                  </ul>
-                </div>
+                        if (error) {
+                          return (
+                            <li className="sherlock__match-item alert-danger" disabled>
+                              Error! ${error}
+                            </li>
+                          );
+                        }
+
+                        if (!data.length) {
+                          return (
+                            <li className="sherlock__match-item alert-warning" disabled>
+                              No items found.
+                            </li>
+                          );
+                        }
+
+                        let items = data.map((item, index) => (
+                          <li
+                            {...getItemProps({
+                              key: index,
+                              className:
+                                'sherlock__match-item' +
+                                (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
+                              item,
+                              index,
+                            })}
+                          >
+                            <Highlighted
+                              text={item.attributes[this.props.provider.searchField]}
+                              highlight={inputValue}
+                            ></Highlighted>
+                            <div>{item.attributes[this.props.provider.contextField] || ''}</div>
+                          </li>
+                        ));
+
+                        if (hasmore) {
+                          items.push(
+                            <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>
+                              More than {this.props.maxResultsToDisplay} items found.
+                            </li>
+                          );
+                        }
+
+                        return items;
+                      }}
+                    </Clue>
+                  )}
+                </ul>
               </div>
             </div>
-          )}
+          </div>
+        )}
       </Downshift>
-    )
+    );
   }
 }
 
@@ -167,7 +179,7 @@ class Clue extends Component {
     loading: false,
     error: false,
     short: true,
-    hasmore: false
+    hasmore: false,
   };
 
   async componentDidMount() {
@@ -190,13 +202,13 @@ class Clue extends Component {
     const { clue, provider, maxresults } = this.props;
     const { searchField, contextField } = provider;
 
-    const response = await provider.search(clue).catch(e => {
+    const response = await provider.search(clue).catch((e) => {
       this.setState({
         data: undefined,
         error: e.message,
         loading: false,
         short: clue.length <= 2,
-        hasmore: false
+        hasmore: false,
       });
 
       console.error(e);
@@ -211,8 +223,10 @@ class Clue extends Component {
 
     let features = uniqWith(response.data, (a, b) => {
       if (hasContext) {
-        return a.attributes[searchField] === b.attributes[searchField] &&
+        return (
+          a.attributes[searchField] === b.attributes[searchField] &&
           a.attributes[contextField] === b.attributes[contextField]
+        );
       } else {
         return a.attributes[searchField] === b.attributes[searchField];
       }
@@ -230,7 +244,7 @@ class Clue extends Component {
       loading: false,
       error: false,
       short: clue.length <= 2,
-      hasmore: hasMore
+      hasmore: hasMore,
     });
   });
 
@@ -241,13 +255,13 @@ class Clue extends Component {
       error: false,
       loading: true,
       short: this.props.clue.length <= 2,
-      hasmore: false
+      hasmore: false,
     });
 
     if (this.props.clue.length > 2) {
       await this.makeNetworkRequest();
     }
-  };
+  }
 
   render() {
     console.log('Clue:render', arguments);
@@ -261,7 +275,7 @@ class Clue extends Component {
       loading,
       error,
       hasmore,
-      refetch: this.fetchData
+      refetch: this.fetchData,
     });
   }
 }
@@ -325,7 +339,10 @@ class MapServiceProvider extends ProviderBase {
   }
 
   async setUpQueryTask(serviceUrl, options) {
-    const [Query, QueryTask] = await loadModules(['esri/tasks/support/Query', 'esri/tasks/QueryTask'], config.ESRI_LOADER_CONFIG);
+    const [Query, QueryTask] = await loadModules(
+      ['esri/tasks/support/Query', 'esri/tasks/QueryTask'],
+      config.ESRI_LOADER_CONFIG
+    );
     const defaultWkid = 3857;
     this.query = new Query();
     this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
@@ -364,7 +381,7 @@ class WebApiProvider extends ProviderBase {
     this.geometryClasses = {
       point: console.log,
       polygon: console.log,
-      polyline: console.log
+      polyline: console.log,
     };
 
     this.searchLayer = searchLayer;
@@ -387,7 +404,7 @@ class WebApiProvider extends ProviderBase {
 
     return await this.webApi.search(this.searchLayer, this.outFields, {
       predicate: this.getSearchClause(searchString),
-      spatialReference: this.wkid
+      spatialReference: this.wkid,
     });
   }
 
@@ -396,7 +413,7 @@ class WebApiProvider extends ProviderBase {
 
     return await this.webApi.search(this.searchLayer, this.outFields.concat('shape@'), {
       predicate: this.getFeatureClause(searchValue, contextValue),
-      spatialReference: this.wkid
+      spatialReference: this.wkid,
     });
   }
 }
@@ -406,19 +423,17 @@ const Highlighted = ({ text = '', highlight = '' }) => {
     return <div>{text}</div>;
   }
 
-  const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi')
-  const parts = text.split(regex)
+  const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi');
+  const parts = text.split(regex);
 
   return (
     <div>
-      {
-        parts.filter(part => part).map((part, i) => (
-          regex.test(part) ? <mark key={i}>{part}</mark> : <span key={i}>{part}</span>
-        ))
-      }
+      {parts
+        .filter((part) => part)
+        .map((part, i) => (regex.test(part) ? <mark key={i}>{part}</mark> : <span key={i}>{part}</span>))}
     </div>
-  )
-}
+  );
+};
 
 class WebApi {
   constructor(apiKey, signal) {
@@ -430,7 +445,6 @@ class WebApi {
     // xhrProvider: dojo/request/* provider
     //      The current provider as determined by the search function
     this.xhrProvider = null;
-
 
     // Properties to be sent into constructor
 
@@ -498,7 +512,7 @@ class WebApi {
     if (!response.ok) {
       return {
         ok: false,
-        message: response.message || response.statusText
+        message: response.message || response.statusText,
       };
     }
 
@@ -507,15 +521,15 @@ class WebApi {
     if (result.status !== 200) {
       return {
         ok: false,
-        message: result.message
+        message: result.message,
       };
     }
 
     return {
       ok: true,
-      data: result.result
+      data: result.result,
     };
   }
 }
 
-export { Sherlock, WebApiProvider, MapServiceProvider }
+export { Sherlock, WebApiProvider, MapServiceProvider };

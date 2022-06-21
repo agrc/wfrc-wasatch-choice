@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './Details.scss';
+import { useEffect, useRef, useState } from 'react';
 import { Collapse } from 'reactstrap';
 import esriModules from '../../esriModules';
+import './Details.scss';
 
-
-export default props => {
+export default (props) => {
   console.log('Details', props);
 
-  const [ collapsed, setCollapsed ] = useState(true);
+  const [collapsed, setCollapsed] = useState(true);
   const containerRef = useRef();
-  const [ title, setTitle ] = useState();
+  const [title, setTitle] = useState();
 
   const toggle = () => setCollapsed(!collapsed);
 
@@ -22,9 +21,9 @@ export default props => {
         container: document.createElement('div'),
         graphic: props.graphic,
         visibleElements: {
-          title: false
+          title: false,
         },
-        defaultPopupTemplateEnabled: true
+        defaultPopupTemplateEnabled: true,
       });
 
       await watchUtils.once(feature, 'title');
@@ -47,10 +46,14 @@ export default props => {
   }, [props.graphic]);
 
   return (
-    <div className="details"
+    <div
+      className="details"
       onMouseEnter={() => props.highlightGraphic(props.graphic)}
-      onMouseLeave={() => props.highlightGraphic()}>
-      <div className="title" onClick={toggle}>{title}</div>
+      onMouseLeave={() => props.highlightGraphic()}
+    >
+      <div className="title" onClick={toggle}>
+        {title}
+      </div>
       <Collapse isOpen={!collapsed}>
         <div ref={containerRef}></div>
       </Collapse>

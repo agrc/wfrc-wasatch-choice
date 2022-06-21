@@ -5,7 +5,7 @@
 [tab configurations](https://docs.google.com/spreadsheets/u/1/d/1BFA3-PcDI07CYR7JloeXjB78NNtnTDieRBY-ELnzsjI/edit#gid=0)  
 [production](https://wfrc.org/wasatch-choice-map)  
 [staging](https://test.mapserv.utah.gov/wfrc/)  
-[multi select UX article](https://medium.com/tripaneer-techblog/improving-the-usability-of-multi-selecting-from-a-long-list-63e1a67aab35)  
+[multi select UX article](https://medium.com/tripaneer-techblog/improving-the-usability-of-multi-selecting-from-a-long-list-63e1a67aab35)
 
 ## Configuration
 

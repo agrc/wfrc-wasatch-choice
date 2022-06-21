@@ -1,30 +1,28 @@
+import { faHandPointer, faList } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
-import MapLens from './components/MapLens/MapLens';
-import MapView from './components/esrijs/MapView';
-import config, { useCurrentTabConfig } from './config';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import './App.scss';
 import About from './components/About/About';
-import MapWidget from './components/MapWidget/MapWidget';
-import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
-import { faList } from '@fortawesome/free-solid-svg-icons';
-import { Sherlock, MapServiceProvider } from './components/Sherlock/Sherlock';
+import MapView from './components/esrijs/MapView';
 import Filter from './components/Filter/Filter';
 import QueryFilter from './components/Filter/QueryFilter';
 import { getLayersInMap } from './components/Filter/utils';
+import Header from './components/Header/Header';
+import MapLens from './components/MapLens/MapLens';
+import MapWidget from './components/MapWidget/MapWidget';
 import ProjectInformation from './components/ProjectInformation/ProjectInformation';
+import { MapServiceProvider, Sherlock } from './components/Sherlock/Sherlock';
+import Sidebar from './components/Sidebar/Sidebar';
+import config, { useCurrentTabConfig } from './config';
 import esriModules from './esriModules';
-import { URLParamsContext, ACTION_TYPES } from './URLParams';
 import { useSpecialTranslation } from './i18n';
-import 'react-perfect-scrollbar/dist/css/styles.css';
-
+import { ACTION_TYPES, URLParamsContext } from './URLParams';
 
 export default function App() {
   console.log('app render');
   const [zoomToGraphic, setZoomToGraphic] = React.useState({
     graphic: null,
-    level: 0
+    level: 0,
   });
   const [mapView, setView] = React.useState();
   const [resetFilter, setResetFilter] = React.useState(false);
@@ -54,18 +52,23 @@ export default function App() {
 
     const layers = view.map.layers;
 
-    const mapImageLayers = layers.filter(layer =>
-      layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title));
+    const mapImageLayers = layers.filter(
+      (layer) =>
+        layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title)
+    );
 
     const { IdentifyParameters, IdentifyTask } = await esriModules();
-    const identifyPromises = mapImageLayers.map(layer => {
+    const identifyPromises = mapImageLayers.map((layer) => {
       const task = new IdentifyTask({
-        url: layer.url
+        url: layer.url,
       });
-      const layerIds = layer.sublayers.filter(subLayer => subLayer.visible).map(subLayer => subLayer.id).toArray();
+      const layerIds = layer.sublayers
+        .filter((subLayer) => subLayer.visible)
+        .map((subLayer) => subLayer.id)
+        .toArray();
 
       if (layerIds.length === 0) {
-        return new Promise(resolve => resolve({ results: [] }));
+        return new Promise((resolve) => resolve({ results: [] }));
       }
 
       const parameters = new IdentifyParameters({
@@ -77,7 +80,7 @@ export default function App() {
         returnFieldName: true,
         returnGeometry: true,
         tolerance: config.IDENTIFY_PIXEL_TOLERANCE,
-        width: view.width
+        width: view.width,
       });
 
       return task.execute(parameters);
@@ -88,20 +91,24 @@ export default function App() {
 
     const layerNameLookup = await getLayersInMap(view.map);
     const identifyFeatures = identifyResponses.reduce((previous, current) => {
-      return previous.concat(current.results.map(result => {
-        return {
-          geometry: result.feature.geometry,
-          attributes: result.feature.attributes,
-          popupTemplate: layerNameLookup[result.layerName].popupTemplate
-        };
-      }));
+      return previous.concat(
+        current.results.map((result) => {
+          return {
+            geometry: result.feature.geometry,
+            attributes: result.feature.attributes,
+            popupTemplate: layerNameLookup[result.layerName].popupTemplate,
+          };
+        })
+      );
     }, []);
 
     // the manual querying of feature layer view below can be replaced with mapView.hitTest
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
-    const featureLayers = layers.filter(layer =>
-      layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title));
-    const queryFeatureLayerView = async layer => {
+    const featureLayers = layers.filter(
+      (layer) =>
+        layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title)
+    );
+    const queryFeatureLayerView = async (layer) => {
       const layerView = await view.whenLayerView(layer);
       const results = await layerView.queryFeatures({
         geometry: clickEvent.mapPoint,
@@ -109,7 +116,7 @@ export default function App() {
         distance: config.IDENTIFY_PIXEL_TOLERANCE * view.resolution,
         units: 'feet',
         where: layer.definitionExpression,
-        outFields: '*'
+        outFields: '*',
       });
 
       return results.features;
@@ -136,12 +143,14 @@ export default function App() {
     setView,
     mapView,
     initialExtent: React.useMemo(() => {
-      return (urlParams.scale) ? {
-        x: urlParams.x,
-        y: urlParams.y,
-        scale: urlParams.scale
-      } : null;
-    }, [urlParams])
+      return urlParams.scale
+        ? {
+            x: urlParams.x,
+            y: urlParams.y,
+            scale: urlParams.scale,
+          }
+        : null;
+    }, [urlParams]),
   };
 
   const toggleSidebar = () => {
@@ -152,7 +161,7 @@ export default function App() {
 
   const sidebarOptions = {
     sideBarOpen: !urlParams.sideBarClosed,
-    toggleSidebar
+    toggleSidebar,
   };
 
   const onSherlockMatch = (graphics) => {
@@ -166,14 +175,14 @@ export default function App() {
 
     setZoomToGraphic({
       graphic: graphics,
-      preserve: false
+      preserve: false,
     });
   };
 
   const sherlockConfig = {
     provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
     placeHolder: t(config.sherlock.placeHolder),
-    onSherlockMatch
+    onSherlockMatch,
   };
 
   React.useEffect(() => {
@@ -204,7 +213,7 @@ export default function App() {
         const { Graphic } = await esriModules();
         const symbolizedGraphic = new Graphic({
           ...newGraphic,
-          symbol: config.SELECTION_SYMBOLS[newGraphic.geometry.type]
+          symbol: config.SELECTION_SYMBOLS[newGraphic.geometry.type],
         });
 
         mapView.graphics.add(symbolizedGraphic);
@@ -213,7 +222,7 @@ export default function App() {
     } else {
       setGraphic(null);
     }
-  }
+  };
 
   React.useEffect(() => {
     // reset graphics on tab change
@@ -222,7 +231,7 @@ export default function App() {
 
   return (
     <div className="app">
-      { currentTabConfig &&
+      {currentTabConfig && (
         <>
           <Header title={t('trans:appTitle')} />
           <Sidebar toggleSidebar={toggleSidebar} isOpen={!urlParams.sideBarClosed}>
@@ -230,49 +239,61 @@ export default function App() {
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
-            { currentTabConfig.filter && <MapWidget
-              defaultOpen={config.openOnLoad.filter}
-              name={t('trans:filter')}
-              icon={faList}
-              position={0}
-              showReset={true}
-              onReset={() => setResetFilter(true)}
-              mapView={mapView}>
-              <Filter {...currentTabConfig.filter}
-                reset={resetFilter}
+            {currentTabConfig.filter && (
+              <MapWidget
+                defaultOpen={config.openOnLoad.filter}
+                name={t('trans:filter')}
+                icon={faList}
+                position={0}
+                showReset={true}
+                onReset={() => setResetFilter(true)}
                 mapView={mapView}
-                webMapId={currentTabConfig.webMapId}
+              >
+                <Filter
+                  {...currentTabConfig.filter}
+                  reset={resetFilter}
+                  mapView={mapView}
+                  webMapId={currentTabConfig.webMapId}
                 />
-            </MapWidget> }
-            { currentTabConfig.queryFilter && <MapWidget
-              defaultOpen={config.openOnLoad.queryFilter}
-              name={`${t(currentTabConfig.name)} ${t('trans:filter')}`}
-              icon={faList}
-              position={0}
-              showReset={true}
-              onReset={() => setResetFilter(true)}
-              mapView={mapView}>
-              <QueryFilter {...currentTabConfig.queryFilter}
-                reset={resetFilter}
+              </MapWidget>
+            )}
+            {currentTabConfig.queryFilter && (
+              <MapWidget
+                defaultOpen={config.openOnLoad.queryFilter}
+                name={`${t(currentTabConfig.name)} ${t('trans:filter')}`}
+                icon={faList}
+                position={0}
+                showReset={true}
+                onReset={() => setResetFilter(true)}
                 mapView={mapView}
-                webMapId={currentTabConfig.webMapId}
+              >
+                <QueryFilter
+                  {...currentTabConfig.queryFilter}
+                  reset={resetFilter}
+                  mapView={mapView}
+                  webMapId={currentTabConfig.webMapId}
                 />
-            </MapWidget> }
-            { !currentTabConfig.useDefaultAGOLPopup && <MapWidget
-              defaultOpen={config.openOnLoad.projectInfo}
-              name={t('trans:projectInformation')}
-              icon={faHandPointer}
-              position={1}
-              mapView={mapView}>
-              <ProjectInformation
-                graphics={selectedGraphics}
-                highlightGraphic={highlightGraphic}
-                showLoader={showIdentifyLoader} />
-            </MapWidget> }
+              </MapWidget>
+            )}
+            {!currentTabConfig.useDefaultAGOLPopup && (
+              <MapWidget
+                defaultOpen={config.openOnLoad.projectInfo}
+                name={t('trans:projectInformation')}
+                icon={faHandPointer}
+                position={1}
+                mapView={mapView}
+              >
+                <ProjectInformation
+                  graphics={selectedGraphics}
+                  highlightGraphic={highlightGraphic}
+                  showLoader={showIdentifyLoader}
+                />
+              </MapWidget>
+            )}
             <Sherlock {...sherlockConfig}></Sherlock>
           </MapLens>
         </>
-      }
+      )}
     </div>
   );
-};
+}

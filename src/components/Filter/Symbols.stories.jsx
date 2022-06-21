@@ -1,8 +1,7 @@
-import React from "react";
-import { Classes } from "./Symbols";
+import { Classes } from './Symbols';
 
 export default {
-  title: "Symbols",
+  title: 'Symbols',
   component: Classes,
 };
 
@@ -11,7 +10,7 @@ const layersLookup = {
     renderer: {
       uniqueValueInfos: [
         {
-          label: "Metropolitan Center",
+          label: 'Metropolitan Center',
           symbol: {
             color: {
               a: 1,
@@ -22,7 +21,7 @@ const layersLookup = {
           },
         },
         {
-          label: "Urban Center",
+          label: 'Urban Center',
           symbol: {
             color: {
               a: 1,
@@ -33,7 +32,7 @@ const layersLookup = {
           },
         },
         {
-          label: "City Center",
+          label: 'City Center',
           symbol: {
             color: {
               a: 1,
@@ -44,7 +43,7 @@ const layersLookup = {
           },
         },
         {
-          label: "Neighborhood Center",
+          label: 'Neighborhood Center',
           symbol: {
             color: {
               a: 1,
@@ -60,11 +59,11 @@ const layersLookup = {
   layerTwo: {},
   employment: {
     renderer: {
-      type: "class-breaks",
-      valueExpressionTitle: "Jobs Per Developable Acre",
+      type: 'class-breaks',
+      valueExpressionTitle: 'Jobs Per Developable Acre',
       classBreakInfos: [
         {
-          label: "label one",
+          label: 'label one',
           symbol: {
             color: {
               a: 1,
@@ -75,7 +74,7 @@ const layersLookup = {
           },
         },
         {
-          label: "label two",
+          label: 'label two',
           symbol: {
             color: {
               a: 1,
@@ -86,7 +85,7 @@ const layersLookup = {
           },
         },
         {
-          label: "label three",
+          label: 'label three',
           symbol: {
             color: {
               a: 1,
@@ -97,7 +96,7 @@ const layersLookup = {
           },
         },
         {
-          label: "label four",
+          label: 'label four',
           symbol: {
             color: {
               a: 1,
@@ -108,7 +107,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 1.3 to 2",
+          label: '> 1.3 to 2',
           symbol: {
             color: {
               a: 1,
@@ -119,7 +118,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 2 to 3.4",
+          label: '> 2 to 3.4',
           symbol: {
             color: {
               a: 1,
@@ -130,7 +129,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 3.4 To 5",
+          label: '> 3.4 To 5',
           symbol: {
             color: {
               a: 1,
@@ -141,7 +140,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 5.7 To 10",
+          label: '> 5.7 To 10',
           symbol: {
             color: {
               a: 1,
@@ -152,7 +151,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 10 To 17.2",
+          label: '> 10 To 17.2',
           symbol: {
             color: {
               a: 1,
@@ -163,7 +162,7 @@ const layersLookup = {
           },
         },
         {
-          label: "> 17.2 To 252.3",
+          label: '> 17.2 To 252.3',
           symbol: {
             color: {
               a: 1,
@@ -178,9 +177,5 @@ const layersLookup = {
   },
 };
 
-export const ClassesUniqueValues = () => (
-  <Classes layersLookup={layersLookup} layerNames={["layerOne"]} />
-);
-export const ClassesBreaks = () => (
-  <Classes layersLookup={layersLookup} layerNames={["employment"]} />
-);
+export const ClassesUniqueValues = () => <Classes layersLookup={layersLookup} layerNames={['layerOne']} />;
+export const ClassesBreaks = () => <Classes layersLookup={layersLookup} layerNames={['employment']} />;

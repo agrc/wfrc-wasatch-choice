@@ -1,14 +1,12 @@
+import debounce from 'lodash.debounce';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import config, { useCurrentTabConfig } from '../../config';
 import esriModules from '../../esriModules';
-import { LayerSelectorContainer, LayerSelector } from '../LayerSelector/LayerSelector';
-import config from '../../config';
-import { useCurrentTabConfig } from '../../config';
-import debounce from 'lodash.debounce';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
+import { LayerSelector, LayerSelectorContainer } from '../LayerSelector/LayerSelector';
 
-
-const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick}) => {
+const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) => {
   const dispatchURLParams = React.useContext(URLParamsContext)[1];
   const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
@@ -20,44 +18,47 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
   const layerSelector = React.useRef();
   const isLayerSelectorVisible = React.useRef(false);
 
-  const zoomTo = React.useCallback(async (zoomObj) => {
-    console.log('app.zoomTo');
+  const zoomTo = React.useCallback(
+    async (zoomObj) => {
+      console.log('app.zoomTo');
 
-    if (!Array.isArray(zoomObj.target)) {
-      zoomObj.target = [zoomObj.target];
-    }
-
-    if (!zoomObj.zoom) {
-      if (zoomObj.target.every(graphic => graphic.geometry.type === 'point')) {
-        zoomObj = {
-          target: zoomObj.target,
-          zoom: mapView.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels
-        };
-      } else {
-        zoomObj = {
-          target: zoomObj.target
-        };
+      if (!Array.isArray(zoomObj.target)) {
+        zoomObj.target = [zoomObj.target];
       }
-    }
 
-    await mapView.goTo(zoomObj);
+      if (!zoomObj.zoom) {
+        if (zoomObj.target.every((graphic) => graphic.geometry.type === 'point')) {
+          zoomObj = {
+            target: zoomObj.target,
+            zoom: mapView.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels,
+          };
+        } else {
+          zoomObj = {
+            target: zoomObj.target,
+          };
+        }
+      }
 
-    if (displayedZoomGraphic) {
-      mapView.graphics.removeMany(displayedZoomGraphic);
-    }
+      await mapView.goTo(zoomObj);
 
-    setDisplayedZoomGraphic(zoomObj.target);
+      if (displayedZoomGraphic) {
+        mapView.graphics.removeMany(displayedZoomGraphic);
+      }
 
-    mapView.graphics.addMany(zoomObj.target);
+      setDisplayedZoomGraphic(zoomObj.target);
 
-    const { watchUtils } = await esriModules();
+      mapView.graphics.addMany(zoomObj.target);
 
-    if (!zoomObj.preserve) {
-      watchUtils.once(mapView, 'extent', () => {
-        mapView.graphics.removeAll();
-      });
-    }
-  }, [displayedZoomGraphic, mapView]);
+      const { watchUtils } = await esriModules();
+
+      if (!zoomObj.preserve) {
+        watchUtils.once(mapView, 'extent', () => {
+          mapView.graphics.removeAll();
+        });
+      }
+    },
+    [displayedZoomGraphic, mapView]
+  );
 
   React.useEffect(() => {
     console.log('MapView: zoom to graphic');
@@ -65,11 +66,12 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
     if (zoomToGraphic) {
       const { graphic, level, preserve } = zoomToGraphic;
 
-      graphic && zoomTo({
-       target: graphic,
-        zoom: level,
-        preserve: preserve
-      });
+      graphic &&
+        zoomTo({
+          target: graphic,
+          zoom: level,
+          preserve: preserve,
+        });
     }
   }, [zoomToGraphic, zoomTo]);
 
@@ -83,14 +85,15 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
       view: mapView,
       quadWord: discoverKey,
       modules,
-      ...config.layerSelector
+      ...config.layerSelector,
     };
 
     ReactDOM.render(
       <LayerSelectorContainer>
         <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
       </LayerSelectorContainer>,
-      selectorNode.current);
+      selectorNode.current
+    );
   }, [discoverKey, mapView]);
 
   const changeMap = React.useCallback(async () => {
@@ -106,8 +109,8 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
         const { WebMap } = await esriModules();
         maps.current[currentTabConfig.id] = new WebMap({
           portalItem: {
-            id: currentTabConfig.webMapId
-          }
+            id: currentTabConfig.webMapId,
+          },
         });
       }
 
@@ -133,8 +136,9 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
       }
 
       if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
-        const method = (currentTabConfig.hideLayerSelector) ?
-          mapView.ui.remove.bind(mapView.ui) : mapView.ui.add.bind(mapView.ui);
+        const method = currentTabConfig.hideLayerSelector
+          ? mapView.ui.remove.bind(mapView.ui)
+          : mapView.ui.add.bind(mapView.ui);
         method(selectorNode.current, { position: 'top-left', index: 2 });
       }
 
@@ -167,47 +171,50 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
         scale = initialExtent.scale;
       } else {
         center = config.defaultExtent;
-        zoom = config.defaultExtent.zoomLevel
+        zoom = config.defaultExtent.zoomLevel;
       }
 
       const view = new MapView({
         container: mapViewDiv.current,
         center: {
           ...center,
-          spatialReference: 3857
+          spatialReference: 3857,
         },
         zoom,
         scale,
         ui: {
-          components: ['zoom']
-        }
+          components: ['zoom'],
+        },
       });
 
       view.ui.add(new Home({ view }), 'top-left');
 
       // one time setup once the view has loaded
       view.when(() => {
-        view.watch('extent', debounce(newExtent => {
-          if (newExtent) {
-            dispatchURLParams({
-              type: ACTION_TYPES.MAP_EXTENT,
-              payload: {
-                x: Math.round(newExtent.center.x),
-                y: Math.round(newExtent.center.y),
-                scale: Math.round(view.scale)
-              }
-            });
-          }
-        }, 100));
+        view.watch(
+          'extent',
+          debounce((newExtent) => {
+            if (newExtent) {
+              dispatchURLParams({
+                type: ACTION_TYPES.MAP_EXTENT,
+                payload: {
+                  x: Math.round(newExtent.center.x),
+                  y: Math.round(newExtent.center.y),
+                  scale: Math.round(view.scale),
+                },
+              });
+            }
+          }, 100)
+        );
 
-        view.on('click', event => onClick(event, view));
+        view.on('click', (event) => onClick(event, view));
 
         defaultPopup.current = view.popup;
       });
 
       if (window.Cypress) {
         // help Cypress know when the map has loaded
-        view.watch(['updating', 'navigating'], updating => {
+        view.watch(['updating', 'navigating'], (updating) => {
           console.log('updating state changed', updating);
           window.mapLoaded = view.ready && !updating && !view.navigating;
         });
@@ -218,13 +225,13 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
         };
         window.getVisibleLayers = () => {
           return view.layerViews.items
-              .filter(view => view.visible)
-              .map(view => view.layer.allSublayers.items
-                .filter(subLayer => subLayer.visible)
-                .map(subLayer => `${subLayer.title}-${subLayer.definitionExpression}`)
-              )
-              .flat()
-          ;
+            .filter((view) => view.visible)
+            .map((view) =>
+              view.layer.allSublayers.items
+                .filter((subLayer) => subLayer.visible)
+                .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`)
+            )
+            .flat();
         };
       }
 
@@ -234,14 +241,18 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
     };
 
     !maps.current && initMap();
-  }, [initialExtent, discoverKey, onClick, setView, changeMap, setUpLayerSelector, currentTabConfig, dispatchURLParams]);
+  }, [
+    initialExtent,
+    discoverKey,
+    onClick,
+    setView,
+    changeMap,
+    setUpLayerSelector,
+    currentTabConfig,
+    dispatchURLParams,
+  ]);
 
-  return (
-    <div
-      style={{ height: '100%', width: '100%' }}
-      ref={mapViewDiv}
-    />
-  );
+  return <div style={{ height: '100%', width: '100%' }} ref={mapViewDiv} />;
 };
 
 export default ReactMapView;

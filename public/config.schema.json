@@ -38,10 +38,7 @@
         "title": "Map Info",
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "name",
-          "webMapId"
-        ],
+        "required": ["name", "webMapId"],
         "properties": {
           "name": {
             "description": "The name of the map that shows up in the tab control",
@@ -112,14 +109,7 @@
                     "symbol": {
                       "description": "Defines the type of symbol component to be displayed.",
                       "type": "string",
-                      "enum": [
-                        "simple",
-                        "classes",
-                        "linePoint",
-                        "phase",
-                        "dynamic",
-                        "static"
-                      ]
+                      "enum": ["simple", "classes", "linePoint", "phase", "dynamic", "static"]
                     },
                     "symbolImageFile": {
                       "description": "Defines the filename for the image that should be used with the static legend symbol. Note that the file needs to be placed in the root of the application.",
@@ -161,19 +151,13 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "label"
-                  ],
+                  "required": ["label"],
                   "oneOf": [
                     {
-                      "required": [
-                        "layerNames"
-                      ]
+                      "required": ["layerNames"]
                     },
                     {
-                      "required": [
-                        "phase"
-                      ]
+                      "required": ["phase"]
                     }
                   ]
                 },
@@ -184,10 +168,7 @@
                     "type": "array",
                     "items": {
                       "description": "The first value is the field name and subsequent values correspond to the phases. The unfunded phase value is optional.",
-                      "type": [
-                        "string",
-                        "number"
-                      ]
+                      "type": ["string", "number"]
                     }
                   }
                 }
@@ -219,10 +200,7 @@
                       "type": "boolean"
                     }
                   },
-                  "required": [
-                    "label",
-                    "checkboxes"
-                  ]
+                  "required": ["label", "checkboxes"]
                 }
               }
             }
@@ -319,10 +297,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "serviceUrl",
-        "searchField"
-      ]
+      "required": ["serviceUrl", "searchField"]
     },
     "layerSelector": {
       "description": "Configuration options for the base map selector widget",
@@ -353,11 +328,7 @@
                     "type": "string"
                   }
                 },
-                "required": [
-                  "id",
-                  "Factory",
-                  "urlTemplate"
-                ]
+                "required": ["id", "Factory", "urlTemplate"]
               }
             ]
           }
@@ -389,11 +360,7 @@
                     "type": "number"
                   }
                 },
-                "required": [
-                  "id",
-                  "Factory",
-                  "url"
-                ]
+                "required": ["id", "Factory", "url"]
               }
             ]
           }
@@ -411,10 +378,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "pointSize",
-        "polylineWidth"
-      ]
+      "required": ["pointSize", "polylineWidth"]
     },
     "defaultExtent": {
       "type": "object",
@@ -430,11 +394,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "zoomLevel",
-        "x",
-        "y"
-      ]
+      "required": ["zoomLevel", "x", "y"]
     },
     "links": {
       "type": "object",

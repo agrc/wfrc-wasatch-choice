@@ -208,16 +208,8 @@
               "interchangesFuture15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": [
-              "65-0,19",
-              "65-1",
-              "103"
-            ],
-            "symbolLabels": [
-              "Interstates",
-              "State Freeways",
-              "Arterials"
-            ],
+            "symbolLayerIds": ["65-0,19", "65-1", "103"],
+            "symbolLabels": ["Interstates", "State Freeways", "Arterials"],
             "offByDefault": true
           },
           "transit": {
@@ -291,16 +283,8 @@
               "busRapidTransitStations15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": [
-              "33,1",
-              "41,7",
-              "49,13"
-            ],
-            "symbolLabels": [
-              "Commuter Rail",
-              "Light Rail",
-              "Bus Rapid Transit"
-            ]
+            "symbolLayerIds": ["33,1", "41,7", "49,13"],
+            "symbolLabels": ["Commuter Rail", "Light Rail", "Bus Rapid Transit"]
           },
           "bikePed": {
             "label": "Bike/Ped",
@@ -313,16 +297,8 @@
               "majorTrails15"
             ],
             "symbol": "dynamic",
-            "symbolLayerIds": [
-              "72-2",
-              "72-1",
-              "72-0"
-            ],
-            "symbolLabels": [
-              "On Street",
-              "Off Street",
-              "Bonneville Shoreline Trail"
-            ]
+            "symbolLayerIds": ["72-2", "72-1", "72-0"],
+            "symbolLabels": ["On Street", "Off Street", "Bonneville Shoreline Trail"]
           },
           "centers": {
             "label": "Centers",
@@ -392,18 +368,11 @@
         "groups": [
           {
             "label": "trans:transFilter.transportation",
-            "checkboxes": [
-              "roads",
-              "transit",
-              "bikePed"
-            ]
+            "checkboxes": ["roads", "transit", "bikePed"]
           },
           {
             "label": "Land Use",
-            "checkboxes": [
-              "centers",
-              "generalLandUse"
-            ]
+            "checkboxes": ["centers", "generalLandUse"]
           }
         ]
       }
@@ -437,128 +406,36 @@
           "magGeneralLandUse": "MAG General Land Use"
         },
         "phases": {
-          "activeTransPoint": [
-            "CostPhased",
-            "1",
-            "2",
-            "3"
-          ],
-          "magActiveTransPoint": [
-            "phase",
-            1,
-            2,
-            3
-          ],
-          "transitPoint": [
-            "PhaseFC",
-            "1",
-            "2",
-            "3",
-            "Unfunded"
-          ],
-          "magTransitPoint": [
-            "Phase",
-            1,
-            2,
-            3
-          ],
-          "roadwayPoint": [
-            "PhaseFC",
-            "1",
-            "2",
-            "3",
-            "Unfunded"
-          ],
-          "magRoadwayPoint": [
-            "Phase",
-            1,
-            2,
-            3,
-            4
-          ],
-          "activeTransLine": [
-            "PhaseNeed",
-            1,
-            2,
-            3
-          ],
-          "magActiveTransLine": [
-            "phase",
-            1,
-            2,
-            3
-          ],
-          "transitLine": [
-            "PhaseFC",
-            "1",
-            "2",
-            "3",
-            "Unfunded"
-          ],
-          "magTransitLine": [
-            "Phase",
-            1,
-            2,
-            3,
-            4
-          ],
-          "roadwayLine": [
-            "PhaseFC",
-            "1",
-            "2",
-            "3",
-            "Unfunded"
-          ],
-          "magRoadwayLine": [
-            "Phase",
-            1,
-            2,
-            3,
-            4
-          ],
-          "centers": [
-            "Phase",
-            1,
-            2,
-            3
-          ],
-          "generalLandUse": [
-            "Phase",
-            1,
-            2,
-            3
-          ]
+          "activeTransPoint": ["CostPhased", "1", "2", "3"],
+          "magActiveTransPoint": ["phase", 1, 2, 3],
+          "transitPoint": ["PhaseFC", "1", "2", "3", "Unfunded"],
+          "magTransitPoint": ["Phase", 1, 2, 3],
+          "roadwayPoint": ["PhaseFC", "1", "2", "3", "Unfunded"],
+          "magRoadwayPoint": ["Phase", 1, 2, 3, 4],
+          "activeTransLine": ["PhaseNeed", 1, 2, 3],
+          "magActiveTransLine": ["phase", 1, 2, 3],
+          "transitLine": ["PhaseFC", "1", "2", "3", "Unfunded"],
+          "magTransitLine": ["Phase", 1, 2, 3, 4],
+          "roadwayLine": ["PhaseFC", "1", "2", "3", "Unfunded"],
+          "magRoadwayLine": ["Phase", 1, 2, 3, 4],
+          "centers": ["Phase", 1, 2, 3],
+          "generalLandUse": ["Phase", 1, 2, 3]
         },
         "checkboxes": {
           "roads": {
             "label": "Roads",
-            "layerNames": [
-              "roadwayPoint",
-              "magRoadwayPoint",
-              "roadwayLine",
-              "magRoadwayLine"
-            ],
+            "layerNames": ["roadwayPoint", "magRoadwayPoint", "roadwayLine", "magRoadwayLine"],
             "symbol": "linePoint",
             "offByDefault": true
           },
           "transit": {
             "label": "Transit",
-            "layerNames": [
-              "transitPoint",
-              "magTransitPoint",
-              "transitLine",
-              "magTransitLine"
-            ],
+            "layerNames": ["transitPoint", "magTransitPoint", "transitLine", "magTransitLine"],
             "symbol": "linePoint"
           },
           "bikePed": {
             "label": "Bike/Ped",
-            "layerNames": [
-              "activeTransPoint",
-              "magActiveTransPoint",
-              "activeTransLine",
-              "magActiveTransLine"
-            ],
+            "layerNames": ["activeTransPoint", "magActiveTransPoint", "activeTransLine", "magActiveTransLine"],
             "symbol": "linePoint"
           },
           "phase1": {
@@ -587,69 +464,42 @@
           },
           "centers": {
             "label": "Centers",
-            "layerNames": [
-              "centers",
-              "magCenters"
-            ],
+            "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layerNames": [
-              "generalLandUse",
-              "magGeneralLandUse"
-            ],
+            "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           },
           "existingBikePed": {
             "label": "Existing Bike/Ped",
-            "layerNames": [
-              "existingBike",
-              "magExistingBike"
-            ],
+            "layerNames": ["existingBike", "magExistingBike"],
             "symbol": "simple"
           },
           "existingTransit": {
             "label": "Existing Transit",
-            "layerNames": [
-              "existingTransitLine",
-              "existingTransitPoint"
-            ],
+            "layerNames": ["existingTransitLine", "existingTransitPoint"],
             "symbol": "simple"
           }
         },
         "groups": [
           {
             "label": "Project Modes",
-            "checkboxes": [
-              "roads",
-              "transit",
-              "bikePed"
-            ]
+            "checkboxes": ["roads", "transit", "bikePed"]
           },
           {
             "label": "Phasing (colors)",
-            "checkboxes": [
-              "phase1",
-              "phase2",
-              "phase3",
-              "unfunded"
-            ]
+            "checkboxes": ["phase1", "phase2", "phase3", "unfunded"]
           },
           {
             "label": "Land Use",
-            "checkboxes": [
-              "centers",
-              "generalLandUse"
-            ],
+            "checkboxes": ["centers", "generalLandUse"],
             "showFilterByPhasing": true
           },
           {
             "label": "Other",
-            "checkboxes": [
-              "existingBikePed",
-              "existingTransit"
-            ]
+            "checkboxes": ["existingBikePed", "existingTransit"]
           }
         ]
       }
@@ -673,80 +523,54 @@
         "checkboxes": {
           "employment": {
             "label": "Employment",
-            "layerNames": [
-              "employment"
-            ],
+            "layerNames": ["employment"],
             "symbol": "classes"
           },
           "population": {
             "label": "Population",
-            "layerNames": [
-              "population"
-            ],
+            "layerNames": ["population"],
             "symbol": "classes"
           },
           "workplaceAccessibilityAuto": {
             "label": "Auto",
-            "layerNames": [
-              "workplaceAccessibilityAuto"
-            ],
+            "layerNames": ["workplaceAccessibilityAuto"],
             "symbol": "classes"
           },
           "workplaceAccessibilityTransit": {
             "label": "Transit",
-            "layerNames": [
-              "workplaceAccessibilityTransit"
-            ],
+            "layerNames": ["workplaceAccessibilityTransit"],
             "symbol": "classes"
           },
           "centers": {
             "label": "Centers",
-            "layerNames": [
-              "centers",
-              "magCenters"
-            ],
+            "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layerNames": [
-              "generalLandUse",
-              "magGeneralLandUse"
-            ],
+            "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           },
           "greenSpace": {
             "label": "Green Space",
-            "layerNames": [
-              "greenSpace"
-            ],
+            "layerNames": ["greenSpace"],
             "symbol": "classes"
           }
         },
         "groups": [
           {
             "label": "Projections (2050)",
-            "checkboxes": [
-              "employment",
-              "population"
-            ],
+            "checkboxes": ["employment", "population"],
             "radio": true
           },
           {
             "label": "Workplace Accessibility (2019)",
-            "checkboxes": [
-              "workplaceAccessibilityAuto",
-              "workplaceAccessibilityTransit"
-            ],
+            "checkboxes": ["workplaceAccessibilityAuto", "workplaceAccessibilityTransit"],
             "radio": true
           },
           {
             "label": "Land Use",
-            "checkboxes": [
-              "centers",
-              "generalLandUse",
-              "greenSpace"
-            ]
+            "checkboxes": ["centers", "generalLandUse", "greenSpace"]
           }
         ]
       }
@@ -769,9 +593,7 @@
         "checkboxes": {
           "economicClusters": {
             "label": "Economic Clusters",
-            "layerNames": [
-              "economicClusters"
-            ],
+            "layerNames": ["economicClusters"],
             "symbol": "static",
             "symbolImageFile": "StaticLegend.png",
             "staticColors": [
@@ -797,39 +619,27 @@
           },
           "todSites": {
             "label": "TOD Sites",
-            "layerNames": [
-              "todSites"
-            ],
+            "layerNames": ["todSites"],
             "symbol": "simple"
           },
           "cdasRdas": {
             "label": "CDAs and RDAs",
-            "layerNames": [
-              "cdasRdas"
-            ],
+            "layerNames": ["cdasRdas"],
             "symbol": "simple"
           },
           "opportunityZones": {
             "label": "Opportunity Zones",
-            "layerNames": [
-              "opportunityZones"
-            ],
+            "layerNames": ["opportunityZones"],
             "symbol": "simple"
           },
           "centers": {
             "label": "Centers",
-            "layerNames": [
-              "centers",
-              "magCenters"
-            ],
+            "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
             "label": "General Land Use",
-            "layerNames": [
-              "generalLandUse",
-              "magGeneralLandUse"
-            ],
+            "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           }
         }
@@ -854,54 +664,38 @@
         "checkboxes": {
           "communityCenters": {
             "label": "Community Centers",
-            "layerNames": [
-              "communityCenters"
-            ],
+            "layerNames": ["communityCenters"],
             "symbol": "simple",
             "offByDefault": true
           },
           "trails": {
             "label": "Trails",
-            "layerNames": [
-              "trailheads",
-              "trails"
-            ],
+            "layerNames": ["trailheads", "trails"],
             "symbol": "simple"
           },
           "parks": {
             "label": "Parks",
-            "layerNames": [
-              "parks",
-              "stateParks"
-            ],
+            "layerNames": ["parks", "stateParks"],
             "symbol": "simple"
           },
           "federalLands": {
             "label": "Federal Lands",
-            "layerNames": [
-              "federalLands"
-            ],
+            "layerNames": ["federalLands"],
             "symbol": "simple"
           },
           "golfCourses": {
             "label": "Golf Courses",
-            "layerNames": [
-              "golfCourses"
-            ],
+            "layerNames": ["golfCourses"],
             "symbol": "simple"
           },
           "skiAreas": {
             "label": "Ski Areas",
-            "layerNames": [
-              "skiAreas"
-            ],
+            "layerNames": ["skiAreas"],
             "symbol": "simple"
           },
           "greenSpace": {
             "label": "Green Space",
-            "layerNames": [
-              "greenSpace"
-            ],
+            "layerNames": ["greenSpace"],
             "symbol": "classes"
           }
         }
@@ -933,26 +727,17 @@
             "checkboxes": [
               {
                 "label": "CMAQ",
-                "values": [
-                  "WFRC OGDEN/LAYTON CMAQ",
-                  "WFRC SALT LAKE/ WEST VALLEY CMAQ"
-                ],
+                "values": ["WFRC OGDEN/LAYTON CMAQ", "WFRC SALT LAKE/ WEST VALLEY CMAQ"],
                 "color": "rgb(255, 128, 0)"
               },
               {
                 "label": "STP",
-                "values": [
-                  "WFRC OGDEN/LAYTON STP",
-                  "WFRC SALT LAKE/ WEST VALLEY STP"
-                ],
+                "values": ["WFRC OGDEN/LAYTON STP", "WFRC SALT LAKE/ WEST VALLEY STP"],
                 "color": "rgb(20, 178, 179)"
               },
               {
                 "label": "TAP",
-                "values": [
-                  "WFRC OGDEN/LAYTON TAP",
-                  "WFRC SALT LAKE/ WEST VALLEY TAP"
-                ],
+                "values": ["WFRC OGDEN/LAYTON TAP", "WFRC SALT LAKE/ WEST VALLEY TAP"],
                 "color": "rgb(56, 168, 0)"
               },
               {
@@ -974,45 +759,31 @@
               },
               {
                 "label": "2020",
-                "values": [
-                  "2020"
-                ]
+                "values": ["2020"]
               },
               {
                 "label": "2021",
-                "values": [
-                  "2021"
-                ]
+                "values": ["2021"]
               },
               {
                 "label": "2022",
-                "values": [
-                  "2022"
-                ]
+                "values": ["2022"]
               },
               {
                 "label": "2023",
-                "values": [
-                  "2023"
-                ]
+                "values": ["2023"]
               },
               {
                 "label": "2024",
-                "values": [
-                  "2024"
-                ]
+                "values": ["2024"]
               },
               {
                 "label": "2025",
-                "values": [
-                  "2025"
-                ]
+                "values": ["2025"]
               },
               {
                 "label": "2026",
-                "values": [
-                  "2026"
-                ]
+                "values": ["2026"]
               }
             ]
           },
@@ -1024,36 +795,19 @@
             "checkboxes": [
               {
                 "label": "Preliminary Stage",
-                "values": [
-                  "Funding",
-                  "Proposed",
-                  "STIP",
-                  "Scoping"
-                ]
+                "values": ["Funding", "Proposed", "STIP", "Scoping"]
               },
               {
                 "label": "Design Stage",
-                "values": [
-                  "Active",
-                  "Advertised",
-                  "Awarded"
-                ]
+                "values": ["Active", "Advertised", "Awarded"]
               },
               {
                 "label": "Construction Stage",
-                "values": [
-                  "Under Construction"
-                ]
+                "values": ["Under Construction"]
               },
               {
                 "label": "Construction Complete",
-                "values": [
-                  "Contract Complete",
-                  "Physically Complete",
-                  "Substantially Compl",
-                  "Close Out",
-                  "Closed"
-                ]
+                "values": ["Contract Complete", "Physically Complete", "Substantially Compl", "Close Out", "Closed"]
               }
             ]
           },
@@ -1065,69 +819,43 @@
             "checkboxes": [
               {
                 "label": "Capacity",
-                "values": [
-                  "Capacity"
-                ]
+                "values": ["Capacity"]
               },
               {
                 "label": "Environmental",
-                "values": [
-                  "Environmental",
-                  "Railroad Related"
-                ]
+                "values": ["Environmental", "Railroad Related"]
               },
               {
                 "label": "Pavement Reconstruction",
-                "values": [
-                  "Pavement Reconstruction",
-                  "Preservation"
-                ]
+                "values": ["Pavement Reconstruction", "Preservation"]
               },
               {
                 "label": "Roadway",
-                "values": [
-                  "Joint Highway Committee",
-                  "Reconstruction",
-                  "Roadway",
-                  "Roadway Work"
-                ]
+                "values": ["Joint Highway Committee", "Reconstruction", "Roadway", "Roadway Work"]
               },
               {
                 "label": "Structure",
-                "values": [
-                  "Structures"
-                ]
+                "values": ["Structures"]
               },
               {
                 "label": "Study",
-                "values": [
-                  "Studies"
-                ]
+                "values": ["Studies"]
               },
               {
                 "label": "Traffic & Safety",
-                "values": [
-                  "Traffic and Safety"
-                ]
+                "values": ["Traffic and Safety"]
               },
               {
                 "label": "Traffic Management",
-                "values": [
-                  "Traffic Management"
-                ]
+                "values": ["Traffic Management"]
               },
               {
                 "label": "Trails",
-                "values": [
-                  "Enhancement"
-                ]
+                "values": ["Enhancement"]
               },
               {
                 "label": "Other",
-                "values": [
-                  "Not Applicable",
-                  "Other"
-                ]
+                "values": ["Not Applicable", "Other"]
               }
             ]
           }
@@ -1141,11 +869,7 @@
     "placeHolder": "trans:searchPlaceholder"
   },
   "layerSelector": {
-    "baseLayers": [
-      "Lite",
-      "Terrain",
-      "Imagery"
-    ],
+    "baseLayers": ["Lite", "Terrain", "Imagery"],
     "overlays": [
       {
         "id": "Cities",

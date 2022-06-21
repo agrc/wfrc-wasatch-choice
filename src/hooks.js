@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
 
 // writing this as a custom hook just to learn about how to do it
 // this could just be done within the component otherwise

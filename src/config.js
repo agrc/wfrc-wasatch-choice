@@ -1,10 +1,9 @@
-import React from 'react';
-import { Validator } from 'jsonschema';
-import { URLParamsContext } from './URLParams';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { Validator } from 'jsonschema';
+import React from 'react';
 import { initReactI18next } from 'react-i18next';
-
+import { URLParamsContext } from './URLParams';
 
 const SELECTION_COLOR = [75, 255, 217];
 const TRANSPARENT_SELECTION_COLOR = SELECTION_COLOR.concat([0.5]);
@@ -16,37 +15,37 @@ let config = {
   MARKER_OUTLINE_COLOR: [230, 126, 21, 0.7],
   ESRI_LOADER_CONFIG: {
     version: '4.13',
-    css: true
+    css: true,
   },
   SELECTION_SYMBOLS: {
     point: {
       type: 'simple-marker',
       color: TRANSPARENT_SELECTION_COLOR,
       outline: {
-        color: SELECTION_COLOR
-      }
+        color: SELECTION_COLOR,
+      },
     },
     polyline: {
       type: 'simple-line',
       color: TRANSPARENT_SELECTION_COLOR,
-      width: '5px'
+      width: '5px',
     },
     polygon: {
       type: 'simple-fill',
       color: TRANSPARENT_SELECTION_COLOR,
       outline: {
-        color: SELECTION_COLOR
-      }
-    }
+        color: SELECTION_COLOR,
+      },
+    },
   },
   LOADER_DELAY: 250,
   IDENTIFY_PIXEL_TOLERANCE: 7,
-  DEFAULT_NUM_TABS: 5
+  DEFAULT_NUM_TABS: 5,
 };
 
 // optional configSchema is for testing and storybook since they are clumsy when it comes to
 // async setup
-export const setConfigs = async (appConfigs, configSchema=null) => {
+export const setConfigs = async (appConfigs, configSchema = null) => {
   // we are fetching this rather than importing it so that it can be hosted publicly and available
   // for WFRC to reference it in their config files
   if (!configSchema) {
@@ -69,13 +68,13 @@ export const setConfigs = async (appConfigs, configSchema=null) => {
     .init({
       detection: {
         order: ['navigator'], // only look at the navigator object to determine locale
-        caches: [] // disable locale caching
+        caches: [], // disable locale caching
       },
       resources: appConfigs.translations,
       interpolation: {
-        escapeValue: false
+        escapeValue: false,
       },
-      fallbackLng: 'en'
+      fallbackLng: 'en',
     });
 
   // apply quad word from env

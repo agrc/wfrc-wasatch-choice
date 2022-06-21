@@ -16,7 +16,7 @@ $height: 80px;
   position: absolute;
   height: $height;
   left: 0;
-  top: calc(50% - #{$height}/2);
+  top: calc(50% - #{$height}/ 2);
   z-index: 1;
   background-color: $highlightColor;
   padding-left: 2px;

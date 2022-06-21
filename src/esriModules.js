@@ -1,7 +1,6 @@
 import { loadModules } from 'esri-loader';
 import config from './config';
 
-
 export default async () => {
   const requires = [
     'esri/Basemap',
@@ -17,24 +16,24 @@ export default async () => {
     'esri/WebMap',
     'esri/widgets/Feature',
     'esri/widgets/Home',
-    'esri/widgets/Popup'
+    'esri/widgets/Popup',
   ];
 
   const [
-  Basemap,
-  watchUtils,
-  Graphic,
-  FeatureLayer,
-  LOD,
-  TileInfo,
-  WebTileLayer,
-  IdentifyTask,
-  IdentifyParameters,
-  MapView,
-  WebMap,
-  Feature,
-  Home,
-  Popup
+    Basemap,
+    watchUtils,
+    Graphic,
+    FeatureLayer,
+    LOD,
+    TileInfo,
+    WebTileLayer,
+    IdentifyTask,
+    IdentifyParameters,
+    MapView,
+    WebMap,
+    Feature,
+    Home,
+    Popup,
   ] = await loadModules(requires, config.ESRI_LOADER_CONFIG);
 
   return {
@@ -51,6 +50,6 @@ export default async () => {
     WebMap,
     Feature,
     Home,
-    Popup
+    Popup,
   };
-}
+};
