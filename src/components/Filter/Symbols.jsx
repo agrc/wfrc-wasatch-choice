@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { loadModules } from 'esri-loader';
-import './Symbols.scss';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { loadModules } from 'esri-loader';
+import { useEffect, useRef, useState } from 'react';
 import { Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 import config from '../../config';
+import './Symbols.scss';
 
-
-const getBackgroundColor = color => {
+const getBackgroundColor = (color) => {
   // handle colors defined as rgb objects as well as hsa strings
   return color.hsa || `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 };
@@ -15,9 +14,8 @@ const getBackgroundColor = color => {
 export const getSymbolFromInfos = (symbolInfos, minimums) => {
   let symbol;
 
-  symbolInfos.some(info => {
-    if (info.symbol.size >= minimums.pointSize ||
-      info.symbol.width >= minimums.polylineWidth) {
+  symbolInfos.some((info) => {
+    if (info.symbol.size >= minimums.pointSize || info.symbol.width >= minimums.polylineWidth) {
       symbol = info.symbol;
 
       return true;
@@ -32,15 +30,15 @@ export const getSymbolFromInfos = (symbolInfos, minimums) => {
   return symbol;
 };
 
-export const Simple = props => {
-  const [ symbols, setSymbols ] = useState([]);
+export const Simple = (props) => {
+  const [symbols, setSymbols] = useState([]);
 
   useEffect(() => {
     let mounted = true;
     const getSymbol = async () => {
       console.log('Simple:getSymbol');
 
-      const [ symbolUtils ] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
+      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
       const layer = props.layersLookup[props.layerNames[0]];
       if (!layer) {
@@ -49,13 +47,16 @@ export const Simple = props => {
 
         return;
       }
-      const newSymbols = await Promise.all(props.layerNames.map(layerName => {
-        const layer = props.layersLookup[layerName];
+      const newSymbols = await Promise.all(
+        props.layerNames.map((layerName) => {
+          const layer = props.layersLookup[layerName];
 
-        const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
+          const symbol =
+            layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
 
-        return symbolUtils.renderPreviewHTML(symbol, { opacity: layer.opacity });
-      }));
+          return symbolUtils.renderPreviewHTML(symbol, { opacity: layer.opacity });
+        })
+      );
 
       // prevent this from being called after the component has been unmounted
       if (mounted) {
@@ -64,29 +65,29 @@ export const Simple = props => {
     };
     getSymbol();
 
-    return () => mounted = false;
+    return () => (mounted = false);
   }, [props.layerNames, props.layersLookup]);
 
   return (
     <div className="simple-symbol-container symbol-container">
-      { symbols.map((symbol, index) =>
-        <div key={index} className="symbol" dangerouslySetInnerHTML={{__html: symbol.outerHTML}}></div>
-      )}
+      {symbols.map((symbol, index) => (
+        <div key={index} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.outerHTML }}></div>
+      ))}
     </div>
   );
 };
 
-export const Classes = props => {
-  const [ data, setData ] = useState({
+export const Classes = (props) => {
+  const [data, setData] = useState({
     colors: [],
-    title: null
+    title: null,
   });
-  const [ showPopover, setShowPopover ] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
 
   if (props.staticColors && data.colors.length === 0) {
     setData({
       colors: props.staticColors,
-      title: null
+      title: null,
     });
   }
 
@@ -105,15 +106,17 @@ export const Classes = props => {
 
     const infos = layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
     if (!infos) {
-      new Error(`Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`);
+      new Error(
+        `Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`
+      );
     }
-    const colors = infos.map(info => {
-      return {...info.symbol.color, label: info.label, a: layer.opacity};
+    const colors = infos.map((info) => {
+      return { ...info.symbol.color, label: info.label, a: layer.opacity };
     });
 
     setData({
       colors,
-      title: layer.renderer.valueExpressionTitle
+      title: layer.renderer.valueExpressionTitle,
     });
   }, [props.layerNames, props.layersLookup, props.staticColors]);
 
@@ -123,11 +126,9 @@ export const Classes = props => {
     <>
       <div className="symbol-container" ref={targetRef}>
         <div className="swatch-class-container">
-          { data.colors.map((color, index) =>
-            <div key={index}
-              className="swatch"
-              style={{backgroundColor: getBackgroundColor(color)}}></div>
-          )}
+          {data.colors.map((color, index) => (
+            <div key={index} className="swatch" style={{ backgroundColor: getBackgroundColor(color) }}></div>
+          ))}
         </div>
         <FontAwesomeIcon icon={faQuestionCircle} />
       </div>
@@ -136,22 +137,23 @@ export const Classes = props => {
         isOpen={showPopover}
         trigger="hover"
         boundariesElement="viewport"
-        toggle={() => setShowPopover(!showPopover)}>
-        { data.title && <PopoverHeader>{data.title}</PopoverHeader> }
+        toggle={() => setShowPopover(!showPopover)}
+      >
+        {data.title && <PopoverHeader>{data.title}</PopoverHeader>}
         <PopoverBody>
-          { data.colors.map((color, index) =>
+          {data.colors.map((color, index) => (
             <div key={index} className="popover-legend-row">
-              <div style={{backgroundColor: getBackgroundColor(color)}} className="legend-swatch"></div>
+              <div style={{ backgroundColor: getBackgroundColor(color) }} className="legend-swatch"></div>
               <div className="legend-label">{color.label}</div>
             </div>
-          )}
+          ))}
         </PopoverBody>
       </Popover>
     </>
   );
 };
 
-export const LinePoint = props => {
+export const LinePoint = (props) => {
   const [symbols, setSymbols] = useState({ point: null, polyline: null });
 
   useEffect(() => {
@@ -168,12 +170,15 @@ export const LinePoint = props => {
         return;
       }
 
-      props.layerNames.forEach(layerName => {
+      props.layerNames.forEach((layerName) => {
         const layer = props.layersLookup[layerName];
         if (!newSymbols[layer.geometryType]) {
           newSymbols[layer.geometryType] = true;
           layer.when(() => {
-            newSymbols[layer.geometryType] = getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
+            newSymbols[layer.geometryType] = getSymbolFromInfos(
+              layer.renderer.uniqueValueInfos,
+              config.minimumLegendSizes
+            );
           });
         }
       });
@@ -188,29 +193,31 @@ export const LinePoint = props => {
     };
     getSymbols();
 
-    return () => mounted = false;
+    return () => (mounted = false);
   }, [props.layerNames, props.layersLookup]);
 
   return (
     <div className="line-point-symbol-container symbol-container">
-      {symbols.polyline && symbols.point && Object.entries(symbols).map(([geometryType, symbol]) =>
-        <div key={geometryType} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.innerHTML }}></div>
-      )}
+      {symbols.polyline &&
+        symbols.point &&
+        Object.entries(symbols).map(([geometryType, symbol]) => (
+          <div key={geometryType} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.innerHTML }}></div>
+        ))}
     </div>
   );
 };
 
-export const Phase = props => {
+export const Phase = (props) => {
   return (
     <div className="phase-symbol-container symbol-container">
-      <div className="symbol" style={{backgroundColor: props.color}}></div>
+      <div className="symbol" style={{ backgroundColor: props.color }}></div>
     </div>
   );
 };
 
-export const Dynamic = props => {
+export const Dynamic = (props) => {
   // this assumes that all layers are part of the same map service
-  const [ legendInfoSets, setLegendInfoSets ] = useState([]);
+  const [legendInfoSets, setLegendInfoSets] = useState([]);
 
   useEffect(() => {
     let mounted = true;
@@ -223,21 +230,21 @@ export const Dynamic = props => {
       const legendJson = await legendResponse.json();
 
       const legendLayerLookup = {};
-      legendJson.layers.forEach(layer => {
+      legendJson.layers.forEach((layer) => {
         legendLayerLookup[layer.layerId] = layer.legend;
       });
 
-      const newInfoSets = props.symbolLayerIds.map(layerIds => {
-        return layerIds.split(',').map(id => {
+      const newInfoSets = props.symbolLayerIds.map((layerIds) => {
+        return layerIds.split(',').map((id) => {
           let classIndex = 0;
           if (id.indexOf('-') > -1) {
-            const [ splitId, splitIndex ] = id.split('-');
+            const [splitId, splitIndex] = id.split('-');
             id = splitId;
             classIndex = splitIndex;
           }
 
           return legendLayerLookup[id][classIndex];
-        })
+        });
       });
 
       // prevent this from being called after the component has been unmounted
@@ -247,57 +254,59 @@ export const Dynamic = props => {
     };
     getLegend();
 
-    return () => mounted = false;
+    return () => (mounted = false);
   }, [props.layerNames, props.layersLookup, props.symbolLayerIds]);
 
   return (
     <div className="dynamic-symbol-container">
-      { legendInfoSets.map((set, index) =>
+      {legendInfoSets.map((set, index) => (
         <DynamicSymbolContainer key={index} set={set} label={props.symbolLabels[index]} />
-      ) }
+      ))}
     </div>
   );
 };
 
 const DynamicSymbolContainer = ({ set, label }) => {
-  const [ showPopover, setShowPopover ] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
   const containerRef = useRef();
 
   return (
     <>
       <div className="symbol-container" ref={containerRef}>
-        { set.map((info, imgIndex) =>
-          <img key={imgIndex}
-            className='symbol'
+        {set.map((info, imgIndex) => (
+          <img
+            key={imgIndex}
+            className="symbol"
             src={`data:${info.contentType};base64,${info.imageData}`}
-            alt='swatch' />
-        ) }
+            alt="swatch"
+          />
+        ))}
       </div>
       <Popover
         isOpen={showPopover}
         target={() => containerRef.current}
         toggle={() => setShowPopover(!showPopover)}
         boundariesElement="viewport"
-        trigger="hover">
+        trigger="hover"
+      >
         <PopoverBody>{label}</PopoverBody>
       </Popover>
     </>
   );
 };
 
-export const Static = props => {
-  const [ showPopover, setShowPopover ] = useState(false);
+export const Static = (props) => {
+  const [showPopover, setShowPopover] = useState(false);
   const targetRef = useRef();
 
   return (
     <>
       <div className="symbol-container" ref={targetRef}>
         <div className="swatch-class-container">
-          {props.staticColors && props.staticColors.map((color, index) =>
-            <div key={index}
-              className="swatch"
-              style={{ backgroundColor: getBackgroundColor(color) }}></div>
-          )}
+          {props.staticColors &&
+            props.staticColors.map((color, index) => (
+              <div key={index} className="swatch" style={{ backgroundColor: getBackgroundColor(color) }}></div>
+            ))}
         </div>
         <FontAwesomeIcon icon={faQuestionCircle} />
       </div>
@@ -306,10 +315,10 @@ export const Static = props => {
         isOpen={showPopover}
         trigger="hover"
         boundariesElement="viewport"
-        toggle={() => setShowPopover(!showPopover)}>
+        toggle={() => setShowPopover(!showPopover)}
+      >
         <PopoverBody>
-          <img src={`/${props.imageFileName}`}
-            alt="static legend" style={{ width: '250px' }} />
+          <img src={`/${props.imageFileName}`} alt="static legend" style={{ width: '250px' }} />
         </PopoverBody>
       </Popover>
     </>

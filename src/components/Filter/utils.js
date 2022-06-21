@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import esriModules from '../../esriModules';
-
 
 // Cache layer lookup objects so that we don't have the crawl
 // the same map multiple times and also to prevent any cached
 // filters to become the defaultDefinitionExpression value for a layer.
 const MAP_LAYERS = {};
-export const getLayersInMap = async map => {
+export const getLayersInMap = async (map) => {
   console.log('getLayersInMap');
 
   const mapId = map.portalItem.id;
@@ -16,24 +15,24 @@ export const getLayersInMap = async map => {
 
   const layerNameLookup = {};
 
-  const getSublayers = layer => {
-    layer.sublayers.forEach(subLayer => {
+  const getSublayers = (layer) => {
+    layer.sublayers.forEach((subLayer) => {
       layerNameLookup[subLayer.title] = subLayer;
 
       if (subLayer.sublayers) {
         getSublayers(subLayer);
       }
     });
-  }
+  };
 
   for (const layer of map.layers.items) {
     layerNameLookup[layer.title] = layer;
 
     await layer.when();
     layer.sublayers && getSublayers(layer);
-  };
+  }
 
-  Object.keys(layerNameLookup).forEach(layerName => {
+  Object.keys(layerNameLookup).forEach((layerName) => {
     const layer = layerNameLookup[layerName];
     layer.defaultDefinitionExpression = layer.definitionExpression || '1 = 1';
   });
@@ -50,7 +49,7 @@ export const getLayers = async (layerNames, map) => {
 
   const layers = {};
 
-  Object.keys(layerNames).forEach(name => {
+  Object.keys(layerNames).forEach((name) => {
     const layer = layerNameLookup[layerNames[name]];
 
     if (!layer) {
@@ -61,19 +60,19 @@ export const getLayers = async (layerNames, map) => {
   });
 
   return layers;
-}
+};
 
 export const useMapLayers = (mapView, layerNames) => {
   console.log('useMapLayers layerNames', layerNames);
 
-  const [ layers, setLayers ] = useState();
+  const [layers, setLayers] = useState();
 
   // reset layer lookup when the web map is changed
   useEffect(() => {
     const getLayersForNewMap = async () => {
       console.log('getLayersForNewMap');
       const { watchUtils } = await esriModules();
-      await watchUtils.whenOnce(mapView, "ready");
+      await watchUtils.whenOnce(mapView, 'ready');
       await mapView.map.when();
 
       const layers = await getLayers(layerNames, mapView.map);
@@ -87,4 +86,4 @@ export const useMapLayers = (mapView, layerNames) => {
   }, [layerNames, mapView]);
 
   return layers;
-}
+};

@@ -3,7 +3,7 @@ describe('sidebar-toggle', () => {
     cy.loadApp();
 
     // we need to scroll manually since cypress doesn't seem to like perfect scrollbar
-    cy.get('.about__version').then(element => {
+    cy.get('.about__version').then((element) => {
       element.get(0).scrollIntoView();
     });
 

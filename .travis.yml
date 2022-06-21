@@ -1,15 +1,15 @@
 language: node_js
 node_js:
-    - "lts/*"
+  - 'lts/*'
 script:
-    - npm run test:once
-    - npm run build
+  - npm run test:once
+  - npm run build
 notifications:
-    email:
-        on_success: change
-        on_failure: change
+  email:
+    on_success: change
+    on_failure: change
 cache:
-    npm: true
-    directories:
-        #: for cypress binary ref: https://docs.cypress.io/guides/guides/continuous-integration.html#Travis
-        - ~/.cache
+  npm: true
+  directories:
+    #: for cypress binary ref: https://docs.cypress.io/guides/guides/continuous-integration.html#Travis
+    - ~/.cache

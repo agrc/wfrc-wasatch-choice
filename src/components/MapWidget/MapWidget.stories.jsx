@@ -1,9 +1,8 @@
-import React from "react";
-import MapWidget from "./MapWidget";
-import { faHandPointer, faList } from "@fortawesome/free-solid-svg-icons";
+import { faHandPointer, faList } from '@fortawesome/free-solid-svg-icons';
+import MapWidget from './MapWidget';
 
 export default {
-  title: "MapWidget",
+  title: 'MapWidget',
   component: MapWidget,
 };
 

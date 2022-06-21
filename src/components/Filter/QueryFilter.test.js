@@ -1,5 +1,5 @@
-import { getFieldQuery, TEXT, NUMBER, getLayerQuery } from './QueryFilter';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import { getFieldQuery, getLayerQuery, NUMBER, TEXT } from './QueryFilter';
 
 describe('getFieldQuery', () => {
   it('number', () => {
@@ -43,7 +43,7 @@ describe('getFieldQuery', () => {
           label3: { values: ['4'] },
         }
       )
-    ).toEqual('(FieldName IN (\'1\', \'2\', \'4\'))');
+    ).toEqual("(FieldName IN ('1', '2', '4'))");
   });
   it('only other', () => {
     expect(
@@ -57,7 +57,7 @@ describe('getFieldQuery', () => {
           label3: { other: true },
         }
       )
-    ).toEqual('(FieldName NOT IN (\'1\', \'2\', \'3\'))');
+    ).toEqual("(FieldName NOT IN ('1', '2', '3'))");
   });
   it('returns null if all are checked', () => {
     expect(
@@ -77,17 +77,21 @@ describe('getFieldQuery', () => {
 
 describe('getLayerQuery', () => {
   it('returns null if no values are set', () => {
-    expect(getLayerQuery({
-      label1: null,
-      label2: null,
-      label3: null
-    })).toBeNull();
+    expect(
+      getLayerQuery({
+        label1: null,
+        label2: null,
+        label3: null,
+      })
+    ).toBeNull();
   });
   it('returns the correct query', () => {
-    expect(getLayerQuery({
-      label1: 'query1',
-      label2: null,
-      label3: 'query3'
-    })).toEqual('query1 AND query3');
+    expect(
+      getLayerQuery({
+        label1: 'query1',
+        label2: null,
+        label3: 'query3',
+      })
+    ).toEqual('query1 AND query3');
   });
 });

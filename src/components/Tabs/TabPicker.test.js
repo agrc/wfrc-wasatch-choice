@@ -1,52 +1,52 @@
+import { describe, expect, it } from 'vitest';
 import { getOptions } from './TabPicker';
-import { describe, it, expect } from 'vitest';
 
 describe('getOptions', () => {
-  const t = value => value;
+  const t = (value) => value;
 
   it('handles no categories', () => {
     const mapInfos = {
-      '1': { name: 'first' },
-      '2': { name: 'second' },
-      '3': { name: 'third' }
+      1: { name: 'first' },
+      2: { name: 'second' },
+      3: { name: 'third' },
     };
 
     const expected = [
       {
         label: 'first',
-        value: '1'
+        value: '1',
       },
       {
         label: 'second',
-        value: '2'
+        value: '2',
       },
       {
         label: 'third',
-        value: '3'
-      }
+        value: '3',
+      },
     ];
 
     expect(getOptions(mapInfos, t)).toMatchObject(expected);
   });
   it('handles categories', () => {
     const mapInfos = {
-      '1': { name: 'first', category: 'a' },
-      '2': { name: 'second' },
-      '3': { name: 'third', category: 'a' }
+      1: { name: 'first', category: 'a' },
+      2: { name: 'second' },
+      3: { name: 'third', category: 'a' },
     };
 
     const expected = [
       {
         label: 'second',
-        value: '2'
+        value: '2',
       },
       {
         label: 'a',
         options: [
           { label: 'first', value: '1' },
-          { label: 'third', value: '3' }
-        ]
-      }
+          { label: 'third', value: '3' },
+        ],
+      },
     ];
 
     expect(getOptions(mapInfos, t)).toMatchObject(expected);

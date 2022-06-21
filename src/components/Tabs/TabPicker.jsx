@@ -1,16 +1,15 @@
 import React from 'react';
 import DualListBox from 'react-dual-listbox';
-import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
 import { Alert } from 'reactstrap';
+import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
 import config from '../../config';
 import { useSpecialTranslation } from '../../i18n';
-
 
 export const getOptions = (mapInfos, t) => {
   const categories = {};
   const options = [];
 
-  Object.keys(mapInfos).forEach(id => {
+  Object.keys(mapInfos).forEach((id) => {
     const info = mapInfos[id];
     const label = t(info.name);
     const value = { value: id, label };
@@ -36,7 +35,6 @@ export const getOptions = (mapInfos, t) => {
   return options;
 };
 
-
 const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
   const t = useSpecialTranslation();
   const options = React.useMemo(() => getOptions(mapInfos, t), [mapInfos, t]);
@@ -48,7 +46,7 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         id="tab-picker"
         lang={{
           availableHeader: t('trans:mapTabsDialog.availableHeader'),
-          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.maxTabsAllowed})`
+          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.maxTabsAllowed})`,
         }}
         onChange={setSelectedIds}
         options={options}
@@ -58,7 +56,11 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         showOrderButtons={true}
       />
       <br></br>
-      { maxReached ? <Alert fade={false} color="warning">{t('trans:mapTabsDialog.maxMessage')}</Alert> : null }
+      {maxReached ? (
+        <Alert fade={false} color="warning">
+          {t('trans:mapTabsDialog.maxMessage')}
+        </Alert>
+      ) : null}
     </>
   );
 };

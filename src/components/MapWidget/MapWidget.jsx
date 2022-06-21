@@ -1,16 +1,14 @@
-import React, { useState, useRef, useEffect, createContext } from 'react';
-import { Button, Card, CardHeader } from 'reactstrap';
-import './MapWidget.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import React, { createContext, useEffect, useRef, useState } from 'react';
+import { Button, Card, CardHeader } from 'reactstrap';
 import { useSpecialTranslation } from '../../i18n';
-
+import './MapWidget.scss';
 
 export const MapWidgetContext = createContext();
 
-
-export default props => {
+export default (props) => {
   const [isOpen, setIsOpen] = useState(props.defaultOpen);
   const scrollBar = useRef();
   const scrollBarContainer = useRef();
@@ -23,7 +21,7 @@ export default props => {
   const cardStyle = {
     display: isOpen ? 'flex' : 'none',
     top: props.position === 0 ? padding : `calc(50% - ${padding})`,
-    bottom: props.position === 0 ? `calc(50% + 2 * ${padding})` : padding
+    bottom: props.position === 0 ? `calc(50% + 2 * ${padding})` : padding,
   };
   const buttonDiv = useRef();
   useEffect(() => {
@@ -35,7 +33,7 @@ export default props => {
 
     return () => {
       props.mapView && props.mapView.ui.remove(buttonDivRef);
-    }
+    };
   }, [buttonDiv, props.mapView]);
 
   const updateScrollbar = React.useCallback(() => scrollBar.current?.update(), []);
@@ -55,22 +53,18 @@ export default props => {
   return (
     <div>
       <MapWidgetContext.Provider value={{ updateScrollbar }}>
-        <div className="map-widget-button esri-widget--button" ref={buttonDiv}
-          onClick={toggle} title={props.name}>
+        <div className="map-widget-button esri-widget--button" ref={buttonDiv} onClick={toggle} title={props.name}>
           <FontAwesomeIcon icon={props.icon} />
         </div>
         <Card style={cardStyle} className="map-widget-card">
           <CardHeader>
             {props.name}
             <div className="buttons-container">
-              { props.showReset &&
-                <Button
-                  className="reset-button"
-                  color="link"
-                  onClick={props.onReset}>
+              {props.showReset && (
+                <Button className="reset-button" color="link" onClick={props.onReset}>
                   <small>{t('trans:reset')}</small>
                 </Button>
-              }
+              )}
               <Button close onClick={toggle} />
             </div>
           </CardHeader>

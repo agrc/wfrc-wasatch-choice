@@ -1,7 +1,6 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getPhaseQuery, validateCheckboxLayerKeys } from './Filter';
-import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { getLayers } from './utils';
-
 
 describe('getPhaseQuery', () => {
   const tests = [
@@ -14,7 +13,7 @@ describe('getPhaseQuery', () => {
     [['FCPhase', 1, 2, 3], [0, 1, 2, 3], null],
     [['FCPhase', 1, 2, 3], [0, 1, 3], 'FCPhase IN (1, 2)'],
     [['FCPhase', 1, 2, 3], [3], '1 = 2'],
-    [['FieldName', '1', '2', '3', '4'], [0, 2], 'FieldName IN (\'1\', \'3\')']
+    [['FieldName', '1', '2', '3', '4'], [0, 2], "FieldName IN ('1', '3')"],
   ];
 
   tests.forEach(([info, indexes, expected]) => {
@@ -27,24 +26,24 @@ describe('getPhaseQuery', () => {
 describe('getLayers', () => {
   const centersTitle = 'Centers';
   const whenMock = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve();
     });
   };
   const centersLayer = {
     title: centersTitle,
-    when: whenMock
+    when: whenMock,
   };
   const nestedSubLayer = {
-    title: 'Nested Sub Layer'
+    title: 'Nested Sub Layer',
   };
   const subLayer = {
     title: 'Sub Layer',
-    sublayers: [nestedSubLayer]
+    sublayers: [nestedSubLayer],
   };
   const mockMap = {
     portalItem: {
-      id: 'unique id'
+      id: 'unique id',
     },
     layers: {
       items: [
@@ -52,17 +51,17 @@ describe('getLayers', () => {
         {
           title: 'Boundaries',
           sublayers: [subLayer],
-          when: whenMock
-        }
-      ]
-    }
+          when: whenMock,
+        },
+      ],
+    },
   };
   it('returns the correct layer objects', async () => {
     const config = {
       layerNames: {
         boundaries: 'Boundaries',
-        centers: centersTitle
-      }
+        centers: centersTitle,
+      },
     };
 
     const result = await getLayers(config.layerNames, mockMap);
@@ -76,8 +75,8 @@ describe('getLayers', () => {
     const config = {
       layerNames: {
         boundaries: 'BadLayerName',
-        centers: centersTitle
-      }
+        centers: centersTitle,
+      },
     };
 
     await getLayers(config.layerNames, mockMap);
@@ -89,8 +88,8 @@ describe('getLayers', () => {
     const config = {
       layerNames: {
         subLayer: 'Sub Layer',
-        nestedSubLayer: 'Nested Sub Layer'
-      }
+        nestedSubLayer: 'Nested Sub Layer',
+      },
     };
 
     const result = await getLayers(config.layerNames, mockMap);
@@ -110,15 +109,15 @@ describe('validateCheckboxLayerKeys', () => {
     const layerNames = {
       one: 'One',
       two: 'Two',
-      three: 'Three'
+      three: 'Three',
     };
     const checkboxes = {
       boxOne: {
-        layerNames: ['one', 'two']
+        layerNames: ['one', 'two'],
       },
       boxTwo: {
-        layerNames: ['three']
-      }
+        layerNames: ['three'],
+      },
     };
 
     validateCheckboxLayerKeys(layerNames, checkboxes);
@@ -129,15 +128,15 @@ describe('validateCheckboxLayerKeys', () => {
     const layerNames = {
       one: 'One',
       two: 'Two',
-      three: 'Three'
+      three: 'Three',
     };
     const checkboxes = {
       boxOne: {
-        layerNames: ['one', 'two']
+        layerNames: ['one', 'two'],
       },
       boxTwo: {
-        layerNames: ['three', 'badName']
-      }
+        layerNames: ['three', 'badName'],
+      },
     };
 
     validateCheckboxLayerKeys(layerNames, checkboxes);

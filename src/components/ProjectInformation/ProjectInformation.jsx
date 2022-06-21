@@ -1,12 +1,11 @@
 import React from 'react';
-import Details from './Details';
-import './ProjectInformation.scss';
 import { Oval } from 'react-loader-spinner';
 import { useSpecialTranslation } from '../../i18n';
 import { MapWidgetContext } from '../MapWidget/MapWidget';
+import Details from './Details';
+import './ProjectInformation.scss';
 
-
-export default props => {
+export default (props) => {
   console.log('ProjectInformation');
 
   const { updateScrollbar } = React.useContext(MapWidgetContext);
@@ -30,11 +29,15 @@ export default props => {
 
   return (
     <div className="project-information" ref={containerRef}>
-      { props.graphics.length === 0 && !props.showLoader &&
-        <p>{t('trans:projectInformationPrompt')}</p> }
-      { props.showLoader && <div className="loader"><Oval /></div> }
-      { props.graphics.map((graphic, index) =>
-        <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />) }
+      {props.graphics.length === 0 && !props.showLoader && <p>{t('trans:projectInformationPrompt')}</p>}
+      {props.showLoader && (
+        <div className="loader">
+          <Oval />
+        </div>
+      )}
+      {props.graphics.map((graphic, index) => (
+        <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />
+      ))}
     </div>
   );
 };

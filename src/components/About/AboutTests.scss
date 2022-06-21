@@ -1,4 +1,7 @@
-body, html, #root, .about-tests {
+body,
+html,
+#root,
+.about-tests {
   overflow-x: auto;
 }
 
@@ -13,7 +16,7 @@ body, html, #root, .about-tests {
     white-space: normal;
     vertical-align: top;
     .side-bar__padder > div {
-      flex: 1
+      flex: 1;
     }
   }
 }

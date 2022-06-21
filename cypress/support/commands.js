@@ -28,7 +28,7 @@ import '@testing-library/cypress/add-commands';
 Cypress.Commands.add('waitForMapLoaded', () => {
   return cy.window().should('have.property', 'mapLoaded', true);
 });
-Cypress.Commands.add('loadApp', (url='/') => {
+Cypress.Commands.add('loadApp', (url = '/') => {
   cy.visit(url);
 
   cy.waitForMapLoaded();
@@ -38,7 +38,8 @@ Cypress.Commands.add('getMapExtent', () => {
 
   let getExtent;
 
-  return cy.window()
+  return cy
+    .window()
     .then((win) => {
       getExtent = win.getMapExtent;
     })

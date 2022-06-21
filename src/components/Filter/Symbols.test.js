@@ -1,11 +1,10 @@
+import { describe, expect, it } from 'vitest';
 import { getSymbolFromInfos } from './Symbols';
-import { describe, it, expect } from 'vitest';
-
 
 describe('getSymbolFromInfos', () => {
   const minimums = {
     pointSize: 3,
-    polylineWidth: 2
+    polylineWidth: 2,
   };
 
   it('returns points symbols', () => {
@@ -14,8 +13,8 @@ describe('getSymbolFromInfos', () => {
       { symbol: { size: 1 } },
       { symbol: { size: 2 } },
       {
-        symbol: expectedSymbol
-      }
+        symbol: expectedSymbol,
+      },
     ];
 
     expect(getSymbolFromInfos(infos, minimums)).toBe(expectedSymbol);
@@ -27,8 +26,8 @@ describe('getSymbolFromInfos', () => {
       { symbol: { width: 1 } },
       { symbol: { width: 1.5 } },
       {
-        symbol: expectedSymbol
-      }
+        symbol: expectedSymbol,
+      },
     ];
 
     expect(getSymbolFromInfos(infos, minimums)).toBe(expectedSymbol);
