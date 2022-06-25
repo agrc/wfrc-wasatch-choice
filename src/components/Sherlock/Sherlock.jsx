@@ -1,51 +1,50 @@
+import Graphic from '@arcgis/core/Graphic';
+import * as query from '@arcgis/core/rest/query';
+import Query from '@arcgis/core/rest/support/Query';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Downshift from 'downshift';
-import { loadModules } from 'esri-loader';
-import debounce from 'lodash.debounce';
 import escapeRegExp from 'lodash.escaperegexp';
 import sortBy from 'lodash.sortby';
 import uniqWith from 'lodash.uniqwith';
-import { Component } from 'react';
-import isEqual from 'react-fast-compare';
-import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
-import config from '../../config';
-import Helpers from '../../Helpers';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Button, Input, InputGroup } from 'reactstrap';
 import './Sherlock.scss';
 
-class Sherlock extends Component {
-  static defaultProps = {
-    symbols: {
-      polygon: {
-        type: 'simple-fill',
-        color: [240, 240, 240, 0.5],
-        outline: {
-          style: 'solid',
-          color: [255, 255, 0, 0.5],
-          width: 2.5,
-        },
-      },
-      line: {
-        type: 'simple-line',
-        style: 'solid',
-        color: [255, 255, 0],
-        width: 5,
-      },
-      point: {
-        type: 'simple-marker',
-        style: 'circle',
-        color: [255, 255, 0, 0.5],
-        size: 10,
-      },
+const defaultSymbols = {
+  polygon: {
+    type: 'simple-fill',
+    color: [240, 240, 240, 0.5],
+    outline: {
+      style: 'solid',
+      color: [255, 255, 0, 0.5],
+      width: 2.5,
     },
-  };
+  },
+  line: {
+    type: 'simple-line',
+    style: 'solid',
+    color: [255, 255, 0],
+    width: 5,
+  },
+  point: {
+    type: 'simple-marker',
+    style: 'circle',
+    color: [255, 255, 0, 0.5],
+    size: 10,
+  },
+};
 
-  itemToString = this.itemToString.bind(this);
-  handleStateChange = this.handleStateChange.bind(this);
-
-  async handleStateChange(feature) {
-    const { provider, symbols, onSherlockMatch } = this.props;
-
+export function Sherlock({
+  symbols = defaultSymbols,
+  provider,
+  onSherlockMatch,
+  label,
+  placeHolder,
+  maxResultsToDisplay,
+}) {
+  const handleStateChange = async (feature) => {
     const searchValue = feature.attributes[provider.searchField];
 
     let contextValue;
@@ -54,8 +53,6 @@ class Sherlock extends Component {
     }
 
     const response = await provider.getFeature(searchValue, contextValue);
-
-    const [Graphic] = await loadModules(['esri/Graphic'], config.ESRI_LOADER_CONFIG);
 
     const results = response.data;
 
@@ -69,146 +66,133 @@ class Sherlock extends Component {
     );
 
     onSherlockMatch(graphics);
-  }
+  };
 
-  itemToString(item) {
+  const itemToString = (item) => {
     console.log('Clue:itemToString', arguments);
-    const { searchField } = this.props.provider;
 
-    return item ? item.attributes[searchField] : '';
-  }
+    return item ? item.attributes[provider.searchField] : '';
+  };
 
-  render() {
-    console.log('SherlockDownshift:render', arguments);
-    const props = {
-      itemToString: this.itemToString,
-      onChange: this.handleStateChange,
-    };
-
-    return (
-      <Downshift {...props}>
-        {({ getInputProps, getItemProps, highlightedIndex, isOpen, inputValue, getMenuProps }) => (
-          <div className="sherlock">
-            <h4>{this.props.label}</h4>
-            <div style={{ paddingBottom: '1em' }}>
-              <InputGroup>
-                <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="nope"></Input>
-                <InputGroupAddon addonType="append">
-                  <Button size="sm" color="secondary" disabled>
-                    <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
-                  </Button>
-                </InputGroupAddon>
-              </InputGroup>
-              <div className="sherlock__match-dropdown" {...getMenuProps()}>
-                <ul className="sherlock__matches">
-                  {!isOpen ? null : (
-                    <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
-                      {({ short, hasmore, loading, error, data = [] }) => {
-                        if (short) {
-                          return (
-                            <li className="sherlock__match-item alert-primary" disabled>
-                              Type more than 2 letters.
-                            </li>
-                          );
-                        }
-
-                        // if (loading) {
-                        //   return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
-                        // }
-
-                        if (error) {
-                          return (
-                            <li className="sherlock__match-item alert-danger" disabled>
-                              Error! ${error}
-                            </li>
-                          );
-                        }
-
-                        if (!data.length) {
-                          return (
-                            <li className="sherlock__match-item alert-warning" disabled>
-                              No items found.
-                            </li>
-                          );
-                        }
-
-                        let items = data.map((item, index) => (
-                          <li
-                            {...getItemProps({
-                              key: index,
-                              className:
-                                'sherlock__match-item' +
-                                (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
-                              item,
-                              index,
-                            })}
-                          >
-                            <Highlighted
-                              text={item.attributes[this.props.provider.searchField]}
-                              highlight={inputValue}
-                            ></Highlighted>
-                            <div>{item.attributes[this.props.provider.contextField] || ''}</div>
+  return (
+    <Downshift itemToString={itemToString} onChange={handleStateChange}>
+      {({ getInputProps, getItemProps, highlightedIndex, isOpen, inputValue, getMenuProps }) => (
+        <div className="sherlock">
+          <h4>{label}</h4>
+          <div style={{ paddingBottom: '1em' }}>
+            <InputGroup>
+              <Input {...getInputProps()} placeholder={placeHolder} autoComplete="nope"></Input>
+              <Button size="sm" color="secondary" disabled>
+                <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
+              </Button>
+            </InputGroup>
+            <div className="sherlock__match-dropdown" {...getMenuProps()}>
+              <ul className="sherlock__matches">
+                {!isOpen ? null : (
+                  <Clue clue={inputValue} provider={provider} maxResults={maxResultsToDisplay}>
+                    {({ short, hasMore, error, data = [] }) => {
+                      if (short) {
+                        return (
+                          <li className="sherlock__match-item alert-primary" disabled>
+                            Type more than 2 letters.
                           </li>
-                        ));
+                        );
+                      }
 
-                        if (hasmore) {
-                          items.push(
-                            <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>
-                              More than {this.props.maxResultsToDisplay} items found.
-                            </li>
-                          );
-                        }
+                      if (error) {
+                        return (
+                          <li className="sherlock__match-item alert-danger" disabled>
+                            Error! ${error}
+                          </li>
+                        );
+                      }
 
-                        return items;
-                      }}
-                    </Clue>
-                  )}
-                </ul>
-              </div>
+                      if (!data.length) {
+                        return (
+                          <li className="sherlock__match-item alert-warning" disabled>
+                            No items found.
+                          </li>
+                        );
+                      }
+
+                      let items = data.map((item, index) => (
+                        // eslint-disable-next-line react/jsx-key
+                        <li
+                          {...getItemProps({
+                            key: index,
+                            className:
+                              'sherlock__match-item' +
+                              (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
+                            item,
+                            index,
+                          })}
+                        >
+                          <Highlighted
+                            text={item.attributes[provider.searchField]}
+                            highlight={inputValue}
+                          ></Highlighted>
+                          <div>{item.attributes[provider.contextField] || ''}</div>
+                        </li>
+                      ));
+
+                      if (hasMore) {
+                        items.push(
+                          <li key="too-many" className="sherlock__match-item alert-primary text-center" disabled>
+                            More than {maxResultsToDisplay} items found.
+                          </li>
+                        );
+                      }
+
+                      return items;
+                    }}
+                  </Clue>
+                )}
+              </ul>
             </div>
           </div>
-        )}
-      </Downshift>
-    );
-  }
+        </div>
+      )}
+    </Downshift>
+  );
 }
+Sherlock.propTypes = {
+  symbols: PropTypes.object,
+  provider: PropTypes.object,
+  onSherlockMatch: PropTypes.func,
+  label: PropTypes.string,
+  placeHolder: PropTypes.string,
+  maxResultsToDisplay: PropTypes.number,
+};
 
-class Clue extends Component {
-  state = {
+function Clue({ clue, provider, maxResults, children }) {
+  const [state, setState] = React.useState({
     data: undefined,
     loading: false,
     error: false,
     short: true,
-    hasmore: false,
+    hasMore: false,
+  });
+
+  const updateState = (newProps) => {
+    setState((oldState) => {
+      return {
+        ...oldState,
+        ...newProps,
+      };
+    });
   };
 
-  async componentDidMount() {
-    console.log('Clue:componentDidMount', arguments);
-    await this.fetchData();
-  }
-
-  async componentDidUpdate({ children: _, ...prevProps }) {
-    console.log('Clue:componentDidUpdate', arguments);
-
-    const { children, ...props } = this.props;
-    if (!isEqual(prevProps, props)) {
-      await this.fetchData();
-    }
-  }
-
-  makeNetworkRequest = debounce(async () => {
-    console.log('Clue:makeNetworkRequest', this.props);
-
-    const { clue, provider, maxresults } = this.props;
+  const makeNetworkRequest = React.useCallback(async () => {
+    console.log('makeNetworkRequest');
     const { searchField, contextField } = provider;
 
     const response = await provider.search(clue).catch((e) => {
-      this.setState({
+      updateState({
         data: undefined,
         error: e.message,
         loading: false,
         short: clue.length <= 2,
-        hasmore: false,
+        hasMore: false,
       });
 
       console.error(e);
@@ -234,50 +218,44 @@ class Clue extends Component {
 
     features = sortBy(features, iteratee);
     let hasMore = false;
-    if (features.length > maxresults) {
-      features = features.slice(0, maxresults);
+    if (features.length > maxResults) {
+      features = features.slice(0, maxResults);
       hasMore = true;
     }
 
-    this.setState({
+    updateState({
       data: features,
       loading: false,
       error: false,
       short: clue.length <= 2,
-      hasmore: hasMore,
+      hasMore: hasMore,
     });
-  });
+  }, [clue, maxResults, provider]);
 
-  async fetchData() {
-    console.log('Clue:fetchData', arguments);
-
-    this.setState({
+  React.useEffect(() => {
+    console.log('clue or makeNetworkRequest changed');
+    updateState({
       error: false,
       loading: true,
-      short: this.props.clue.length <= 2,
-      hasmore: false,
+      short: clue.length <= 2,
+      hasMore: false,
     });
 
-    if (this.props.clue.length > 2) {
-      await this.makeNetworkRequest();
+    if (clue.length > 2) {
+      makeNetworkRequest();
     }
-  }
+  }, [clue, makeNetworkRequest]);
 
-  render() {
-    console.log('Clue:render', arguments);
+  const { short, data, loading, error, hasMore } = state;
 
-    const { children } = this.props;
-    const { short, data, loading, error, hasmore } = this.state;
-
-    return children({
-      short,
-      data,
-      loading,
-      error,
-      hasmore,
-      refetch: this.fetchData,
-    });
-  }
+  return children({
+    short,
+    data,
+    loading,
+    error,
+    hasMore,
+    // refetch: fetchData,
+  });
 }
 
 class ProviderBase {
@@ -327,36 +305,31 @@ class ProviderBase {
   }
 }
 
-class MapServiceProvider extends ProviderBase {
+export class MapServiceProvider extends ProviderBase {
   constructor(serviceUrl, searchField, options = {}) {
     console.log('sherlock.MapServiceProvider:constructor', arguments);
     super();
 
     this.searchField = searchField;
     this.contextField = options.contextField;
+    this.serviceUrl = serviceUrl;
 
-    this.setUpQueryTask(serviceUrl, options);
+    this.setUpQueryTask(options);
   }
 
-  async setUpQueryTask(serviceUrl, options) {
-    const [Query, QueryTask] = await loadModules(
-      ['esri/tasks/support/Query', 'esri/tasks/QueryTask'],
-      config.ESRI_LOADER_CONFIG
-    );
+  async setUpQueryTask(options) {
     const defaultWkid = 3857;
     this.query = new Query();
     this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
     this.query.returnGeometry = false;
     this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
-
-    this.queryTask = new QueryTask({ url: serviceUrl });
   }
 
   async search(searchString) {
     console.log('sherlock.MapServiceProvider:search', arguments);
 
     this.query.where = this.getSearchClause(searchString);
-    const featureSet = await this.queryTask.execute(this.query);
+    const featureSet = await query.executeQueryJSON(this.serviceUrl, this.query);
 
     return { data: featureSet.features };
   }
@@ -366,13 +339,13 @@ class MapServiceProvider extends ProviderBase {
 
     this.query.where = this.getFeatureClause(searchValue, contextValue);
     this.query.returnGeometry = true;
-    const featureSet = await this.queryTask.execute(this.query);
+    const featureSet = await query.executeQueryJSON(this.serviceUrl, this.query);
 
     return { data: featureSet.features };
   }
 }
 
-class WebApiProvider extends ProviderBase {
+export class WebApiProvider extends ProviderBase {
   constructor(apiKey, searchLayer, searchField, options) {
     super();
     console.log('sherlock.providers.WebAPI:constructor', arguments);
@@ -434,6 +407,10 @@ const Highlighted = ({ text = '', highlight = '' }) => {
     </div>
   );
 };
+Highlighted.propTypes = {
+  text: PropTypes.string,
+  highlight: PropTypes.string,
+};
 
 class WebApi {
   constructor(apiKey, signal) {
@@ -488,7 +465,7 @@ class WebApi {
     //
     //      'identical': as is in data.
     //      'upper': upper cases all attribute names.
-    //      'lower': lowercases all attribute names.
+    //      'lower': lower cases all attribute names.
     //      'camel': camel cases all attribute names
     //
     // returns: Promise
@@ -505,9 +482,16 @@ class WebApi {
       options.attributeStyle = this.defaultAttributeStyle;
     }
 
-    const querystring = Helpers.toQueryString(options);
-
-    const response = await fetch(url + querystring, { signal: this.signal });
+    let response;
+    try {
+      response = await fetch(url + new URLSearchParams(options).toString(), { signal: this.signal });
+    } catch (error) {
+      console.log('web api error', error);
+      // abort errors are OK
+      if (error.name !== 'AbortError') {
+        throw error;
+      }
+    }
 
     if (!response.ok) {
       return {
@@ -531,5 +515,3 @@ class WebApi {
     };
   }
 }
-
-export { Sherlock, WebApiProvider, MapServiceProvider };

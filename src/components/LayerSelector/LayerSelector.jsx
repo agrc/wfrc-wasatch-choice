@@ -1,3 +1,8 @@
+import Basemap from '@arcgis/core/Basemap';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import LOD from '@arcgis/core/layers/support/LOD';
+import TileInfo from '@arcgis/core/layers/support/TileInfo';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import PropTypes from 'prop-types';
 import { Component, PureComponent } from 'react';
 import icon from './layers.svg';
@@ -85,7 +90,6 @@ class LayerSelector extends Component {
       },
     };
     this.managedLayers = {};
-    const { LOD, TileInfo, WebTileLayer, Basemap, FeatureLayer } = this.props.modules;
 
     this.factoryLookup = {
       WebTileLayer,
@@ -151,7 +155,6 @@ class LayerSelector extends Component {
   static propTypes = {
     view: PropTypes.object.isRequired,
     quadWord: PropTypes.string,
-    modules: PropTypes.object.isRequired,
     baseLayers: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay', 'Imagery']),
@@ -217,9 +220,9 @@ class LayerSelector extends Component {
   }
 
   /**
-   * Creates the default TileInfo constructor object for applicance layers.
+   * Creates the default TileInfo constructor object for appliance layers.
    * @private
-   * @returns {object} The least common denominator contructor object for appliance layers.
+   * @returns {object} The least common denominator constructor object for appliance layers.
    */
   createDefaultTileInfo(LOD) {
     const tilesize = 256;
@@ -366,11 +369,11 @@ class LayerSelector extends Component {
           // attributionDataUrl: layer.attributionDataUrl,
         });
       } else {
-        if (!li.hasOwnProperty('onChange')) {
+        if (!Object.hasOwn(li, 'onChange')) {
           li.onChange = this.onItemChanged;
         }
 
-        if (!li.hasOwnProperty('layerType')) {
+        if (!Object.hasOwn(li, 'layerType')) {
           li.layerType = layerType;
         }
 
@@ -536,5 +539,8 @@ class LayerSelectorContainer extends Component {
     );
   }
 }
+LayerSelectorContainer.propTypes = {
+  children: PropTypes.node,
+};
 
 export { LayerSelectorContainer, LayerSelector };

@@ -1,5 +1,5 @@
+import * as watchUtils from '@arcgis/core/core/watchUtils';
 import { useEffect, useState } from 'react';
-import esriModules from '../../esriModules';
 
 // Cache layer lookup objects so that we don't have the crawl
 // the same map multiple times and also to prevent any cached
@@ -71,7 +71,6 @@ export const useMapLayers = (mapView, layerNames) => {
   useEffect(() => {
     const getLayersForNewMap = async () => {
       console.log('getLayersForNewMap');
-      const { watchUtils } = await esriModules();
       await watchUtils.whenOnce(mapView, 'ready');
       await mapView.map.when();
 

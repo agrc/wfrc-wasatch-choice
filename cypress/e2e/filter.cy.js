@@ -10,6 +10,7 @@ describe('filter', () => {
     cy.get('.filter .group-container input').check();
     cy.get('.filter .child-checkbox-container input').check();
   });
+
   it('turning off checkboxes reduces the number of layers', () => {
     cy.loadApp();
 

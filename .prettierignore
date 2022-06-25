@@ -3,5 +3,5 @@ dist/
 coverage/
 node_modules/
 docs/
-package*.json
+package-lock.json
 CHANGELOG.md

@@ -1,12 +1,17 @@
+import * as watchUtils from '@arcgis/core/core/watchUtils';
+import MapView from '@arcgis/core/views/MapView';
+import WebMap from '@arcgis/core/WebMap';
+import Home from '@arcgis/core/widgets/Home';
+import Popup from '@arcgis/core/widgets/Popup';
 import debounce from 'lodash.debounce';
+import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import config, { useCurrentTabConfig } from '../../config';
-import esriModules from '../../esriModules';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
 import { LayerSelector, LayerSelectorContainer } from '../LayerSelector/LayerSelector';
 
-const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) => {
+const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) {
   const dispatchURLParams = React.useContext(URLParamsContext)[1];
   const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
@@ -49,8 +54,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
 
       mapView.graphics.addMany(zoomObj.target);
 
-      const { watchUtils } = await esriModules();
-
       if (!zoomObj.preserve) {
         watchUtils.once(mapView, 'extent', () => {
           mapView.graphics.removeAll();
@@ -77,22 +80,18 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
 
   const setUpLayerSelector = React.useCallback(async () => {
     console.log('setUpLayerSelector');
-    const modules = await esriModules();
-
     selectorNode.current = document.createElement('div');
 
     const layerSelectorOptions = {
       view: mapView,
       quadWord: discoverKey,
-      modules,
       ...config.layerSelector,
     };
 
-    ReactDOM.render(
+    createRoot(selectorNode.current).render(
       <LayerSelectorContainer>
         <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
-      </LayerSelectorContainer>,
-      selectorNode.current
+      </LayerSelectorContainer>
     );
   }, [discoverKey, mapView]);
 
@@ -106,7 +105,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
 
     if (maps.current && mapView) {
       if (!maps.current[currentTabConfig.id]) {
-        const { WebMap } = await esriModules();
         maps.current[currentTabConfig.id] = new WebMap({
           portalItem: {
             id: currentTabConfig.webMapId,
@@ -120,7 +118,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
       if (!currentTabConfig.useDefaultAGOLPopup) {
         mapView.popup = null;
       } else {
-        const { Popup } = await esriModules();
         mapView.popup = new Popup();
       }
 
@@ -132,7 +129,7 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
         }
 
         // make sure that layer selector is wired to the new map
-        layerSelector.current.forceMapUpdate();
+        layerSelector.current?.forceMapUpdate();
       }
 
       if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
@@ -158,8 +155,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
   React.useEffect(() => {
     const initMap = async () => {
       console.log('MapView:initMap');
-
-      const { MapView, Home } = await esriModules();
 
       maps.current = {};
 
@@ -215,7 +210,6 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
       if (window.Cypress) {
         // help Cypress know when the map has loaded
         view.watch(['updating', 'navigating'], (updating) => {
-          console.log('updating state changed', updating);
           window.mapLoaded = view.ready && !updating && !view.navigating;
         });
 
@@ -253,6 +247,14 @@ const ReactMapView = ({ discoverKey, zoomToGraphic, initialExtent, setView, mapV
   ]);
 
   return <div style={{ height: '100%', width: '100%' }} ref={mapViewDiv} />;
+};
+ReactMapView.propTypes = {
+  discoverKey: PropTypes.string.isRequired,
+  zoomToGraphic: PropTypes.object,
+  initialExtent: PropTypes.object,
+  setView: PropTypes.func.isRequired,
+  mapView: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default ReactMapView;
