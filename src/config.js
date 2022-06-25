@@ -13,10 +13,6 @@ let config = {
   WEB_MERCATOR_WKID: 3857,
   MARKER_FILL_COLOR: [130, 65, 47, 0.5],
   MARKER_OUTLINE_COLOR: [230, 126, 21, 0.7],
-  ESRI_LOADER_CONFIG: {
-    version: '4.13',
-    css: true,
-  },
   SELECTION_SYMBOLS: {
     point: {
       type: 'simple-marker',
@@ -99,6 +95,7 @@ export const useCurrentTabConfig = () => {
   }
 
   // make sure that this object doesn't change on each re-render...
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(returnValue, [context]);
 };
 

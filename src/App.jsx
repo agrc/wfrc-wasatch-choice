@@ -1,3 +1,7 @@
+import '@arcgis/core/assets/esri/themes/light/main.css';
+import Graphic from '@arcgis/core/Graphic';
+import IdentifyTask from '@arcgis/core/tasks/IdentifyTask';
+import IdentifyParameters from '@arcgis/core/tasks/support/IdentifyParameters';
 import { faHandPointer, faList } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -14,7 +18,6 @@ import ProjectInformation from './components/ProjectInformation/ProjectInformati
 import { MapServiceProvider, Sherlock } from './components/Sherlock/Sherlock';
 import Sidebar from './components/Sidebar/Sidebar';
 import config, { useCurrentTabConfig } from './config';
-import esriModules from './esriModules';
 import { useSpecialTranslation } from './i18n';
 import { ACTION_TYPES, URLParamsContext } from './URLParams';
 
@@ -57,7 +60,6 @@ export default function App() {
         layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title)
     );
 
-    const { IdentifyParameters, IdentifyTask } = await esriModules();
     const identifyPromises = mapImageLayers.map((layer) => {
       const task = new IdentifyTask({
         url: layer.url,
@@ -210,7 +212,6 @@ export default function App() {
         const layerView = await mapView.whenLayerView(newGraphic.layer);
         setHighlight(layerView.highlight(newGraphic));
       } catch {
-        const { Graphic } = await esriModules();
         const symbolizedGraphic = new Graphic({
           ...newGraphic,
           symbol: config.SELECTION_SYMBOLS[newGraphic.geometry.type],

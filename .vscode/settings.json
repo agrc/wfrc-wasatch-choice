@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "baselayer",
+    "basemap",
     "CDAs",
     "CMAQ",
     "columnheader",
@@ -19,8 +20,10 @@
     "RDAs",
     "reactstrap",
     "scrollbar",
+    "sherlock",
     "STIP",
     "testid",
+    "tilesize",
     "wherematters"
   ],
   "cSpell.language": "en,es",

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Oval } from 'react-loader-spinner';
@@ -5,7 +6,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useCurrentTabConfig } from '../../config';
 import './About.scss';
 
-export default ({ version, testTabId }) => {
+export default function About({ version, testTabId }) {
   const [content, setContent] = useState();
   const currentTabConfig = useCurrentTabConfig();
   const currentTabId = currentTabConfig ? currentTabConfig.id : testTabId;
@@ -51,4 +52,9 @@ export default ({ version, testTabId }) => {
       </a>
     </>
   );
+}
+
+About.propTypes = {
+  version: PropTypes.string.isRequired,
+  testTabId: PropTypes.string.isRequired,
 };

@@ -1,6 +1,0 @@
-{
-  "experimentalFetchPolyfill": true,
-  "video": false,
-  "defaultCommandTimeout": 30000,
-  "baseUrl": "http://localhost:3000"
-}

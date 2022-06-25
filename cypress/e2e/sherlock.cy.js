@@ -15,6 +15,7 @@ describe('sherlock', () => {
 
     cy.getMapExtent().should('equal', SANDY_EXTENT);
   });
+
   it('search and select match with mouse', () => {
     cy.loadApp();
 

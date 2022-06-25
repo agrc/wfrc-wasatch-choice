@@ -1,6 +1,7 @@
+import * as symbolUtils from '@arcgis/core/symbols/support/symbolUtils';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { loadModules } from 'esri-loader';
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 import config from '../../config';
@@ -38,8 +39,6 @@ export const Simple = (props) => {
     const getSymbol = async () => {
       console.log('Simple:getSymbol');
 
-      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
-
       const layer = props.layersLookup[props.layerNames[0]];
       if (!layer) {
         // most likely layersLookup has layers from the last map and needs to update
@@ -75,6 +74,11 @@ export const Simple = (props) => {
       ))}
     </div>
   );
+};
+
+Simple.propTypes = {
+  layersLookup: PropTypes.object.isRequired,
+  layerNames: PropTypes.array.isRequired,
 };
 
 export const Classes = (props) => {
@@ -153,6 +157,12 @@ export const Classes = (props) => {
   );
 };
 
+Classes.propTypes = {
+  layersLookup: PropTypes.object.isRequired,
+  layerNames: PropTypes.array.isRequired,
+  staticColors: PropTypes.array,
+};
+
 export const LinePoint = (props) => {
   const [symbols, setSymbols] = useState({ point: null, polyline: null });
 
@@ -160,8 +170,6 @@ export const LinePoint = (props) => {
     let mounted = true;
     const getSymbols = async () => {
       console.log('LinePoint:getSymbols');
-
-      const [symbolUtils] = await loadModules(['esri/symbols/support/symbolUtils'], config.ESRI_LOADER_CONFIG);
 
       const newSymbols = {};
 
@@ -207,12 +215,21 @@ export const LinePoint = (props) => {
   );
 };
 
+LinePoint.propTypes = {
+  layersLookup: PropTypes.object.isRequired,
+  layerNames: PropTypes.array.isRequired,
+};
+
 export const Phase = (props) => {
   return (
     <div className="phase-symbol-container symbol-container">
       <div className="symbol" style={{ backgroundColor: props.color }}></div>
     </div>
   );
+};
+
+Phase.propTypes = {
+  color: PropTypes.string.isRequired,
 };
 
 export const Dynamic = (props) => {
@@ -266,6 +283,13 @@ export const Dynamic = (props) => {
   );
 };
 
+Dynamic.propTypes = {
+  layersLookup: PropTypes.object.isRequired,
+  layerNames: PropTypes.array.isRequired,
+  symbolLayerIds: PropTypes.array.isRequired,
+  symbolLabels: PropTypes.array.isRequired,
+};
+
 const DynamicSymbolContainer = ({ set, label }) => {
   const [showPopover, setShowPopover] = useState(false);
   const containerRef = useRef();
@@ -293,6 +317,11 @@ const DynamicSymbolContainer = ({ set, label }) => {
       </Popover>
     </>
   );
+};
+
+DynamicSymbolContainer.propTypes = {
+  set: PropTypes.array.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export const Static = (props) => {
@@ -323,4 +352,9 @@ export const Static = (props) => {
       </Popover>
     </>
   );
+};
+
+Static.propTypes = {
+  staticColors: PropTypes.array.isRequired,
+  imageFileName: PropTypes.string.isRequired,
 };

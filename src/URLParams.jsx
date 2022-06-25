@@ -1,4 +1,4 @@
-import queryString from 'query-string';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import config, { getDefaultCurrentTabIds } from './config';
@@ -53,47 +53,62 @@ const urlParamsReducer = (i18n) => {
 };
 
 const LIST_SEPARATOR = '.';
-const getInitialHash = (i18n) => {
+export const getInitialHash = (href, i18n, defaultCurrentTabIds) => {
   console.log('getInitialHash');
 
-  const initialURLParams = queryString.parse(new URL(document.location.href).hash.slice(1), {
-    parseNumbers: true,
-    parseBooleans: true,
-  });
+  const searchParams = new URLSearchParams(new URL(href).hash.slice(1));
 
-  if (initialURLParams.mapList) {
-    initialURLParams.mapList = initialURLParams.mapList.split(LIST_SEPARATOR);
-  }
+  const parsedParams = {};
 
-  const defaultCurrentTabIds = getDefaultCurrentTabIds();
+  for (const [key, value] of searchParams) {
+    switch (key) {
+      case 'mapList':
+        parsedParams[key] = searchParams.get(key).split(LIST_SEPARATOR);
 
-  if (initialURLParams.lng) {
-    i18n.changeLanguage(initialURLParams.lng);
+        continue;
+
+      case 'lng':
+        parsedParams[key] = i18n.changeLanguage(searchParams.get(key));
+
+        continue;
+    }
+
+    if (!isNaN(parseInt(value, 10))) {
+      parsedParams[key] = parseInt(value, 10);
+
+      continue;
+    } else if (['true', 'false'].includes(value)) {
+      parsedParams[key] = value === 'true';
+
+      continue;
+    }
+
+    parsedParams[key] = value;
   }
 
   return {
     mapList: defaultCurrentTabIds,
     selectedMap: defaultCurrentTabIds[0],
     sideBarClosed: window.innerWidth <= config.MIN_DESKTOP_WIDTH,
-    ...initialURLParams,
+    ...parsedParams,
   };
 };
 
-export default ({ children }) => {
+export default function URLParams({ children }) {
   const { i18n } = useTranslation();
   const [urlParams, dispatchURLParams] = React.useReducer(
     urlParamsReducer(i18n),
-    React.useMemo(() => getInitialHash(i18n), [i18n])
+    React.useMemo(() => getInitialHash(document.location.href, i18n, getDefaultCurrentTabIds()), [i18n])
   );
 
   // update current url when dispatch changes any params
   React.useEffect(() => {
     console.log('update URL');
     const url = new URL(document.location.href);
-    url.hash = queryString.stringify({
+    url.hash = new URLSearchParams({
       ...urlParams,
       mapList: urlParams.mapList.join(LIST_SEPARATOR),
-    });
+    }).toString();
 
     document.location.replace(url);
   }, [urlParams]);
@@ -103,4 +118,7 @@ export default ({ children }) => {
       {children}
     </URLParamsContext.Provider>
   );
+}
+URLParams.propTypes = {
+  children: PropTypes.node.isRequired,
 };

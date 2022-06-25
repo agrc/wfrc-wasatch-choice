@@ -13,6 +13,7 @@ describe('tab-picker', () => {
 
     cy.findByLabelText('Transportation Tab').should('not.exist');
   });
+
   it('replaces a tab', () => {
     cy.loadApp();
 
@@ -30,6 +31,7 @@ describe('tab-picker', () => {
 
     cy.findByLabelText('Open Space Tab').should('be.visible');
   });
+
   it('shows too many tabs alert', () => {
     cy.loadApp();
 

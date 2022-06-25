@@ -2,9 +2,10 @@ describe('tabs', () => {
   it('switching tabs preserves map extent', () => {
     cy.loadApp();
 
-    const zoomInButton = cy.findByRole('button', { name: /zoom in/i });
-    zoomInButton.click();
-    zoomInButton.click();
+    cy.findByRole('button', { name: /zoom in/i }).then((button) => {
+      button.trigger('click');
+      button.trigger('click');
+    });
 
     cy.getMapExtent().as('originalExtent');
 
@@ -14,6 +15,7 @@ describe('tabs', () => {
       cy.getMapExtent().should('equal', originalExtent);
     });
   });
+
   it('map layer visibility is preserved when switching back and forward between tabs', () => {
     cy.loadApp();
 
@@ -43,6 +45,7 @@ describe('tabs', () => {
       expect(getVisibleLayers()).to.eql(originalVisibleLayers);
     });
   });
+
   it('layer selector is hidden and shown appropriately', () => {
     cy.loadApp();
 
@@ -56,23 +59,17 @@ describe('tabs', () => {
 
     cy.findByRole('button', { name: /layers/i }).should('not.exist');
   });
+
   it('drag and drop to rearrange tabs', () => {
     cy.loadApp();
 
-    cy.findByLabelText('Transportation Tab')
-      .trigger('mouseover')
-      .trigger('mousedown', { button: 0 })
-      .trigger('mousemove', 0, 0, { force: true });
-    cy.findByLabelText('Recreation Tab')
-      .trigger('mouseover')
-      .trigger('mousemove', 0, 0, { force: true })
-      .trigger('mouseup');
+    cy.findByLabelText('Land Use Tab').mouseMoveBy(-400, 0);
+    cy.findByLabelText('Transportation Tab').mouseMoveBy(400, 0);
 
-    // assert that tab nodes actually moved
-    cy.get(':nth-child(4) > .nav-link').should('have.text', 'Recreation');
-    cy.get(':nth-child(5) > .nav-link').should('have.text', 'Transportation');
+    cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Land Use');
+    cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Transportation');
 
     // assert that URL was updated
-    cy.hash().should('contain', 'mapList=vision.land-use.economic-development.recreation.transportation');
+    cy.hash().should('contain', 'mapList=land-use.vision.economic-development.recreation.transportation');
   });
 });
