@@ -7,4 +7,7 @@ export default defineConfig({
   },
   video: false,
   defaultCommandTimeout: 30000,
+  retries: {
+    runMode: 2,
+  },
 });
