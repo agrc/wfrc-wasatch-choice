@@ -80,7 +80,7 @@
     "cypress": "^6.5.0",
     "cypress-pipe": "^2.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "del-cli": "^3.0.1",
+    "del-cli": "^4.0.1",
     "env-cmd": "^10.1.0",
     "grunt": "^1.5.3",
     "grunt-contrib-clean": "^2.0.1",
