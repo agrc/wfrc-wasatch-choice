@@ -56,5 +56,5 @@ export default function Details({ graphic, highlightGraphic }) {
 }
 Details.propTypes = {
   graphic: PropTypes.object,
-  highlightGraphic: PropTypes.object,
+  highlightGraphic: PropTypes.func,
 };
