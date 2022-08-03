@@ -1,7 +1,7 @@
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import Graphic from '@arcgis/core/Graphic';
-import IdentifyTask from '@arcgis/core/tasks/IdentifyTask';
-import IdentifyParameters from '@arcgis/core/tasks/support/IdentifyParameters';
+import { identify } from '@arcgis/core/rest/identify';
+import IdentifyParameters from '@arcgis/core/rest/support/IdentifyParameters';
 import { faHandPointer, faList } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -61,9 +61,6 @@ export default function App() {
     );
 
     const identifyPromises = mapImageLayers.map((layer) => {
-      const task = new IdentifyTask({
-        url: layer.url,
-      });
       const layerIds = layer.sublayers
         .filter((subLayer) => subLayer.visible)
         .map((subLayer) => subLayer.id)
@@ -85,7 +82,7 @@ export default function App() {
         width: view.width,
       });
 
-      return task.execute(parameters);
+      return identify(layer.url, parameters);
     });
     console.log('identifyPromises', identifyPromises);
 
