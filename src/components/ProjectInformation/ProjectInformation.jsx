@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Oval } from 'react-loader-spinner';
 import { useSpecialTranslation } from '../../i18n';
@@ -5,7 +6,7 @@ import { MapWidgetContext } from '../MapWidget/MapWidget';
 import Details from './Details';
 import './ProjectInformation.scss';
 
-export default (props) => {
+export default function ProjectInformation(props) {
   console.log('ProjectInformation');
 
   const { updateScrollbar } = React.useContext(MapWidgetContext);
@@ -40,4 +41,10 @@ export default (props) => {
       ))}
     </div>
   );
+}
+
+ProjectInformation.propTypes = {
+  graphics: PropTypes.array,
+  highlightGraphic: PropTypes.func,
+  showLoader: PropTypes.bool,
 };

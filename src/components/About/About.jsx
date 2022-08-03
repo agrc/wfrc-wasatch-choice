@@ -56,5 +56,5 @@ export default function About({ version, testTabId }) {
 
 About.propTypes = {
   version: PropTypes.string.isRequired,
-  testTabId: PropTypes.string.isRequired,
+  testTabId: PropTypes.string,
 };
