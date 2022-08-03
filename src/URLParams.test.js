@@ -18,7 +18,7 @@ describe('getInitialHash', () => {
   });
 
   it('should return the initial hash', () => {
-    const href = 'http://localhost:3000/#test=a&test2=b&mapList=c.d.e.f';
+    const href = 'http://localhost:5173/#test=a&test2=b&mapList=c.d.e.f';
 
     const result = getInitialHash(href, i18n, []);
 
@@ -28,7 +28,7 @@ describe('getInitialHash', () => {
   });
 
   it('should parse numbers and booleans', () => {
-    const href = 'http://localhost:3000/#test=1&test2=true';
+    const href = 'http://localhost:5173/#test=1&test2=true';
 
     const result = getInitialHash(href, i18n, []);
 
@@ -37,7 +37,7 @@ describe('getInitialHash', () => {
   });
 
   it('should return the default map list if none is supplied', () => {
-    const href = 'http://localhost:3000/#test=d&test2=e';
+    const href = 'http://localhost:5173/#test=d&test2=e';
 
     const result = getInitialHash(href, i18n, defaultMapList);
 
@@ -46,7 +46,7 @@ describe('getInitialHash', () => {
   });
 
   it('should change the language as a side effect', () => {
-    const href = 'http://localhost:3000/#test=d&test2=e&lng=es';
+    const href = 'http://localhost:5173/#test=d&test2=e&lng=es';
 
     getInitialHash(href, i18n, []);
 
