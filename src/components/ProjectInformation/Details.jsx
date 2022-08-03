@@ -1,4 +1,4 @@
-import * as watchUtils from '@arcgis/core/core/watchUtils';
+import { once } from '@arcgis/core/core/reactiveUtils';
 import Feature from '@arcgis/core/widgets/Feature';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
@@ -24,7 +24,7 @@ export default function Details({ graphic, highlightGraphic }) {
         defaultPopupTemplateEnabled: true,
       });
 
-      await watchUtils.once(feature, 'title');
+      await once(() => feature.title);
 
       setTitle(feature.title);
 

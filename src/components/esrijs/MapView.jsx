@@ -1,4 +1,4 @@
-import * as watchUtils from '@arcgis/core/core/watchUtils';
+import { once } from '@arcgis/core/core/reactiveUtils';
 import MapView from '@arcgis/core/views/MapView';
 import WebMap from '@arcgis/core/WebMap';
 import Home from '@arcgis/core/widgets/Home';
@@ -55,7 +55,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
       mapView.graphics.addMany(zoomObj.target);
 
       if (!zoomObj.preserve) {
-        watchUtils.once(mapView, 'extent', () => {
+        once(() => mapView.extent).then(() => {
           mapView.graphics.removeAll();
         });
       }
