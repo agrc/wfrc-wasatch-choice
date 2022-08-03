@@ -7,7 +7,7 @@
     "build": "npm run update-config-docs && vite build",
     "build:stage": "npm run update-config-docs && vite build --mode stage",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
-    "cypress:run": "start-server-and-test start http://localhost:3000/index.html 'cypress run'",
+    "cypress:run": "start-server-and-test start http://localhost:5173 'cypress run'",
     "format": "prettier . -w",
     "lint": "eslint src",
     "preview": "vite preview",
