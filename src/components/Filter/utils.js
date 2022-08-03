@@ -1,4 +1,4 @@
-import * as watchUtils from '@arcgis/core/core/watchUtils';
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useState } from 'react';
 
 // Cache layer lookup objects so that we don't have the crawl
@@ -71,7 +71,7 @@ export const useMapLayers = (mapView, layerNames) => {
   useEffect(() => {
     const getLayersForNewMap = async () => {
       console.log('getLayersForNewMap');
-      await watchUtils.whenOnce(mapView, 'ready');
+      await whenOnce(() => mapView.ready);
       await mapView.map.when();
 
       const layers = await getLayers(layerNames, mapView.map);
