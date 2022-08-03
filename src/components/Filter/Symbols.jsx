@@ -1,4 +1,4 @@
-import * as symbolUtils from '@arcgis/core/symbols/support/symbolUtils';
+import { renderPreviewHTML } from '@arcgis/core/symbols/support/symbolUtils';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
@@ -53,7 +53,7 @@ export const Simple = (props) => {
           const symbol =
             layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
 
-          return symbolUtils.renderPreviewHTML(symbol, { opacity: layer.opacity });
+          return renderPreviewHTML(symbol, { opacity: layer.opacity });
         })
       );
 
@@ -191,8 +191,8 @@ export const LinePoint = (props) => {
         }
       });
 
-      newSymbols.polyline = await symbolUtils.renderPreviewHTML(newSymbols.polyline);
-      newSymbols.point = await symbolUtils.renderPreviewHTML(newSymbols.point);
+      newSymbols.polyline = await renderPreviewHTML(newSymbols.polyline);
+      newSymbols.point = await renderPreviewHTML(newSymbols.point);
 
       // prevent this from being called after the component has been unmounted
       if (mounted) {

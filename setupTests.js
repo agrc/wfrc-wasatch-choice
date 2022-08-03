@@ -10,3 +10,9 @@ vi.mock('react-device-detect', () => {
     isMobile: false,
   };
 });
+
+vi.mock('@arcgis/core/symbols/support/symbolUtils', () => {
+  return {
+    renderPreviewHTML: () => '',
+  };
+});
