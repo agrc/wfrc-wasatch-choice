@@ -38,7 +38,6 @@ export default function App() {
   const t = useSpecialTranslation();
 
   const quadWord = import.meta.env.VITE_DISCOVER;
-  const version = import.meta.env.VITE_VERSION;
 
   const onMapClick = React.useCallback(async (clickEvent, view) => {
     console.log('onMapClick', clickEvent);
@@ -233,7 +232,7 @@ export default function App() {
         <>
           <Header title={t('trans:appTitle')} />
           <Sidebar toggleSidebar={toggleSidebar} isOpen={!urlParams.sideBarClosed}>
-            <About version={version} />
+            <About version={import.meta.env.PACKAGE_VERSION} />
           </Sidebar>
           <MapLens {...sidebarOptions}>
             <MapView {...mapOptions} />
