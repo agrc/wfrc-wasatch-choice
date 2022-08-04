@@ -2,58 +2,24 @@
   "name": "wfrc",
   "version": "4.1.0",
   "private": true,
-  "homepage": ".",
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.29",
-    "@fortawesome/free-solid-svg-icons": "^5.13.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
-    "array-move": "^4.0.0",
-    "bootstrap": "^4.5.0",
-    "downshift": "^5.4.5",
-    "esri-loader": "^2.14.0",
-    "i18next": "^19.7.0",
-    "i18next-browser-languagedetector": "^6.1.4",
-    "jsonschema": "^1.4.1",
-    "lodash.debounce": "^4.0.8",
-    "lodash.escaperegexp": "^4.1.2",
-    "lodash.sortby": "^4.7.0",
-    "lodash.uniqwith": "^4.5.0",
-    "perfect-scrollbar": "^1.5.5",
-    "query-string": "^6.13.1",
-    "react": "^17.0.2",
-    "react-device-detect": "^2.2.2",
-    "react-dom": "^17.0.2",
-    "react-dual-listbox": "^2.2.0",
-    "react-fast-compare": "^3.2.0",
-    "react-i18next": "^11.16.9",
-    "react-loader-spinner": "^5.1.4",
-    "react-perfect-scrollbar": "^1.5.8",
-    "react-scripts": "^5.0.1",
-    "react-sortable-hoc": "^2.0.0",
-    "reactstrap": "^8.10.1",
-    "typeface-montserrat": "^1.1.13"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run update-config-docs && react-scripts build",
-    "build-stage": "npm run update-config-docs && ./node_modules/.bin/env-cmd -f ./.env.stage npm run build",
-    "test": "react-scripts test",
-    "test:once": "npm run lint && npm test -- --watchAll=false && npm run cypress:run",
-    "lint": "eslint src",
-    "cypress:run": "start-server-and-test 'npm start' http://localhost:3000 'cypress run'",
+    "build": "npm run update-config-docs && vite build",
+    "build:stage": "npm run update-config-docs && vite build --mode stage",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
-    "eject": "react-scripts eject",
+    "cypress:run": "start-server-and-test start http://localhost:5173 'cypress run'",
+    "format": "prettier . -w",
+    "lint": "eslint src",
+    "preview": "vite preview",
     "release": "standard-version",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "start": "vite",
+    "storybook": "start-storybook -p 9009",
+    "test": "vitest",
     "update-config-docs": "del ./docs/** && jsonschema2md -d public -o docs -h false -x - -n"
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "globals": {
-      "cy": true,
-      "Cypress": true
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "browserslist": [
@@ -62,50 +28,100 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime",
+      "plugin:react-hooks/recommended",
+      "plugin:cypress/recommended"
+    ],
+    "ignorePatterns": [
+      "dist/**"
+    ]
+  },
+  "dependencies": {
+    "@arcgis/core": "^4.24.7",
+    "@dnd-kit/sortable": "^7.0.1",
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "bootstrap": "^5.2.0",
+    "downshift": "^6.1.7",
+    "i18next": "^21.8.16",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "jsonschema": "^1.4.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.escaperegexp": "^4.1.2",
+    "lodash.sortby": "^4.7.0",
+    "lodash.uniqwith": "^4.5.0",
+    "perfect-scrollbar": "^1.5.5",
+    "react": "^18.2.0",
+    "react-device-detect": "^2.2.2",
+    "react-dom": "^18.2.0",
+    "react-dual-listbox": "^2.2.0",
+    "react-fast-compare": "^3.2.0",
+    "react-i18next": "^11.18.3",
+    "react-loader-spinner": "^5.1.4",
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-scripts": "^5.0.1",
+    "reactstrap": "^9.1.2",
+    "typeface-montserrat": "^1.1.13"
+  },
   "devDependencies": {
-    "@adobe/jsonschema2md": "^4.1.6",
-    "@storybook/addon-actions": "^6.5.6",
-    "@storybook/addon-links": "^6.5.6",
-    "@storybook/addon-storyshots": "^6.5.6",
-    "@storybook/addons": "^6.5.6",
-    "@storybook/builder-webpack5": "^6.5.6",
-    "@storybook/manager-webpack5": "^6.5.6",
-    "@storybook/preset-create-react-app": "^4.1.2",
-    "@storybook/react": "^6.5.6",
-    "@testing-library/cypress": "^7.0.0",
-    "@testing-library/dom": "^8.13.0",
-    "@testing-library/react": "^12.1.5",
-    "babel-preset-react-app": "^10.0.1",
-    "concurrently": "^5.2.0",
-    "cypress": "^6.5.0",
-    "cypress-pipe": "^2.0.0",
+    "@adobe/jsonschema2md": "^7.1.1",
+    "@rollup/pluginutils": "^4.2.1",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-vite": "^0.2.2",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@testing-library/cypress": "^8.0.3",
+    "@vitejs/plugin-react": "^2.0.0",
+    "concurrently": "^7.3.0",
+    "cypress": "^10.4.0",
     "cz-conventional-changelog": "^3.3.0",
-    "del-cli": "^3.0.1",
-    "env-cmd": "^10.1.0",
-    "grunt": "^1.5.3",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-compress": "^1.6.0",
-    "grunt-ssh": "^0.12.9",
-    "identity-obj-proxy": "^3.0.0",
-    "load-grunt-tasks": "^5.1.0",
-    "node-sass": "^7.0.1",
-    "react-test-renderer": "^16.13.1",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "happy-dom": "^6.0.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.1",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "react-test-renderer": "^18.2.0",
+    "sass": "^1.54.1",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^1.14.0",
-    "webpack": "^5.73.0"
+    "vite": "^3.0.4",
+    "vitest": "^0.20.3"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(array-move)/)"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "typeface-montserrat": "identity-obj-proxy"
+  "overrides": {
+    "react-dual-listbox": {
+      "react": "^18.0.0"
     }
   }
 }
