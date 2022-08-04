@@ -11,6 +11,7 @@ vi.mock('react-device-detect', () => {
   };
 });
 
+// for some reason, vitest can't handle importing this module...
 vi.mock('@arcgis/core/symbols/support/symbolUtils', () => {
   return {
     renderPreviewHTML: () => '',
