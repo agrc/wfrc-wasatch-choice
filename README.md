@@ -1,4 +1,4 @@
-# WFRC - Wasatch Choice Interactive Map [![Build Status](https://travis-ci.com/agrc/wfrc.svg?branch=main)](https://travis-ci.com/agrc/wfrc)
+# WFRC - Wasatch Choice Interactive Map [![Node.js CI](https://github.com/agrc/wfrc-wasatch-choice/actions/workflows/nodejs.yml/badge.svg)](https://github.com/agrc/wfrc-wasatch-choice/actions/workflows/nodejs.yml)
 
 [mockups](https://docs.google.com/presentation/d/1m30EQch-gXr4IczSRmM9TthAMsiAgCITS3Qo9C-tZkU/edit#slide=id.g5750aa3557_0_0)  
 [map ledge mockup](https://docs.google.com/presentation/d/1IchwcqjPA9lqFt9WJul7BXwl0gMJ-FNSflO31qot9K4/edit#slide=id.g8363e6d01f_1_0)  
