@@ -84,7 +84,7 @@
     "react-loader-spinner": "^5.1.4",
     "react-perfect-scrollbar": "^1.5.8",
     "react-scripts": "^5.0.1",
-    "reactstrap": "^9.1.2",
+    "reactstrap": "^9.1.4",
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
