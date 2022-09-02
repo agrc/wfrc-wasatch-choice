@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Oval } from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useCurrentTabConfig } from '../../config';
 import './About.scss';
 
