@@ -67,7 +67,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.2.0",
     "downshift": "^6.1.9",
-    "i18next": "^21.9.1",
+    "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "jsonschema": "^1.4.1",
     "lodash.debounce": "^4.0.8",
