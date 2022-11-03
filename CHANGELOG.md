@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.0...v4.1.1) (2022-11-03)
+
+
+### 📖 Documentation Improvements
+
+* add note about vitest import issues ([f5f15f3](https://github.com/agrc/wfrc-wasatch-choice/commit/f5f15f38fec9a278dec3f7d43b1ddc7c9a751306))
+* replace travis badge with gha badge ([d0c8632](https://github.com/agrc/wfrc-wasatch-choice/commit/d0c86324b3439eb8a228082da3e3891481a72e96))
+
+
+### 🐛 Bug Fixes
+
+* cypress tests ([8d78132](https://github.com/agrc/wfrc-wasatch-choice/commit/8d78132da52fa984f576c79ece3da36b2cda68a0))
+* November dependency bumps 🌲 ([7fba6f1](https://github.com/agrc/wfrc-wasatch-choice/commit/7fba6f1c57e3b1ae0a68187629c5d7b8917993f6))
+* October dep bumps 🌲 ([5ee2e2f](https://github.com/agrc/wfrc-wasatch-choice/commit/5ee2e2f534325291bb563fa62fd7cd40bb8b23b1))
+* prop types ([7761261](https://github.com/agrc/wfrc-wasatch-choice/commit/7761261432ed87e40ad44869174b357e3f3fcdc6))
+* retry failed cypress tests ([335d589](https://github.com/agrc/wfrc-wasatch-choice/commit/335d58959f7cca8deb105b0af6e4b0bae5942219))
+* this import is no longer needed ([74ccacf](https://github.com/agrc/wfrc-wasatch-choice/commit/74ccacfe5219ccef4a5f4409b938c5f9d36eac2e))
+* unit tests ([1ba77d0](https://github.com/agrc/wfrc-wasatch-choice/commit/1ba77d00ae81ab70fa3842974e488e17a797ec32))
+* vite-friendly getting of app version ([ef056f8](https://github.com/agrc/wfrc-wasatch-choice/commit/ef056f8e79f7d273b3e73471c23b10137df4b0f8))
+* watchUtils -&gt; reactiveUtils ([bdbf299](https://github.com/agrc/wfrc-wasatch-choice/commit/bdbf29920a841119c5a717d61a563ca9cf72cca7))
+
 ## [4.1.0](https://github.com/agrc/wfrc/compare/v4.1.0-0...v4.1.0) (2021-02-25)
 
 ## [4.1.0-0](https://github.com/agrc/wfrc/compare/v4.0.2-0...v4.1.0-0) (2021-02-24)
