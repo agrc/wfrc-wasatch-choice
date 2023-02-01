@@ -100,7 +100,7 @@
     "@testing-library/cypress": "^8.0.3",
     "@vitejs/plugin-react": "^2.2.0",
     "concurrently": "^7.5.0",
-    "cypress": "^10.11.0",
+    "cypress": "^12.5.0",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^5.0.0",
     "eslint": "^8.26.0",
