@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.2](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.1...v4.1.2) (2023-02-07)
+
+
+### 🐛 Bug Fixes
+
+* February dependency bumps 🌲 ([2493c95](https://github.com/agrc/wfrc-wasatch-choice/commit/2493c95af59015e48bafcb9ec983ac4d384876b7))
+* switch webmap id ([26d3bfc](https://github.com/agrc/wfrc-wasatch-choice/commit/26d3bfc415d48dd4c4faf46eeb7d5c872c08396a))
+
 ## [4.1.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.0...v4.1.1) (2022-11-03)
 
 
