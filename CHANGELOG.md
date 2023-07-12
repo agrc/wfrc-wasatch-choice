@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.4-0...v4.2.0-0) (2023-07-12)
+
+
+### 🚀 Features
+
+* deploy firebase previews in pull requests ([619dbf4](https://github.com/agrc/wfrc-wasatch-choice/commit/619dbf49e488eadf409f6cb18ebb9ea4d7c746cf))
+
+
+### 🐛 Bug Fixes
+
+* add firebase config files ([cb46b4a](https://github.com/agrc/wfrc-wasatch-choice/commit/cb46b4a3c946d6af66fa798f800f35d5f744e5c9))
+
 ## [4.1.4-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.3...v4.1.4-0) (2023-07-12)
 
 
