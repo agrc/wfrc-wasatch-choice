@@ -95,15 +95,3 @@ Execute `npm run build` to create an optimized production build
 _The files will be placed in `/dist`_
 
 Execute `npm run preview` to view the website
-
-## Deploy
-
-One-time tasks:
-
-- [ ] Update the analytics code in `public/index.html`
-
-Tasks to be completed for each release:
-
-- [ ] Verify all tests are passing (`npm run test`)
-- [ ] `npm run release` or `npm run release -- --prerelease`
-- [ ] Push commits and tag to github (`git push --follow-tags`)
