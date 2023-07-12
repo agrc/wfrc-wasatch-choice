@@ -62,7 +62,7 @@ export function Sherlock({
           geometry: feature.geometry,
           attributes: feature.attributes,
           symbol: symbols[feature.geometry.type],
-        })
+        }),
     );
 
     onSherlockMatch(graphics);
@@ -139,7 +139,7 @@ export function Sherlock({
                         items.push(
                           <li key="too-many" className="sherlock__match-item alert-primary text-center" disabled>
                             More than {maxResultsToDisplay} items found.
-                          </li>
+                          </li>,
                         );
                       }
 

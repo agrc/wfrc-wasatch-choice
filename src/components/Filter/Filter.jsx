@@ -189,7 +189,7 @@ const RadioGroup = (props) => {
 
   const allLayerKeys = props.checkboxes.reduce(
     (layerNames, checkboxName) => layerNames.concat(props.checkboxConfigs[checkboxName].layerNames),
-    []
+    [],
   );
   const visibleLayerKeys = visible ? props.checkboxConfigs[selectedRadioButton].layerNames : [];
   const hiddenLayersKeys = allLayerKeys.filter((key) => visibleLayerKeys.indexOf(key) === -1);

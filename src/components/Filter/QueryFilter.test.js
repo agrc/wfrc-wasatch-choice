@@ -12,8 +12,8 @@ describe('getFieldQuery', () => {
           label: { values: [1, 2] },
           label2: { values: [3] },
           label3: { values: [4] },
-        }
-      )
+        },
+      ),
     ).toEqual('(FieldName IN (1, 2, 4))');
   });
   it('number with other', () => {
@@ -27,8 +27,8 @@ describe('getFieldQuery', () => {
           label2: { values: [3] },
           label3: { values: [4, 5] },
           label4: { other: true },
-        }
-      )
+        },
+      ),
     ).toEqual('(FieldName IN (1, 2) OR FieldName NOT IN (1, 2, 3, 4, 5))');
   });
   it('text', () => {
@@ -41,8 +41,8 @@ describe('getFieldQuery', () => {
           label: { values: ['1', '2'] },
           label2: { values: ['3'] },
           label3: { values: ['4'] },
-        }
-      )
+        },
+      ),
     ).toEqual("(FieldName IN ('1', '2', '4'))");
   });
   it('only other', () => {
@@ -55,8 +55,8 @@ describe('getFieldQuery', () => {
           label: { values: ['1', '2'] },
           label2: { values: ['3'] },
           label3: { other: true },
-        }
-      )
+        },
+      ),
     ).toEqual("(FieldName NOT IN ('1', '2', '3'))");
   });
   it('returns null if all are checked', () => {
@@ -69,8 +69,8 @@ describe('getFieldQuery', () => {
           label: { values: ['1', '2'] },
           label2: { values: ['3'] },
           label3: { other: true },
-        }
-      )
+        },
+      ),
     ).toBeNull();
   });
 });
@@ -82,7 +82,7 @@ describe('getLayerQuery', () => {
         label1: null,
         label2: null,
         label3: null,
-      })
+      }),
     ).toBeNull();
   });
   it('returns the correct query', () => {
@@ -91,7 +91,7 @@ describe('getLayerQuery', () => {
         label1: 'query1',
         label2: null,
         label3: 'query3',
-      })
+      }),
     ).toEqual('query1 AND query3');
   });
 });

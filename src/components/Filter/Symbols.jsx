@@ -54,7 +54,7 @@ export const Simple = (props) => {
             layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
 
           return renderPreviewHTML(symbol, { opacity: layer.opacity });
-        })
+        }),
       );
 
       // prevent this from being called after the component has been unmounted
@@ -111,7 +111,7 @@ export const Classes = (props) => {
     const infos = layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
     if (!infos) {
       new Error(
-        `Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`
+        `Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`,
       );
     }
     const colors = infos.map((info) => {
@@ -185,7 +185,7 @@ export const LinePoint = (props) => {
           layer.when(() => {
             newSymbols[layer.geometryType] = getSymbolFromInfos(
               layer.renderer.uniqueValueInfos,
-              config.minimumLegendSizes
+              config.minimumLegendSizes,
             );
           });
         }

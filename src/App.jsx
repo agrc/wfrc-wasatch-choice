@@ -56,7 +56,7 @@ export default function App() {
 
     const mapImageLayers = layers.filter(
       (layer) =>
-        layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title)
+        layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title),
     );
 
     const identifyPromises = mapImageLayers.map((layer) => {
@@ -96,7 +96,7 @@ export default function App() {
             attributes: result.feature.attributes,
             popupTemplate: layerNameLookup[result.layerName].popupTemplate,
           };
-        })
+        }),
       );
     }, []);
 
@@ -104,7 +104,7 @@ export default function App() {
     // once Esri adds support for returning all of the features in a layer rather than just the topmost
     const featureLayers = layers.filter(
       (layer) =>
-        layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title)
+        layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title),
     );
     const queryFeatureLayerView = async (layer) => {
       const layerView = await view.whenLayerView(layer);

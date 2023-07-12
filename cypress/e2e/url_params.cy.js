@@ -20,7 +20,7 @@ describe('url params', () => {
 
     cy.getMapExtent().should(
       'equal',
-      '{"spatialReference":{"wkid":3857},"xmin":-12471493.628535634,"ymin":4971276.97099176,"xmax":-12452384.371464366,"ymax":4982131.02900824}'
+      '{"spatialReference":{"wkid":3857},"xmin":-12471493.628535634,"ymin":4971276.97099176,"xmax":-12452384.371464366,"ymax":4982131.02900824}',
     );
   });
 

@@ -139,7 +139,7 @@ const QueryFilter = ({ mapView, layerName, fields, reset }) => {
         mapLayer.definitionExpression = query;
       }
     },
-    [mapLayer]
+    [mapLayer],
   );
 
   React.useEffect(() => {

@@ -60,7 +60,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
         });
       }
     },
-    [displayedZoomGraphic, mapView]
+    [displayedZoomGraphic, mapView],
   );
 
   React.useEffect(() => {
@@ -91,7 +91,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
     createRoot(selectorNode.current).render(
       <LayerSelectorContainer>
         <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
-      </LayerSelectorContainer>
+      </LayerSelectorContainer>,
     );
   }, [discoverKey, mapView]);
 
@@ -199,7 +199,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
                 },
               });
             }
-          }, 100)
+          }, 100),
         );
 
         view.on('click', (event) => onClick(event, view));
@@ -223,7 +223,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
             .map((view) =>
               view.layer.allSublayers.items
                 .filter((subLayer) => subLayer.visible)
-                .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`)
+                .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`),
             )
             .flat();
         };

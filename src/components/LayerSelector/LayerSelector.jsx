@@ -46,7 +46,7 @@ class LayerSelector extends Component {
     if (!this.props.baseLayers || this.props.baseLayers.length < 1) {
       console.warn(
         'layer-selector::`baseLayers` is null or empty. Make sure you have spelled it correctly ' +
-          'and are passing it into the constructor of this widget.'
+          'and are passing it into the constructor of this widget.',
       );
 
       return;
@@ -172,7 +172,7 @@ class LayerSelector extends Component {
           selected: PropTypes.bool,
           linked: PropTypes.arrayOf(PropTypes.string),
         }),
-      ])
+      ]),
     ).isRequired,
     overlays: PropTypes.arrayOf(
       PropTypes.oneOfType([
@@ -185,7 +185,7 @@ class LayerSelector extends Component {
           tileInfo: PropTypes.object,
           linked: PropTypes.arrayOf(PropTypes.string),
         }),
-      ])
+      ]),
     ),
   };
 
@@ -244,7 +244,7 @@ class LayerSelector extends Component {
           level: level,
           scale: scale,
           resolution: resolution,
-        })
+        }),
       );
     }
 
@@ -321,7 +321,7 @@ class LayerSelector extends Component {
               id +
               '` without setting ' +
               'your `quadWord` from Discover. The requests for tiles will fail to ' +
-              ' authenticate. Pass `quadWord` into the constructor of this widget.'
+              ' authenticate. Pass `quadWord` into the constructor of this widget.',
           );
 
           return false;
@@ -337,7 +337,7 @@ class LayerSelector extends Component {
               'the supported tokens (' +
               Object.keys(this.applianceLayers).join(', ') +
               ') or pass in the information on how to create your custom layer ' +
-              '(`{Factory, url, id}`).'
+              '(`{Factory, url, id}`).',
           );
 
           return false;

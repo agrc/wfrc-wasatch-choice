@@ -98,7 +98,7 @@ export default function URLParams({ children }) {
   const { i18n } = useTranslation();
   const [urlParams, dispatchURLParams] = React.useReducer(
     urlParamsReducer(i18n),
-    React.useMemo(() => getInitialHash(document.location.href, i18n, getDefaultCurrentTabIds()), [i18n])
+    React.useMemo(() => getInitialHash(document.location.href, i18n, getDefaultCurrentTabIds()), [i18n]),
   );
 
   // update current url when dispatch changes any params

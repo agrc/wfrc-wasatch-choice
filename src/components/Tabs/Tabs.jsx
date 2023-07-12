@@ -97,7 +97,7 @@ export default function Tabs({ innerRef }) {
       }),
       useSensor(KeyboardSensor, {
         coordinateGetter: sortableKeyboardCoordinates,
-      })
+      }),
     );
 
     return (

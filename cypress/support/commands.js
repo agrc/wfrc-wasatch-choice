@@ -114,5 +114,5 @@ Cypress.Commands.add(
             return [subject, { initialRect, finalRect, delta }];
           });
       });
-  }
+  },
 );
