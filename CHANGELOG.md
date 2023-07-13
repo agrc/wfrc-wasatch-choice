@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.4-2](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.4-1...v4.1.4-2) (2023-07-13)
+
+
+### 📖 Documentation Improvements
+
+* add prod/staging urls and fix badge ([eb93240](https://github.com/agrc/wfrc-wasatch-choice/commit/eb93240c716329ac18814f18284aed87419c4d1a))
+
 ## [4.1.4-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.3...v4.1.4-1) (2023-07-12)
 
 
