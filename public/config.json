@@ -2,8 +2,7 @@
   "$schema": "./config.schema.json",
   "mapInfos": {
     "vision": {
-      "name": "trans:visionMapTitle",
-      "category": "trans:transportation",
+      "name": "trans:mapTitleVision",
       "webMapId": "ebd9c5abf7b44ed28106c78734c2178f",
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
@@ -148,11 +147,23 @@
           "generalLandUse12": "General Land Use - 12",
           "generalLandUse13": "General Land Use - 13",
           "generalLandUse14": "General Land Use - 14",
-          "generalLandUse15": "General Land Use - 15"
+          "generalLandUse15": "General Land Use - 15",
+          "localParks": "Local Parks",
+          "golfCourses": "Golf Courses",
+          "stateParksVision": "State Parks",
+          "greenways7": "Greenways - 7",
+          "greenways8": "Greenways - 8",
+          "greenways9": "Greenways - 9",
+          "greenways10": "Greenways - 10",
+          "greenways11": "Greenways - 11",
+          "greenways12": "Greenways - 12",
+          "greenways13": "Greenways - 13",
+          "greenways14": "Greenways - 14",
+          "greenways15": "Greenways - 15"
         },
         "checkboxes": {
           "roads": {
-            "label": "trans:transFilter.roads",
+            "label": "trans:filterVision.roads",
             "layerNames": [
               "udotLRSOutliers8",
               "udotLRSOutliers9",
@@ -209,11 +220,10 @@
             ],
             "symbol": "dynamic",
             "symbolLayerIds": ["65-0,19", "65-1", "103"],
-            "symbolLabels": ["Interstates", "State Freeways", "Arterials"],
-            "offByDefault": true
+            "symbolLabels": ["Interstates", "State Freeways", "Arterials"]
           },
           "transit": {
-            "label": "Transit",
+            "label": "trans:filterVision.transit",
             "layerNames": [
               "pcCoreBus8",
               "pcCoreBus9",
@@ -284,10 +294,10 @@
             ],
             "symbol": "dynamic",
             "symbolLayerIds": ["33,1", "41,7", "49,13"],
-            "symbolLabels": ["Commuter Rail", "Light Rail", "Bus Rapid Transit"]
+            "symbolLabels": ["Commuter Rail", "Light Rail or BRT", "Bus Rapid Transit / Bus"]
           },
           "bikePed": {
-            "label": "Bike/Ped",
+            "label": "trans:filterVision.bikePed",
             "layerNames": [
               "majorTrails10",
               "majorTrails11",
@@ -301,7 +311,7 @@
             "symbolLabels": ["On Street", "Off Street", "Bonneville Shoreline Trail"]
           },
           "centers": {
-            "label": "Centers",
+            "label": "trans:filterVision.centers",
             "layerNames": [
               "centers8",
               "centers9",
@@ -333,7 +343,7 @@
             ]
           },
           "generalLandUse": {
-            "label": "General Land Use",
+            "label": "trans:filterVision.generalLandUse",
             "layerNames": [
               "generalLandUse8",
               "generalLandUse9",
@@ -363,23 +373,54 @@
                 "hsa": "rgba(78, 78, 78, 0.25)"
               }
             ]
+          },
+          "openSpace": {
+            "label": "trans:filterVision.openSpace",
+            "layerNames": [
+              "localParks",
+              "golfCourses",
+              "stateParksVision",
+              "greenways7",
+              "greenways8",
+              "greenways9",
+              "greenways10",
+              "greenways11",
+              "greenways12",
+              "greenways13",
+              "greenways14",
+              "greenways15"
+            ],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Parks / Golf Courses",
+                "hsa": "rgba(143, 179, 61, 0.85)"
+              },
+              {
+                "label": "State Parks",
+                "hsa": "rgba(150, 179, 89, 0.4)"
+              },
+              {
+                "label": "Greenways",
+                "hsa": "rgba(156, 176, 114, 0.35)"
+              }
+            ]
           }
         },
         "groups": [
           {
-            "label": "trans:transFilter.transportation",
+            "label": "trans:filterVision.transportation",
             "checkboxes": ["roads", "transit", "bikePed"]
           },
           {
-            "label": "Land Use",
-            "checkboxes": ["centers", "generalLandUse"]
+            "label": "trans:filterVision.landUse",
+            "checkboxes": ["centers", "generalLandUse", "openSpace"]
           }
         ]
       }
     },
     "transportation": {
-      "name": "Transportation",
-      "category": "trans:transportation",
+      "name": "trans:mapTitleTransportation",
       "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
       "useDefaultAGOLPopup": false,
       "filter": {
@@ -406,7 +447,7 @@
           "magGeneralLandUse": "MAG General Land Use"
         },
         "phases": {
-          "activeTransPoint": ["CostPhased", "1", "2", "3"],
+          "activeTransPoint": ["PhaseNeed", "1", "2", "3"],
           "magActiveTransPoint": ["phase", 1, 2, 3],
           "transitPoint": ["PhaseFC", "1", "2", "3", "Unfunded"],
           "magTransitPoint": ["Phase", 1, 2, 3],
@@ -423,97 +464,93 @@
         },
         "checkboxes": {
           "roads": {
-            "label": "Roads",
+            "label": "trans:filterTransportation.roads",
             "layerNames": ["roadwayPoint", "magRoadwayPoint", "roadwayLine", "magRoadwayLine"],
-            "symbol": "linePoint",
-            "offByDefault": true
+            "symbol": "linePoint"
           },
           "transit": {
-            "label": "Transit",
+            "label": "trans:filterTransportation.transit",
             "layerNames": ["transitPoint", "magTransitPoint", "transitLine", "magTransitLine"],
             "symbol": "linePoint"
           },
           "bikePed": {
-            "label": "Bike/Ped",
+            "label": "trans:filterTransportation.bikePed",
             "layerNames": ["activeTransPoint", "magActiveTransPoint", "activeTransLine", "magActiveTransLine"],
             "symbol": "linePoint"
           },
           "phase1": {
-            "label": "Phase 1 (2019-30)",
+            "label": "trans:filterTransportation.phase1",
             "phase": 0,
             "symbol": "phase",
             "color": "rgb(137, 4, 5)"
           },
           "phase2": {
-            "label": "Phase 2 (2031-40)",
+            "label": "trans:filterTransportation.phase2",
             "phase": 1,
             "symbol": "phase",
             "color": "rgb(5, 75, 164)"
           },
           "phase3": {
-            "label": "Phase 3 (2041-50)",
+            "label": "trans:filterTransportation.phase3",
             "phase": 2,
             "symbol": "phase",
             "color": "rgb(65, 159, 21)"
           },
           "unfunded": {
-            "label": "Unfunded Needs",
+            "label": "trans:filterTransportation.unfundedNeeds",
             "phase": 3,
             "symbol": "phase",
             "color": "rgb(252, 250, 147)"
           },
           "centers": {
-            "label": "Centers",
+            "label": "trans:filterTransportation.centers",
             "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
-            "label": "General Land Use",
+            "label": "trans:filterTransportation.generalLandUse",
             "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           },
           "existingBikePed": {
-            "label": "Existing Bike/Ped",
+            "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike", "magExistingBike"],
             "symbol": "simple"
           },
           "existingTransit": {
-            "label": "Existing Transit",
+            "label": "trans:filterTransportation.existingTransit",
             "layerNames": ["existingTransitLine", "existingTransitPoint"],
             "symbol": "simple"
           }
         },
         "groups": [
           {
-            "label": "Project Modes",
+            "label": "trans:filterTransportation.projectModes",
             "checkboxes": ["roads", "transit", "bikePed"]
           },
           {
-            "label": "Phasing (colors)",
+            "label": "trans:filterTransportation.phasingColors",
             "checkboxes": ["phase1", "phase2", "phase3", "unfunded"]
           },
           {
-            "label": "Land Use",
+            "label": "trans:filterTransportation.landUse",
             "checkboxes": ["centers", "generalLandUse"],
             "showFilterByPhasing": true
           },
           {
-            "label": "Other",
+            "label": "trans:filterTransportation.other",
             "checkboxes": ["existingBikePed", "existingTransit"]
           }
         ]
       }
     },
-    "land-use": {
-      "name": "Land Use",
+    "landuse": {
+      "name": "trans:mapTitleLandUse",
       "webMapId": "3eb707055b2148b6967e793de770395c",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "employment": "Employment Projections (2050)",
-          "population": "Population Projections (2050)",
-          "workplaceAccessibilityAuto": "Workplace Accessibility - Auto",
-          "workplaceAccessibilityTransit": "Workplace Accessibility - Transit",
+          "futureLandUse": "Generalized Future Land Use",
           "centers": "Centers",
           "magCenters": "MAG Centers",
           "generalLandUse": "General Land Use",
@@ -521,62 +558,32 @@
           "greenSpace": "Green Space"
         },
         "checkboxes": {
-          "employment": {
-            "label": "Employment",
-            "layerNames": ["employment"],
-            "symbol": "classes"
-          },
-          "population": {
-            "label": "Population",
-            "layerNames": ["population"],
-            "symbol": "classes"
-          },
-          "workplaceAccessibilityAuto": {
-            "label": "Auto",
-            "layerNames": ["workplaceAccessibilityAuto"],
-            "symbol": "classes"
-          },
-          "workplaceAccessibilityTransit": {
-            "label": "Transit",
-            "layerNames": ["workplaceAccessibilityTransit"],
-            "symbol": "classes"
+          "futureLandUse": {
+            "label": "trans:filterLandUse.generalizedFutureLandUse",
+            "layerNames": ["futureLandUse"],
+            "symbol": "classes",
+            "offByDefault": true
           },
           "centers": {
-            "label": "Centers",
+            "label": "trans:filterLandUse.centers",
             "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
-            "label": "General Land Use",
+            "label": "trans:filterLandUse.generalLandUse",
             "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           },
           "greenSpace": {
-            "label": "Green Space",
+            "label": "trans:filterLandUse.greenSpace",
             "layerNames": ["greenSpace"],
             "symbol": "classes"
           }
-        },
-        "groups": [
-          {
-            "label": "Projections (2050)",
-            "checkboxes": ["employment", "population"],
-            "radio": true
-          },
-          {
-            "label": "Workplace Accessibility (2019)",
-            "checkboxes": ["workplaceAccessibilityAuto", "workplaceAccessibilityTransit"],
-            "radio": true
-          },
-          {
-            "label": "Land Use",
-            "checkboxes": ["centers", "generalLandUse", "greenSpace"]
-          }
-        ]
+        }
       }
     },
-    "economic-development": {
-      "name": "Economic Development",
+    "econdev": {
+      "name": "trans:mapTitleEconDev",
       "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
       "useDefaultAGOLPopup": false,
       "filter": {
@@ -592,7 +599,7 @@
         },
         "checkboxes": {
           "economicClusters": {
-            "label": "Economic Clusters",
+            "label": "trans:filterEconDev.economicClusters",
             "layerNames": ["economicClusters"],
             "symbol": "static",
             "symbolImageFile": "StaticLegend.png",
@@ -618,27 +625,27 @@
             ]
           },
           "todSites": {
-            "label": "TOD Sites",
+            "label": "trans:filterEconDev.todSites",
             "layerNames": ["todSites"],
             "symbol": "simple"
           },
           "cdasRdas": {
-            "label": "CDAs and RDAs",
+            "label": "trans:filterEconDev.cdasrdas",
             "layerNames": ["cdasRdas"],
             "symbol": "simple"
           },
           "opportunityZones": {
-            "label": "Opportunity Zones",
+            "label": "trans:filterEconDev.opportunityZones",
             "layerNames": ["opportunityZones"],
             "symbol": "simple"
           },
           "centers": {
-            "label": "Centers",
+            "label": "trans:filterEconDev.centers",
             "layerNames": ["centers", "magCenters"],
             "symbol": "classes"
           },
           "generalLandUse": {
-            "label": "General Land Use",
+            "label": "trans:filterEconDev.generalLandUse",
             "layerNames": ["generalLandUse", "magGeneralLandUse"],
             "symbol": "classes"
           }
@@ -646,7 +653,7 @@
       }
     },
     "recreation": {
-      "name": "Recreation",
+      "name": "trans:mapTitleRecreation",
       "webMapId": "dfb321a9fec3435f8e7398ee8b123f80",
       "useDefaultAGOLPopup": false,
       "filter": {
@@ -663,38 +670,37 @@
         },
         "checkboxes": {
           "communityCenters": {
-            "label": "Community Centers",
+            "label": "trans:filterRecreation.communityCenters",
             "layerNames": ["communityCenters"],
-            "symbol": "simple",
-            "offByDefault": true
+            "symbol": "simple"
           },
           "trails": {
-            "label": "Trails",
+            "label": "trans:filterRecreation.trails",
             "layerNames": ["trailheads", "trails"],
             "symbol": "simple"
           },
           "parks": {
-            "label": "Parks",
+            "label": "trans:filterRecreation.parks",
             "layerNames": ["parks", "stateParks"],
             "symbol": "simple"
           },
           "federalLands": {
-            "label": "Federal Lands",
+            "label": "trans:filterRecreation.federalLands",
             "layerNames": ["federalLands"],
             "symbol": "simple"
           },
           "golfCourses": {
-            "label": "Golf Courses",
+            "label": "trans:filterRecreation.golfCourses",
             "layerNames": ["golfCourses"],
             "symbol": "simple"
           },
           "skiAreas": {
-            "label": "Ski Areas",
+            "label": "trans:filterRecreation.skiAreas",
             "layerNames": ["skiAreas"],
             "symbol": "simple"
           },
           "greenSpace": {
-            "label": "Green Space",
+            "label": "trans:filterRecreation.greenSpace",
             "layerNames": ["greenSpace"],
             "symbol": "classes"
           }
@@ -702,162 +708,336 @@
       }
     },
     "ato": {
-      "name": "ATO",
-      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+      "name": "trans:mapTitleATO",
+      "webMapId": "8c7ba02bc72646aeb11f43e6d168402e",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "equityFocusAreas": "Equity Focus Areas",
+          "workplaceAccessibilityAuto": "Workplace Accessibility - Auto",
+          "workplaceAccessibilityTransit": "Workplace Accessibility - Transit"
+        },
+        "checkboxes": {
+          "equityFocusAreas": {
+            "label": "trans:filterATO.equity",
+            "layerNames": ["equityFocusAreas"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "workplaceAccessibilityAuto": {
+            "label": "trans:filterATO.auto",
+            "layerNames": ["workplaceAccessibilityAuto"],
+            "symbol": "classes"
+          },
+          "workplaceAccessibilityTransit": {
+            "label": "trans:filterATO.transit",
+            "layerNames": ["workplaceAccessibilityTransit"],
+            "symbol": "classes",
+            "offByDefault": true
+          }
+        }
+      }
     },
-    "open-space": {
-      "name": "Open Space",
-      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+    "tip": {
+      "name": "trans:mapTitleTIP",
+      "webMapId": "d41ed0596e904f2698a09732c47b24c0",
+      "filter": {
+        "layerNames": {
+          "underConstructionLines": "Under Construction - Lines",
+          "substantiallyCompleteLines": "Substantially Complete - Lines",
+          "studiesLines": "Studies - Lines",
+          "plannedLines": "Planned - Lines",
+          "inDesignLines": "In Design - Lines",
+          "finishedLines": "Finished - Lines",
+          "epmAllProjects": "ePM All Projects",
+          "wfrcFunding": "WFRC Funding"
+        },
+        "checkboxes": {
+          "underConstruction": {
+            "label": "trans:filterTIP.underConstruction",
+            "layerNames": ["underConstructionLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "substantiallyComplete": {
+            "label": "trans:filterTIP.substantiallyComplete",
+            "layerNames": ["substantiallyCompleteLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "studies": {
+            "label": "trans:filterTIP.studies",
+            "layerNames": ["studiesLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "planned": {
+            "label": "trans:filterTIP.planned",
+            "layerNames": ["plannedLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "inDesign": {
+            "label": "trans:filterTIP.inDesign",
+            "layerNames": ["inDesignLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "finished": {
+            "label": "trans:filterTIP.finished",
+            "layerNames": ["finishedLines"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "epm": {
+            "label": "trans:filterTIP.epm",
+            "layerNames": ["epmAllProjects"],
+            "symbol": "simple"
+          },
+          "wfrc": {
+            "label": "trans:filterTIP.wfrc",
+            "layerNames": ["wfrcFunding"],
+            "symbol": "simple"
+          }
+        }
+      }
     },
-    "city-projections": {
-      "name": "City Projections",
-      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80"
+    "tlc": {
+      "name": "trans:mapTitleTLC",
+      "webMapId": "d6cf8e1479874f018be89baa0147beae",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "projectsAwarded": "Funded Projects",
+          "projectsAwardedAreas": "Funded Projects (areas)",
+          "projectsInProgress": "Under Contract Projects",
+          "projectsInProgressAreas": "Under Contract Projects (areas)",
+          "projectsCompleted": "Complete Projects",
+          "projectsCompletedAreas": "Complete Projects (areas)"
+        },
+        "checkboxes": {
+          "awarded": {
+            "label": "trans:filterTLC.awarded",
+            "layerNames": ["projectsAwarded"],
+            "symbol": "classes"
+          },
+          "awardedAreas": {
+            "label": "trans:filterTLC.awardedAreas",
+            "layerNames": ["projectsAwardedAreas"],
+            "symbol": "classes",
+            "offByDefault": true
+          },
+          "inProgress": {
+            "label": "trans:filterTLC.inProgress",
+            "layerNames": ["projectsInProgress"],
+            "symbol": "classes"
+          },
+          "inProgressAreas": {
+            "label": "trans:filterTLC.inProgressAreas",
+            "layerNames": ["projectsInProgressAreas"],
+            "symbol": "classes",
+            "offByDefault": true
+          },
+          "completed": {
+            "label": "trans:filterTLC.completed",
+            "layerNames": ["projectsCompleted"],
+            "symbol": "classes"
+          },
+          "completedProjects": {
+            "label": "trans:filterTLC.completedAreas",
+            "layerNames": ["projectsCompletedAreas"],
+            "symbol": "classes",
+            "offByDefault": true
+          }
+        }
+      }
     },
-    "tip-projects": {
-      "name": "TIP Projects",
-      "webMapId": "319617a1002647909241c3b9efbfed22",
-      "queryFilter": {
-        "layerName": "TIP Projects",
-        "fields": [
+    "projections": {
+      "name": "trans:mapTitleProjections",
+      "webMapId": "e403e527c33148fcafb33df1f3e4af26",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "population": "Population Projections (2050)",
+          "employment": "Employment Projections (2050)"
+        },
+        "checkboxes": {
+          "population": {
+            "label": "trans:filterProjections.population",
+            "layerNames": ["population"],
+            "symbol": "classes"
+          },
+          "employment": {
+            "label": "trans:filterProjections.employment",
+            "layerNames": ["employment"],
+            "symbol": "classes",
+            "offByDefault": true
+          }
+        }
+      }
+    },
+    "atdata": {
+      "name": "trans:mapTitleATdata",
+      "webMapId": "2d7c21dba77046549be04524eb47f7f6",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "plannedTrails": "Utah Planned Trails and Pathways",
+          "plannedCycleTracks": "Utah Roads Planned Cycle Tracks",
+          "plannedBike": "Utah Roads Planned Bike",
+          "existingTrails": "Utah Existing Trails and Pathways",
+          "existingCycleTracks": "Utah Roads Existing Cycle Tracks",
+          "existingBike": "Utah Roads Existing Bike"
+        },
+        "checkboxes": {
+          "plannedTrailsGroup": {
+            "label": "trans:filterATdata.plannedPathways",
+            "layerNames": ["plannedTrails"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "plannedCycleTracksGroup": {
+            "label": "trans:filterATdata.plannedCycleTracks",
+            "layerNames": ["plannedCycleTracks"],
+            "symbol": "classes",
+            "offByDefault": true
+          },
+          "plannedBikeGroup": {
+            "label": "trans:filterATdata.plannedBikeOnStreet",
+            "layerNames": ["plannedBike"],
+            "symbol": "classes",
+            "offByDefault": true
+          },
+          "existingTrailsGroup": {
+            "label": "trans:filterATdata.existingPathways",
+            "layerNames": ["existingTrails"],
+            "symbol": "simple"
+          },
+          "existingCycleTracksGroup": {
+            "label": "trans:filterATdata.existingCycleTracks",
+            "layerNames": ["existingCycleTracks"],
+            "symbol": "classes"
+          },
+          "existingBikeGroup": {
+            "label": "trans:filterATdata.existingBikeOnStreet",
+            "layerNames": ["existingBike"],
+            "symbol": "classes"
+          }
+        }
+      }
+    },
+    "gflu": {
+      "name": "trans:mapTitleGFLU",
+      "webMapId": "9476f34d525b4bd1a73825796746bb8c",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "futureLandUseBE": "Box Elder Future Land Use 2020",
+          "futureLandUseW": "Weber Future Land Use 2020",
+          "futureLandUseD": "Davis Future Land Use 2020",
+          "futureLandUseSL1": "Salt Lake 1 Future Land Use 2020",
+          "futureLandUseSL2": "Salt Lake 2 Future Land Use 2020",
+          "futureLandUseSL3": "Salt Lake 3 Future Land Use 2020",
+          "futureLandUseCo": "County Future Land Use 2020"
+        },
+        "checkboxes": {
+          "futureLandUse1": {
+            "label": "trans:filterGFLU.gflu1",
+            "layerNames": [
+              "futureLandUseBE",
+              "futureLandUseW",
+              "futureLandUseD",
+              "futureLandUseSL1",
+              "futureLandUseSL2",
+              "futureLandUseSL3"
+            ],
+            "symbol": "classes"
+          },
+          "futureLandUse2": {
+            "label": "trans:filterGFLU.gflu2",
+            "layerNames": ["futureLandUseCo"],
+            "symbol": "classes",
+            "offByDefault": true
+          }
+        }
+      }
+    },
+    "stationareaplanning": {
+      "name": "trans:mapTitleStationAreaPlanning",
+      "webMapId": "7970b751d92d46f28410ffb6246a49af",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "brtStationBuffers": "Qualifying BRT Station Buffers quarter mile",
+          "railStationBuffers": "FrontRunner Station Buffers half mile",
+          "railStationBuffers2": "TRAX or Streetcar Station Buffers half mile",
+          "brtStations": "Qualifying BRT Stations",
+          "frontrunnerStations": "FrontRunner Stations",
+          "traxstreetcarStations": "TRAX or Streetcar Stations",
+          "frontrunner": "FrontRunner",
+          "traxstreetcar": "TRAX or Streetcar",
+          "brt": "Bus Rapid Transit",
+          "municipalBoundaries": "Municipal Boundary Lines",
+          "wcCenters": "Wasatch Choice Centers"
+        },
+        "checkboxes": {
+          "frontrunnerLine": {
+            "label": "trans:filterStationAreaPlanning.line",
+            "layerNames": ["frontrunner", "frontrunnerStations"],
+            "symbol": "simple"
+          },
+          "frontrunnerBuffers": {
+            "label": "trans:filterStationAreaPlanning.stationAreas",
+            "layerNames": ["railStationBuffers"],
+            "symbol": "simple"
+          },
+          "traxstreetcarLine": {
+            "label": "trans:filterStationAreaPlanning.line",
+            "layerNames": ["traxstreetcar", "traxstreetcarStations"],
+            "symbol": "simple"
+          },
+          "traxstreetcarBuffers": {
+            "label": "trans:filterStationAreaPlanning.stationAreas",
+            "layerNames": ["railStationBuffers2"],
+            "symbol": "simple"
+          },
+          "brtLine": {
+            "label": "trans:filterStationAreaPlanning.line",
+            "layerNames": ["brt", "brtStations"],
+            "symbol": "simple"
+          },
+          "brtBuffers": {
+            "label": "trans:filterStationAreaPlanning.stationAreas",
+            "layerNames": ["brtStationBuffers"],
+            "symbol": "simple"
+          },
+          "municipal": {
+            "label": "trans:filterStationAreaPlanning.municipal",
+            "layerNames": ["municipalBoundaries"],
+            "symbol": "simple"
+          },
+          "centers": {
+            "label": "trans:filterStationAreaPlanning.centers",
+            "layerNames": ["wcCenters"],
+            "symbol": "classes"
+          }
+        },
+        "groups": [
           {
-            "label": "Funding Program",
-            "openOnLoad": true,
-            "fieldName": "MSTR_PIN_D",
-            "fieldType": "text",
-            "checkboxes": [
-              {
-                "label": "CMAQ",
-                "values": ["WFRC OGDEN/LAYTON CMAQ", "WFRC SALT LAKE/ WEST VALLEY CMAQ"],
-                "color": "rgb(255, 128, 0)"
-              },
-              {
-                "label": "STP",
-                "values": ["WFRC OGDEN/LAYTON STP", "WFRC SALT LAKE/ WEST VALLEY STP"],
-                "color": "rgb(20, 178, 179)"
-              },
-              {
-                "label": "TAP",
-                "values": ["WFRC OGDEN/LAYTON TAP", "WFRC SALT LAKE/ WEST VALLEY TAP"],
-                "color": "rgb(56, 168, 0)"
-              },
-              {
-                "label": "Other",
-                "other": true,
-                "color": "rgb(255, 100, 155)"
-              }
-            ]
+            "label": "trans:filterStationAreaPlanning.frontrunner",
+            "checkboxes": ["frontrunnerLine", "frontrunnerBuffers"]
           },
           {
-            "label": "Year",
-            "openOnLoad": false,
-            "fieldName": "FORECAST_S",
-            "fieldType": "number",
-            "checkboxes": [
-              {
-                "label": "Before 2020",
-                "other": true
-              },
-              {
-                "label": "2020",
-                "values": ["2020"]
-              },
-              {
-                "label": "2021",
-                "values": ["2021"]
-              },
-              {
-                "label": "2022",
-                "values": ["2022"]
-              },
-              {
-                "label": "2023",
-                "values": ["2023"]
-              },
-              {
-                "label": "2024",
-                "values": ["2024"]
-              },
-              {
-                "label": "2025",
-                "values": ["2025"]
-              },
-              {
-                "label": "2026",
-                "values": ["2026"]
-              }
-            ]
+            "label": "trans:filterStationAreaPlanning.traxstreetcar",
+            "checkboxes": ["traxstreetcarLine", "traxstreetcarBuffers"]
           },
           {
-            "label": "Status",
-            "openOnLoad": false,
-            "fieldName": "PIN_STAT_N",
-            "fieldType": "text",
-            "checkboxes": [
-              {
-                "label": "Preliminary Stage",
-                "values": ["Funding", "Proposed", "STIP", "Scoping"]
-              },
-              {
-                "label": "Design Stage",
-                "values": ["Active", "Advertised", "Awarded"]
-              },
-              {
-                "label": "Construction Stage",
-                "values": ["Under Construction"]
-              },
-              {
-                "label": "Construction Complete",
-                "values": ["Contract Complete", "Physically Complete", "Substantially Compl", "Close Out", "Closed"]
-              }
-            ]
+            "label": "trans:filterStationAreaPlanning.brt",
+            "checkboxes": ["brtLine", "brtBuffers"]
           },
           {
-            "label": "Type",
-            "openOnLoad": false,
-            "fieldName": "PROJ_TYP_N",
-            "fieldType": "text",
-            "checkboxes": [
-              {
-                "label": "Capacity",
-                "values": ["Capacity"]
-              },
-              {
-                "label": "Environmental",
-                "values": ["Environmental", "Railroad Related"]
-              },
-              {
-                "label": "Pavement Reconstruction",
-                "values": ["Pavement Reconstruction", "Preservation"]
-              },
-              {
-                "label": "Roadway",
-                "values": ["Joint Highway Committee", "Reconstruction", "Roadway", "Roadway Work"]
-              },
-              {
-                "label": "Structure",
-                "values": ["Structures"]
-              },
-              {
-                "label": "Study",
-                "values": ["Studies"]
-              },
-              {
-                "label": "Traffic & Safety",
-                "values": ["Traffic and Safety"]
-              },
-              {
-                "label": "Traffic Management",
-                "values": ["Traffic Management"]
-              },
-              {
-                "label": "Trails",
-                "values": ["Enhancement"]
-              },
-              {
-                "label": "Other",
-                "values": ["Not Applicable", "Other"]
-              }
-            ]
+            "label": "trans:filterTransportation.other",
+            "checkboxes": ["municipal", "centers"]
           }
         ]
       }
@@ -900,7 +1080,18 @@
   "translations": {
     "en": {
       "translation": {
-        "visionMapTitle": "Vision",
+        "mapTitleVision": "Vision",
+        "mapTitleTransportation": "Transportation",
+        "mapTitleLandUse": "Land Use",
+        "mapTitleEconDev": "Economic Development",
+        "mapTitleRecreation": "Recreation",
+        "mapTitleATO": "Access to Opportunities",
+        "mapTitleTIP": "TIP Projects",
+        "mapTitleTLC": "TLC Projects",
+        "mapTitleProjections": "Growth Projections",
+        "mapTitleATdata": "Active Transportation",
+        "mapTitleGFLU": "Future Land Use",
+        "mapTitleStationAreaPlanning": "Station Area Planning",
         "appTitle": "Wasatch Choice Map",
         "tagLine": "#wherematters",
         "mapTabsDialog": {
@@ -908,15 +1099,109 @@
           "availableHeader": "Other Available Maps",
           "selectedHeader": "Maps Displayed",
           "finishButton": "Finish",
-          "maxMessage": "A maximum of five tabs may be selected."
+          "maxMessage": "A maximum of ten tabs may be selected."
         },
         "searchPlaceholder": "Search...",
         "filter": "Filter",
         "reset": "reset",
         "filterByPhasing": "filter by phasing",
-        "transFilter": {
+        "filterVision": {
           "transportation": "Transportation",
-          "roads": "Roads"
+          "roads": "Roads",
+          "transit": "Transit",
+          "bikePed": "Bike/Ped",
+          "landUse": "Land Use",
+          "centers": "Centers",
+          "generalLandUse": "General Land Use",
+          "openSpace": "Open Space"
+        },
+        "filterTransportation": {
+          "projectModes": "Project Modes",
+          "roads": "Roads",
+          "transit": "Transit",
+          "bikePed": "Bike/Ped",
+          "phasingColors": "Phasing (colors)",
+          "phase1": "Phase 1 (2019-30)",
+          "phase2": "Phase 2 (2031-40)",
+          "phase3": "Phase 3 (2041-50)",
+          "unfundedNeeds": "Unfunded Needs",
+          "landUse": "Land Use",
+          "centers": "Centers",
+          "generalLandUse": "General Land Use",
+          "other": "Other",
+          "existingBikePed": "Existing Bike/Ped",
+          "existingTransit": "Existing Transit"
+        },
+        "filterLandUse": {
+          "generalizedFutureLandUse": "Generalized Future Land Use",
+          "centers": "Centers",
+          "generalLandUse": "General Land Use",
+          "greenSpace": "Green Space"
+        },
+        "filterEconDev": {
+          "economicClusters": "Economic Clusters",
+          "todSites": "TOD Sites",
+          "cdasrdas": "CDAs and RDAs",
+          "opportunityZones": "Opportunity Zones",
+          "centers": "Centers",
+          "generalLandUse": "General Land Use"
+        },
+        "filterRecreation": {
+          "communityCenters": "Community Centers",
+          "trails": "Trails",
+          "parks": "Parks",
+          "federalLands": "Federal Lands",
+          "golfCourses": "Golf Courses",
+          "skiAreas": "Ski Areas",
+          "greenSpace": "Green Space"
+        },
+        "filterATO": {
+          "equity": "Equity Focus Areas",
+          "auto": "Workplace Accessibility: Auto (2019)",
+          "transit": "Workplace Accessibility: Transit (2019)"
+        },
+        "filterTIP": {
+          "underConstruction": "Under Construction",
+          "substantiallyComplete": "Substantially Complete",
+          "studies": "Studies",
+          "planned": "Planned",
+          "inDesign": "In Design",
+          "finished": "Finished",
+          "epm": "ePM All Projects",
+          "wfrc": "WFRC Funding"
+        },
+        "filterTLC": {
+          "awarded": "Funded",
+          "awardedAreas": "Funded (areas)",
+          "inProgress": "Under Contract",
+          "inProgressAreas": "Under Contract (areas)",
+          "completed": "Complete",
+          "completedAreas": "Complete (areas)"
+        },
+        "filterProjections": {
+          "population": "Population Projections (2050)",
+          "employment": "Employment Projections (2050)"
+        },
+        "filterATdata": {
+          "plannedPathways": "Planned Pathways",
+          "plannedCycleTracks": "Planned Cycle Tracks",
+          "plannedBikeOnStreet": "Planned Bike On-Street",
+          "existingPathways": "Existing Pathways",
+          "existingCycleTracks": "Existing Cycle Tracks",
+          "existingBikeOnStreet": "Existing Bike On-Street"
+        },
+        "filterGFLU": {
+          "gflu1": "Generalized Future Land Use - city",
+          "gflu2": "Generalized Future Land Use - county"
+        },
+        "filterStationAreaPlanning": {
+          "line": "Line",
+          "stationAreas": "Station Areas",
+          "frontrunner": "FrontRunner",
+          "traxstreetcar": "TRAX/Streetcar",
+          "brt": "Bus Rapid Transit",
+          "municipal": "Municipalities",
+          "centers": "Centers"
         },
         "projectInformation": "Project Information",
         "projectInformationPrompt": "Click on a feature for more information",
@@ -925,22 +1210,127 @@
     },
     "es": {
       "translation": {
-        "visionMapTitle": "Visión",
-        "appTitle": "Visión regional de Wasatch Choice",
+        "mapTitleVision": "Visión",
+        "mapTitleTransportation": "Transporte",
+        "mapTitleLandUse": "Uso de la Tierra",
+        "mapTitleEconDev": "Desarrollo Económico",
+        "mapTitleRecreation": "Recreación",
+        "mapTitleATO": "Acceso a Oportunidades",
+        "mapTitleTIP": "Proyectos TIP",
+        "mapTitleTLC": "Proyectos TLC",
+        "mapTitleProjections": "Proyecciones de Crecimiento",
+        "mapTitleATdata": "Transporte Activo",
+        "mapTitleGFLU": "Uso Futuro de la Tierra",
+        "mapTitleStationAreaPlanning": "Planificación del área de la estación",
+        "appTitle": "Mapa de Wasatch Choice",
         "mapTabsDialog": {
           "title": "Configurar Pestañas de Mapa",
           "availableHeader": "Otros Mapas Disponibles",
           "selectedHeader": "Mapas Mostrados",
           "finishButton": "Terminar",
-          "maxMessage": "Se puede seleccionar un máximo de cinco pestañas."
+          "maxMessage": "Se puede seleccionar un máximo de seis pestañas."
         },
         "searchPlaceholder": "Buscar...",
         "filter": "Filtrar",
         "reset": "reiniciar",
         "filterByPhasing": "filtrar por fases",
-        "transFilter": {
+        "filterVision": {
           "transportation": "Transporte",
-          "roads": "Carreteras"
+          "roads": "Carreteras",
+          "transit": "Transporte Público",
+          "bikePed": "Transporte Activo",
+          "landUse": "Uso de la Tierra",
+          "centers": "Centros",
+          "generalLandUse": "Uso General de la Tierra",
+          "openSpace": "Espacio Natural"
+        },
+        "filterTransportation": {
+          "projectModes": "Modos de Proyecto",
+          "roads": "Carreteras",
+          "transit": "Transporte Público",
+          "bikePed": "Transporte Activo",
+          "phasingColors": "Fase (colores)",
+          "phase1": "Fase 1 (2019-30)",
+          "phase2": "Fase 2 (2031-40)",
+          "phase3": "Fase 3 (2041-50)",
+          "unfundedNeeds": "Necesidades Nofinanciadas",
+          "landUse": "Uso de la Tierra",
+          "centers": "Centros",
+          "generalLandUse": "Uso General de la Tierra",
+          "other": "Otro",
+          "existingBikePed": "Transporte Activo Existente",
+          "existingTransit": "Transporte Público Existente"
+        },
+        "filterLandUse": {
+          "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
+          "centers": "Centros",
+          "generalLandUse": "Uso General de la Tierra",
+          "greenSpace": "Espacio Verde"
+        },
+        "filterEconDev": {
+          "economicClusters": "Clústers Económico",
+          "todSites": "Sitios TOD",
+          "cdasrdas": "CDAs y RDAs",
+          "opportunityZones": "Zonas de Oportunidad",
+          "centers": "Centros",
+          "generalLandUse": "Uso General de la Tierra"
+        },
+        "filterRecreation": {
+          "communityCenters": "Centros Comunitarios",
+          "trails": "Senderos",
+          "parks": "Parques",
+          "federalLands": "Tierras Federales",
+          "golfCourses": "Campos de Golf",
+          "skiAreas": "Áreas de Esquí",
+          "greenSpace": "Espacio Verde"
+        },
+        "filterATO": {
+          "equity": "Áreas de Enfoque de Equidad",
+          "auto": "Accesibilidad en el Lugar de Trabajo: Automóvil (2019)",
+          "transit": "Accesibilidad en el Lugar de Trabajo: Transporte Público (2019)"
+        },
+        "filterTIP": {
+          "underConstruction": "En Obra",
+          "substantiallyComplete": "Sustancialmente Completa",
+          "studies": "Estudios",
+          "planned": "Planeado",
+          "inDesign": "En Diseño",
+          "finished": "Terminado",
+          "epm": "Todos los Proyectos ePM",
+          "wfrc": "Financiación de WFRC"
+        },
+        "filterTLC": {
+          "awarded": "Financiado",
+          "awardedAreas": "Financiado (áreas)",
+          "inProgress": "Bajo Contrato",
+          "inProgressAreas": "Bajo Contrato (áreas)",
+          "completed": "Completados",
+          "completedAreas": "Completados (áreas)"
+        },
+        "filterProjections": {
+          "population": "Proyecciones de Población (2050)",
+          "employment": "Proyecciones de Empleo (2050)"
+        },
+        "filterATdata": {
+          "plannedPathways": "Senderos Planificados",
+          "plannedCycleTracks": "Ciclovías Planificados",
+          "plannedBikeOnStreet": "Bicicleta Planificada en la Calle",
+          "existingPathways": "Senderos Existentes",
+          "existingCycleTracks": "Ciclovías Existentes",
+          "existingBikeOnStreet": "Bicicleta Existentes en la Calle"
+        },
+        "filterGFLU": {
+          "gflu1": "Uso Generalizado Futuro de la Tierra - municipio",
+          "gflu2": "Uso Generalizado Futuro de la Tierra - condado"
+        },
+        "filterStationAreaPlanning": {
+          "line": "Línea",
+          "stationAreas": "Áreas de la Estación",
+          "frontrunner": "FrontRunner",
+          "traxstreetcar": "TRAX/Tranvía",
+          "brt": "Autobús de Tránsito Rápido",
+          "municipal": "Municipios",
+          "centers": "Centros"
         },
         "projectInformation": "Información del Proyecto",
         "projectInformationPrompt": "Haga clic en una función para obtener más información",
@@ -948,7 +1338,7 @@
       }
     }
   },
-  "maxTabsAllowed": 5,
+  "maxTabsAllowed": 10,
   "projectInformation": {
     "excludedLayers": ["ZoomToPlaceNames - Outlines"]
   }
