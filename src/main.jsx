@@ -6,6 +6,8 @@ import AboutTests from './components/About/AboutTests';
 import { setConfigs } from './config';
 import './index.css';
 import URLParams from './URLParams';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from './components/ErrorFallback';
 
 fetch('config.json')
   .then((response) => response.json())
@@ -17,9 +19,11 @@ fetch('config.json')
       page = <AboutTests />;
     } else {
       page = (
-        <URLParams>
-          <App />
-        </URLParams>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <URLParams>
+            <App />
+          </URLParams>
+        </ErrorBoundary>
       );
     }
 
