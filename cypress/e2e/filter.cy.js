@@ -7,7 +7,7 @@ describe('filter', () => {
 
     cy.findByText(/reset/i).first().click();
 
-    cy.get('.filter .group-container input').check();
+    cy.get('.filter .group-container input').check({ force: true });
     cy.get('.filter .child-checkbox-container input').check();
   });
 

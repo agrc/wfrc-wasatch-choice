@@ -9,9 +9,8 @@ describe('sherlock', () => {
 
     cy.findByRole('option', { name: /sandy/i });
 
-    cy.findByPlaceholderText(/Search/i)
-      .type('{downarrow}')
-      .type('{enter}');
+    cy.findByPlaceholderText(/Search/i).type('{downarrow}');
+    cy.findByPlaceholderText(/Search/i).type('{enter}');
 
     cy.getMapExtent().should('equal', SANDY_EXTENT);
   });
