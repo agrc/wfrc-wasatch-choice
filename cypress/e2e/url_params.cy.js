@@ -6,12 +6,12 @@ describe('url params', () => {
   });
 
   it('selectedMap activates the correct tab', () => {
-    cy.loadApp('/#selectedMap=land-use');
+    cy.loadApp('/#selectedMap=landuse');
 
     cy.findByLabelText('Land Use Tab').get('.nav-link').should('have.class', 'active');
 
     cy.window().then((win) => {
-      expect(win.currentMapName).to.equal('Land Use');
+      expect(win.currentMapName).to.equal('trans:mapTitleLandUse');
     });
   });
 
@@ -25,12 +25,12 @@ describe('url params', () => {
   });
 
   it('loads the correct tabs', () => {
-    cy.loadApp('/#mapList=vision.recreation.economic-development.transportation.open-space');
+    cy.loadApp('/#mapList=vision.recreation.econdev.atdata.landuse');
 
     cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Vision');
     cy.get(':nth-child(2) > .nav-item > .nav-link').should('have.text', 'Recreation');
     cy.get(':nth-child(3) > .nav-item > .nav-link').should('have.text', 'Economic Development');
-    cy.get(':nth-child(4) > .nav-item > .nav-link').should('have.text', 'Transportation');
-    cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Open Space');
+    cy.get(':nth-child(4) > .nav-item > .nav-link').should('have.text', 'Active Transportation');
+    cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Land Use');
   });
 });

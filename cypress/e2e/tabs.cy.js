@@ -70,6 +70,6 @@ describe('tabs', () => {
     cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Transportation');
 
     // assert that URL was updated
-    cy.hash().should('contain', 'mapList=land-use.vision.economic-development.recreation.transportation');
+    cy.hash().should('contain', 'landuse.vision.econdev.recreation.transportation');
   });
 });
