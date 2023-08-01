@@ -12,21 +12,11 @@ const getBackgroundColor = (color) => {
   return color.hsa || `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 };
 
-export const getSymbolFromInfos = (symbolInfos, minimums) => {
-  let symbol;
-
-  symbolInfos.some((info) => {
-    if (info.symbol.size >= minimums.pointSize || info.symbol.width >= minimums.polylineWidth) {
-      symbol = info.symbol;
-
-      return true;
-    }
-
-    return false;
-  });
+export const getSymbolFromInfos = (symbolInfos) => {
+  const symbol = symbolInfos[0].symbol;
 
   if (!symbol) {
-    console.error(`No symbol larger than the minimum size was found in: ${symbolInfos}. Miniums: ${minimums}`);
+    console.error(`No symbol was found in: ${JSON.stringify(symbolInfos, null, 2)}`);
   }
   return symbol;
 };
@@ -50,8 +40,7 @@ export const Simple = (props) => {
         props.layerNames.map((layerName) => {
           const layer = props.layersLookup[layerName];
 
-          const symbol =
-            layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, config.minimumLegendSizes);
+          const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos);
 
           return renderPreviewHTML(symbol, { opacity: layer.opacity });
         }),
@@ -163,33 +152,29 @@ Classes.propTypes = {
   staticColors: PropTypes.array,
 };
 
-export const LinePoint = (props) => {
+export const LinePoint = ({ layersLookup, layerNames }) => {
   const [symbols, setSymbols] = useState({ point: null, polyline: null });
 
   useEffect(() => {
     let mounted = true;
     const getSymbols = async () => {
-      console.log('LinePoint:getSymbols');
-
       const newSymbols = {};
 
-      if (!props.layersLookup[props.layerNames[0]]) {
+      if (!layersLookup[layerNames[0]]) {
         // most likely layersLookup has layers from the last map and needs to update
         return;
       }
 
-      props.layerNames.forEach((layerName) => {
-        const layer = props.layersLookup[layerName];
+      // loop through layerNames with async support
+      for (const layerName of layerNames) {
+        const layer = layersLookup[layerName];
         if (!newSymbols[layer.geometryType]) {
           newSymbols[layer.geometryType] = true;
-          layer.when(() => {
-            newSymbols[layer.geometryType] = getSymbolFromInfos(
-              layer.renderer.uniqueValueInfos,
-              config.minimumLegendSizes,
-            );
+          await layer.when(() => {
+            newSymbols[layer.geometryType] = getSymbolFromInfos(layer.renderer.uniqueValueInfos);
           });
         }
-      });
+      }
 
       newSymbols.polyline = await renderPreviewHTML(newSymbols.polyline);
       newSymbols.point = await renderPreviewHTML(newSymbols.point);
@@ -202,7 +187,7 @@ export const LinePoint = (props) => {
     getSymbols();
 
     return () => (mounted = false);
-  }, [props.layerNames, props.layersLookup]);
+  }, [layerNames, layersLookup]);
 
   return (
     <div className="line-point-symbol-container symbol-container">
@@ -220,15 +205,15 @@ LinePoint.propTypes = {
   layerNames: PropTypes.array.isRequired,
 };
 
-export const Phase = (props) => {
+export const Swatch = ({ color }) => {
   return (
-    <div className="phase-symbol-container symbol-container">
-      <div className="symbol" style={{ backgroundColor: props.color }}></div>
+    <div className="swatch-symbol-container symbol-container">
+      <div className="symbol" style={{ backgroundColor: color }}></div>
     </div>
   );
 };
 
-Phase.propTypes = {
+Swatch.propTypes = {
   color: PropTypes.string.isRequired,
 };
 

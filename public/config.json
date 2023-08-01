@@ -421,116 +421,118 @@
     },
     "transportation": {
       "name": "trans:mapTitleTransportation",
-      "webMapId": "cd2c6f87147a472ea46f617c5dac80ee",
+      "webMapId": "555929e5b784458ca2292a9e56423811",
       "useDefaultAGOLPopup": false,
       "filter": {
+        "toggle": {
+          "label": "trans:filterTransportation.colorBy",
+          "mode": "trans:filterTransportation.mode",
+          "phase": "trans:filterTransportation.phase",
+          "modeLayers": ["pointsByMode", "linesByMode"],
+          "phaseLayers": ["pointsByPhase", "linesByPhase"]
+        },
         "layerNames": {
-          "activeTransPoint": "Active Transportation Point Projects",
-          "magActiveTransPoint": "MAG Active Transportation Point Projects",
-          "transitPoint": "Transit Point Projects",
-          "magTransitPoint": "MAG Transit Point Projects",
-          "existingTransitPoint": "Existing Transit Stations",
-          "roadwayPoint": "Roadway Point Projects",
-          "magRoadwayPoint": "MAG Roadway Point Projects",
-          "activeTransLine": "Active Transportation Line Projects",
-          "magActiveTransLine": "MAG Active Transportation Line Projects",
-          "existingBike": "Existing Bike Network",
-          "magExistingBike": "MAG Existing Bike Network",
-          "transitLine": "Transit Line Projects",
-          "magTransitLine": "MAG Transit Line Projects",
-          "existingTransitLine": "Existing Transit Lines",
-          "roadwayLine": "Roadway Line Projects",
-          "magRoadwayLine": "MAG Roadway Line Projects",
-          "centers": "Centers",
-          "magCenters": "MAG Centers",
-          "generalLandUse": "General Land Use",
-          "magGeneralLandUse": "MAG General Land Use"
+          "existingTransitStations": "Test Existing Transit Stations",
+          "pointsByMode": "Points Displayed by Mode",
+          "linesByMode": "Lines Displayed by Mode",
+          "pointsByPhase": "Points Displayed by Phase",
+          "linesByPhase": "Lines Displayed by Phase",
+          "existingTransitLines": "Test Existing Transit Lines",
+          "existingBike": "Test Existing Bike Network",
+          "centers": "Test Centers",
+          "generalLandUse": "Regionally Significant Centers and Land Use (2019-2050 RTP) - LandUse"
         },
         "phases": {
-          "activeTransPoint": ["PhaseNeed", "1", "2", "3"],
-          "magActiveTransPoint": ["phase", 1, 2, 3],
-          "transitPoint": ["PhaseFC", "1", "2", "3", "Unfunded"],
-          "magTransitPoint": ["Phase", 1, 2, 3],
-          "roadwayPoint": ["PhaseFC", "1", "2", "3", "Unfunded"],
-          "magRoadwayPoint": ["Phase", 1, 2, 3, 4],
-          "activeTransLine": ["PhaseNeed", 1, 2, 3],
-          "magActiveTransLine": ["phase", 1, 2, 3],
-          "transitLine": ["PhaseFC", "1", "2", "3", "Unfunded"],
-          "magTransitLine": ["Phase", 1, 2, 3, 4],
-          "roadwayLine": ["PhaseFC", "1", "2", "3", "Unfunded"],
-          "magRoadwayLine": ["Phase", 1, 2, 3, 4],
-          "centers": ["Phase", 1, 2, 3],
-          "generalLandUse": ["Phase", 1, 2, 3]
+          "pointsByMode": ["phase", 1, 2, 3, 4],
+          "linesByMode": ["phase", 1, 2, 3, 4],
+          "pointsByPhase": ["phase", 1, 2, 3, 4],
+          "linesByPhase": ["phase", 1, 2, 3, 4],
+          "centers": ["Phase", 1, 2, 3, 4],
+          "generalLandUse": ["Phase", 1, 2, 3, 4]
+        },
+        "modes": {
+          "pointsByMode": ["mode", "Highway", "Transit", "Active Transportation"],
+          "linesByMode": ["mode", "Highway", "Transit", "Active Transportation"],
+          "pointsByPhase": ["mode", "Highway", "Transit", "Active Transportation"],
+          "linesByPhase": ["mode", "Highway", "Transit", "Active Transportation"]
         },
         "checkboxes": {
           "roads": {
             "label": "trans:filterTransportation.roads",
-            "layerNames": ["roadwayPoint", "magRoadwayPoint", "roadwayLine", "magRoadwayLine"],
-            "symbol": "linePoint"
+            "layerNames": ["pointsByMode", "linesByMode"],
+            "mode": 0,
+            "symbol": "swatch",
+            "color": "rgb(137, 4, 5)"
           },
           "transit": {
             "label": "trans:filterTransportation.transit",
-            "layerNames": ["transitPoint", "magTransitPoint", "transitLine", "magTransitLine"],
-            "symbol": "linePoint"
+            "layerNames": ["pointsByMode", "linesByMode"],
+            "mode": 1,
+            "symbol": "swatch",
+            "color": "rgb(5, 75, 164)"
           },
           "bikePed": {
             "label": "trans:filterTransportation.bikePed",
-            "layerNames": ["activeTransPoint", "magActiveTransPoint", "activeTransLine", "magActiveTransLine"],
-            "symbol": "linePoint"
+            "layerNames": ["pointsByMode", "linesByMode"],
+            "mode": 2,
+            "symbol": "swatch",
+            "color": "rgb(65, 159, 21)"
           },
           "phase1": {
             "label": "trans:filterTransportation.phase1",
             "phase": 0,
-            "symbol": "phase",
-            "color": "rgb(137, 4, 5)"
+            "symbol": "swatch",
+            "color": "rgb(215, 48, 39)"
           },
           "phase2": {
             "label": "trans:filterTransportation.phase2",
             "phase": 1,
-            "symbol": "phase",
-            "color": "rgb(5, 75, 164)"
+            "symbol": "swatch",
+            "color": "rgb(0, 147, 191)"
           },
           "phase3": {
             "label": "trans:filterTransportation.phase3",
             "phase": 2,
-            "symbol": "phase",
-            "color": "rgb(65, 159, 21)"
+            "symbol": "swatch",
+            "color": "rgb(77, 51, 167)"
           },
           "unfunded": {
             "label": "trans:filterTransportation.unfundedNeeds",
             "phase": 3,
-            "symbol": "phase",
-            "color": "rgb(252, 250, 147)"
+            "symbol": "swatch",
+            "color": "rgb(255, 164, 122)"
           },
           "centers": {
             "label": "trans:filterTransportation.centers",
-            "layerNames": ["centers", "magCenters"],
+            "layerNames": ["centers"],
             "symbol": "classes"
           },
           "generalLandUse": {
             "label": "trans:filterTransportation.generalLandUse",
-            "layerNames": ["generalLandUse", "magGeneralLandUse"],
+            "layerNames": ["generalLandUse"],
             "symbol": "classes"
           },
           "existingBikePed": {
             "label": "trans:filterTransportation.existingBikePed",
-            "layerNames": ["existingBike", "magExistingBike"],
+            "layerNames": ["existingBike"],
             "symbol": "simple"
           },
           "existingTransit": {
             "label": "trans:filterTransportation.existingTransit",
-            "layerNames": ["existingTransitLine", "existingTransitPoint"],
+            "layerNames": ["existingTransitLines", "existingTransitStations"],
             "symbol": "simple"
           }
         },
         "groups": [
           {
             "label": "trans:filterTransportation.projectModes",
-            "checkboxes": ["roads", "transit", "bikePed"]
+            "checkboxes": ["roads", "transit", "bikePed"],
+            "globalState": "modes"
           },
           {
             "label": "trans:filterTransportation.phasingColors",
-            "checkboxes": ["phase1", "phase2", "phase3", "unfunded"]
+            "checkboxes": ["phase1", "phase2", "phase3", "unfunded"],
+            "globalState": "phases"
           },
           {
             "label": "trans:filterTransportation.landUse",
@@ -1059,10 +1061,6 @@
       }
     ]
   },
-  "minimumLegendSizes": {
-    "pointSize": 6,
-    "polylineWidth": 2
-  },
   "defaultExtent": {
     "zoomLevel": 11,
     "x": -12457000,
@@ -1116,6 +1114,9 @@
           "openSpace": "Open Space"
         },
         "filterTransportation": {
+          "colorBy": "Color By",
+          "mode": "Mode",
+          "phase": "Phase",
           "projectModes": "Project Modes",
           "roads": "Roads",
           "transit": "Transit",
@@ -1245,7 +1246,10 @@
           "openSpace": "Espacio Natural"
         },
         "filterTransportation": {
+          "colorBy": "Colorear Por",
           "projectModes": "Modos de Proyecto",
+          "mode": "Modo",
+          "phase": "Fase",
           "roads": "Carreteras",
           "transit": "Transporte Público",
           "bikePed": "Transporte Activo",

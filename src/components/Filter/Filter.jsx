@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { FormGroup, Input, Label } from 'reactstrap';
+import { Label, Button, ButtonGroup, FormGroup, Input } from 'reactstrap';
 import { useSpecialTranslation } from '../../i18n';
 import './Filter.scss';
-import { Classes, Dynamic, LinePoint, Phase, Simple, Static } from './Symbols';
+import { Classes, Dynamic, LinePoint, Swatch, Simple, Static } from './Symbols';
 import { useMapLayers } from './utils';
+import PropTypes from 'prop-types';
 
 const SYMBOLS = {
   simple: Simple,
   classes: Classes,
   linePoint: LinePoint,
-  phase: Phase,
+  swatch: Swatch,
   dynamic: Dynamic,
   static: Static,
 };
@@ -17,18 +18,18 @@ const SYMBOLS = {
 // used to preserve control state between tabs
 const CACHE = {};
 
-export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
+export const getQuery = (queryInfo, checkedIndexes) => {
   // translate the phase info into a definition query taking into account the selected phases
 
   const showNoneQuery = '1 = 2';
-  if (checkedPhaseIndexes.length === 0) {
+  if (checkedIndexes.length === 0) {
     return showNoneQuery;
-  } else if (checkedPhaseIndexes.length === 4) {
+  } else if (checkedIndexes.length === 4) {
     return null;
   }
 
-  const filterPhase = (_, i) => {
-    return checkedPhaseIndexes.includes(i);
+  const filter = (_, i) => {
+    return checkedIndexes.includes(i);
   };
   const removeDuplicates = (inStatement) => {
     return [...new Set(inStatement.split(joinTxt))].join(joinTxt);
@@ -36,13 +37,13 @@ export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
   const wrapWithQuotes = (text) => {
     return `'${text}'`;
   };
-  const isStringQuery = typeof phaseInfo[1] === 'string';
+  const isStringQuery = typeof queryInfo[1] === 'string';
 
   let joinTxt = ', ';
   if (isStringQuery) {
     joinTxt = wrapWithQuotes(joinTxt);
   }
-  let queryValues = removeDuplicates(phaseInfo.slice(1).filter(filterPhase).join(joinTxt));
+  let queryValues = removeDuplicates(queryInfo.slice(1).filter(filter).join(joinTxt));
   if (queryValues.length === 0) {
     return showNoneQuery;
   }
@@ -50,7 +51,7 @@ export const getPhaseQuery = (phaseInfo, checkedPhaseIndexes) => {
     queryValues = wrapWithQuotes(queryValues);
   }
 
-  return `${phaseInfo[0]} IN (${queryValues})`;
+  return `${queryInfo[0]} IN (${queryValues})`;
 };
 
 export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
@@ -68,22 +69,64 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
   });
 };
 
-export default function Filter(props) {
+export default function Filter({ checkboxes, groups, layerNames, mapView, modes, phases, reset, toggle, webMapId }) {
   const [filterByPhasing, setFilterByPhasing] = useState(false);
-  const layers = useMapLayers(props.mapView, props.layerNames);
+  const layers = useMapLayers(mapView, layerNames);
+  const [selectedModes, setSelectedModes] = useState([]);
+  const [selectedPhases, setSelectedPhases] = useState([]);
+  const [colorBy, setColorBy] = useState('mode');
+  const t = useSpecialTranslation();
+
+  useEffect(() => {
+    if ((phases || modes) && layers) {
+      const shouldBeFilteredByPhase = (layerName) => {
+        if (!filterByPhasing) {
+          // does this layer show up in a group with a filter by phase checkbox that is checked?
+          return Object.values(groups).every((groupConfig) => {
+            // if the group doesn't have a filter by phase checkbox, then we filter
+            if (!groupConfig.showFilterByPhasing) {
+              return true;
+            }
+
+            // make sure that it's not in this group
+            return groupConfig.checkboxes.indexOf(layerName) === -1;
+          });
+        }
+
+        return true;
+      };
+
+      new Set(Object.keys(phases).concat(Object.keys(modes))).forEach((layerName) => {
+        const layer = layers[layerName];
+        if (layer) {
+          let definitionExpression = layer.defaultDefinitionExpression;
+          if (shouldBeFilteredByPhase(layerName)) {
+            const phaseQuery = getQuery(phases[layerName], selectedPhases);
+            if (phaseQuery) {
+              definitionExpression = `(${definitionExpression}) AND (${phaseQuery})`;
+            }
+          }
+
+          if (modes[layerName]) {
+            const modeQuery = getQuery(modes[layerName], selectedModes);
+            if (modeQuery) {
+              definitionExpression = `(${definitionExpression}) AND (${modeQuery})`;
+            }
+          }
+
+          layer.definitionExpression = definitionExpression;
+        }
+      });
+    }
+  }, [checkboxes.layerNames, filterByPhasing, groups, layers, modes, phases, selectedModes, selectedPhases]);
 
   const mapIsLoaded = () => {
-    return (
-      props.mapView &&
-      props.mapView.map &&
-      props.mapView.map.loaded &&
-      props.mapView.map.portalItem.id === props.webMapId
-    );
+    return mapView && mapView.map && mapView.map.loaded && mapView.map.portalItem.id === webMapId;
   };
 
   useEffect(() => {
-    validateCheckboxLayerKeys(props.layerNames, props.checkboxes);
-  }, [props.layerNames, props.checkboxes]);
+    validateCheckboxLayerKeys(layerNames, checkboxes);
+  }, [layerNames, checkboxes]);
 
   const setLayersVisibility = (layerNames, visible) => {
     if (layers) {
@@ -96,7 +139,7 @@ export default function Filter(props) {
     }
   };
 
-  const filterByPhasingCacheProperty = `${props.webMapId}_filterByPhasing`;
+  const filterByPhasingCacheProperty = `${webMapId}_filterByPhasing`;
   const setFilterByPhasingWrapper = (value, skipCache) => {
     if (!skipCache) {
       CACHE[filterByPhasingCacheProperty] = value;
@@ -109,11 +152,37 @@ export default function Filter(props) {
     setFilterByPhasingWrapper(!filterByPhasing, true);
   }
 
+  useEffect(() => {
+    if (!layers || !toggle) return;
+
+    const visibleLayerKeys = colorBy === 'mode' ? toggle.modeLayers : toggle.phaseLayers;
+    for (const configLayerKey of toggle.modeLayers.concat(toggle.phaseLayers)) {
+      const layer = layers[configLayerKey];
+
+      if (layer) layer.visible = visibleLayerKeys.includes(configLayerKey);
+    }
+  }, [colorBy, layerNames, layers, toggle, toggle?.modeLayers, toggle?.phaseLayers]);
+
   return (
     <div className="filter">
-      {props.groups &&
-        props.groups.map((groupConfig) => {
-          const globalKey = `${props.webMapId}_${groupConfig.label}`;
+      {toggle ? (
+        <>
+          <div className="mb-2 d-flex align-items-center">
+            <Label className="mb-0 me-2">{t(toggle.label)}</Label>
+            <ButtonGroup>
+              <Button active={colorBy === 'mode'} color="primary" onClick={() => setColorBy('mode')} size="sm">
+                {t(toggle.mode)}
+              </Button>
+              <Button active={colorBy === 'phase'} color="primary" onClick={() => setColorBy('phase')} size="sm">
+                {t(toggle.phase)}
+              </Button>
+            </ButtonGroup>
+          </div>
+        </>
+      ) : null}
+      {groups &&
+        groups.map((groupConfig) => {
+          const globalKey = `${webMapId}_${groupConfig.label}`;
 
           return (
             <div className="group-container" key={groupConfig.label}>
@@ -122,9 +191,9 @@ export default function Filter(props) {
                   {...groupConfig}
                   key={globalKey}
                   globalKey={globalKey}
-                  webMapId={props.webMapId}
-                  reset={props.reset}
-                  checkboxConfigs={props.checkboxes}
+                  webMapId={webMapId}
+                  reset={reset}
+                  checkboxConfigs={checkboxes}
                   setLayersVisibility={setLayersVisibility}
                   layers={mapIsLoaded() ? layers : null}
                 />
@@ -133,30 +202,34 @@ export default function Filter(props) {
                   {...groupConfig}
                   key={globalKey}
                   globalKey={globalKey}
-                  reset={props.reset}
-                  webMapId={props.webMapId}
-                  checkboxConfigs={props.checkboxes}
+                  reset={reset}
+                  webMapId={webMapId}
+                  checkboxConfigs={checkboxes}
                   setLayersVisibility={setLayersVisibility}
                   filterByPhasing={filterByPhasing}
                   setFilterByPhasing={setFilterByPhasingWrapper}
                   layers={mapIsLoaded() ? layers : null}
-                  phases={props.phases}
-                  allGroupConfigs={props.groups}
+                  phases={phases}
+                  allGroupConfigs={groups}
+                  selectedModes={selectedModes}
+                  setSelectedModes={setSelectedModes}
+                  selectedPhases={selectedPhases}
+                  setSelectedPhases={setSelectedPhases}
                 />
               )}
             </div>
           );
         })}
-      {!props.groups &&
-        Object.keys(props.checkboxes).map((checkboxName) => {
-          const checkboxConfig = props.checkboxes[checkboxName];
+      {!groups &&
+        Object.keys(checkboxes).map((checkboxName) => {
+          const checkboxConfig = checkboxes[checkboxName];
 
           return (
             <Child
               key={checkboxName}
-              globalKey={`${props.webMapId}_${checkboxName}`}
+              globalKey={`${webMapId}_${checkboxName}`}
               name={checkboxConfig.label}
-              reset={props.reset}
+              reset={reset}
               {...checkboxConfig}
               layersLookup={mapIsLoaded() ? layers : null}
               setLayersVisibility={setLayersVisibility}
@@ -167,13 +240,25 @@ export default function Filter(props) {
   );
 }
 
-const RadioGroup = (props) => {
+Filter.propTypes = {
+  checkboxes: PropTypes.object.isRequired,
+  groups: PropTypes.arrayOf(PropTypes.object),
+  layerNames: PropTypes.object.isRequired,
+  mapView: PropTypes.object,
+  modes: PropTypes.object,
+  phases: PropTypes.object,
+  reset: PropTypes.bool.isRequired,
+  toggle: PropTypes.object,
+  webMapId: PropTypes.string.isRequired,
+};
+
+const RadioGroup = ({ checkboxConfigs, checkboxes, globalKey, label, layers, reset, setLayersVisibility }) => {
   const [visible, setVisible] = useState(false);
-  const defaultRadioButton = props.checkboxes[0];
+  const defaultRadioButton = checkboxes[0];
   const [selectedRadioButton, setSelectedRadioButton] = useState(defaultRadioButton);
   const t = useSpecialTranslation();
 
-  const selectedRadioButtonCachedProperty = `${props.globalKey}_selectedRadioButton`;
+  const selectedRadioButtonCachedProperty = `${globalKey}_selectedRadioButton`;
   const onRadioChange = (checkboxName, skipCache) => {
     if (!skipCache) {
       CACHE[selectedRadioButtonCachedProperty] = checkboxName;
@@ -187,23 +272,23 @@ const RadioGroup = (props) => {
     onRadioChange(selectedRadioButtonCachedValue, true);
   }
 
-  const allLayerKeys = props.checkboxes.reduce(
-    (layerNames, checkboxName) => layerNames.concat(props.checkboxConfigs[checkboxName].layerNames),
+  const allLayerKeys = checkboxes.reduce(
+    (layerNames, checkboxName) => layerNames.concat(checkboxConfigs[checkboxName].layerNames),
     [],
   );
-  const visibleLayerKeys = visible ? props.checkboxConfigs[selectedRadioButton].layerNames : [];
+  const visibleLayerKeys = visible ? checkboxConfigs[selectedRadioButton].layerNames : [];
   const hiddenLayersKeys = allLayerKeys.filter((key) => visibleLayerKeys.indexOf(key) === -1);
-  props.setLayersVisibility(hiddenLayersKeys, false);
-  props.setLayersVisibility(visibleLayerKeys, true);
+  setLayersVisibility(hiddenLayersKeys, false);
+  setLayersVisibility(visibleLayerKeys, true);
 
   useEffect(() => {
-    if (props.reset) {
+    if (reset) {
       setVisible(true);
       setSelectedRadioButton(defaultRadioButton);
     }
-  }, [props.reset, defaultRadioButton]);
+  }, [reset, defaultRadioButton]);
 
-  const visibleCacheProperty = `${props.globalKey}_visible`;
+  const visibleCacheProperty = `${globalKey}_visible`;
   const onToggleVisible = ({ skipCache }) => {
     if (!skipCache) {
       CACHE[visibleCacheProperty] = !visible;
@@ -222,12 +307,12 @@ const RadioGroup = (props) => {
       <FormGroup check>
         <Label check>
           <Input type="checkbox" checked={visible} onChange={onToggleVisible} />
-          {t(props.label)}
+          {t(label)}
         </Label>
       </FormGroup>
       <div className="child-checkbox-container">
-        {props.checkboxes.map((checkboxName) => {
-          const checkboxConfig = props.checkboxConfigs[checkboxName];
+        {checkboxes.map((checkboxName) => {
+          const checkboxConfig = checkboxConfigs[checkboxName];
           const Symbol = checkboxConfig.symbol ? SYMBOLS[checkboxConfig.symbol] : null;
 
           return (
@@ -235,16 +320,16 @@ const RadioGroup = (props) => {
               <Label check>
                 <Input
                   type="radio"
-                  name={props.label}
+                  name={label}
                   checked={selectedRadioButton === checkboxName}
                   onChange={() => onRadioChange(checkboxName)}
                 />
                 {t(checkboxConfig.label)}
               </Label>
-              {checkboxConfig.symbol && props.layers && (
+              {checkboxConfig.symbol && layers && (
                 <Symbol
                   layerNames={checkboxConfig.layerNames}
-                  layersLookup={props.layers}
+                  layersLookup={layers}
                   imageFileName={checkboxConfig.symbolImageFile}
                 />
               )}
@@ -256,10 +341,42 @@ const RadioGroup = (props) => {
   );
 };
 
-const Parent = (props) => {
-  const defaultCheckedChildren = props.checkboxes.filter((name) => !props.checkboxConfigs[name].offByDefault);
+RadioGroup.propTypes = {
+  checkboxConfigs: PropTypes.object.isRequired,
+  checkboxes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  globalKey: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  layers: PropTypes.object,
+  reset: PropTypes.bool,
+  setLayersVisibility: PropTypes.func.isRequired,
+};
+
+const Parent = ({
+  checkboxConfigs,
+  checkboxes,
+  filterByPhasing,
+  globalKey,
+  globalState,
+  label,
+  layers,
+  reset,
+  setFilterByPhasing,
+  setLayersVisibility,
+  setSelectedModes,
+  setSelectedPhases,
+  showFilterByPhasing,
+}) => {
+  const defaultCheckedChildren = checkboxes.filter((name) => !checkboxConfigs[name].offByDefault);
   const [checkedChildren, setCheckedChildren] = useState(defaultCheckedChildren);
   const t = useSpecialTranslation();
+
+  useEffect(() => {
+    if (globalState === 'modes') {
+      setSelectedModes(checkedChildren.map((name) => checkboxConfigs[name].mode));
+    } else if (globalState === 'phases') {
+      setSelectedPhases(checkedChildren.map((name) => checkboxConfigs[name].phase));
+    }
+  }, [checkboxConfigs, checkedChildren, globalState, setSelectedModes, setSelectedPhases]);
 
   const onChildChanged = (name) => {
     // create new copy because you shouldn't mutate state objects
@@ -271,80 +388,29 @@ const Parent = (props) => {
       newCheckedChildren.splice(newCheckedChildren.indexOf(name), 1);
     }
 
-    CACHE[props.globalKey] = newCheckedChildren;
+    CACHE[globalKey] = newCheckedChildren;
 
     setCheckedChildren(newCheckedChildren);
   };
-  const onParentChange = (event) => {
-    const newCheckedChildren = checkedChildren.length === 0 ? props.checkboxes.map((name) => name) : [];
 
-    CACHE[props.globalKey] = newCheckedChildren;
+  const onParentChange = () => {
+    const newCheckedChildren = checkedChildren.length === 0 ? checkboxes.map((name) => name) : [];
+
+    CACHE[globalKey] = newCheckedChildren;
 
     setCheckedChildren(newCheckedChildren);
   };
-  const indeterminate = checkedChildren.length > 0 && checkedChildren.length < props.checkboxes.length;
+  const indeterminate = checkedChildren.length > 0 && checkedChildren.length < checkboxes.length;
 
   useEffect(() => {
-    if (props.reset) {
-      delete CACHE[props.globalKey];
+    if (reset) {
+      delete CACHE[globalKey];
 
       setCheckedChildren(defaultCheckedChildren);
     }
-  }, [props.reset, defaultCheckedChildren, props.globalKey]);
+  }, [reset, defaultCheckedChildren, globalKey]);
 
-  useEffect(() => {
-    const isPhaseGroup = () => {
-      return props.checkboxes.some((checkboxName) => props.checkboxConfigs[checkboxName].phase !== undefined);
-    };
-
-    if (props.phases && props.layers && isPhaseGroup()) {
-      console.log('update phase queries');
-      const newCheckedPhases = checkedChildren.map((checkboxName) => props.checkboxConfigs[checkboxName].phase);
-      const shouldBeFiltered = (layerName) => {
-        if (!props.filterByPhasing) {
-          // return false for any layerName that shows up in a checkbox that
-          // is marked showFilterByPhasing = true
-          return Object.values(props.allGroupConfigs).every((groupConfig) => {
-            if (!groupConfig.showFilterByPhasing) {
-              return true;
-            }
-
-            return groupConfig.checkboxes.every((checkboxName) => {
-              return props.checkboxConfigs[checkboxName].layerNames.indexOf(layerName) === -1;
-            });
-          });
-        }
-
-        return true;
-      };
-
-      Object.keys(props.phases).forEach((layerName) => {
-        const phaseInfo = props.phases[layerName];
-        const layer = props.layers[layerName];
-        if (layer) {
-          let definitionExpression = layer.defaultDefinitionExpression;
-          if (shouldBeFiltered(layerName)) {
-            const phaseQuery = getPhaseQuery(phaseInfo, newCheckedPhases);
-            if (phaseQuery) {
-              definitionExpression = `(${definitionExpression}) AND (${phaseQuery})`;
-            }
-          }
-
-          layer.definitionExpression = definitionExpression;
-        }
-      });
-    }
-  }, [
-    checkedChildren,
-    props.phases,
-    props.layers,
-    props.checkboxes,
-    props.checkboxConfigs,
-    props.filterByPhasing,
-    props.allGroupConfigs,
-  ]);
-
-  const cachedCheckedChildren = CACHE[props.globalKey];
+  const cachedCheckedChildren = CACHE[globalKey];
   if (
     cachedCheckedChildren !== undefined &&
     JSON.stringify(cachedCheckedChildren) !== JSON.stringify(checkedChildren)
@@ -359,35 +425,32 @@ const Parent = (props) => {
           <input
             type="checkbox"
             className="form-check-input"
-            checked={checkedChildren.length === props.checkboxes.length}
+            checked={checkedChildren.length === checkboxes.length}
             onChange={onParentChange}
             ref={(ref) => ref && (ref.indeterminate = indeterminate)}
           />
-          {t(props.label)}
+          {t(label)}
         </Label>
-        {props.showFilterByPhasing && (
+        {showFilterByPhasing && (
           <Label check>
-            <Input
-              type="checkbox"
-              checked={props.filterByPhasing}
-              onChange={() => props.setFilterByPhasing(!props.filterByPhasing)}
-            />
+            <Input type="checkbox" checked={filterByPhasing} onChange={() => setFilterByPhasing(!filterByPhasing)} />
             <small>{`(${t('trans:filterByPhasing')})`}</small>
           </Label>
         )}
       </FormGroup>
       <div className="child-checkbox-container">
-        {props.checkboxes.map((checkboxName) => {
-          const checkboxConfig = props.checkboxConfigs[checkboxName];
+        {checkboxes.map((checkboxName) => {
+          const checkboxConfig = checkboxConfigs[checkboxName];
 
           return (
             <Child
               key={checkboxName}
+              manageLayerVisibility={!globalState}
               name={checkboxName}
               {...checkboxConfig}
               onChange={onChildChanged}
-              layersLookup={props.layers}
-              setLayersVisibility={props.setLayersVisibility}
+              layersLookup={layers}
+              setLayersVisibility={setLayersVisibility}
               checked={checkedChildren.indexOf(checkboxName) > -1}
             />
           );
@@ -397,62 +460,116 @@ const Parent = (props) => {
   );
 };
 
-const Child = (props) => {
-  const [internalIsChecked, setInternalIsChecked] = useState(!props.offByDefault);
+Parent.propTypes = {
+  allGroupConfigs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  checkboxConfigs: PropTypes.object.isRequired,
+  checkboxes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filterByPhasing: PropTypes.bool,
+  globalKey: PropTypes.string.isRequired,
+  globalState: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  layers: PropTypes.object,
+  reset: PropTypes.bool,
+  setFilterByPhasing: PropTypes.func,
+  setLayersVisibility: PropTypes.func.isRequired,
+  setSelectedModes: PropTypes.func,
+  setSelectedPhases: PropTypes.func,
+  showFilterByPhasing: PropTypes.bool,
+};
+
+function Child({
+  color,
+  checked: checkedProp,
+  globalKey,
+  label,
+  layerNames,
+  layersLookup,
+  manageLayerVisibility = true,
+  name,
+  offByDefault,
+  onChange,
+  reset,
+  setLayersVisibility,
+  staticColors,
+  symbol,
+  symbolImageFile,
+  symbolLabels,
+  symbolLayerIds,
+}) {
+  const [internalIsChecked, setInternalIsChecked] = useState(!offByDefault);
   const t = useSpecialTranslation();
 
-  const onChange = ({ skipCache }) => {
-    if (!skipCache && props.globalKey) {
-      CACHE[props.globalKey] = props.checked !== undefined ? !props.checked : !internalIsChecked;
+  const onCheckboxChange = ({ skipCache }) => {
+    if (!skipCache && globalKey) {
+      CACHE[globalKey] = checkedProp !== undefined ? !checkedProp : !internalIsChecked;
     }
 
-    if (props.onChange) {
-      props.onChange(props.name);
+    if (onChange) {
+      onChange(name);
     } else {
       setInternalIsChecked(!internalIsChecked);
     }
   };
 
-  let checked = props.checked !== undefined ? props.checked : internalIsChecked;
+  let checked = checkedProp !== undefined ? checkedProp : internalIsChecked;
 
   // we only cache at the child level for stand-alone checkboxes
-  if (props.globalKey) {
-    const cachedValue = CACHE[props.globalKey];
+  if (globalKey) {
+    const cachedValue = CACHE[globalKey];
     if (cachedValue !== undefined && cachedValue !== checked) {
-      onChange({ skipCache: true });
+      onChange && onChange({ skipCache: true });
     }
   }
 
-  if (props.layerNames) {
-    props.setLayersVisibility(props.layerNames, checked);
+  if (layerNames && manageLayerVisibility) {
+    setLayersVisibility(layerNames, checked);
   }
 
-  const Symbol = props.symbol ? SYMBOLS[props.symbol] : null;
+  const Symbol = symbol ? SYMBOLS[symbol] : null;
 
   useEffect(() => {
-    if (props.reset) {
-      setInternalIsChecked(!props.offByDefault);
+    if (reset) {
+      setInternalIsChecked(!offByDefault);
     }
-  }, [props.reset, props.offByDefault]);
+  }, [reset, offByDefault]);
 
   return (
     <FormGroup check>
       <Label check>
-        <Input type="checkbox" checked={checked} onChange={onChange} />
-        {t(props.label)}
+        <Input type="checkbox" checked={checked} onChange={onCheckboxChange} />
+        {t(label)}
       </Label>
-      {props.symbol && props.layersLookup && (
+      {symbol && layersLookup && (
         <Symbol
-          layerNames={props.layerNames}
-          layersLookup={props.layersLookup}
-          phaseIndex={props.phase}
-          color={props.color}
-          symbolLayerIds={props.symbolLayerIds}
-          symbolLabels={props.symbolLabels}
-          imageFileName={props.symbolImageFile}
-          staticColors={props.staticColors}
+          layerNames={layerNames}
+          layersLookup={layersLookup}
+          color={color}
+          symbolLayerIds={symbolLayerIds}
+          symbolLabels={symbolLabels}
+          imageFileName={symbolImageFile}
+          staticColors={staticColors}
         />
       )}
     </FormGroup>
   );
+}
+
+Child.propTypes = {
+  color: PropTypes.string,
+  checked: PropTypes.bool,
+  globalKey: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  layerNames: PropTypes.arrayOf(PropTypes.string),
+  layersLookup: PropTypes.object,
+  manageLayerVisibility: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  offByDefault: PropTypes.bool,
+  onChange: PropTypes.func,
+  reset: PropTypes.bool,
+  setLayersVisibility: PropTypes.func,
+  staticColors: PropTypes.arrayOf(PropTypes.object),
+  symbol: PropTypes.string,
+  symbolImageFile: PropTypes.string,
+  symbolLabels: PropTypes.arrayOf(PropTypes.string),
+  symbolLayerIds: PropTypes.arrayOf(PropTypes.string),
 };
