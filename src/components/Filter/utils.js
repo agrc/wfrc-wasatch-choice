@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react';
 // filters to become the defaultDefinitionExpression value for a layer.
 const MAP_LAYERS = {};
 export const getLayersInMap = async (map) => {
-  console.log('getLayersInMap');
-
   const mapId = map.portalItem.id;
   if (MAP_LAYERS[mapId]) {
     return MAP_LAYERS[mapId];
@@ -43,8 +41,6 @@ export const getLayersInMap = async (map) => {
 };
 
 export const getLayers = async (layerNames, map) => {
-  console.log('getLayers');
-
   const layerNameLookup = await getLayersInMap(map);
 
   const layers = {};
@@ -63,14 +59,11 @@ export const getLayers = async (layerNames, map) => {
 };
 
 export const useMapLayers = (mapView, layerNames) => {
-  console.log('useMapLayers layerNames', layerNames);
-
   const [layers, setLayers] = useState();
 
   // reset layer lookup when the web map is changed
   useEffect(() => {
     const getLayersForNewMap = async () => {
-      console.log('getLayersForNewMap');
       await whenOnce(() => mapView.ready);
       await mapView.map.when();
 

@@ -66,6 +66,39 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+              "toggle": {
+                "description": "Configures the toggle buttons at the top of the filter in the transportation tab.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "description": "The label for the toggle buttons",
+                    "type": "string"
+                  },
+                  "mode": {
+                    "description": "The label for the mode button",
+                    "type": "string"
+                  },
+                  "phase": {
+                    "description": "The label for the phase button",
+                    "type": "string"
+                  },
+                  "modeLayers": {
+                    "description": "The layer name keys that correspond to the mode button",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "phaseLayers": {
+                    "description": "The layer name keys that correspond to the phase button",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
               "layerNames": {
                 "description": "Defines all of the layer names as they show up in the web map. The key is a unique id (whatever you want) for the layer. This key is used elsewhere in the filter config. The value is the name of the layer as defined in the web map.",
                 "type": "object",
@@ -77,7 +110,16 @@
                 "description": "Defines the values associated with each phase for each layer. The property name should match a properties name from layerName and the value should be an array of strings with the first value being the field name and the next up to four values defining phases 1, 2, 3 & unfunded (in that order).",
                 "type": "object",
                 "additionalProperties": {
-                  "type": "array"
+                  "type": "array",
+                  "maxItems": 5
+                }
+              },
+              "modes": {
+                "description": "Defines the values associated with each mode for each layer. The property name should match a properties name from layerName and the value should be an array of strings with the first value being the field name and the next up to three values defining modes 'roads', 'transit', and 'bikePed' (in that order).",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "maxItems": 4
                 }
               },
               "checkboxes": {
@@ -106,10 +148,14 @@
                       "description": "Defines the zero-based index of the phase that this checkbox is associated with.",
                       "type": "number"
                     },
+                    "mode": {
+                      "description": "Defines the zero-based index of the mode that this checkbox is associated with.",
+                      "type": "number"
+                    },
                     "symbol": {
                       "description": "Defines the type of symbol component to be displayed.",
                       "type": "string",
-                      "enum": ["simple", "classes", "linePoint", "phase", "dynamic", "static"]
+                      "enum": ["simple", "classes", "linePoint", "swatch", "dynamic", "static"]
                     },
                     "symbolImageFile": {
                       "description": "Defines the filename for the image that should be used with the static legend symbol. Note that the file needs to be placed in the root of the application.",
@@ -190,6 +236,10 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "globalState": {
+                      "description": "Used for phase and mode groups to help manage their global state. The value of this property corresponds to the 'modes' and 'phases' props of the Filter object.",
+                      "type": "string"
                     },
                     "radio": {
                       "description": "Controls whether the children are checkboxes or radio buttons.",
@@ -367,19 +417,6 @@
         }
       }
     },
-    "minimumLegendSizes": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "pointSize": {
-          "type": "number"
-        },
-        "polylineWidth": {
-          "type": "number"
-        }
-      },
-      "required": ["pointSize", "polylineWidth"]
-    },
     "defaultExtent": {
       "type": "object",
       "additionalProperties": false,
@@ -492,7 +529,6 @@
     "mapInfos",
     "sherlock",
     "layerSelector",
-    "minimumLegendSizes",
     "defaultExtent",
     "links",
     "openOnLoad",

@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { getPhaseQuery, validateCheckboxLayerKeys } from './Filter';
+import { getQuery, validateCheckboxLayerKeys } from './Filter';
 import { getLayers } from './utils';
 
-describe('getPhaseQuery', () => {
+describe('getQuery', () => {
   const tests = [
     [['FCPhase', 1, 2, 3, 4], [0, 1, 2], 'FCPhase IN (1, 2, 3)'],
     [['FCPhase', 1, 2, 3, 'NULL'], [1, 3], 'FCPhase IN (2, NULL)'],
@@ -11,15 +11,16 @@ describe('getPhaseQuery', () => {
 
     // return null if all phases are checked
     [['FCPhase', 1, 2, 3], [0, 1, 2, 3], null],
+    [['Test', 1, 2, 3, 4], [0, 1, 2, 3], null],
+
     [['FCPhase', 1, 2, 3], [0, 1, 3], 'FCPhase IN (1, 2)'],
     [['FCPhase', 1, 2, 3], [3], '1 = 2'],
+    [['FCPhase', 1, 2, 3], [], '1 = 2'],
     [['FieldName', '1', '2', '3', '4'], [0, 2], "FieldName IN ('1', '3')"],
   ];
 
-  tests.forEach(([info, indexes, expected]) => {
-    it('returns the appropriate definition queries', () => {
-      expect(getPhaseQuery(info, indexes)).toEqual(expected);
-    });
+  it.each(tests)('(%o, %o) -> %s', (info, indexes, expected) => {
+    expect(getQuery(info, indexes)).toEqual(expected);
   });
 });
 
