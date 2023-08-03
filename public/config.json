@@ -525,23 +525,12 @@
         },
         "groups": [
           {
-            "label": "trans:filterTransportation.projectModes",
-            "checkboxes": ["roads", "transit", "bikePed"],
-            "globalState": "modes"
-          },
-          {
-            "label": "trans:filterTransportation.phasingColors",
-            "checkboxes": ["phase1", "phase2", "phase3", "unfunded"],
-            "globalState": "phases"
-          },
-          {
-            "label": "trans:filterTransportation.landUse",
-            "checkboxes": ["centers", "generalLandUse"],
-            "showFilterByPhasing": true
+            "label": "trans:filterTransportation.transProjectFilter",
+            "checkboxes": ["roads", "transit", "bikePed", "phase1", "phase2", "phase3", "unfunded"]
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": ["existingBikePed", "existingTransit"]
+            "checkboxes": ["centers", "generalLandUse", "existingBikePed", "existingTransit"]
           }
         ]
       }
@@ -1114,24 +1103,23 @@
           "openSpace": "Open Space"
         },
         "filterTransportation": {
-          "colorBy": "Color By",
-          "mode": "Mode",
-          "phase": "Phase",
-          "projectModes": "Project Modes",
-          "roads": "Roads",
-          "transit": "Transit",
           "bikePed": "Bike/Ped",
-          "phasingColors": "Phasing (colors)",
+          "centers": "Centers",
+          "colorBy": "Color By",
+          "existingBikePed": "Existing Bike/Ped",
+          "existingTransit": "Existing Transit",
+          "generalLandUse": "General Land Use",
+          "landUse": "Land Use",
+          "mode": "Mode",
+          "other": "Other",
+          "phase": "Phase",
           "phase1": "Phase 1 (2019-30)",
           "phase2": "Phase 2 (2031-40)",
           "phase3": "Phase 3 (2041-50)",
-          "unfundedNeeds": "Unfunded Needs",
-          "landUse": "Land Use",
-          "centers": "Centers",
-          "generalLandUse": "General Land Use",
-          "other": "Other",
-          "existingBikePed": "Existing Bike/Ped",
-          "existingTransit": "Existing Transit"
+          "roads": "Roads",
+          "transit": "Transit",
+          "transProjectFilter": "Transportation Project Filter",
+          "unfundedNeeds": "Unfunded Needs"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
@@ -1247,13 +1235,11 @@
         },
         "filterTransportation": {
           "colorBy": "Colorear Por",
-          "projectModes": "Modos de Proyecto",
           "mode": "Modo",
           "phase": "Fase",
           "roads": "Carreteras",
           "transit": "Transporte Público",
           "bikePed": "Transporte Activo",
-          "phasingColors": "Fase (colores)",
           "phase1": "Fase 1 (2019-30)",
           "phase2": "Fase 2 (2031-40)",
           "phase3": "Fase 3 (2041-50)",
@@ -1263,6 +1249,7 @@
           "generalLandUse": "Uso General de la Tierra",
           "other": "Otro",
           "existingBikePed": "Transporte Activo Existente",
+          "transProjectFilter": "Filtro de proyecto de transporte",
           "existingTransit": "Transporte Público Existente"
         },
         "filterLandUse": {

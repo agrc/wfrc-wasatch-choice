@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { Popover, PopoverBody, PopoverHeader } from 'reactstrap';
-import config from '../../config';
 import './Symbols.scss';
 
 const getBackgroundColor = (color) => {
