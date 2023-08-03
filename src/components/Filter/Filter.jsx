@@ -72,8 +72,8 @@ export const validateCheckboxLayerKeys = (layerNames, checkboxes) => {
 export default function Filter({ checkboxes, groups, layerNames, mapView, modes, phases, reset, toggle, webMapId }) {
   const [filterByPhasing, setFilterByPhasing] = useState(false);
   const layers = useMapLayers(mapView, layerNames);
-  const [selectedModes, setSelectedModes] = useState([]);
-  const [selectedPhases, setSelectedPhases] = useState([]);
+  const [selectedModes, setSelectedModes] = useState(modes && modes[Object.keys(modes)[0]].slice(1));
+  const [selectedPhases, setSelectedPhases] = useState(phases && phases[Object.keys(modes)[0]].slice(1));
   const [colorBy, setColorBy] = useState('mode');
   const t = useSpecialTranslation();
 
@@ -200,6 +200,7 @@ export default function Filter({ checkboxes, groups, layerNames, mapView, modes,
               ) : (
                 <Parent
                   {...groupConfig}
+                  colorBy={colorBy}
                   key={globalKey}
                   globalKey={globalKey}
                   reset={reset}
@@ -354,9 +355,9 @@ RadioGroup.propTypes = {
 const Parent = ({
   checkboxConfigs,
   checkboxes,
+  colorBy,
   filterByPhasing,
   globalKey,
-  globalState,
   label,
   layers,
   reset,
@@ -371,12 +372,22 @@ const Parent = ({
   const t = useSpecialTranslation();
 
   useEffect(() => {
-    if (globalState === 'modes') {
-      setSelectedModes(checkedChildren.map((name) => checkboxConfigs[name].mode));
-    } else if (globalState === 'phases') {
-      setSelectedPhases(checkedChildren.map((name) => checkboxConfigs[name].phase));
-    }
-  }, [checkboxConfigs, checkedChildren, globalState, setSelectedModes, setSelectedPhases]);
+    if (
+      checkboxes.every((name) => checkboxConfigs[name].mode === undefined && checkboxConfigs[name].phase === undefined)
+    )
+      return;
+
+    setSelectedModes(
+      checkedChildren
+        .filter((name) => checkboxConfigs[name].mode !== undefined)
+        .map((name) => checkboxConfigs[name].mode),
+    );
+    setSelectedPhases(
+      checkedChildren
+        .filter((name) => checkboxConfigs[name].phase !== undefined)
+        .map((name) => checkboxConfigs[name].phase),
+    );
+  }, [checkboxConfigs, checkboxes, checkedChildren, setSelectedModes, setSelectedPhases]);
 
   const onChildChanged = (name) => {
     // create new copy because you shouldn't mutate state objects
@@ -441,11 +452,14 @@ const Parent = ({
       <div className="child-checkbox-container">
         {checkboxes.map((checkboxName) => {
           const checkboxConfig = checkboxConfigs[checkboxName];
+          const modeOrPhase =
+            checkboxConfig.mode !== undefined ? 'mode' : checkboxConfig.phase !== undefined ? 'phase' : null;
 
           return (
             <Child
+              hideSymbol={modeOrPhase && colorBy !== modeOrPhase}
               key={checkboxName}
-              manageLayerVisibility={!globalState}
+              manageLayerVisibility={checkboxConfig.mode === undefined && checkboxConfig.phase === undefined}
               name={checkboxName}
               {...checkboxConfig}
               onChange={onChildChanged}
@@ -466,7 +480,6 @@ Parent.propTypes = {
   checkboxes: PropTypes.arrayOf(PropTypes.string).isRequired,
   filterByPhasing: PropTypes.bool,
   globalKey: PropTypes.string.isRequired,
-  globalState: PropTypes.string,
   label: PropTypes.string.isRequired,
   layers: PropTypes.object,
   reset: PropTypes.bool,
@@ -489,6 +502,7 @@ function Child({
   offByDefault,
   onChange,
   reset,
+  hideSymbol,
   setLayersVisibility,
   staticColors,
   symbol,
@@ -539,7 +553,7 @@ function Child({
         <Input type="checkbox" checked={checked} onChange={onCheckboxChange} />
         {t(label)}
       </Label>
-      {symbol && layersLookup && (
+      {!hideSymbol && symbol && layersLookup && (
         <Symbol
           layerNames={layerNames}
           layersLookup={layersLookup}

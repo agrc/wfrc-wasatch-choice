@@ -237,10 +237,6 @@
                         "type": "string"
                       }
                     },
-                    "globalState": {
-                      "description": "Used for phase and mode groups to help manage their global state. The value of this property corresponds to the 'modes' and 'phases' props of the Filter object.",
-                      "type": "string"
-                    },
                     "radio": {
                       "description": "Controls whether the children are checkboxes or radio buttons.",
                       "type": "boolean"
