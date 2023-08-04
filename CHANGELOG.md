@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.4-1...v5.0.0) (2023-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* `toggle` option added to `filter` config. This configures the new "Color By" toggle.
+* Renamed the `phase` checkbox symbol type to `swatch` to make it more generic since it's being used by the mode checkboxes now.
+* Updated the `roads`, `transit`, and `bikePed` checkboxes to use the new `swatch` symbol type. Also added the `mode` and `color` properties.
+* Removed `minimumLegendSizes` config prop since it's not used anymore.
+* config.json changes
+
+### refactor
+
+* Renamed the `phase` checkbox symbol type to `swatch` to make it more generic since it's being used by the mode checkboxes now. ([2c89938](https://github.com/agrc/wfrc-wasatch-choice/commit/2c89938262f8b10f49906b2b8de981ddfe88914b))
+
+
+### 🚀 Features
+
+* `toggle` option added to `filter` config. This configures the new "Color By" toggle. ([2c89938](https://github.com/agrc/wfrc-wasatch-choice/commit/2c89938262f8b10f49906b2b8de981ddfe88914b))
+* add "color by" toggle to transportation tab filter ([2c89938](https://github.com/agrc/wfrc-wasatch-choice/commit/2c89938262f8b10f49906b2b8de981ddfe88914b)), closes [#178](https://github.com/agrc/wfrc-wasatch-choice/issues/178)
+* add dynamic symbol swatches for mode/phases and consolidate layout ([5f56102](https://github.com/agrc/wfrc-wasatch-choice/commit/5f561021f6c2759549b16c1898f5b82a1bea0093))
+* add root error boundary ([b9d4c11](https://github.com/agrc/wfrc-wasatch-choice/commit/b9d4c11f9f0381f1831d2badc0f39f25a706654f))
+
+
+### 🐛 Bug Fixes
+
+* fix cypress tests ([9fba792](https://github.com/agrc/wfrc-wasatch-choice/commit/9fba792ebee91a716ecbabcd645e08a20b6b3da0))
+* Removed `minimumLegendSizes` config prop since it's not used anymore. ([2c89938](https://github.com/agrc/wfrc-wasatch-choice/commit/2c89938262f8b10f49906b2b8de981ddfe88914b))
+* Updated the `roads`, `transit`, and `bikePed` checkboxes to use the new `swatch` symbol type. Also added the `mode` and `color` properties. ([2c89938](https://github.com/agrc/wfrc-wasatch-choice/commit/2c89938262f8b10f49906b2b8de981ddfe88914b))
+
+
+### 🌲 Dependencies
+
+* bump storybook ([9e80702](https://github.com/agrc/wfrc-wasatch-choice/commit/9e807026e9322f905bdfc328d2e04d04f4f4f8f9))
+
+
+### 📖 Documentation Improvements
+
+* add prod/staging urls and fix badge ([eb93240](https://github.com/agrc/wfrc-wasatch-choice/commit/eb93240c716329ac18814f18284aed87419c4d1a))
+
+
+### 🎨 Design Improvements
+
+* make toggle state more obvious ([de71b04](https://github.com/agrc/wfrc-wasatch-choice/commit/de71b043c8d2885a9e4e37456d5122ee8c723b58))
+
 ## [5.0.0-2](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.0-1...v5.0.0-2) (2023-08-04)
 
 
