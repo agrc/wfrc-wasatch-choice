@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0-2](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.0-1...v5.0.0-2) (2023-08-04)
+
+
+### 🎨 Design Improvements
+
+* make toggle state more obvious ([fed19fa](https://github.com/agrc/wfrc-wasatch-choice/commit/fed19fab92d7238ec06f896121cbaf57c3f2f414))
+
 ## [5.0.0-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.0-0...v5.0.0-1) (2023-08-03)
 
 
