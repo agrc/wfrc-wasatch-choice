@@ -170,10 +170,20 @@ export default function Filter({ checkboxes, groups, layerNames, mapView, modes,
           <div className="mb-2 d-flex align-items-center">
             <Label className="mb-0 me-2">{t(toggle.label)}</Label>
             <ButtonGroup>
-              <Button active={colorBy === 'mode'} color="primary" onClick={() => setColorBy('mode')} size="sm">
+              <Button
+                active={colorBy === 'mode'}
+                color={colorBy === 'mode' ? 'primary' : 'secondary'}
+                onClick={() => setColorBy('mode')}
+                size="sm"
+              >
                 {t(toggle.mode)}
               </Button>
-              <Button active={colorBy === 'phase'} color="primary" onClick={() => setColorBy('phase')} size="sm">
+              <Button
+                active={colorBy === 'phase'}
+                color={colorBy === 'phase' ? 'primary' : 'secondary'}
+                onClick={() => setColorBy('phase')}
+                size="sm"
+              >
                 {t(toggle.phase)}
               </Button>
             </ButtonGroup>
