@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.1-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.0...v5.0.1-0) (2023-08-11)
+
+
+### 🐛 Bug Fixes
+
+* make config schema and about content fetches relative ([1b21c2d](https://github.com/agrc/wfrc-wasatch-choice/commit/1b21c2d6fbefa318a648ed6cba51a3bdeab8de3b))
+
 ## [5.0.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v4.1.4-1...v5.0.0) (2023-08-04)
 
 
