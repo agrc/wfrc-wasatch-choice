@@ -16,7 +16,7 @@ export default function About({ version, testTabId }) {
   useEffect(() => {
     console.log('fetching about config json');
 
-    fetch(`/about/${language}/${currentTabId}.html`)
+    fetch(`about/${language}/${currentTabId}.html`)
       .then((response) => {
         if (response.ok) {
           return response.text();
