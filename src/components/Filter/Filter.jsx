@@ -21,6 +21,8 @@ const CACHE = {};
 export const getQuery = (queryInfo, checkedIndexes) => {
   // translate the phase info into a definition query taking into account the selected phases
 
+  if (!checkedIndexes) return null;
+
   const showNoneQuery = '1 = 2';
   if (checkedIndexes.length === 0) {
     return showNoneQuery;
