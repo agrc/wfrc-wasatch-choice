@@ -667,11 +667,11 @@
       "filter": {
         "layerNames": {
           "projectsAwarded": "Funded Projects",
-          "projectsAwardedAreas": "Funded Projects (areas)",
+          "projectsAwardedAreas": "Funded Project Areas",
           "projectsInProgress": "Under Contract Projects",
-          "projectsInProgressAreas": "Under Contract Projects (areas)",
+          "projectsInProgressAreas": "Under Contract Project Areas",
           "projectsCompleted": "Complete Projects",
-          "projectsCompletedAreas": "Complete Projects (areas)"
+          "projectsCompletedAreas": "Complete Project Areas"
         },
         "checkboxes": {
           "awarded": {
