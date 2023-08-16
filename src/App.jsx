@@ -100,30 +100,24 @@ export default function App() {
       );
     }, []);
 
-    // the manual querying of feature layer view below can be replaced with mapView.hitTest
-    // once Esri adds support for returning all of the features in a layer rather than just the topmost
-    const featureLayers = layers.filter(
-      (layer) =>
-        layer.type === 'feature' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title),
-    );
-    const queryFeatureLayerView = async (layer) => {
-      const layerView = await view.whenLayerView(layer);
-      const results = await layerView.queryFeatures({
-        geometry: clickEvent.mapPoint,
-        returnGeometry: true,
-        distance: config.IDENTIFY_PIXEL_TOLERANCE * view.resolution,
-        units: 'feet',
-        where: layer.definitionExpression,
-        outFields: '*',
-      });
+    const response = await view.hitTest(clickEvent);
+    const queryFeatures = await Promise.all(
+      response.results
+        .filter((hitResult) => !config.projectInformation.excludedLayers.includes(hitResult.graphic.layer.title))
+        .map(async (hitResult) => {
+          const results = await hitResult.graphic.layer.queryFeatures({
+            objectIds: [hitResult.graphic.attributes.OBJECTID],
+            returnGeometry: true,
+            outFields: '*',
+          });
 
-      return results.features;
-    };
-    const queryFeaturePromises = featureLayers.toArray().map(queryFeatureLayerView);
-    const queryFeatureSets = await Promise.all(queryFeaturePromises);
-    const queryFeatures = queryFeatureSets.reduce((previous, current) => {
-      return previous.concat(current);
-    }, []);
+          const feature = results.features[0].clone();
+          // tack on the map view because we need it in the details component
+          feature.mapView = view;
+
+          return feature;
+        }),
+    );
     const selectedGraphics = queryFeatures.concat(identifyFeatures);
 
     console.log('selectedGraphics', selectedGraphics);
