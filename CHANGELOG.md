@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.1-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.0-1...v5.1.1-0) (2023-08-16)
+
+
+### 🐛 Bug Fixes
+
+* cypress test ([5f2e21e](https://github.com/agrc/wfrc-wasatch-choice/commit/5f2e21e5a028da07f38ddfe7bc098e97dd5bbf0a))
+* update app logos ([48a197e](https://github.com/agrc/wfrc-wasatch-choice/commit/48a197e156db40bb6511941bab06befc60bf563d))
+
 ## [5.1.0-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.0-0...v5.1.0-1) (2023-08-16)
 
 
