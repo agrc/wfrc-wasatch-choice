@@ -3,370 +3,102 @@
   "mapInfos": {
     "vision": {
       "name": "trans:mapTitleVision",
-      "webMapId": "ebd9c5abf7b44ed28106c78734c2178f",
+      "webMapId": "dcfc98c906f54e598325ba55a594b446",
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "commuterRailStation10": "Commuter Rail Stations - 10",
-          "commuterRailStation11": "Commuter Rail Stations - 11",
-          "commuterRailStation12": "Commuter Rail Stations - 12",
-          "commuterRailStation13": "Commuter Rail Stations - 13",
-          "commuterRailStation14": "Commuter Rail Stations - 14",
-          "commuterRailStation15": "Commuter Rail Stations - 15",
-          "lightRailStations10": "Light Rail Stations - 10",
-          "lightRailStations11": "Light Rail Stations - 11",
-          "lightRailStations12": "Light Rail Stations - 12",
-          "lightRailStations13": "Light Rail Stations - 13",
-          "lightRailStations14": "Light Rail Stations - 14",
-          "lightRailStations15": "Light Rail Stations - 15",
-          "busRapidTransitStations10": "Bus Rapid Transit Stations - 10",
-          "busRapidTransitStations11": "Bus Rapid Transit Stations - 11",
-          "busRapidTransitStations12": "Bus Rapid Transit Stations - 12",
-          "busRapidTransitStations13": "Bus Rapid Transit Stations - 13",
-          "busRapidTransitStations14": "Bus Rapid Transit Stations - 14",
-          "busRapidTransitStations15": "Bus Rapid Transit Stations - 15",
-          "interchangesCurrent10": "Interchanges current - 10",
-          "interchangesCurrent11": "Interchanges current - 11",
-          "interchangesCurrent12": "Interchanges current - 12",
-          "interchangesCurrent13": "Interchanges current - 13",
-          "interchangesCurrent14": "Interchanges current - 14",
-          "interchangesCurrent15": "Interchanges current - 15",
-          "interchangesFuture10": "Interchanges future - 10",
-          "interchangesFuture11": "Interchanges future - 11",
-          "interchangesFuture12": "Interchanges future - 12",
-          "interchangesFuture13": "Interchanges future - 13",
-          "interchangesFuture14": "Interchanges future - 14",
-          "interchangesFuture15": "Interchanges future - 15",
-          "commuterRail8": "Commuter Rail - 8",
-          "commuterRail9": "Commuter Rail - 9",
-          "commuterRail10": "Commuter Rail - 10",
-          "commuterRail11": "Commuter Rail - 11",
-          "commuterRail12": "Commuter Rail - 12",
-          "commuterRail13": "Commuter Rail - 13",
-          "commuterRail14": "Commuter Rail - 14",
-          "commuterRail15": "Commuter Rail - 15",
-          "lightRail8": "Light Rail - 8",
-          "lightRail9": "Light Rail - 9",
-          "lightRail10": "Light Rail - 10",
-          "lightRail11": "Light Rail - 11",
-          "lightRail12": "Light Rail - 12",
-          "lightRail13": "Light Rail - 13",
-          "lightRail14": "Light Rail - 14",
-          "lightRail15": "Light Rail - 15",
-          "busRapidTransit8": "Bus Rapid Transit - 8",
-          "busRapidTransit9": "Bus Rapid Transit - 9",
-          "busRapidTransit10": "Bus Rapid Transit - 10",
-          "busRapidTransit11": "Bus Rapid Transit - 11",
-          "busRapidTransit12": "Bus Rapid Transit - 12",
-          "busRapidTransit13": "Bus Rapid Transit - 13",
-          "busRapidTransit14": "Bus Rapid Transit - 14",
-          "busRapidTransit15": "Bus Rapid Transit - 15",
-          "utahLakeBridge8": "Utah Lake Bridge - 8",
-          "utahLakeBridge9": "Utah Lake Bridge - 9",
-          "utahLakeBridge10": "Utah Lake Bridge - 10",
-          "utahLakeBridge11": "Utah Lake Bridge - 11",
-          "utahLakeBridge12": "Utah Lake Bridge - 12",
-          "utahLakeBridge13": "Utah Lake Bridge - 13",
-          "utahLakeBridge14": "Utah Lake Bridge - 14",
-          "utahLakeBridge15": "Utah Lake Bridge - 15",
-          "freeways8": "Freeways - 8",
-          "freeways9": "Freeways - 9",
-          "freeways10": "Freeways - 10",
-          "freeways11": "Freeways - 11",
-          "freeways12": "Freeways - 12",
-          "freeways13": "Freeways - 13",
-          "freeways14": "Freeways - 14",
-          "freeways15": "Freeways - 15",
-          "majorTrails10": "Major Trails - 10",
-          "majorTrails11": "Major Trails - 11",
-          "majorTrails12": "Major Trails - 12",
-          "majorTrails13": "Major Trails - 13",
-          "majorTrails14": "Major Trails - 14",
-          "majorTrails15": "Major Trails - 15",
-          "pcCoreBus8": "PC Core Bus - 8",
-          "pcCoreBus9": "PC Core Bus - 9",
-          "pcCoreBus10": "PC Core Bus - 10",
-          "pcCoreBus11": "PC Core Bus - 11",
-          "pcCoreBus12": "PC Core Bus - 12",
-          "pcCoreBus13": "PC Core Bus - 13",
-          "pcCoreBus14": "PC Core Bus - 14",
-          "pcCoreBus15": "PC Core Bus - 15",
-          "udotLRSCoreBus8": "UDOT_LRS_Highways_Core_Bus - 8",
-          "udotLRSCoreBus9": "UDOT_LRS_Highways_Core_Bus - 9",
-          "udotLRSCoreBus10": "UDOT_LRS_Highways_Core_Bus - 10",
-          "udotLRSCoreBus11": "UDOT_LRS_Highways_Core_Bus - 11",
-          "udotLRSCoreBus12": "UDOT_LRS_Highways_Core_Bus - 12",
-          "udotLRSCoreBus13": "UDOT_LRS_Highways_Core_Bus - 13",
-          "udotLRSCoreBus14": "UDOT_LRS_Highways_Core_Bus - 14",
-          "udotLRSCoreBus15": "UDOT_LRS_Highways_Core_Bus - 15",
-          "majorLocalRoadsFedAidCoreBus8": "MajorLocalRoads_FedAid_CoreBus - 8",
-          "majorLocalRoadsFedAidCoreBus9": "MajorLocalRoads_FedAid_CoreBus - 9",
-          "majorLocalRoadsFedAidCoreBus10": "MajorLocalRoads_FedAid_CoreBus - 10",
-          "majorLocalRoadsFedAidCoreBus11": "MajorLocalRoads_FedAid_CoreBus - 11",
-          "majorLocalRoadsFedAidCoreBus12": "MajorLocalRoads_FedAid_CoreBus - 12",
-          "majorLocalRoadsFedAidCoreBus13": "MajorLocalRoads_FedAid_CoreBus - 13",
-          "majorLocalRoadsFedAidCoreBus14": "MajorLocalRoads_FedAid_CoreBus - 14",
-          "majorLocalRoadsFedAidCoreBus15": "MajorLocalRoads_FedAid_CoreBus - 15",
-          "udotLRSOutliers8": "UDOT_LRS_Outliers - 8",
-          "udotLRSOutliers9": "UDOT_LRS_Outliers - 9",
-          "udotLRSOutliers10": "UDOT_LRS_Outliers - 10",
-          "udotLRSOutliers11": "UDOT_LRS_Outliers - 11",
-          "udotLRSOutliers12": "UDOT_LRS_Outliers - 12",
-          "udotLRSOutliers13": "UDOT_LRS_Outliers - 13",
-          "udotLRSOutliers14": "UDOT_LRS_Outliers - 14",
-          "udotLRSOutliers15": "UDOT_LRS_Outliers - 15",
-          "udotExpPAExisting8": "UDOT_Exp_PA_Existing - 8",
-          "udotExpPAExisting9": "UDOT_Exp_PA_Existing - 9",
-          "udotExpPAExisting10": "UDOT_Exp_PA_Existing - 10",
-          "udotExpPAExisting11": "UDOT_Exp_PA_Existing - 11",
-          "udotExpPAExisting12": "UDOT_Exp_PA_Existing - 12",
-          "udotExpPAExisting13": "UDOT_Exp_PA_Existing - 13",
-          "udotExpPAExisting14": "UDOT_Exp_PA_Existing - 14",
-          "udotExpPAExisting15": "UDOT_Exp_PA_Existing - 15",
-          "rtpExpPANew8": "RTP_Exp_PA_New - 8",
-          "rtpExpPANew9": "RTP_Exp_PA_New - 9",
-          "rtpExpPANew10": "RTP_Exp_PA_New - 10",
-          "rtpExpPANew11": "RTP_Exp_PA_New - 11",
-          "rtpExpPANew12": "RTP_Exp_PA_New - 12",
-          "rtpExpPANew13": "RTP_Exp_PA_New - 13",
-          "rtpExpPANew14": "RTP_Exp_PA_New - 14",
-          "rtpExpPANew15": "RTP_Exp_PA_New - 15",
-          "centers8": "Centers - 8",
-          "centers9": "Centers - 9",
-          "centers10": "Centers - 10",
-          "centers11": "Centers - 11",
-          "centers12": "Centers - 12",
-          "centers13": "Centers - 13",
-          "centers14": "Centers - 14",
-          "centers15": "Centers - 15",
-          "generalLandUse8": "General Land Use - 8",
-          "generalLandUse9": "General Land Use - 9",
-          "generalLandUse10": "General Land Use - 10",
-          "generalLandUse11": "General Land Use - 11",
-          "generalLandUse12": "General Land Use - 12",
-          "generalLandUse13": "General Land Use - 13",
-          "generalLandUse14": "General Land Use - 14",
-          "generalLandUse15": "General Land Use - 15",
-          "localParks": "Local Parks",
-          "golfCourses": "Golf Courses",
-          "stateParksVision": "State Parks",
-          "greenways7": "Greenways - 7",
-          "greenways8": "Greenways - 8",
-          "greenways9": "Greenways - 9",
-          "greenways10": "Greenways - 10",
-          "greenways11": "Greenways - 11",
-          "greenways12": "Greenways - 12",
-          "greenways13": "Greenways - 13",
-          "greenways14": "Greenways - 14",
-          "greenways15": "Greenways - 15"
+          "MunicipalitiesLabels": "MunicipalitiesLabels",
+          "GeneralPOI": "GeneralPOI",
+          "HigherEd": "HigherEd",
+          "MedicalFacilities": "MedicalFacilities",
+          "Airports": "Airports",
+          "CommuterRStations": "CRTStations",
+          "LightRStations": "LRTStations",
+          "BRTStations": "BRTStations",
+          "Interchanges": "Interchanges",
+          "CommuterR": "CommuterR",
+          "FixedGuideway": "FixedGuideway",
+          "RegionalBus": "RegionalBus",
+          "Gondola": "Gondola",
+          "CorridorPres": "CorridorPres",
+          "HwyFwy": "HwyFwy",
+          "PrincipalArterials": "PrincipalArterials",
+          "MinorArterials": "MinorArterials",
+          "Collectors": "Collectors",
+          "BikePed": "BikePed",
+          "Centers": "Centers",
+          "OtherRegionalLandUse": "SpecialDistricts",
+          "OpenSpace": "OpenSpace",
+          "Greenways": "Greenways",
+          "ParksAndOther": "ParksandOther"
         },
         "checkboxes": {
           "roads": {
             "label": "trans:filterVision.roads",
-            "layerNames": [
-              "udotLRSOutliers8",
-              "udotLRSOutliers9",
-              "udotLRSOutliers10",
-              "udotLRSOutliers11",
-              "udotLRSOutliers12",
-              "udotLRSOutliers13",
-              "udotLRSOutliers14",
-              "udotLRSOutliers15",
-              "udotExpPAExisting8",
-              "udotExpPAExisting9",
-              "udotExpPAExisting10",
-              "udotExpPAExisting11",
-              "udotExpPAExisting12",
-              "udotExpPAExisting13",
-              "udotExpPAExisting14",
-              "udotExpPAExisting15",
-              "rtpExpPANew8",
-              "rtpExpPANew9",
-              "rtpExpPANew10",
-              "rtpExpPANew11",
-              "rtpExpPANew12",
-              "rtpExpPANew13",
-              "rtpExpPANew14",
-              "rtpExpPANew15",
-              "utahLakeBridge8",
-              "utahLakeBridge9",
-              "utahLakeBridge10",
-              "utahLakeBridge11",
-              "utahLakeBridge12",
-              "utahLakeBridge13",
-              "utahLakeBridge14",
-              "utahLakeBridge15",
-              "freeways8",
-              "freeways9",
-              "freeways10",
-              "freeways11",
-              "freeways12",
-              "freeways13",
-              "freeways14",
-              "freeways15",
-              "interchangesCurrent10",
-              "interchangesCurrent11",
-              "interchangesCurrent12",
-              "interchangesCurrent13",
-              "interchangesCurrent14",
-              "interchangesCurrent15",
-              "interchangesFuture10",
-              "interchangesFuture11",
-              "interchangesFuture12",
-              "interchangesFuture13",
-              "interchangesFuture14",
-              "interchangesFuture15"
-            ],
-            "symbol": "dynamic",
-            "symbolLayerIds": ["65-0,19", "65-1", "103"],
-            "symbolLabels": ["Interstates", "State Freeways", "Arterials"]
+            "layerNames": ["HwyFwy", "PrincipalArterials", "MinorArterials", "Collectors", "Interchanges"],
+            "symbol": "simple",
+            "symbolLayerNames": ["HwyFwy", "MinorArterials", "Interchanges"]
           },
           "transit": {
             "label": "trans:filterVision.transit",
             "layerNames": [
-              "pcCoreBus8",
-              "pcCoreBus9",
-              "pcCoreBus10",
-              "pcCoreBus11",
-              "pcCoreBus12",
-              "pcCoreBus13",
-              "pcCoreBus14",
-              "pcCoreBus15",
-              "udotLRSCoreBus8",
-              "udotLRSCoreBus9",
-              "udotLRSCoreBus10",
-              "udotLRSCoreBus11",
-              "udotLRSCoreBus12",
-              "udotLRSCoreBus13",
-              "udotLRSCoreBus14",
-              "udotLRSCoreBus15",
-              "majorLocalRoadsFedAidCoreBus8",
-              "majorLocalRoadsFedAidCoreBus9",
-              "majorLocalRoadsFedAidCoreBus10",
-              "majorLocalRoadsFedAidCoreBus11",
-              "majorLocalRoadsFedAidCoreBus12",
-              "majorLocalRoadsFedAidCoreBus13",
-              "majorLocalRoadsFedAidCoreBus14",
-              "majorLocalRoadsFedAidCoreBus15",
-              "commuterRail8",
-              "commuterRail9",
-              "commuterRail10",
-              "commuterRail11",
-              "commuterRail12",
-              "commuterRail13",
-              "commuterRail14",
-              "commuterRail15",
-              "lightRail8",
-              "lightRail9",
-              "lightRail10",
-              "lightRail11",
-              "lightRail12",
-              "lightRail13",
-              "lightRail14",
-              "lightRail15",
-              "busRapidTransit8",
-              "busRapidTransit9",
-              "busRapidTransit10",
-              "busRapidTransit11",
-              "busRapidTransit12",
-              "busRapidTransit13",
-              "busRapidTransit14",
-              "busRapidTransit15",
-              "commuterRailStation10",
-              "commuterRailStation11",
-              "commuterRailStation12",
-              "commuterRailStation13",
-              "commuterRailStation14",
-              "commuterRailStation15",
-              "lightRailStations10",
-              "lightRailStations11",
-              "lightRailStations12",
-              "lightRailStations13",
-              "lightRailStations14",
-              "lightRailStations15",
-              "busRapidTransitStations10",
-              "busRapidTransitStations11",
-              "busRapidTransitStations12",
-              "busRapidTransitStations13",
-              "busRapidTransitStations14",
-              "busRapidTransitStations15"
+              "CommuterRStations",
+              "LightRStations",
+              "BRTStations",
+              "CommuterR",
+              "FixedGuideway",
+              "RegionalBus",
+              "Gondola",
+              "CorridorPres"
             ],
-            "symbol": "dynamic",
-            "symbolLayerIds": ["33,1", "41,7", "49,13"],
-            "symbolLabels": ["Commuter Rail", "Light Rail or BRT", "Bus Rapid Transit / Bus"]
+            "symbol": "simple",
+            "symbolLayerNames": ["CommuterRStations", "LightRStations", "BRTStations", "CommuterR", "FixedGuideway"]
           },
           "bikePed": {
             "label": "trans:filterVision.bikePed",
-            "layerNames": [
-              "majorTrails10",
-              "majorTrails11",
-              "majorTrails12",
-              "majorTrails13",
-              "majorTrails14",
-              "majorTrails15"
-            ],
-            "symbol": "dynamic",
-            "symbolLayerIds": ["72-2", "72-1", "72-0"],
-            "symbolLabels": ["On Street", "Off Street", "Bonneville Shoreline Trail"]
+            "layerNames": ["BikePed"],
+            "symbol": "simple"
           },
           "centers": {
             "label": "trans:filterVision.centers",
-            "layerNames": [
-              "centers8",
-              "centers9",
-              "centers10",
-              "centers11",
-              "centers12",
-              "centers13",
-              "centers14",
-              "centers15"
-            ],
+            "layerNames": ["Centers"],
             "symbol": "classes",
             "staticColors": [
               {
                 "label": "Metropolitan Center",
-                "hsa": "rgba(235, 100, 33, 0.75)"
+                "hsa": "rgba(166, 41, 102, 0.75)"
               },
               {
                 "label": "Urban Center",
-                "hsa": "rgba(230, 144, 46, 0.75)"
+                "hsa": "rgba(230, 89, 55, 0.75)"
               },
               {
                 "label": "City Center",
-                "hsa": "rgba(255, 183, 38, 0.75)"
+                "hsa": "rgba(242, 160, 62, 0.75)"
               },
               {
                 "label": "Neighborhood Center",
-                "hsa": "rgba(255, 255, 0, 0.75)"
+                "hsa": "rgba(248, 220, 38, 0.75)"
               }
             ]
           },
           "generalLandUse": {
             "label": "trans:filterVision.generalLandUse",
-            "layerNames": [
-              "generalLandUse8",
-              "generalLandUse9",
-              "generalLandUse10",
-              "generalLandUse11",
-              "generalLandUse12",
-              "generalLandUse13",
-              "generalLandUse14",
-              "generalLandUse15"
-            ],
+            "layerNames": ["OtherRegionalLandUse"],
             "symbol": "classes",
             "staticColors": [
               {
                 "label": "Educational Center",
-                "hsa": "rgba(247, 176, 176, 0.75)"
+                "hsa": "rgba(186, 218, 215, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "rgba(215, 158, 158, 0.75)"
+                "hsa": "rgba(244, 201, 205, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "rgba(197, 0, 255, 0.25)"
+                "hsa": "rgba(222, 210, 232, 0.25)"
               },
               {
                 "label": "Special District",
@@ -376,33 +108,20 @@
           },
           "openSpace": {
             "label": "trans:filterVision.openSpace",
-            "layerNames": [
-              "localParks",
-              "golfCourses",
-              "stateParksVision",
-              "greenways7",
-              "greenways8",
-              "greenways9",
-              "greenways10",
-              "greenways11",
-              "greenways12",
-              "greenways13",
-              "greenways14",
-              "greenways15"
-            ],
+            "layerNames": ["OpenSpace", "Greenways", "ParksAndOther"],
             "symbol": "classes",
             "staticColors": [
               {
-                "label": "Parks / Golf Courses",
-                "hsa": "rgba(143, 179, 61, 0.85)"
+                "label": "Parks / Golf Courses / Cemeteries",
+                "hsa": "rgba(138, 164, 112, 0.85)"
               },
               {
-                "label": "State Parks",
-                "hsa": "rgba(150, 179, 89, 0.4)"
+                "label": "Open Space",
+                "hsa": "rgba(160, 187, 147, 0.4)"
               },
               {
                 "label": "Greenways",
-                "hsa": "rgba(156, 176, 114, 0.35)"
+                "hsa": "rgba(94, 144, 74, 0.35)"
               }
             ]
           }
@@ -432,15 +151,13 @@
           "phaseLayers": ["pointsByPhase", "linesByPhase"]
         },
         "layerNames": {
-          "existingTransitStations": "Test Existing Transit Stations",
           "pointsByMode": "Points Displayed by Mode",
           "linesByMode": "Lines Displayed by Mode",
           "pointsByPhase": "Points Displayed by Phase",
           "linesByPhase": "Lines Displayed by Phase",
-          "existingTransitLines": "Test Existing Transit Lines",
-          "existingBike": "Test Existing Bike Network",
-          "centers": "Test Centers",
-          "generalLandUse": "Regionally Significant Centers and Land Use (2019-2050 RTP) - LandUse"
+          "existingBike": "Existing Bike Network",
+          "centers": "Centers",
+          "generalLandUse": "OtherRegionalLandUse"
         },
         "phases": {
           "pointsByMode": ["phase", 1, 2, 3, 4],
@@ -504,22 +221,55 @@
           },
           "centers": {
             "label": "trans:filterTransportation.centers",
-            "layerNames": ["centers"],
-            "symbol": "classes"
+            "layerNames": ["Centers"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
           },
           "generalLandUse": {
             "label": "trans:filterTransportation.generalLandUse",
             "layerNames": ["generalLandUse"],
-            "symbol": "classes"
+
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Educational Center",
+                "hsa": "rgba(186, 218, 215, 0.75)"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "rgba(244, 201, 205, 0.75)"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "rgba(222, 210, 232, 0.25)"
+              },
+              {
+                "label": "Special District",
+                "hsa": "rgba(78, 78, 78, 0.25)"
+              }
+            ]
           },
+
           "existingBikePed": {
             "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike"],
-            "symbol": "simple"
-          },
-          "existingTransit": {
-            "label": "trans:filterTransportation.existingTransit",
-            "layerNames": ["existingTransitLines", "existingTransitStations"],
             "symbol": "simple"
           }
         },
@@ -530,90 +280,154 @@
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": ["centers", "generalLandUse", "existingBikePed", "existingTransit"]
+            "checkboxes": ["centers", "generalLandUse", "existingBikePed"]
           }
         ]
       }
     },
     "landuse": {
       "name": "trans:mapTitleLandUse",
-      "webMapId": "3eb707055b2148b6967e793de770395c",
+      "webMapId": "8ee3664a9ff942d2a51f03621c3ffe9c",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "futureLandUse": "Generalized Future Land Use",
-          "centers": "Centers",
-          "magCenters": "MAG Centers",
-          "generalLandUse": "General Land Use",
-          "magGeneralLandUse": "MAG General Land Use",
-          "greenSpace": "Green Space"
+          "FutureLandUse": "Generalized Future Land Use",
+          "Centers": "Centers",
+          "OtherRegionalLandUse": "OtherRegionalLandUse",
+          "ParksAndOther": "ParksAndOther",
+          "OpenSpace": "OpenSpace",
+          "Greenways": "Greenways"
         },
         "checkboxes": {
           "futureLandUse": {
             "label": "trans:filterLandUse.generalizedFutureLandUse",
-            "layerNames": ["futureLandUse"],
+            "layerNames": ["FutureLandUse"],
             "symbol": "classes",
             "offByDefault": true
           },
+
           "centers": {
             "label": "trans:filterLandUse.centers",
-            "layerNames": ["centers", "magCenters"],
-            "symbol": "classes"
+            "layerNames": ["Centers"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
           },
           "generalLandUse": {
             "label": "trans:filterLandUse.generalLandUse",
-            "layerNames": ["generalLandUse", "magGeneralLandUse"],
-            "symbol": "classes"
+            "layerNames": ["OtherRegionalLandUse"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Educational Center",
+                "hsa": "rgba(186, 218, 215, 0.75)"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "rgba(244, 201, 205, 0.75)"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "rgba(222, 210, 232, 0.25)"
+              },
+              {
+                "label": "Special District",
+                "hsa": "rgba(78, 78, 78, 0.25)"
+              }
+            ]
           },
-          "greenSpace": {
-            "label": "trans:filterLandUse.greenSpace",
-            "layerNames": ["greenSpace"],
-            "symbol": "classes"
+          "openSpace": {
+            "label": "trans:filterLandUse.openSpace",
+            "layerNames": ["OpenSpace", "Greenways", "ParksAndOther"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Parks / Golf Courses / Cemeteries",
+                "hsa": "rgba(138, 164, 112, 0.85)"
+              },
+              {
+                "label": "Open Space",
+                "hsa": "rgba(160, 187, 147, 0.4)"
+              },
+              {
+                "label": "Greenways",
+                "hsa": "rgba(94, 144, 74, 0.35)"
+              }
+            ]
           }
         }
       }
     },
     "econdev": {
       "name": "trans:mapTitleEconDev",
-      "webMapId": "955ef6d3d9ff4a60bb68a24a4de013bc",
+      "webMapId": "2603a51d9a30487ba178fd281d7d5fe3",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
           "opportunityZones": "Opportunity Zones",
           "centers": "Centers",
-          "magCenters": "MAG Centers",
-          "generalLandUse": "General Land Use",
-          "magGeneralLandUse": "MAG General Land Use",
-          "economicClusters": "Economic Clusters",
+          "otherRegionalLandUse": "OtherRegionalLandUse",
+          "economicClustersAero": "Aerospace & Defense",
+          "economicClustersEnergy": "Energy",
+          "economicClustersFinance": "Financial Services",
+          "economicClustersLife": "Life Sciences",
+          "economicClustersRec": "Outdoor Products & Recreation",
+          "economicClustersIT": "Software & IT",
           "cdasRdas": "CDAs and RDAs",
           "todSites": "TOD Sites"
         },
         "checkboxes": {
-          "economicClusters": {
-            "label": "trans:filterEconDev.economicClusters",
-            "layerNames": ["economicClusters"],
-            "symbol": "static",
-            "symbolImageFile": "StaticLegend.png",
-            "staticColors": [
-              {
-                "hsa": "rgba(0, 112, 255, 0.5)"
-              },
-              {
-                "hsa": "rgba(255, 0, 0, 0.5)"
-              },
-              {
-                "hsa": "rgba(197, 0, 255, 0.5)"
-              },
-              {
-                "hsa": "rgba(85, 255, 0, 0.5)"
-              },
-              {
-                "hsa": "rgba(255, 170, 0, 0.5)"
-              },
-              {
-                "hsa": "rgba(255, 255, 0, 0.5)"
-              }
-            ]
+          "economicClustersAero": {
+            "label": "trans:filterEconDev.economicClustersAero",
+            "layerNames": ["economicClustersAero"],
+            "symbol": "simple",
+            "symbolLayerIds": ["2-4"]
+          },
+          "economicClustersEnergy": {
+            "label": "trans:filterEconDev.economicClustersEnergy",
+            "layerNames": ["economicClustersEnergy"],
+            "symbol": "simple",
+            "symbolLayerIds": ["3-3"]
+          },
+          "economicClustersFinance": {
+            "label": "trans:filterEconDev.economicClustersFinance",
+            "layerNames": ["economicClustersFinance"],
+            "symbol": "simple",
+            "symbolLayerIds": ["4-4"]
+          },
+          "economicClustersLife": {
+            "label": "trans:filterEconDev.economicClustersLife",
+            "layerNames": ["economicClustersLife"],
+            "symbol": "simple",
+            "symbolLayerIds": ["5-4"]
+          },
+          "economicClustersRec": {
+            "label": "trans:filterEconDev.economicClustersRec",
+            "layerNames": ["economicClustersRec"],
+            "symbol": "simple",
+            "symbolLayerIds": ["6-3"]
+          },
+          "economicClustersIT": {
+            "label": "trans:filterEconDev.economicClustersIT",
+            "layerNames": ["economicClustersIT"],
+            "symbol": "simple",
+            "symbolLayerIds": ["7-4"]
           },
           "todSites": {
             "label": "trans:filterEconDev.todSites",
@@ -632,15 +446,68 @@
           },
           "centers": {
             "label": "trans:filterEconDev.centers",
-            "layerNames": ["centers", "magCenters"],
-            "symbol": "classes"
+            "layerNames": ["centers"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
           },
           "generalLandUse": {
             "label": "trans:filterEconDev.generalLandUse",
-            "layerNames": ["generalLandUse", "magGeneralLandUse"],
-            "symbol": "classes"
+            "layerNames": ["otherRegionalLandUse"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Educational Center",
+                "hsa": "rgba(186, 218, 215, 0.75)"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "rgba(244, 201, 205, 0.75)"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "rgba(222, 210, 232, 0.25)"
+              },
+              {
+                "label": "Special District",
+                "hsa": "rgba(78, 78, 78, 0.25)"
+              }
+            ]
           }
-        }
+        },
+        "groups": [
+          {
+            "label": "trans:filterEconDev.economicClusters",
+            "checkboxes": [
+              "economicClustersAero",
+              "economicClustersEnergy",
+              "economicClustersFinance",
+              "economicClustersLife",
+              "economicClustersRec",
+              "economicClustersIT"
+            ]
+          },
+          {
+            "label": "trans:filterEconDev.economicClustersOther",
+            "checkboxes": ["todSites", "cdasRdas", "opportunityZones", "centers", "generalLandUse"]
+          }
+        ]
       }
     },
     "recreation": {
@@ -1069,9 +936,9 @@
       "translation": {
         "mapTitleVision": "Vision",
         "mapTitleTransportation": "Transportation",
-        "mapTitleLandUse": "Land Use",
-        "mapTitleEconDev": "Economic Development",
-        "mapTitleRecreation": "Recreation",
+        "mapTitleLandUse": "Centers & Land Uses",
+        "mapTitleEconDev": "Economic Opportunities",
+        "mapTitleRecreation": "Parks & Public Spaces",
         "mapTitleATO": "Access to Opportunities",
         "mapTitleTIP": "TIP Projects",
         "mapTitleTLC": "TLC Projects",
@@ -1099,7 +966,7 @@
           "bikePed": "Bike/Ped",
           "landUse": "Land Use",
           "centers": "Centers",
-          "generalLandUse": "General Land Use",
+          "generalLandUse": "Other Land Uses",
           "openSpace": "Open Space"
         },
         "filterTransportation": {
@@ -1108,8 +975,7 @@
           "colorBy": "Color By",
           "existingBikePed": "Existing Bike/Ped",
           "existingTransit": "Existing Transit",
-          "generalLandUse": "General Land Use",
-          "landUse": "Land Use",
+          "generalLandUse": "Other Land Uses",
           "mode": "Mode",
           "other": "Other",
           "phase": "Phase",
@@ -1124,16 +990,24 @@
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
           "centers": "Centers",
-          "generalLandUse": "General Land Use",
-          "greenSpace": "Green Space"
+          "generalLandUse": "Other Land Uses",
+          "greenSpace": "Green Space",
+          "openSpace": "Open Space"
         },
         "filterEconDev": {
           "economicClusters": "Economic Clusters",
+          "economicClustersOther": "Other Economic Layers",
+          "economicClustersAero": "Aerospace & Defence",
+          "economicClustersEnergy": "Energy",
+          "economicClustersFinance": "Financial Services",
+          "economicClustersLife": "Life Sciences",
+          "economicClustersRec": "Outdoor Recreation",
+          "economicClustersIT": "Software / IT",
           "todSites": "TOD Sites",
           "cdasrdas": "CDAs and RDAs",
           "opportunityZones": "Opportunity Zones",
           "centers": "Centers",
-          "generalLandUse": "General Land Use"
+          "generalLandUse": "Other Land Uses"
         },
         "filterRecreation": {
           "communityCenters": "Community Centers",
@@ -1256,10 +1130,18 @@
           "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
           "centers": "Centros",
           "generalLandUse": "Uso General de la Tierra",
-          "greenSpace": "Espacio Verde"
+          "greenSpace": "Espacio Verde",
+          "openSpace": "Espacio Abierto"
         },
         "filterEconDev": {
-          "economicClusters": "Clústers Económico",
+          "economicClusters": "Economic Clusters",
+          "economicClustersOther": "Other Economic Layers",
+          "economicClustersAero": "Aerospace & Defence",
+          "economicClustersEnergy": "Energy",
+          "economicClustersFinance": "Financial Services",
+          "economicClustersLife": "Life Sciences",
+          "economicClustersRec": "Outdoor Recreation",
+          "economicClustersIT": "Software / IT",
           "todSites": "Sitios TOD",
           "cdasrdas": "CDAs y RDAs",
           "opportunityZones": "Zonas de Oportunidad",
