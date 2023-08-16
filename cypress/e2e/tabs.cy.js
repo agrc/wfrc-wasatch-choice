@@ -9,7 +9,7 @@ describe('tabs', () => {
 
     cy.getMapExtent().as('originalExtent');
 
-    cy.findByLabelText('Land Use Tab').click();
+    cy.findByLabelText('Centers & Land Uses Tab').click();
 
     cy.get('@originalExtent').then((originalExtent) => {
       cy.getMapExtent().should('equal', originalExtent);
@@ -35,7 +35,7 @@ describe('tabs', () => {
       console.log('originalVisibleLayers', originalVisibleLayers);
     });
 
-    cy.findByLabelText('Land Use Tab').click();
+    cy.findByLabelText('Centers & Land Uses Tab').click();
 
     cy.waitForMapLoaded();
 
@@ -63,10 +63,10 @@ describe('tabs', () => {
   it('drag and drop to rearrange tabs', () => {
     cy.loadApp();
 
-    cy.findByLabelText('Land Use Tab').mouseMoveBy(-400, 0);
+    cy.findByLabelText('Centers & Land Uses Tab').mouseMoveBy(-400, 0);
     cy.findByLabelText('Transportation Tab').mouseMoveBy(400, 0);
 
-    cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Land Use');
+    cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Centers & Land Uses');
     cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Transportation');
 
     // assert that URL was updated
