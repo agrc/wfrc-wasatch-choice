@@ -147,10 +147,14 @@
           "label": "trans:filterTransportation.colorBy",
           "mode": "trans:filterTransportation.mode",
           "phase": "trans:filterTransportation.phase",
-          "modeLayers": ["pointsByMode", "linesByMode"],
-          "phaseLayers": ["pointsByPhase", "linesByPhase"]
+          "modeLayers": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
+          "phaseLayers": ["pointsByPhase", "linesByPhase", "pointsByPhaseMAG", "linesByPhaseMAG"]
         },
         "layerNames": {
+          "pointsByModeMAG": "MAG RTP Project Points By Mode",
+          "linesByModeMAG": "MAG RTP Project Lines By Mode",
+          "pointsByPhaseMAG": "MAG RTP Project Points By Phase",
+          "linesByPhaseMAG": "MAG RTP Project Lines By Phase",
           "pointsByMode": "Points Displayed by Mode",
           "linesByMode": "Lines Displayed by Mode",
           "pointsByPhase": "Points Displayed by Phase",
@@ -164,6 +168,10 @@
           "linesByMode": ["phase", 1, 2, 3, 4],
           "pointsByPhase": ["phase", 1, 2, 3, 4],
           "linesByPhase": ["phase", 1, 2, 3, 4],
+          "pointsByModeMAG": ["phase", "1", "2", "3", "Unfunded"],
+          "linesByModeMAG": ["phase", "1", "2", "3", "Unfunded"],
+          "pointsByPhaseMAG": ["phase", "1", "2", "3", "Unfunded"],
+          "linesByPhaseMAG": ["phase", "1", "2", "3", "Unfunded"],
           "centers": ["Phase", 1, 2, 3, 4],
           "generalLandUse": ["Phase", 1, 2, 3, 4]
         },
@@ -171,26 +179,30 @@
           "pointsByMode": ["mode", "Highway", "Transit", "Active Transportation"],
           "linesByMode": ["mode", "Highway", "Transit", "Active Transportation"],
           "pointsByPhase": ["mode", "Highway", "Transit", "Active Transportation"],
-          "linesByPhase": ["mode", "Highway", "Transit", "Active Transportation"]
+          "linesByPhase": ["mode", "Highway", "Transit", "Active Transportation"],
+          "pointsByModeMAG": ["mode", "Highway", "Transit", "Active Transportation"],
+          "linesByModeMAG": ["mode", "Highway", "Transit", "Active Transportation"],
+          "pointsByPhaseMAG": ["mode", "Highway", "Transit", "Active Transportation"],
+          "linesByPhaseMAG": ["mode", "Highway", "Transit", "Active Transportation"]
         },
         "checkboxes": {
           "roads": {
             "label": "trans:filterTransportation.roads",
-            "layerNames": ["pointsByMode", "linesByMode"],
+            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
             "mode": 0,
             "symbol": "swatch",
             "color": "rgb(137, 4, 5)"
           },
           "transit": {
             "label": "trans:filterTransportation.transit",
-            "layerNames": ["pointsByMode", "linesByMode"],
+            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
             "mode": 1,
             "symbol": "swatch",
             "color": "rgb(5, 75, 164)"
           },
           "bikePed": {
             "label": "trans:filterTransportation.bikePed",
-            "layerNames": ["pointsByMode", "linesByMode"],
+            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
             "mode": 2,
             "symbol": "swatch",
             "color": "rgb(65, 159, 21)"
@@ -305,8 +317,7 @@
             "symbol": "classes",
             "offByDefault": true
           },
-
-          "centers": {
+          "centersLabels": {
             "label": "trans:filterLandUse.centers",
             "layerNames": ["Centers"],
             "symbol": "classes",
@@ -512,24 +523,25 @@
     },
     "recreation": {
       "name": "trans:mapTitleRecreation",
-      "webMapId": "dfb321a9fec3435f8e7398ee8b123f80",
+      "webMapId": "3d1e652a75e44971a71aae3ff21516e0",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "communityCenters": "Community Centers",
+          "recCenters": "Recreation Centers",
           "trailheads": "Trailheads",
           "trails": "Trails",
-          "parks": "Parks",
+          "localParksGolf": "Local Parks and Golf Courses",
+          "centers": "Centers",
+          "greenWays": "Greenways",
+          "openSpaces": "Open Spaces",
           "stateParks": "State Parks",
           "federalLands": "Federal Lands",
-          "golfCourses": "Golf Courses",
-          "skiAreas": "Ski Areas",
-          "greenSpace": "Green Space"
+          "industrial": "Industrial Exclusions"
         },
         "checkboxes": {
-          "communityCenters": {
-            "label": "trans:filterRecreation.communityCenters",
-            "layerNames": ["communityCenters"],
+          "recCenters": {
+            "label": "trans:filterRecreation.recCenters",
+            "layerNames": ["recCenters"],
             "symbol": "simple"
           },
           "trails": {
@@ -537,30 +549,56 @@
             "layerNames": ["trailheads", "trails"],
             "symbol": "simple"
           },
-          "parks": {
-            "label": "trans:filterRecreation.parks",
-            "layerNames": ["parks", "stateParks"],
+          "localParksGolf": {
+            "label": "trans:filterRecreation.parksGolf",
+            "layerNames": ["localParksGolf", "stateParks"],
+            "symbol": "simple"
+          },
+          "greenWays": {
+            "label": "trans:filterRecreation.greenWays",
+            "layerNames": ["greenWays"],
+            "symbol": "simple"
+          },
+          "openSpaces": {
+            "label": "trans:filterRecreation.openSpace",
+            "layerNames": ["openSpaces"],
             "symbol": "simple"
           },
           "federalLands": {
             "label": "trans:filterRecreation.federalLands",
             "layerNames": ["federalLands"],
-            "symbol": "simple"
+            "symbol": "simple",
+            "offByDefault": true
           },
-          "golfCourses": {
-            "label": "trans:filterRecreation.golfCourses",
-            "layerNames": ["golfCourses"],
-            "symbol": "simple"
+          "centers": {
+            "label": "trans:filterEconDev.centers",
+            "layerNames": ["centers"],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
           },
-          "skiAreas": {
-            "label": "trans:filterRecreation.skiAreas",
-            "layerNames": ["skiAreas"],
-            "symbol": "simple"
-          },
-          "greenSpace": {
-            "label": "trans:filterRecreation.greenSpace",
-            "layerNames": ["greenSpace"],
-            "symbol": "classes"
+          "industrial": {
+            "label": "trans:filterRecreation.industrial",
+            "layerNames": ["industrial"],
+            "symbol": "simple",
+            "offByDefault": true
           }
         }
       }
@@ -990,6 +1028,7 @@
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
           "centers": "Centers",
+          "centerLabels": "Center Labels",
           "generalLandUse": "Other Land Uses",
           "greenSpace": "Green Space",
           "openSpace": "Open Space"
@@ -997,7 +1036,7 @@
         "filterEconDev": {
           "economicClusters": "Economic Clusters",
           "economicClustersOther": "Other Economic Layers",
-          "economicClustersAero": "Aerospace & Defence",
+          "economicClustersAero": "Aerospace & Defense",
           "economicClustersEnergy": "Energy",
           "economicClustersFinance": "Financial Services",
           "economicClustersLife": "Life Sciences",
@@ -1010,13 +1049,15 @@
           "generalLandUse": "Other Land Uses"
         },
         "filterRecreation": {
-          "communityCenters": "Community Centers",
-          "trails": "Trails",
+          "recCenters": "Recreation Centers",
+          "trails": "Trails & Trailheads",
           "parks": "Parks",
-          "federalLands": "Federal Lands",
-          "golfCourses": "Golf Courses",
+          "federalLands": "USFS Lands",
+          "parksGolf": "Parks, Golf Courses",
           "skiAreas": "Ski Areas",
-          "greenSpace": "Green Space"
+          "greenWays": "Greenways",
+          "industrial": "Industrial Exclusions",
+          "openSpace": "Other Open Space"
         },
         "filterATO": {
           "equity": "Equity Focus Areas",
@@ -1128,6 +1169,7 @@
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
+          "centerLabels": "Center Labels",
           "centers": "Centros",
           "generalLandUse": "Uso General de la Tierra",
           "greenSpace": "Espacio Verde",
@@ -1136,7 +1178,7 @@
         "filterEconDev": {
           "economicClusters": "Economic Clusters",
           "economicClustersOther": "Other Economic Layers",
-          "economicClustersAero": "Aerospace & Defence",
+          "economicClustersAero": "Aerospace & Defense",
           "economicClustersEnergy": "Energy",
           "economicClustersFinance": "Financial Services",
           "economicClustersLife": "Life Sciences",
@@ -1149,13 +1191,16 @@
           "generalLandUse": "Uso General de la Tierra"
         },
         "filterRecreation": {
-          "communityCenters": "Centros Comunitarios",
+          "recCenters": "Centros Recreación",
           "trails": "Senderos",
           "parks": "Parques",
           "federalLands": "Tierras Federales",
-          "golfCourses": "Campos de Golf",
+          "parksGolf": "Parques y Golf",
           "skiAreas": "Áreas de Esquí",
-          "greenSpace": "Espacio Verde"
+          "greenSpace": "Espacio Verde",
+          "greenWays": "Greenways",
+          "industrial": "Industrial Exclusions",
+          "openSpace": "Other Open Space"
         },
         "filterATO": {
           "equity": "Áreas de Enfoque de Equidad",
