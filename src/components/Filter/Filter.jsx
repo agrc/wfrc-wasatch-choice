@@ -342,6 +342,9 @@ const RadioGroup = ({ checkboxConfigs, checkboxes, globalKey, label, layers, res
                   layerNames={checkboxConfig.layerNames}
                   layersLookup={layers}
                   imageFileName={checkboxConfig.symbolImageFile}
+                  symbolLayerIds={checkboxConfig.symbolLayerIds}
+                  symbolLayerNames={checkboxConfig.symbolLayerNames}
+                  symbolLabels={checkboxConfig.symbolLabels}
                 />
               )}
             </FormGroup>
@@ -519,6 +522,7 @@ function Child({
   symbolImageFile,
   symbolLabels,
   symbolLayerIds,
+  symbolLayerNames,
 }) {
   const [internalIsChecked, setInternalIsChecked] = useState(!offByDefault);
   const t = useSpecialTranslation();
@@ -569,6 +573,7 @@ function Child({
           layersLookup={layersLookup}
           color={color}
           symbolLayerIds={symbolLayerIds}
+          symbolLayerNames={symbolLayerNames}
           symbolLabels={symbolLabels}
           imageFileName={symbolImageFile}
           staticColors={staticColors}
@@ -582,6 +587,7 @@ Child.propTypes = {
   color: PropTypes.string,
   checked: PropTypes.bool,
   globalKey: PropTypes.string,
+  hideSymbol: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layerNames: PropTypes.arrayOf(PropTypes.string),
   layersLookup: PropTypes.object,
@@ -596,4 +602,5 @@ Child.propTypes = {
   symbolImageFile: PropTypes.string,
   symbolLabels: PropTypes.arrayOf(PropTypes.string),
   symbolLayerIds: PropTypes.arrayOf(PropTypes.string),
+  symbolLayerNames: PropTypes.arrayOf(PropTypes.string),
 };

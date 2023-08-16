@@ -11,8 +11,8 @@ const getBackgroundColor = (color) => {
   return color.hsa || `rgb(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 };
 
-export const getSymbolFromInfos = (symbolInfos) => {
-  const symbol = symbolInfos[0].symbol;
+export const getSymbolFromInfos = (symbolInfos, classIndex) => {
+  const symbol = symbolInfos[classIndex ?? 0].symbol;
 
   if (!symbol) {
     console.error(`No symbol was found in: ${JSON.stringify(symbolInfos, null, 2)}`);
@@ -28,6 +28,7 @@ export const Simple = (props) => {
     const getSymbol = async () => {
       console.log('Simple:getSymbol');
 
+      // get all symbols
       const layer = props.layersLookup[props.layerNames[0]];
       if (!layer) {
         // most likely layersLookup has layers from the last map and needs to update
@@ -36,13 +37,21 @@ export const Simple = (props) => {
         return;
       }
       const newSymbols = await Promise.all(
-        props.layerNames.map((layerName) => {
-          const layer = props.layersLookup[layerName];
+        props.layerNames
+          .filter((layerName) => (props.symbolLayerNames ? props.symbolLayerNames.includes(layerName) : true))
+          .map(async (layerName) => {
+            const layer = props.layersLookup[layerName];
 
-          const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos);
+            const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos);
 
-          return renderPreviewHTML(symbol, { opacity: layer.opacity });
-        }),
+            const preview = await renderPreviewHTML(symbol, {
+              opacity: layer.opacity,
+              scale: false,
+              size: { width: 20 },
+            });
+
+            return preview.outerHTML;
+          }),
       );
 
       // prevent this from being called after the component has been unmounted
@@ -53,12 +62,12 @@ export const Simple = (props) => {
     getSymbol();
 
     return () => (mounted = false);
-  }, [props.layerNames, props.layersLookup]);
+  }, [props.layerNames, props.layersLookup, props.symbolLayerNames]);
 
   return (
     <div className="simple-symbol-container symbol-container">
       {symbols.map((symbol, index) => (
-        <div key={index} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.outerHTML }}></div>
+        <div key={index} className="symbol" dangerouslySetInnerHTML={{ __html: symbol }}></div>
       ))}
     </div>
   );
@@ -67,6 +76,8 @@ export const Simple = (props) => {
 Simple.propTypes = {
   layersLookup: PropTypes.object.isRequired,
   layerNames: PropTypes.array.isRequired,
+  symbolLayerNames: PropTypes.array,
+  symbolLabels: PropTypes.array,
 };
 
 export const Classes = (props) => {
@@ -98,7 +109,7 @@ export const Classes = (props) => {
 
     const infos = layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
     if (!infos) {
-      new Error(
+      throw new Error(
         `Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`,
       );
     }
