@@ -21,10 +21,8 @@ $symbolWidth: 41px;
 }
 
 .simple-symbol-container {
-  width: $symbolWidth;
   margin-left: 10px;
   .symbol {
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
