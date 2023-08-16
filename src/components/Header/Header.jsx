@@ -5,10 +5,11 @@ import { useWindowWidth } from '../../hooks';
 import { useSpecialTranslation } from '../../i18n';
 import Tabs from '../Tabs/Tabs';
 import './Header.scss';
-import logoSmall from './logo-small.jpg';
+import logoSmall from './logo-small.png';
 import logo from './logo.png';
+import PropTypes from 'prop-types';
 
-export default (props) => {
+export default function Header(props) {
   const tabsContainer = React.useRef();
   const logoContainer = React.useRef();
   const t = useSpecialTranslation();
@@ -35,9 +36,13 @@ export default (props) => {
         <img
           src={useLargeLogo ? logo : logoSmall}
           className={useLargeLogo ? null : 'heading__img__small'}
-          alt="agrc logo"
+          alt="Wasatch Choice Vision Logo"
         />
       </a>
     </div>
   );
+}
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
 };
