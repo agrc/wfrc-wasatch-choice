@@ -221,7 +221,7 @@
           },
           "centers": {
             "label": "trans:filterTransportation.centers",
-            "layerNames": ["Centers"],
+            "layerNames": ["centers"],
             "symbol": "classes",
             "staticColors": [
               {
