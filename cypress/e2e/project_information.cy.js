@@ -14,7 +14,7 @@ describe('project-information', () => {
 
     cy.get(':nth-child(1) > .title').click();
 
-    cy.findByRole('columnheader', { name: /name/i });
+    cy.get('.esri-feature-content').should('be.visible');
   });
 
   it('resets the scroll between map clicks', () => {
