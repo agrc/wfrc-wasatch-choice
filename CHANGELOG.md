@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.0-0...v5.1.0-1) (2023-08-16)
+
+
+### 🐛 Bug Fixes
+
+* fix error cause by layers with non-standard objectid fields in the project info widget ([4051c2c](https://github.com/agrc/wfrc-wasatch-choice/commit/4051c2c9ed4b140950f7d075ffe9397f6ef10397))
+
 ## [5.1.0-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.1...v5.1.0-0) (2023-08-16)
 
 
