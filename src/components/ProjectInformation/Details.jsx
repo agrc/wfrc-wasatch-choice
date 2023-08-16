@@ -18,6 +18,11 @@ export default function Details({ graphic, highlightGraphic }) {
       feature = new Feature({
         container: document.createElement('div'),
         graphic,
+
+        // required for arcade expressions in popup template
+        spatialReference: graphic.mapView.spatialReference,
+        map: graphic.mapView.map,
+
         visibleElements: {
           title: false,
         },
