@@ -217,14 +217,19 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
         window.getMapExtent = () => {
           return JSON.stringify(view.extent.toJSON());
         };
+
         window.getVisibleLayers = () => {
           return view.layerViews.items
-            .filter((view) => view.visible)
-            .map((view) =>
-              view.layer.allSublayers.items
-                .filter((subLayer) => subLayer.visible)
-                .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`),
-            )
+            .filter((layerView) => layerView.visible)
+            .map((layerView) => {
+              if (layerView.layer.allSublayers) {
+                return layerView.layer.allSublayers.items
+                  .filter((subLayer) => subLayer.visible)
+                  .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`);
+              } else {
+                return `${layerView.layer.title}-${layerView.layer.definitionExpression}`;
+              }
+            })
             .flat();
         };
       }
