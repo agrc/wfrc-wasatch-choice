@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.0.1...v5.1.0) (2023-08-16)
+
+
+### 🚀 Features
+
+* add arcade expression support to project information widget ([bf8e712](https://github.com/agrc/wfrc-wasatch-choice/commit/bf8e712ba176b5c6793e71ab0733bd63aa8d81a9)), closes [#49](https://github.com/agrc/wfrc-wasatch-choice/issues/49)
+* add support for multiple feature service symbols ([76dd080](https://github.com/agrc/wfrc-wasatch-choice/commit/76dd080ad5618bbb22e6fe7355cac37061b9c1ea))
+
+
+### 🐛 Bug Fixes
+
+* config and about updates from WFRC ([5bb66a8](https://github.com/agrc/wfrc-wasatch-choice/commit/5bb66a82034668adfba279b8f320a1a0ba591b70))
+* cypress test fixes ([7ad4bae](https://github.com/agrc/wfrc-wasatch-choice/commit/7ad4baec4fbc016486d9c68da8a1a5b8b31f0666))
+* fix error cause by layers with non-standard objectid fields in the project info widget ([7c89e75](https://github.com/agrc/wfrc-wasatch-choice/commit/7c89e75d5cf380fdddbeca5fad7dd4061f8b13e8))
+* layer name in config ([0855055](https://github.com/agrc/wfrc-wasatch-choice/commit/08550553baf76e8a6711ba4a5d2638224333baf0))
+* more layer name fixes in the config ([e3b7cfe](https://github.com/agrc/wfrc-wasatch-choice/commit/e3b7cfeefb229249133f0392893540000325d660))
+* prevent crash when switching tabs ([f5039b4](https://github.com/agrc/wfrc-wasatch-choice/commit/f5039b428a224211be8b94b70a9ae890e4836815))
+
 ## [5.1.0-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.0-0...v5.1.0-1) (2023-08-16)
 
 
