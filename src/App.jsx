@@ -106,7 +106,7 @@ export default function App() {
         .filter((hitResult) => !config.projectInformation.excludedLayers.includes(hitResult.graphic.layer.title))
         .map(async (hitResult) => {
           const results = await hitResult.graphic.layer.queryFeatures({
-            objectIds: [hitResult.graphic.attributes.OBJECTID],
+            objectIds: [hitResult.graphic.attributes[hitResult.graphic.layer.objectIdField]],
             returnGeometry: true,
             outFields: '*',
           });
