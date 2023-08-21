@@ -4,6 +4,7 @@ import { Alert } from 'reactstrap';
 import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
 import config from '../../config';
 import { useSpecialTranslation } from '../../i18n';
+import PropTypes from 'prop-types';
 
 export const getOptions = (mapInfos, t) => {
   const categories = {};
@@ -63,6 +64,13 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
       ) : null}
     </>
   );
+};
+
+TabPicker.propTypes = {
+  mapInfos: PropTypes.object.isRequired,
+  selectedIds: PropTypes.array.isRequired,
+  setSelectedIds: PropTypes.func.isRequired,
+  maxReached: PropTypes.bool,
 };
 
 export default TabPicker;

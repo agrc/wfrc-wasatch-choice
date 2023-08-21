@@ -493,6 +493,7 @@ Parent.propTypes = {
   allGroupConfigs: PropTypes.arrayOf(PropTypes.object).isRequired,
   checkboxConfigs: PropTypes.object.isRequired,
   checkboxes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  colorBy: PropTypes.string,
   filterByPhasing: PropTypes.bool,
   globalKey: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
