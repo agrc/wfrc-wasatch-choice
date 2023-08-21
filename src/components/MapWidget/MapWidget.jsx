@@ -5,11 +5,12 @@ import React, { createContext, useEffect, useRef, useState } from 'react';
 import { Button, Card, CardHeader } from 'reactstrap';
 import { useSpecialTranslation } from '../../i18n';
 import './MapWidget.scss';
+import PropTypes from 'prop-types';
 
 export const MapWidgetContext = createContext();
 
-export default (props) => {
-  const [isOpen, setIsOpen] = useState(props.defaultOpen);
+export default function MapWidget({ defaultOpen, position, mapView, name, icon, showReset, onReset, children }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const scrollBar = useRef();
   const scrollBarContainer = useRef();
   const t = useSpecialTranslation();
@@ -20,21 +21,21 @@ export default (props) => {
   const padding = '7px';
   const cardStyle = {
     display: isOpen ? 'flex' : 'none',
-    top: props.position === 0 ? padding : `calc(50% - ${padding})`,
-    bottom: props.position === 0 ? `calc(50% + 2 * ${padding})` : padding,
+    top: position === 0 ? padding : `calc(50% - ${padding})`,
+    bottom: position === 0 ? `calc(50% + 2 * ${padding})` : padding,
   };
   const buttonDiv = useRef();
   useEffect(() => {
-    if (props.mapView && buttonDiv.current) {
-      props.mapView.ui.add(buttonDiv.current, 'top-left');
+    if (mapView && buttonDiv.current) {
+      mapView.ui.add(buttonDiv.current, 'top-left');
     }
 
     const buttonDivRef = buttonDiv.current;
 
     return () => {
-      props.mapView && props.mapView.ui.remove(buttonDivRef);
+      mapView && mapView.ui.remove(buttonDivRef);
     };
-  }, [buttonDiv, props.mapView]);
+  }, [buttonDiv, mapView]);
 
   const updateScrollbar = React.useCallback(() => scrollBar.current?.update(), []);
 
@@ -53,15 +54,15 @@ export default (props) => {
   return (
     <div>
       <MapWidgetContext.Provider value={{ updateScrollbar }}>
-        <div className="map-widget-button esri-widget--button" ref={buttonDiv} onClick={toggle} title={props.name}>
-          <FontAwesomeIcon icon={props.icon} />
+        <div className="map-widget-button esri-widget--button" ref={buttonDiv} onClick={toggle} title={name}>
+          <FontAwesomeIcon icon={icon} />
         </div>
         <Card style={cardStyle} className="map-widget-card">
           <CardHeader>
-            {props.name}
+            {name}
             <div className="buttons-container">
-              {props.showReset && (
-                <Button className="reset-button" color="link" onClick={props.onReset}>
+              {showReset && (
+                <Button className="reset-button" color="link" onClick={onReset}>
                   <small>{t('trans:reset')}</small>
                 </Button>
               )}
@@ -69,10 +70,21 @@ export default (props) => {
             </div>
           </CardHeader>
           <div ref={scrollBarContainer} className="card-body">
-            {props.children}
+            {children}
           </div>
         </Card>
       </MapWidgetContext.Provider>
     </div>
   );
+}
+
+MapWidget.propTypes = {
+  defaultOpen: PropTypes.bool,
+  position: PropTypes.number,
+  mapView: PropTypes.object,
+  name: PropTypes.string,
+  icon: PropTypes.object,
+  showReset: PropTypes.bool,
+  onReset: PropTypes.func,
+  children: PropTypes.node,
 };

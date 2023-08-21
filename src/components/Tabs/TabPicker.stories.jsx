@@ -34,6 +34,11 @@ const TestFixture = ({ initialSelectedIds, maxReached }) => {
   );
 };
 
+TestFixture.propTypes = {
+  initialSelectedIds: TabPicker.propTypes.selectedIds,
+  maxReached: TabPicker.propTypes.maxReached,
+};
+
 export const NoneSelected = () => <TestFixture initialSelectedIds={[]} />;
 
 export const Selected = () => <TestFixture initialSelectedIds={['two', 'one', 'five']} />;

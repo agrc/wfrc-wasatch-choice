@@ -526,7 +526,7 @@ class LayerSelectorContainer extends Component {
         className="layer-selector"
         onMouseOver={() => this.expand(true)}
         onMouseOut={() => this.expand(false)}
-        area-haspopup="true"
+        aria-haspopup="true"
       >
         <input
           type="image"

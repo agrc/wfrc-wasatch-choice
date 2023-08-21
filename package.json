@@ -9,7 +9,7 @@
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
     "cypress:run": "start-server-and-test start http://localhost:5173 'cypress run'",
     "format": "prettier . -w",
-    "lint": "eslint src",
+    "lint": "eslint src --ext .js,.jsx",
     "preview": "vite preview",
     "start": "vite",
     "storybook": "storybook dev -p 9009",

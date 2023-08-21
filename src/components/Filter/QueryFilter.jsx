@@ -5,6 +5,7 @@ import { Button, Collapse, Label } from 'reactstrap';
 import { MapWidgetContext } from '../MapWidget/MapWidget';
 import './QueryFilter.scss';
 import { useMapLayers } from './utils';
+import PropTypes from 'prop-types';
 
 export const NUMBER = 'number';
 export const TEXT = 'text';
@@ -35,7 +36,9 @@ export const getFieldQuery = (fieldName, fieldType, newState, checkboxLookup) =>
   };
 
   const checkedLabels = Object.entries(newState)
+    // eslint-disable-next-line no-unused-vars
     .filter(([_, checked]) => checked)
+    // eslint-disable-next-line no-unused-vars
     .map(([label, _]) => label);
 
   // return null if all checkboxes are checked (the default state)
@@ -65,7 +68,7 @@ export const getFieldQuery = (fieldName, fieldType, newState, checkboxLookup) =>
   return `(${expression})`;
 };
 
-export const QueryFilterField = ({ label, openOnLoad, fieldName, fieldType, checkboxes, onChange, reset }) => {
+export function QueryFilterField({ label, openOnLoad, fieldName, fieldType, checkboxes, onChange, reset }) {
   const initialState = Object.fromEntries(checkboxes.map(({ label }) => [label, true]));
   const checkboxLookup = Object.fromEntries(checkboxes.map((checkbox) => [checkbox.label, checkbox]));
   const [isOpen, setIsOpen] = React.useState(openOnLoad);
@@ -101,7 +104,7 @@ export const QueryFilterField = ({ label, openOnLoad, fieldName, fieldType, chec
       <br />
       <Collapse isOpen={isOpen} onEntered={updateScrollbar} onExited={updateScrollbar}>
         <div className="field-container">
-          {checkboxes.map(({ label, values, other, color }, index) => (
+          {checkboxes.map(({ label, color }, index) => (
             <Label key={index} check>
               <input type="checkbox" checked={state[label]} onChange={() => onCheckboxChange(label)} />
               <span className="checkbox-label">{label}</span>
@@ -112,6 +115,23 @@ export const QueryFilterField = ({ label, openOnLoad, fieldName, fieldType, chec
       </Collapse>
     </div>
   );
+}
+
+QueryFilterField.propTypes = {
+  label: PropTypes.string.isRequired,
+  openOnLoad: PropTypes.bool,
+  fieldName: PropTypes.string.isRequired,
+  fieldType: PropTypes.string.isRequired,
+  checkboxes: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+      other: PropTypes.bool,
+      color: PropTypes.string,
+    }),
+  ).isRequired,
+  onChange: PropTypes.func.isRequired,
+  reset: PropTypes.bool,
 };
 
 const QueryFilter = ({ mapView, layerName, fields, reset }) => {
@@ -155,6 +175,27 @@ const QueryFilter = ({ mapView, layerName, fields, reset }) => {
       ))}
     </div>
   );
+};
+
+QueryFilter.propTypes = {
+  mapView: PropTypes.object.isRequired,
+  layerName: PropTypes.string.isRequired,
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      fieldName: PropTypes.string.isRequired,
+      fieldType: PropTypes.string.isRequired,
+      checkboxes: PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+          other: PropTypes.bool,
+          color: PropTypes.string,
+        }),
+      ).isRequired,
+    }),
+  ).isRequired,
+  reset: PropTypes.bool,
 };
 
 export default QueryFilter;
