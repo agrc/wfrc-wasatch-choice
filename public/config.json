@@ -14,18 +14,29 @@
           "MedicalFacilities": "MedicalFacilities",
           "Airports": "Airports",
           "CommuterR": "CommuterR",
+          "CommuterR2": "CommuterR_2",
           "FixedGuideway": "FixedGuideway",
+          "FixedGuideway2": "FixedGuideway_2",
           "RegionalBus": "RegionalBus",
+          "RegionalBus2": "RegionalBus_2",
           "CommuterRStations": "CRTStations",
+          "CommuterRStations2": "CRTStations_2",
           "LightRStations": "LRTStations",
           "BRTStations": "BRTStations",
+          "LightRStations2": "LRTStations_2",
+          "BRTStations2": "BRTStations_2",
           "Interchanges": "Interchanges",
+          "Interchanges2": "Interchanges_2",
           "Gondola": "Gondola",
           "CorridorPres": "CorridorPres",
           "HwyFwy": "HwyFwy",
+          "HwyFwy2": "HwyFwy_2",
           "PrincipalArterials": "PrincipalArterials",
           "MinorArterials": "MinorArterials",
           "Collectors": "Collectors",
+          "PrincipalArterials2": "PrincipalArterials_2",
+          "MinorArterials2": "MinorArterials_2",
+          "Collectors2": "Collectors_2",
           "MinorBikePed2": "MinorBikePed_2",
           "MajorBikePed2": "MajorBikePed_2",
           "MinorBikePed1": "MinorBikePed",
@@ -35,15 +46,29 @@
           "BikePed2": "BikePedMinor",
           "BikePed3": "BikePedOther",
           "Centers": "Centers",
+          "Centers2": "Centers_2",
           "OtherRegionalLandUse": "SpecialDistricts",
           "OpenSpace": "OpenSpace",
           "Greenways": "Greenways",
-          "ParksAndOther": "ParksandOther"
+          "ParksAndOther": "ParksandOther",
+          "FunctionalClass": "Functional Class"
         },
         "checkboxes": {
           "roads": {
             "label": "trans:filterVision.roads",
-            "layerNames": ["HwyFwy", "PrincipalArterials", "MinorArterials", "Collectors", "Interchanges"],
+            "layerNames": [
+              "HwyFwy",
+              "PrincipalArterials",
+              "MinorArterials",
+              "Collectors",
+              "HwyFwy2",
+              "PrincipalArterials2",
+              "MinorArterials2",
+              "Collectors2",
+              "Interchanges",
+              "Interchanges2",
+              "FunctionalClass"
+            ],
             "symbol": "simple",
             "symbolLayerNames": ["HwyFwy", "PrincipalArterials", "MinorArterials"]
           },
@@ -56,21 +81,34 @@
               "CommuterRStations",
               "LightRStations",
               "BRTStations",
+              "CommuterR2",
+              "FixedGuideway2",
+              "RegionalBus2",
+              "CommuterRStations2",
+              "LightRStations2",
+              "BRTStations2",
               "Gondola",
               "CorridorPres"
             ],
             "symbol": "simple",
-            "symbolLayerNames": ["CommuterR", "FixedGuideway","RegionalBus"]
+            "symbolLayerNames": ["CommuterR", "FixedGuideway", "RegionalBus"]
           },
           "bikePed": {
             "label": "trans:filterVision.bikePed",
-            "layerNames": ["MinorBikePed2","MajorBikePed2","MinorBikePed1","MajorBikePed1","BonnevilleShoreline1","BonnevilleShoreline2"],
+            "layerNames": [
+              "MinorBikePed2",
+              "MajorBikePed2",
+              "MinorBikePed1",
+              "MajorBikePed1",
+              "BonnevilleShoreline1",
+              "BonnevilleShoreline2"
+            ],
             "symbol": "simple",
-            "symbolLayerNames": ["MajorBikePed1", "MinorBikePed1", "BonnevilleShoreline1"]            
+            "symbolLayerNames": ["MajorBikePed1", "MinorBikePed1", "BonnevilleShoreline1"]
           },
           "centers": {
             "label": "trans:filterVision.centers",
-            "layerNames": ["Centers"],
+            "layerNames": ["Centers", "Centers2"],
             "symbol": "classes",
             "staticColors": [
               {
