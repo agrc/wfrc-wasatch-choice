@@ -70,7 +70,8 @@
               "FunctionalClass"
             ],
             "symbol": "simple",
-            "symbolLayerNames": ["HwyFwy", "PrincipalArterials", "MinorArterials"]
+            "symbolLayerNames": [["HwyFwy", "Interchanges"], ["PrincipalArterials"], ["MinorArterials"]],
+            "symbolLabels": ["Highways and Freeways", "Major Roads", "Minor Roads"]
           },
           "transit": {
             "label": "trans:filterVision.transit",
@@ -91,7 +92,10 @@
               "CorridorPres"
             ],
             "symbol": "simple",
-            "symbolLayerNames": ["CommuterR", "FixedGuideway", "RegionalBus"]
+            "symbolLayerNames": [
+              ["CommuterR", "CommuterRStations"],
+              ["FixedGuideway", "BRTStations"]
+            ]
           },
           "bikePed": {
             "label": "trans:filterVision.bikePed",
@@ -104,7 +108,7 @@
               "BonnevilleShoreline2"
             ],
             "symbol": "simple",
-            "symbolLayerNames": ["MajorBikePed1", "MinorBikePed1", "BonnevilleShoreline1"]
+            "symbolLayerNames": [["MajorBikePed1-2"], ["MinorBikePed1"], ["BonnevilleShoreline1"]]
           },
           "centers": {
             "label": "trans:filterVision.centers",
@@ -453,38 +457,32 @@
           "economicClustersAero": {
             "label": "trans:filterEconDev.economicClustersAero",
             "layerNames": ["economicClustersAero"],
-            "symbol": "simple",
-            "symbolLayerIds": ["2-4"]
+            "symbol": "simple"
           },
           "economicClustersEnergy": {
             "label": "trans:filterEconDev.economicClustersEnergy",
             "layerNames": ["economicClustersEnergy"],
-            "symbol": "simple",
-            "symbolLayerIds": ["3-3"]
+            "symbol": "simple"
           },
           "economicClustersFinance": {
             "label": "trans:filterEconDev.economicClustersFinance",
             "layerNames": ["economicClustersFinance"],
-            "symbol": "simple",
-            "symbolLayerIds": ["4-4"]
+            "symbol": "simple"
           },
           "economicClustersLife": {
             "label": "trans:filterEconDev.economicClustersLife",
             "layerNames": ["economicClustersLife"],
-            "symbol": "simple",
-            "symbolLayerIds": ["5-4"]
+            "symbol": "simple"
           },
           "economicClustersRec": {
             "label": "trans:filterEconDev.economicClustersRec",
             "layerNames": ["economicClustersRec"],
-            "symbol": "simple",
-            "symbolLayerIds": ["6-3"]
+            "symbol": "simple"
           },
           "economicClustersIT": {
             "label": "trans:filterEconDev.economicClustersIT",
             "layerNames": ["economicClustersIT"],
-            "symbol": "simple",
-            "symbolLayerIds": ["7-4"]
+            "symbol": "simple"
           },
           "todSites": {
             "label": "trans:filterEconDev.todSites",
@@ -593,12 +591,14 @@
           "trails": {
             "label": "trans:filterRecreation.trails",
             "layerNames": ["trailheads", "trails"],
-            "symbol": "simple"
+            "symbol": "simple",
+            "symbolLayerNames": [["trails", "trailheads"]]
           },
           "localParksGolf": {
             "label": "trans:filterRecreation.parksGolf",
             "layerNames": ["localParksGolf", "stateParks"],
-            "symbol": "simple"
+            "symbol": "simple",
+            "symbolLayerNames": [["localParksGolf"]]
           },
           "greenWays": {
             "label": "trans:filterRecreation.greenWays",

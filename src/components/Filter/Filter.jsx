@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react';
 import { Label, Button, ButtonGroup, FormGroup, Input } from 'reactstrap';
 import { useSpecialTranslation } from '../../i18n';
 import './Filter.scss';
-import { Classes, Dynamic, LinePoint, Swatch, Simple, Static } from './Symbols';
+import { Image, Classes, Swatch, Simple } from './Symbols';
 import { useMapLayers } from './utils';
 import PropTypes from 'prop-types';
 
 const SYMBOLS = {
   simple: Simple,
   classes: Classes,
-  linePoint: LinePoint,
   swatch: Swatch,
-  dynamic: Dynamic,
-  static: Static,
+  image: Image,
 };
 
 // used to preserve control state between tabs
@@ -524,7 +522,6 @@ function Child({
   symbol,
   symbolImageFile,
   symbolLabels,
-  symbolLayerIds,
   symbolLayerNames,
 }) {
   const [internalIsChecked, setInternalIsChecked] = useState(!offByDefault);
@@ -575,7 +572,6 @@ function Child({
           layerNames={layerNames}
           layersLookup={layersLookup}
           color={color}
-          symbolLayerIds={symbolLayerIds}
           symbolLayerNames={symbolLayerNames}
           symbolLabels={symbolLabels}
           imageFileName={symbolImageFile}
@@ -604,6 +600,5 @@ Child.propTypes = {
   symbol: PropTypes.string,
   symbolImageFile: PropTypes.string,
   symbolLabels: PropTypes.arrayOf(PropTypes.string),
-  symbolLayerIds: PropTypes.arrayOf(PropTypes.string),
-  symbolLayerNames: PropTypes.arrayOf(PropTypes.string),
+  symbolLayerNames: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
 };

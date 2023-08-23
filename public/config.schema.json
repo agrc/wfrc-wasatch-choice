@@ -155,28 +155,24 @@
                     "symbol": {
                       "description": "Defines the type of symbol component to be displayed.",
                       "type": "string",
-                      "enum": ["simple", "classes", "linePoint", "swatch", "dynamic", "static"]
+                      "enum": ["simple", "classes", "swatch", "image"]
                     },
                     "symbolImageFile": {
-                      "description": "Defines the filename for the image that should be used with the static legend symbol. Note that the file needs to be placed in the root of the application.",
+                      "description": "Defines the filename for the image that should be used for the symbol. Note that the file needs to be placed in the root of the application. Note that this is only applicable when `symbol = 'image'`.",
                       "type": "string"
                     },
-                    "symbolLayerIds": {
-                      "description": "Defines the layer ids (as strings) for which you would like to show symbols. Up to three values may be specified. If you would like multiple symbols overlayed, separate them with a \",\" (e.g. \"23,45\"). If you would like to define a specific symbol class within a layer you can use \"-<class index>\" (e.g. \"69-1\". Note this is only applicable when `symbol = 'dynamic'`.",
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
                     "symbolLayerNames": {
-                      "description": "Used to restrict the layers for which symbols are shown. If this is not passed, then all layers are shown. Note that this is only applicable when `symbol = 'simple'`.",
+                      "description": "Used to restrict the layers for which symbols are shown. If this is not passed, then all layers are shown. To overlap layer symbols, include them in the same sub-array. (e.g. [[\"LayerOne\", \"LayerToOverlap\"], [\"LayerTwo\"]]) Note that this is only applicable when `symbol = 'simple'`. To display a specific symbol for a layer that uses a unique value renderer, specify the index of the symbol using a \"-\". (e.g. LayerName-2)",
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     },
                     "symbolLabels": {
-                      "description": "Optionally define text that will show in a popover when hovering over the associated symbol. Note that the order of this property should match the order of `symbolLayerIds`.",
+                      "description": "Optionally define text that will show in a popover when hovering over the associated symbol. Note that the order of this property should match the order of `symbolLayerNames`.",
                       "type": "array",
                       "items": {
                         "type": "string"
