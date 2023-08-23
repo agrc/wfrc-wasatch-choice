@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.1...v5.2.0-0) (2023-08-23)
+
+
+### 🚀 Features
+
+* add image symbol type and fix feature layer symbol rendering ([c4357c4](https://github.com/agrc/wfrc-wasatch-choice/commit/c4357c46041ae5d9b9e6f3ee545df974535ea3e1))
+
+
+### 🌲 Dependencies
+
+* bump deps 🌲 ([a007cbd](https://github.com/agrc/wfrc-wasatch-choice/commit/a007cbd88e586b45e43aeab98b4c0402db2d2580))
+* bump npm deps 🌲 ([9d56109](https://github.com/agrc/wfrc-wasatch-choice/commit/9d56109b744e333721f6a58a1f523734bcbf02a4))
+
 ## [5.1.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.0...v5.1.1) (2023-08-17)
 
 
