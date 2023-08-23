@@ -20,55 +20,90 @@ export const getSymbolFromInfos = (symbolInfos, classIndex) => {
   return symbol;
 };
 
-export const Simple = (props) => {
-  const [symbols, setSymbols] = useState([]);
+function FeatureLayerSymbol({ layersLookup, layerName }) {
+  const symbolContainer = useRef(null);
+  const [parsedLayerName, uniqueValueInfoIndex] = layerName.split('-');
+  const layer = layersLookup[parsedLayerName];
 
   useEffect(() => {
-    let mounted = true;
-    const getSymbol = async () => {
-      console.log('Simple:getSymbol');
+    const giddyUp = async () => {
+      const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, uniqueValueInfoIndex);
 
-      // get all symbols
-      const layer = props.layersLookup[props.layerNames[0]];
-      if (!layer) {
-        // most likely layersLookup has layers from the last map and needs to update
-        console.log('returning early: simple', props.layersLookup, props.layerNames);
+      const preview = await renderPreviewHTML(symbol, {
+        opacity: layer.opacity,
+        node: symbolContainer.current,
+      });
 
-        return;
-      }
-      const newSymbols = await Promise.all(
-        props.layerNames
-          .filter((layerName) => (props.symbolLayerNames ? props.symbolLayerNames.includes(layerName) : true))
-          .map(async (layerName) => {
-            const layer = props.layersLookup[layerName];
-
-            const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos);
-
-            const preview = await renderPreviewHTML(symbol, {
-              opacity: layer.opacity,
-              scale: false,
-              size: { width: 20 },
-            });
-
-            return preview.outerHTML;
-          }),
-      );
-
-      // prevent this from being called after the component has been unmounted
-      if (mounted) {
-        setSymbols(newSymbols);
-      }
+      // not sure why Esri adds these attributes, but they cause the image to be shrunk
+      preview.removeAttribute('width');
+      preview.removeAttribute('height');
     };
-    getSymbol();
+    if (layer && symbolContainer.current?.children.length === 0) {
+      giddyUp();
+    }
+  }, [layer, uniqueValueInfoIndex]);
 
-    return () => (mounted = false);
-  }, [props.layerNames, props.layersLookup, props.symbolLayerNames]);
+  return <div ref={symbolContainer} className="symbol"></div>;
+}
+
+FeatureLayerSymbol.propTypes = {
+  layersLookup: PropTypes.object.isRequired,
+  layerName: PropTypes.string.isRequired,
+  label: PropTypes.string,
+};
+
+function SymbolGroup({ label, group, layersLookup }) {
+  const [showPopover, setShowPopover] = useState(false);
+  const targetRef = useRef();
 
   return (
+    <>
+      <div ref={targetRef} className="symbol-overlap-container">
+        {group.map((layerName, index) => (
+          <FeatureLayerSymbol key={index} layersLookup={layersLookup} layerName={layerName} />
+        ))}
+      </div>
+      {label ? (
+        <Popover
+          target={() => targetRef.current}
+          isOpen={showPopover}
+          trigger="hover"
+          boundariesElement="viewport"
+          toggle={() => setShowPopover(!showPopover)}
+        >
+          <PopoverBody>{label}</PopoverBody>
+        </Popover>
+      ) : null}
+    </>
+  );
+}
+
+SymbolGroup.propTypes = {
+  group: PropTypes.array.isRequired,
+  layersLookup: PropTypes.object.isRequired,
+  label: PropTypes.string,
+};
+
+export const Simple = ({ layerNames, layersLookup, symbolLayerNames, symbolLabels }) => {
+  return (
     <div className="simple-symbol-container symbol-container">
-      {symbols.map((symbol, index) => (
-        <div key={index} className="symbol" dangerouslySetInnerHTML={{ __html: symbol }}></div>
-      ))}
+      {symbolLayerNames
+        ? symbolLayerNames.map((group, groupIndex) => (
+            <SymbolGroup
+              key={groupIndex}
+              label={symbolLabels ? symbolLabels[groupIndex] : null}
+              group={group}
+              layersLookup={layersLookup}
+            />
+          ))
+        : layerNames.map((layerName, index) => (
+            <SymbolGroup
+              key={index}
+              label={symbolLabels ? symbolLabels[0] : null}
+              group={[layerName]}
+              layersLookup={layersLookup}
+            />
+          ))}
     </div>
   );
 };
@@ -76,8 +111,8 @@ export const Simple = (props) => {
 Simple.propTypes = {
   layersLookup: PropTypes.object.isRequired,
   layerNames: PropTypes.array.isRequired,
-  symbolLayerNames: PropTypes.array,
-  symbolLabels: PropTypes.array,
+  symbolLayerNames: PropTypes.arrayOf(PropTypes.array),
+  symbolLabels: PropTypes.arrayOf(PropTypes.string),
 };
 
 export const Classes = (props) => {
@@ -162,59 +197,6 @@ Classes.propTypes = {
   staticColors: PropTypes.array,
 };
 
-export const LinePoint = ({ layersLookup, layerNames }) => {
-  const [symbols, setSymbols] = useState({ point: null, polyline: null });
-
-  useEffect(() => {
-    let mounted = true;
-    const getSymbols = async () => {
-      const newSymbols = {};
-
-      if (!layersLookup[layerNames[0]]) {
-        // most likely layersLookup has layers from the last map and needs to update
-        return;
-      }
-
-      // loop through layerNames with async support
-      for (const layerName of layerNames) {
-        const layer = layersLookup[layerName];
-        if (!newSymbols[layer.geometryType]) {
-          newSymbols[layer.geometryType] = true;
-          await layer.when(() => {
-            newSymbols[layer.geometryType] = getSymbolFromInfos(layer.renderer.uniqueValueInfos);
-          });
-        }
-      }
-
-      newSymbols.polyline = await renderPreviewHTML(newSymbols.polyline);
-      newSymbols.point = await renderPreviewHTML(newSymbols.point);
-
-      // prevent this from being called after the component has been unmounted
-      if (mounted) {
-        setSymbols(newSymbols);
-      }
-    };
-    getSymbols();
-
-    return () => (mounted = false);
-  }, [layerNames, layersLookup]);
-
-  return (
-    <div className="line-point-symbol-container symbol-container">
-      {symbols.polyline &&
-        symbols.point &&
-        Object.entries(symbols).map(([geometryType, symbol]) => (
-          <div key={geometryType} className="symbol" dangerouslySetInnerHTML={{ __html: symbol.innerHTML }}></div>
-        ))}
-    </div>
-  );
-};
-
-LinePoint.propTypes = {
-  layersLookup: PropTypes.object.isRequired,
-  layerNames: PropTypes.array.isRequired,
-};
-
 export const Swatch = ({ color }) => {
   return (
     <div className="swatch-symbol-container symbol-container">
@@ -227,129 +209,14 @@ Swatch.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-export const Dynamic = (props) => {
-  // this assumes that all layers are part of the same map service
-  const [legendInfoSets, setLegendInfoSets] = useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-    const getLegend = async () => {
-      console.log('Dynamic:getLegend');
-
-      // get legend for entire map service
-      const url = `${props.layersLookup[props.layerNames[0]].url.match(/^.*\//)[0]}legend?f=json`;
-      const legendResponse = await fetch(url);
-      const legendJson = await legendResponse.json();
-
-      const legendLayerLookup = {};
-      legendJson.layers.forEach((layer) => {
-        legendLayerLookup[layer.layerId] = layer.legend;
-      });
-
-      const newInfoSets = props.symbolLayerIds.map((layerIds) => {
-        return layerIds.split(',').map((id) => {
-          let classIndex = 0;
-          if (id.indexOf('-') > -1) {
-            const [splitId, splitIndex] = id.split('-');
-            id = splitId;
-            classIndex = splitIndex;
-          }
-
-          return legendLayerLookup[id][classIndex];
-        });
-      });
-
-      // prevent this from being called after the component has been unmounted
-      if (mounted) {
-        setLegendInfoSets(newInfoSets);
-      }
-    };
-    getLegend();
-
-    return () => (mounted = false);
-  }, [props.layerNames, props.layersLookup, props.symbolLayerIds]);
-
+export function Image({ imageFileName }) {
   return (
-    <div className="dynamic-symbol-container">
-      {legendInfoSets.map((set, index) => (
-        <DynamicSymbolContainer key={index} set={set} label={props.symbolLabels[index]} />
-      ))}
+    <div className="image-symbol-container">
+      <img src={`/${imageFileName}`} alt="symbol image" />
     </div>
   );
-};
+}
 
-Dynamic.propTypes = {
-  layersLookup: PropTypes.object.isRequired,
-  layerNames: PropTypes.array.isRequired,
-  symbolLayerIds: PropTypes.array.isRequired,
-  symbolLabels: PropTypes.array.isRequired,
-};
-
-const DynamicSymbolContainer = ({ set, label }) => {
-  const [showPopover, setShowPopover] = useState(false);
-  const containerRef = useRef();
-
-  return (
-    <>
-      <div className="symbol-container" ref={containerRef}>
-        {set.map((info, imgIndex) => (
-          <img
-            key={imgIndex}
-            className="symbol"
-            src={`data:${info.contentType};base64,${info.imageData}`}
-            alt="swatch"
-          />
-        ))}
-      </div>
-      <Popover
-        isOpen={showPopover}
-        target={() => containerRef.current}
-        toggle={() => setShowPopover(!showPopover)}
-        boundariesElement="viewport"
-        trigger="hover"
-      >
-        <PopoverBody>{label}</PopoverBody>
-      </Popover>
-    </>
-  );
-};
-
-DynamicSymbolContainer.propTypes = {
-  set: PropTypes.array.isRequired,
-  label: PropTypes.string.isRequired,
-};
-
-export const Static = (props) => {
-  const [showPopover, setShowPopover] = useState(false);
-  const targetRef = useRef();
-
-  return (
-    <>
-      <div className="symbol-container" ref={targetRef}>
-        <div className="swatch-class-container">
-          {props.staticColors &&
-            props.staticColors.map((color, index) => (
-              <div key={index} className="swatch" style={{ backgroundColor: getBackgroundColor(color) }}></div>
-            ))}
-        </div>
-        <FontAwesomeIcon icon={faQuestionCircle} />
-      </div>
-      <Popover
-        target={() => targetRef.current}
-        isOpen={showPopover}
-        trigger="hover"
-        boundariesElement="viewport"
-        toggle={() => setShowPopover(!showPopover)}
-      >
-        <PopoverBody>
-          <img src={`/${props.imageFileName}`} alt="static legend" style={{ width: '250px' }} />
-        </PopoverBody>
-      </Popover>
-    </>
-  );
-};
-
-Static.propTypes = {
-  staticColors: PropTypes.array.isRequired,
+Image.propTypes = {
   imageFileName: PropTypes.string.isRequired,
 };

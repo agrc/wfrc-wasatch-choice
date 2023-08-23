@@ -22,7 +22,19 @@ $symbolWidth: 41px;
 
 .simple-symbol-container {
   margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .symbol-overlap-container {
+    width: 60px;
+    position: relative;
+  }
   .symbol {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 52px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,17 +69,5 @@ $symbolWidth: 41px;
   .symbol {
     width: 60px;
     height: 1.5em;
-  }
-}
-
-.dynamic-symbol-container {
-  justify-content: space-between;
-  display: flex;
-  width: 90px;
-  .symbol-container {
-    width: 20px;
-    .symbol {
-      position: absolute;
-    }
   }
 }
