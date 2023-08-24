@@ -92,6 +92,7 @@ export default function App() {
       return previous.concat(
         current.results.map((result) => {
           return {
+            mapView: view,
             geometry: result.feature.geometry,
             attributes: result.feature.attributes,
             popupTemplate: layerNameLookup[result.layerName].popupTemplate,
