@@ -1,0 +1,3 @@
+## modeLayers Type
+
+`string[]`

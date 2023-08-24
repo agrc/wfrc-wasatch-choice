@@ -1,3 +1,0 @@
-## polylineWidth Type
-
-`number`

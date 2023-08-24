@@ -1,3 +1,0 @@
-## pointSize Type
-
-`number`

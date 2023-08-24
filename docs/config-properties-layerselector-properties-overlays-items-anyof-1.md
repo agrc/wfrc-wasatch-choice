@@ -2,26 +2,28 @@
 
 `object` ([Details](config-properties-layerselector-properties-overlays-items-anyof-1.md))
 
-# undefined Properties
+# 1 Properties
 
-| Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                       |
-| :------------------ | -------- | -------- | -------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)           | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")           |
-| [Factory](#Factory) | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory") |
-| [url](#url)         | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")         |
-| [opacity](#opacity) | `number` | Optional | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity") |
+| Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
+| :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)           | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")           |
+| [Factory](#factory) | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory") |
+| [url](#url)         | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")         |
+| [opacity](#opacity) | `number` | Optional | cannot be null | [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity") |
 
 ## id
 
 The name of the layer
 
-
 `id`
 
--   is required
--   Type: `string`
--   cannot be null
--   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")
+*   is required
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")
 
 ### id Type
 
@@ -31,13 +33,15 @@ The name of the layer
 
 The name of the esrijs module associated with the layer type
 
-
 `Factory`
 
--   is required
--   Type: `string`
--   cannot be null
--   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory")
+*   is required
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory")
 
 ### Factory Type
 
@@ -47,13 +51,15 @@ The name of the esrijs module associated with the layer type
 
 The url for the layer
 
-
 `url`
 
--   is required
--   Type: `string`
--   cannot be null
--   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")
+*   is required
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")
 
 ### url Type
 
@@ -63,13 +69,15 @@ The url for the layer
 
 
 
-
 `opacity`
 
--   is optional
--   Type: `number`
--   cannot be null
--   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https&#x3A;//wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity")
+*   is optional
+
+*   Type: `number`
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity")
 
 ### opacity Type
 

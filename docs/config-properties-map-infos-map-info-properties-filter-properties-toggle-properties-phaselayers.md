@@ -1,0 +1,3 @@
+## phaseLayers Type
+
+`string[]`

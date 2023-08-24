@@ -1,0 +1,3 @@
+## symbolLayerNames Type
+
+`string[][]`
