@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm run update-config-docs && vite build",
-    "build:stage": "npm run update-config-docs && vite build --mode stage",
+    "build": "vite build",
+    "build:stage": "vite build --mode stage",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
     "cypress:run": "start-server-and-test start http://localhost:5173 'cypress run'",
     "format": "prettier . -w",

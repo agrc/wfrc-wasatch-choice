@@ -73,3 +73,33 @@ jobs:
           preview: yes
           build-command: npm run build:stage
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  rebuild-docs:
+    name: Rebuild config docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 📚 Update Config Docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr checkout ${{ github.event.pull_request.number }}
+          npm run update-config-docs
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.email "${{ secrets.UGRC_RELEASE_BOT_EMAIL }}"
+            git config --global user.name "${{ secrets.UGRC_RELEASE_BOT_NAME }}"
+            git add docs
+            git commit -m "docs: update config docs"
+            git push
+          fi
