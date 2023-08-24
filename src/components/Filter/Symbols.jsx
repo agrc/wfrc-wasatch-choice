@@ -35,8 +35,10 @@ function FeatureLayerSymbol({ layersLookup, layerName }) {
       });
 
       // not sure why Esri adds these attributes, but they cause the image to be shrunk
-      preview.removeAttribute('width');
-      preview.removeAttribute('height');
+      if (window.devicePixelRatio < 2) {
+        preview.removeAttribute('width');
+        preview.removeAttribute('height');
+      }
     };
     if (layer && symbolContainer.current?.children.length === 0) {
       giddyUp();
