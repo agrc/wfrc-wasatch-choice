@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.1-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.1-0...v5.2.1-1) (2023-08-24)
+
+
+### 🐛 Bug Fixes
+
+* auto-open project info window on map click ([c824158](https://github.com/agrc/wfrc-wasatch-choice/commit/c8241586357a2b3def14fbd24853afa438301a35)), closes [#229](https://github.com/agrc/wfrc-wasatch-choice/issues/229)
+* don't try to identify layers that don't support it ([102a567](https://github.com/agrc/wfrc-wasatch-choice/commit/102a5679b4f4684673c45b3dafb47793f0d70915))
+* fix bug preventing project information from being displayed for some features ([317070f](https://github.com/agrc/wfrc-wasatch-choice/commit/317070ff61263015646df12c0cb4f2ccb29b6d20))
+
 ## [5.2.1-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.0...v5.2.1-0) (2023-08-24)
 
 
