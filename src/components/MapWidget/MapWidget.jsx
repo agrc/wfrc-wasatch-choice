@@ -1,19 +1,48 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import PropTypes from 'prop-types';
 import React, { createContext, useEffect, useRef, useState } from 'react';
 import { Button, Card, CardHeader } from 'reactstrap';
 import { useSpecialTranslation } from '../../i18n';
 import './MapWidget.scss';
-import PropTypes from 'prop-types';
 
 export const MapWidgetContext = createContext();
 
-export default function MapWidget({ defaultOpen, position, mapView, name, icon, showReset, onReset, children }) {
+export default function MapWidget({
+  defaultOpen,
+  position,
+  mapView,
+  name,
+  icon,
+  showReset,
+  onReset,
+  children,
+  openOnMapClick,
+}) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const scrollBar = useRef();
   const scrollBarContainer = useRef();
   const t = useSpecialTranslation();
+  const mapInitialized = useRef(false);
+
+  useEffect(() => {
+    let handler;
+    if (mapView && openOnMapClick && mapInitialized.current === false) {
+      mapInitialized.current = true;
+      handler = mapView.when(() => {
+        mapView.on('click', () => {
+          setIsOpen(true);
+        });
+      });
+    }
+
+    return () => {
+      if (handler) {
+        handler?.remove();
+      }
+    };
+  }, [mapView, openOnMapClick]);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -87,4 +116,5 @@ MapWidget.propTypes = {
   showReset: PropTypes.bool,
   onReset: PropTypes.func,
   children: PropTypes.node,
+  openOnMapClick: PropTypes.bool,
 };

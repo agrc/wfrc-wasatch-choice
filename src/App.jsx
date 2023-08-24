@@ -274,6 +274,7 @@ export default function App() {
                 icon={faHandPointer}
                 position={1}
                 mapView={mapView}
+                openOnMapClick
               >
                 <ProjectInformation
                   graphics={selectedGraphics}
