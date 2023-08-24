@@ -104,7 +104,11 @@ export default function App() {
     const response = await view.hitTest(clickEvent);
     const queryFeatures = await Promise.all(
       response.results
-        .filter((hitResult) => !config.projectInformation.excludedLayers.includes(hitResult.graphic.layer.title))
+        .filter(
+          (hitResult) =>
+            !config.projectInformation.excludedLayers.includes(hitResult.graphic.layer.title) &&
+            hitResult.graphic.layer.queryFeatures,
+        )
         .map(async (hitResult) => {
           const results = await hitResult.graphic.layer.queryFeatures({
             objectIds: [hitResult.graphic.attributes[hitResult.graphic.layer.objectIdField]],
