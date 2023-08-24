@@ -6,7 +6,7 @@ import { MapWidgetContext } from '../MapWidget/MapWidget';
 import Details from './Details';
 import './ProjectInformation.scss';
 
-export default function ProjectInformation(props) {
+export default function ProjectInformation({ graphics, highlightGraphic, showLoader }) {
   console.log('ProjectInformation');
 
   const { updateScrollbar } = React.useContext(MapWidgetContext);
@@ -20,24 +20,24 @@ export default function ProjectInformation(props) {
     }
 
     // this if statement helps with tests
-    if (typeof containerRef.current.scrollIntoView === 'function' && props.graphics.length > 0) {
+    if (typeof containerRef.current.scrollIntoView === 'function' && graphics.length > 0) {
       console.log('scrolling into view');
       containerRef.current.scrollIntoView();
     }
-  }, [props.graphics, updateScrollbar]);
+  }, [graphics, updateScrollbar]);
 
   const t = useSpecialTranslation();
 
   return (
     <div className="project-information" ref={containerRef}>
-      {props.graphics.length === 0 && !props.showLoader && <p>{t('trans:projectInformationPrompt')}</p>}
-      {props.showLoader && (
+      {graphics.length === 0 && !showLoader && <p>{t('trans:projectInformationPrompt')}</p>}
+      {showLoader && (
         <div className="loader">
           <Oval />
         </div>
       )}
-      {props.graphics.map((graphic, index) => (
-        <Details key={index} graphic={graphic} highlightGraphic={props.highlightGraphic} />
+      {graphics.map((graphic, index) => (
+        <Details key={index} graphic={graphic} highlightGraphic={highlightGraphic} />
       ))}
     </div>
   );

@@ -119,13 +119,11 @@ export default function App() {
           return feature;
         }),
     );
-    const selectedGraphics = queryFeatures.concat(identifyFeatures);
-
-    console.log('selectedGraphics', selectedGraphics);
+    const newSelectedGraphics = queryFeatures.concat(identifyFeatures);
 
     finished = true;
 
-    setSelectedGraphics(selectedGraphics);
+    setSelectedGraphics(newSelectedGraphics);
     setShowIdentifyLoader(false);
   }, []);
 
