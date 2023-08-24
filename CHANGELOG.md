@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.0...v5.2.1) (2023-08-24)
+
+
+### 🐛 Bug Fixes
+
+* add apache config file to disable caching on json files ([53d9b13](https://github.com/agrc/wfrc-wasatch-choice/commit/53d9b13599dc8cfb048390b5a05b50bd7ccdd504)), closes [#232](https://github.com/agrc/wfrc-wasatch-choice/issues/232)
+* auto-open project info window on map click ([f77f520](https://github.com/agrc/wfrc-wasatch-choice/commit/f77f520b9cfc15a816da59b454ac40c11261b9dd)), closes [#229](https://github.com/agrc/wfrc-wasatch-choice/issues/229)
+* don't try to identify layers that don't support it ([cf845e4](https://github.com/agrc/wfrc-wasatch-choice/commit/cf845e48bca1f95ed0ed98082060144c893e6f47))
+* fix bug preventing project information from being displayed for some features ([3800ff3](https://github.com/agrc/wfrc-wasatch-choice/commit/3800ff3106acccc27eb93fcca072a5725b2dc1d3))
+* handle feature service symbols on HD devices ([eae74bf](https://github.com/agrc/wfrc-wasatch-choice/commit/eae74bf1e830a80abf865eb2da341c6f2bace7fc))
+* update small logo ([1f13fc4](https://github.com/agrc/wfrc-wasatch-choice/commit/1f13fc4bfba605a67bad4ce4d5c9e99b588bc979)), closes [#228](https://github.com/agrc/wfrc-wasatch-choice/issues/228)
+
+
+### 📖 Documentation Improvements
+
+* update config docs ([5c0b816](https://github.com/agrc/wfrc-wasatch-choice/commit/5c0b816c29040e8b504333bb9cfd3ecf4d409287))
+
 ## [5.2.1-1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.1-0...v5.2.1-1) (2023-08-24)
 
 
