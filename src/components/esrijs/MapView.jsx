@@ -5,25 +5,25 @@ import Home from '@arcgis/core/widgets/Home';
 import Popup from '@arcgis/core/widgets/Popup';
 import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import config, { useCurrentTabConfig } from '../../config';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
 import { LayerSelector, LayerSelectorContainer } from '../LayerSelector/LayerSelector';
 
-const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) {
-  const dispatchURLParams = React.useContext(URLParamsContext)[1];
+export default function ReactMapView({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) {
+  const dispatchURLParams = useContext(URLParamsContext)[1];
   const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
-  const [displayedZoomGraphic, setDisplayedZoomGraphic] = React.useState(null);
-  const maps = React.useRef();
-  const mapViewDiv = React.useRef();
-  const defaultPopup = React.useRef();
-  const selectorNode = React.useRef();
-  const layerSelector = React.useRef();
-  const isLayerSelectorVisible = React.useRef(false);
+  const [displayedZoomGraphic, setDisplayedZoomGraphic] = useState(null);
+  const maps = useRef();
+  const mapViewDiv = useRef();
+  const defaultPopup = useRef();
+  const selectorNode = useRef();
+  const layerSelector = useRef();
+  const isLayerSelectorVisible = useRef(false);
 
-  const zoomTo = React.useCallback(
+  const zoomTo = useCallback(
     async (zoomObj) => {
       console.log('app.zoomTo');
 
@@ -63,7 +63,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
     [displayedZoomGraphic, mapView],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('MapView: zoom to graphic');
 
     if (zoomToGraphic) {
@@ -78,7 +78,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
     }
   }, [zoomToGraphic, zoomTo]);
 
-  const setUpLayerSelector = React.useCallback(async () => {
+  const setUpLayerSelector = useCallback(async () => {
     console.log('setUpLayerSelector');
     selectorNode.current = document.createElement('div');
 
@@ -95,7 +95,7 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
     );
   }, [discoverKey, mapView]);
 
-  const changeMap = React.useCallback(async () => {
+  const changeMap = useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
 
     if (window.Cypress) {
@@ -148,11 +148,11 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
   // at the end of the initMap function.
   // But we also want it called each time currentTabConfig changes. So we use useCallback
   // on it and then use this useEffect to kick it off.
-  React.useEffect(() => {
+  useEffect(() => {
     changeMap();
   }, [changeMap]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initMap = async () => {
       console.log('MapView:initMap');
 
@@ -252,7 +252,8 @@ const ReactMapView = function ({ discoverKey, zoomToGraphic, initialExtent, setV
   ]);
 
   return <div style={{ height: '100%', width: '100%' }} ref={mapViewDiv} />;
-};
+}
+
 ReactMapView.propTypes = {
   discoverKey: PropTypes.string.isRequired,
   zoomToGraphic: PropTypes.object,
@@ -261,5 +262,3 @@ ReactMapView.propTypes = {
   mapView: PropTypes.object,
   onClick: PropTypes.func,
 };
-
-export default ReactMapView;
