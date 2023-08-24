@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.1-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.0...v5.2.1-0) (2023-08-24)
+
+
+### 🐛 Bug Fixes
+
+* add apache config file to disable caching on json files ([19c59f0](https://github.com/agrc/wfrc-wasatch-choice/commit/19c59f00722e992115e388c19225265b168946e8)), closes [#232](https://github.com/agrc/wfrc-wasatch-choice/issues/232)
+* handle feature service symbols on HD devices ([f0c7a64](https://github.com/agrc/wfrc-wasatch-choice/commit/f0c7a64230b7035cdd5df10464b04c40fe75d1f3))
+* update small logo ([dc0f036](https://github.com/agrc/wfrc-wasatch-choice/commit/dc0f03645c6d4d3379e8b4ff8443bcd6c6586753)), closes [#228](https://github.com/agrc/wfrc-wasatch-choice/issues/228)
+
+
+### 📖 Documentation Improvements
+
+* update config docs ([5c0b816](https://github.com/agrc/wfrc-wasatch-choice/commit/5c0b816c29040e8b504333bb9cfd3ecf4d409287))
+
 ## [5.2.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.1.1...v5.2.0) (2023-08-24)
 
 
