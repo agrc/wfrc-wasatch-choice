@@ -7,7 +7,6 @@
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
       "filter": {
-        "name": "trans:filterVision.name",
         "layerNames": {
           "MunicipalitiesLabels": "MunicipalitiesLabels",
           "GeneralPOI": "GeneralPOI",
@@ -199,9 +198,6 @@
             "checkboxes": ["centers", "generalLandUse", "openSpace"]
           }
         ]
-      },
-      "projectInformation": {
-        "name": "trans:visionProjectInformation"
       }
     },
     "transportation": {
@@ -209,6 +205,7 @@
       "webMapId": "555929e5b784458ca2292a9e56423811",
       "useDefaultAGOLPopup": false,
       "filter": {
+        "name": "trans:filterTransportation.name",
         "toggle": {
           "label": "trans:filterTransportation.colorBy",
           "mode": "trans:filterTransportation.mode",
@@ -434,6 +431,9 @@
             "checkboxes": ["centers", "generalLandUse", "existingBikePed"]
           }
         ]
+      },
+      "projectInformation": {
+        "name": "trans:transportationProjectInformation"
       }
     },
     "landuse": {
@@ -1140,9 +1140,8 @@
         "filter": "Filter",
         "reset": "reset",
         "filterByPhasing": "filter by phasing",
-        "visionProjectInformation": "Project Info Change",
+        "transportationProjectInformation": "Project Info Change",
         "filterVision": {
-          "name": "Filter Change",
           "transportation": "Transportation",
           "roads": "Roads",
           "transit": "Transit",
@@ -1153,6 +1152,7 @@
           "openSpace": "Open Space"
         },
         "filterTransportation": {
+          "name": "Filter Change",
           "bikePed": "Bike/Ped",
           "centers": "Centers",
           "colorBy": "Color By",
