@@ -70,8 +70,16 @@
               "FunctionalClass"
             ],
             "symbol": "simple",
-            "symbolLayerNames": [["HwyFwy", "Interchanges"], ["PrincipalArterials"], ["MinorArterials"]],
-            "symbolLabels": ["Highways and Freeways", "Major Roads", "Minor Roads"]
+            "symbolLayerNames": [
+              ["HwyFwy", "Interchanges"],
+              ["PrincipalArterials"],
+              ["MinorArterials"]
+            ],
+            "symbolLabels": [
+              "Highways and Freeways",
+              "Major Roads",
+              "Minor Roads"
+            ]
           },
           "transit": {
             "label": "trans:filterVision.transit",
@@ -108,7 +116,11 @@
               "BonnevilleShoreline2"
             ],
             "symbol": "simple",
-            "symbolLayerNames": [["MajorBikePed1-2"], ["MinorBikePed1"], ["BonnevilleShoreline1"]]
+            "symbolLayerNames": [
+              ["MajorBikePed1-2"],
+              ["MinorBikePed1"],
+              ["BonnevilleShoreline1"]
+            ]
           },
           "centers": {
             "label": "trans:filterVision.centers",
@@ -197,8 +209,18 @@
           "label": "trans:filterTransportation.colorBy",
           "mode": "trans:filterTransportation.mode",
           "phase": "trans:filterTransportation.phase",
-          "modeLayers": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
-          "phaseLayers": ["pointsByPhase", "linesByPhase", "pointsByPhaseMAG", "linesByPhaseMAG"]
+          "modeLayers": [
+            "pointsByMode",
+            "linesByMode",
+            "pointsByModeMAG",
+            "linesByModeMAG"
+          ],
+          "phaseLayers": [
+            "pointsByPhase",
+            "linesByPhase",
+            "pointsByPhaseMAG",
+            "linesByPhaseMAG"
+          ]
         },
         "layerNames": {
           "pointsByModeMAG": "MAG RTP Project Points By Mode",
@@ -226,33 +248,88 @@
           "generalLandUse": ["Phase", 1, 2, 3, 4]
         },
         "modes": {
-          "pointsByMode": ["mode", "Highway", "Transit", "Active Transportation"],
-          "linesByMode": ["mode", "Highway", "Transit", "Active Transportation"],
-          "pointsByPhase": ["mode", "Highway", "Transit", "Active Transportation"],
-          "linesByPhase": ["mode", "Highway", "Transit", "Active Transportation"],
-          "pointsByModeMAG": ["mode", "Highway", "Transit", "Active Transportation"],
-          "linesByModeMAG": ["mode", "Highway", "Transit", "Active Transportation"],
-          "pointsByPhaseMAG": ["mode", "Highway", "Transit", "Active Transportation"],
-          "linesByPhaseMAG": ["mode", "Highway", "Transit", "Active Transportation"]
+          "pointsByMode": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "linesByMode": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "pointsByPhase": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "linesByPhase": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "pointsByModeMAG": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "linesByModeMAG": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "pointsByPhaseMAG": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ],
+          "linesByPhaseMAG": [
+            "mode",
+            "Highway",
+            "Transit",
+            "Active Transportation"
+          ]
         },
         "checkboxes": {
           "roads": {
             "label": "trans:filterTransportation.roads",
-            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
+            "layerNames": [
+              "pointsByMode",
+              "linesByMode",
+              "pointsByModeMAG",
+              "linesByModeMAG"
+            ],
             "mode": 0,
             "symbol": "swatch",
             "color": "rgb(137, 4, 5)"
           },
           "transit": {
             "label": "trans:filterTransportation.transit",
-            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
+            "layerNames": [
+              "pointsByMode",
+              "linesByMode",
+              "pointsByModeMAG",
+              "linesByModeMAG"
+            ],
             "mode": 1,
             "symbol": "swatch",
             "color": "rgb(5, 75, 164)"
           },
           "bikePed": {
             "label": "trans:filterTransportation.bikePed",
-            "layerNames": ["pointsByMode", "linesByMode", "pointsByModeMAG", "linesByModeMAG"],
+            "layerNames": [
+              "pointsByMode",
+              "linesByMode",
+              "pointsByModeMAG",
+              "linesByModeMAG"
+            ],
             "mode": 2,
             "symbol": "swatch",
             "color": "rgb(65, 159, 21)"
@@ -338,7 +415,15 @@
         "groups": [
           {
             "label": "trans:filterTransportation.transProjectFilter",
-            "checkboxes": ["roads", "transit", "bikePed", "phase1", "phase2", "phase3", "unfunded"]
+            "checkboxes": [
+              "roads",
+              "transit",
+              "bikePed",
+              "phase1",
+              "phase2",
+              "phase3",
+              "unfunded"
+            ]
           },
           {
             "label": "trans:filterTransportation.other",
@@ -560,7 +645,13 @@
           },
           {
             "label": "trans:filterEconDev.economicClustersOther",
-            "checkboxes": ["todSites", "cdasRdas", "opportunityZones", "centers", "generalLandUse"]
+            "checkboxes": [
+              "todSites",
+              "cdasRdas",
+              "opportunityZones",
+              "centers",
+              "generalLandUse"
+            ]
           }
         ]
       }

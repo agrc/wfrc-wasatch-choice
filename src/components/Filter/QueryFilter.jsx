@@ -1,17 +1,22 @@
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Collapse, Label } from 'reactstrap';
 import { MapWidgetContext } from '../MapWidget/MapWidget';
 import './QueryFilter.scss';
 import { useMapLayers } from './utils';
-import PropTypes from 'prop-types';
 
 export const NUMBER = 'number';
 export const TEXT = 'text';
 
 export const getLayerQuery = (fieldQueries) => {
-  const populatedQueries = Object.values(fieldQueries).filter((fieldQueries) => fieldQueries);
+  const populatedQueries = Object.values(fieldQueries).filter(
+    (fieldQueries) => fieldQueries,
+  );
 
   if (populatedQueries.length === 0) {
     return null;
@@ -20,7 +25,12 @@ export const getLayerQuery = (fieldQueries) => {
   return `${populatedQueries.join(' AND ')}`;
 };
 
-export const getFieldQuery = (fieldName, fieldType, newState, checkboxLookup) => {
+export const getFieldQuery = (
+  fieldName,
+  fieldType,
+  newState,
+  checkboxLookup,
+) => {
   const getValuesFromLabels = (labels) => {
     return labels
       .filter((label) => checkboxLookup[label].values) // filter out "other" checkboxes
@@ -47,7 +57,9 @@ export const getFieldQuery = (fieldName, fieldType, newState, checkboxLookup) =>
   }
 
   const checkedValues = getValuesFromLabels(checkedLabels);
-  const isOtherChecked = checkedLabels.some((label) => checkboxLookup[label].other);
+  const isOtherChecked = checkedLabels.some(
+    (label) => checkboxLookup[label].other,
+  );
 
   let expression;
   if (checkedValues.length > 0) {
@@ -68,9 +80,21 @@ export const getFieldQuery = (fieldName, fieldType, newState, checkboxLookup) =>
   return `(${expression})`;
 };
 
-export function QueryFilterField({ label, openOnLoad, fieldName, fieldType, checkboxes, onChange, reset }) {
-  const initialState = Object.fromEntries(checkboxes.map(({ label }) => [label, true]));
-  const checkboxLookup = Object.fromEntries(checkboxes.map((checkbox) => [checkbox.label, checkbox]));
+export function QueryFilterField({
+  label,
+  openOnLoad,
+  fieldName,
+  fieldType,
+  checkboxes,
+  onChange,
+  reset,
+}) {
+  const initialState = Object.fromEntries(
+    checkboxes.map(({ label }) => [label, true]),
+  );
+  const checkboxLookup = Object.fromEntries(
+    checkboxes.map((checkbox) => [checkbox.label, checkbox]),
+  );
   const [isOpen, setIsOpen] = React.useState(openOnLoad);
   const [state, setState] = React.useState(initialState);
   const { updateScrollbar } = React.useContext(MapWidgetContext);
@@ -102,13 +126,26 @@ export function QueryFilterField({ label, openOnLoad, fieldName, fieldType, chec
         {label}
       </Button>
       <br />
-      <Collapse isOpen={isOpen} onEntered={updateScrollbar} onExited={updateScrollbar}>
+      <Collapse
+        isOpen={isOpen}
+        onEntered={updateScrollbar}
+        onExited={updateScrollbar}
+      >
         <div className="field-container">
           {checkboxes.map(({ label, color }, index) => (
             <Label key={index} check>
-              <input type="checkbox" checked={state[label]} onChange={() => onCheckboxChange(label)} />
+              <input
+                type="checkbox"
+                checked={state[label]}
+                onChange={() => onCheckboxChange(label)}
+              />
               <span className="checkbox-label">{label}</span>
-              {color ? <div className="swatch" style={{ backgroundColor: color }}></div> : null}
+              {color ? (
+                <div
+                  className="swatch"
+                  style={{ backgroundColor: color }}
+                ></div>
+              ) : null}
             </Label>
           ))}
         </div>
@@ -125,7 +162,9 @@ QueryFilterField.propTypes = {
   checkboxes: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+      values: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      ),
       other: PropTypes.bool,
       color: PropTypes.string,
     }),
@@ -137,7 +176,9 @@ QueryFilterField.propTypes = {
 const QueryFilter = ({ mapView, layerName, fields, reset }) => {
   const layersInput = React.useRef({ layerKey: layerName });
   const layers = useMapLayers(mapView, layersInput.current);
-  const initialState = Object.fromEntries(fields.map((field) => [field.label, null]));
+  const initialState = Object.fromEntries(
+    fields.map((field) => [field.label, null]),
+  );
   const state = React.useRef(initialState);
 
   const mapLayer = layers ? layers.layerKey : null;
@@ -171,7 +212,12 @@ const QueryFilter = ({ mapView, layerName, fields, reset }) => {
   return (
     <div className="query-filter">
       {fields.map((field, index) => (
-        <QueryFilterField key={index} {...field} reset={reset} onChange={onChange} />
+        <QueryFilterField
+          key={index}
+          {...field}
+          reset={reset}
+          onChange={onChange}
+        />
       ))}
     </div>
   );
@@ -188,7 +234,9 @@ QueryFilter.propTypes = {
       checkboxes: PropTypes.arrayOf(
         PropTypes.shape({
           label: PropTypes.string.isRequired,
-          values: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+          values: PropTypes.arrayOf(
+            PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+          ),
           other: PropTypes.bool,
           color: PropTypes.string,
         }),

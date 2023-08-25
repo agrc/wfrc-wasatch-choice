@@ -74,7 +74,15 @@ export const setConfigs = async (appConfigs, configSchema = null) => {
     });
 
   // apply quad word from env
-  Object.assign(config, JSON.parse(JSON.stringify(appConfigs).replace('{quadWord}', import.meta.env.VITE_DISCOVER)));
+  Object.assign(
+    config,
+    JSON.parse(
+      JSON.stringify(appConfigs).replace(
+        '{quadWord}',
+        import.meta.env.VITE_DISCOVER,
+      ),
+    ),
+  );
 };
 
 export const getDefaultCurrentTabIds = () => {
@@ -90,7 +98,10 @@ export const useCurrentTabConfig = () => {
     const urlParams = context[0];
 
     returnValue = () => {
-      return { id: urlParams.selectedMap, ...config.mapInfos[urlParams.selectedMap] };
+      return {
+        id: urlParams.selectedMap,
+        ...config.mapInfos[urlParams.selectedMap],
+      };
     };
   }
 

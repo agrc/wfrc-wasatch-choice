@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import 'typeface-montserrat';
 import config from '../../config';
@@ -7,7 +8,6 @@ import Tabs from '../Tabs/Tabs';
 import './Header.scss';
 import logoSmall from './logo-small.png';
 import logo from './logo.png';
-import PropTypes from 'prop-types';
 
 export default function Header(props) {
   const tabsContainer = React.useRef();
@@ -16,7 +16,9 @@ export default function Header(props) {
   const largeLogoWidth = 200;
 
   const windowWidth = useWindowWidth();
-  const useLargeLogo = tabsContainer.current ? windowWidth - tabsContainer.current.offsetWidth >= largeLogoWidth : true;
+  const useLargeLogo = tabsContainer.current
+    ? windowWidth - tabsContainer.current.offsetWidth >= largeLogoWidth
+    : true;
 
   return (
     <div className="app__header">
@@ -32,7 +34,11 @@ export default function Header(props) {
           ))}
       </h4>
       <Tabs innerRef={tabsContainer} />
-      <a href={config.links.landingPage} className="heading__img" ref={logoContainer}>
+      <a
+        href={config.links.landingPage}
+        className="heading__img"
+        ref={logoContainer}
+      >
         <img
           src={useLargeLogo ? logo : logoSmall}
           className={useLargeLogo ? null : 'heading__img__small'}

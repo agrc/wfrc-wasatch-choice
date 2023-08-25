@@ -9,9 +9,19 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import config, { useCurrentTabConfig } from '../../config';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
-import { LayerSelector, LayerSelectorContainer } from '../LayerSelector/LayerSelector';
+import {
+  LayerSelector,
+  LayerSelectorContainer,
+} from '../LayerSelector/LayerSelector';
 
-export default function ReactMapView({ discoverKey, zoomToGraphic, initialExtent, setView, mapView, onClick }) {
+export default function ReactMapView({
+  discoverKey,
+  zoomToGraphic,
+  initialExtent,
+  setView,
+  mapView,
+  onClick,
+}) {
   const dispatchURLParams = useContext(URLParamsContext)[1];
   const currentTabConfig = useCurrentTabConfig();
   const zoomInLevels = 5;
@@ -32,10 +42,14 @@ export default function ReactMapView({ discoverKey, zoomToGraphic, initialExtent
       }
 
       if (!zoomObj.zoom) {
-        if (zoomObj.target.every((graphic) => graphic.geometry.type === 'point')) {
+        if (
+          zoomObj.target.every((graphic) => graphic.geometry.type === 'point')
+        ) {
           zoomObj = {
             target: zoomObj.target,
-            zoom: mapView.map.basemap.baseLayers.items[0].tileInfo.lods.length - zoomInLevels,
+            zoom:
+              mapView.map.basemap.baseLayers.items[0].tileInfo.lods.length -
+              zoomInLevels,
           };
         } else {
           zoomObj = {
@@ -132,7 +146,9 @@ export default function ReactMapView({ discoverKey, zoomToGraphic, initialExtent
         layerSelector.current?.forceMapUpdate();
       }
 
-      if (currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current) {
+      if (
+        currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current
+      ) {
         const method = currentTabConfig.hideLayerSelector
           ? mapView.ui.remove.bind(mapView.ui)
           : mapView.ui.add.bind(mapView.ui);
@@ -225,7 +241,10 @@ export default function ReactMapView({ discoverKey, zoomToGraphic, initialExtent
               if (layerView.layer.allSublayers) {
                 return layerView.layer.allSublayers.items
                   .filter((subLayer) => subLayer.visible)
-                  .map((subLayer) => `${subLayer.title}-${subLayer.definitionExpression}`);
+                  .map(
+                    (subLayer) =>
+                      `${subLayer.title}-${subLayer.definitionExpression}`,
+                  );
               } else {
                 return `${layerView.layer.title}-${layerView.layer.definitionExpression}`;
               }

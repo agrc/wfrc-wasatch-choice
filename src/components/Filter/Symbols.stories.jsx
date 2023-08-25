@@ -177,5 +177,9 @@ const layersLookup = {
   },
 };
 
-export const ClassesUniqueValues = () => <Classes layersLookup={layersLookup} layerNames={['layerOne']} />;
-export const ClassesBreaks = () => <Classes layersLookup={layersLookup} layerNames={['employment']} />;
+export const ClassesUniqueValues = () => (
+  <Classes layersLookup={layersLookup} layerNames={['layerOne']} />
+);
+export const ClassesBreaks = () => (
+  <Classes layersLookup={layersLookup} layerNames={['employment']} />
+);

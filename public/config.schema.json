@@ -11,7 +11,12 @@
           "additionalProperties": {
             "type": "string"
           },
-          "required": ["title", "availableHeader", "selectedHeader", "maxMessage"]
+          "required": [
+            "title",
+            "availableHeader",
+            "selectedHeader",
+            "maxMessage"
+          ]
         }
       },
       "additionalProperties": {
@@ -319,7 +324,13 @@
                       }
                     }
                   },
-                  "requiredProperties": ["label", "openOnLoad", "fieldName", "fieldType", "checkboxes"],
+                  "requiredProperties": [
+                    "label",
+                    "openOnLoad",
+                    "fieldName",
+                    "fieldType",
+                    "checkboxes"
+                  ],
                   "additionalProperties": false
                 }
               }
@@ -521,7 +532,10 @@
     "$schema": {
       "description": "This should be set to https://wfrc.org/wasatch-choice-map/config.schema.json",
       "type": "string",
-      "enum": ["https://wfrc.org/wasatch-choice-map/config.schema.json", "./config.schema.json"]
+      "enum": [
+        "https://wfrc.org/wasatch-choice-map/config.schema.json",
+        "./config.schema.json"
+      ]
     }
   },
   "required": [

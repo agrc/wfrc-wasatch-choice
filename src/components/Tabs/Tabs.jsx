@@ -18,7 +18,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { isMobile } from 'react-device-detect';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader, NavItem, NavLink } from 'reactstrap';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import config, { useCurrentTabConfig } from '../../config';
 import { useSpecialTranslation } from '../../i18n';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
@@ -54,10 +62,11 @@ export default function Tabs({ innerRef }) {
         payload: id,
       });
     };
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-      id: value.id,
-      disabled: isMobile,
-    });
+    const { attributes, listeners, setNodeRef, transform, transition } =
+      useSortable({
+        id: value.id,
+        disabled: isMobile,
+      });
     const style = {
       // don't transform y axis or scale the element
       transform: transform?.x ? `translate3d(${transform.x}px, 0, 0)` : '',
@@ -65,9 +74,18 @@ export default function Tabs({ innerRef }) {
     };
 
     return (
-      <div ref={setNodeRef} style={style} {...attributes} {...listeners} aria-label={`${t(value.name)} Tab`}>
+      <div
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        aria-label={`${t(value.name)} Tab`}
+      >
         <NavItem>
-          <NavLink className={currentTabConfig.id === value.id ? 'active' : null} onClick={() => onClick(value.id)}>
+          <NavLink
+            className={currentTabConfig.id === value.id ? 'active' : null}
+            onClick={() => onClick(value.id)}
+          >
             {t(value.name)}
           </NavLink>
         </NavItem>
@@ -104,17 +122,34 @@ export default function Tabs({ innerRef }) {
       // use generic div node over reactstrap Nav so that we can get a ref
       <PerfectScrollbar options={perfectOptions}>
         <div className="nav nav-tabs" ref={containerRef}>
-          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onSortEnd}>
-            <SortableContext items={items} strategy={horizontalListSortingStrategy}>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={onSortEnd}
+          >
+            <SortableContext
+              items={items}
+              strategy={horizontalListSortingStrategy}
+            >
               {items.map((id) => {
                 const tabInfo = config.mapInfos[id];
 
-                return <SortableNavItem key={`item-${id}`} value={{ id, ...tabInfo }} disabled={isMobile} />;
+                return (
+                  <SortableNavItem
+                    key={`item-${id}`}
+                    value={{ id, ...tabInfo }}
+                    disabled={isMobile}
+                  />
+                );
               })}
             </SortableContext>
           </DndContext>
           <NavItem key="settings">
-            <NavLink onClick={toggleModal} className="settings" data-testid="tab-configuration">
+            <NavLink
+              onClick={toggleModal}
+              className="settings"
+              data-testid="tab-configuration"
+            >
               <i className="fas fa-cog"></i>
             </NavLink>
           </NavItem>
@@ -145,7 +180,9 @@ export default function Tabs({ innerRef }) {
     <div className="tabs" ref={innerRef}>
       <SortableNav items={mapList} onSortEnd={onSortEnd} />
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>{t('trans:mapTabsDialog.title')}</ModalHeader>
+        <ModalHeader toggle={toggleModal}>
+          {t('trans:mapTabsDialog.title')}
+        </ModalHeader>
         <ModalBody>
           <TabPicker
             mapInfos={config.mapInfos}

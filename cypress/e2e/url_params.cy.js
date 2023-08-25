@@ -8,7 +8,9 @@ describe('url params', () => {
   it('selectedMap activates the correct tab', () => {
     cy.loadApp('/#selectedMap=landuse');
 
-    cy.findByLabelText('Centers & Land Uses Tab').get('.nav-link').should('have.class', 'active');
+    cy.findByLabelText('Centers & Land Uses Tab')
+      .get('.nav-link')
+      .should('have.class', 'active');
 
     cy.window().then((win) => {
       expect(win.currentMapName).to.equal('trans:mapTitleLandUse');
@@ -27,10 +29,25 @@ describe('url params', () => {
   it('loads the correct tabs', () => {
     cy.loadApp('/#mapList=vision.recreation.econdev.atdata.landuse');
 
-    cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Vision');
-    cy.get(':nth-child(2) > .nav-item > .nav-link').should('have.text', 'Parks & Public Spaces');
-    cy.get(':nth-child(3) > .nav-item > .nav-link').should('have.text', 'Economic Opportunities');
-    cy.get(':nth-child(4) > .nav-item > .nav-link').should('have.text', 'Active Transportation');
-    cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Centers & Land Uses');
+    cy.get(':nth-child(1) > .nav-item > .nav-link').should(
+      'have.text',
+      'Vision',
+    );
+    cy.get(':nth-child(2) > .nav-item > .nav-link').should(
+      'have.text',
+      'Parks & Public Spaces',
+    );
+    cy.get(':nth-child(3) > .nav-item > .nav-link').should(
+      'have.text',
+      'Economic Opportunities',
+    );
+    cy.get(':nth-child(4) > .nav-item > .nav-link').should(
+      'have.text',
+      'Active Transportation',
+    );
+    cy.get(':nth-child(5) > .nav-item > .nav-link').should(
+      'have.text',
+      'Centers & Land Uses',
+    );
   });
 });

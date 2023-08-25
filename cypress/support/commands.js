@@ -27,7 +27,9 @@
 import '@testing-library/cypress/add-commands';
 
 Cypress.Commands.add('waitForMapLoaded', () => {
-  return cy.window({ timeout: 60000 }).should('have.property', 'mapLoaded', true);
+  return cy
+    .window({ timeout: 60000 })
+    .should('have.property', 'mapLoaded', true);
 });
 Cypress.Commands.add('loadApp', (url = '/') => {
   cy.visit(url);
@@ -87,8 +89,12 @@ Cypress.Commands.add(
           .wait(options?.delay || 0, { log: Boolean(options?.delay) })
           .trigger('mousemove', {
             force: true,
-            clientX: Math.floor(initialRect.left + initialRect.width / 2 + x / 2),
-            clientY: Math.floor(initialRect.top + initialRect.height / 2 + y / 2),
+            clientX: Math.floor(
+              initialRect.left + initialRect.width / 2 + x / 2,
+            ),
+            clientY: Math.floor(
+              initialRect.top + initialRect.height / 2 + y / 2,
+            ),
           })
           .trigger('mousemove', {
             force: true,
@@ -107,8 +113,12 @@ Cypress.Commands.add(
             };
 
             const delta = {
-              x: Math.round(finalRect.left - initialRect.left - windowScrollDelta.x),
-              y: Math.round(finalRect.top - initialRect.top - windowScrollDelta.y),
+              x: Math.round(
+                finalRect.left - initialRect.left - windowScrollDelta.x,
+              ),
+              y: Math.round(
+                finalRect.top - initialRect.top - windowScrollDelta.y,
+              ),
             };
 
             return [subject, { initialRect, finalRect, delta }];

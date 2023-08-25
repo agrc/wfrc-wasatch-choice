@@ -1,10 +1,10 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Button } from 'reactstrap';
 import config from '../../config';
 import { useWindowWidth } from '../../hooks';
 import './Sidebar.scss';
-import PropTypes from 'prop-types';
 
 export default function Sidebar({ isOpen, toggleSidebar, children }) {
   const windowWidth = useWindowWidth();

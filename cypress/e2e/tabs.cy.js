@@ -66,10 +66,19 @@ describe('tabs', () => {
     cy.findByLabelText('Centers & Land Uses Tab').mouseMoveBy(-400, 0);
     cy.findByLabelText('Transportation Tab').mouseMoveBy(400, 0);
 
-    cy.get(':nth-child(1) > .nav-item > .nav-link').should('have.text', 'Centers & Land Uses');
-    cy.get(':nth-child(5) > .nav-item > .nav-link').should('have.text', 'Transportation');
+    cy.get(':nth-child(1) > .nav-item > .nav-link').should(
+      'have.text',
+      'Centers & Land Uses',
+    );
+    cy.get(':nth-child(5) > .nav-item > .nav-link').should(
+      'have.text',
+      'Transportation',
+    );
 
     // assert that URL was updated
-    cy.hash().should('contain', 'landuse.vision.econdev.recreation.transportation');
+    cy.hash().should(
+      'contain',
+      'landuse.vision.econdev.recreation.transportation',
+    );
   });
 });

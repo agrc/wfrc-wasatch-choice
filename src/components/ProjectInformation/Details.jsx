@@ -49,7 +49,11 @@ export default function Details({ graphic, highlightGraphic }) {
   }, [graphic]);
 
   return (
-    <div className="details" onMouseEnter={() => highlightGraphic(graphic)} onMouseLeave={() => highlightGraphic()}>
+    <div
+      className="details"
+      onMouseEnter={() => highlightGraphic(graphic)}
+      onMouseLeave={() => highlightGraphic()}
+    >
       <div className="title" onClick={toggle}>
         {title}
       </div>

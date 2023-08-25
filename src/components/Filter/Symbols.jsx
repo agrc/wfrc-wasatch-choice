@@ -15,7 +15,9 @@ export const getSymbolFromInfos = (symbolInfos, classIndex) => {
   const symbol = symbolInfos[classIndex ?? 0].symbol;
 
   if (!symbol) {
-    console.error(`No symbol was found in: ${JSON.stringify(symbolInfos, null, 2)}`);
+    console.error(
+      `No symbol was found in: ${JSON.stringify(symbolInfos, null, 2)}`,
+    );
   }
   return symbol;
 };
@@ -27,7 +29,12 @@ function FeatureLayerSymbol({ layersLookup, layerName }) {
 
   useEffect(() => {
     const giddyUp = async () => {
-      const symbol = layer.renderer.symbol || getSymbolFromInfos(layer.renderer.uniqueValueInfos, uniqueValueInfoIndex);
+      const symbol =
+        layer.renderer.symbol ||
+        getSymbolFromInfos(
+          layer.renderer.uniqueValueInfos,
+          uniqueValueInfoIndex,
+        );
 
       const preview = await renderPreviewHTML(symbol, {
         opacity: layer.opacity,
@@ -62,7 +69,11 @@ function SymbolGroup({ label, group, layersLookup }) {
     <>
       <div ref={targetRef} className="symbol-overlap-container">
         {group.map((layerName, index) => (
-          <FeatureLayerSymbol key={index} layersLookup={layersLookup} layerName={layerName} />
+          <FeatureLayerSymbol
+            key={index}
+            layersLookup={layersLookup}
+            layerName={layerName}
+          />
         ))}
       </div>
       {label ? (
@@ -86,7 +97,12 @@ SymbolGroup.propTypes = {
   label: PropTypes.string,
 };
 
-export const Simple = ({ layerNames, layersLookup, symbolLayerNames, symbolLabels }) => {
+export const Simple = ({
+  layerNames,
+  layersLookup,
+  symbolLayerNames,
+  symbolLabels,
+}) => {
   return (
     <div className="simple-symbol-container symbol-container">
       {symbolLayerNames
@@ -144,7 +160,8 @@ export const Classes = (props) => {
       return;
     }
 
-    const infos = layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
+    const infos =
+      layer.renderer.uniqueValueInfos || layer.renderer.classBreakInfos;
     if (!infos) {
       throw new Error(
         `Classes symbol requires a layer symbolized using unique values or class breaks. Layer: ${layer.title}`,
@@ -167,7 +184,11 @@ export const Classes = (props) => {
       <div className="symbol-container" ref={targetRef}>
         <div className="swatch-class-container">
           {data.colors.map((color, index) => (
-            <div key={index} className="swatch" style={{ backgroundColor: getBackgroundColor(color) }}></div>
+            <div
+              key={index}
+              className="swatch"
+              style={{ backgroundColor: getBackgroundColor(color) }}
+            ></div>
           ))}
         </div>
         <FontAwesomeIcon icon={faQuestionCircle} />
@@ -183,7 +204,10 @@ export const Classes = (props) => {
         <PopoverBody>
           {data.colors.map((color, index) => (
             <div key={index} className="popover-legend-row">
-              <div style={{ backgroundColor: getBackgroundColor(color) }} className="legend-swatch"></div>
+              <div
+                style={{ backgroundColor: getBackgroundColor(color) }}
+                className="legend-swatch"
+              ></div>
               <div className="legend-label">{color.label}</div>
             </div>
           ))}
