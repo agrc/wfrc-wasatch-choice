@@ -382,6 +382,7 @@
       "additionalProperties": false,
       "properties": {
         "baseLayers": {
+          "description": "The base layers to be displayed in the widget. Use a string value that matches the `BWName` value to create a black and white imagery layer.",
           "type": "array",
           "items": {
             "anyOf": [
@@ -441,6 +442,14 @@
               }
             ]
           }
+        },
+        "BWName": {
+          "description": "The name of the black and white imagery layer token in the baseLayers array",
+          "type": "string"
+        },
+        "BWOpacity": {
+          "description": "The opacity of the black and white imagery layer expressed as a percentage (e.g. 75%)",
+          "type": "string"
         }
       }
     },

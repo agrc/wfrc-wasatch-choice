@@ -1086,7 +1086,9 @@
     "placeHolder": "trans:searchPlaceholder"
   },
   "layerSelector": {
-    "baseLayers": ["Lite", "Terrain", "Imagery"],
+    "BWName": "B/W Imagery",
+    "BWOpacity": "65%",
+    "baseLayers": ["Lite", "Terrain", "Imagery", "B/W Imagery"],
     "overlays": [
       {
         "id": "Cities",
