@@ -4,15 +4,16 @@
 
 # additionalProperties Properties
 
-| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                           |
-| :------------------------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [name](#name)                               | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")                               |
-| [category](#category)                       | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-category.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")                       |
-| [webMapId](#webmapid)                       | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-webmapid.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/webMapId")                       |
-| [hideLayerSelector](#hidelayerselector)     | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")     |
-| [useDefaultAGOLPopup](#usedefaultagolpopup) | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup") |
-| [filter](#filter)                           | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter")                           |
-| [queryFilter](#queryfilter)                 | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")                 |
+| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
+| :------------------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [name](#name)                               | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")                                                                |
+| [category](#category)                       | `string`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-category.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")                                                        |
+| [webMapId](#webmapid)                       | `string`  | Required | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-webmapid.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/webMapId")                                                        |
+| [hideLayerSelector](#hidelayerselector)     | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")                                      |
+| [useDefaultAGOLPopup](#usedefaultagolpopup) | `boolean` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup")                                  |
+| [filter](#filter)                           | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter")                                                            |
+| [queryFilter](#queryfilter)                 | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")                                                  |
+| [projectInformation](#projectinformation)   | `object`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/projectInformation") |
 
 ## name
 
@@ -139,3 +140,21 @@ Contains configs for the Query Filter widget.
 ### queryFilter Type
 
 `object` ([QueryFilter](config-properties-map-infos-map-info-properties-queryfilter.md))
+
+## projectInformation
+
+
+
+`projectInformation`
+
+*   is optional
+
+*   Type: `object` ([Tab-specific Project Information Widget Configuration](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md))
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/projectInformation")
+
+### projectInformation Type
+
+`object` ([Tab-specific Project Information Widget Configuration](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md))

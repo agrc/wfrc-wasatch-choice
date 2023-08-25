@@ -1,0 +1,3 @@
+## BWOpacity Type
+
+`string`

@@ -1,0 +1,3 @@
+## BWName Type
+
+`string`
