@@ -1,4 +1,5 @@
 import { once } from '@arcgis/core/core/reactiveUtils';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import MapView from '@arcgis/core/views/MapView';
 import WebMap from '@arcgis/core/WebMap';
 import Home from '@arcgis/core/widgets/Home';
@@ -220,6 +221,26 @@ export default function ReactMapView({
 
       setView(view);
       view.when(() => {
+        config.layerSelector.baseLayers = config.layerSelector.baseLayers.map(
+          (layer) => {
+            if (
+              typeof layer === 'string' &&
+              layer === config.layerSelector.BWName
+            ) {
+              return {
+                id: config.layerSelector.BWName,
+                Factory: WebTileLayer,
+                urlTemplate: `https://discover.agrc.utah.gov/login/path/${
+                  import.meta.env.VITE_DISCOVER
+                }/tiles/utah/{level}/{col}/{row}`,
+                effect: `grayscale(100%) opacity(${config.layerSelector.BWOpacity})`,
+              };
+            }
+
+            return layer;
+          },
+        );
+
         setLayerSelectorMapView(view);
       });
 
