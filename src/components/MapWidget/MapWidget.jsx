@@ -66,11 +66,16 @@ export default function MapWidget({
     };
   }, [buttonDiv, mapView]);
 
-  const updateScrollbar = React.useCallback(() => scrollBar.current?.update(), []);
+  const updateScrollbar = React.useCallback(
+    () => scrollBar.current?.update(),
+    [],
+  );
 
   React.useEffect(() => {
     if (scrollBarContainer.current) {
-      scrollBar.current = new PerfectScrollbar(scrollBarContainer.current, { suppressScrollX: true });
+      scrollBar.current = new PerfectScrollbar(scrollBarContainer.current, {
+        suppressScrollX: true,
+      });
     }
 
     return () => {
@@ -83,7 +88,12 @@ export default function MapWidget({
   return (
     <div>
       <MapWidgetContext.Provider value={{ updateScrollbar }}>
-        <div className="map-widget-button esri-widget--button" ref={buttonDiv} onClick={toggle} title={name}>
+        <div
+          className="map-widget-button esri-widget--button"
+          ref={buttonDiv}
+          onClick={toggle}
+          title={name}
+        >
           <FontAwesomeIcon icon={icon} />
         </div>
         <Card style={cardStyle} className="map-widget-card">

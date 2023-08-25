@@ -82,7 +82,9 @@ describe('getLayers', () => {
 
     await getLayers(config.layerNames, mockMap);
 
-    expect(console.error).toHaveBeenCalledWith('Layer: BadLayerName not found in web map!');
+    expect(console.error).toHaveBeenCalledWith(
+      'Layer: BadLayerName not found in web map!',
+    );
   });
 
   it('searches sublayers', async () => {

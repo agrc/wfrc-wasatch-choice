@@ -41,10 +41,15 @@ TestFixture.propTypes = {
 
 export const NoneSelected = () => <TestFixture initialSelectedIds={[]} />;
 
-export const Selected = () => <TestFixture initialSelectedIds={['two', 'one', 'five']} />;
+export const Selected = () => (
+  <TestFixture initialSelectedIds={['two', 'one', 'five']} />
+);
 
 export const MaxReached = () => (
-  <TestFixture initialSelectedIds={['two', 'one', 'five', 'six', 'seven']} maxReached={true} />
+  <TestFixture
+    initialSelectedIds={['two', 'one', 'five', 'six', 'seven']}
+    maxReached={true}
+  />
 );
 MaxReached.parameters = {
   storyshots: { disable: true },

@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import DualListBox from 'react-dual-listbox';
 import { Alert } from 'reactstrap';
 import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
 import config from '../../config';
 import { useSpecialTranslation } from '../../i18n';
-import PropTypes from 'prop-types';
 
 export const getOptions = (mapInfos, t) => {
   const categories = {};
@@ -47,7 +47,9 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
         id="tab-picker"
         lang={{
           availableHeader: t('trans:mapTabsDialog.availableHeader'),
-          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${config.maxTabsAllowed})`,
+          selectedHeader: `${t('trans:mapTabsDialog.selectedHeader')} (max=${
+            config.maxTabsAllowed
+          })`,
         }}
         onChange={setSelectedIds}
         options={options}

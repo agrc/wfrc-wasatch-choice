@@ -6,7 +6,9 @@ describe('tab-picker', () => {
 
     cy.findByTestId('tab-configuration').click();
 
-    cy.findByRole('listbox', { name: /maps displayed/i }).select('transportation');
+    cy.findByRole('listbox', { name: /maps displayed/i }).select(
+      'transportation',
+    );
     cy.findByRole('option', { name: /^transportation$/i }).dblclick();
 
     cy.findByRole('button', { name: /finish/i }).click();
@@ -19,7 +21,9 @@ describe('tab-picker', () => {
 
     cy.findByTestId('tab-configuration').click();
 
-    cy.findByRole('listbox', { name: /maps displayed/i }).select('transportation');
+    cy.findByRole('listbox', { name: /maps displayed/i }).select(
+      'transportation',
+    );
 
     cy.findByRole('option', { name: /^transportation$/i }).dblclick();
 
@@ -40,7 +44,9 @@ describe('tab-picker', () => {
     cy.findByRole('listbox', { name: /available/i }).select('projections');
     cy.findByRole('option', { name: /projections/i }).dblclick();
 
-    cy.findByRole('listbox', { name: /available/i }).select('stationareaplanning');
+    cy.findByRole('listbox', { name: /available/i }).select(
+      'stationareaplanning',
+    );
     cy.findByRole('option', { name: /station area planning/i }).dblclick();
 
     cy.findByRole('listbox', { name: /available/i }).select('gflu');

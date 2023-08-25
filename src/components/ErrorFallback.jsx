@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Collapse, Button, CardBody, CardHeader, Card } from 'reactstrap';
 import { useState } from 'react';
+import { Button, Card, CardBody, CardHeader, Collapse } from 'reactstrap';
 
 export default function ErrorFallback({ error }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -12,9 +12,14 @@ export default function ErrorFallback({ error }) {
           <h3 className="m-0">Something went wrong</h3>
         </CardHeader>
         <CardBody>
-          <p className="mt-1">{error?.message ?? 'An unknown error occurred. Please try again.'}</p>
+          <p className="mt-1">
+            {error?.message ?? 'An unknown error occurred. Please try again.'}
+          </p>
           <div className="d-flex w-100 align-items-center justify-content-between mb-3">
-            <Button color="primary" onClick={() => setShowDetails(!showDetails)}>
+            <Button
+              color="primary"
+              onClick={() => setShowDetails(!showDetails)}
+            >
               Show technical details 🤓
             </Button>
             <Button color="primary" onClick={() => window.location.reload()}>

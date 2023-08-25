@@ -76,12 +76,23 @@ export function Sherlock({
 
   return (
     <Downshift itemToString={itemToString} onChange={handleStateChange}>
-      {({ getInputProps, getItemProps, highlightedIndex, isOpen, inputValue, getMenuProps }) => (
+      {({
+        getInputProps,
+        getItemProps,
+        highlightedIndex,
+        isOpen,
+        inputValue,
+        getMenuProps,
+      }) => (
         <div className="sherlock">
           <h4>{label}</h4>
           <div style={{ paddingBottom: '1em' }}>
             <InputGroup>
-              <Input {...getInputProps()} placeholder={placeHolder} autoComplete="nope"></Input>
+              <Input
+                {...getInputProps()}
+                placeholder={placeHolder}
+                autoComplete="nope"
+              ></Input>
               <Button size="sm" color="secondary" disabled>
                 <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
               </Button>
@@ -89,11 +100,18 @@ export function Sherlock({
             <div className="sherlock__match-dropdown" {...getMenuProps()}>
               <ul className="sherlock__matches">
                 {!isOpen ? null : (
-                  <Clue clue={inputValue} provider={provider} maxResults={maxResultsToDisplay}>
+                  <Clue
+                    clue={inputValue}
+                    provider={provider}
+                    maxResults={maxResultsToDisplay}
+                  >
                     {({ short, hasMore, error, data = [] }) => {
                       if (short) {
                         return (
-                          <li className="sherlock__match-item alert-primary" disabled>
+                          <li
+                            className="sherlock__match-item alert-primary"
+                            disabled
+                          >
                             Type more than 2 letters.
                           </li>
                         );
@@ -101,7 +119,10 @@ export function Sherlock({
 
                       if (error) {
                         return (
-                          <li className="sherlock__match-item alert-danger" disabled>
+                          <li
+                            className="sherlock__match-item alert-danger"
+                            disabled
+                          >
                             Error! ${error}
                           </li>
                         );
@@ -109,7 +130,10 @@ export function Sherlock({
 
                       if (!data.length) {
                         return (
-                          <li className="sherlock__match-item alert-warning" disabled>
+                          <li
+                            className="sherlock__match-item alert-warning"
+                            disabled
+                          >
                             No items found.
                           </li>
                         );
@@ -122,7 +146,9 @@ export function Sherlock({
                             key: index,
                             className:
                               'sherlock__match-item' +
-                              (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
+                              (highlightedIndex === index
+                                ? ' sherlock__match-item--selected'
+                                : ''),
                             item,
                             index,
                           })}
@@ -131,13 +157,19 @@ export function Sherlock({
                             text={item.attributes[provider.searchField]}
                             highlight={inputValue}
                           ></Highlighted>
-                          <div>{item.attributes[provider.contextField] || ''}</div>
+                          <div>
+                            {item.attributes[provider.contextField] || ''}
+                          </div>
                         </li>
                       ));
 
                       if (hasMore) {
                         items.push(
-                          <li key="too-many" className="sherlock__match-item alert-primary text-center" disabled>
+                          <li
+                            key="too-many"
+                            className="sherlock__match-item alert-primary text-center"
+                            disabled
+                          >
                             More than {maxResultsToDisplay} items found.
                           </li>,
                         );
@@ -320,7 +352,11 @@ export class MapServiceProvider extends ProviderBase {
   async setUpQueryTask(options) {
     const defaultWkid = 3857;
     this.query = new Query();
-    this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
+    this.query.outFields = this.getOutFields(
+      options.outFields,
+      this.searchField,
+      options.contextField,
+    );
     this.query.returnGeometry = false;
     this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
   }
@@ -329,7 +365,10 @@ export class MapServiceProvider extends ProviderBase {
     console.log('sherlock.MapServiceProvider:search', arguments);
 
     this.query.where = this.getSearchClause(searchString);
-    const featureSet = await query.executeQueryJSON(this.serviceUrl, this.query);
+    const featureSet = await query.executeQueryJSON(
+      this.serviceUrl,
+      this.query,
+    );
 
     return { data: featureSet.features };
   }
@@ -339,7 +378,10 @@ export class MapServiceProvider extends ProviderBase {
 
     this.query.where = this.getFeatureClause(searchValue, contextValue);
     this.query.returnGeometry = true;
-    const featureSet = await query.executeQueryJSON(this.serviceUrl, this.query);
+    const featureSet = await query.executeQueryJSON(
+      this.serviceUrl,
+      this.query,
+    );
 
     return { data: featureSet.features };
   }
@@ -363,12 +405,20 @@ export class WebApiProvider extends ProviderBase {
     if (options) {
       this.wkid = options.wkid || defaultWkid;
       this.contextField = options.contextField;
-      this.outFields = this.getOutFields(options.outFields, this.searchField, this.contextField);
+      this.outFields = this.getOutFields(
+        options.outFields,
+        this.searchField,
+        this.contextField,
+      );
     } else {
       this.wkid = defaultWkid;
     }
 
-    this.outFields = this.getOutFields(null, this.searchField, this.contextField);
+    this.outFields = this.getOutFields(
+      null,
+      this.searchField,
+      this.contextField,
+    );
     this.webApi = new WebApi(apiKey, this.signal);
   }
 
@@ -384,10 +434,14 @@ export class WebApiProvider extends ProviderBase {
   async getFeature(searchValue, contextValue) {
     console.log('sherlock.providers.WebAPI:getFeature', arguments);
 
-    return await this.webApi.search(this.searchLayer, this.outFields.concat('shape@'), {
-      predicate: this.getFeatureClause(searchValue, contextValue),
-      spatialReference: this.wkid,
-    });
+    return await this.webApi.search(
+      this.searchLayer,
+      this.outFields.concat('shape@'),
+      {
+        predicate: this.getFeatureClause(searchValue, contextValue),
+        spatialReference: this.wkid,
+      },
+    );
   }
 }
 
@@ -403,7 +457,13 @@ const Highlighted = ({ text = '', highlight = '' }) => {
     <div>
       {parts
         .filter((part) => part)
-        .map((part, i) => (regex.test(part) ? <mark key={i}>{part}</mark> : <span key={i}>{part}</span>))}
+        .map((part, i) =>
+          regex.test(part) ? (
+            <mark key={i}>{part}</mark>
+          ) : (
+            <span key={i}>{part}</span>
+          ),
+        )}
     </div>
   );
 };
@@ -471,7 +531,9 @@ class WebApi {
     // returns: Promise
     console.log('WebApi:search', arguments);
 
-    var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(returnValues.join(','))}?`;
+    var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(
+      returnValues.join(','),
+    )}?`;
 
     if (!options) {
       options = {};
@@ -484,7 +546,9 @@ class WebApi {
 
     let response;
     try {
-      response = await fetch(url + new URLSearchParams(options).toString(), { signal: this.signal });
+      response = await fetch(url + new URLSearchParams(options).toString(), {
+        signal: this.signal,
+      });
     } catch (error) {
       console.log('web api error', error);
       // abort errors are OK

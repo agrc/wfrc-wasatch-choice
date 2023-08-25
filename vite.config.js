@@ -21,7 +21,9 @@ function watchConfigFiles() {
 export default defineConfig({
   base: './',
   define: {
-    'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(
+      process.env.npm_package_version,
+    ),
   },
   plugins: [react(), watchConfigFiles()],
   test: {

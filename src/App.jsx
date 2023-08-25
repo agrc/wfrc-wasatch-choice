@@ -56,7 +56,9 @@ export default function App() {
 
     const mapImageLayers = layers.filter(
       (layer) =>
-        layer.type === 'map-image' && layer.visible && !config.projectInformation.excludedLayers.includes(layer.title),
+        layer.type === 'map-image' &&
+        layer.visible &&
+        !config.projectInformation.excludedLayers.includes(layer.title),
     );
 
     const identifyPromises = mapImageLayers.map((layer) => {
@@ -106,12 +108,17 @@ export default function App() {
       response.results
         .filter(
           (hitResult) =>
-            !config.projectInformation.excludedLayers.includes(hitResult.graphic.layer.title) &&
-            hitResult.graphic.layer.queryFeatures,
+            !config.projectInformation.excludedLayers.includes(
+              hitResult.graphic.layer.title,
+            ) && hitResult.graphic.layer.queryFeatures,
         )
         .map(async (hitResult) => {
           const results = await hitResult.graphic.layer.queryFeatures({
-            objectIds: [hitResult.graphic.attributes[hitResult.graphic.layer.objectIdField]],
+            objectIds: [
+              hitResult.graphic.attributes[
+                hitResult.graphic.layer.objectIdField
+              ],
+            ],
             returnGeometry: true,
             outFields: '*',
           });
@@ -175,7 +182,10 @@ export default function App() {
   };
 
   const sherlockConfig = {
-    provider: new MapServiceProvider(config.sherlock.serviceUrl, config.sherlock.searchField),
+    provider: new MapServiceProvider(
+      config.sherlock.serviceUrl,
+      config.sherlock.searchField,
+    ),
     placeHolder: t(config.sherlock.placeHolder),
     onSherlockMatch,
   };
@@ -228,7 +238,10 @@ export default function App() {
       {currentTabConfig && (
         <>
           <Header title={t('trans:appTitle')} />
-          <Sidebar toggleSidebar={toggleSidebar} isOpen={!urlParams.sideBarClosed}>
+          <Sidebar
+            toggleSidebar={toggleSidebar}
+            isOpen={!urlParams.sideBarClosed}
+          >
             <About version={import.meta.env.PACKAGE_VERSION} />
           </Sidebar>
           <MapLens {...sidebarOptions}>

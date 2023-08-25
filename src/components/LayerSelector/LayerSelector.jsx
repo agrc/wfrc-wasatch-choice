@@ -52,7 +52,8 @@ class LayerSelector extends Component {
       return;
     }
 
-    const imageryAttributionJsonUrl = 'https://mapserv.utah.gov/cdn/attribution/imagery.json';
+    const imageryAttributionJsonUrl =
+      'https://mapserv.utah.gov/cdn/attribution/imagery.json';
     this.applianceLayers = {
       Imagery: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${this.props.quadWord}/tiles/utah/{level}/{col}/{row}`,
@@ -99,11 +100,20 @@ class LayerSelector extends Component {
     this.props.view.map.basemap = new Basemap();
 
     const defaultTileInfo = this.createDefaultTileInfo(LOD);
-    this.applianceLayers = this.setTileInfosForApplianceLayers(this.applianceLayers, defaultTileInfo, TileInfo);
+    this.applianceLayers = this.setTileInfosForApplianceLayers(
+      this.applianceLayers,
+      defaultTileInfo,
+      TileInfo,
+    );
 
     this.onItemChanged = this.onItemChanged.bind(this);
 
-    const baseLayers = this.createLayerFactories('baselayer', this.props.baseLayers, WebTileLayer) || [];
+    const baseLayers =
+      this.createLayerFactories(
+        'baselayer',
+        this.props.baseLayers,
+        WebTileLayer,
+      ) || [];
 
     let hasDefaultSelection = false;
     let defaultSelection = null;
@@ -134,7 +144,8 @@ class LayerSelector extends Component {
       overlays.splice(0, 0, 'Overlay');
     }
 
-    overlays = this.createLayerFactories('overlay', overlays, WebTileLayer) || [];
+    overlays =
+      this.createLayerFactories('overlay', overlays, WebTileLayer) || [];
 
     if (defaultSelection.linked && defaultSelection.linked.length > 0) {
       overlays.map((layer) => {
@@ -157,9 +168,19 @@ class LayerSelector extends Component {
     quadWord: PropTypes.string,
     baseLayers: PropTypes.arrayOf(
       PropTypes.oneOfType([
-        PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay', 'Imagery']),
+        PropTypes.oneOf([
+          'Hybrid',
+          'Lite',
+          'Terrain',
+          'Topo',
+          'Color IR',
+          'Address Points',
+          'Overlay',
+          'Imagery',
+        ]),
         PropTypes.shape({
-          Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+          Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+            .isRequired,
           urlTemplate: PropTypes.string,
           url: PropTypes.string,
           id: PropTypes.string.isRequired,
@@ -167,8 +188,15 @@ class LayerSelector extends Component {
           linked: PropTypes.arrayOf(PropTypes.string),
         }),
         PropTypes.shape({
-          token: PropTypes.oneOf(['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR', 'Address Points', 'Overlay'])
-            .isRequired,
+          token: PropTypes.oneOf([
+            'Hybrid',
+            'Lite',
+            'Terrain',
+            'Topo',
+            'Color IR',
+            'Address Points',
+            'Overlay',
+          ]).isRequired,
           selected: PropTypes.bool,
           linked: PropTypes.arrayOf(PropTypes.string),
         }),
@@ -178,7 +206,8 @@ class LayerSelector extends Component {
       PropTypes.oneOfType([
         PropTypes.oneOf(['Address Points', 'Overlay']),
         PropTypes.shape({
-          Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+          Factory: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+            .isRequired,
           urlTemplate: PropTypes.string,
           url: PropTypes.string,
           id: PropTypes.string.isRequired,
@@ -459,7 +488,10 @@ class LayerSelector extends Component {
       let layerList = null;
       switch (layerItem.layerType) {
         case 'baselayer':
-          if (this.props.view.map.basemap && this.props.view.map.basemap.baseLayers) {
+          if (
+            this.props.view.map.basemap &&
+            this.props.view.map.basemap.baseLayers
+          ) {
             layerList = this.props.view.map.basemap.baseLayers;
           }
           break;
@@ -473,7 +505,9 @@ class LayerSelector extends Component {
       if (layerItem.selected === false) {
         var managedLayer = managedLayers[layerItem.id] || {};
         if (!managedLayer.layer) {
-          managedLayer.layer = layerList.getItemAt(layerList.indexOf(layerItem.layer));
+          managedLayer.layer = layerList.getItemAt(
+            layerList.indexOf(layerItem.layer),
+          );
         }
 
         if (managedLayer.layer) {
@@ -530,11 +564,16 @@ class LayerSelectorContainer extends Component {
       >
         <input
           type="image"
-          className={'layer-selector__toggle ' + (this.state.expanded ? 'layer-selector--hidden' : '')}
+          className={
+            'layer-selector__toggle ' +
+            (this.state.expanded ? 'layer-selector--hidden' : '')
+          }
           src={icon}
           alt="layers"
         />
-        <form className={this.state.expanded ? '' : 'layer-selector--hidden'}>{this.props.children}</form>
+        <form className={this.state.expanded ? '' : 'layer-selector--hidden'}>
+          {this.props.children}
+        </form>
       </div>
     );
   }
