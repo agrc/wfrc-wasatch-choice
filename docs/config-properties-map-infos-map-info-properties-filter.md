@@ -4,14 +4,33 @@
 
 # filter Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
-| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [toggle](#toggle)         | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle")         |
-| [layerNames](#layernames) | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/layerNames") |
-| [phases](#phases)         | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases")         |
-| [modes](#modes)           | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-modes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/modes")           |
-| [checkboxes](#checkboxes) | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes") |
-| [groups](#groups)         | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups")         |
+| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                     |
+| :------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [name](#name)             | `string` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/name") |
+| [toggle](#toggle)         | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle")                 |
+| [layerNames](#layernames) | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/layerNames")         |
+| [phases](#phases)         | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases")                 |
+| [modes](#modes)           | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-modes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/modes")                   |
+| [checkboxes](#checkboxes) | `object` | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes")         |
+| [groups](#groups)         | `array`  | Optional | cannot be null | [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups")                 |
+
+## name
+
+Optionally configures the title of the filter panel. If this property is not set, "trans:filter" will be used.
+
+`name`
+
+*   is optional
+
+*   Type: `string` ([Tab-specific Filter Name](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md))
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/name")
+
+### name Type
+
+`string` ([Tab-specific Filter Name](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md))
 
 ## toggle
 
