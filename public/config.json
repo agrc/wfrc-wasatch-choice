@@ -7,6 +7,7 @@
       "hideLayerSelector": true,
       "useDefaultAGOLPopup": false,
       "filter": {
+        "name": "trans:filterVision.name",
         "layerNames": {
           "MunicipalitiesLabels": "MunicipalitiesLabels",
           "GeneralPOI": "GeneralPOI",
@@ -198,6 +199,9 @@
             "checkboxes": ["centers", "generalLandUse", "openSpace"]
           }
         ]
+      },
+      "projectInformation": {
+        "name": "trans:visionProjectInformation"
       }
     },
     "transportation": {
@@ -1134,7 +1138,9 @@
         "filter": "Filter",
         "reset": "reset",
         "filterByPhasing": "filter by phasing",
+        "visionProjectInformation": "Project Info Change",
         "filterVision": {
+          "name": "Filter Change",
           "transportation": "Transportation",
           "roads": "Roads",
           "transit": "Transit",

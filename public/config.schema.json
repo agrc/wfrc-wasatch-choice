@@ -71,6 +71,11 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+              "name": {
+                "title": "Tab-specific Filter Name",
+                "description": "Optionally configures the title of the filter panel. If this property is not set, \"trans:filter\" will be used.",
+                "type": "string"
+              },
               "toggle": {
                 "description": "Configures the toggle buttons at the top of the filter in the transportation tab.",
                 "type": "object",
@@ -333,6 +338,18 @@
                   ],
                   "additionalProperties": false
                 }
+              }
+            }
+          },
+          "projectInformation": {
+            "title": "Tab-specific Project Information Widget Configuration",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "title": "Tab-specific Project Information Name",
+                "description": "Optionally configures the project information widget for this tab. If this property is not set, \"trans:projectInformation\" will be used.",
+                "type": "string"
               }
             }
           }
