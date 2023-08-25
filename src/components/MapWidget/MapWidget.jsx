@@ -38,8 +38,8 @@ export default function MapWidget({
     }
 
     return () => {
-      if (handler) {
-        handler?.remove();
+      if (handler?.remove) {
+        handler.remove();
       }
     };
   }, [mapView, openOnMapClick]);
