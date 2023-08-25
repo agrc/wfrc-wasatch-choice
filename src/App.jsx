@@ -249,7 +249,11 @@ export default function App() {
             {currentTabConfig.filter && (
               <MapWidget
                 defaultOpen={config.openOnLoad.filter}
-                name={t('trans:filter')}
+                name={
+                  currentTabConfig.filter?.name
+                    ? t(currentTabConfig.filter.name)
+                    : t('trans:filter')
+                }
                 icon={faList}
                 position={0}
                 showReset={true}
@@ -267,7 +271,11 @@ export default function App() {
             {currentTabConfig.queryFilter && (
               <MapWidget
                 defaultOpen={config.openOnLoad.queryFilter}
-                name={`${t(currentTabConfig.name)} ${t('trans:filter')}`}
+                name={
+                  currentTabConfig.filter?.name
+                    ? t(currentTabConfig.filter.name)
+                    : `${t(currentTabConfig.name)} ${t('trans:filter')}`
+                }
                 icon={faList}
                 position={0}
                 showReset={true}
@@ -285,7 +293,11 @@ export default function App() {
             {!currentTabConfig.useDefaultAGOLPopup && (
               <MapWidget
                 defaultOpen={config.openOnLoad.projectInfo}
-                name={t('trans:projectInformation')}
+                name={
+                  currentTabConfig.projectInformation?.name
+                    ? t(currentTabConfig?.projectInformation?.name)
+                    : t('trans:projectInformation')
+                }
                 icon={faHandPointer}
                 position={1}
                 mapView={mapView}
