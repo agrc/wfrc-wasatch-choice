@@ -6,13 +6,10 @@ import Popup from '@arcgis/core/widgets/Popup';
 import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
 import config, { useCurrentTabConfig } from '../../config';
 import { ACTION_TYPES, URLParamsContext } from '../../URLParams';
-import {
-  LayerSelector,
-  LayerSelectorContainer,
-} from '../LayerSelector/LayerSelector';
+import LayerSelector from '../layer-selector';
+import '../layer-selector/LayerSelector.css';
 
 export default function ReactMapView({
   discoverKey,
@@ -29,9 +26,8 @@ export default function ReactMapView({
   const maps = useRef();
   const mapViewDiv = useRef();
   const defaultPopup = useRef();
-  const selectorNode = useRef();
-  const layerSelector = useRef();
-  const isLayerSelectorVisible = useRef(false);
+  const [layerSelectorMapView, setLayerSelectorMapView] = useState(null);
+  const [layerSelectorVisible, setLayerSelectorVisible] = useState(false);
 
   const zoomTo = useCallback(
     async (zoomObj) => {
@@ -92,23 +88,6 @@ export default function ReactMapView({
     }
   }, [zoomToGraphic, zoomTo]);
 
-  const setUpLayerSelector = useCallback(async () => {
-    console.log('setUpLayerSelector');
-    selectorNode.current = document.createElement('div');
-
-    const layerSelectorOptions = {
-      view: mapView,
-      quadWord: discoverKey,
-      ...config.layerSelector,
-    };
-
-    createRoot(selectorNode.current).render(
-      <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions} ref={layerSelector} />
-      </LayerSelectorContainer>,
-    );
-  }, [discoverKey, mapView]);
-
   const changeMap = useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
 
@@ -127,6 +106,7 @@ export default function ReactMapView({
       }
 
       // update web map
+      setLayerSelectorVisible(!currentTabConfig.hideLayerSelector);
       mapView.map = maps.current[currentTabConfig.id];
 
       if (!currentTabConfig.useDefaultAGOLPopup) {
@@ -134,30 +114,15 @@ export default function ReactMapView({
       } else {
         mapView.popup = new Popup();
       }
-
-      // update layer selector visibility
-      if (!currentTabConfig.hideLayerSelector) {
-        // init layer selector if needed
-        if (!layerSelector.current) {
-          await setUpLayerSelector();
-        }
-
-        // make sure that layer selector is wired to the new map
-        layerSelector.current?.forceMapUpdate();
-      }
-
-      if (
-        currentTabConfig.hideLayerSelector !== isLayerSelectorVisible.current
-      ) {
-        const method = currentTabConfig.hideLayerSelector
-          ? mapView.ui.remove.bind(mapView.ui)
-          : mapView.ui.add.bind(mapView.ui);
-        method(selectorNode.current, { position: 'top-left', index: 2 });
-      }
-
-      isLayerSelectorVisible.current = currentTabConfig.hideLayerSelector;
     }
-  }, [currentTabConfig, setUpLayerSelector, mapView]);
+  }, [
+    currentTabConfig.hideLayerSelector,
+    currentTabConfig.id,
+    currentTabConfig.name,
+    currentTabConfig.useDefaultAGOLPopup,
+    currentTabConfig.webMapId,
+    mapView,
+  ]);
 
   // this looks a little funny...
   // We need to keep change map as a callable function so that it can be called
@@ -254,6 +219,9 @@ export default function ReactMapView({
       }
 
       setView(view);
+      view.when(() => {
+        setLayerSelectorMapView(view);
+      });
 
       changeMap();
     };
@@ -265,12 +233,26 @@ export default function ReactMapView({
     onClick,
     setView,
     changeMap,
-    setUpLayerSelector,
     currentTabConfig,
     dispatchURLParams,
   ]);
 
-  return <div style={{ height: '100%', width: '100%' }} ref={mapViewDiv} />;
+  return (
+    <>
+      <div style={{ height: '100%', width: '100%' }} ref={mapViewDiv}></div>
+      {layerSelectorMapView ? (
+        <LayerSelector
+          view={layerSelectorMapView}
+          showOpacitySlider
+          quadWord={discoverKey}
+          position="top-left"
+          index={2}
+          visible={layerSelectorVisible}
+          {...config.layerSelector}
+        />
+      ) : null}
+    </>
+  );
 }
 
 ReactMapView.propTypes = {
