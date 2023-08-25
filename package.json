@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "build:stage": "vite build --mode stage",
+    "build": "del ./dist/** && vite build",
+    "build:stage": "del ./dist/** && vite build --mode stage --outDir dist/vision-map",
     "cypress:open": "concurrently \"npm start\" \"cypress open\"",
     "cypress:run": "start-server-and-test start http://localhost:5173 'cypress run'",
     "format": "prettier . -w",
@@ -24,12 +24,12 @@
     "not op_mini all"
   ],
   "prettier": {
-    "printWidth": 120,
-    "singleQuote": true,
     "plugins": [
       "prettier-plugin-organize-imports",
       "prettier-plugin-packagejson"
-    ]
+    ],
+    "printWidth": 120,
+    "singleQuote": true
   },
   "eslintConfig": {
     "env": {

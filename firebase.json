@@ -69,8 +69,15 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/vision-map/**",
+        "destination": "/vision-map/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/vision-map",
+        "type": 301
       }
     ]
   }
