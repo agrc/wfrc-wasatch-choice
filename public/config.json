@@ -42,9 +42,7 @@
           "MinorBikePed1": "MinorBikePed",
           "MajorBikePed1": "MajorBikePed",
           "BonnevilleShoreline1": "BonnevilleShoreline",
-          "BonnevilleShoreline2": "BonnevilleShoreline2",
-          "BikePed2": "BikePedMinor",
-          "BikePed3": "BikePedOther",
+          "BonnevilleShoreline2": "BonnevilleShoreline_2",
           "Centers": "Centers",
           "Centers2": "Centers_2",
           "OtherRegionalLandUse": "SpecialDistricts",
@@ -102,7 +100,8 @@
             "symbol": "simple",
             "symbolLayerNames": [
               ["CommuterR", "CommuterRStations"],
-              ["FixedGuideway", "BRTStations"]
+              ["FixedGuideway", "BRTStations"],
+              ["RegionalBus", "RegionalBus"]
             ]
           },
           "bikePed": {
@@ -117,9 +116,9 @@
             ],
             "symbol": "simple",
             "symbolLayerNames": [
-              ["MajorBikePed1-2"],
-              ["MinorBikePed1"],
-              ["BonnevilleShoreline1"]
+              ["MajorBikePed1-0"],
+              ["MinorBikePed1-5"],
+              ["BonnevilleShoreline1-7"]
             ]
           },
           "centers": {
@@ -205,7 +204,6 @@
       "webMapId": "555929e5b784458ca2292a9e56423811",
       "useDefaultAGOLPopup": false,
       "filter": {
-        "name": "trans:filterTransportation.name",
         "toggle": {
           "label": "trans:filterTransportation.colorBy",
           "mode": "trans:filterTransportation.mode",
@@ -234,7 +232,10 @@
           "linesByPhase": "Lines Displayed by Phase",
           "existingBike": "Existing Bike Network",
           "centers": "Centers",
-          "generalLandUse": "OtherRegionalLandUse"
+          "generalLandUse": "OtherRegionalLandUse",
+          "utahHouse": "Utah House Districts 2022 to 2032",
+          "utahSenate": "Utah Senate Districts 2022 to 2032",
+          "congress": "Utah US Congress Districts 2022 to 2032"
         },
         "phases": {
           "pointsByMode": ["phase", 1, 2, 3, 4],
@@ -411,6 +412,24 @@
             "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike"],
             "symbol": "simple"
+          },
+          "utahHouse": {
+            "label": "trans:filterTransportation.utahHouse",
+            "layerNames": ["utahHouse"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "utahSenate": {
+            "label": "trans:filterTransportation.utahSenate",
+            "layerNames": ["utahSenate"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "congress": {
+            "label": "trans:filterTransportation.congress",
+            "layerNames": ["congress"],
+            "symbol": "simple",
+            "offByDefault": true
           }
         },
         "groups": [
@@ -428,12 +447,16 @@
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": ["centers", "generalLandUse", "existingBikePed"]
+            "checkboxes": [
+              "centers",
+              "generalLandUse",
+              "existingBikePed",
+              "utahHouse",
+              "utahSenate",
+              "congress"
+            ]
           }
         ]
-      },
-      "projectInformation": {
-        "name": "trans:transportationProjectInformation"
       }
     },
     "landuse": {
@@ -1140,7 +1163,6 @@
         "filter": "Filter",
         "reset": "reset",
         "filterByPhasing": "filter by phasing",
-        "transportationProjectInformation": "Project Info Change",
         "filterVision": {
           "transportation": "Transportation",
           "roads": "Roads",
@@ -1152,7 +1174,6 @@
           "openSpace": "Open Space"
         },
         "filterTransportation": {
-          "name": "Filter Change",
           "bikePed": "Bike/Ped",
           "centers": "Centers",
           "colorBy": "Color By",
@@ -1168,7 +1189,10 @@
           "roads": "Roads",
           "transit": "Transit",
           "transProjectFilter": "Transportation Project Filter",
-          "unfundedNeeds": "Unfunded Needs"
+          "unfundedNeeds": "Unfunded Needs",
+          "utahHouse": "Utah House Districts",
+          "utahSenate": "Utah Senate Districts",
+          "congress": "US Congress Districts"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
@@ -1310,7 +1334,10 @@
           "other": "Otro",
           "existingBikePed": "Transporte Activo Existente",
           "transProjectFilter": "Filtro de proyecto de transporte",
-          "existingTransit": "Transporte Público Existente"
+          "existingTransit": "Transporte Público Existente",
+          "utahHouse": "Utah House Districts",
+          "utahSenate": "Utah Senate Districts",
+          "congress": "US Congress Districts"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
