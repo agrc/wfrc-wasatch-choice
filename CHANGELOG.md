@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.1...v5.3.0) (2023-08-28)
+
+
+### 🚀 Features
+
+* add B/W Imagery option to layer selector ([3602114](https://github.com/agrc/wfrc-wasatch-choice/commit/3602114eb8c3a800f8bc5695d309fe09744a2266)), closes [#227](https://github.com/agrc/wfrc-wasatch-choice/issues/227)
+* add opacity slider to layer selector widget ([9a4c32e](https://github.com/agrc/wfrc-wasatch-choice/commit/9a4c32e4e226ccfb58b8c06b92d0952277a2fdbf))
+* allow for tab-specific modification of the filter and project info panel titles ([b45f007](https://github.com/agrc/wfrc-wasatch-choice/commit/b45f0079cf68ede778f051e9226a0ac5759ad548))
+* put staging app into a subfolder ([103cab0](https://github.com/agrc/wfrc-wasatch-choice/commit/103cab01d57b14fe770f6f0e78d8566af9ee4924))
+
+
+### 🐛 Bug Fixes
+
+* make handler remove safer ([79d3825](https://github.com/agrc/wfrc-wasatch-choice/commit/79d382576e66506db2e8990c5b9ae5fba1241471))
+
+
+### 📖 Documentation Improvements
+
+* update config docs ([f234de0](https://github.com/agrc/wfrc-wasatch-choice/commit/f234de0e6f1e515681731c79db4bc61d924b0ded))
+
+
+### 🎨 Design Improvements
+
+* formatter line length 120 -&gt; 80 (default) ([04f6bb1](https://github.com/agrc/wfrc-wasatch-choice/commit/04f6bb1b529aa264581d2468d4d177161a877d83))
+
 ## [5.3.0-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.1...v5.3.0-0) (2023-08-25)
 
 
