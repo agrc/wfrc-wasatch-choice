@@ -150,7 +150,7 @@ export default function Tabs({ innerRef }) {
               className="settings"
               data-testid="tab-configuration"
             >
-              <i className="fas fa-cog"></i>
+              <i className="fas fa-plus"></i>
             </NavLink>
           </NavItem>
         </div>
