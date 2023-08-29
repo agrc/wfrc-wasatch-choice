@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.3.0...v5.3.1) (2023-08-29)
+
+
+### 🐛 Bug Fixes
+
+* update tab control icon ([7157209](https://github.com/agrc/wfrc-wasatch-choice/commit/7157209e3ffc9aa638f8c2f359c81cd076286a14))
+
 ## [5.3.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.2.1...v5.3.0) (2023-08-28)
 
 
