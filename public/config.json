@@ -48,7 +48,6 @@
           "OtherRegionalLandUse": "SpecialDistricts",
           "OpenSpace": "OpenSpace",
           "Greenways": "Greenways",
-          "ParksAndOther": "ParksandOther",
           "FunctionalClass": "Functional Class"
         },
         "checkboxes": {
@@ -75,8 +74,8 @@
             ],
             "symbolLabels": [
               "Highways and Freeways",
-              "Major Roads",
-              "Minor Roads"
+              "Major Arterial Roads",
+              "Minor Arterial and Collector Roads"
             ]
           },
           "transit": {
@@ -102,6 +101,11 @@
               ["CommuterR", "CommuterRStations"],
               ["FixedGuideway", "BRTStations"],
               ["RegionalBus", "RegionalBus"]
+            ],
+            "symbolLabels": [
+              "Commuter Rail",
+              "Light Rail / Streetcar / BRT",
+              "Regional Bus"
             ]
           },
           "bikePed": {
@@ -119,6 +123,11 @@
               ["MajorBikePed1-0"],
               ["MinorBikePed1-5"],
               ["BonnevilleShoreline1-7"]
+            ],
+            "symbolLabels": [
+              "Major Bike/Ped Routes",
+              "Other Regional Bike/Ped Routes",
+              "Bonneville Shoreline Trail"
             ]
           },
           "centers": {
@@ -457,6 +466,9 @@
             ]
           }
         ]
+      },
+      "projectInformation": {
+        "name": "trans:transportationProjectInformation"
       }
     },
     "landuse": {
@@ -685,57 +697,142 @@
     },
     "recreation": {
       "name": "trans:mapTitleRecreation",
-      "webMapId": "3d1e652a75e44971a71aae3ff21516e0",
+      "webMapId": "da94f88b40ca493184bab6f17f8b11c7",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
+          "trailsPaved": "TrailsPaved",
+          "trailsUnpaved": "TrailsUnpaved",
+          "bikeClass1": "Bike_Class1",
+          "bikeClass2": "Bike_Class2",
+          "bikeClass1Phase1WFRC": "WFRC_AT_Class1_Phase1",
+          "bikeClass2Phase1WFRC": "WFRC_AT_Class2_Phase1",
+          "bikeClass1Phase2WFRC": "WFRC_AT_Class1_Phase2",
+          "bikeClass2Phase2WFRC": "WFRC_AT_Class2_Phase2",
+          "bikeClass1Phase1MAG": "MAG_AT_Class1_Phase1",
+          "bikeClass2Phase1MAG": "MAG_AT_Class2_Phase1",
+          "bikeClass1Phase2MAG": "MAG_AT_Class1_Phase2",
+          "bikeClass2Phase2MAG": "MAG_AT_Class2_Phase2",
+          "futureOpenSpace": "CentersOpenSpace_Future",
+          "currentOpenSpace": "CentersOpenSpace_Current",
+          "stateParks": "State Parks",
+          "greenWays": "Greenways",
+          "centers": "Centers",
           "recCenters": "Recreation Centers",
           "trailheads": "Trailheads",
-          "trails": "Trails",
+          "higherEd": "HigherEd",
+          "schools": "PreKto12",
           "localParksGolf": "Local Parks and Golf Courses",
-          "centers": "Centers",
-          "greenWays": "Greenways",
-          "openSpaces": "Open Spaces",
-          "stateParks": "State Parks",
           "federalLands": "Federal Lands",
           "industrial": "Industrial Exclusions"
         },
         "checkboxes": {
-          "recCenters": {
-            "label": "trans:filterRecreation.recCenters",
-            "layerNames": ["recCenters"],
+          "trailsPaved": {
+            "label": "trans:filterRecreation.trailsPaved",
+            "layerNames": ["trailsPaved"],
+            "symbol": "simple",
+            "symbolLayerNames": [["trailsPaved"]],
+            "symbolLabels": ["Paved Multiuse Trails"]
+          },
+          "trailsUnpaved": {
+            "label": "trans:filterRecreation.trailsUnpaved",
+            "layerNames": ["trailsUnpaved"],
+            "symbol": "simple",
+            "symbolLayerNames": [["trailsUnpaved"]],
+            "symbolLabels": ["Unpaved trails"]
+          },
+          "bikeClass1": {
+            "label": "trans:filterRecreation.bikeClass1",
+            "layerNames": ["bikeClass1"],
+            "symbol": "simple",
+            "symbolLabels": ["On-street, Protected Routes"]
+          },
+          "bikeClass2": {
+            "label": "trans:filterRecreation.bikeClass2",
+            "layerNames": ["bikeClass2"],
+            "symbol": "simple",
+            "offByDefault": true,
+            "symbolLabels": ["Other On-street Bike Lanes"]
+          },
+          "bikeClass1Phase1": {
+            "label": "trans:filterRecreation.bikeClass1Phase1",
+            "layerNames": ["bikeClass1Phase1WFRC", "bikeClass1Phase1MAG"],
+            "symbol": "simple",
+            "offByDefault": true,
+            "symbolLayerNames": [["bikeClass1Phase1MAG"]],
+            "symbolLabels": ["Class 1, Phase 1"]
+          },
+          "bikeClass2Phase1": {
+            "label": "trans:filterRecreation.bikeClass2Phase1",
+            "layerNames": ["bikeClass2Phase1WFRC", "bikeClass2Phase1MAG"],
+            "symbol": "simple",
+            "offByDefault": true,
+            "symbolLayerNames": [["bikeClass2Phase1WFRC"]],
+            "symbolLabels": ["Class 2, Phase 1"]
+          },
+          "bikeClass1Phase2": {
+            "label": "trans:filterRecreation.bikeClass1Phase2",
+            "layerNames": ["bikeClass1Phase2WFRC", "bikeClass1Phase2MAG"],
+            "symbol": "simple",
+            "offByDefault": true,
+            "symbolLayerNames": [["bikeClass1Phase2WFRC"]],
+            "symbolLabels": ["Class 1, Phase 2"]
+          },
+          "bikeClass2Phase2": {
+            "label": "trans:filterRecreation.bikeClass2Phase2",
+            "layerNames": ["bikeClass2Phase2WFRC", "bikeClass2Phase2MAG"],
+            "symbol": "simple",
+            "offByDefault": true,
+            "symbolLayerNames": [["bikeClass2Phase2WFRC"]],
+            "symbolLabels": ["Class 2, Phase 2"]
+          },
+          "currentOpenSpace": {
+            "label": "trans:filterRecreation.currentOpenSpace",
+            "layerNames": ["currentOpenSpace"],
             "symbol": "simple"
           },
-          "trails": {
-            "label": "trans:filterRecreation.trails",
-            "layerNames": ["trailheads", "trails"],
+          "futureOpenSpace": {
+            "label": "trans:filterRecreation.futureOpenSpace",
+            "layerNames": ["futureOpenSpace"],
             "symbol": "simple",
-            "symbolLayerNames": [["trails", "trailheads"]]
+            "offByDefault": true
           },
-          "localParksGolf": {
-            "label": "trans:filterRecreation.parksGolf",
-            "layerNames": ["localParksGolf", "stateParks"],
-            "symbol": "simple",
-            "symbolLayerNames": [["localParksGolf"]]
+          "stateParks": {
+            "label": "trans:filterRecreation.stateParks",
+            "layerNames": ["stateParks"],
+            "symbol": "simple"
           },
           "greenWays": {
             "label": "trans:filterRecreation.greenWays",
             "layerNames": ["greenWays"],
             "symbol": "simple"
           },
-          "openSpaces": {
-            "label": "trans:filterRecreation.openSpace",
-            "layerNames": ["openSpaces"],
-            "symbol": "simple"
+          "recCenters": {
+            "label": "trans:filterRecreation.recCenters",
+            "layerNames": ["recCenters"],
+            "symbol": "simple",
+            "offByDefault": true
           },
-          "federalLands": {
-            "label": "trans:filterRecreation.federalLands",
-            "layerNames": ["federalLands"],
+          "trailheads": {
+            "label": "trans:filterRecreation.trailheads",
+            "layerNames": ["trailheads"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "higherEd": {
+            "label": "trans:filterRecreation.higherEd",
+            "layerNames": ["higherEd"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
+          "schools": {
+            "label": "trans:filterRecreation.schools",
+            "layerNames": ["schools"],
             "symbol": "simple",
             "offByDefault": true
           },
           "centers": {
-            "label": "trans:filterEconDev.centers",
+            "label": "trans:filterRecreation.centers",
             "layerNames": ["centers"],
             "symbol": "classes",
             "offByDefault": true,
@@ -758,13 +855,61 @@
               }
             ]
           },
+          "federalLands": {
+            "label": "trans:filterRecreation.federalLands",
+            "layerNames": ["federalLands"],
+            "symbol": "simple",
+            "offByDefault": true
+          },
           "industrial": {
             "label": "trans:filterRecreation.industrial",
             "layerNames": ["industrial"],
             "symbol": "simple",
             "offByDefault": true
           }
-        }
+        },
+        "groups": [
+          {
+            "label": "trans:filterRecreation.currentTrailsGroup",
+            "checkboxes": [
+              "trailsPaved",
+              "bikeClass1",
+              "bikeClass2",
+              "trailsUnpaved"
+            ]
+          },
+          {
+            "label": "trans:filterRecreation.phaseOneTrailsGroup",
+            "checkboxes": ["bikeClass1Phase1", "bikeClass2Phase1"]
+          },
+          {
+            "label": "trans:filterRecreation.phaseTwoTrailsGroup",
+            "checkboxes": ["bikeClass1Phase2", "bikeClass2Phase2"]
+          },
+          {
+            "label": "trans:filterRecreation.parksGroup",
+            "checkboxes": [
+              "currentOpenSpace",
+              "futureOpenSpace",
+              "stateParks",
+              "greenWays"
+            ]
+          },
+          {
+            "label": "trans:filterRecreation.destinationsGroup",
+            "checkboxes": [
+              "centers",
+              "recCenters",
+              "trailheads",
+              "higherEd",
+              "schools"
+            ]
+          },
+          {
+            "label": "trans:filterRecreation.otherGroup",
+            "checkboxes": ["federalLands", "industrial"]
+          }
+        ]
       }
     },
     "ato": {
@@ -1127,8 +1272,8 @@
     "y": 4977000
   },
   "links": {
-    "landingPage": "https://wfrc.org/vision-plans/wasatch-choice-2050/",
-    "tagLine": ""
+    "landingPage": "https://wasatchchoice.org",
+    "tagLine": "#LocationMatters"
   },
   "openOnLoad": {
     "projectInfo": true,
@@ -1171,7 +1316,7 @@
           "landUse": "Land Use",
           "centers": "Centers",
           "generalLandUse": "Other Land Uses",
-          "openSpace": "Open Space"
+          "openSpace": "Parks & Public Spaces"
         },
         "filterTransportation": {
           "bikePed": "Bike/Ped",
@@ -1218,15 +1363,32 @@
           "generalLandUse": "Other Land Uses"
         },
         "filterRecreation": {
+          "currentTrailsGroup": "Current Active Transportation (AT)",
+          "phaseOneTrailsGroup": "AT Projects (Phase 1, thru 2032)",
+          "phaseTwoTrailsGroup": "AT Projects (Phase 2 , 2033-42)",
+          "parksGroup": "Parks",
+          "destinationsGroup": "Destinations",
+          "otherGroup": "Other",
+
+          "trailsPaved": "Paved Trails",
+          "trailsUnpaved": "Unpaved Trails",
+          "bikeClass1": "Bike Paths (class 1)",
+          "bikeClass2": "Bike Lanes (class 2)",
+          "bikeClass1Phase1": "Bike Paths (class 1)",
+          "bikeClass2Phase1": "Bike Lanes (class 2)",
+          "bikeClass1Phase2": "Bike Paths (class 1)",
+          "bikeClass2Phase2": "Bike Lanes, (class 2",
+          "currentOpenSpace": "Current Open Spaces",
+          "futureOpenSpace": "Planned Open Spaces",
+          "stateParks": "State Parks",
+          "greenWays": "Greenway Corridors",
           "recCenters": "Recreation Centers",
-          "trails": "Trails & Trailheads",
-          "parks": "Parks",
+          "trailheads": "Trailheads",
+          "higherEd": "Colleges",
+          "schools": "Schools (PK-12)",
+          "centers": "Centers",
           "federalLands": "USFS Lands",
-          "parksGolf": "Parks, Golf Courses",
-          "skiAreas": "Ski Areas",
-          "greenWays": "Greenways",
-          "industrial": "Industrial Exclusions",
-          "openSpace": "Other Open Space"
+          "industrial": "Industrial Exclusions"
         },
         "filterATO": {
           "equity": "Equity Focus Areas",
@@ -1276,8 +1438,9 @@
           "municipal": "Municipalities",
           "centers": "Centers"
         },
-        "projectInformation": "Project Information",
-        "projectInformationPrompt": "Click on a feature for more information",
+        "projectInformation": "Map Features Found:",
+        "projectInformationPrompt": "Click a feature on the map for more information",
+        "transportationProjectInformation": "Project and Land Use Information:",
         "transportation": "Transportation"
       }
     },
@@ -1363,16 +1526,32 @@
           "generalLandUse": "Uso General de la Tierra"
         },
         "filterRecreation": {
-          "recCenters": "Centros Recreación",
-          "trails": "Senderos",
-          "parks": "Parques",
-          "federalLands": "Tierras Federales",
-          "parksGolf": "Parques y Golf",
-          "skiAreas": "Áreas de Esquí",
-          "greenSpace": "Espacio Verde",
-          "greenWays": "Greenways",
-          "industrial": "Industrial Exclusions",
-          "openSpace": "Other Open Space"
+          "currentTrailsGroup": "Existing Active Transportation (AT)",
+          "phaseOneTrailsGroup": "Planned AT Projects (thru 2032)",
+          "phaseTwoTrailsGroup": "Planned AT Projects (2033-42)",
+          "parksGroup": "Parks",
+          "destinationsGroup": "Destinations",
+          "otherGroup": "Other",
+
+          "trailsPaved": "Paved Trails",
+          "trailsUnpaved": "Unpaved Trails",
+          "bikeClass1": "Bike Paths",
+          "bikeClass2": "Bike Lanes",
+          "bikeClass1Phase1": "Bike Trails/Paths, Phase 1",
+          "bikeClass2Phase1": "Bike Lanes, Phase 1",
+          "bikeClass1Phase2": "Bike Trails/Paths, Phase 2",
+          "bikeClass2Phase2": "Bike Lanes, Phase 2",
+          "currentOpenSpace": "Current Open Spaces",
+          "futureOpenSpace": "Future Open Spaces",
+          "stateParks": "State Parks",
+          "greenWays": "Greenway Corridors",
+          "recCenters": "Recreation Centers",
+          "trailheads": "Trailheads",
+          "higherEd": "Colleges",
+          "schools": "Schools (PK-12)",
+          "centers": "Centers",
+          "federalLands": "USFS Lands",
+          "industrial": "Industrial Exclusions"
         },
         "filterATO": {
           "equity": "Áreas de Enfoque de Equidad",
@@ -1422,7 +1601,7 @@
           "municipal": "Municipios",
           "centers": "Centros"
         },
-        "projectInformation": "Información del Proyecto",
+        "projectInformation": "Información",
         "projectInformationPrompt": "Haga clic en una función para obtener más información",
         "transportation": "Transporte"
       }
