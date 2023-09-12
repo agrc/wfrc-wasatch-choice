@@ -391,7 +391,6 @@
               },
               {
                 "type": "object",
-                "additionalProperties": false,
                 "properties": {
                   "id": {
                     "description": "The name of the layer",
@@ -404,9 +403,13 @@
                   "urlTemplate": {
                     "description": "The urlTemplate for the layer. \"{quadWord}\" will be automatically replaced with the appropriate value at runtime.",
                     "type": "string"
+                  },
+                  "url": {
+                    "description": "The url for the layer. Required for TileLayer factories.",
+                    "type": "string"
                   }
                 },
-                "required": ["id", "Factory", "urlTemplate"]
+                "required": ["id", "Factory"]
               }
             ]
           }

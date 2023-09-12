@@ -9,6 +9,7 @@ import Basemap from '@arcgis/core/Basemap';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
+import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import classNames from 'clsx';
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ import { createDefaultTileInfo } from './TileInfo';
 const commonFactories = {
   FeatureLayer,
   WebTileLayer,
+  TileLayer,
 };
 
 const ExpandableContainer = (props) => {

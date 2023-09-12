@@ -1256,7 +1256,18 @@
   "layerSelector": {
     "BWName": "B/W Imagery",
     "BWOpacity": "65%",
-    "baseLayers": ["Lite", "Terrain", "Imagery", "B/W Imagery"],
+    "baseLayers": [
+      "Lite",
+      "Terrain",
+      "Imagery",
+      "B/W Imagery",
+      {
+        "id": "Vision Refresh Basemap",
+        "Factory": "TileLayer",
+        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/",
+        "opacity": 1
+      }
+    ],
     "overlays": [
       {
         "id": "Cities",
