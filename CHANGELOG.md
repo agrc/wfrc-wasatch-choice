@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.3.1...v5.4.0) (2023-09-12)
+
+
+### 🚀 Features
+
+* add vision refresh basemap to layer selector ([9feaf36](https://github.com/agrc/wfrc-wasatch-choice/commit/9feaf36424ef2b184ca71dce7e6c42fa851ad319))
+
 ## [5.3.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.3.0...v5.3.1) (2023-08-29)
 
 
