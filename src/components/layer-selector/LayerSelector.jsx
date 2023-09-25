@@ -191,13 +191,14 @@ const LayerSelector = (props) => {
   const layersInitialized = useRef(false);
 
   function onChangeOpacity(event) {
-    const relativeOpacity = parseFloat(event.target.value) / 100.0;
+    const sliderOpacity = parseFloat(event.target.value) / 100.0;
     if (props.showOpacitySlider) {
       for (const layerId in managedLayers) {
         const managedLayer = managedLayers[layerId];
         if (managedLayer.layer) {
           const originalOpacity = managedLayer.layer.originalOpacity ?? 1;
-          managedLayer.layer.opacity = relativeOpacity * originalOpacity;
+          const newOpacity = originalOpacity - (1 - sliderOpacity);
+          managedLayer.layer.opacity = newOpacity < 0 ? 0 : newOpacity;
         }
       }
     }
