@@ -8,7 +8,8 @@
 | :-------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [id](#id)                   | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-id.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/id")                   |
 | [Factory](#factory)         | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-factory.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/Factory")         |
-| [urlTemplate](#urltemplate) | `string` | Required | cannot be null | [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-urltemplate.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/urlTemplate") |
+| [urlTemplate](#urltemplate) | `string` | Optional | cannot be null | [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-urltemplate.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/urlTemplate") |
+| [url](#url)                 | `string` | Optional | cannot be null | [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/url")                 |
 
 ## id
 
@@ -52,7 +53,7 @@ The urlTemplate for the layer. "{quadWord}" will be automatically replaced with 
 
 `urlTemplate`
 
-*   is required
+*   is optional
 
 *   Type: `string`
 
@@ -61,5 +62,23 @@ The urlTemplate for the layer. "{quadWord}" will be automatically replaced with 
 *   defined in: [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-urltemplate.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/urlTemplate")
 
 ### urlTemplate Type
+
+`string`
+
+## url
+
+The url for the layer. Required for TileLayer factories.
+
+`url`
+
+*   is optional
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [WFRC App](config-properties-layerselector-properties-baselayers-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers/items/anyOf/1/properties/url")
+
+### url Type
 
 `string`
