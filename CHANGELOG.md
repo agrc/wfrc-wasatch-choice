@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.0...v5.4.1) (2023-09-25)
+
+
+### 🐛 Bug Fixes
+
+* make opacity slider take into account initial layer opacities ([0c9e551](https://github.com/agrc/wfrc-wasatch-choice/commit/0c9e551bb099b282a1e6b012591bbaa7c2110944)), closes [#256](https://github.com/agrc/wfrc-wasatch-choice/issues/256)
+
 ## [5.4.0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.3.1...v5.4.0) (2023-09-12)
 
 
