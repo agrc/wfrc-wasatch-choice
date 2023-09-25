@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.2](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.1...v5.4.2) (2023-09-25)
+
+
+### 🐛 Bug Fixes
+
+* use subtract rather than multiple method with opacity slider ([02c3d29](https://github.com/agrc/wfrc-wasatch-choice/commit/02c3d293a17ce5efbc3047652b6b34b78c43419d))
+
 ## [5.4.1](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.0...v5.4.1) (2023-09-25)
 
 
