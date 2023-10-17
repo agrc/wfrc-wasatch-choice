@@ -4,7 +4,7 @@
     "vision": {
       "name": "trans:mapTitleVision",
       "webMapId": "dcfc98c906f54e598325ba55a594b446",
-      "hideLayerSelector": true,
+      "hideLayerSelector": false,
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
@@ -421,24 +421,6 @@
             "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike"],
             "symbol": "simple"
-          },
-          "utahHouse": {
-            "label": "trans:filterTransportation.utahHouse",
-            "layerNames": ["utahHouse"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "utahSenate": {
-            "label": "trans:filterTransportation.utahSenate",
-            "layerNames": ["utahSenate"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "congress": {
-            "label": "trans:filterTransportation.congress",
-            "layerNames": ["congress"],
-            "symbol": "simple",
-            "offByDefault": true
           }
         },
         "groups": [
@@ -459,10 +441,7 @@
             "checkboxes": [
               "centers",
               "generalLandUse",
-              "existingBikePed",
-              "utahHouse",
-              "utahSenate",
-              "congress"
+              "existingBikePed"
             ]
           }
         ]
@@ -713,6 +692,8 @@
           "bikeClass2Phase1MAG": "MAG_AT_Class2_Phase1",
           "bikeClass1Phase2MAG": "MAG_AT_Class1_Phase2",
           "bikeClass2Phase2MAG": "MAG_AT_Class2_Phase2",
+          "bikeClass1ParallelPhase1MAG": "MAG_AT_PBW_Phase1",
+          "bikeClass1ParallelPhase2MAG": "MAG_AT_PBW_Phase2",
           "futureOpenSpace": "CentersOpenSpace_Future",
           "currentOpenSpace": "CentersOpenSpace_Current",
           "stateParks": "State Parks",
@@ -722,7 +703,6 @@
           "trailheads": "Trailheads",
           "higherEd": "HigherEd",
           "schools": "PreKto12",
-          "localParksGolf": "Local Parks and Golf Courses",
           "federalLands": "Federal Lands",
           "industrial": "Industrial Exclusions"
         },
@@ -756,7 +736,7 @@
           },
           "bikeClass1Phase1": {
             "label": "trans:filterRecreation.bikeClass1Phase1",
-            "layerNames": ["bikeClass1Phase1WFRC", "bikeClass1Phase1MAG"],
+            "layerNames": ["bikeClass1Phase1WFRC", "bikeClass1Phase1MAG", "bikeClass1ParallelPhase1MAG"],
             "symbol": "simple",
             "offByDefault": true,
             "symbolLayerNames": [["bikeClass1Phase1MAG"]],
@@ -772,7 +752,7 @@
           },
           "bikeClass1Phase2": {
             "label": "trans:filterRecreation.bikeClass1Phase2",
-            "layerNames": ["bikeClass1Phase2WFRC", "bikeClass1Phase2MAG"],
+            "layerNames": ["bikeClass1Phase2WFRC", "bikeClass1Phase2MAG","bikeClass1ParallelPhase2MAG"],
             "symbol": "simple",
             "offByDefault": true,
             "symbolLayerNames": [["bikeClass1Phase2WFRC"]],
@@ -1249,32 +1229,51 @@
     }
   },
   "sherlock": {
-    "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/1",
+    "serviceUrl": "https://services1.arcgis.com/taguadKoI1XFwivx/ArcGIS/rest/services/ZoomTo_PlaceNames2023/FeatureServer/0",
     "searchField": "NAME",
     "placeHolder": "trans:searchPlaceholder"
   },
   "layerSelector": {
     "BWName": "B/W Imagery",
-    "BWOpacity": "65%",
+    "BWOpacity": "70%",
     "baseLayers": [
+      {
+        "id": "Vision Contours",
+        "Factory": "TileLayer",
+        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap_23/MapServer",
+        "opacity": 70
+      },
       "Lite",
       "Terrain",
       "Imagery",
-      "B/W Imagery",
-      {
-        "id": "Vision Refresh Basemap",
-        "Factory": "TileLayer",
-        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/",
-        "opacity": 0.5
-      }
+      "B/W Imagery"
     ],
     "overlays": [
       {
         "id": "Cities",
         "Factory": "FeatureLayer",
-        "url": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/2",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/1",
+        "opacity": 1
+      },
+      {
+        "id": "Utah House",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/3",
+        "opacity": 1
+      },
+      {
+        "id": "Utah Senate",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/4",
+        "opacity": 1
+      },
+      {
+        "id": "US Congress",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/2",
         "opacity": 1
       }
+
     ]
   },
   "defaultExtent": {
@@ -1339,9 +1338,9 @@
           "mode": "Mode",
           "other": "Other",
           "phase": "Phase",
-          "phase1": "Phase 1 (2019-30)",
-          "phase2": "Phase 2 (2031-40)",
-          "phase3": "Phase 3 (2041-50)",
+          "phase1": "Phase 1 (2023-31)",
+          "phase2": "Phase 2 (2032-41)",
+          "phase3": "Phase 3 (2042-50)",
           "roads": "Roads",
           "transit": "Transit",
           "transProjectFilter": "Transportation Project Filter",
@@ -1388,9 +1387,9 @@
           "bikeClass1Phase1": "Bike Paths (class 1)",
           "bikeClass2Phase1": "Bike Lanes (class 2)",
           "bikeClass1Phase2": "Bike Paths (class 1)",
-          "bikeClass2Phase2": "Bike Lanes, (class 2",
-          "currentOpenSpace": "Current Open Spaces",
-          "futureOpenSpace": "Planned Open Spaces",
+          "bikeClass2Phase2": "Bike Lanes (class 2)",
+          "currentOpenSpace": "Current Parks / OS",
+          "futureOpenSpace": "Planned Parks / OS",
           "stateParks": "State Parks",
           "greenWays": "Greenway Corridors",
           "recCenters": "Recreation Centers",
@@ -1498,9 +1497,9 @@
           "roads": "Carreteras",
           "transit": "Transporte Público",
           "bikePed": "Transporte Activo",
-          "phase1": "Fase 1 (2019-30)",
-          "phase2": "Fase 2 (2031-40)",
-          "phase3": "Fase 3 (2041-50)",
+          "phase1": "Fase 1 (2023-31)",
+          "phase2": "Fase 2 (2032-41)",
+          "phase3": "Fase 3 (2042-50)",
           "unfundedNeeds": "Necesidades Nofinanciadas",
           "landUse": "Uso de la Tierra",
           "centers": "Centros",
@@ -1548,10 +1547,10 @@
           "trailsUnpaved": "Unpaved Trails",
           "bikeClass1": "Bike Paths",
           "bikeClass2": "Bike Lanes",
-          "bikeClass1Phase1": "Bike Trails/Paths, Phase 1",
-          "bikeClass2Phase1": "Bike Lanes, Phase 1",
-          "bikeClass1Phase2": "Bike Trails/Paths, Phase 2",
-          "bikeClass2Phase2": "Bike Lanes, Phase 2",
+          "bikeClass1Phase1": "Bike Paths (class 1)",
+          "bikeClass2Phase1": "Bike Lanes (class 2)",
+          "bikeClass1Phase2": "Bike Paths (class 1)",
+          "bikeClass2Phase2": "Bike Lanes (class 2)",
           "currentOpenSpace": "Current Open Spaces",
           "futureOpenSpace": "Future Open Spaces",
           "stateParks": "State Parks",
@@ -1620,6 +1619,6 @@
   },
   "maxTabsAllowed": 10,
   "projectInformation": {
-    "excludedLayers": ["ZoomToPlaceNames - Outlines"]
+    "excludedLayers": ["US Congress","Utah House","Utah Senate","Cities", "ZoomTo_PlaceNames2023"]
   }
 }
