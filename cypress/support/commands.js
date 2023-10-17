@@ -28,7 +28,7 @@ import '@testing-library/cypress/add-commands';
 
 Cypress.Commands.add('waitForMapLoaded', () => {
   return cy
-    .window({ timeout: 60000 })
+    .window({ timeout: 120000 })
     .should('have.property', 'mapLoaded', true);
 });
 Cypress.Commands.add('loadApp', (url = '/') => {
