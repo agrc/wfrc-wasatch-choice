@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.3](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.2...v5.4.3) (2023-10-20)
+
+
+### 🐛 Bug Fixes
+
+* switch to new GA4 analytics prop ([4f6de22](https://github.com/agrc/wfrc-wasatch-choice/commit/4f6de229e92d15e2b85f29d478b003365691c88b))
+
+
+### 🌲 Dependencies
+
+* bump @babel/traverse from 7.23.0 to 7.23.2 ([24913c6](https://github.com/agrc/wfrc-wasatch-choice/commit/24913c67eccec6433f9710fd3b19597e3a85b236))
+* npm audit fix ([f41bb90](https://github.com/agrc/wfrc-wasatch-choice/commit/f41bb90583d2d153536d924ec0017534fce79bec))
+* Q4 dependency bumps 🌲 ([ab267e1](https://github.com/agrc/wfrc-wasatch-choice/commit/ab267e145cf1437912d0e185d778878c0b88c3c8))
+
 ## [5.4.2](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.1...v5.4.2) (2023-09-25)
 
 
