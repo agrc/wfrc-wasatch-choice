@@ -95,7 +95,7 @@
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
     "@storybook/react": "^7.4.6",
-    "@storybook/react-vite": "^7.4.6",
+    "@storybook/react-vite": "^7.5.2",
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/cypress": "^10.0.1",
     "@vitejs/plugin-react": "^4.1.0",
