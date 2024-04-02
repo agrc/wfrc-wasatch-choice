@@ -117,7 +117,7 @@
     "start-server-and-test": "^2.0.3",
     "storybook": "^7.4.6",
     "url": "^0.11.3",
-    "vite": "^4.4.11",
+    "vite": "^4.5.2",
     "vitest": "^0.34.6"
   },
   "overrides": {
