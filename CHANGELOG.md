@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.3](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.2...v5.4.3) (2024-04-12)
+
+
+### 🐛 Bug Fixes
+
+* switch to new GA4 analytics prop ([4f6de22](https://github.com/agrc/wfrc-wasatch-choice/commit/4f6de229e92d15e2b85f29d478b003365691c88b))
+
+
+### 🌲 Dependencies
+
+* bump @babel/traverse from 7.23.0 to 7.23.2 ([24913c6](https://github.com/agrc/wfrc-wasatch-choice/commit/24913c67eccec6433f9710fd3b19597e3a85b236))
+* bump express from 4.18.2 to 4.19.2 ([fc197b7](https://github.com/agrc/wfrc-wasatch-choice/commit/fc197b784dd96a7ba6243e9178c0c792bb836ae8))
+* bump the safe-dependencies group with 22 updates ([d55022c](https://github.com/agrc/wfrc-wasatch-choice/commit/d55022ccdfb96a7a4a03f7d22081f3a476904d16))
+* bump webpack-dev-middleware from 5.3.3 to 5.3.4 ([4869e19](https://github.com/agrc/wfrc-wasatch-choice/commit/4869e19a22b61e76105381806275b405bddf1b99))
+* **dev:** bump ip from 2.0.0 to 2.0.1 ([8bc61df](https://github.com/agrc/wfrc-wasatch-choice/commit/8bc61df09554edbfa71c7b039cf6340debc1c11b))
+* **dev:** bump phin from 3.7.0 to 3.7.1 ([fa38ca8](https://github.com/agrc/wfrc-wasatch-choice/commit/fa38ca82608541796fa977ced8fc97422109123c))
+* **dev:** bump vite from 4.4.11 to 4.5.2 ([a4ea1d6](https://github.com/agrc/wfrc-wasatch-choice/commit/a4ea1d6d175ed8cee11071a258c3f8d92d338a30))
+* **dev:** bump vite from 4.5.2 to 4.5.3 ([3856c9e](https://github.com/agrc/wfrc-wasatch-choice/commit/3856c9ee8a172f424b7d9105be36eb625dfbea26))
+* npm audit fix ([f41bb90](https://github.com/agrc/wfrc-wasatch-choice/commit/f41bb90583d2d153536d924ec0017534fce79bec))
+* Q4 dependency bumps 🌲 ([ab267e1](https://github.com/agrc/wfrc-wasatch-choice/commit/ab267e145cf1437912d0e185d778878c0b88c3c8))
+
 ## [5.4.2](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.1...v5.4.2) (2023-09-25)
 
 
