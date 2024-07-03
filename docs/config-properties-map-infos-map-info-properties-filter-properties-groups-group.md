@@ -17,13 +17,13 @@
 
 `label`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/label")
 
 ### label Type
 
@@ -35,13 +35,13 @@ Checkboxes to be included in the group. Values must match the property names for
 
 `checkboxes`
 
-*   is required
+* is required
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/checkboxes")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/checkboxes")
 
 ### checkboxes Type
 
@@ -53,13 +53,13 @@ Controls whether the children are checkboxes or radio buttons.
 
 `radio`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-radio.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/radio")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-radio.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/radio")
 
 ### radio Type
 
@@ -71,13 +71,13 @@ Controls whether the "(filter by phasing)" checkbox is displayed
 
 `showFilterByPhasing`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-showfilterbyphasing.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/showFilterByPhasing")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups-group-properties-showfilterbyphasing.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups/items/properties/showFilterByPhasing")
 
 ### showFilterByPhasing Type
 

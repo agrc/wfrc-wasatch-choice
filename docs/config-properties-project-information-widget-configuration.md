@@ -14,13 +14,13 @@ Layer titles that will be excluded from the click results
 
 `excludedLayers`
 
-*   is required
+* is required
 
-*   Type: `array`
+* Type: `array`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-project-information-widget-configuration-properties-excludedlayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/projectInformation/properties/excludedLayers")
+* defined in: [WFRC App](config-properties-project-information-widget-configuration-properties-excludedlayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/projectInformation/properties/excludedLayers")
 
 ### excludedLayers Type
 

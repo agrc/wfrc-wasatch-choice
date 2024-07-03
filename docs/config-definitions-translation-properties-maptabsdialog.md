@@ -14,13 +14,13 @@ Additional properties are allowed, as long as they follow this schema:
 
 
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-definitions-translation-properties-maptabsdialog-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog/additionalProperties")
+* defined in: [WFRC App](config-definitions-translation-properties-maptabsdialog-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog/additionalProperties")
 
 ### additionalProperties Type
 

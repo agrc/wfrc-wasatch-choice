@@ -17,13 +17,13 @@ The base layers to be displayed in the widget. Use a string value that matches t
 
 `baseLayers`
 
-*   is optional
+* is optional
 
-*   Type: an array of merged types ([Details](config-properties-layerselector-properties-baselayers-items.md))
+* Type: an array of merged types ([Details](config-properties-layerselector-properties-baselayers-items.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-baselayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers")
+* defined in: [WFRC App](config-properties-layerselector-properties-baselayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/baseLayers")
 
 ### baseLayers Type
 
@@ -35,13 +35,13 @@ an array of merged types ([Details](config-properties-layerselector-properties-b
 
 `overlays`
 
-*   is optional
+* is optional
 
-*   Type: an array of merged types ([Details](config-properties-layerselector-properties-overlays-items.md))
+* Type: an array of merged types ([Details](config-properties-layerselector-properties-overlays-items.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-overlays.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays")
+* defined in: [WFRC App](config-properties-layerselector-properties-overlays.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays")
 
 ### overlays Type
 
@@ -53,13 +53,13 @@ The name of the black and white imagery layer token in the baseLayers array
 
 `BWName`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-bwname.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/BWName")
+* defined in: [WFRC App](config-properties-layerselector-properties-bwname.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/BWName")
 
 ### BWName Type
 
@@ -71,13 +71,13 @@ The opacity of the black and white imagery layer expressed as a percentage (e.g.
 
 `BWOpacity`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-bwopacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/BWOpacity")
+* defined in: [WFRC App](config-properties-layerselector-properties-bwopacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/BWOpacity")
 
 ### BWOpacity Type
 

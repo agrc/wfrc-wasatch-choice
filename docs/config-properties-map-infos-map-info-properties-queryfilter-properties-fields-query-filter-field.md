@@ -18,13 +18,13 @@ The heading label for the field. Shows up in the app as a bold heading above the
 
 `label`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/label")
 
 ### label Type
 
@@ -36,13 +36,13 @@ Controls whether or not the field section is open or closed by default
 
 `openOnLoad`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-openonload.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/openOnLoad")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-openonload.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/openOnLoad")
 
 ### openOnLoad Type
 
@@ -54,13 +54,13 @@ The name of the field as it is defined in the layer.
 
 `fieldName`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldname.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldName")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldname.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldName")
 
 ### fieldName Type
 
@@ -72,13 +72,13 @@ Defines the field as either text or number. This is required for making valid SQ
 
 `fieldType`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldtype.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldType")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-fieldtype.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/fieldType")
 
 ### fieldType Type
 
@@ -99,13 +99,13 @@ The list of checkboxes and associated values.
 
 `checkboxes`
 
-*   is optional
+* is optional
 
-*   Type: `object[]` ([Query Filter Checkbox](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox.md))
+* Type: `object[]` ([Query Filter Checkbox](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes")
 
 ### checkboxes Type
 

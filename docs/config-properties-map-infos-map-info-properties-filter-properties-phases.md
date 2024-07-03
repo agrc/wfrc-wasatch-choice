@@ -14,13 +14,13 @@ Additional properties are allowed, as long as they follow this schema:
 
 
 
-*   is optional
+* is optional
 
-*   Type: `array`
+* Type: `array`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases/additionalProperties")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases/additionalProperties")
 
 ### additionalProperties Type
 

@@ -20,13 +20,13 @@ Optionally configures the title of the filter panel. If this property is not set
 
 `name`
 
-*   is optional
+* is optional
 
-*   Type: `string` ([Tab-specific Filter Name](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md))
+* Type: `string` ([Tab-specific Filter Name](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/name")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-tab-specific-filter-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/name")
 
 ### name Type
 
@@ -38,13 +38,13 @@ Configures the toggle buttons at the top of the filter in the transportation tab
 
 `toggle`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-toggle.md))
+* Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-toggle.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle")
 
 ### toggle Type
 
@@ -56,13 +56,13 @@ Defines all of the layer names as they show up in the web map. The key is a uniq
 
 `layerNames`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-layernames.md))
+* Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-layernames.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/layerNames")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/layerNames")
 
 ### layerNames Type
 
@@ -74,13 +74,13 @@ Defines the values associated with each phase for each layer. The property name 
 
 `phases`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-phases.md))
+* Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-phases.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-phases.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/phases")
 
 ### phases Type
 
@@ -92,13 +92,13 @@ Defines the values associated with each mode for each layer. The property name s
 
 `modes`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-modes.md))
+* Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-modes.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-modes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/modes")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-modes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/modes")
 
 ### modes Type
 
@@ -110,13 +110,13 @@ Defines checkboxes for toggling visibility of one to many layers.
 
 `checkboxes`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md))
+* Type: `object` ([Details](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes")
 
 ### checkboxes Type
 
@@ -128,13 +128,13 @@ Defines the checkbox groups.
 
 `groups`
 
-*   is optional
+* is optional
 
-*   Type: `object[]` ([Group](config-properties-map-infos-map-info-properties-filter-properties-groups-group.md))
+* Type: `object[]` ([Group](config-properties-map-infos-map-info-properties-filter-properties-groups-group.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-groups.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/groups")
 
 ### groups Type
 

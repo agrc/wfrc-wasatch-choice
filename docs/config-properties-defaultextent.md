@@ -16,13 +16,13 @@
 
 `zoomLevel`
 
-*   is required
+* is required
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-defaultextent-properties-zoomlevel.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/zoomLevel")
+* defined in: [WFRC App](config-properties-defaultextent-properties-zoomlevel.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/zoomLevel")
 
 ### zoomLevel Type
 
@@ -34,13 +34,13 @@
 
 `x`
 
-*   is required
+* is required
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-defaultextent-properties-x.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/x")
+* defined in: [WFRC App](config-properties-defaultextent-properties-x.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/x")
 
 ### x Type
 
@@ -52,13 +52,13 @@
 
 `y`
 
-*   is required
+* is required
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-defaultextent-properties-y.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/y")
+* defined in: [WFRC App](config-properties-defaultextent-properties-y.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent/properties/y")
 
 ### y Type
 

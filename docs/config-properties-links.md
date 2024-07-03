@@ -15,13 +15,13 @@ This is the URL for the links on the logo (larger screens) and "Wasatch Choice" 
 
 `landingPage`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-links-properties-landingpage.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links/properties/landingPage")
+* defined in: [WFRC App](config-properties-links-properties-landingpage.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links/properties/landingPage")
 
 ### landingPage Type
 
@@ -33,13 +33,13 @@ This is the URL for the tag line link. If there the value is an empty string, th
 
 `tagLine`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-links-properties-tagline.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links/properties/tagLine")
+* defined in: [WFRC App](config-properties-links-properties-tagline.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links/properties/tagLine")
 
 ### tagLine Type
 

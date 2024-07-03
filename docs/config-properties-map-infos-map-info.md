@@ -21,13 +21,13 @@ The name of the map that shows up in the tab control
 
 `name`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-name.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/name")
 
 ### name Type
 
@@ -39,13 +39,13 @@ The category that this map should be under in the configure maps dialog box. Thi
 
 `category`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-category.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-category.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/category")
 
 ### category Type
 
@@ -57,13 +57,13 @@ The id of the web map that you would like displayed
 
 `webMapId`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-webmapid.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/webMapId")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-webmapid.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/webMapId")
 
 ### webMapId Type
 
@@ -75,13 +75,13 @@ Determines whether the layer selector widget is displayed or not
 
 `hideLayerSelector`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-hidelayerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/hideLayerSelector")
 
 ### hideLayerSelector Type
 
@@ -93,13 +93,13 @@ Determines whether the layer selector widget is displayed or not
 
 `useDefaultAGOLPopup`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-usedefaultagolpopup.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/useDefaultAGOLPopup")
 
 ### useDefaultAGOLPopup Type
 
@@ -111,13 +111,13 @@ Contains configs for the Filter widget.
 
 `filter`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Filter](config-properties-map-infos-map-info-properties-filter.md))
+* Type: `object` ([Filter](config-properties-map-infos-map-info-properties-filter.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter")
 
 ### filter Type
 
@@ -129,13 +129,13 @@ Contains configs for the Query Filter widget.
 
 `queryFilter`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([QueryFilter](config-properties-map-infos-map-info-properties-queryfilter.md))
+* Type: `object` ([QueryFilter](config-properties-map-infos-map-info-properties-queryfilter.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter")
 
 ### queryFilter Type
 
@@ -147,13 +147,13 @@ Contains configs for the Query Filter widget.
 
 `projectInformation`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Tab-specific Project Information Widget Configuration](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md))
+* Type: `object` ([Tab-specific Project Information Widget Configuration](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/projectInformation")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-tab-specific-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/projectInformation")
 
 ### projectInformation Type
 

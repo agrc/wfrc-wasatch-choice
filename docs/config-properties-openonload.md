@@ -16,13 +16,13 @@
 
 `projectInfo`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-openonload-properties-projectinfo.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/projectInfo")
+* defined in: [WFRC App](config-properties-openonload-properties-projectinfo.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/projectInfo")
 
 ### projectInfo Type
 
@@ -34,13 +34,13 @@
 
 `filter`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-openonload-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/filter")
+* defined in: [WFRC App](config-properties-openonload-properties-filter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/filter")
 
 ### filter Type
 
@@ -52,13 +52,13 @@
 
 `queryFilter`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-openonload-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/queryFilter")
+* defined in: [WFRC App](config-properties-openonload-properties-queryfilter.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad/properties/queryFilter")
 
 ### queryFilter Type
 
