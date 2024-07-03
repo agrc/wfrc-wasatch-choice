@@ -8,7 +8,7 @@ describe('filter', () => {
     cy.findByText(/reset/i).first().click();
 
     cy.get('.filter .group-container input').check({ force: true });
-    cy.get('.filter .child-checkbox-container input').check();
+    cy.get('.filter .child-checkbox-container input').check({ force: true });
   });
 
   it('turning off checkboxes reduces the number of layers', () => {
@@ -22,7 +22,7 @@ describe('filter', () => {
       originalVisibleLayers = getVisibleLayers();
     });
 
-    cy.get('.filter .group-container input').first().click();
+    cy.get('.filter .group-container input').first().click({ force: true });
 
     cy.waitForMapLoaded().then(() => {
       expect(getVisibleLayers().length).below(originalVisibleLayers.length);
