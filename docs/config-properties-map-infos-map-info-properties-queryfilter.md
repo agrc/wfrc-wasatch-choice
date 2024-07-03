@@ -15,13 +15,13 @@ Defines the layer name that this widget is wired up to as it is defined in the w
 
 `layerName`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-layername.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/layerName")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-layername.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/layerName")
 
 ### layerName Type
 
@@ -33,13 +33,13 @@ Contains a list of field objects that are associated with this widget.
 
 `fields`
 
-*   is optional
+* is optional
 
-*   Type: `object[]` ([Query Filter Field](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field.md))
+* Type: `object[]` ([Query Filter Field](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields")
 
 ### fields Type
 

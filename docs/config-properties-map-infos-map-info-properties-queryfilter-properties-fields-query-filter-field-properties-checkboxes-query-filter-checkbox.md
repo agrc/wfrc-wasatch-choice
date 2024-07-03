@@ -17,13 +17,13 @@
 
 `label`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/label")
 
 ### label Type
 
@@ -35,13 +35,13 @@
 
 `values`
 
-*   is optional
+* is optional
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-values.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/values")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-values.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/values")
 
 ### values Type
 
@@ -53,13 +53,13 @@ The rgb color of the legend swatch (e.g. rbg(255, 128, 0).
 
 `color`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-color.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/color")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-color.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/color")
 
 ### color Type
 
@@ -71,13 +71,13 @@ Mark this as true to make this checkbox represent all other values that are not 
 
 `other`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-other.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/other")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-queryfilter-properties-fields-query-filter-field-properties-checkboxes-query-filter-checkbox-properties-other.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/queryFilter/properties/fields/items/properties/checkboxes/items/properties/other")
 
 ### other Type
 

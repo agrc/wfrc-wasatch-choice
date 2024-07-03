@@ -17,13 +17,13 @@ The name of the layer
 
 `id`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")
+* defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-id.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/id")
 
 ### id Type
 
@@ -35,13 +35,13 @@ The name of the esrijs module associated with the layer type
 
 `Factory`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory")
+* defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-factory.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/Factory")
 
 ### Factory Type
 
@@ -53,13 +53,13 @@ The url for the layer
 
 `url`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")
+* defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-url.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/url")
 
 ### url Type
 
@@ -71,13 +71,13 @@ The url for the layer
 
 `opacity`
 
-*   is optional
+* is optional
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity")
+* defined in: [WFRC App](config-properties-layerselector-properties-overlays-items-anyof-1-properties-opacity.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector/properties/overlays/items/anyOf/1/properties/opacity")
 
 ### opacity Type
 

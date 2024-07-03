@@ -4,9 +4,9 @@
 
 one (and only one) of
 
-*   [Untitled undefined type in WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-oneof-0.md "check type definition")
+* [Untitled undefined type in WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-oneof-0.md "check type definition")
 
-*   [Untitled undefined type in WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-oneof-1.md "check type definition")
+* [Untitled undefined type in WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-oneof-1.md "check type definition")
 
 # additionalProperties Properties
 
@@ -30,13 +30,13 @@ one (and only one) of
 
 `label`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/label")
 
 ### label Type
 
@@ -48,13 +48,13 @@ Defines the layer(s) that you want to toggle. Values must match the property nam
 
 `layerNames`
 
-*   is optional
+* is optional
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/layerNames")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-layernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/layerNames")
 
 ### layerNames Type
 
@@ -66,13 +66,13 @@ Set this to true to make the checkbox unchecked on load.
 
 `offByDefault`
 
-*   is optional
+* is optional
 
-*   Type: `boolean`
+* Type: `boolean`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-offbydefault.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/offByDefault")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-offbydefault.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/offByDefault")
 
 ### offByDefault Type
 
@@ -84,13 +84,13 @@ Defines the zero-based index of the phase that this checkbox is associated with.
 
 `phase`
 
-*   is optional
+* is optional
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-phase.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/phase")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-phase.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/phase")
 
 ### phase Type
 
@@ -102,13 +102,13 @@ Defines the zero-based index of the mode that this checkbox is associated with.
 
 `mode`
 
-*   is optional
+* is optional
 
-*   Type: `number`
+* Type: `number`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-mode.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/mode")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-mode.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/mode")
 
 ### mode Type
 
@@ -120,13 +120,13 @@ Defines the type of symbol component to be displayed.
 
 `symbol`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbol.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbol")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbol.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbol")
 
 ### symbol Type
 
@@ -149,13 +149,13 @@ Defines the filename for the image that should be used for the symbol. Note that
 
 `symbolImageFile`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbolimagefile.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolImageFile")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbolimagefile.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolImageFile")
 
 ### symbolImageFile Type
 
@@ -167,13 +167,13 @@ Used to restrict the layers for which symbols are shown. If this is not passed, 
 
 `symbolLayerNames`
 
-*   is optional
+* is optional
 
-*   Type: `string[][]`
+* Type: `string[][]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollayernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLayerNames")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollayernames.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLayerNames")
 
 ### symbolLayerNames Type
 
@@ -185,13 +185,13 @@ Optionally define text that will show in a popover when hovering over the associ
 
 `symbolLabels`
 
-*   is optional
+* is optional
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollabels.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLabels")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-symbollabels.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/symbolLabels")
 
 ### symbolLabels Type
 
@@ -203,13 +203,13 @@ Used to define colors for the `staticColors` symbol type.
 
 `staticColors`
 
-*   is optional
+* is optional
 
-*   Type: `object[]` ([Static Color](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color.md))
+* Type: `object[]` ([Static Color](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors")
 
 ### staticColors Type
 
@@ -221,13 +221,13 @@ Used for the phase checkboxes. Defines the color as an rgb value. HSA may also w
 
 `color`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-color.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/color")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-color.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/color")
 
 ### color Type
 

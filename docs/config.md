@@ -23,13 +23,13 @@ An object that describes each map available in the application. The property nam
 
 `mapInfos`
 
-*   is required
+* is required
 
-*   Type: `object` ([Map Infos](config-properties-map-infos.md))
+* Type: `object` ([Map Infos](config-properties-map-infos.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")
+* defined in: [WFRC App](config-properties-map-infos.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos")
 
 ### mapInfos Type
 
@@ -41,13 +41,13 @@ Configuration options for the map search widget
 
 `sherlock`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-sherlock.md))
+* Type: `object` ([Details](config-properties-sherlock.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-sherlock.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock")
+* defined in: [WFRC App](config-properties-sherlock.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock")
 
 ### sherlock Type
 
@@ -59,13 +59,13 @@ Configuration options for the base map selector widget
 
 `layerSelector`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-layerselector.md))
+* Type: `object` ([Details](config-properties-layerselector.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-layerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector")
+* defined in: [WFRC App](config-properties-layerselector.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/layerSelector")
 
 ### layerSelector Type
 
@@ -77,13 +77,13 @@ Configuration options for the base map selector widget
 
 `defaultExtent`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-defaultextent.md))
+* Type: `object` ([Details](config-properties-defaultextent.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-defaultextent.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent")
+* defined in: [WFRC App](config-properties-defaultextent.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultExtent")
 
 ### defaultExtent Type
 
@@ -95,13 +95,13 @@ Configuration options for the base map selector widget
 
 `links`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-links.md))
+* Type: `object` ([Details](config-properties-links.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-links.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links")
+* defined in: [WFRC App](config-properties-links.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/links")
 
 ### links Type
 
@@ -113,13 +113,13 @@ Controls whether specific map widgets default to be open on page load
 
 `openOnLoad`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-openonload.md))
+* Type: `object` ([Details](config-properties-openonload.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-openonload.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")
+* defined in: [WFRC App](config-properties-openonload.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/openOnLoad")
 
 ### openOnLoad Type
 
@@ -131,13 +131,13 @@ Contains the translated strings used in the app. Falls back to `en` if there is 
 
 `translations`
 
-*   is required
+* is required
 
-*   Type: `object` ([Translations](config-properties-translations.md))
+* Type: `object` ([Translations](config-properties-translations.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-translations.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")
+* defined in: [WFRC App](config-properties-translations.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")
 
 ### translations Type
 
@@ -149,13 +149,13 @@ Restricts the number of tabs that a user is allowed to add.
 
 `maxTabsAllowed`
 
-*   is required
+* is required
 
-*   Type: `integer` ([Max Tabs Allowed](config-properties-max-tabs-allowed.md))
+* Type: `integer` ([Max Tabs Allowed](config-properties-max-tabs-allowed.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-max-tabs-allowed.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/maxTabsAllowed")
+* defined in: [WFRC App](config-properties-max-tabs-allowed.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/maxTabsAllowed")
 
 ### maxTabsAllowed Type
 
@@ -167,13 +167,13 @@ Restricts the number of tabs that a user is allowed to add.
 
 `projectInformation`
 
-*   is required
+* is required
 
-*   Type: `object` ([Project Information widget configuration](config-properties-project-information-widget-configuration.md))
+* Type: `object` ([Project Information widget configuration](config-properties-project-information-widget-configuration.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/projectInformation")
+* defined in: [WFRC App](config-properties-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/projectInformation")
 
 ### projectInformation Type
 
@@ -185,13 +185,13 @@ This should be set to <https://wfrc.org/wasatch-choice-map/config.schema.json>
 
 `$schema`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-schema.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")
+* defined in: [WFRC App](config-properties-schema.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")
 
 ### $schema Type
 
@@ -227,13 +227,13 @@ Reference this group by using
 
 `mapTabsDialog`
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-definitions-translation-properties-maptabsdialog.md))
+* Type: `object` ([Details](config-definitions-translation-properties-maptabsdialog.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-definitions-translation-properties-maptabsdialog.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog")
+* defined in: [WFRC App](config-definitions-translation-properties-maptabsdialog.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/properties/mapTabsDialog")
 
 #### mapTabsDialog Type
 
@@ -245,13 +245,13 @@ Additional properties are allowed, as long as they follow this schema:
 
 
 
-*   is optional
+* is optional
 
-*   Type: merged type ([Details](config-definitions-translation-additionalproperties.md))
+* Type: merged type ([Details](config-definitions-translation-additionalproperties.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-definitions-translation-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/additionalProperties")
+* defined in: [WFRC App](config-definitions-translation-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/definitions/translation/additionalProperties")
 
 #### additionalProperties Type
 
@@ -259,6 +259,6 @@ merged type ([Details](config-definitions-translation-additionalproperties.md))
 
 one (and only one) of
 
-*   [Untitled string in WFRC App](config-definitions-translation-additionalproperties-oneof-0.md "check type definition")
+* [Untitled string in WFRC App](config-definitions-translation-additionalproperties-oneof-0.md "check type definition")
 
-*   [Untitled object in WFRC App](config-definitions-translation-additionalproperties-oneof-1.md "check type definition")
+* [Untitled object in WFRC App](config-definitions-translation-additionalproperties-oneof-1.md "check type definition")

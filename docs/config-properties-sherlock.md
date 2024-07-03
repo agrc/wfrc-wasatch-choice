@@ -16,13 +16,13 @@ The URL to the service that you would like to search features on.
 
 `serviceUrl`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-sherlock-properties-serviceurl.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/serviceUrl")
+* defined in: [WFRC App](config-properties-sherlock-properties-serviceurl.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/serviceUrl")
 
 ### serviceUrl Type
 
@@ -34,13 +34,13 @@ The name of the field that you would like the search to be applied to.
 
 `searchField`
 
-*   is required
+* is required
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-sherlock-properties-searchfield.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/searchField")
+* defined in: [WFRC App](config-properties-sherlock-properties-searchfield.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/searchField")
 
 ### searchField Type
 
@@ -52,13 +52,13 @@ The place holder text that shows up in the text box before a user starts typing.
 
 `placeHolder`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-sherlock-properties-placeholder.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/placeHolder")
+* defined in: [WFRC App](config-properties-sherlock-properties-placeholder.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/sherlock/properties/placeHolder")
 
 ### placeHolder Type
 

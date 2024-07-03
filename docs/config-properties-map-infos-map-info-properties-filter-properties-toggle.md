@@ -18,13 +18,13 @@ The label for the toggle buttons
 
 `label`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/label")
 
 ### label Type
 
@@ -36,13 +36,13 @@ The label for the mode button
 
 `mode`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-mode.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/mode")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-mode.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/mode")
 
 ### mode Type
 
@@ -54,13 +54,13 @@ The label for the phase button
 
 `phase`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-phase.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/phase")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-phase.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/phase")
 
 ### phase Type
 
@@ -72,13 +72,13 @@ The layer name keys that correspond to the mode button
 
 `modeLayers`
 
-*   is optional
+* is optional
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-modelayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/modeLayers")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-modelayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/modeLayers")
 
 ### modeLayers Type
 
@@ -90,13 +90,13 @@ The layer name keys that correspond to the phase button
 
 `phaseLayers`
 
-*   is optional
+* is optional
 
-*   Type: `string[]`
+* Type: `string[]`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-phaselayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/phaseLayers")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-toggle-properties-phaselayers.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/toggle/properties/phaseLayers")
 
 ### phaseLayers Type
 

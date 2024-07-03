@@ -15,13 +15,13 @@
 
 `en`
 
-*   is required
+* is required
 
-*   Type: `object` ([Details](config-properties-translations-properties-en.md))
+* Type: `object` ([Details](config-properties-translations-properties-en.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-translations-properties-en.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/properties/en")
+* defined in: [WFRC App](config-properties-translations-properties-en.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/properties/en")
 
 ### en Type
 
@@ -33,13 +33,13 @@ Additional properties are allowed, as long as they follow this schema:
 
 
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Details](config-properties-translations-additionalproperties.md))
+* Type: `object` ([Details](config-properties-translations-additionalproperties.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-translations-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/additionalProperties")
+* defined in: [WFRC App](config-properties-translations-additionalproperties.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/additionalProperties")
 
 ### additionalProperties Type
 

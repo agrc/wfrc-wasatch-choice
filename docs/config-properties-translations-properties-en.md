@@ -14,13 +14,13 @@
 
 `translation`
 
-*   is required
+* is required
 
-*   Type: `object` ([Translation](config-definitions-translation.md))
+* Type: `object` ([Translation](config-definitions-translation.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-definitions-translation.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/properties/en/properties/translation")
+* defined in: [WFRC App](config-definitions-translation.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations/properties/en/properties/translation")
 
 ### translation Type
 

@@ -14,13 +14,13 @@ Additional properties are allowed, as long as they follow this schema:
 
 
 
-*   is optional
+* is optional
 
-*   Type: `object` ([Map Info](config-properties-map-infos-map-info.md))
+* Type: `object` ([Map Info](config-properties-map-infos-map-info.md))
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties")
+* defined in: [WFRC App](config-properties-map-infos-map-info.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties")
 
 ### additionalProperties Type
 

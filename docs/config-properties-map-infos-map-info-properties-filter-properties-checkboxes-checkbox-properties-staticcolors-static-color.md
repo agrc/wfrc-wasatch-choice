@@ -15,13 +15,13 @@
 
 `label`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors/items/properties/label")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color-properties-label.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors/items/properties/label")
 
 ### label Type
 
@@ -33,13 +33,13 @@
 
 `hsa`
 
-*   is optional
+* is optional
 
-*   Type: `string`
+* Type: `string`
 
-*   cannot be null
+* cannot be null
 
-*   defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color-properties-hsa.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors/items/properties/hsa")
+* defined in: [WFRC App](config-properties-map-infos-map-info-properties-filter-properties-checkboxes-checkbox-properties-staticcolors-static-color-properties-hsa.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/mapInfos/additionalProperties/properties/filter/properties/checkboxes/additionalProperties/properties/staticColors/items/properties/hsa")
 
 ### hsa Type
 
