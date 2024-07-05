@@ -23,6 +23,6 @@ describe('map-widget', () => {
     ).click({ multiple: true });
 
     cy.findByText(/filter/i).should('not.be.visible');
-    cy.findByText(/project information/i).should('not.be.visible');
+    cy.findByText(/map features found/i).should('not.be.visible');
   });
 });

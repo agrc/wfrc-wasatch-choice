@@ -1,5 +1,5 @@
 const SANDY_EXTENT =
-  '{"spatialReference":{"wkid":3857},"xmin":-12482606.404475499,"ymin":4955291.883967039,"xmax":-12431393.595524501,"ymax":4998708.116032961}';
+  '{"spatialReference":{"wkid":3857},"xmin":-12463811.219037749,"ymin":4938715.567033521,"xmax":-12438204.81456225,"ymax":4960423.683066481}';
 
 describe('sherlock', () => {
   it('search and select using keyboard', () => {
@@ -12,6 +12,9 @@ describe('sherlock', () => {
     cy.findByPlaceholderText(/Search/i).type('{downarrow}');
     cy.findByPlaceholderText(/Search/i).type('{enter}');
 
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
+
     cy.getMapExtent().should('equal', SANDY_EXTENT);
   });
 
@@ -21,6 +24,9 @@ describe('sherlock', () => {
     cy.findByPlaceholderText(/Search/i).type('san');
 
     cy.findByRole('option', { name: /sandy/i }).click();
+
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
 
     cy.getMapExtent().should('equal', SANDY_EXTENT);
   });

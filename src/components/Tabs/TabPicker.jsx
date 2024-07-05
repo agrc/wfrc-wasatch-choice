@@ -51,7 +51,7 @@ const TabPicker = ({ mapInfos, selectedIds, setSelectedIds, maxReached }) => {
             config.maxTabsAllowed
           })`,
         }}
-        onChange={items => setSelectedIds(items.map(item => item.value))}
+        onChange={setSelectedIds}
         options={options}
         preserveSelectOrder={true}
         selected={selectedIds}
