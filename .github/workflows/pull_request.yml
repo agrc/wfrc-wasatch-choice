@@ -25,6 +25,8 @@ jobs:
         with:
           start: npm start
           record: true
+          browser: chrome
+          wait-on: 'http://localhost:5173'
 
       - uses: actions/upload-artifact@v4
         if: failure()
