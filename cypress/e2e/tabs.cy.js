@@ -2,7 +2,7 @@ describe('tabs', () => {
   it('switching tabs preserves map extent', () => {
     cy.loadApp();
 
-    cy.findByRole('button', { name: /zoom in/i }).then((button) => {
+    cy.get('[title="Zoom in"]').then((button) => {
       button.trigger('click');
       button.trigger('click');
     });
@@ -49,15 +49,15 @@ describe('tabs', () => {
   it('layer selector is hidden and shown appropriately', () => {
     cy.loadApp();
 
-    cy.findByRole('button', { name: /layers/i }).should('not.exist');
+    cy.get('.esri-ui #layer-selector').should('not.exist');
 
     cy.findByLabelText('Transportation Tab').click();
 
-    cy.findByRole('button', { name: /layers/i }).should('exist');
+    cy.get('.esri-ui #layer-selector').should('exist');
 
     cy.findByLabelText('Vision Tab').click();
 
-    cy.findByRole('button', { name: /layers/i }).should('not.exist');
+    cy.get('.esri-ui #layer-selector').should('not.exist');
   });
 
   it('drag and drop to rearrange tabs', () => {
