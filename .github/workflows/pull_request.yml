@@ -64,6 +64,8 @@ jobs:
     if: ${{ github.event.sender.type == 'User' }}
     environment:
       name: dev
+    permissions:
+      id-token: write
 
     steps:
       - name: 🚀 Deploy
