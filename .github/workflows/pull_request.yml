@@ -66,6 +66,7 @@ jobs:
       name: dev
     permissions:
       id-token: write
+      pull-requests: write
 
     steps:
       - name: 🚀 Deploy
