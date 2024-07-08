@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.4](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.3...v5.4.4) (2024-07-08)
+
+
+### Bug Fixes
+
+* add required permissions for firebase deploy preview ([cbadbf1](https://github.com/agrc/wfrc-wasatch-choice/commit/cbadbf1aa428f451b6900185156e25905373b2c8))
+* fix e2e tests ([992eb44](https://github.com/agrc/wfrc-wasatch-choice/commit/992eb444a74b18e54d5dab1690a16f9f18d10374))
+
+
+### Dependencies
+
+* bump the safe-dependencies group across 1 directory with 2 updates ([a13ef42](https://github.com/agrc/wfrc-wasatch-choice/commit/a13ef427cda1e47b10c9ae92f05f8efbdcd10299))
+* Q1 dependency bumps 🌲 ([9fd3f2d](https://github.com/agrc/wfrc-wasatch-choice/commit/9fd3f2dbecbc9d7cb99aeb79ee0df6a8db2b7a4f))
+* storybook v7 -&gt; v8 ([183c337](https://github.com/agrc/wfrc-wasatch-choice/commit/183c3379105d612961d29fa52247002a354f110d))
+
+
+### Documentation
+
+* update config docs ([70412d1](https://github.com/agrc/wfrc-wasatch-choice/commit/70412d1650c74db509285903d2dcd5d42dc86fa3))
+
 ## [5.4.3](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.2...v5.4.3) (2024-04-12)
 
 
