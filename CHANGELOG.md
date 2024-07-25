@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.5](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.4...v5.4.5) (2024-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* There is a new required config value: "defaultTabsNum"
+
+### Features
+
+* implement default tabs number config value ([a8fd84f](https://github.com/agrc/wfrc-wasatch-choice/commit/a8fd84f1fe77984351ef67dc82729d441b30a00c))
+
 ## [5.4.4](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.3...v5.4.4) (2024-07-08)
 
 
