@@ -1850,5 +1850,6 @@
   "maxTabsAllowed": 10,
   "projectInformation": {
     "excludedLayers": ["ZoomToPlaceNames - Outlines"]
-  }
+  },
+  "defaultTabsNum": 6
 }

@@ -36,7 +36,6 @@ let config = {
   },
   LOADER_DELAY: 250,
   IDENTIFY_PIXEL_TOLERANCE: 7,
-  DEFAULT_NUM_TABS: 5,
 };
 
 // optional configSchema is for testing and storybook since they are clumsy when it comes to
@@ -86,7 +85,7 @@ export const setConfigs = async (appConfigs, configSchema = null) => {
 };
 
 export const getDefaultCurrentTabIds = () => {
-  return Object.keys(config.mapInfos).slice(0, config.DEFAULT_NUM_TABS);
+  return Object.keys(config.mapInfos).slice(0, config.defaultTabsNum);
 };
 
 export const useCurrentTabConfig = () => {

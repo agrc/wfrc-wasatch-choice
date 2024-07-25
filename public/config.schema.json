@@ -558,6 +558,11 @@
       "required": ["excludedLayers"],
       "additionalProperties": false
     },
+    "defaultTabsNum": {
+      "title": "Default Tabs Number",
+      "description": "The number of tabs that are open by default",
+      "type": "integer"
+    },
     "$schema": {
       "description": "This should be set to https://wfrc.org/wasatch-choice-map/config.schema.json",
       "type": "string",
@@ -576,6 +581,7 @@
     "openOnLoad",
     "translations",
     "maxTabsAllowed",
-    "projectInformation"
+    "projectInformation",
+    "defaultTabsNum"
   ]
 }
