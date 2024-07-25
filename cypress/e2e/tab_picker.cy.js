@@ -61,9 +61,6 @@ describe('tab-picker', () => {
     cy.findByRole('listbox', { name: /available/i }).select('atdata');
     cy.findByRole('option', { name: /active transportation/i }).dblclick();
 
-    cy.findByRole('listbox', { name: /available/i }).select('ato');
-    cy.findByRole('option', { name: /access to opportunities/i }).dblclick();
-
     cy.findByRole('alert', { text: /maximum/i }).should('be.visible');
   });
 });

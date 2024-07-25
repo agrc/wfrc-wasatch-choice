@@ -46,19 +46,20 @@ describe('tabs', () => {
     });
   });
 
-  it('layer selector is hidden and shown appropriately', () => {
-    cy.loadApp();
+  // this is no longer relevant since they do not hide the layer selector on any tab currently
+  // it('layer selector is hidden and shown appropriately', () => {
+  //   cy.loadApp();
 
-    cy.get('.esri-ui #layer-selector').should('not.exist');
+  //   cy.get('.esri-ui #layer-selector').should('not.exist');
 
-    cy.findByLabelText('Transportation Tab').click();
+  //   cy.findByLabelText('Transportation Tab').click();
 
-    cy.get('.esri-ui #layer-selector').should('exist');
+  //   cy.get('.esri-ui #layer-selector').should('exist');
 
-    cy.findByLabelText('Vision Tab').click();
+  //   cy.findByLabelText('Vision Tab').click();
 
-    cy.get('.esri-ui #layer-selector').should('not.exist');
-  });
+  //   cy.get('.esri-ui #layer-selector').should('not.exist');
+  // });
 
   it('drag and drop to rearrange tabs', () => {
     cy.loadApp();
