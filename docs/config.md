@@ -15,6 +15,7 @@
 | [translations](#translations)             | `object`  | Required | cannot be null | [WFRC App](config-properties-translations.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/translations")                                   |
 | [maxTabsAllowed](#maxtabsallowed)         | `integer` | Required | cannot be null | [WFRC App](config-properties-max-tabs-allowed.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/maxTabsAllowed")                             |
 | [projectInformation](#projectinformation) | `object`  | Required | cannot be null | [WFRC App](config-properties-project-information-widget-configuration.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/projectInformation") |
+| [defaultTabsNum](#defaulttabsnum)         | `integer` | Required | cannot be null | [WFRC App](config-properties-default-tabs-number.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultTabsNum")                          |
 | [$schema](#schema)                        | `string`  | Optional | cannot be null | [WFRC App](config-properties-schema.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/$schema")                                              |
 
 ## mapInfos
@@ -178,6 +179,24 @@ Restricts the number of tabs that a user is allowed to add.
 ### projectInformation Type
 
 `object` ([Project Information widget configuration](config-properties-project-information-widget-configuration.md))
+
+## defaultTabsNum
+
+The number of tabs that are open by default
+
+`defaultTabsNum`
+
+* is required
+
+* Type: `integer` ([Default Tabs Number](config-properties-default-tabs-number.md))
+
+* cannot be null
+
+* defined in: [WFRC App](config-properties-default-tabs-number.md "https://wfrc.org/wasatch-choice-map/config.schema.json#/properties/defaultTabsNum")
+
+### defaultTabsNum Type
+
+`integer` ([Default Tabs Number](config-properties-default-tabs-number.md))
 
 ## $schema
 
