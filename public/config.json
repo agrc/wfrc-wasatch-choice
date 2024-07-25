@@ -4,7 +4,7 @@
     "vision": {
       "name": "trans:mapTitleVision",
       "webMapId": "dcfc98c906f54e598325ba55a594b446",
-      "hideLayerSelector": true,
+      "hideLayerSelector": false,
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
@@ -241,10 +241,7 @@
           "linesByPhase": "Lines Displayed by Phase",
           "existingBike": "Existing Bike Network",
           "centers": "Centers",
-          "generalLandUse": "OtherRegionalLandUse",
-          "utahHouse": "Utah House Districts 2022 to 2032",
-          "utahSenate": "Utah Senate Districts 2022 to 2032",
-          "congress": "Utah US Congress Districts 2022 to 2032"
+          "generalLandUse": "OtherRegionalLandUse"
         },
         "phases": {
           "pointsByMode": ["phase", 1, 2, 3, 4],
@@ -392,6 +389,7 @@
               }
             ]
           },
+
           "generalLandUse": {
             "label": "trans:filterTransportation.generalLandUse",
             "layerNames": ["generalLandUse"],
@@ -421,24 +419,6 @@
             "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike"],
             "symbol": "simple"
-          },
-          "utahHouse": {
-            "label": "trans:filterTransportation.utahHouse",
-            "layerNames": ["utahHouse"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "utahSenate": {
-            "label": "trans:filterTransportation.utahSenate",
-            "layerNames": ["utahSenate"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "congress": {
-            "label": "trans:filterTransportation.congress",
-            "layerNames": ["congress"],
-            "symbol": "simple",
-            "offByDefault": true
           }
         },
         "groups": [
@@ -456,14 +436,7 @@
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": [
-              "centers",
-              "generalLandUse",
-              "existingBikePed",
-              "utahHouse",
-              "utahSenate",
-              "congress"
-            ]
+            "checkboxes": ["centers", "generalLandUse", "existingBikePed"]
           }
         ]
       },
@@ -912,6 +885,220 @@
         ]
       }
     },
+    "olympics": {
+      "name": "trans:mapTitleOlympics",
+      "webMapId": "8bfe6d2f37ad4b969a92ae4b502658f1",
+      "useDefaultAGOLPopup": false,
+      "filter": {
+        "layerNames": {
+          "olympicAirports": "SLC Airport",
+          "olympicVenues2034Coarse": "Proposed Olympic Venues Coarse Labels",
+          "olympicVenues2034Detailed": "Proposed Olympic Venues Detailed Labels",
+          "olympicTransitCRT": "Commuter Rail",
+          "olympicTransitLRT": "Light Rail",
+          "olympicTransitBRT": "Bus Rapid Transit",
+          "olympicFreeways": "Freeway System",
+          "olympicHighways": "Highway System",
+          "prjPtsCRTSince2002": "CRT PtProjects Since 2002",
+          "prjPtsCRTPre2034": "CRT PtProjects Pre 2034",
+          "prjPtsLRTSince2002": "LRT PtProjects Since 2002",
+          "prjPtsLRTPre2034": "LRT PtProjects Pre 2034",
+          "prjPtsFwyPre2002": "Freeway PtProjects Pre 2002",
+          "prjPtsFwyPre2034": "Freeway PtProjects Pre 2034",
+          "prjCRTSince2002": "CRT Projects Since 2002",
+          "prjCRTPre2034": "CRT Projects Pre 2034",
+          "prjLRTPre2002": "LRT Projects Pre 2002",
+          "prjLRTSince2002": "LRT Projects Since 2002",
+          "prjLRTPre2034": "LRT Projects Pre 2034",
+          "prjBRTSince2002": "BRT Projects Since 2002",
+          "prjBRTPre2034": "BRT Projects Pre 2034",
+          "prjFwyPre2002": "Freeway Projects Pre 2002",
+          "prjFwySince2002": "Freeway Projects Since 2002",
+          "prjFwyPre2034": "Freeway Projects Pre 2034",
+          "prjHwyPre2002": "Highway Projects Pre 2002",
+          "prjHwySince2002": "Highway Projects Since 2002",
+          "prjHwyPre2034": "Highway Projects Pre 2034",
+          "majorRegionalDev": "Major Regional Development Projects"
+        },
+        "checkboxes": {
+          "sys2034Venues": {
+            "label": "trans:filterOlympics.sys2034Venues",
+            "layerNames": [
+              "olympicVenues2034Coarse",
+              "olympicVenues2034Detailed"
+            ],
+            "symbol": "simple",
+            "symbolLayerNames": [["olympicVenues2034Detailed"]],
+            "offByDefault": false
+          },
+          "majorRegionalDev": {
+            "label": "trans:filterOlympics.majorRegionalDev",
+            "layerNames": ["majorRegionalDev"],
+            "symbol": "simple",
+            "symbolLayerNames": [["majorRegionalDev"]],
+            "offByDefault": false
+          },
+          "prjPre2002": {
+            "label": "trans:filterOlympics.prjPre2002",
+            "layerNames": [
+              "prjLRTPre2002",
+              "prjPtsFwyPre2002",
+              "prjFwyPre2002",
+              "prjHwyPre2002"
+            ],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Freeway Project",
+                "hsa": "rgba(194, 2, 2, 0.6)"
+              },
+              {
+                "label": "Highway Project",
+                "hsa": "rgba(249, 97, 97, 0.5)"
+              },
+              {
+                "label": "Commuter Rail Project",
+                "hsa": "rgba(22, 10, 255, 0.5)"
+              },
+              {
+                "label": "Light Rail Project",
+                "hsa": "rgba(15, 147, 247, 0.4)"
+              },
+              {
+                "label": "Bus Rapid Transit Project",
+                "hsa": "rgba(16, 204, 185, 0.6)"
+              }
+            ]
+          },
+          "prjSince2002": {
+            "label": "trans:filterOlympics.prjSince2002",
+            "layerNames": [
+              "prjPtsCRTSince2002",
+              "prjCRTSince2002",
+              "prjPtsLRTSince2002",
+              "prjLRTSince2002",
+              "prjBRTSince2002",
+              "prjFwySince2002",
+              "prjHwySince2002"
+            ],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Freeway Project",
+                "hsa": "rgba(194, 2, 2, 0.6)"
+              },
+              {
+                "label": "Highway Project",
+                "hsa": "rgba(249, 97, 97, 0.5)"
+              },
+              {
+                "label": "Commuter Rail Project",
+                "hsa": "rgba(22, 10, 255, 0.5)"
+              },
+              {
+                "label": "Light Rail Project",
+                "hsa": "rgba(15, 147, 247, 0.4)"
+              },
+              {
+                "label": "Bus Rapid Transit Project",
+                "hsa": "rgba(16, 204, 185, 0.6)"
+              }
+            ]
+          },
+          "prjPre2034": {
+            "label": "trans:filterOlympics.prjPre2034",
+            "layerNames": [
+              "prjPtsCRTPre2034",
+              "prjCRTPre2034",
+              "prjPtsLRTPre2034",
+              "prjLRTPre2034",
+              "prjBRTPre2034",
+              "prjPtsFwyPre2034",
+              "prjFwyPre2034",
+              "prjHwyPre2034"
+            ],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Freeway Project",
+                "hsa": "rgba(194, 2, 2, 0.6)"
+              },
+              {
+                "label": "Highway Project",
+                "hsa": "rgba(249, 97, 97, 0.5)"
+              },
+              {
+                "label": "Commuter Rail Project",
+                "hsa": "rgba(22, 10, 255, 0.5)"
+              },
+              {
+                "label": "Light Rail Project",
+                "hsa": "rgba(15, 147, 247, 0.4)"
+              },
+              {
+                "label": "Bus Rapid Transit Project",
+                "hsa": "rgba(16, 204, 185, 0.6)"
+              }
+            ]
+          },
+          "sys2034CRT": {
+            "label": "trans:filterOlympics.sys2034CRT",
+            "layerNames": ["olympicTransitCRT"],
+            "symbol": "simple",
+            "offByDefault": false
+          },
+          "sys2034LRT": {
+            "label": "trans:filterOlympics.sys2034LRT",
+            "layerNames": ["olympicTransitLRT"],
+            "symbol": "simple",
+            "offByDefault": false
+          },
+          "sys2034BRT": {
+            "label": "trans:filterOlympics.sys2034BRT",
+            "layerNames": ["olympicTransitBRT"],
+            "symbol": "simple",
+            "offByDefault": false
+          },
+          "sys2034Freeways": {
+            "label": "trans:filterOlympics.sys2034Freeways",
+            "layerNames": ["olympicFreeways"],
+            "symbol": "simple",
+            "offByDefault": false
+          },
+          "sys2034Highways": {
+            "label": "trans:filterOlympics.sys2034Highways",
+            "layerNames": ["olympicHighways"],
+            "symbol": "simple",
+            "offByDefault": false
+          }
+        },
+        "groups": [
+          {
+            "label": "trans:filterOlympics.sys2034",
+            "checkboxes": [
+              "sys2034Venues",
+              "sys2034CRT",
+              "sys2034LRT",
+              "sys2034BRT",
+              "sys2034Freeways",
+              "sys2034Highways"
+            ]
+          },
+          {
+            "label": "trans:filterOlympics.prjGroup",
+            "checkboxes": [
+              "majorRegionalDev",
+              "prjPre2002",
+              "prjSince2002",
+              "prjPre2034"
+            ]
+          }
+        ]
+      }
+    },
     "ato": {
       "name": "trans:mapTitleATO",
       "webMapId": "8c7ba02bc72646aeb11f43e6d168402e",
@@ -1255,24 +1442,42 @@
   },
   "layerSelector": {
     "BWName": "B/W Imagery",
-    "BWOpacity": "65%",
+    "BWOpacity": "70%",
     "baseLayers": [
+      {
+        "id": "Vision Contours",
+        "Factory": "TileLayer",
+        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Statewide_Basemap/MapServer",
+        "opacity": 0.8
+      },
       "Lite",
       "Terrain",
       "Imagery",
-      "B/W Imagery",
-      {
-        "id": "Vision Refresh Basemap",
-        "Factory": "TileLayer",
-        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/",
-        "opacity": 0.5
-      }
+      "B/W Imagery"
     ],
     "overlays": [
       {
         "id": "Cities",
         "Factory": "FeatureLayer",
-        "url": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/2",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/1",
+        "opacity": 1
+      },
+      {
+        "id": "Utah House",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/3",
+        "opacity": 1
+      },
+      {
+        "id": "Utah Senate",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/4",
+        "opacity": 1
+      },
+      {
+        "id": "US Congress",
+        "Factory": "FeatureLayer",
+        "url": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/UGRC_Boundaries/FeatureServer/2",
         "opacity": 1
       }
     ]
@@ -1299,7 +1504,8 @@
         "mapTitleLandUse": "Centers & Land Uses",
         "mapTitleEconDev": "Economic Opportunities",
         "mapTitleRecreation": "Parks & Public Spaces",
-        "mapTitleATO": "Access to Opportunities",
+        "mapTitleOlympics": "SLC 2034",
+        "mapTitleATO": "ATO",
         "mapTitleTIP": "TIP Projects",
         "mapTitleTLC": "TLC Projects",
         "mapTitleProjections": "Growth Projections",
@@ -1339,16 +1545,13 @@
           "mode": "Mode",
           "other": "Other",
           "phase": "Phase",
-          "phase1": "Phase 1 (2019-30)",
-          "phase2": "Phase 2 (2031-40)",
-          "phase3": "Phase 3 (2041-50)",
+          "phase1": "Phase 1 (2023-32)",
+          "phase2": "Phase 2 (2033-42)",
+          "phase3": "Phase 3 (2043-50)",
           "roads": "Roads",
           "transit": "Transit",
           "transProjectFilter": "Transportation Project Filter",
-          "unfundedNeeds": "Unfunded Needs",
-          "utahHouse": "Utah House Districts",
-          "utahSenate": "Utah Senate Districts",
-          "congress": "US Congress Districts"
+          "unfundedNeeds": "Unfunded Needs"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
@@ -1400,6 +1603,20 @@
           "centers": "Centers",
           "federalLands": "USFS Lands",
           "industrial": "Industrial Exclusions"
+        },
+        "filterOlympics": {
+          "sys2034": "2034 Venues & Transportation",
+          "prjGroup": "Major Projects",
+          "prjPre2002": "Hwy/Transit Pre 2002",
+          "prjSince2002": "Hwy/Transit  2003-23",
+          "prjPre2034": "Hwy/Transit  2024-34",
+          "sys2034CRT": "Commuter Rail",
+          "sys2034LRT": "Light Rail",
+          "sys2034BRT": "Bus Rapid Transit (BRT)",
+          "sys2034Freeways": "Freeways",
+          "sys2034Highways": "Highways",
+          "sys2034Venues": "Olympic Venues (Planned)",
+          "majorRegionalDev": "Major Regional Developments"
         },
         "filterATO": {
           "equity": "Equity Focus Areas",
@@ -1462,13 +1679,14 @@
         "mapTitleLandUse": "Uso de la Tierra",
         "mapTitleEconDev": "Desarrollo Económico",
         "mapTitleRecreation": "Recreación",
+        "mapTitleOlympics": "Juegos Olímpicos",
         "mapTitleATO": "Acceso a Oportunidades",
         "mapTitleTIP": "Proyectos TIP",
         "mapTitleTLC": "Proyectos TLC",
         "mapTitleProjections": "Proyecciones de Crecimiento",
         "mapTitleATdata": "Transporte Activo",
         "mapTitleGFLU": "Uso Futuro de la Tierra",
-        "mapTitleStationAreaPlanning": "Planificación del área de la estación",
+        "mapTitleStationAreaPlanning": "Planificación del área de de estaciónes",
         "appTitle": "Mapa de Wasatch Choice",
         "mapTabsDialog": {
           "title": "Configurar Pestañas de Mapa",
@@ -1498,71 +1716,82 @@
           "roads": "Carreteras",
           "transit": "Transporte Público",
           "bikePed": "Transporte Activo",
-          "phase1": "Fase 1 (2019-30)",
-          "phase2": "Fase 2 (2031-40)",
-          "phase3": "Fase 3 (2041-50)",
-          "unfundedNeeds": "Necesidades Nofinanciadas",
+          "phase1": "Fase 1 (2023-32)",
+          "phase2": "Fase 2 (2033-42)",
+          "phase3": "Fase 3 (2043-50)",
+          "unfundedNeeds": "Necesidades No Financiadas",
           "landUse": "Uso de la Tierra",
           "centers": "Centros",
           "generalLandUse": "Uso General de la Tierra",
           "other": "Otro",
           "existingBikePed": "Transporte Activo Existente",
           "transProjectFilter": "Filtro de proyecto de transporte",
-          "existingTransit": "Transporte Público Existente",
-          "utahHouse": "Utah House Districts",
-          "utahSenate": "Utah Senate Districts",
-          "congress": "US Congress Districts"
+          "existingTransit": "Transporte Público Existente"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
-          "centerLabels": "Center Labels",
+          "centerLabels": "Etiquetas de Centros”,",
           "centers": "Centros",
           "generalLandUse": "Uso General de la Tierra",
           "greenSpace": "Espacio Verde",
           "openSpace": "Espacio Abierto"
         },
         "filterEconDev": {
-          "economicClusters": "Economic Clusters",
-          "economicClustersOther": "Other Economic Layers",
-          "economicClustersAero": "Aerospace & Defense",
-          "economicClustersEnergy": "Energy",
-          "economicClustersFinance": "Financial Services",
-          "economicClustersLife": "Life Sciences",
-          "economicClustersRec": "Outdoor Recreation",
-          "economicClustersIT": "Software / IT",
-          "todSites": "Sitios TOD",
-          "cdasrdas": "CDAs y RDAs",
+          "economicClusters": "Agrupaciones Económicass",
+          "economicClustersOther": "Otras Agrupaciones Económicas",
+          "economicClustersAero": "Aeroespacial y Defensa",
+          "economicClustersEnergy": "Energía",
+          "economicClustersFinance": "Servicios Financieros",
+          "economicClustersLife": "Ciencias de la Vida",
+          "economicClustersRec": "Recreación al Aire Libre",
+          "economicClustersIT": "Software / Tecnología de la Información",
+          "todSites": "Sitios de Desarrollo Orientado al Tránsito",
+          "cdasrdas": "Areas de Desarrollo Comunitario y Reurbanización",
           "opportunityZones": "Zonas de Oportunidad",
           "centers": "Centros",
           "generalLandUse": "Uso General de la Tierra"
         },
         "filterRecreation": {
-          "currentTrailsGroup": "Existing Active Transportation (AT)",
-          "phaseOneTrailsGroup": "Planned AT Projects (thru 2032)",
-          "phaseTwoTrailsGroup": "Planned AT Projects (2033-42)",
-          "parksGroup": "Parks",
-          "destinationsGroup": "Destinations",
-          "otherGroup": "Other",
-
-          "trailsPaved": "Paved Trails",
-          "trailsUnpaved": "Unpaved Trails",
-          "bikeClass1": "Bike Paths",
-          "bikeClass2": "Bike Lanes",
-          "bikeClass1Phase1": "Bike Trails/Paths, Phase 1",
-          "bikeClass2Phase1": "Bike Lanes, Phase 1",
-          "bikeClass1Phase2": "Bike Trails/Paths, Phase 2",
-          "bikeClass2Phase2": "Bike Lanes, Phase 2",
-          "currentOpenSpace": "Current Open Spaces",
-          "futureOpenSpace": "Future Open Spaces",
-          "stateParks": "State Parks",
-          "greenWays": "Greenway Corridors",
-          "recCenters": "Recreation Centers",
-          "trailheads": "Trailheads",
-          "higherEd": "Colleges",
-          "schools": "Schools (PK-12)",
-          "centers": "Centers",
-          "federalLands": "USFS Lands",
-          "industrial": "Industrial Exclusions"
+          "currentTrailsGroup": "Transporte Activo (TA) Existente",
+          "phaseOneTrailsGroup": "Proyectos de TA Planificados (hasta 2032)",
+          "phaseTwoTrailsGroup": "Proyectos de TA Planificados (2033-42)",
+          "parksGroup": "Parques",
+          "destinationsGroup": "Destinos",
+          "otherGroup": "Otro",
+          "trailsPaved": "Senderos Pavimentados",
+          "trailsUnpaved": "Senderos sin Pavimentar",
+          "bikeClass1": "Rutas para Bicicletas",
+          "bikeClass2": "Carriles para Bicicletas",
+          "bikeClass1Phase1": "Senderos/Rutas para Bicicletas, Fase 1",
+          "bikeClass2Phase1": "Carriles para Bicicletas, Fase 1",
+          "bikeClass1Phase2": "Senderos/Rutas para Bicicletas, Fase 2",
+          "bikeClass2Phase2": "Carriles para Bicicletas, Fase  2",
+          "currentOpenSpace": "Espacios Abiertos Actuales",
+          "futureOpenSpace": "Espacios Abiertos Futuros",
+          "stateParks": "Parques Estatales",
+          "greenWays": "Corredores GreenWay",
+          "recCenters": "Centros de Recreación",
+          "trailheads": "Comienzos de Senderos",
+          "higherEd": "Colegios",
+          "schools": "Escuelas (PK-12)",
+          "centers": "Centros",
+          "federalLands": "Tierras de USFS",
+          "industrial": "Exclusiones Industriales"
+        },
+        "filterOlympics": {
+          "venues2034": "Sedes de 2034",
+          "sys2034": "Sedes y Transportes Olimpicas",
+          "prjGroup": "Grandes Proyectos",
+          "prjPre2002": "Transportes Antes 2002",
+          "prjSince2002": "Transportes 2003-23",
+          "prjPre2034": "Transportes 2024-34",
+          "sys2034CRT": "Tren de Cercaníass",
+          "sys2034LRT": "Tren Ligerol",
+          "sys2034BRT": "Autobus de Tránsito Rápido",
+          "sys2034Freeways": "Autopistas",
+          "sys2034Highways": "Carreteras",
+          "sys2034Venues": "Sedes Olímpicas (planificados)",
+          "majorRegionalDev": "Major Regional Developments"
         },
         "filterATO": {
           "equity": "Áreas de Enfoque de Equidad",
