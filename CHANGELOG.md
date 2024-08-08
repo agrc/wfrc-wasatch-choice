@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.6](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.5...v5.4.6) (2024-08-08)
+
+
+### Bug Fixes
+
+* use new value for attribute style for web api ([3846ae5](https://github.com/agrc/wfrc-wasatch-choice/commit/3846ae5f11ca77a7f49f1126c85d4bcd7cc46c6d))
+
 ## [5.4.5](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.4...v5.4.5) (2024-07-25)
 
 
