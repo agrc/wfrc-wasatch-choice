@@ -477,7 +477,7 @@ class WebApi {
     this.baseUrl = 'https://api.mapserv.utah.gov/api/v1/';
 
     // defaultAttributeStyle: String
-    this.defaultAttributeStyle = 'identical';
+    this.defaultAttributeStyle = 'input';
 
     // xhrProvider: dojo/request/* provider
     //      The current provider as determined by the search function
