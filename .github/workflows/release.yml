@@ -1,0 +1,106 @@
+name: Release Events
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  deployments: write
+  contents: write
+
+jobs:
+  deploy-firebase-dev:
+    name: Deploy staging to firebase
+    runs-on: ubuntu-latest
+    if: github.event.release.prerelease == true
+    environment:
+      name: dev
+      url: https://wfrc-wasatch.dev.utah.gov
+
+    steps:
+      - name: 🚀 Deploy
+        uses: agrc/firebase-website-deploy-composite-action@v1
+        with:
+          identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          project-id: ${{ secrets.PROJECT_ID }}
+          build-command: npm run build:stage
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-dev:
+    name: Cut staging release
+    runs-on: ubuntu-latest
+    if: github.event.release.prerelease == true
+    environment:
+      name: dev
+
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🏗 Run build
+        run: npm run build:stage
+
+      - name: 🗜 Compress
+        run: npm run zip
+
+      - name: 🚀 Create release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          tag: ${{ github.event.release.tag_name }}
+          file: build.zip
+          prerelease: true
+
+  deploy-prod:
+    name: Cut production release
+    runs-on: ubuntu-latest
+    if: github.event.release.prerelease == false
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🏗 Run build
+        run: npm run build
+
+      - name: 🗜 Compress
+        run: npm run zip
+
+      - name: 🚀 Create release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          tag: ${{ github.event.release.tag_name }}
+          file: build.zip
+
+  notify:
+    name: Notifications
+    needs: deploy-prod
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Release Notifier
+        uses: agrc/release-issue-notifications-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

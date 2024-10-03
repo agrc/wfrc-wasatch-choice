@@ -6,12 +6,6 @@ on:
       - dev
       - main
 
-permissions:
-  contents: write
-  id-token: write
-  deployments: write
-  pull-requests: write
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -20,9 +14,9 @@ jobs:
   release:
     name: Create release
     runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release-please.outputs.release_created }}
-      released_version: ${{ steps.release-please.outputs.released_version }}
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: 🚀 Create Release
@@ -35,86 +29,3 @@ jobs:
           github-app-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
           github-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
           github-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
-
-  deploy-firebase-dev:
-    name: Deploy staging to firebase
-    runs-on: ubuntu-latest
-    needs: release
-    environment:
-      name: dev
-      url: https://wfrc-wasatch.dev.utah.gov
-    if: github.ref_name == 'dev' && needs.release.outputs.release_created
-
-    steps:
-      - name: 🚀 Deploy
-        uses: agrc/firebase-website-deploy-composite-action@v1
-        with:
-          identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
-          service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
-          project-id: ${{ secrets.PROJECT_ID }}
-          build-command: npm run build:stage
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-  deploy-dev:
-    name: Cut staging release
-    runs-on: ubuntu-latest
-    needs: release
-    environment:
-      name: dev
-    if: github.ref_name == 'dev' && needs.release.outputs.release_created
-
-    steps:
-      - name: ⬇️ Set up code
-        uses: actions/checkout@v4
-
-      - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: 📥 Download dependencies
-        run: npm ci
-
-      - name: 🏗 Run build
-        run: npm run build:stage
-
-      - name: 🗜 Compress
-        run: npm run zip
-
-      - name: 🚀 Create release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          tag: v${{ needs.release.outputs.released_version }}
-          file: build.zip
-          prerelease: true
-
-  deploy-prod:
-    name: Cut production release
-    runs-on: ubuntu-latest
-    needs: release
-    if: github.ref_name == 'main' && needs.release.outputs.release_created
-    steps:
-      - name: ⬇️ Set up code
-        uses: actions/checkout@v4
-
-      - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: 📥 Download dependencies
-        run: npm ci
-
-      - name: 🏗 Run build
-        run: npm run build
-
-      - name: 🗜 Compress
-        run: npm run zip
-
-      - name: 🚀 Create release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          tag: v${{ needs.release.outputs.released_version }}
-          file: build.zip
