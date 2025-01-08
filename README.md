@@ -89,14 +89,14 @@ The current language should be automatically detected from the user's browser. I
 
 Create and populate `.env.local` based on `.env`
 
-Execute `npm start` to start a web server and view the website
+Execute `pnpm start` to start a web server and view the website
 
-Execute `npm test` to run tests
+Execute `pnpm test` to run tests
 
 ## Build
 
-Execute `npm run build` to create an optimized production build
+Execute `pnpm run build` to create an optimized production build
 
 _The files will be placed in `/dist`_
 
-Execute `npm run preview` to view the website
+Execute `pnpm run preview` to view the website
