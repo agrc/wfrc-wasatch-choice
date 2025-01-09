@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.8-0](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.7...v5.4.8-0) (2025-01-09)
+
+
+### Dependencies
+
+* FY25 Q3 dependency bumps 🌲 ([d8f0c86](https://github.com/agrc/wfrc-wasatch-choice/commit/d8f0c868c1cac9ab47647d24c509bd718819ac34))
+
 ## [5.4.7](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.6...v5.4.7) (2024-10-03)
 
 
