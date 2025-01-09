@@ -9,6 +9,8 @@ import '../src/index.css';
 setConfigs(appConfig, configSchema);
 
 /** @type { import('@storybook/react').Preview } */
-const preview = {};
+const preview = {
+  tags: ['autodocs', 'autodocs']
+};
 
 export default preview;
