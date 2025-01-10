@@ -10,7 +10,7 @@ setConfigs(appConfig, configSchema);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-  tags: ['autodocs', 'autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;
