@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
@@ -45,7 +45,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
           cache: pnpm
@@ -72,7 +72,7 @@ jobs:
     if: github.event.release.prerelease == false
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
@@ -80,7 +80,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
           cache: pnpm
