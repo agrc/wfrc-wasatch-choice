@@ -47,6 +47,13 @@ Cypress.Commands.add('getMapExtent', (expectedExtent) => {
       getExtent = win.getMapExtent;
     })
     .then(() => {
+      // If no expected extent is provided, just return the current extent
+      if (expectedExtent === undefined) {
+        console.log('getting extent...');
+        return getExtent();
+      }
+
+      // Otherwise, retry until it matches the expected extent
       let attemptCount = 0;
       return cy.waitUntil(
         () => {
