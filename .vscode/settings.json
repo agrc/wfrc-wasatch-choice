@@ -18,6 +18,7 @@
     "downarrow",
     "ecma",
     "econdev",
+    "esri",
     "fontawesome",
     "fortawesome",
     "fullscreen",
@@ -48,6 +49,7 @@
     "spanish",
     "stationareaplanning",
     "STIP",
+    "sublayers",
     "testid",
     "tilesize",
     "trailheads",
@@ -66,5 +68,9 @@
     "ymin"
   ],
   "cSpell.language": "en,es",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
 }

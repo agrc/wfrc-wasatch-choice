@@ -46,10 +46,8 @@ export const getFieldQuery = (
   };
 
   const checkedLabels = Object.entries(newState)
-    // eslint-disable-next-line no-unused-vars
-    .filter(([_, checked]) => checked)
-    // eslint-disable-next-line no-unused-vars
-    .map(([label, _]) => label);
+    .filter(([, checked]) => checked)
+    .map(([label]) => label);
 
   // return null if all checkboxes are checked (the default state)
   if (checkedLabels.length === Object.entries(newState).length) {

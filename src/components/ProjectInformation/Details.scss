@@ -5,16 +5,17 @@ $padding: 14px;
   font-size: 14px;
   border-bottom: $border;
   .title {
-    cursor: pointer;
     line-height: 1.6;
     font-weight: bold;
     font-size: 14px;
     background-color: #f0f0f0;
     padding: calc($padding/2) $padding;
+    border: none;
     border-bottom: $border;
     &:hover {
       background-color: white;
     }
+    width: 100%;
   }
   .esri-feature__content-element {
     padding: 0;

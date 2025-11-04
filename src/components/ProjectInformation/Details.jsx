@@ -54,9 +54,9 @@ export default function Details({ graphic, highlightGraphic }) {
       onMouseEnter={() => highlightGraphic(graphic)}
       onMouseLeave={() => highlightGraphic()}
     >
-      <div className="title" onClick={toggle}>
+      <button className="title" onClick={toggle}>
         {title}
-      </div>
+      </button>
       <Collapse isOpen={!collapsed}>
         <div ref={containerRef}></div>
       </Collapse>

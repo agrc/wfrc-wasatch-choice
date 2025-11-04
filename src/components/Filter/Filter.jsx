@@ -554,8 +554,8 @@ const Parent = ({
             checkboxConfig.mode !== undefined
               ? 'mode'
               : checkboxConfig.phase !== undefined
-              ? 'phase'
-              : null;
+                ? 'phase'
+                : null;
 
           return (
             <Child
@@ -638,7 +638,7 @@ function Child({
   if (globalKey) {
     const cachedValue = CACHE[globalKey];
     if (cachedValue !== undefined && cachedValue !== checked) {
-      onChange && onChange({ skipCache: true });
+      if (onChange) onChange({ skipCache: true });
     }
   }
 
