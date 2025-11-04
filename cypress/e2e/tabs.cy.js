@@ -12,7 +12,7 @@ describe('tabs', () => {
     cy.findByLabelText('Centers & Land Uses Tab').click();
 
     cy.get('@originalExtent').then((originalExtent) => {
-      cy.getMapExtent().should('equal', originalExtent);
+      cy.getMapExtent(originalExtent);
     });
   });
 
