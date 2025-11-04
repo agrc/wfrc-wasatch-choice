@@ -62,7 +62,7 @@ export default function MapWidget({
     const buttonDivRef = buttonDiv.current;
 
     return () => {
-      mapView && mapView.ui.remove(buttonDivRef);
+      if (mapView) mapView.ui.remove(buttonDivRef);
     };
   }, [buttonDiv, mapView]);
 
@@ -89,9 +89,17 @@ export default function MapWidget({
     <div>
       <MapWidgetContext.Provider value={{ updateScrollbar }}>
         <div
-          className="map-widget-button esri-widget--button"
+          role="button"
+          className="map-widget-button esri-widget--button esri-widget esri-component"
           ref={buttonDiv}
           onClick={toggle}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggle();
+            }
+          }}
+          tabIndex={0}
           title={name}
         >
           <FontAwesomeIcon icon={icon} />

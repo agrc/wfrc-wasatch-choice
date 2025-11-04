@@ -140,7 +140,6 @@ export function Sherlock({
                       }
 
                       let items = data.map((item, index) => (
-                        // eslint-disable-next-line react/jsx-key
                         <li
                           key={index}
                           {...getItemProps({

@@ -27,7 +27,7 @@ export const getLayersInMap = async (map) => {
     layerNameLookup[layer.title] = layer;
 
     await layer.when();
-    layer.sublayers && getSublayers(layer);
+    if (layer.sublayers) getSublayers(layer);
   }
 
   Object.keys(layerNameLookup).forEach((layerName) => {

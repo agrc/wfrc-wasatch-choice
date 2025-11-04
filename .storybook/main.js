@@ -5,7 +5,7 @@ const config = {
   addons: [
     '@storybook/addon-links',
     '@chromatic-com/storybook',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
   ],
 
   core: {},
@@ -18,7 +18,7 @@ const config = {
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
 };
 export default config;

@@ -238,7 +238,7 @@ Swatch.propTypes = {
 export function Image({ imageFileName }) {
   return (
     <div className="image-symbol-container">
-      <img src={`/${imageFileName}`} alt="symbol image" />
+      <img src={`/${imageFileName}`} alt="symbol" />
     </div>
   );
 }

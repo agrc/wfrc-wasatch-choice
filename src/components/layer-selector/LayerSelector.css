@@ -27,10 +27,11 @@
 .layer-selector-item input {
   margin: 0 0.5em 0 0;
 }
-.layer-selector {
+.layer-selector.esri-widget {
   background: #fff;
   pointer-events: auto;
   max-width: 150px;
+  margin-bottom: 0;
 }
 .layer-selector--width {
   width: 8em;

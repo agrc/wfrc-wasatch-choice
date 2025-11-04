@@ -216,7 +216,12 @@
           },
           {
             "label": "trans:filterVision.landUse",
-            "checkboxes": ["centers", "generalLandUse","openSpace", "olympicVenues"]
+            "checkboxes": [
+              "centers",
+              "generalLandUse",
+              "openSpace",
+              "olympicVenues"
+            ]
           }
         ]
       }
@@ -1408,9 +1413,7 @@
           },
           "futureLandUse": {
             "label": "trans:filterGFLU.gflu",
-            "layerNames": [
-              "futureLandUse"
-            ],
+            "layerNames": ["futureLandUse"],
             "symbol": "classes"
           }
         }

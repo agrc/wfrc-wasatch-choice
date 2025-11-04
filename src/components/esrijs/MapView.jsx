@@ -80,12 +80,13 @@ export default function ReactMapView({
     if (zoomToGraphic) {
       const { graphic, level, preserve } = zoomToGraphic;
 
-      graphic &&
+      if (graphic) {
         zoomTo({
           target: graphic,
           zoom: level,
           preserve: preserve,
         });
+      }
     }
   }, [zoomToGraphic, zoomTo]);
 
@@ -247,7 +248,9 @@ export default function ReactMapView({
       changeMap();
     };
 
-    !maps.current && initMap();
+    if (!maps.current) {
+      initMap();
+    }
   }, [
     initialExtent,
     discoverKey,

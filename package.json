@@ -73,6 +73,7 @@
     "@storybook/addon-links": "^10.0.3",
     "@storybook/react-vite": "^10.0.3",
     "@testing-library/cypress": "^10.1.0",
+    "@ugrc/eslint-config": "^1.2.3",
     "@vitejs/plugin-react": "^5.1.0",
     "bestzip": "^2.2.1",
     "concurrently": "^9.2.1",

@@ -35,9 +35,11 @@ const ExpandableContainer = (props) => {
 
   return (
     <div
-      className="layer-selector"
+      className="layer-selector esri-component esri-widget"
       onMouseOver={() => setExpanded(true)}
+      onFocus={() => setExpanded(true)}
       onMouseOut={() => setExpanded(false)}
+      onBlur={() => setExpanded(false)}
       aria-haspopup="true"
     >
       <input type="image" className={imageClasses} src={icon} alt="layers" />
