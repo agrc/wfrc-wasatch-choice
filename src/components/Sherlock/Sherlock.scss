@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@use '../../variables.scss';
 
 .sherlock {
   position: absolute;
@@ -12,7 +12,7 @@
   }
   button.disabled {
     opacity: 1;
-    background-color: $highlightColor;
+    background-color: variables.$highlightColor;
   }
 }
 .sherlock__match-dropdown {

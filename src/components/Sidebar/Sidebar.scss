@@ -1,11 +1,11 @@
-@import '../../variables.scss';
+@use '../../variables.scss';
 $sideBarWidth: 330px;
 
 .side-bar {
   overflow-x: hidden;
   position: absolute;
   left: 0;
-  top: $mainBodyTop;
+  top: variables.$mainBodyTop;
   bottom: 0;
   width: $sideBarWidth;
 }

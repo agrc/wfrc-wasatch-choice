@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import DualListBox from 'react-dual-listbox';
 import { Alert } from 'reactstrap';
-import '../../../node_modules/react-dual-listbox/src/scss/react-dual-listbox.scss';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
 import config from '../../config';
 import { useSpecialTranslation } from '../../i18n';
 

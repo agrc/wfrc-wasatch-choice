@@ -1,13 +1,13 @@
-const SANDY_EXTENT =
-  '{"spatialReference":{"wkid":3857},"xmin":-12463811.219037749,"ymin":4938715.567033521,"xmax":-12438204.81456225,"ymax":4960423.683066481}';
+const MANTI_EXTENT =
+  '{"spatialReference":{"wkid":3857},"xmin":-12433339.455879925,"ymin":4754201.408316715,"xmax":-12420536.253642173,"ymax":4765055.466333196}';
 
 describe('sherlock', () => {
   it('search and select using keyboard', () => {
     cy.loadApp();
 
-    cy.findByPlaceholderText(/Search/i).type('sandy');
+    cy.findByPlaceholderText(/Search/i).type('manti');
 
-    cy.findByRole('option', { name: /sandy/i });
+    cy.findAllByRole('option', { name: /manti/i }).should('exist');
 
     cy.findByPlaceholderText(/Search/i).type('{downarrow}');
     cy.findByPlaceholderText(/Search/i).type('{enter}');
@@ -15,19 +15,19 @@ describe('sherlock', () => {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
-    cy.getMapExtent().should('equal', SANDY_EXTENT);
+    cy.getMapExtent(MANTI_EXTENT);
   });
 
   it('search and select match with mouse', () => {
     cy.loadApp();
 
-    cy.findByPlaceholderText(/Search/i).type('san');
+    cy.findByPlaceholderText(/Search/i).type('manti');
 
-    cy.findByRole('option', { name: /sandy/i }).click();
+    cy.findByRole('option', { name: /manti/i }).click();
 
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
-    cy.getMapExtent().should('equal', SANDY_EXTENT);
+    cy.getMapExtent(MANTI_EXTENT);
   });
 });

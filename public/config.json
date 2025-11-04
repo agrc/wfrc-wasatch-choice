@@ -43,12 +43,14 @@
           "MajorBikePed1": "MajorBikePed",
           "BonnevilleShoreline1": "BonnevilleShoreline",
           "BonnevilleShoreline2": "BonnevilleShoreline_2",
-          "Centers": "Centers",
-          "Centers2": "Centers_2",
-          "OtherRegionalLandUse": "SpecialDistricts",
+          "Centers": "WCV Centers (LIVE)",
+          "OtherRegionalLandUse": "WCV Land Uses (LIVE)",
           "OpenSpace": "OpenSpace",
           "Greenways": "Greenways",
-          "FunctionalClass": "Functional Class"
+          "FunctionalClass": "Functional Class",
+          "ParksAndOther": "ParksAndOther",
+          "OlympicVenuesDetailed": "OlympicVenuesDetailed",
+          "OlympicVenuesCoarse": "OlympicVenuesCoarse"
         },
         "checkboxes": {
           "roads": {
@@ -132,7 +134,7 @@
           },
           "centers": {
             "label": "trans:filterVision.centers",
-            "layerNames": ["Centers", "Centers2"],
+            "layerNames": ["Centers"],
             "symbol": "classes",
             "staticColors": [
               {
@@ -159,22 +161,33 @@
             "symbol": "classes",
             "staticColors": [
               {
-                "label": "Educational Center",
+                "label": "Education District",
                 "hsa": "rgba(186, 218, 215, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "rgba(244, 201, 205, 0.75)"
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "rgba(222, 210, 232, 0.25)"
+                "hsa": "rgba(227, 207, 240, 0.75)"
               },
               {
                 "label": "Special District",
                 "hsa": "rgba(78, 78, 78, 0.25)"
               }
             ]
+          },
+          "olympicVenues": {
+            "label": "trans:filterVision.olympicVenues",
+            "layerNames": ["OlympicVenuesDetailed", "OlympicVenuesCoarse"],
+            "symbol": "image",
+            "symbolImageFile": "vision-map/olympicvenue.png",
+            "offByDefault": false
           },
           "openSpace": {
             "label": "trans:filterVision.openSpace",
@@ -203,7 +216,7 @@
           },
           {
             "label": "trans:filterVision.landUse",
-            "checkboxes": ["centers", "generalLandUse", "openSpace"]
+            "checkboxes": ["centers", "generalLandUse","openSpace", "olympicVenues"]
           }
         ]
       }
@@ -240,8 +253,8 @@
           "pointsByPhase": "Points Displayed by Phase",
           "linesByPhase": "Lines Displayed by Phase",
           "existingBike": "Existing Bike Network",
-          "centers": "Centers",
-          "generalLandUse": "OtherRegionalLandUse"
+          "centers": "WCV Centers (LIVE)",
+          "otherRegionalLandUses": "WCV Land Uses (LIVE)"
         },
         "phases": {
           "pointsByMode": ["phase", 1, 2, 3, 4],
@@ -251,9 +264,7 @@
           "pointsByModeMAG": ["phase", "1", "2", "3", "Unfunded"],
           "linesByModeMAG": ["phase", "1", "2", "3", "Unfunded"],
           "pointsByPhaseMAG": ["phase", "1", "2", "3", "Unfunded"],
-          "linesByPhaseMAG": ["phase", "1", "2", "3", "Unfunded"],
-          "centers": ["Phase", 1, 2, 3, 4],
-          "generalLandUse": ["Phase", 1, 2, 3, 4]
+          "linesByPhaseMAG": ["phase", "1", "2", "3", "Unfunded"]
         },
         "modes": {
           "pointsByMode": [
@@ -392,21 +403,25 @@
 
           "generalLandUse": {
             "label": "trans:filterTransportation.generalLandUse",
-            "layerNames": ["generalLandUse"],
+            "layerNames": ["otherRegionalLandUses"],
 
             "symbol": "classes",
             "staticColors": [
               {
-                "label": "Educational Center",
+                "label": "Education District",
                 "hsa": "rgba(186, 218, 215, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "rgba(244, 201, 205, 0.75)"
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "rgba(222, 210, 232, 0.25)"
+                "hsa": "rgba(227, 207, 240, 0.75)"
               },
               {
                 "label": "Special District",
@@ -450,23 +465,23 @@
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "FutureLandUse": "Generalized Future Land Use",
-          "Centers": "Centers",
-          "OtherRegionalLandUse": "OtherRegionalLandUse",
-          "ParksAndOther": "ParksAndOther",
-          "OpenSpace": "OpenSpace",
-          "Greenways": "Greenways"
+          "futureLandUse": "Generalized Future Land Use (2025)",
+          "centers": "WCV Centers (LIVE)",
+          "otherRegionalLandUse": "WCV Land Uses (LIVE)",
+          "parksAndOther": "ParksAndOther",
+          "openSpace": "OpenSpace",
+          "greenways": "Greenways"
         },
         "checkboxes": {
           "futureLandUse": {
             "label": "trans:filterLandUse.generalizedFutureLandUse",
-            "layerNames": ["FutureLandUse"],
+            "layerNames": ["futureLandUse"],
             "symbol": "classes",
             "offByDefault": true
           },
-          "centersLabels": {
+          "centers": {
             "label": "trans:filterLandUse.centers",
-            "layerNames": ["Centers"],
+            "layerNames": ["centers"],
             "symbol": "classes",
             "staticColors": [
               {
@@ -487,22 +502,26 @@
               }
             ]
           },
-          "generalLandUse": {
-            "label": "trans:filterLandUse.generalLandUse",
-            "layerNames": ["OtherRegionalLandUse"],
+          "otherRegionalLandUse": {
+            "label": "trans:filterVision.generalLandUse",
+            "layerNames": ["otherRegionalLandUse"],
             "symbol": "classes",
             "staticColors": [
               {
-                "label": "Educational Center",
+                "label": "Education District",
                 "hsa": "rgba(186, 218, 215, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "rgba(244, 201, 205, 0.75)"
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "rgba(222, 210, 232, 0.25)"
+                "hsa": "rgba(227, 207, 240, 0.75)"
               },
               {
                 "label": "Special District",
@@ -512,7 +531,7 @@
           },
           "openSpace": {
             "label": "trans:filterLandUse.openSpace",
-            "layerNames": ["OpenSpace", "Greenways", "ParksAndOther"],
+            "layerNames": ["openSpace", "greenways", "parksAndOther"],
             "symbol": "classes",
             "staticColors": [
               {
@@ -539,8 +558,8 @@
       "filter": {
         "layerNames": {
           "opportunityZones": "Opportunity Zones",
-          "centers": "Centers",
-          "otherRegionalLandUse": "OtherRegionalLandUse",
+          "centers": "WCV Centers (LIVE)",
+          "otherRegionalLandUse": "WCV Land Uses (LIVE)",
           "economicClustersAero": "Aerospace & Defense",
           "economicClustersEnergy": "Energy",
           "economicClustersFinance": "Financial Services",
@@ -625,16 +644,20 @@
             "symbol": "classes",
             "staticColors": [
               {
-                "label": "Educational Center",
+                "label": "Education District",
                 "hsa": "rgba(186, 218, 215, 0.75)"
               },
               {
                 "label": "Employment District",
-                "hsa": "rgba(244, 201, 205, 0.75)"
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
               },
               {
                 "label": "Industrial District",
-                "hsa": "rgba(222, 210, 232, 0.25)"
+                "hsa": "rgba(227, 207, 240, 0.75)"
               },
               {
                 "label": "Special District",
@@ -690,7 +713,7 @@
           "currentOpenSpace": "CentersOpenSpace_Current",
           "stateParks": "State Parks",
           "greenWays": "Greenways",
-          "centers": "Centers",
+          "centers": "WCV Centers (LIVE)",
           "recCenters": "Recreation Centers",
           "trailheads": "Trailheads",
           "higherEd": "HigherEd",
@@ -905,6 +928,7 @@
           "prjPtsLRTPre2034": "LRT PtProjects Pre 2034",
           "prjPtsFwyPre2002": "Freeway PtProjects Pre 2002",
           "prjPtsFwyPre2034": "Freeway PtProjects Pre 2034",
+          "prjPtsHwyPre2034": "Highway PtProjects Pre 2034",
           "prjCRTSince2002": "CRT Projects Since 2002",
           "prjCRTPre2034": "CRT Projects Pre 2034",
           "prjLRTPre2002": "LRT Projects Pre 2002",
@@ -958,16 +982,16 @@
                 "hsa": "rgba(249, 97, 97, 0.5)"
               },
               {
-                "label": "Commuter Rail Project",
+                "label": "FrontRunner Project",
                 "hsa": "rgba(22, 10, 255, 0.5)"
               },
               {
-                "label": "Light Rail Project",
+                "label": "TRAX Project",
                 "hsa": "rgba(15, 147, 247, 0.4)"
               },
               {
                 "label": "Bus Rapid Transit Project",
-                "hsa": "rgba(16, 204, 185, 0.6)"
+                "hsa": "rgba(237, 187, 99, 0.6)"
               }
             ]
           },
@@ -994,16 +1018,16 @@
                 "hsa": "rgba(249, 97, 97, 0.5)"
               },
               {
-                "label": "Commuter Rail Project",
+                "label": "FrontRunner Project",
                 "hsa": "rgba(22, 10, 255, 0.5)"
               },
               {
-                "label": "Light Rail Project",
+                "label": "TRAX Project",
                 "hsa": "rgba(15, 147, 247, 0.4)"
               },
               {
                 "label": "Bus Rapid Transit Project",
-                "hsa": "rgba(16, 204, 185, 0.6)"
+                "hsa": "rgba(237, 187, 99, 0.6)"
               }
             ]
           },
@@ -1016,11 +1040,12 @@
               "prjLRTPre2034",
               "prjBRTPre2034",
               "prjPtsFwyPre2034",
+              "prjPtsHwyPre2034",
               "prjFwyPre2034",
               "prjHwyPre2034"
             ],
             "symbol": "classes",
-            "offByDefault": true,
+            "offByDefault": false,
             "staticColors": [
               {
                 "label": "Freeway Project",
@@ -1031,16 +1056,16 @@
                 "hsa": "rgba(249, 97, 97, 0.5)"
               },
               {
-                "label": "Commuter Rail Project",
+                "label": "FrontRunner Project",
                 "hsa": "rgba(22, 10, 255, 0.5)"
               },
               {
-                "label": "Light Rail Project",
+                "label": "TRAX Project",
                 "hsa": "rgba(15, 147, 247, 0.4)"
               },
               {
                 "label": "Bus Rapid Transit Project",
-                "hsa": "rgba(16, 204, 185, 0.6)"
+                "hsa": "rgba(237, 187, 99, 0.6)"
               }
             ]
           },
@@ -1048,31 +1073,31 @@
             "label": "trans:filterOlympics.sys2034CRT",
             "layerNames": ["olympicTransitCRT"],
             "symbol": "simple",
-            "offByDefault": false
+            "offByDefault": true
           },
           "sys2034LRT": {
             "label": "trans:filterOlympics.sys2034LRT",
             "layerNames": ["olympicTransitLRT"],
             "symbol": "simple",
-            "offByDefault": false
+            "offByDefault": true
           },
           "sys2034BRT": {
             "label": "trans:filterOlympics.sys2034BRT",
             "layerNames": ["olympicTransitBRT"],
             "symbol": "simple",
-            "offByDefault": false
+            "offByDefault": true
           },
           "sys2034Freeways": {
             "label": "trans:filterOlympics.sys2034Freeways",
             "layerNames": ["olympicFreeways"],
             "symbol": "simple",
-            "offByDefault": false
+            "offByDefault": true
           },
           "sys2034Highways": {
             "label": "trans:filterOlympics.sys2034Highways",
             "layerNames": ["olympicHighways"],
             "symbol": "simple",
-            "offByDefault": false
+            "offByDefault": true
           }
         },
         "groups": [
@@ -1105,14 +1130,14 @@
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "equityFocusAreas": "Equity Focus Areas",
+          "communityFocusAreas": "Community Focus Areas",
           "workplaceAccessibilityAuto": "Workplace Accessibility - Auto",
           "workplaceAccessibilityTransit": "Workplace Accessibility - Transit"
         },
         "checkboxes": {
-          "equityFocusAreas": {
-            "label": "trans:filterATO.equity",
-            "layerNames": ["equityFocusAreas"],
+          "communityFocusAreas": {
+            "label": "trans:filterATO.community",
+            "layerNames": ["communityFocusAreas"],
             "symbol": "simple",
             "offByDefault": true
           },
@@ -1320,36 +1345,73 @@
     },
     "gflu": {
       "name": "trans:mapTitleGFLU",
-      "webMapId": "9476f34d525b4bd1a73825796746bb8c",
+      "webMapId": "8ee3664a9ff942d2a51f03621c3ffe9c",
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "futureLandUseBE": "Box Elder Future Land Use 2020",
-          "futureLandUseW": "Weber Future Land Use 2020",
-          "futureLandUseD": "Davis Future Land Use 2020",
-          "futureLandUseSL1": "Salt Lake 1 Future Land Use 2020",
-          "futureLandUseSL2": "Salt Lake 2 Future Land Use 2020",
-          "futureLandUseSL3": "Salt Lake 3 Future Land Use 2020",
-          "futureLandUseCo": "County Future Land Use 2020"
+          "centers": "WCV Centers (LIVE)",
+          "otherRegionalLandUse": "WCV Land Uses (LIVE)",
+          "futureLandUse": "Generalized Future Land Use (2025)"
         },
         "checkboxes": {
-          "futureLandUse1": {
-            "label": "trans:filterGFLU.gflu1",
+          "centers": {
+            "label": "trans:filterLandUse.centers",
+            "layerNames": ["centers"],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
+          },
+          "otherRegionalLandUse": {
+            "label": "trans:filterVision.generalLandUse",
+            "layerNames": ["otherRegionalLandUse"],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Education District",
+                "hsa": "rgba(186, 218, 215, 0.75)"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "rgba(227, 207, 240, 0.75)"
+              },
+              {
+                "label": "Special District",
+                "hsa": "rgba(78, 78, 78, 0.25)"
+              }
+            ]
+          },
+          "futureLandUse": {
+            "label": "trans:filterGFLU.gflu",
             "layerNames": [
-              "futureLandUseBE",
-              "futureLandUseW",
-              "futureLandUseD",
-              "futureLandUseSL1",
-              "futureLandUseSL2",
-              "futureLandUseSL3"
+              "futureLandUse"
             ],
             "symbol": "classes"
-          },
-          "futureLandUse2": {
-            "label": "trans:filterGFLU.gflu2",
-            "layerNames": ["futureLandUseCo"],
-            "symbol": "classes",
-            "offByDefault": true
           }
         }
       }
@@ -1360,48 +1422,54 @@
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "brtStationBuffers": "Qualifying BRT Station Buffers quarter mile",
-          "railStationBuffers": "FrontRunner Station Buffers half mile",
-          "railStationBuffers2": "TRAX or Streetcar Station Buffers half mile",
-          "brtStations": "Qualifying BRT Stations",
-          "frontrunnerStations": "FrontRunner Stations",
-          "traxstreetcarStations": "TRAX or Streetcar Stations",
-          "frontrunner": "FrontRunner",
-          "traxstreetcar": "TRAX or Streetcar",
-          "brt": "Bus Rapid Transit",
+          "sAPStations": "SAP Stations",
+          "sAPLines": "SAP Lines",
+          "sAPBuffers": "SAP Buffers",
           "municipalBoundaries": "Municipal Boundary Lines",
-          "wcCenters": "Wasatch Choice Centers"
+          "centers": "WCV Centers (LIVE)",
+          "otherRegionalLandUse": "WCV Land Uses (LIVE)"
         },
         "checkboxes": {
-          "frontrunnerLine": {
-            "label": "trans:filterStationAreaPlanning.line",
-            "layerNames": ["frontrunner", "frontrunnerStations"],
+          "sAPStations": {
+            "label": "trans:filterStationAreaPlanning.stations",
+            "layerNames": ["sAPStations"],
             "symbol": "simple"
           },
-          "frontrunnerBuffers": {
-            "label": "trans:filterStationAreaPlanning.stationAreas",
-            "layerNames": ["railStationBuffers"],
+          "sAPLines": {
+            "label": "trans:filterStationAreaPlanning.lines",
+            "layerNames": ["sAPLines"],
             "symbol": "simple"
           },
-          "traxstreetcarLine": {
-            "label": "trans:filterStationAreaPlanning.line",
-            "layerNames": ["traxstreetcar", "traxstreetcarStations"],
-            "symbol": "simple"
-          },
-          "traxstreetcarBuffers": {
-            "label": "trans:filterStationAreaPlanning.stationAreas",
-            "layerNames": ["railStationBuffers2"],
-            "symbol": "simple"
-          },
-          "brtLine": {
-            "label": "trans:filterStationAreaPlanning.line",
-            "layerNames": ["brt", "brtStations"],
-            "symbol": "simple"
-          },
-          "brtBuffers": {
-            "label": "trans:filterStationAreaPlanning.stationAreas",
-            "layerNames": ["brtStationBuffers"],
-            "symbol": "simple"
+          "sAPBuffers": {
+            "label": "trans:filterStationAreaPlanning.buffers",
+            "layerNames": ["sAPBuffers"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Certified SAP",
+                "hsa": "rgba(98, 141, 92, 1.0)"
+              },
+              {
+                "label": "Certification Review",
+                "hsa": "rgba(111, 185, 103, 1.0)"
+              },
+              {
+                "label": "Adopted",
+                "hsa": "rgba(184, 218, 111, 1.0)"
+              },
+              {
+                "label": "In Progress",
+                "hsa": "rgba(255, 255, 121, 1.0)"
+              },
+              {
+                "label": "Some Prior Planning",
+                "hsa": "rgba(255, 199, 100, 1.0)"
+              },
+              {
+                "label": "Unknown / No Plan",
+                "hsa": "rgba(185, 185, 185, 1.0)"
+              }
+            ]
           },
           "municipal": {
             "label": "trans:filterStationAreaPlanning.municipal",
@@ -1409,34 +1477,62 @@
             "symbol": "simple"
           },
           "centers": {
-            "label": "trans:filterStationAreaPlanning.centers",
-            "layerNames": ["wcCenters"],
-            "symbol": "classes"
+            "label": "trans:filterLandUse.centers",
+            "layerNames": ["centers"],
+            "symbol": "classes",
+            "staticColors": [
+              {
+                "label": "Metropolitan Center",
+                "hsa": "rgba(166, 41, 102, 0.75)"
+              },
+              {
+                "label": "Urban Center",
+                "hsa": "rgba(230, 89, 55, 0.75)"
+              },
+              {
+                "label": "City Center",
+                "hsa": "rgba(242, 160, 62, 0.75)"
+              },
+              {
+                "label": "Neighborhood Center",
+                "hsa": "rgba(248, 220, 38, 0.75)"
+              }
+            ]
+          },
+          "generalLandUse": {
+            "label": "trans:filterVision.generalLandUse",
+            "layerNames": ["otherRegionalLandUse"],
+            "symbol": "classes",
+            "offByDefault": true,
+            "staticColors": [
+              {
+                "label": "Education District",
+                "hsa": "rgba(186, 218, 215, 0.75)"
+              },
+              {
+                "label": "Employment District",
+                "hsa": "rgba(243, 176, 205, 0.75)"
+              },
+              {
+                "label": "Retail District",
+                "hsa": "rgba(246, 210, 212, 0.75)"
+              },
+              {
+                "label": "Industrial District",
+                "hsa": "rgba(227, 207, 240, 0.75)"
+              },
+              {
+                "label": "Special District",
+                "hsa": "rgba(78, 78, 78, 0.25)"
+              }
+            ]
           }
-        },
-        "groups": [
-          {
-            "label": "trans:filterStationAreaPlanning.frontrunner",
-            "checkboxes": ["frontrunnerLine", "frontrunnerBuffers"]
-          },
-          {
-            "label": "trans:filterStationAreaPlanning.traxstreetcar",
-            "checkboxes": ["traxstreetcarLine", "traxstreetcarBuffers"]
-          },
-          {
-            "label": "trans:filterStationAreaPlanning.brt",
-            "checkboxes": ["brtLine", "brtBuffers"]
-          },
-          {
-            "label": "trans:filterTransportation.other",
-            "checkboxes": ["municipal", "centers"]
-          }
-        ]
+        }
       }
     }
   },
   "sherlock": {
-    "serviceUrl": "https://gis.wfrc.org/arcgis/rest/services/General/ZoomToPlaceNames/FeatureServer/1",
+    "serviceUrl": "https://services1.arcgis.com/taguadKoI1XFwivx/arcgis/rest/services/ZoomTo_PlaceNames2023/FeatureServer/0",
     "searchField": "NAME",
     "placeHolder": "trans:searchPlaceholder"
   },
@@ -1504,7 +1600,7 @@
         "mapTitleLandUse": "Centers & Land Uses",
         "mapTitleEconDev": "Economic Opportunities",
         "mapTitleRecreation": "Parks & Public Spaces",
-        "mapTitleOlympics": "SLC 2034",
+        "mapTitleOlympics": "SLC-UT 2034",
         "mapTitleATO": "ATO",
         "mapTitleTIP": "TIP Projects",
         "mapTitleTLC": "TLC Projects",
@@ -1532,6 +1628,7 @@
           "bikePed": "Bike/Ped",
           "landUse": "Land Use",
           "centers": "Centers",
+          "olympicVenues": "Olympic Venues",
           "generalLandUse": "Other Land Uses",
           "openSpace": "Parks & Public Spaces"
         },
@@ -1608,10 +1705,10 @@
           "sys2034": "2034 Venues & Transportation",
           "prjGroup": "Major Projects",
           "prjPre2002": "Hwy/Transit Pre 2002",
-          "prjSince2002": "Hwy/Transit  2003-23",
-          "prjPre2034": "Hwy/Transit  2024-34",
-          "sys2034CRT": "Commuter Rail",
-          "sys2034LRT": "Light Rail",
+          "prjSince2002": "Hwy/Transit 2003-23",
+          "prjPre2034": "Hwy/Transit, Benefiting 2034",
+          "sys2034CRT": "FrontRunner Regional Rail",
+          "sys2034LRT": "TRAX Light Rail",
           "sys2034BRT": "Bus Rapid Transit (BRT)",
           "sys2034Freeways": "Freeways",
           "sys2034Highways": "Highways",
@@ -1619,7 +1716,7 @@
           "majorRegionalDev": "Major Regional Developments"
         },
         "filterATO": {
-          "equity": "Equity Focus Areas",
+          "community": "Community Focus Areas",
           "auto": "Workplace Accessibility: Auto (2019)",
           "transit": "Workplace Accessibility: Transit (2019)"
         },
@@ -1654,8 +1751,9 @@
           "existingBikeOnStreet": "Existing Bike On-Street"
         },
         "filterGFLU": {
-          "gflu1": "Generalized Future Land Use - city",
-          "gflu2": "Generalized Future Land Use - county"
+          "gflu": "Generalized Future Land Use",
+          "centers": "Centers",
+          "otherRegionalLandUse": "Other Regional Land Uses"
         },
         "filterStationAreaPlanning": {
           "line": "Line",
@@ -1664,7 +1762,10 @@
           "traxstreetcar": "TRAX/Streetcar",
           "brt": "Bus Rapid Transit",
           "municipal": "Municipalities",
-          "centers": "Centers"
+          "centers": "Centers",
+          "stations": "Transit Stations",
+          "lines": "Transit Lines",
+          "buffers": "SAP Planning Areas"
         },
         "projectInformation": "Map Features Found:",
         "projectInformationPrompt": "Click a feature on the map for more information",
@@ -1679,7 +1780,7 @@
         "mapTitleLandUse": "Uso de la Tierra",
         "mapTitleEconDev": "Desarrollo Económico",
         "mapTitleRecreation": "Recreación",
-        "mapTitleOlympics": "Juegos Olímpicos",
+        "mapTitleOlympics": "SLC-UT 2034",
         "mapTitleATO": "Acceso a Oportunidades",
         "mapTitleTIP": "Proyectos TIP",
         "mapTitleTLC": "Proyectos TLC",
@@ -1706,6 +1807,7 @@
           "bikePed": "Transporte Activo",
           "landUse": "Uso de la Tierra",
           "centers": "Centros",
+          "olympicVenues": "Sedes Olimpicas",
           "generalLandUse": "Uso General de la Tierra",
           "openSpace": "Espacio Natural"
         },
@@ -1784,7 +1886,7 @@
           "prjGroup": "Grandes Proyectos",
           "prjPre2002": "Transportes Antes 2002",
           "prjSince2002": "Transportes 2003-23",
-          "prjPre2034": "Transportes 2024-34",
+          "prjPre2034": "Transportes, beneficiando a 2034",
           "sys2034CRT": "Tren de Cercaníass",
           "sys2034LRT": "Tren Ligerol",
           "sys2034BRT": "Autobus de Tránsito Rápido",
@@ -1794,7 +1896,7 @@
           "majorRegionalDev": "Major Regional Developments"
         },
         "filterATO": {
-          "equity": "Áreas de Enfoque de Equidad",
+          "community": "Áreas de Enfoque de Comunitario",
           "auto": "Accesibilidad en el Lugar de Trabajo: Automóvil (2019)",
           "transit": "Accesibilidad en el Lugar de Trabajo: Transporte Público (2019)"
         },
@@ -1829,17 +1931,21 @@
           "existingBikeOnStreet": "Bicicleta Existentes en la Calle"
         },
         "filterGFLU": {
-          "gflu1": "Uso Generalizado Futuro de la Tierra - municipio",
-          "gflu2": "Uso Generalizado Futuro de la Tierra - condado"
+          "gflu": "Uso Generalizado Futuro de la Tierra",
+          "centers": "Centros",
+          "otherRegionalLandUse": "Otra Regional Usos de la Tierra"
         },
         "filterStationAreaPlanning": {
           "line": "Línea",
           "stationAreas": "Áreas de la Estación",
-          "frontrunner": "FrontRunner",
+          "frontrunner": "FrontRunner Tren Regional",
           "traxstreetcar": "TRAX/Tranvía",
           "brt": "Autobús de Tránsito Rápido",
           "municipal": "Municipios",
-          "centers": "Centros"
+          "centers": "Centros",
+          "stations": "Transit Stations",
+          "lines": "Transit Lines",
+          "buffers": "SAP Planning Areas"
         },
         "projectInformation": "Información",
         "projectInformationPrompt": "Haga clic en una función para obtener más información",

@@ -1,8 +1,8 @@
-@import '../../variables.scss';
+@use '../../variables.scss';
 
 .map-lens {
   position: absolute;
-  top: $mainBodyTop;
+  top: variables.$mainBodyTop;
   bottom: 0;
   right: 0;
   left: 0;
@@ -18,7 +18,7 @@ $height: 80px;
   left: 0;
   top: calc(50% - #{$height}/ 2);
   z-index: 1;
-  background-color: $highlightColor;
+  background-color: variables.$highlightColor;
   padding-left: 2px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;

@@ -36,7 +36,7 @@ Cypress.Commands.add('loadApp', (url = '/') => {
 
   cy.waitForMapLoaded();
 });
-Cypress.Commands.add('getMapExtent', () => {
+Cypress.Commands.add('getMapExtent', (expectedExtent) => {
   cy.waitForMapLoaded();
 
   let getExtent;
@@ -47,9 +47,24 @@ Cypress.Commands.add('getMapExtent', () => {
       getExtent = win.getMapExtent;
     })
     .then(() => {
-      console.log('getting extent...');
-
-      return getExtent();
+      let attemptCount = 0;
+      return cy.waitUntil(
+        () => {
+          attemptCount++;
+          const extent = getExtent();
+          console.log(`getting extent (attempt ${attemptCount})...`, extent);
+          const matches = extent === expectedExtent;
+          if (matches) {
+            console.log('✓ Extent matches expected value');
+          }
+          return matches;
+        },
+        {
+          timeout: 5000,
+          interval: 500,
+          errorMsg: `Failed to get matching map extent after retries. Expected: ${expectedExtent}`,
+        },
+      );
     });
 });
 
