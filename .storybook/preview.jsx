@@ -8,7 +8,7 @@ import '../src/index.css';
 
 setConfigs(appConfig, configSchema);
 
-/** @type { import('@storybook/react').Preview } */
+/** @type { import('@storybook/react-vite').Preview } */
 const preview = {
   tags: ['autodocs'],
 };

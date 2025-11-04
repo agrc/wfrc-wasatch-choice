@@ -28,6 +28,7 @@
     "landuse",
     "languagedetector",
     "listbox",
+    "manti",
     "montserrat",
     "Mountainland",
     "MSTR",
@@ -57,7 +58,12 @@
     "USFS",
     "utah",
     "wasatch",
-    "wherematters"
+    "wherematters",
+    "wkid",
+    "xmax",
+    "xmin",
+    "ymax",
+    "ymin"
   ],
   "cSpell.language": "en,es",
   "editor.formatOnSave": true

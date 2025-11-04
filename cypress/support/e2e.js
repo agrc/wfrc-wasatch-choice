@@ -1,3 +1,4 @@
+import 'cypress-wait-until';
 import './commands';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
