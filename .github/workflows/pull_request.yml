@@ -31,7 +31,7 @@ jobs:
           start: pnpm start
           record: true
           browser: chrome
-          wait-on: 'http://localhost:5173'
+          wait-on: "http://localhost:5173"
 
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -92,6 +92,7 @@ jobs:
   rebuild-docs:
     name: Rebuild config docs
     runs-on: ubuntu-latest
+    if: ${{ github.head_ref != 'main' && github.head_ref != 'dev' }}
     steps:
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v5
