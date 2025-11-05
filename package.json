@@ -1,6 +1,6 @@
 {
   "name": "wfrc",
-  "version": "5.4.9-rc.1",
+  "version": "5.4.9",
   "private": true,
   "type": "module",
   "scripts": {
