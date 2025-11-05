@@ -87,6 +87,14 @@ Determines whether the layer selector widget is displayed or not
 
 `boolean`
 
+### hideLayerSelector Default Value
+
+The default value is:
+
+```json
+false
+```
+
 ## useDefaultAGOLPopup
 
 
