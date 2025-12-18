@@ -95,7 +95,7 @@
     "react-test-renderer": "^19.2.0",
     "sass": "^1.93.2",
     "start-server-and-test": "^2.1.2",
-    "storybook": "^10.0.3",
+    "storybook": "^10.1.10",
     "typescript": "^5.9.3",
     "url": "^0.11.4",
     "vite": "^7.1.12",
