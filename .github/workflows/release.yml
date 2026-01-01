@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
@@ -72,7 +72,7 @@ jobs:
     if: github.event.release.prerelease == false
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
