@@ -56,7 +56,7 @@
     "react-dual-listbox": "^6.0.3",
     "react-error-boundary": "^6.0.0",
     "react-fast-compare": "^3.2.2",
-    "react-i18next": "^15.7.4",
+    "react-i18next": "^16.2.3",
     "react-loader-spinner": "^8.0.0",
     "react-perfect-scrollbar": "^1.5.8",
     "reactstrap": "^9.2.3",
@@ -99,6 +99,6 @@
     "typescript": "^5.9.3",
     "url": "^0.11.4",
     "vite": "^7.1.12",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.6"
   }
 }
