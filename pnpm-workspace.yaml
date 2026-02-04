@@ -3,3 +3,10 @@ onlyBuiltDependencies:
   - '@vaadin/vaadin-usage-statistics'
   - cypress
   - esbuild
+
+overrides:
+  glob@>=10.2.0 <10.5.0: '>=10.5.0'
+  lodash@>=4.0.0 <=4.17.22: '>=4.17.23'
+  qs@<6.14.1: '>=6.14.1'
+  storybook@>=10.0.0 <10.1.10: '>=10.1.10'
+  systeminformation@<5.27.14: '>=5.27.14'
