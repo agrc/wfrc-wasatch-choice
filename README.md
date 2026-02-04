@@ -100,3 +100,7 @@ Execute `pnpm run build` to create an optimized production build
 _The files will be placed in `/dist`_
 
 Execute `pnpm run preview` to view the website
+
+## Attribution
+
+This project was developed with the assistance of [GitHub Copilot](https://github.com/features/copilot).
