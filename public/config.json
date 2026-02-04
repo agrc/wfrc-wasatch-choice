@@ -31,7 +31,9 @@
           "CorridorPres": "CorridorPres",
           "HwyFwy": "HwyFwy",
           "HwyFwy2": "HwyFwy_2",
+          "HwyFwyPatch": "HwyFwyPatch",
           "PrincipalArterials": "PrincipalArterials",
+          "PrincipalArterialsPatch": "PrincipalArterialsPatch",
           "MinorArterials": "MinorArterials",
           "Collectors": "Collectors",
           "PrincipalArterials2": "PrincipalArterials_2",
@@ -61,7 +63,9 @@
               "MinorArterials",
               "Collectors",
               "HwyFwy2",
+              "HwyFwyPatch",
               "PrincipalArterials2",
+              "PrincipalArterialsPatch",
               "MinorArterials2",
               "Collectors2",
               "Interchanges",
@@ -216,12 +220,7 @@
           },
           {
             "label": "trans:filterVision.landUse",
-            "checkboxes": [
-              "centers",
-              "generalLandUse",
-              "openSpace",
-              "olympicVenues"
-            ]
+            "checkboxes": ["centers", "generalLandUse","openSpace", "olympicVenues"]
           }
         ]
       }
@@ -259,7 +258,9 @@
           "linesByPhase": "Lines Displayed by Phase",
           "existingBike": "Existing Bike Network",
           "centers": "WCV Centers (LIVE)",
-          "otherRegionalLandUses": "WCV Land Uses (LIVE)"
+          "otherRegionalLandUses": "WCV Land Uses (LIVE)",
+          "KnownPhase1TransitStationLocationsWFRC":"Vision Transit Stations LIVE",
+          "KnownPhase1TransitStationLocationsMAG": "HTRZs 2025 - Other Stations Stops Terminals (Planned)"
         },
         "phases": {
           "pointsByMode": ["phase", 1, 2, 3, 4],
@@ -434,11 +435,16 @@
               }
             ]
           },
-
           "existingBikePed": {
             "label": "trans:filterTransportation.existingBikePed",
             "layerNames": ["existingBike"],
             "symbol": "simple"
+          },
+          "KnownPhase1TransitStationLocations": {
+            "label": "trans:filterTransportation.KnownPhase1TransitStationLocations",
+            "layerNames": ["KnownPhase1TransitStationLocationsWFRC", "KnownPhase1TransitStationLocationsMAG"],
+            "symbol": "simple",
+            "offByDefault": true
           }
         },
         "groups": [
@@ -456,7 +462,7 @@
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": ["centers", "generalLandUse", "existingBikePed"]
+            "checkboxes": ["centers", "generalLandUse", "KnownPhase1TransitStationLocations","existingBikePed"]
           }
         ]
       },
@@ -470,7 +476,7 @@
       "useDefaultAGOLPopup": false,
       "filter": {
         "layerNames": {
-          "futureLandUse": "Generalized Future Land Use (2025)",
+          "futureLandUse": "Generalized Future Land Use (MAG and WFRC 2025)",
           "centers": "WCV Centers (LIVE)",
           "otherRegionalLandUse": "WCV Land Uses (LIVE)",
           "parksAndOther": "ParksAndOther",
@@ -1162,66 +1168,97 @@
     },
     "tip": {
       "name": "trans:mapTitleTIP",
-      "webMapId": "d41ed0596e904f2698a09732c47b24c0",
+      "webMapId": "7d007623107a4eccb99656917850dcb9",
       "filter": {
         "layerNames": {
-          "underConstructionLines": "Under Construction - Lines",
-          "substantiallyCompleteLines": "Substantially Complete - Lines",
-          "studiesLines": "Studies - Lines",
-          "plannedLines": "Planned - Lines",
-          "inDesignLines": "In Design - Lines",
-          "finishedLines": "Finished - Lines",
-          "epmAllProjects": "ePM All Projects",
-          "wfrcFunding": "WFRC Funding"
+          "capacity":"Capacity",
+          "contingency":"Contingency",
+          "maintenance":"Maintenance",
+          "pavement":"Pavement",
+          "roadway":"Roadway",
+          "structures":"Structures",
+          "studies":"Studies",
+          "trafficSafety":"Traffic Safety",
+          "trafficManagement":"Traffic Management",
+          "transportationSolutions":"Transportation Solutions",
+          "other":"Other"
         },
         "checkboxes": {
-          "underConstruction": {
-            "label": "trans:filterTIP.underConstruction",
-            "layerNames": ["underConstructionLines"],
-            "symbol": "simple",
-            "offByDefault": true
+          "capacity": {
+            "label": "trans:filterTIP.capacity",
+            "layerNames": ["capacity"],
+            "symbol": "simple"
           },
-          "substantiallyComplete": {
-            "label": "trans:filterTIP.substantiallyComplete",
-            "layerNames": ["substantiallyCompleteLines"],
-            "symbol": "simple",
-            "offByDefault": true
+          "contingency": {
+            "label": "trans:filterTIP.contingency",
+            "layerNames": ["contingency"],
+            "symbol": "simple"
+          },
+          "maintenance": {
+            "label": "trans:filterTIP.maintenance",
+            "layerNames": ["maintenance"],
+            "symbol": "simple"
+          },
+          "pavement": {
+            "label": "trans:filterTIP.pavement",
+            "layerNames": ["pavement"],
+            "symbol": "simple"
+          },
+          "roadway": {
+            "label": "trans:filterTIP.roadway",
+            "layerNames": ["roadway"],
+            "symbol": "simple"
+          },
+          "structures": {
+            "label": "trans:filterTIP.structures",
+            "layerNames": ["structures"],
+            "symbol": "simple"
           },
           "studies": {
             "label": "trans:filterTIP.studies",
-            "layerNames": ["studiesLines"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "planned": {
-            "label": "trans:filterTIP.planned",
-            "layerNames": ["plannedLines"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "inDesign": {
-            "label": "trans:filterTIP.inDesign",
-            "layerNames": ["inDesignLines"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "finished": {
-            "label": "trans:filterTIP.finished",
-            "layerNames": ["finishedLines"],
-            "symbol": "simple",
-            "offByDefault": true
-          },
-          "epm": {
-            "label": "trans:filterTIP.epm",
-            "layerNames": ["epmAllProjects"],
+            "layerNames": ["studies"],
             "symbol": "simple"
           },
-          "wfrc": {
-            "label": "trans:filterTIP.wfrc",
-            "layerNames": ["wfrcFunding"],
+          "trafficSafety": {
+            "label": "trans:filterTIP.trafficSafety",
+            "layerNames": ["trafficSafety"],
+            "symbol": "simple"
+          },
+          "trafficManagement": {
+            "label": "trans:filterTIP.trafficManagement",
+            "layerNames": ["trafficManagement"],
+            "symbol": "simple"
+          },
+          "transportationSolutions": {
+            "label": "trans:filterTIP.transportationSolutions",
+            "layerNames": ["transportationSolutions"],
+            "symbol": "simple"
+          },
+          "other": {
+            "label": "trans:filterTIP.other",
+            "layerNames": ["other"],
             "symbol": "simple"
           }
-        }
+
+        },
+        "groups": [
+          {
+            "label": "trans:filterTIP.projects",
+            "checkboxes": [
+              "capacity",
+              "contingency",
+              "maintenance",
+              "pavement",
+              "roadway",
+              "structures",
+              "studies",
+              "trafficSafety",
+              "trafficManagement",
+              "transportationSolutions",
+              "other"
+            ]
+          }
+        ]
       }
     },
     "tlc": {
@@ -1343,77 +1380,6 @@
           "existingBikeGroup": {
             "label": "trans:filterATdata.existingBikeOnStreet",
             "layerNames": ["existingBike"],
-            "symbol": "classes"
-          }
-        }
-      }
-    },
-    "gflu": {
-      "name": "trans:mapTitleGFLU",
-      "webMapId": "8ee3664a9ff942d2a51f03621c3ffe9c",
-      "useDefaultAGOLPopup": false,
-      "filter": {
-        "layerNames": {
-          "centers": "WCV Centers (LIVE)",
-          "otherRegionalLandUse": "WCV Land Uses (LIVE)",
-          "futureLandUse": "Generalized Future Land Use (2025)"
-        },
-        "checkboxes": {
-          "centers": {
-            "label": "trans:filterLandUse.centers",
-            "layerNames": ["centers"],
-            "symbol": "classes",
-            "offByDefault": true,
-            "staticColors": [
-              {
-                "label": "Metropolitan Center",
-                "hsa": "rgba(166, 41, 102, 0.75)"
-              },
-              {
-                "label": "Urban Center",
-                "hsa": "rgba(230, 89, 55, 0.75)"
-              },
-              {
-                "label": "City Center",
-                "hsa": "rgba(242, 160, 62, 0.75)"
-              },
-              {
-                "label": "Neighborhood Center",
-                "hsa": "rgba(248, 220, 38, 0.75)"
-              }
-            ]
-          },
-          "otherRegionalLandUse": {
-            "label": "trans:filterVision.generalLandUse",
-            "layerNames": ["otherRegionalLandUse"],
-            "symbol": "classes",
-            "offByDefault": true,
-            "staticColors": [
-              {
-                "label": "Education District",
-                "hsa": "rgba(186, 218, 215, 0.75)"
-              },
-              {
-                "label": "Employment District",
-                "hsa": "rgba(243, 176, 205, 0.75)"
-              },
-              {
-                "label": "Retail District",
-                "hsa": "rgba(246, 210, 212, 0.75)"
-              },
-              {
-                "label": "Industrial District",
-                "hsa": "rgba(227, 207, 240, 0.75)"
-              },
-              {
-                "label": "Special District",
-                "hsa": "rgba(78, 78, 78, 0.25)"
-              }
-            ]
-          },
-          "futureLandUse": {
-            "label": "trans:filterGFLU.gflu",
-            "layerNames": ["futureLandUse"],
             "symbol": "classes"
           }
         }
@@ -1546,12 +1512,12 @@
       {
         "id": "Vision Contours",
         "Factory": "TileLayer",
-        "url": "https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Statewide_Basemap/MapServer",
+        "url": "https://tiles.arcgis.com/tiles/taguadKoI1XFwivx/arcgis/rest/services/WCV_2025_Vision_Basemap/MapServer",
         "opacity": 0.8
       },
+      "Imagery",
       "Lite",
       "Terrain",
-      "Imagery",
       "B/W Imagery"
     ],
     "overlays": [
@@ -1651,7 +1617,8 @@
           "roads": "Roads",
           "transit": "Transit",
           "transProjectFilter": "Transportation Project Filter",
-          "unfundedNeeds": "Unfunded Needs"
+          "unfundedNeeds": "Unfunded Needs",
+          "KnownPhase1TransitStationLocations": "Potential Phase1 Need Stations"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Generalized Future Land Use",
@@ -1724,14 +1691,18 @@
           "transit": "Workplace Accessibility: Transit (2019)"
         },
         "filterTIP": {
-          "underConstruction": "Under Construction",
-          "substantiallyComplete": "Substantially Complete",
-          "studies": "Studies",
-          "planned": "Planned",
-          "inDesign": "In Design",
-          "finished": "Finished",
-          "epm": "ePM All Projects",
-          "wfrc": "WFRC Funding"
+          "capacity":"Capacity",
+          "contingency":"Contingency",
+          "maintenance":"Maintenance",
+          "pavement":"Pavement",
+          "roadway":"Roadway",
+          "structures":"Structures",
+          "studies":"Studies",
+          "trafficSafety":"Traffic Safety",
+          "trafficManagement":"Traffic Management",
+          "transportationSolutions":"Transportation Solutions",
+          "other":"Other",
+          "projects":"Project Types"
         },
         "filterTLC": {
           "awarded": "Funded",
@@ -1831,7 +1802,8 @@
           "other": "Otro",
           "existingBikePed": "Transporte Activo Existente",
           "transProjectFilter": "Filtro de proyecto de transporte",
-          "existingTransit": "Transporte Público Existente"
+          "existingTransit": "Transporte Público Existente",
+          "KnownPhase1TransitStationLocations": "Estaciones potenciales"
         },
         "filterLandUse": {
           "generalizedFutureLandUse": "Uso Generalizado Futuro de la Tierra",
@@ -1904,14 +1876,18 @@
           "transit": "Accesibilidad en el Lugar de Trabajo: Transporte Público (2019)"
         },
         "filterTIP": {
-          "underConstruction": "En Obra",
-          "substantiallyComplete": "Sustancialmente Completa",
+          "capacity": "Capacidad",
+          "contingency": "Contingencia",
+          "maintenance": "Mantenimiento",
+          "pavement": "Pavimento",
+          "roadway": "Carreteras",
+          "structures": "Estructuras",
           "studies": "Estudios",
-          "planned": "Planeado",
-          "inDesign": "En Diseño",
-          "finished": "Terminado",
-          "epm": "Todos los Proyectos ePM",
-          "wfrc": "Financiación de WFRC"
+          "trafficSafety": "Seguridad Vial",
+          "trafficManagement": "Gestión del Tráfico",
+          "transportationSolutions": "Soluciones de Transporte",
+          "other": "Otro",
+          "projects": "Tipos de Proyectos"
         },
         "filterTLC": {
           "awarded": "Financiado",
