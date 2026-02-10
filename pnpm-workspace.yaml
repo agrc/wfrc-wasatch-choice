@@ -1,7 +1,6 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@vaadin/vaadin-usage-statistics'
-  - cypress
   - esbuild
 
 overrides:
