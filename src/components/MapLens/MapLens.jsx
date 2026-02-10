@@ -19,6 +19,7 @@ export default function MapLens({ sideBarOpen, toggleSidebar, children }) {
         color="info"
         className="map-lens__sidebar btn btn-default btn-xs"
         onClick={toggleSidebar}
+        aria-label={sideBarOpen ? 'close sidebar' : 'open sidebar'}
       >
         {sideBarOpen ? (
           <FontAwesomeIcon icon={faChevronLeft} size="xs" />

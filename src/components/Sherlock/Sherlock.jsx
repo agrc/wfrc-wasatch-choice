@@ -83,17 +83,22 @@ export function Sherlock({
         isOpen,
         inputValue,
         getMenuProps,
+        getLabelProps,
       }) => (
         <div className="sherlock">
-          <h4>{label}</h4>
+          {label ? <h4>{label}</h4> : null}
           <div style={{ paddingBottom: '1em' }}>
             <InputGroup>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label className="sr-only" {...getLabelProps()}>
+                search list
+              </label>
               <Input
                 {...getInputProps()}
                 placeholder={placeHolder}
                 autoComplete="nope"
               ></Input>
-              <Button size="sm" color="secondary" disabled>
+              <Button size="sm" color="secondary" disabled aria-label="search">
                 <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
               </Button>
             </InputGroup>

@@ -531,6 +531,7 @@ const LayerSelector = (props) => {
             <>
               <hr className="layer-selector-separator" />
               <input
+                aria-label="layer opacity slider"
                 type="range"
                 min="0"
                 max="100"
