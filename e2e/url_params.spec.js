@@ -12,7 +12,9 @@ test.describe('url params', () => {
     await loadApp(page, '/#selectedMap=landuse');
 
     // Find the nav link for the tab
-    const tabLink = page.locator('.nav-tabs .nav-link', { hasText: 'Centers & Land Uses' });
+    const tabLink = page.locator('.nav-tabs .nav-link', {
+      hasText: 'Centers & Land Uses',
+    });
     await expect(tabLink).toHaveClass(/active/);
 
     const currentMapName = await page.evaluate(() => window.currentMapName);
@@ -20,14 +22,23 @@ test.describe('url params', () => {
   });
 
   test('scale, x, & y params set the map extent', async ({ page }) => {
-    await loadApp(page, '/#scale=72224&sideBarClosed=true&x=-12461939&y=4976704');
+    await loadApp(
+      page,
+      '/#scale=72224&sideBarClosed=true&x=-12461939&y=4976704',
+    );
 
-    const expectedExtent = '{"spatialReference":{"wkid":3857},"xmin":-12474168.924525611,"ymin":4970703.693279622,"xmax":-12449709.075474389,"ymax":4982704.306720378}';
+    const expectedExtent =
+      '{"spatialReference":{"wkid":3857},"xmin":-12474168.924525611,"ymin":4970703.693279622,"xmax":-12449709.075474389,"ymax":4982704.306720378}';
 
-    await expect.poll(async () => {
-      const ext = await getMapExtent(page);
-      return JSON.parse(ext);
-    }, { timeout: 45000 }).toEqual(JSON.parse(expectedExtent));
+    await expect
+      .poll(
+        async () => {
+          const ext = await getMapExtent(page);
+          return JSON.parse(ext);
+        },
+        { timeout: 45000 },
+      )
+      .toEqual(JSON.parse(expectedExtent));
   });
 
   test('loads the correct tabs', async ({ page }) => {

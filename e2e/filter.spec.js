@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { loadApp, waitForMapLoaded } from './utils';
 
 test.describe('filter', () => {
@@ -6,7 +6,10 @@ test.describe('filter', () => {
     await loadApp(page);
 
     await page.locator('.filter .group-container input').first().click();
-    await page.locator('.filter .child-checkbox-container input').last().click();
+    await page
+      .locator('.filter .child-checkbox-container input')
+      .last()
+      .click();
 
     await page.getByText(/reset/i).first().click();
 
@@ -21,20 +24,29 @@ test.describe('filter', () => {
     const childInputs = page.locator('.filter .child-checkbox-container input');
     const childCount = await childInputs.count();
     for (let i = 0; i < childCount; i++) {
-        await childInputs.nth(i).check({ force: true });
+      await childInputs.nth(i).check({ force: true });
     }
   });
 
-  test('turning off checkboxes reduces the number of layers', async ({ page }) => {
+  test('turning off checkboxes reduces the number of layers', async ({
+    page,
+  }) => {
     await loadApp(page);
 
-    const originalCount = await page.evaluate(() => window.getVisibleLayers().length);
+    const originalCount = await page.evaluate(
+      () => window.getVisibleLayers().length,
+    );
 
-    await page.locator('.filter .group-container input').first().click({ force: true });
+    await page
+      .locator('.filter .group-container input')
+      .first()
+      .click({ force: true });
 
     await waitForMapLoaded(page);
 
-    const newCount = await page.evaluate(() => window.getVisibleLayers().length);
+    const newCount = await page.evaluate(
+      () => window.getVisibleLayers().length,
+    );
     expect(newCount).toBeLessThan(originalCount);
   });
 });

@@ -9,7 +9,9 @@ test.describe('tab-picker', () => {
 
     await page.getByTestId('tab-configuration').click();
 
-    await page.getByRole('listbox', { name: /maps displayed/i }).selectOption('transportation');
+    await page
+      .getByRole('listbox', { name: /maps displayed/i })
+      .selectOption('transportation');
     await page.getByRole('option', { name: /^transportation$/i }).dblclick();
 
     await page.getByRole('button', { name: /finish/i }).click();
@@ -22,11 +24,15 @@ test.describe('tab-picker', () => {
 
     await page.getByTestId('tab-configuration').click();
 
-    await page.getByRole('listbox', { name: /maps displayed/i }).selectOption('transportation');
+    await page
+      .getByRole('listbox', { name: /maps displayed/i })
+      .selectOption('transportation');
 
     await page.getByRole('option', { name: /^transportation$/i }).dblclick();
 
-    await page.getByRole('listbox', { name: /available/i }).selectOption('projections');
+    await page
+      .getByRole('listbox', { name: /available/i })
+      .selectOption('projections');
 
     await page.getByRole('option', { name: /projections/i }).dblclick();
 
@@ -46,7 +52,9 @@ test.describe('tab-picker', () => {
     await page.getByRole('option', { name: /projections/i }).dblclick();
 
     await available.selectOption('stationareaplanning');
-    await page.getByRole('option', { name: /station area planning/i }).dblclick();
+    await page
+      .getByRole('option', { name: /station area planning/i })
+      .dblclick();
 
     // Removed gflu as it is not a valid map key in current config
 
@@ -57,7 +65,9 @@ test.describe('tab-picker', () => {
     await page.getByRole('option', { name: /tlc projects/i }).dblclick();
 
     await available.selectOption('atdata');
-    await page.getByRole('option', { name: /active transportation/i }).dblclick();
+    await page
+      .getByRole('option', { name: /active transportation/i })
+      .dblclick();
 
     await expect(page.getByRole('alert')).toContainText(/maximum/i);
   });

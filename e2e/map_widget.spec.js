@@ -42,7 +42,7 @@ test.describe('map-widget', () => {
     const card = page.locator('.map-widget-card').filter({ hasText: 'Filter' });
 
     // Ensure it is visible before testing close button
-    if (!await card.isVisible()) {
+    if (!(await card.isVisible())) {
       await btn.click();
     }
     await expect(card).toBeVisible();
