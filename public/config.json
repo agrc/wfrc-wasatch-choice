@@ -220,7 +220,12 @@
           },
           {
             "label": "trans:filterVision.landUse",
-            "checkboxes": ["centers", "generalLandUse","openSpace", "olympicVenues"]
+            "checkboxes": [
+              "centers",
+              "generalLandUse",
+              "openSpace",
+              "olympicVenues"
+            ]
           }
         ]
       }
@@ -259,7 +264,7 @@
           "existingBike": "Existing Bike Network",
           "centers": "WCV Centers (LIVE)",
           "otherRegionalLandUses": "WCV Land Uses (LIVE)",
-          "KnownPhase1TransitStationLocationsWFRC":"Vision Transit Stations LIVE",
+          "KnownPhase1TransitStationLocationsWFRC": "Vision Transit Stations LIVE",
           "KnownPhase1TransitStationLocationsMAG": "HTRZs 2025 - Other Stations Stops Terminals (Planned)"
         },
         "phases": {
@@ -442,7 +447,10 @@
           },
           "KnownPhase1TransitStationLocations": {
             "label": "trans:filterTransportation.KnownPhase1TransitStationLocations",
-            "layerNames": ["KnownPhase1TransitStationLocationsWFRC", "KnownPhase1TransitStationLocationsMAG"],
+            "layerNames": [
+              "KnownPhase1TransitStationLocationsWFRC",
+              "KnownPhase1TransitStationLocationsMAG"
+            ],
             "symbol": "simple",
             "offByDefault": true
           }
@@ -462,7 +470,12 @@
           },
           {
             "label": "trans:filterTransportation.other",
-            "checkboxes": ["centers", "generalLandUse", "KnownPhase1TransitStationLocations","existingBikePed"]
+            "checkboxes": [
+              "centers",
+              "generalLandUse",
+              "KnownPhase1TransitStationLocations",
+              "existingBikePed"
+            ]
           }
         ]
       },
@@ -1171,17 +1184,17 @@
       "webMapId": "7d007623107a4eccb99656917850dcb9",
       "filter": {
         "layerNames": {
-          "capacity":"Capacity",
-          "contingency":"Contingency",
-          "maintenance":"Maintenance",
-          "pavement":"Pavement",
-          "roadway":"Roadway",
-          "structures":"Structures",
-          "studies":"Studies",
-          "trafficSafety":"Traffic Safety",
-          "trafficManagement":"Traffic Management",
-          "transportationSolutions":"Transportation Solutions",
-          "other":"Other"
+          "capacity": "Capacity",
+          "contingency": "Contingency",
+          "maintenance": "Maintenance",
+          "pavement": "Pavement",
+          "roadway": "Roadway",
+          "structures": "Structures",
+          "studies": "Studies",
+          "trafficSafety": "Traffic Safety",
+          "trafficManagement": "Traffic Management",
+          "transportationSolutions": "Transportation Solutions",
+          "other": "Other"
         },
         "checkboxes": {
           "capacity": {
@@ -1239,7 +1252,6 @@
             "layerNames": ["other"],
             "symbol": "simple"
           }
-
         },
         "groups": [
           {
@@ -1691,18 +1703,18 @@
           "transit": "Workplace Accessibility: Transit (2019)"
         },
         "filterTIP": {
-          "capacity":"Capacity",
-          "contingency":"Contingency",
-          "maintenance":"Maintenance",
-          "pavement":"Pavement",
-          "roadway":"Roadway",
-          "structures":"Structures",
-          "studies":"Studies",
-          "trafficSafety":"Traffic Safety",
-          "trafficManagement":"Traffic Management",
-          "transportationSolutions":"Transportation Solutions",
-          "other":"Other",
-          "projects":"Project Types"
+          "capacity": "Capacity",
+          "contingency": "Contingency",
+          "maintenance": "Maintenance",
+          "pavement": "Pavement",
+          "roadway": "Roadway",
+          "structures": "Structures",
+          "studies": "Studies",
+          "trafficSafety": "Traffic Safety",
+          "trafficManagement": "Traffic Management",
+          "transportationSolutions": "Transportation Solutions",
+          "other": "Other",
+          "projects": "Project Types"
         },
         "filterTLC": {
           "awarded": "Funded",

@@ -33,6 +33,8 @@ test.describe('sherlock', () => {
 
     await page.getByText('Herriman', { exact: true }).click();
 
-    await expect(page.locator('.sherlock input').first()).toHaveValue('Herriman');
+    await expect(page.locator('.sherlock input').first()).toHaveValue(
+      'Herriman',
+    );
   });
 });
