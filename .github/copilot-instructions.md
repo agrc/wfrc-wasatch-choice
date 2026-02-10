@@ -7,7 +7,7 @@
 
 ## Key Workflows
 - **Start**: `pnpm start` (Vite)
-- **Test**: `pnpm test` (Vitest), `pnpm run cypress:open` (Cypress E2E)
+- **Test**: `pnpm test` (Vitest), `pnpm run test:e2e` (Playwright E2E)
 - **Lint**: `pnpm run lint` (ESLint)
 - **Config**: Edit `public/config.json` (schema validated against `public/config.schema.json`).
 
@@ -35,4 +35,5 @@
 - `public/`: Runtime assets and configuration (`config.json`).
 - `src/components/`: Feature-based component organization.
 - `src/hooks.js`: Custom hooks.
-- `cypress/`: End-to-end tests.
+- `e2e/`: End-to-end tests (Playwright).
+- `playwright.config.js`: Playwright configuration.

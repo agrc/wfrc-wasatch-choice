@@ -93,7 +93,7 @@ export default function ReactMapView({
   const changeMap = useCallback(async () => {
     console.log('MapView: changeMap', maps.current);
 
-    if (window.Cypress) {
+    if (window.E2E_TESTING) {
       window.currentMapName = currentTabConfig.name;
       window.mapLoaded = false;
     }
@@ -190,13 +190,13 @@ export default function ReactMapView({
         defaultPopup.current = view.popup;
       });
 
-      if (window.Cypress) {
-        // help Cypress know when the map has loaded
+      if (window.E2E_TESTING) {
+        // help test runner know when the map has loaded
         view.watch(['updating', 'navigating'], (updating) => {
           window.mapLoaded = view.ready && !updating && !view.navigating;
         });
 
-        // these global methods are for cypress integration tests
+        // these global methods are for integration tests
         window.getMapExtent = () => {
           return JSON.stringify(view.extent.toJSON());
         };

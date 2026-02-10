@@ -22,22 +22,30 @@ jobs:
         with:
           version: latest
 
-      - name: 🧙 Run Cypress tests
-        uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          start: pnpm start
-          record: true
-          browser: chrome
-          wait-on: "http://localhost:5173"
+          node-version: lts/*
+          cache: pnpm
+
+      - name: 📥 Download dependencies
+        run: pnpm install
+
+      - name: 🎭 Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: 🚀 Start App
+        run: pnpm run start & npx wait-on http://localhost:5173
+
+      - name: 🧪 Run Playwright tests
+        run: pnpm exec playwright test
 
       - uses: actions/upload-artifact@v5
-        if: failure()
+        if: always()
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
   test-unit:
     name: Unit tests

@@ -108,7 +108,7 @@ export default function Tabs({ innerRef }) {
     };
 
     const sensors = useSensors(
-      useSensor(window.Cypress ? MouseSensor : PointerSensor, {
+      useSensor(window.E2E_TESTING ? MouseSensor : PointerSensor, {
         activationConstraint: {
           distance: 5,
         },
