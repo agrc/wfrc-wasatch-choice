@@ -187,6 +187,7 @@ export default function App() {
       config.sherlock.searchField,
     ),
     placeHolder: t(config.sherlock.placeHolder),
+    label: t(config.sherlock.placeHolder),
     onSherlockMatch,
   };
 

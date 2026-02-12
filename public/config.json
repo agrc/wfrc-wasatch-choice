@@ -1662,7 +1662,6 @@
           "parksGroup": "Parks",
           "destinationsGroup": "Destinations",
           "otherGroup": "Other",
-
           "trailsPaved": "Paved Trails",
           "trailsUnpaved": "Unpaved Trails",
           "bikeClass1": "Bike Paths (class 1)",
@@ -1756,7 +1755,11 @@
         "projectInformation": "Map Features Found:",
         "projectInformationPrompt": "Click a feature on the map for more information",
         "transportationProjectInformation": "Project and Land Use Information:",
-        "transportation": "Transportation"
+        "transportation": "Transportation",
+        "sidebar": {
+          "close": "close sidebar",
+          "open": "open sidebar"
+        }
       }
     },
     "es": {
@@ -1940,7 +1943,11 @@
         },
         "projectInformation": "Información",
         "projectInformationPrompt": "Haga clic en una función para obtener más información",
-        "transportation": "Transporte"
+        "transportation": "Transporte",
+        "sidebar": {
+          "close": "cerrar barra lateral",
+          "open": "abrir barra lateral"
+        }
       }
     }
   },
