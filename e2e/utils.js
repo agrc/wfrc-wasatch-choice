@@ -33,15 +33,20 @@ export const dragElementBy = async (page, selectorOrLocator, x, y) => {
       : selectorOrLocator;
   }
 
+  // Ensure the element is visible before attempting to drag
+  await element.waitFor({ state: 'visible' });
+
   const box = await element.boundingBox();
-  if (box) {
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    await page.mouse.down();
-    await page.mouse.move(
-      box.x + box.width / 2 + x,
-      box.y + box.height / 2 + y,
-      { steps: 20 },
-    );
-    await page.mouse.up();
+  if (!box) {
+    throw new Error('dragElementBy: unable to obtain bounding box for target element');
   }
+
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(
+    box.x + box.width / 2 + x,
+    box.y + box.height / 2 + y,
+    { steps: 20 },
+  );
+  await page.mouse.up();
 };
