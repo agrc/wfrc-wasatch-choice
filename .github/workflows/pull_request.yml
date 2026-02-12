@@ -35,7 +35,7 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: 🚀 Start App
-        run: pnpm run start & npx wait-on http://localhost:5173
+        run: pnpm run start & pnpm exec wait-on http://localhost:5173
 
       - name: 🧪 Run Playwright tests
         run: pnpm exec playwright test

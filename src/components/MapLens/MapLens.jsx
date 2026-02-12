@@ -1,10 +1,12 @@
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'reactstrap';
 import './MapLens.scss';
 
 export default function MapLens({ sideBarOpen, toggleSidebar, children }) {
+  const { t } = useTranslation();
   return (
     <div
       id="centerContainer"
@@ -19,7 +21,7 @@ export default function MapLens({ sideBarOpen, toggleSidebar, children }) {
         color="info"
         className="map-lens__sidebar btn btn-default btn-xs"
         onClick={toggleSidebar}
-        aria-label={sideBarOpen ? 'close sidebar' : 'open sidebar'}
+        aria-label={sideBarOpen ? t('sidebar.close') : t('sidebar.open')}
       >
         {sideBarOpen ? (
           <FontAwesomeIcon icon={faChevronLeft} size="xs" />
