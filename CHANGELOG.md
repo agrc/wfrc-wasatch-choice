@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.10](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.9...v5.4.10) (2026-02-16)
+
+
+### Bug Fixes
+
+* accessibility improvements ([b2f98cd](https://github.com/agrc/wfrc-wasatch-choice/commit/b2f98cd6bcad4c0d9392309c15b262def2c774ea))
+
+
+### Dependencies
+
+* bump npm dependencies 🌲 ([ceac53c](https://github.com/agrc/wfrc-wasatch-choice/commit/ceac53ce586d8540d246d8885fec86a6c374fa82))
+* bump qs from 6.14.1 to 6.14.2 ([f23f744](https://github.com/agrc/wfrc-wasatch-choice/commit/f23f7446df1912f72bcf967d332a9d9e14ddfe8c))
+* bump the major-dependencies group across 1 directory with 2 updates ([5c2d728](https://github.com/agrc/wfrc-wasatch-choice/commit/5c2d728c8614494c4bd36ec61392066338ec9188))
+* bump the safe-dependencies group across 1 directory with 14 updates ([f44abf7](https://github.com/agrc/wfrc-wasatch-choice/commit/f44abf7ea505acfe57ab7005ac13aa69cf96c17d))
+
 ## [5.4.9](https://github.com/agrc/wfrc-wasatch-choice/compare/v5.4.8...v5.4.9) (2025-11-05)
 
 
