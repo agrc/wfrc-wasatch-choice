@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
@@ -78,7 +78,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
